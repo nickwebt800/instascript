@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Instagram Reel & Video transcript tool. Upload a file or paste a URL to get instant text. No signup, no payment.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>InstaScript - Instagram Transcript Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo-link"><h1 class="logo">InstaScript</h1></a>
+      <p class="tagline">Turn Instagram Reels &amp; Videos into Text</p>
+    </header>
+
+    <main class="tool-card">
+      <!-- Tab switch -->
+      <div class="tabs">
+        <button class="tab active" data-tab="upload">Upload File</button>
+        <button class="tab" data-tab="url">Paste URL</button>
+      </div>
+
+      <!-- Upload panel -->
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone">
+          <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="drop-text">Drop your file here<br>or <span class="link">browse</span></p>
+          <p class="drop-hint">MP4, WebM, MP3, WAV &mdash; up to 100 MB</p>
+          <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+        </div>
+        <div id="fileInfo" class="file-info hidden">
+          <div class="file-row">
+            <span id="fileName" class="file-name"></span>
+            <span id="fileSize" class="file-size"></span>
+          </div>
+          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+        </div>
+      </div>
+
+      <!-- URL panel -->
+      <div class="tab-panel" id="panel-url">
+        <div class="url-group">
+          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
+          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+        </div>
+        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <div id="urlNote" class="url-note hidden"></div>
+      </div>
+    </main>
+
+    <!-- Processing -->
+    <div id="processing" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="processingText" class="processing-text">Loading AI model...</p>
+      <div id="progressBar" class="progress-bar hidden">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions">
+          <button id="copyBtn" class="btn-ghost" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿name,url,inference_location,model,signup_required,url_input,srt_export,txt_export,open_source,license,hosting,language_support,notes
+InstaScript,https://instascript.app,browser (WASM),whisper-tiny.en,No,Yes (Instagram),Yes,Yes,Yes,MIT,Cloudflare Pages,English,"Focused on Instagram Reels/videos; includes server-side URL fetch via Cloudflare Functions"
+Whisper-Web,https://whisper-web.mesu.re,browser (WebGPU/WASM),whisper-large-v3-turbo + finetunes,No,No,Yes,No,Yes,MIT,statichost.eu,"English, Swedish, Norwegian, Spanish","Fork of Xenova/whisper-web; multi-language UI; PWA support; quantization options"
+Web Whisper,https://whisper.r3d.red,browser (WASM),Whisper,No,No,Yes,No,Yes,AGPL,Codeberg,"English","Self-hostable; source on Codeberg"
+Monster API Whisper Playground,https://whisperui.monsterapi.ai,server-side,Whisper,Yes,No,Yes,No,Yes (playground),MIT,Monster API cloud,"English","Server-side inference; API service; not privacy-first (audio uploaded to server)"

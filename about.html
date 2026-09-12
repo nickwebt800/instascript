@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About InstaScript - a free, browser-based Instagram transcript tool.">
+  <title>About - InstaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="/" class="logo-link"><h1 class="logo">InstaScript</h1></a>
+      <p class="tagline">Turn Instagram Reels &amp; Videos into Text</p>
+    </header>
+
+    <main class="content-card">
+      <h2>About InstaScript</h2>
+
+      <p>InstaScript is a free tool that converts Instagram Reels and videos into text transcripts. It runs entirely in your web browser — no app to install, no account to create, and no payment required.</p>
+
+      <h3>How It Works</h3>
+      <p>When you upload a video or audio file (or paste an Instagram URL), InstaScript extracts the audio and runs it through <strong>Whisper</strong>, an open-source speech recognition model developed by OpenAI. The model runs locally in your browser using <strong>transformers.js</strong>, a library by Hugging Face that brings AI inference to the web.</p>
+      <p>This means your files never leave your device when using the upload feature. The transcription happens right on your computer or phone.</p>
+
+      <h3>Features</h3>
+      <ul>
+        <li>Transcribe Instagram Reels, videos, and any audio/video file</li>
+        <li>Timestamped output with start and end times for each segment</li>
+        <li>Copy transcript to clipboard with one click</li>
+        <li>Download as plain text (.txt) or subtitle format (.srt)</li>
+        <li>Works on desktop and mobile browsers</li>
+      </ul>
+
+      <h3>The Project</h3>
+      <p>InstaScript is a personal project, independently developed and maintained. It is not affiliated with, endorsed by, or sponsored by Instagram, Meta, or OpenAI.</p>
+
+      <h3>Tech Stack</h3>
+      <ul>
+        <li><strong>Frontend:</strong> Vanilla HTML, CSS, and JavaScript (no framework)</li>
+        <li><strong>AI Model:</strong> Whisper (tiny English variant, ~40 MB)</li>
+        <li><strong>Inference:</strong> @huggingface/transformers.js (runs in-browser via WASM)</li>
+        <li><strong>Hosting:</strong> Cloudflare Pages with serverless Functions for URL fetching</li>
+      </ul>
+
+      <h3>Privacy</h3>
+      <p>InstaScript does not collect, store, or transmit your personal data. See our <a href="/privacy">Privacy Policy</a> for details.</p>
+    </main>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+</body>
+</html>
