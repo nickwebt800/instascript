@@ -91,6 +91,8 @@ export async function onRequestPost({ request }) {
     if (!videoUrl) {
       const embedCandidates = [
         embedUrl.toString(),
+        `${embedUrl.toString()}?__a=1`,
+        `${embedUrl.toString()}?output=1`,
         `https://instagram.com${embedUrl.pathname}`,
         `https://m.instagram.com${embedUrl.pathname}`,
         `https://z-p42.www.instagram.com${embedUrl.pathname}`,
