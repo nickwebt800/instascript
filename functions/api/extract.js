@@ -79,6 +79,7 @@ export async function onRequestPost({ request, env }) {
             .replace(/\\u0026/g, "&")
             .replace(/\\u00253b/g, ";")
             .replace(/\\+\//g, "/")
+            .replace(/\\+$/, "")
             .replace(/&amp;/g, "&");
         }
       }
