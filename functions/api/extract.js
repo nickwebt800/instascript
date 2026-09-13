@@ -69,7 +69,7 @@ export async function onRequestPost({ request }) {
       const patterns = [
         /<meta\s+[^>]*property=["']og:video(?::url|:secure_url)?["'][^>]*content=["']([^"']+)["']/i,
         /<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:video(?::url|:secure_url)?["']/i,
-        /"video_url"\s*:\s*"([^"]+)"/i,
+        /\\?"video_url\\?"\s*:\s*\\?"([^"]+)\\?"/i,
       ];
       for (const pattern of patterns) {
         const match = source.match(pattern);
@@ -77,7 +77,7 @@ export async function onRequestPost({ request }) {
           return match[1]
             .replace(/\\u0026/g, "&")
             .replace(/\\u00253b/g, ";")
-            .replace(/\\\//g, "/")
+            .replace(/\\+\//g, "/")
             .replace(/&amp;/g, "&");
         }
       }
