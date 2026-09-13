@@ -86,7 +86,6 @@ export async function onRequestPost({ request }) {
     };
 
     let videoUrl = extractVideoUrl(html);
-    let jinaDebug = "";
 
     if (!videoUrl) {
       const embedCandidates = [
@@ -125,10 +124,8 @@ export async function onRequestPost({ request }) {
           },
           redirect: "follow",
         });
-        jinaDebug = `jina:${jinaResponse.status}`;
         if (jinaResponse.ok) {
           html = await jinaResponse.text();
-          jinaDebug += `/${html.length}/${html.includes("video_url")}`;
           videoUrl = extractVideoUrl(html);
         }
       } catch {
@@ -182,7 +179,7 @@ export async function onRequestPost({ request }) {
         error:
           pageResponse && !pageResponse.ok
             ? `Instagram returned status ${pageResponse.status}. The post may be private, deleted, or rate-limited.`
-            : `Could not find video or text content on this Instagram page. It may require login or be private. ${jinaDebug}`,
+            : "Could not find video or text content on this Instagram page. It may require login or be private.",
       },
       { status: 404, headers: corsHeaders }
     );

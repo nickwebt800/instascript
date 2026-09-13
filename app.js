@@ -127,13 +127,15 @@ async function runUrlTranscription(instagramUrl) {
     });
 
     if (extractRes.status === 404) {
-      // Endpoint not deployed — running locally without functions
+      const err = await extractRes.json().catch(() => ({}));
+      if (err.error) {
+        showError(err.error);
+        return;
+      }
+      // A non-JSON 404 means the Pages Function route is not deployed.
       urlNote.classList.remove("hidden");
       urlNote.innerHTML =
-        "<strong>URL fetching needs deployment.</strong> This feature uses a server-side function " +
-        "to fetch Instagram content (browsers can't do it directly due to CORS). " +
-        "Once deployed to Cloudflare Pages, the URL feature works automatically. " +
-        "<br><br>For now, use the <strong>Upload File</strong> tab — download the Reel and upload it here.";
+        "<strong>URL fetching needs deployment.</strong> The server-side function is not available on this deployment.";
       processing.classList.add("hidden");
       return;
     }
