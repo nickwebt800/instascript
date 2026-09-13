@@ -46,7 +46,6 @@ export async function onRequestPost({ request }) {
         "Cache-Control": "no-cache",
       },
       redirect: "follow",
-      signal: AbortSignal.timeout(15000),
     });
 
     // Instagram increasingly serves a login/429 page at the canonical URL.
