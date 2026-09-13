@@ -19,15 +19,25 @@ export async function onRequestPost({ request }) {
     const body = await request.json();
     const url = body?.url;
 
-    if (!url || !url.includes("instagram.com")) {
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(url);
+    } catch {
+      parsedUrl = null;
+    }
+
+    if (
+      !parsedUrl ||
+      !["http:", "https:"].includes(parsedUrl.protocol) ||
+      !/(^|\.)instagram\.com$/i.test(parsedUrl.hostname)
+    ) {
       return Response.json(
         { error: "Please provide a valid Instagram URL." },
         { status: 400, headers: corsHeaders }
       );
     }
 
-    // Step 1: Fetch the Instagram page (server-side, no CORS restriction)
-    const pageResponse = await fetch(url, {
+    const fetchPage = async (targetUrl) => fetch(targetUrl, {
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -36,62 +46,69 @@ export async function onRequestPost({ request }) {
         "Cache-Control": "no-cache",
       },
       redirect: "follow",
+      signal: AbortSignal.timeout(15000),
     });
 
-    if (!pageResponse.ok) {
-      return Response.json(
-        { error: `Instagram returned status ${pageResponse.status}. The post may be private or deleted.` },
-        { status: 502, headers: corsHeaders }
-      );
+    // Instagram increasingly serves a login/429 page at the canonical URL.
+    // The public embed URL still contains the media JSON for public posts.
+    let html = "";
+    let pageResponse;
+    try {
+      pageResponse = await fetchPage(parsedUrl.toString());
+      if (pageResponse.ok) html = await pageResponse.text();
+    } catch {
+      // Try the embed endpoint below.
     }
 
-    const html = await pageResponse.text();
+    const embedUrl = new URL(parsedUrl.toString());
+    embedUrl.search = "";
+    embedUrl.hash = "";
+    embedUrl.pathname = embedUrl.pathname.replace(/\/+$/, "") + "/embed/";
 
-    // Step 2: Extract video URL from meta tags
-    let videoUrl = null;
-
-    // Try og:video meta tags (various forms)
-    const ogVideoPatterns = [
-      /<meta\s+property="og:video:url"\s+content="([^"]+)"/i,
-      /<meta\s+property="og:video:secure_url"\s+content="([^"]+)"/i,
-      /<meta\s+property="og:video"\s+content="([^"]+)"/i,
-      /<meta\s+name="og:video"\s+content="([^"]+)"/i,
-    ];
-
-    for (const pattern of ogVideoPatterns) {
-      const match = html.match(pattern);
-      if (match) {
-        videoUrl = match[1].replace(/&amp;/g, "&");
-        break;
-      }
-    }
-
-    // Fallback: search JSON data embedded in script tags
-    if (!videoUrl) {
-      const jsonPatterns = [
-        /"video_url":"([^"]+)"/,
-        /"video_url":"([^"]+)"/g,
+    const extractVideoUrl = (source) => {
+      const patterns = [
+        /<meta\s+[^>]*property=["']og:video(?::url|:secure_url)?["'][^>]*content=["']([^"']+)["']/i,
+        /<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:video(?::url|:secure_url)?["']/i,
+        /"video_url"\s*:\s*"([^"]+)"/i,
       ];
-      for (const pattern of jsonPatterns) {
-        const match = html.match(pattern);
+      for (const pattern of patterns) {
+        const match = source.match(pattern);
         if (match) {
-          videoUrl = match[1]
+          return match[1]
             .replace(/\\u0026/g, "&")
             .replace(/\\u00253b/g, ";")
-            .replace(/\\\//g, "/");
-          break;
+            .replace(/\\\//g, "/")
+            .replace(/&amp;/g, "&");
         }
+      }
+      return null;
+    };
+
+    let videoUrl = extractVideoUrl(html);
+
+    if (!videoUrl) {
+      try {
+        const embedResponse = await fetchPage(embedUrl.toString());
+        if (embedResponse.ok) {
+          html = await embedResponse.text();
+          videoUrl = extractVideoUrl(html);
+        }
+      } catch {
+        // Report the normal not-found message below.
       }
     }
 
+    // Step 2: Extract video URL from meta tags
     // Extract caption/description
     let caption = "";
-    const descMatch = html.match(/<meta\s+property="og:description"\s+content="([^"]+)"/i);
+    const descMatch = html.match(/<meta\s+[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i)
+      || html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:description["']/i);
     if (descMatch) {
       caption = decodeURIComponent(descMatch[1].replace(/&amp;/g, "&"));
     }
 
-    const titleMatch = html.match(/<meta\s+property="og:title"\s+content="([^"]+)"/i);
+    const titleMatch = html.match(/<meta\s+[^>]*property=["']og:title["'][^>]*content=["']([^"']+)["']/i)
+      || html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:title["']/i);
     let title = "";
     if (titleMatch) {
       title = decodeURIComponent(titleMatch[1].replace(/&amp;/g, "&"));
@@ -123,9 +140,14 @@ export async function onRequestPost({ request }) {
     }
 
     return Response.json(
-      { error: "Could not find video or text content on this Instagram page. It may require login or be private." },
+      {
+        error:
+          pageResponse && !pageResponse.ok
+            ? `Instagram returned status ${pageResponse.status}. The post may be private, deleted, or rate-limited.`
+            : "Could not find video or text content on this Instagram page. It may require login or be private.",
+      },
       { status: 404, headers: corsHeaders }
-      );
+    );
   } catch (err) {
     return Response.json(
       { error: `Server error: ${err.message}` },
