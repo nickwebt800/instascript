@@ -93,6 +93,7 @@ export async function onRequestPost({ request }) {
         embedUrl.toString(),
         `https://instagram.com${embedUrl.pathname}`,
         `https://m.instagram.com${embedUrl.pathname}`,
+        `https://z-p42.www.instagram.com${embedUrl.pathname}`,
       ];
       for (const candidate of embedCandidates) {
         try {
