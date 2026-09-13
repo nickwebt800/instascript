@@ -380,6 +380,14 @@ body {
   margin-right: 8px;
 }
 
+.language-rejected .transcript-header {
+  display: none;
+}
+
+.language-rejected .transcript-output {
+  border-top: 0;
+}
+
 /* ===== Footer ===== */
 .footer {
   text-align: center;

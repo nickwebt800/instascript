@@ -3,6 +3,13 @@ import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transfo
 // ── Config ──
 env.allowLocalModels = false;
 const MODEL_ID = "onnx-community/whisper-tiny.en";
+// The multilingual checkpoint is used only to identify the language token.
+// English transcription continues to use the smaller English-only checkpoint above.
+const LANGUAGE_MODEL_ID = "onnx-community/whisper-tiny";
+const LANGUAGE_CHECK_SECONDS = 20;
+const AUDIO_SAMPLE_RATE = 16000;
+const LANGUAGE_REJECTION_MESSAGE =
+  "这段音频不是英文 本工具目前只转英文";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
 
 // ── DOM ──
@@ -31,6 +38,7 @@ const downloadSrtBtn = $("downloadSrtBtn");
 
 let selectedFile = null;
 let transcriber = null;
+let languageDetector = null;
 let currentTranscript = "";
 let lastResult = null;
 
@@ -182,6 +190,12 @@ async function runUrlTranscription(instagramUrl) {
     showProcessing("Extracting audio...");
     const audioData = await extractAudio(videoBlob);
 
+    showProcessing("Checking audio language...");
+    if (!(await detectEnglishLanguage(audioData))) {
+      displayLanguageRejected();
+      return;
+    }
+
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
 
@@ -222,6 +236,60 @@ async function loadModel() {
   });
   progressBar.classList.add("hidden");
   return transcriber;
+}
+
+// Detect language from the first 20 seconds. Any missing/uncertain token is
+// treated as non-English so the English-only model can never emit a guess.
+async function detectEnglishLanguage(audioData) {
+  try {
+    const detector = await loadLanguageDetector();
+    const sample = audioData.subarray(
+      0,
+      Math.min(audioData.length, LANGUAGE_CHECK_SECONDS * AUDIO_SAMPLE_RATE)
+    );
+    if (!sample.length) return false;
+
+    const inputs = await detector.processor(sample);
+    const hopLength = detector.processor.feature_extractor.config.hop_length;
+    const generated = await detector.model.generate({
+      inputs: inputs.input_features,
+      num_frames: Math.floor(sample.length / hopLength),
+      max_new_tokens: 2,
+    });
+    const sequences = generated.sequences || generated;
+    const tokenIds = sequences[0]?.tolist?.() || [];
+    if (tokenIds.length < 2) return false;
+
+    const languageToken = detector.tokenizer.decode([tokenIds[1]], {
+      skip_special_tokens: false,
+    });
+    return languageToken === "<|en|>";
+  } catch (err) {
+    console.warn("Language detection failed; rejecting as non-English.", err);
+    return false;
+  }
+}
+
+async function loadLanguageDetector() {
+  if (languageDetector) return languageDetector;
+  showProcessing("Loading language detector (first time only)...");
+  progressBar.classList.remove("hidden");
+  progressFill.style.width = "0%";
+  languageDetector = await pipeline(
+    "automatic-speech-recognition",
+    LANGUAGE_MODEL_ID,
+    {
+      progress_callback: (data) => {
+        if (data.status === "progress" && data.progress != null) {
+          progressFill.style.width = data.progress.toFixed(0) + "%";
+          processingText.textContent =
+            "Downloading language detector... " + data.progress.toFixed(0) + "%";
+        }
+      },
+    }
+  );
+  progressBar.classList.add("hidden");
+  return languageDetector;
 }
 
 // ── Audio extraction ──
@@ -268,6 +336,12 @@ async function runTranscription(file) {
     showProcessing("Extracting audio...");
     const audioData = await extractAudio(file);
 
+    showProcessing("Checking audio language...");
+    if (!(await detectEnglishLanguage(audioData))) {
+      displayLanguageRejected();
+      return;
+    }
+
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
 
@@ -295,6 +369,7 @@ async function runTranscription(file) {
 // ── Display transcript ──
 function displayTranscript(result) {
   transcriptOutput.innerHTML = "";
+  transcriptSection.classList.remove("language-rejected");
 
   if (result.chunks && result.chunks.length) {
     result.chunks.forEach((chunk) => {
@@ -313,6 +388,18 @@ function displayTranscript(result) {
   }
 
   processing.classList.add("hidden");
+  transcriptSection.classList.remove("hidden");
+}
+
+function displayLanguageRejected() {
+  currentTranscript = LANGUAGE_REJECTION_MESSAGE;
+  lastResult = null;
+  window._lastResult = null;
+  transcriptOutput.innerHTML = "";
+  const p = document.createElement("p");
+  p.textContent = LANGUAGE_REJECTION_MESSAGE;
+  transcriptOutput.appendChild(p);
+  transcriptSection.classList.add("language-rejected");
   transcriptSection.classList.remove("hidden");
 }
 
@@ -402,4 +489,5 @@ function hideError() {
 
 function hideTranscript() {
   transcriptSection.classList.add("hidden");
+  transcriptSection.classList.remove("language-rejected");
 }
