@@ -3,7 +3,7 @@
 // Fetches the Instagram page server-side, extracts video URL + caption.
 // Returns JSON { videoUrl, caption, type } or { error }
 
-export async function onRequestPost({ request }) {
+export async function onRequestPost({ request, env }) {
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -107,6 +107,31 @@ export async function onRequestPost({ request }) {
         } catch {
           // Try the next public embed host.
         }
+      }
+    }
+
+    // If Instagram rate-limits the Pages fetch, use Cloudflare Browser
+    // Rendering from the account edge to load the public embed page.
+    if (!videoUrl && env?.CF_BROWSER_RENDERING_TOKEN && env?.CF_ACCOUNT_ID) {
+      try {
+        const renderResponse = await fetch(
+          `https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/browser-rendering/content`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${env.CF_BROWSER_RENDERING_TOKEN}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ url: `${embedUrl.toString()}?__a=1` }),
+          }
+        );
+        if (renderResponse.ok) {
+          const rendered = await renderResponse.json();
+          html = typeof rendered.result === "string" ? rendered.result : "";
+          videoUrl = extractVideoUrl(html);
+        }
+      } catch {
+        // Report the normal not-found message below.
       }
     }
 
