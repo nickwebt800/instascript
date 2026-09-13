@@ -89,14 +89,22 @@ export async function onRequestPost({ request }) {
     let jinaDebug = "";
 
     if (!videoUrl) {
-      try {
-        const embedResponse = await fetchPage(embedUrl.toString());
-        if (embedResponse.ok) {
-          html = await embedResponse.text();
-          videoUrl = extractVideoUrl(html);
+      const embedCandidates = [
+        embedUrl.toString(),
+        `https://instagram.com${embedUrl.pathname}`,
+        `https://m.instagram.com${embedUrl.pathname}`,
+      ];
+      for (const candidate of embedCandidates) {
+        try {
+          const embedResponse = await fetchPage(candidate);
+          if (embedResponse.ok) {
+            html = await embedResponse.text();
+            videoUrl = extractVideoUrl(html);
+            if (videoUrl) break;
+          }
+        } catch {
+          // Try the next public embed host.
         }
-      } catch {
-        // Report the normal not-found message below.
       }
     }
 
