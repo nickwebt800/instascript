@@ -84,6 +84,7 @@ export async function onRequestPost({ request }) {
     };
 
     let videoUrl = extractVideoUrl(html);
+    let jinaDebug = "";
 
     if (!videoUrl) {
       try {
@@ -105,12 +106,16 @@ export async function onRequestPost({ request }) {
         const jinaResponse = await fetch(jinaUrl, {
           headers: {
             Accept: "text/html,application/xhtml+xml",
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
             "X-Return-Format": "html",
           },
           redirect: "follow",
         });
+        jinaDebug = `jina:${jinaResponse.status}`;
         if (jinaResponse.ok) {
           html = await jinaResponse.text();
+          jinaDebug += `/${html.length}/${html.includes("video_url")}`;
           videoUrl = extractVideoUrl(html);
         }
       } catch {
@@ -164,7 +169,7 @@ export async function onRequestPost({ request }) {
         error:
           pageResponse && !pageResponse.ok
             ? `Instagram returned status ${pageResponse.status}. The post may be private, deleted, or rate-limited.`
-            : "Could not find video or text content on this Instagram page. It may require login or be private.",
+            : `Could not find video or text content on this Instagram page. It may require login or be private. ${jinaDebug}`,
       },
       { status: 404, headers: corsHeaders }
     );
