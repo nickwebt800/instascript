@@ -97,6 +97,27 @@ export async function onRequestPost({ request }) {
       }
     }
 
+    // Cloudflare egress IPs are sometimes rate-limited by Instagram. Jina's
+    // reader can fetch the same public embed page and return its raw HTML.
+    if (!videoUrl) {
+      try {
+        const jinaUrl = `https://r.jina.ai/http://${embedUrl.host}${embedUrl.pathname}`;
+        const jinaResponse = await fetch(jinaUrl, {
+          headers: {
+            Accept: "text/html,application/xhtml+xml",
+            "X-Return-Format": "html",
+          },
+          redirect: "follow",
+        });
+        if (jinaResponse.ok) {
+          html = await jinaResponse.text();
+          videoUrl = extractVideoUrl(html);
+        }
+      } catch {
+        // Report the normal not-found message below.
+      }
+    }
+
     // Step 2: Extract video URL from meta tags
     // Extract caption/description
     let caption = "";
