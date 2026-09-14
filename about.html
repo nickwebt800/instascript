@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About InstaScript - a free, browser-based Instagram transcript tool.">
+  <meta name="description" content="About InstaScript - a free browser-based tool that turns video and audio files into timestamped text.">
   <title>About - InstaScript</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,29 +11,33 @@
   <div class="container">
     <header class="header">
       <a href="/" class="logo-link"><h1 class="logo">InstaScript</h1></a>
-      <p class="tagline">Turn Instagram Reels &amp; Videos into Text</p>
+      <p class="tagline">Turn video and audio into text &mdash; free, in your browser</p>
     </header>
 
     <main class="content-card">
       <h2>About InstaScript</h2>
 
-      <p>InstaScript is a free tool that converts Instagram Reels and videos into text transcripts. It runs entirely in your web browser — no app to install, no account to create, and no payment required.</p>
+      <p>InstaScript is a free browser-based transcription tool. It turns video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into timestamped text, with .txt and .srt downloads. The paste-a-link option currently accepts public Instagram URLs only.</p>
+
+      <p>It runs entirely in your web browser &mdash; no app to install, no account to create, and no payment required.</p>
 
       <h3>How It Works</h3>
-      <p>When you upload a video or audio file (or paste an Instagram URL), InstaScript extracts the audio and runs it through <strong>Whisper</strong>, an open-source speech recognition model developed by OpenAI. The model runs locally in your browser using <strong>transformers.js</strong>, a library by Hugging Face that brings AI inference to the web.</p>
+      <p>When you upload a video or audio file (or paste a public Instagram URL), InstaScript extracts the audio and runs it through <strong>Whisper</strong>, an open-source speech recognition model developed by OpenAI. The model runs locally in your browser using <strong>transformers.js</strong>, a library by Hugging Face that brings AI inference to the web.</p>
       <p>This means your files never leave your device when using the upload feature. The transcription happens right on your computer or phone.</p>
 
       <h3>Features</h3>
       <ul>
-        <li>Transcribe Instagram Reels, videos, and any audio/video file</li>
+        <li>Transcribe video files (MP4, MOV, WebM) and audio files (MP3, WAV, M4A, OGG) up to 100 MB</li>
+        <li>Paste a public Instagram URL and let the site fetch the video for you &mdash; Instagram is the only link type supported today; for TikTok or Facebook, save the file and upload it</li>
         <li>Timestamped output with start and end times for each segment</li>
         <li>Copy transcript to clipboard with one click</li>
         <li>Download as plain text (.txt) or subtitle format (.srt)</li>
         <li>Works on desktop and mobile browsers</li>
+        <li>Limits: English audio only, and long recordings are processed in chunks of about 30 seconds</li>
       </ul>
 
       <h3>The Project</h3>
-      <p>InstaScript is a personal project, independently developed and maintained. It is not affiliated with, endorsed by, or sponsored by Instagram, Meta, or OpenAI.</p>
+      <p>InstaScript is a personal project, independently developed and maintained. It is not affiliated with, endorsed by, or sponsored by Instagram, Meta, TikTok, ByteDance, Facebook, or OpenAI.</p>
 
       <h3>Tech Stack</h3>
       <ul>
