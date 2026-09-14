@@ -192,6 +192,7 @@ async function runUrlTranscription(instagramUrl) {
     const audioData = await extractAudio(videoBlob);
 
     showProcessing("Checking audio language...");
+    await releaseTranscriber();
     if (!(await detectEnglishLanguage(audioData))) {
       displayLanguageRejected();
       return;
@@ -237,6 +238,12 @@ async function loadModel() {
   });
   progressBar.classList.add("hidden");
   return transcriber;
+}
+
+async function releaseTranscriber() {
+  if (!transcriber) return;
+  await transcriber.dispose?.().catch(() => {});
+  transcriber = null;
 }
 
 // Detect language from the first 20 seconds. Any missing/uncertain token is
@@ -342,6 +349,7 @@ async function runTranscription(file) {
     const audioData = await extractAudio(file);
 
     showProcessing("Checking audio language...");
+    await releaseTranscriber();
     if (!(await detectEnglishLanguage(audioData))) {
       displayLanguageRejected();
       return;
