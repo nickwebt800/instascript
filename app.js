@@ -263,11 +263,13 @@ async function detectEnglishLanguage(audioData) {
     const generated = await detector.model.generate({
       inputs: inputs.input_features,
       num_frames: Math.floor(sample.length / hopLength),
-      max_new_tokens: 2,
+      // Supplying only the decoder start token bypasses Transformers.js'
+      // default English prompt and lets Whisper predict the language token.
+      decoder_input_ids: [[50258]],
+      max_new_tokens: 1,
     });
     const tokenRows = (generated.sequences || generated).tolist?.() || [];
     const tokenIds = Array.isArray(tokenRows[0]) ? tokenRows[0] : tokenRows;
-    console.info("Whisper language token ids:", tokenIds.slice(0, 4));
     if (tokenIds.length < 2) return false;
 
     return Number(tokenIds[1]) === ENGLISH_LANGUAGE_TOKEN_ID;
