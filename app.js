@@ -10,7 +10,7 @@ const LANGUAGE_CHECK_SECONDS = 20;
 const AUDIO_SAMPLE_RATE = 16000;
 const ENGLISH_LANGUAGE_TOKEN_ID = 50259;
 const LANGUAGE_REJECTION_MESSAGE =
-  "这段音频不是英文 本工具目前只转英文";
+  "This audio isn't in English. This tool only transcribes English audio.";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
 
 // ── DOM ──
