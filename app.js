@@ -267,6 +267,7 @@ async function detectEnglishLanguage(audioData) {
     });
     const tokenRows = (generated.sequences || generated).tolist?.() || [];
     const tokenIds = Array.isArray(tokenRows[0]) ? tokenRows[0] : tokenRows;
+    console.info("Whisper language token ids:", tokenIds.slice(0, 4));
     if (tokenIds.length < 2) return false;
 
     return Number(tokenIds[1]) === ENGLISH_LANGUAGE_TOKEN_ID;
