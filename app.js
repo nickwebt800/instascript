@@ -242,8 +242,9 @@ async function loadModel() {
 // Detect language from the first 20 seconds. Any missing/uncertain token is
 // treated as non-English so the English-only model can never emit a guess.
 async function detectEnglishLanguage(audioData) {
+  let detector = null;
   try {
-    const detector = await loadLanguageDetector();
+    detector = await loadLanguageDetector();
     const sample = audioData.subarray(
       0,
       Math.min(audioData.length, LANGUAGE_CHECK_SECONDS * AUDIO_SAMPLE_RATE)
@@ -265,6 +266,12 @@ async function detectEnglishLanguage(audioData) {
   } catch (err) {
     console.warn("Language detection failed; rejecting as non-English.", err);
     return false;
+  } finally {
+    // Do not keep two Whisper checkpoints in browser memory for English jobs.
+    if (detector) {
+      await detector.dispose?.().catch(() => {});
+      languageDetector = null;
+    }
   }
 }
 
