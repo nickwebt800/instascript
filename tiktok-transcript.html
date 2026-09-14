@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TikTok transcript and TikTok video transcription in your browser. Save the video, drop the file in, get timestamped text you can copy or download as TXT or SRT. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>TikTok Transcript &amp; Video Transcription Tool | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/tiktok-transcript">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">TikTok Transcript &amp; Video Transcription</h1>
+      <p class="tagline">Turn a TikTok video into text &mdash; free, in your browser</p>
+    </header>
+
+    <main class="tool-card">
+      <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
+      <div class="tabs">
+        <button class="tab active" data-tab="upload">Upload File</button>
+        <button class="tab" data-tab="url">Paste URL</button>
+      </div>
+
+      <!-- Upload panel -->
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone">
+          <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="drop-text">Drop your TikTok video here<br>or <span class="link">browse</span></p>
+          <p class="drop-hint">MP4, WebM, MP3, WAV &mdash; up to 100 MB</p>
+          <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+        </div>
+        <div id="fileInfo" class="file-info hidden">
+          <div class="file-row">
+            <span id="fileName" class="file-name"></span>
+            <span id="fileSize" class="file-size"></span>
+          </div>
+          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+        </div>
+        <p class="panel-hint">Save the TikTok to your phone or computer first, then drop the file here.</p>
+      </div>
+
+      <!-- URL panel (kept for parity with the tool; Instagram links only) -->
+      <div class="tab-panel" id="panel-url">
+        <div class="url-group">
+          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
+          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+        </div>
+        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <div id="urlNote" class="url-note hidden"></div>
+      </div>
+    </main>
+
+    <!-- Processing -->
+    <div id="processing" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="processingText" class="processing-text">Loading AI model...</p>
+      <div id="progressBar" class="progress-bar hidden">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions">
+          <button id="copyBtn" class="btn-ghost" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>What is a TikTok transcript?</h2>
+      <p>A <strong>TikTok transcript</strong> is the spoken content of a TikTok video written out as text. Instead of replaying a clip to catch what was said, you read (or search) the words. A TikTok video transcription usually includes <strong>timestamps</strong> &mdash; the start time of each line &mdash; so you can jump back to the exact moment in the video.</p>
+      <p>People use TikTok transcripts to turn a video into a blog post or newsletter, pull quotes, write captions and subtitles, keep notes from tutorials and talks, and make videos searchable.</p>
+
+      <h2>How to transcribe a TikTok video in 3 steps</h2>
+      <ol class="steps">
+        <li><strong>Save the video to your device.</strong> In the TikTok app use Share &rarr; Save video. On desktop, download the clip or record your screen while it plays. Any MP4, WebM, MP3 or WAV file up to 100 MB works.</li>
+        <li><strong>Drop the file into the box above</strong> (or tap to browse from your phone).</li>
+        <li><strong>Press Transcribe.</strong> The text appears with timestamps. Copy it, or download it as .txt or .srt.</li>
+      </ol>
+
+      <h2>What the result looks like</h2>
+      <p>Each line of the TikTok transcription starts with the time it was spoken, so the text stays tied to the video:</p>
+      <pre class="example">[00:00] So I tried this editing trick for a week
+[00:04] and here is what actually changed
+[00:09] first, the export time dropped in half</pre>
+      <p>The same text is available in two downloads: <strong>.txt</strong> for plain notes and <strong>.srt</strong> for subtitles you can drop into an editor.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I paste a TikTok link instead of uploading?</h3>
+      <p>Not on this page. The link option on this site currently works with public Instagram URLs, so for a TikTok you save the video to your device and upload the file. The transcription itself is the same either way.</p>
+      <h3>Does it work on my phone?</h3>
+      <p>Yes. The page works in a mobile browser: save the TikTok, then use the upload box above. The first run downloads the speech model to your browser, so a longer video takes longer on mobile data.</p>
+      <h3>Is the video uploaded anywhere?</h3>
+      <p>No. Transcription runs inside your browser with a local speech model. The file is not uploaded to a server, and no account is needed.</p>
+      <h3>Which languages are supported?</h3>
+      <p>English. The tool checks the audio language first and returns a message instead of a guess when the audio is not English.</p>
+      <h3>How long can the video be?</h3>
+      <p>Files up to 100 MB. Long clips are processed in 30-second chunks, so a long video takes proportionally longer and uses more memory on your device.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by TikTok, ByteDance, or OpenAI.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I paste a TikTok link instead of uploading?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not on this page. The link option on this site currently works with public Instagram URLs, so for a TikTok you save the video to your device and upload the file. The transcription itself is the same either way."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The page works in a mobile browser: save the TikTok, then use the upload box above. The first run downloads the speech model to your browser, so a longer video takes longer on mobile data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the video uploaded anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Transcription runs inside your browser with a local speech model. The file is not uploaded to a server, and no account is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which languages are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "English. The tool checks the audio language first and returns a message instead of a guess when the audio is not English."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long can the video be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Files up to 100 MB. Long clips are processed in 30-second chunks, so a long video takes proportionally longer and uses more memory on your device."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>

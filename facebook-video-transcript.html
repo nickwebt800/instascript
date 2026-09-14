@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Facebook video transcript made in your browser. Save or record the video, upload the file, and read the spoken words as timestamped text. Copy it or download TXT / SRT. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Facebook Video Transcript Tool &amp; Transcription | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/facebook-video-transcript">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Facebook Video Transcript</h1>
+      <p class="tagline">Read what a Facebook video says &mdash; free, in your browser</p>
+    </header>
+
+    <main class="tool-card">
+      <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
+      <div class="tabs">
+        <button class="tab active" data-tab="upload">Upload File</button>
+        <button class="tab" data-tab="url">Paste URL</button>
+      </div>
+
+      <!-- Upload panel -->
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone">
+          <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="drop-text">Drop your Facebook video here<br>or <span class="link">browse</span></p>
+          <p class="drop-hint">MP4, WebM, MP3, WAV &mdash; up to 100 MB</p>
+          <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+        </div>
+        <div id="fileInfo" class="file-info hidden">
+          <div class="file-row">
+            <span id="fileName" class="file-name"></span>
+            <span id="fileSize" class="file-size"></span>
+          </div>
+          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+        </div>
+        <p class="panel-hint">Save the video to your device (or screen-record it), then drop the file here.</p>
+      </div>
+
+      <!-- URL panel (kept for parity with the tool; Instagram links only) -->
+      <div class="tab-panel" id="panel-url">
+        <div class="url-group">
+          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
+          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+        </div>
+        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <div id="urlNote" class="url-note hidden"></div>
+      </div>
+    </main>
+
+    <!-- Processing -->
+    <div id="processing" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="processingText" class="processing-text">Loading AI model...</p>
+      <div id="progressBar" class="progress-bar hidden">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions">
+          <button id="copyBtn" class="btn-ghost" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>What is a Facebook video transcript?</h2>
+      <p>A <strong>Facebook video transcript</strong> is the spoken audio of a Facebook video written out as text. It lets you read what was said in a post, a recorded live session, a talk, or a shared clip without replaying it. Facebook video transcription normally keeps <strong>timestamps</strong> at the start of each line, so any sentence can be traced back to its moment in the recording.</p>
+      <p>Common uses: writing notes from a recorded talk or church service, quoting a public video accurately, creating subtitles, and keeping a text copy of a video that may later be removed.</p>
+
+      <h2>How to get a Facebook video transcript in 3 steps</h2>
+      <ol class="steps">
+        <li><strong>Get the video onto your device.</strong> Facebook lets you save many videos from the post menu; if saving is not offered, record your screen or record the audio while it plays. MP4, WebM, MP3 and WAV up to 100 MB are accepted.</li>
+        <li><strong>Upload the file in the box above</strong> &mdash; drag and drop on desktop, tap to choose on a phone.</li>
+        <li><strong>Press Transcribe</strong> and read the timestamped text. Copy it, or download .txt or .srt.</li>
+      </ol>
+
+      <h2>What the result looks like</h2>
+      <p>Every line carries the time it was said, which keeps the text usable as notes or as a subtitle track:</p>
+      <pre class="example">[00:00] Welcome everyone, thanks for joining tonight
+[00:05] we are going to cover three things
+[00:11] the first one is the most common mistake</pre>
+      <p>Download the same text as <strong>.txt</strong> for reading and quoting, or <strong>.srt</strong> when you need subtitles.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can you transcribe a Facebook video from its link?</h3>
+      <p>Not from a Facebook link. The link box on this site currently accepts public Instagram URLs. For Facebook, save or record the video and upload the file &mdash; the transcription step is identical.</p>
+      <h3>Does it work for long videos and recorded lives?</h3>
+      <p>Yes, as long as the file is under 100 MB. Audio is processed in 30-second passes, so a one-hour recording takes longer than a one-minute clip and needs more memory in the browser.</p>
+      <h3>Do I have to send the video to a server?</h3>
+      <p>No. The model runs in your own browser and the file stays on your device. No account, no upload queue, no waiting for an email.</p>
+      <h3>Can it transcribe languages other than English?</h3>
+      <p>No. The tool identifies the spoken language first and shows a short notice when the audio is not English, rather than producing a guess.</p>
+      <h3>Does it work on a phone?</h3>
+      <p>Yes, in a mobile browser. Save or screen-record the video first, then upload it from your phone. On the first run the speech model is downloaded to the browser.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by Facebook, Meta, or OpenAI.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can you transcribe a Facebook video from its link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not from a Facebook link. The link box on this site currently accepts public Instagram URLs. For Facebook, save or record the video and upload the file - the transcription step is identical."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work for long videos and recorded lives?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, as long as the file is under 100 MB. Audio is processed in 30-second passes, so a one-hour recording takes longer than a one-minute clip and needs more memory in the browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to send the video to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The model runs in your own browser and the file stays on your device. No account, no upload queue, no waiting for an email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can it transcribe languages other than English?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The tool identifies the spoken language first and shows a short notice when the audio is not English, rather than producing a guess."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work on a phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in a mobile browser. Save or screen-record the video first, then upload it from your phone. On the first run the speech model is downloaded to the browser."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
