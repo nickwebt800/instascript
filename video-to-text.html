@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Video to text in your browser: drop an MP4, MOV or WebM file and read the spoken words as a timestamped video transcript. Copy the text or download TXT / SRT. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Video to Text &mdash; MP4, MOV, WebM to Transcript | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/video-to-text">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Video to Text &mdash; MP4, MOV, WebM to Transcript</h1>
+      <p class="tagline">Turn a video file into text &mdash; free, in your browser</p>
+    </header>
+
+    <main class="tool-card">
+      <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
+      <div class="tabs">
+        <button class="tab active" data-tab="upload">Upload File</button>
+        <button class="tab" data-tab="url">Paste URL</button>
+      </div>
+
+      <!-- Upload panel -->
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone">
+          <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="drop-text">Drop your video file here<br>or <span class="link">browse</span></p>
+          <p class="drop-hint">MP4, MOV, WebM &mdash; up to 100 MB</p>
+          <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+        </div>
+        <div id="fileInfo" class="file-info hidden">
+          <div class="file-row">
+            <span id="fileName" class="file-name"></span>
+            <span id="fileSize" class="file-size"></span>
+          </div>
+          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+        </div>
+        <p class="panel-hint">Any video file on your device works &mdash; screen recordings included.</p>
+      </div>
+
+      <!-- URL panel (kept for parity with the tool; Instagram links only) -->
+      <div class="tab-panel" id="panel-url">
+        <div class="url-group">
+          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
+          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+        </div>
+        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <div id="urlNote" class="url-note hidden"></div>
+      </div>
+    </main>
+
+    <!-- Processing -->
+    <div id="processing" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="processingText" class="processing-text">Loading AI model...</p>
+      <div id="progressBar" class="progress-bar hidden">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions">
+          <button id="copyBtn" class="btn-ghost" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>What does video to text mean?</h2>
+      <p><strong>Video to text</strong> (also called a <strong>video transcript</strong>, or turning an MP4 or MOV <strong>to text</strong>) means taking the speech inside a video file and writing it out as readable text. The video itself is not changed &mdash; you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.</p>
+      <p>It is used for meeting and lecture recordings, interviews, screen recordings, vlogs and demos: anything where the useful part is what someone said and you would rather read, search or quote it than scrub through the timeline.</p>
+
+      <h2>How to turn a video into text in 3 steps</h2>
+      <ol class="steps">
+        <li><strong>Have the video file ready.</strong> MP4, MOV and WebM all work, including screen recordings and phone camera clips, up to 100 MB.</li>
+        <li><strong>Drop the file into the box above</strong> &mdash; or tap it to pick a video from your phone.</li>
+        <li><strong>Press Transcribe.</strong> The video transcript appears with timestamps. Copy it, or download .txt for notes and .srt for subtitles.</li>
+      </ol>
+
+      <h2>What the video transcript looks like</h2>
+      <p>Each line carries the time it was spoken, so the text stays linked to the video:</p>
+      <pre class="example">[00:00] Today we are going to look at three settings
+[00:05] the first one controls how much is cached
+[00:11] and the second one is the one people miss</pre>
+      <p>The same text downloads as <strong>.txt</strong> (plain text) or <strong>.srt</strong> (a subtitle file most editors can open).</p>
+
+      <h2>FAQ</h2>
+      <h3>Which video formats can I convert to text?</h3>
+      <p>MP4, MOV and WebM, plus anything else your browser can decode. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.</p>
+      <h3>How long does a video take?</h3>
+      <p>Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser.</p>
+      <h3>Is the video uploaded to a server?</h3>
+      <p>No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue.</p>
+      <h3>Can I do MP4 to text on my phone?</h3>
+      <p>Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it.</p>
+      <h3>Which languages work?</h3>
+      <p>English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English.</p>
+      <h3>Can I get subtitles from the result?</h3>
+      <p>Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which video formats can I convert to text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MP4, MOV and WebM, plus anything else your browser can decode. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a video take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the video uploaded to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I do MP4 to text on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which languages work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get subtitles from the result?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>

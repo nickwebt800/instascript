@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Audio to text in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words written out with timestamps. Copy the text or download TXT / SRT. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Audio to Text &mdash; Transcribe MP3, WAV &amp; Voice to Text | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/audio-to-text">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Audio to Text &mdash; Transcribe MP3, WAV &amp; Voice Memos</h1>
+      <p class="tagline">Turn an audio file into text &mdash; free, in your browser</p>
+    </header>
+
+    <main class="tool-card">
+      <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
+      <div class="tabs">
+        <button class="tab active" data-tab="upload">Upload File</button>
+        <button class="tab" data-tab="url">Paste URL</button>
+      </div>
+
+      <!-- Upload panel -->
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone">
+          <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="drop-text">Drop your audio file here<br>or <span class="link">browse</span></p>
+          <p class="drop-hint">MP3, WAV, M4A, OGG &mdash; up to 100 MB</p>
+          <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+        </div>
+        <div id="fileInfo" class="file-info hidden">
+          <div class="file-row">
+            <span id="fileName" class="file-name"></span>
+            <span id="fileSize" class="file-size"></span>
+          </div>
+          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+        </div>
+        <p class="panel-hint">Voice memos, podcast files and recorded calls all work.</p>
+      </div>
+
+      <!-- URL panel (kept for parity with the tool; Instagram links only) -->
+      <div class="tab-panel" id="panel-url">
+        <div class="url-group">
+          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
+          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+        </div>
+        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <div id="urlNote" class="url-note hidden"></div>
+      </div>
+    </main>
+
+    <!-- Processing -->
+    <div id="processing" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="processingText" class="processing-text">Loading AI model...</p>
+      <div id="progressBar" class="progress-bar hidden">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions">
+          <button id="copyBtn" class="btn-ghost" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>What does audio to text mean?</h2>
+      <p><strong>Audio to text</strong> &mdash; also described as <strong>transcribe audio</strong>, <strong>MP3 to text</strong> or <strong>voice to text</strong> &mdash; means converting the speech in a sound file into written words. The audio file is not changed; you get a text version of what was said, usually with a time marker at the start of each line so you can find that part of the recording again.</p>
+      <p>People run audio to text on voice memos and voice notes, interviews, podcast episodes, recorded meetings and lectures, dictation, and any clip where reading is easier than listening. Unlike dictation built into an app, this works on a file you already have.</p>
+
+      <h2>How to transcribe audio in 3 steps</h2>
+      <ol class="steps">
+        <li><strong>Have the audio file ready.</strong> MP3, WAV, M4A and OGG all work, including voice memos exported from your phone, up to 100 MB.</li>
+        <li><strong>Drop the file into the box above</strong> &mdash; or tap it to choose a recording on your phone.</li>
+        <li><strong>Press Transcribe.</strong> The text comes back with timestamps. Copy it, or download it as .txt or .srt.</li>
+      </ol>
+
+      <h2>What the transcript looks like</h2>
+      <p>Every line starts with the moment it was spoken, so long recordings stay easy to scan:</p>
+      <pre class="example">[00:00] Quick note to myself about the client call
+[00:06] they want the report by Friday morning
+[00:12] and they asked for the numbers broken out by region</pre>
+      <p>Download the text as <strong>.txt</strong> to paste into notes or documents, or as <strong>.srt</strong> when you need timed captions.</p>
+
+      <h2>FAQ</h2>
+      <h3>Which audio formats can I transcribe?</h3>
+      <p>MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB.</p>
+      <h3>Is voice to text different from audio to text?</h3>
+      <p>It is the same job described two ways: spoken voice in, written text out. A voice memo recorded on a phone is just an audio file, so it goes through the same box above.</p>
+      <h3>Does the audio leave my device?</h3>
+      <p>No. The model runs in your browser and the file is not uploaded anywhere. There is no account to create and nothing is stored on a server.</p>
+      <h3>How long a recording can I transcribe?</h3>
+      <p>Up to 100 MB per file. The audio is handled in 30-second passes, so an hour-long recording takes noticeably longer than a short memo and uses more memory in the browser.</p>
+      <h3>Can I transcribe audio on my phone?</h3>
+      <p>Yes. Open this page in a mobile browser and pick the recording from your phone. The first run downloads the speech model, so allow a little extra time on mobile data.</p>
+      <h3>Which languages are supported?</h3>
+      <p>English. The spoken language is identified first, and non-English audio returns a notice instead of a guess.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which audio formats can I transcribe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is voice to text different from audio to text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is the same job described two ways: spoken voice in, written text out. A voice memo recorded on a phone is just an audio file, so it goes through the same box above."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the audio leave my device?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The model runs in your browser and the file is not uploaded anywhere. There is no account to create and nothing is stored on a server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long a recording can I transcribe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Up to 100 MB per file. The audio is handled in 30-second passes, so an hour-long recording takes noticeably longer than a short memo and uses more memory in the browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I transcribe audio on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Open this page in a mobile browser and pick the recording from your phone. The first run downloads the speech model, so allow a little extra time on mobile data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which languages are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "English. The spoken language is identified first, and non-English audio returns a notice instead of a guess."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
