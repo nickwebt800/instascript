@@ -81,6 +81,30 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
+    <section class="content-card">
+      <h2>How long does a transcript take?</h2>
+      <p>For a Reel the short rows are the useful ones: 30 seconds of speech came out at 8.98 s, and 120 seconds at 28.58 s, once the model was already in the page. The first run on a fresh page is the slow one, because it has to fetch the model before it can start. The rows below were measured with audio files of known length; a Reel goes through the same audio path, so one with the same spoken length should land in the same range &mdash; <strong>that step is inference</strong>, the rows themselves are measured.</p>
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Audio length</th>
+            <th>Time to transcribe</th>
+            <th>Model download included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>yes &mdash; first run on a fresh page</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>no</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>no</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>no</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
+        </tbody>
+      </table>
+      <p><strong>How to read these rows:</strong> the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length &mdash; take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.</p>
+      <p class="bench-note">These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else &mdash; quicker on a newer CPU, slower on an older phone &mdash; so read the rows as a shape, not a promise.</p>
+      <p class="bench-note">Raw data: <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">download the CSV</a> &middot; method and environment: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a>.</p>
+    </section>
+
     <section class="tool-index">
       <h2>More transcription tools</h2>
       <ul>

@@ -108,6 +108,28 @@
 [00:12] and they asked for the numbers broken out by region</pre>
       <p>Download the text as <strong>.txt</strong> to paste into notes or documents, or as <strong>.srt</strong> when you need timed captions.</p>
 
+      <h2>How long does an audio file take?</h2>
+      <p>These five runs were measured on this page with audio files of known length. Nothing here is estimated: each row is one run, timed from the click on <em>Transcribe</em> to the moment the transcript appeared.</p>
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Audio length</th>
+            <th>Time to transcribe</th>
+            <th>Model download included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>yes &mdash; first run on a fresh page</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>no</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>no</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>no</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
+        </tbody>
+      </table>
+      <p><strong>How to read these rows:</strong> the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length &mdash; take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.</p>
+      <p class="bench-note">These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else &mdash; quicker on a newer CPU, slower on an older phone &mdash; so read the rows as a shape, not a promise.</p>
+      <p class="bench-note">Raw data: <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">download the CSV</a> &middot; method and environment: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a>.</p>
+
       <h2>FAQ</h2>
       <h3>Which audio formats can I transcribe?</h3>
       <p>MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB.</p>

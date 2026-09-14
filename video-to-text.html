@@ -108,6 +108,28 @@
 [00:11] and the second one is the one people miss</pre>
       <p>The same text downloads as <strong>.txt</strong> (plain text) or <strong>.srt</strong> (a subtitle file most editors can open).</p>
 
+      <h2>How long does a video take to transcribe?</h2>
+      <p>It tracks the length of the soundtrack, not the size of the video file: a small MP4 and a large one with the same two minutes of speech take about the same time. The five rows below were measured with audio files of known length; a video goes through the same audio path, so a file with the same spoken length should land in the same range. <strong>That last step is inference</strong> &mdash; the rows themselves are measured.</p>
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Audio length</th>
+            <th>Time to transcribe</th>
+            <th>Model download included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>yes &mdash; first run on a fresh page</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>no</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>no</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>no</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
+        </tbody>
+      </table>
+      <p><strong>How to read these rows:</strong> the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length &mdash; take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.</p>
+      <p class="bench-note">These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else &mdash; quicker on a newer CPU, slower on an older phone &mdash; so read the rows as a shape, not a promise.</p>
+      <p class="bench-note">Raw data: <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">download the CSV</a> &middot; method and environment: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a>.</p>
+
       <h2>FAQ</h2>
       <h3>Which video formats can I convert to text?</h3>
       <p>MP4, MOV and WebM, plus anything else your browser can decode. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.</p>

@@ -108,6 +108,28 @@
 [00:11] the first one is the most common mistake</pre>
       <p>Download the same text as <strong>.txt</strong> for reading and quoting, or <strong>.srt</strong> when you need subtitles.</p>
 
+      <h2>How long does a Facebook video take?</h2>
+      <p>Recorded lives and talks run long, so for those the 60-second and 120-second rows are the ones that matter. The rows were measured with audio files of known length; a Facebook video you saved or recorded goes through the same audio path, so one with the same spoken length should take about as long. <strong>That step is inference</strong> &mdash; the rows themselves are measured.</p>
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Audio length</th>
+            <th>Time to transcribe</th>
+            <th>Model download included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>yes &mdash; first run on a fresh page</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>no</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>no</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>no</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
+        </tbody>
+      </table>
+      <p><strong>How to read these rows:</strong> the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the video's length &mdash; take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.</p>
+      <p class="bench-note">These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else &mdash; quicker on a newer CPU, slower on an older phone &mdash; so read the rows as a shape, not a promise.</p>
+      <p class="bench-note">Raw data: <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">download the CSV</a> &middot; method and environment: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a>.</p>
+
       <h2>FAQ</h2>
       <h3>Can you transcribe a Facebook video from its link?</h3>
       <p>Not from a Facebook link. The link box on this site currently accepts public Instagram URLs. For Facebook, save or record the video and upload the file &mdash; the transcription step is identical.</p>
