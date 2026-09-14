@@ -8,6 +8,7 @@ const MODEL_ID = "onnx-community/whisper-tiny.en";
 const LANGUAGE_MODEL_ID = "onnx-community/whisper-tiny";
 const LANGUAGE_CHECK_SECONDS = 20;
 const AUDIO_SAMPLE_RATE = 16000;
+const ENGLISH_LANGUAGE_TOKEN_ID = 50259;
 const LANGUAGE_REJECTION_MESSAGE =
   "这段音频不是英文 本工具目前只转英文";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
@@ -256,14 +257,11 @@ async function detectEnglishLanguage(audioData) {
       num_frames: Math.floor(sample.length / hopLength),
       max_new_tokens: 2,
     });
-    const sequences = generated.sequences || generated;
-    const tokenIds = sequences[0]?.tolist?.() || [];
+    const tokenRows = (generated.sequences || generated).tolist?.() || [];
+    const tokenIds = Array.isArray(tokenRows[0]) ? tokenRows[0] : tokenRows;
     if (tokenIds.length < 2) return false;
 
-    const languageToken = detector.tokenizer.decode([tokenIds[1]], {
-      skip_special_tokens: false,
-    });
-    return languageToken === "<|en|>";
+    return Number(tokenIds[1]) === ENGLISH_LANGUAGE_TOKEN_ID;
   } catch (err) {
     console.warn("Language detection failed; rejecting as non-English.", err);
     return false;
