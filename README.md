@@ -42,9 +42,12 @@ When using the URL input, a Cloudflare Pages Function fetches the Instagram page
 ├── sitemap.xml         # Sitemap
 ├── robots.txt          # Robots
 ├── functions/
-│   └── api/
-│       ├── extract.js  # Cloudflare Function: extract video URL from Instagram page
-│       └── proxy.js    # Cloudflare Function: proxy video download (bypass CORS)
+│   ├── api/
+│   │   ├── extract.js  # Cloudflare Function: extract video URL from Instagram page
+│   │   └── proxy.js    # Cloudflare Function: proxy video download (bypass CORS)
+├── benchmark/
+│   ├── README.md                              # Measured in-browser transcription timings
+│   └── whisper-tiny-en-browser-benchmark.csv  # The raw numbers
 └── data/
     ├── browser-whisper-tools-comparison.csv  # Comparison of browser-based Whisper tools
     └── README.md                             # Explanation of the comparison data
@@ -79,6 +82,8 @@ No environment variables or secrets are needed. The Instagram extraction and pro
 ## Data
 
 The `data/` directory contains a [comparison of browser-based Whisper transcription tools](data/README.md) in both human-readable (Markdown) and machine-readable (CSV) formats. This is a real reference resource — contributions and corrections are welcome.
+
+The `benchmark/` directory contains [measured in-browser transcription timings](benchmark/README.md) for `whisper-tiny.en` on WASM: how long 11 s, 30 s, 60 s and 120 s of audio actually take, and how much of the first run is model download. Raw numbers are in [CSV](benchmark/whisper-tiny-en-browser-benchmark.csv), with the measurement method, environment and limitations written out so anyone can reproduce or dispute them.
 
 ## Privacy
 

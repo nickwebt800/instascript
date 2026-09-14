@@ -22,6 +22,20 @@ A comparison of web tools that run OpenAI's Whisper speech recognition model dir
 
 This comparison is based on publicly available information from each project's website and source repository, verified on 2026-09-12. A machine-readable version is available in [`browser-whisper-tools-comparison.csv`](browser-whisper-tools-comparison.csv).
 
+### Link status re-checked on 2026-09-14
+
+Re-checked with plain HTTP requests from one machine, so treat this as a spot check rather than a global result:
+
+| Link | Result |
+|------|--------|
+| <https://whisper-web.mesu.re> | 200 |
+| <https://whisper.r3d.red> | **HTTP 401** — responded, but requested authentication, so the page could not be verified |
+| <https://whisperui.monsterapi.ai> | **could not verify** — TLS handshake failed from the measuring machine; this says nothing about the site itself |
+| <https://github.com/xenova/whisper-web> | 200 |
+| <https://github.com/pluja/web-whisper> | 200 |
+
+The two entries that could not be confirmed are kept as-is and flagged here rather than silently edited. If you can reach either one, please open a PR with what you see.
+
 ## Contributing
 
 If a tool's details have changed or a new browser-based Whisper tool exists, please open an issue or submit a PR with verifiable source links.

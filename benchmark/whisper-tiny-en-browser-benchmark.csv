@@ -1,0 +1,6 @@
+﻿run,file,audio_seconds,file_bytes,wall_clock_seconds,includes_model_load,output_chars
+1,jfk_11s.wav,11,1940478,16.89,yes,120
+2,jfk_11s.wav,11,1940478,6.49,no,120
+3,jfk_30s.wav,30,960078,8.98,no,318
+4,jfk_60s.wav,60,1760078,16.06,no,603
+5,jfk_120s.wav,120,3520078,28.58,no,1160
