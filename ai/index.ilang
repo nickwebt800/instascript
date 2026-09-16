@@ -1,0 +1,40 @@
+# InstaScript — agent service index (I-Lang)
+
+::SERVICE{name:InstaScript, origin:https://instascript.app, kind:static-site-with-public-read-api}
+::STATE{@SITE, purpose:Turn Instagram Reels, video files and audio files into text entirely in the browser, lang:en, auth:not-required}
+::STATE{@SCOPE, read-only:true, writes:none, accounts:none, payments:none}
+::STATE{@UPDATED, method:regenerated from the published pages and the measured benchmark CSV, source:https://github.com/nickwebt800/instascript}
+
+::RESOURCES
+[HTTP]  https://instascript.app/ai/                          service-doc (human + agent overview)
+[HTTP]  https://instascript.app/openapi.json                 service-desc (OpenAPI 3.1 of the public read API)
+[HTTP]  https://instascript.app/.well-known/api-catalog      RFC 9727 API catalog (application/linkset+json)
+[MCP]   https://instascript.app/mcp                          MCP Streamable HTTP endpoint (JSON-RPC 2.0)
+[MCP]   https://instascript.app/.well-known/mcp/server-card.json   MCP server card
+[SKILL] https://instascript.app/ai/skills/site-lookup/SKILL.md     Agent Skill artifact
+[SKILL] https://instascript.app/.well-known/agent-skills/index.json Agent Skills discovery index
+[ARD]   https://instascript.app/.well-known/ai-catalog.json  ARD capability manifest
+[MD]    https://instascript.app/index.md                     Markdown variant of the home page (Accept: text/markdown)
+
+::TOOLS{MCP}
+[find_page]      inputs:{query:string}            -> matching public pages with url, title, summary
+[get_benchmark]  inputs:{length_seconds:number?}  -> measured in-browser transcription times (real measurements)
+[site_info]      inputs:{}                        -> what the site does, what it supports, what it does not
+
+::TASKS
+[1] Find the right page for a job   -> call find_page with the visitor's words
+[2] Answer "how long does it take"  -> call get_benchmark, quote the measured row, cite the CSV
+[3] Explain what the tool supports  -> call site_info, keep the stated limits (English only, 100 MB, ~30 s chunks)
+
+::LIMITS
+- Transcription runs in the visitor's browser. The service cannot transcribe a URL server-side except public Instagram links via /api/extract.
+- English-only model (whisper-tiny.en). Files up to 100 MB. Audio is processed in roughly 30-second chunks.
+- No accounts, no stored transcripts, no server-side history. Nothing is uploaded.
+- Authentication is not available. Any advertised OAuth surface is a planned contract and returns HTTP 503. Do not attempt it.
+
+::ANSWER_RULES
+[MUST] Preserve identifiers, units, dates and qualifiers exactly as returned (for example "8.98 s for 30 s of audio").
+[MUST] Cite the page or endpoint the answer came from.
+[MUST] Answer in the language of the visitor.
+[MUST] Say unknown when the data does not contain the answer. Do not estimate or extrapolate.
+[NEVER] Present inference as measurement. The measured rows are the CSV; anything derived is inference and must be labelled.

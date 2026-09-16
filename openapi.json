@@ -1,0 +1,121 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "InstaScript public read API",
+    "version": "1.0.0",
+    "summary": "Read-only endpoints that expose InstaScript's public pages and its measured in-browser transcription times.",
+    "description": "InstaScript turns video and audio files into text inside the browser. These endpoints expose only public, read-only data: the site's page catalog and the measured transcription benchmark. No key is required. There are no write operations, no accounts and no payment flows.",
+    "contact": { "email": "contact@instascript.app" },
+    "license": { "name": "MIT", "url": "https://github.com/nickwebt800/instascript/blob/main/LICENSE" }
+  },
+  "servers": [ { "url": "https://instascript.app", "description": "Production" } ],
+  "security": [],
+  "tags": [
+    { "name": "pages", "description": "Public page catalog" },
+    { "name": "benchmark", "description": "Measured in-browser transcription times" },
+    { "name": "media", "description": "Public Instagram media resolution" }
+  ],
+  "paths": {
+    "/api/pages": {
+      "get": {
+        "tags": ["pages"],
+        "summary": "Find the public page that matches a task",
+        "operationId": "findPage",
+        "parameters": [
+          { "name": "q", "in": "query", "required": false,
+            "schema": { "type": "string" },
+            "description": "Free-text words describing the job, for example 'tiktok' or 'mp3 to text'. Omit to list every page." }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching pages, most relevant first. An empty query or no match still returns 200.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PageResult" } } }
+          }
+        }
+      }
+    },
+    "/api/benchmark": {
+      "get": {
+        "tags": ["benchmark"],
+        "summary": "Measured in-browser transcription times",
+        "operationId": "getBenchmark",
+        "parameters": [
+          { "name": "length_seconds", "in": "query", "required": false,
+            "schema": { "type": "integer", "minimum": 1 },
+            "description": "Return the measured row whose audio length is closest to this value. Omit to return all rows." }
+        ],
+        "responses": {
+          "200": {
+            "description": "Measured rows. Each row is a single run, not an average.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BenchmarkResult" } } }
+          }
+        }
+      }
+    },
+    "/api/extract": {
+      "post": {
+        "tags": ["media"],
+        "summary": "Resolve a public Instagram URL to a media URL and caption",
+        "operationId": "extractInstagram",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": {
+            "schema": { "type": "object", "required": ["url"],
+              "properties": { "url": { "type": "string", "format": "uri",
+                "description": "A public Instagram post or Reel URL. Other hosts are rejected with 400." } } }
+          } }
+        },
+        "responses": {
+          "200": { "description": "Media URL, caption and type.",
+            "content": { "application/json": { "schema": { "type": "object",
+              "properties": { "videoUrl": { "type": "string" }, "caption": { "type": "string" },
+                              "type": { "type": "string" } } } } } },
+          "400": { "description": "Missing, malformed or non-Instagram URL." },
+          "502": { "description": "Instagram could not be reached or the post is not public." }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PageResult": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" },
+          "count": { "type": "integer" },
+          "source_url": { "type": "string", "format": "uri" },
+          "pages": { "type": "array", "items": { "$ref": "#/components/schemas/Page" } }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "summary": { "type": "string" },
+          "accepts": { "type": "array", "items": { "type": "string" } },
+          "limits": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "BenchmarkResult": {
+        "type": "object",
+        "properties": {
+          "note": { "type": "string" },
+          "source_url": { "type": "string", "format": "uri" },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "run": { "type": "integer" },
+                "audio_seconds": { "type": "number" },
+                "wall_clock_seconds": { "type": "number" },
+                "includes_model_load": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

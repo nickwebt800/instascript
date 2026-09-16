@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InstaScript — information for AI agents</title>
+<meta name="description" content="Machine-readable entry point for InstaScript: what the tool does, the public read-only API, the MCP endpoint, the Agent Skill artifact and the measured benchmark data.">
+<link rel="canonical" href="https://instascript.app/ai/">
+<link rel="alternate" type="text/markdown" href="https://instascript.app/ai/index.ilang">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <h1 class="logo"><a href="/">InstaScript</a></h1>
+    <p class="tagline">Information for AI agents</p>
+  </header>
+
+  <main class="content-card">
+    <h2>What this site is</h2>
+    <p>InstaScript turns Instagram Reels, video files and audio files into text <strong>inside the browser</strong>. Nothing is uploaded: the audio is processed on the visitor's own device with an in-browser Whisper model (whisper-tiny.en, WASM build). Output can be downloaded as <code>.txt</code> or <code>.srt</code>.</p>
+
+    <h3>What it supports</h3>
+    <ul>
+      <li>Uploaded files: MP4, MOV, WebM, MP3, WAV, M4A, OGG — up to 100 MB.</li>
+      <li>Pasted links: public Instagram post and Reel URLs only. TikTok and Facebook videos must be saved as a file and uploaded.</li>
+      <li>English only. Audio is processed in roughly 30-second chunks.</li>
+    </ul>
+
+    <h3>Machine-readable resources</h3>
+    <ul>
+      <li><a href="/openapi.json">OpenAPI description</a> of the public read-only API.</li>
+      <li><a href="/.well-known/api-catalog">API catalog</a> (RFC 9727, application/linkset+json).</li>
+      <li><a href="/mcp">MCP endpoint</a> (Streamable HTTP, JSON-RPC 2.0) with tools: <code>find_page</code>, <code>get_benchmark</code>, <code>site_info</code>.</li>
+      <li><a href="/.well-known/mcp/server-card.json">MCP server card</a>.</li>
+      <li><a href="/ai/skills/site-lookup/SKILL.md">Agent Skill artifact</a> and the <a href="/.well-known/agent-skills/index.json">skills discovery index</a>.</li>
+      <li><a href="/.well-known/ai-catalog.json">ARD capability manifest</a>.</li>
+      <li><a href="/ai/index.ilang">Service index in I-Lang</a> (advertised in DNS via <code>_index._agents.instascript.app</code>).</li>
+      <li>Every page also has a Markdown variant: send <code>Accept: text/markdown</code>.</li>
+    </ul>
+
+    <h3>Public read-only API</h3>
+    <ul>
+      <li><code>GET /api/pages?q=WORDS</code> — find the public page that matches a task. Empty <code>q</code> lists all pages.</li>
+      <li><code>GET /api/benchmark?length_seconds=30</code> — measured in-browser transcription times. Without a parameter it returns all measured rows.</li>
+      <li><code>POST /api/extract</code> — resolve a public Instagram URL to a video URL and caption. Instagram hosts only; other domains are rejected.</li>
+    </ul>
+    <p>These endpoints are read-only, need no key and return JSON with <code>source_url</code> fields pointing at the underlying data.</p>
+
+    <h3>Limits and honesty rules</h3>
+    <ul>
+      <li>The service cannot transcribe a remote video on your behalf, except public Instagram links through <code>/api/extract</code>.</li>
+      <li>Benchmark rows are single measurements on one machine (WASM build, no WebGPU). They are a shape, not a promise.</li>
+      <li>Authentication is not available. Advertised OAuth endpoints are a planned contract and answer HTTP 503.</li>
+    </ul>
+
+    <h3>Provenance</h3>
+    <p>Pages: the published HTML of this site. Benchmark: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/whisper-tiny-en-browser-benchmark.csv">whisper-tiny-en-browser-benchmark.csv</a> with method notes in the <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README</a>.</p>
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-nav">
+      <a href="/">Instagram Transcript</a>
+      <a href="/video-to-text">Video to Text</a>
+      <a href="/audio-to-text">Audio to Text</a>
+      <a href="/tiktok-transcript">TikTok Transcript</a>
+      <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+  </footer>
+</div>
+<script src="/js/webmcp.js" defer></script>
+</body>
+</html>
