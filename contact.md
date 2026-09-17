@@ -8,8 +8,6 @@ Canonical: <https://instascript.app/contact>
 
 Turn video and audio into text — free, in your browser
 
-## Contact
-
 Have a question, found a bug, or want to request a feature? You can reach out in a few ways:
 
 ### Email

@@ -4,8 +4,6 @@
 
 Canonical: <https://instascript.app/>
 
-# InstaScript
-
 Turn Instagram Reels and any video or audio file into text
 
 Paste a public Instagram Reel or video post URL
@@ -28,6 +26,16 @@ These are my measurements on my own machine: one laptop, one browser, the WASM b
 
 Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) · method and environment: [benchmark README on GitHub](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
 
+## How an Instagram transcript generator works
+
+**Instagram to text** means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT or SRT.
+
+## FAQ
+
+### Can I make an Instagram Reels transcript from a public link?
+
+Yes. Paste a public Instagram Reel or video post URL above. The page fetches the media link, while the speech recognition runs in your browser and returns the transcript when the audio is supported.
+
 ## More transcription tools
 
 - [Video to Text](https://instascript.app/video-to-text) — turn an MP4, MOV or WebM file into a timestamped video transcript.
@@ -37,6 +45,6 @@ Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/insta
 
 ## Recommended
 
-[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — AI voice generator and text-to-speech studio. Turn text into natural-sounding speech for your videos. Free tier available to try.
+[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio for creators who want to turn written scripts into narration. A free tier is available to try.
 
-Affiliate link: we are an independent affiliate of ElevenLabs and may earn a commission if you sign up through this link, at no extra cost to you.
+This homepage includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.

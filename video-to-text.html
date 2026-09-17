@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Video to text in your browser: drop an MP4, MOV or WebM file and read the spoken words as a timestamped video transcript. Copy the text or download TXT / SRT. No signup.">
+  <meta name="description" content="Video transcript generator in your browser: drop an MP4, MOV or WebM file and read the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.">
   <meta name="theme-color" content="#f8f9fa">
-  <title>Video to Text &mdash; MP4, MOV, WebM to Transcript | InstaScript</title>
+  <title>Transcribe Video &mdash; MP4, MOV, WebM to Text | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/video-to-text">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +13,7 @@
   <div class="container">
     <header class="header">
       <p class="brand"><a href="/">InstaScript</a></p>
-      <h1 class="page-h1">Video to Text &mdash; MP4, MOV, WebM to Transcript</h1>
+      <h1 class="page-h1">Transcribe Video &mdash; MP4, MOV, WebM to Text</h1>
       <p class="tagline">Turn a video file into text &mdash; free, in your browser</p>
     <nav class="page-nav" aria-label="Other transcript tools">
       <a href="/">Instagram Transcript</a>
@@ -90,11 +90,12 @@
     </section>
 
     <section class="content-card">
-      <h2>What does video to text mean?</h2>
-      <p><strong>Video to text</strong> (also called a <strong>video transcript</strong>, or turning an MP4 or MOV <strong>to text</strong>) means taking the speech inside a video file and writing it out as readable text. The video itself is not changed &mdash; you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.</p>
+      <h2>What does turning a video into text mean?</h2>
+      <p><strong>Video to text</strong> means taking the speech inside a video file and writing it out as readable text. The video itself is not changed &mdash; you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.</p>
+      <p>The same job goes by a few names: a <strong>video transcript generator</strong>, a <strong>video to text converter</strong>, or just video to text. Whichever you call it, the work is identical &mdash; the file stays on your device and the spoken words come back as text you can copy, search or download.</p>
       <p>It is used for meeting and lecture recordings, interviews, screen recordings, vlogs and demos: anything where the useful part is what someone said and you would rather read, search or quote it than scrub through the timeline.</p>
 
-      <h2>How to turn a video into text in 3 steps</h2>
+      <h2>How to use a video transcript generator in 3 steps</h2>
       <ol class="steps">
         <li><strong>Have the video file ready.</strong> MP4, MOV and WebM all work, including screen recordings and phone camera clips, up to 100 MB.</li>
         <li><strong>Drop the file into the box above</strong> &mdash; or tap it to pick a video from your phone.</li>
@@ -126,9 +127,9 @@
           <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
         </tbody>
       </table>
-      <p><strong>How to read these rows:</strong> the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length &mdash; take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.</p>
-      <p class="bench-note">These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else &mdash; quicker on a newer CPU, slower on an older phone &mdash; so read the rows as a shape, not a promise.</p>
-      <p class="bench-note">Raw data: <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">download the CSV</a> &middot; method and environment: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a>.</p>
+      <p><strong>Reading the video timings:</strong> the first run includes fetching the model, while later runs reuse it in the page. In these rows, the later runs take roughly a quarter of the recording length; that comparison is arithmetic from the measurements above, not a separate test.</p>
+      <p class="bench-note">These video-page measurements came from one laptop, one browser and the WASM build without WebGPU, with one run at each length and no repeats. A different device may be faster or slower, so use the table to understand the pattern rather than as a promise.</p>
+      <p class="bench-note">The underlying timings are available in the <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">raw benchmark CSV</a>; the <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README on GitHub</a> records the method and environment.</p>
 
       <h2>FAQ</h2>
       <h3>Which video formats can I convert to text?</h3>
@@ -137,20 +138,20 @@
       <p>Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser.</p>
       <h3>Is the video uploaded to a server?</h3>
       <p>No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue.</p>
-      <h3>Can I do MP4 to text on my phone?</h3>
+      <h3>Can I use this video to text converter on my phone?</h3>
       <p>Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it.</p>
       <h3>Which languages work?</h3>
       <p>English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English.</p>
       <h3>Can I get subtitles from the result?</h3>
       <p>Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles.</p>
 
-      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
+      <p class="disclaimer">This video transcription page is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
     </section>
 
     <section class="content-card">
       <h2>Recommended</h2>
-      <p><a href="https://try.elevenlabs.io/4cwahrcf3vyn" target="_blank" rel="noopener sponsored">ElevenLabs</a> &mdash; AI voice generator and text-to-speech studio. Turn text into natural-sounding speech for your videos. Free tier available to try.</p>
-      <p>Affiliate link: we are an independent affiliate of ElevenLabs and may earn a commission if you sign up through this link, at no extra cost to you.</p>
+      <p><a href="https://try.elevenlabs.io/4cwahrcf3vyn" target="_blank" rel="noopener sponsored">ElevenLabs</a> &mdash; an AI voice generator and text-to-speech studio that can turn a finished video transcript into narration. A free tier is available to try.</p>
+      <p>This video page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.</p>
     </section>
 
     <nav class="related-links" aria-label="Related transcript tools">
@@ -173,7 +174,7 @@
       <a href="/contact">Contact</a>
       </nav>
       <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
-      <p>This site may contain affiliate links. We may earn a commission from qualifying signups at no extra cost to you.</p>
+      <p>This video transcript page may contain affiliate links. Qualifying signups may earn us a commission at no extra cost to you.</p>
     </footer>
   </div>
 
@@ -209,7 +210,7 @@
       },
       {
         "@type": "Question",
-        "name": "Can I do MP4 to text on my phone?",
+        "name": "Can I use this video to text converter on my phone?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it."

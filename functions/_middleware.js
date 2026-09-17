@@ -27,7 +27,7 @@ const PAGES = [
     keywords: ["instagram", "reel", "reels", "transcript", "caption", "home", "ig"],
   },
   {
-    title: "Video to Text",
+    title: "Transcribe Video",
     url: ORIGIN + "/video-to-text",
     summary: "Turn an MP4, MOV or WebM video file into a timestamped transcript.",
     accepts: ["MP4", "MOV", "WebM"],
@@ -35,7 +35,7 @@ const PAGES = [
     keywords: ["video", "video to text", "mp4", "mov", "webm", "transcribe video"],
   },
   {
-    title: "Audio to Text",
+    title: "Transcribe Audio",
     url: ORIGIN + "/audio-to-text",
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
     accepts: ["MP3", "WAV", "M4A", "OGG"],

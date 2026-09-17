@@ -1,12 +1,12 @@
-# Audio to Text — Transcribe MP3, WAV & Voice to Text | InstaScript
+# Transcribe Audio — MP3, WAV & Voice Memos to Text | InstaScript
 
-> Audio to text in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words written out with timestamps. Copy the text or download TXT / SRT. No signup.
+> Audio to text in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.
 
 Canonical: <https://instascript.app/audio-to-text>
 
 [InstaScript](https://instascript.app/)
 
-# Audio to Text — Transcribe MP3, WAV & Voice Memos
+# Transcribe Audio — MP3, WAV & Voice Memos to Text
 
 Turn an audio file into text — free, in your browser
 
@@ -14,13 +14,15 @@ Voice memos, podcast files and recorded calls all work.
 
 Paste a public Instagram Reel or video post URL
 
-## What does audio to text mean?
+## What does turning audio into text mean?
 
-**Audio to text** — also described as **transcribe audio**, **MP3 to text** or **voice to text** — means converting the speech in a sound file into written words. The audio file is not changed; you get a text version of what was said, usually with a time marker at the start of each line so you can find that part of the recording again.
+**Audio to text** means converting the speech in a sound file into written words. The audio file is not changed; you get a text version of what was said, usually with a time marker at the start of each line so you can find that part of the recording again.
+
+The same job goes by a few names: an **audio transcript generator**, an **audio to text converter**, or just audio to text. Whichever you call it, the work is identical — the file stays on your device and the spoken words come back as text you can copy, search or download.
 
 People run audio to text on voice memos and voice notes, interviews, podcast episodes, recorded meetings and lectures, dictation, and any clip where reading is easier than listening. Unlike dictation built into an app, this works on a file you already have.
 
-## How to transcribe audio in 3 steps
+## How to use an audio transcript generator in 3 steps
 
 1. **Have the audio file ready.** MP3, WAV, M4A and OGG all work, including voice memos exported from your phone, up to 100 MB.
 2. **Drop the file into the box above** — or tap it to choose a recording on your phone.
@@ -50,11 +52,11 @@ These five runs were measured on this page with audio files of known length. Not
 | 60 s | 16.06 s | no |
 | 120 s | 28.58 s | no |
 
-**How to read these rows:** the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length — take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.
+**Reading the audio timings:** the first row includes model download, whereas the following runs benefit from the model already being loaded. The later figures work out at roughly a quarter of the recording length; that ratio is calculated from the table rather than measured separately.
 
-These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else — quicker on a newer CPU, slower on an older phone — so read the rows as a shape, not a promise.
+The audio measurements were made on one laptop in one browser with WASM and no WebGPU, using one run per length. Phone hardware, browser load and model cache state can change the result, so these figures describe this test setup only.
 
-Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) · method and environment: [benchmark README on GitHub](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
+For the complete source numbers, download the [audio timing CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) and see the [written benchmark method](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
 
 ## FAQ
 
@@ -62,7 +64,7 @@ Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/insta
 
 MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB.
 
-### Is voice to text different from audio to text?
+### Is voice transcription a different job?
 
 It is the same job described two ways: spoken voice in, written text out. A voice memo recorded on a phone is just an audio file, so it goes through the same box above.
 
@@ -74,7 +76,7 @@ No. The model runs in your browser and the file is not uploaded anywhere. There 
 
 Up to 100 MB per file. The audio is handled in 30-second passes, so an hour-long recording takes noticeably longer than a short memo and uses more memory in the browser.
 
-### Can I transcribe audio on my phone?
+### Can I use this audio to text converter on my phone?
 
 Yes. Open this page in a mobile browser and pick the recording from your phone. The first run downloads the speech model, so allow a little extra time on mobile data.
 
@@ -82,10 +84,10 @@ Yes. Open this page in a mobile browser and pick the recording from your phone. 
 
 English. The spoken language is identified first, and non-English audio returns a notice instead of a guess.
 
-InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.
+This audio transcription page is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.
 
 ## Recommended
 
-[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — AI voice generator and text-to-speech studio. Turn text into natural-sounding speech for your videos. Free tier available to try.
+[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio for turning spoken notes into polished audio. A free tier is available to try.
 
-Affiliate link: we are an independent affiliate of ElevenLabs and may earn a commission if you sign up through this link, at no extra cost to you.
+This audio page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.

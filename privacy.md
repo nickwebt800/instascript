@@ -8,8 +8,6 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-## Privacy Policy
-
 Last updated: September 16, 2026
 
 ### 1. Data We Collect
