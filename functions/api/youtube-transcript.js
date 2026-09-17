@@ -35,6 +35,69 @@ const CORS = {
 const CONSENT_COOKIE =
   "CONSENT=YES+cb.20220301-11-p0.en+FX+111; SOCS=CAISEwgDEgk0ODE3Nzk3MjQaAmVuIAEaBgiA_LyaBg";
 
+// --- Browser budget guard ---------------------------------------------------
+// Cloudflare Workers Free allows 10 minutes of browser time per day. When it is
+// gone Cloudflare answers 429 "Browser time limit exceeded for today" until the
+// next UTC day and bills nothing - so the exposure here is an outage, not a
+// bill. Two things keep this page out of that state:
+//   1. every lookup is cached for an hour, so repeat visitors cost nothing
+//   2. this isolate tracks what it has spent and stops calling the browser
+//      before the account-level limit is reached, instead of letting every
+//      request burn a browser session just to collect a 429
+// Spend is per-isolate, so it is an approximation: the 8 minute line sits well
+// inside the 10 minute cap to leave room for other isolates.
+const BROWSER_BUDGET_MS = 8 * 60 * 1000;
+const BROWSER_RATE_PAUSE_MS = 12_000;
+let spend = { day: "", ms: 0, blockedUntil: 0, rateLimitedUntil: 0 };
+
+function utcDay() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function msUntilUtcMidnight() {
+  const now = Date.now();
+  const next = Date.UTC(
+    new Date(now).getUTCFullYear(),
+    new Date(now).getUTCMonth(),
+    new Date(now).getUTCDate() + 1
+  );
+  return next - now;
+}
+
+function rollSpend() {
+  const day = utcDay();
+  if (spend.day !== day) spend = { day, ms: 0, blockedUntil: 0, rateLimitedUntil: 0 };
+}
+
+function browserBudgetLeft() {
+  rollSpend();
+  if (Date.now() < spend.blockedUntil) return 0;
+  if (Date.now() < spend.rateLimitedUntil) return 0;
+  return Math.max(0, BROWSER_BUDGET_MS - spend.ms);
+}
+
+function recordBrowserSpend(ms) {
+  rollSpend();
+  spend.ms += Number(ms) || 0;
+  if (spend.ms >= BROWSER_BUDGET_MS) spend.blockedUntil = Date.now() + msUntilUtcMidnight();
+}
+
+function markBrowserExhausted() {
+  rollSpend();
+  spend.blockedUntil = Date.now() + msUntilUtcMidnight();
+}
+
+// A 429 can mean two different things and they need different answers:
+//   "Browser time limit exceeded for today" - the day's 10 minutes are gone,
+//    nothing works until the next UTC day.
+//   everything else - the Free plan rate limit (1 request every 10 seconds).
+//    Pause briefly and carry on; shutting the page down for a day over that
+//    would be far worse than the limit itself.
+function markRateLimited() {
+  rollSpend();
+  spend.rateLimitedUntil = Date.now() + BROWSER_RATE_PAUSE_MS;
+}
+
 function json(body, status = 200, extra = {}) {
   return new Response(JSON.stringify(body), {
     status,
@@ -210,14 +273,23 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
     debug.push({ step: "browser-rendering", configured: false });
     return null;
   }
-  // "load" costs about 4 s of browser time per call and reliably has the
-  // player response; a first pass at "domcontentloaded" is cheaper but
-  // sometimes lands on a page where the caption list is not filled in yet.
+  const budget = browserBudgetLeft();
+  debug.push({ step: "browser-budget", leftMs: budget, spentMs: spend.ms });
+  if (budget <= 0) {
+    debug.push({ step: "browser-rendering", skipped: "daily browser budget spent" });
+    return { budgetExhausted: true };
+  }
+  // One browser pass per lookup: "load" costs about 4 s of browser time and
+  // reliably has the player response. A second pass is only worth it when the
+  // page itself did not come back - if the player response arrived with an
+  // empty caption list, the video simply has no captions, and paying for
+  // another browser session would not change that answer.
   const attempts = [
     { waitUntil: "load", timeout: 45000 },
     { waitUntil: "networkidle2", timeout: 45000 },
   ];
   for (const attempt of attempts) {
+    if (browserBudgetLeft() <= 0) break;
     try {
       const res = await fetch(
         `https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/content`,
@@ -231,6 +303,19 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
           }),
         }
       );
+      const browserMs = Number(res.headers.get("X-Browser-Ms-Used") || 0) || 0;
+      if (browserMs) recordBrowserSpend(browserMs);
+      if (res.status === 429) {
+        const body = await res.text().catch(() => "");
+        if (/time limit exceeded for today/i.test(body)) {
+          markBrowserExhausted();
+          debug.push({ step: "browser-rendering", status: 429, exhausted: "daily limit" });
+          return { budgetExhausted: true };
+        }
+        markRateLimited();
+        debug.push({ step: "browser-rendering", status: 429, rateLimited: true });
+        break;
+      }
       if (!res.ok) {
         debug.push({ step: "browser-rendering", status: res.status, waitUntil: attempt.waitUntil });
         continue;
@@ -245,16 +330,28 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
         waitUntil: attempt.waitUntil,
         bytes: html.length,
         tracks: tracks.length,
-        browserMs: res.headers.get("X-Browser-Ms-Used") || null,
+        browserMs: browserMs || null,
       });
-      if (tracks.length) {
-        return { tracks, videoDetails: pr.videoDetails || {}, source: "browser-rendering" };
-      }
+      // A player response is a definitive answer, tracks or not.
+      if (pr) return { tracks, videoDetails: pr.videoDetails || {}, source: "browser-rendering" };
     } catch (err) {
       debug.push({ step: "browser-rendering", waitUntil: attempt.waitUntil, error: String(err) });
     }
   }
-  return null;
+  // We got here without an answer. If the browser is unavailable - because the
+  // day's allowance is gone or because we are rate limited right now - say so,
+  // instead of telling the visitor the video has no captions.
+  if (browserBudgetLeft() <= 0) {
+    debug.push({
+      step: "browser-rendering",
+      skipped: Date.now() < spend.blockedUntil ? "daily browser budget spent" : "rate limited",
+    });
+    return { budgetExhausted: true };
+  }
+  // The browser ran but never handed back a usable page. That is a failure on
+  // our side, not a statement about the video, so do not fall through to
+  // "no caption track".
+  return { browserFailed: true };
 }
 
 function decodeEntities(s) {
@@ -356,6 +453,23 @@ async function handle(input, env, diag) {
     (await tracksFromPlainFetch(videoId, debug)) ||
     (await tracksFromBrowserRendering(videoId, env, debug));
 
+  // The browser fallback is rationed. When it is unavailable or did not come
+  // back with a usable page, the honest answer is "unavailable", not a fake
+  // "no captions found".
+  if (found && (found.budgetExhausted || found.browserFailed)) {
+    return json(
+      {
+        ok: false,
+        code: "lookup_unavailable",
+        message:
+          "The caption lookup is unavailable right now. There is nothing wrong with your link - try it again later.",
+        ...(diag ? { debug } : {}),
+      },
+      503,
+      { "X-Browser-Budget-Left": "0" }
+    );
+  }
+
   if (!found || !found.tracks.length) {
     return json(
       {
@@ -391,7 +505,9 @@ async function handle(input, env, diag) {
       ...(diag ? { debug } : {}),
     },
     200,
-    { "Cache-Control": "public, max-age=300" }
+    // YouTube signs these caption URLs for about 7 hours, so an hour of cache
+    // is safe. Every repeat lookup inside that hour costs no browser time at all.
+    { "Cache-Control": "public, max-age=3600" }
   );
 }
 
@@ -400,14 +516,20 @@ export async function onRequestGet({ request, env }) {
   const input = url.searchParams.get("v") || url.searchParams.get("url");
   const diag = url.searchParams.get("diag") === "1";
   if (!input) return json({ ok: false, code: "missing_param", message: "Missing ?v=<youtube url>" }, 400);
+  // Cache on the video id, not on whatever form of the link was pasted, so
+  // "youtu.be/x", "watch?v=x" and "youtube.com/shorts/x" share one entry.
+  const videoId = extractVideoId(input);
+  const cacheUrl = videoId
+    ? new URL(`https://instascript.app/api/youtube-transcript?v=${videoId}`)
+    : new URL(request.url);
   if (!diag) {
-    const hit = await caches.default.match(request);
+    const hit = await caches.default.match(cacheUrl);
     if (hit) return hit;
   }
   const response = await handle(input, env, diag);
   if (!diag && response.ok) {
     try {
-      await caches.default.put(request, response.clone());
+      await caches.default.put(cacheUrl, response.clone());
     } catch {
       /* caching is best effort */
     }
