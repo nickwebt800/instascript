@@ -105,6 +105,20 @@ function json(body, status = 200, extra = {}) {
   });
 }
 
+// Diagnostics are gated behind a token that lives in the project's environment
+// and never in the repository. With no token configured the switch does not
+// exist at all: a public "skip the cache and start a browser" switch would let
+// one visitor burn the whole day's browser allowance, and then everybody gets
+// a 503 until the next UTC day.
+function diagAllowed(given, env) {
+  const token = env?.DIAG_TOKEN;
+  if (!token || typeof given !== "string" || !given) return false;
+  if (given.length !== token.length) return false;
+  let diff = 0;
+  for (let i = 0; i < token.length; i++) diff |= token.charCodeAt(i) ^ given.charCodeAt(i);
+  return diff === 0;
+}
+
 function extractVideoId(input) {
   if (!input) return null;
   let s = String(input).trim();
@@ -333,7 +347,14 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
         browserMs: browserMs || null,
       });
       // A player response is a definitive answer, tracks or not.
-      if (pr) return { tracks, videoDetails: pr.videoDetails || {}, source: "browser-rendering" };
+      if (pr) {
+        return {
+          tracks,
+          videoDetails: pr.videoDetails || {},
+          source: "browser-rendering",
+          browserMs: Math.round(browserMs),
+        };
+      }
     } catch (err) {
       debug.push({ step: "browser-rendering", waitUntil: attempt.waitUntil, error: String(err) });
     }
@@ -507,14 +528,14 @@ async function handle(input, env, diag) {
     200,
     // YouTube signs these caption URLs for about 7 hours, so an hour of cache
     // is safe. Every repeat lookup inside that hour costs no browser time at all.
-    { "Cache-Control": "public, max-age=3600" }
+    { "Cache-Control": "public, max-age=3600", "X-Caption-Source": found.source || "unknown" }
   );
 }
 
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const input = url.searchParams.get("v") || url.searchParams.get("url");
-  const diag = url.searchParams.get("diag") === "1";
+  const diag = diagAllowed(url.searchParams.get("diag"), env);
   if (!input) return json({ ok: false, code: "missing_param", message: "Missing ?v=<youtube url>" }, 400);
   // Cache on the video id, not on whatever form of the link was pasted, so
   // "youtu.be/x", "watch?v=x" and "youtube.com/shorts/x" share one entry.
@@ -544,7 +565,28 @@ export async function onRequestPost({ request, env }) {
   } catch {
     body = {};
   }
-  return handle(body.url || body.v || body.videoId, env, body.diag === true);
+  const input = body.url || body.v || body.videoId;
+  const diag = diagAllowed(body.diag, env);
+  // POST gets the same cache treatment as GET. Without it, posting the same
+  // link over and over would start a fresh browser session every time - a
+  // wider hole than the diag switch ever was.
+  const videoId = extractVideoId(input);
+  const cacheUrl = videoId
+    ? new URL(`https://instascript.app/api/youtube-transcript?v=${videoId}`)
+    : new URL(request.url);
+  if (!diag) {
+    const hit = await caches.default.match(cacheUrl);
+    if (hit) return hit;
+  }
+  const response = await handle(input, env, diag);
+  if (!diag && response.ok) {
+    try {
+      await caches.default.put(cacheUrl, response.clone());
+    } catch {
+      /* caching is best effort */
+    }
+  }
+  return response;
 }
 
 export async function onRequestOptions() {
