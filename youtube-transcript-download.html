@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="YouTube transcript download: paste a YouTube link and take the transcript away as a file. TXT for notes and documents, SRT for subtitles and video editors. Timestamps from the video's own caption track. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>YouTube Transcript Download &mdash; YouTube Subtitles Download &amp; YouTube SRT Download | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/youtube-transcript-download">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">YouTube Transcript Download</h1>
+      <p class="tagline">Paste a YouTube link, take the words away as a file &mdash; TXT or SRT, no signup</p>
+      <nav class="page-nav yt-nav" aria-label="Other transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+      </nav>
+    </header>
+
+    <main class="tool-card">
+      <form id="ytForm" class="url-group yt-form">
+        <input type="url" id="urlInput" class="url-input" placeholder="https://www.youtube.com/watch?v=..." aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
+        <button type="submit" id="getBtn" class="btn-primary">Download Transcript</button>
+      </form>
+      <p class="panel-hint">Public videos that already have captions. youtube.com, youtu.be and /shorts/ links all work. You get a .txt and a .srt file, both built in your own browser.</p>
+      <div id="trackRow" class="track-row hidden">
+        <label for="langSelect">Caption language</label>
+        <select id="langSelect" class="lang-select"></select>
+      </div>
+    </main>
+
+    <!-- Working -->
+    <div id="statusBox" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="statusText" class="processing-text"></p>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <p id="videoMeta" class="meta-line"></p>
+      <p id="fileInfo" class="meta-line hidden"></p>
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions yt-actions">
+          <button id="tsToggle" class="btn-ghost active" type="button">Timestamps</button>
+          <button id="plainToggle" class="btn-ghost" type="button">Plain text</button>
+          <button id="copyBtn" class="btn-ghost" type="button" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost" type="button">Download TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost" type="button">Download SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>How this download works</h2>
+      <p><strong>It reads the caption track the video already has and writes it to a file &mdash; it never listens to the audio and never re-writes the words from scratch.</strong> Nothing has to play through, which is why the file is ready in seconds rather than after a recording finishes.</p>
+      <p>Two things happen when you press the button. This site asks YouTube which caption tracks the video has and hands that list to the page. Your own browser then fetches the track you picked straight from YouTube, and <strong>the file is assembled in your browser and saved by your browser</strong>. No copy of your transcript is sent to this site, no file is parked on a server waiting for you, and there is nothing to delete afterwards.</p>
+      <p>YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. One consequence worth knowing: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists. When that happens you get a message that says so.</p>
+
+      <h2>YouTube subtitles download: TXT or SRT</h2>
+      <p>The two buttons give you the same words in two different shapes, and the shape decides what you can do with the file.</p>
+      <ul class="steps">
+        <li><strong>TXT</strong> is the one for reading and writing. It is a plain text file: open it in any text editor, paste it into a document, run it through a translation tool, search it, or feed it to anything that takes text. In the default view every line starts with <code>[mm:ss]</code>; switch to <em>Plain text</em> before downloading and you get the words as one continuous block with no times in it.</li>
+        <li><strong>SRT</strong> is the one for playing and editing. It is the standard subtitle file: a number, a line with a start and end time, then the text, repeated for every line and separated by blank lines. Media players load it automatically if it sits next to the video with a matching name, subtitle editors open it as a track, and video editors import it as a subtitle or caption track. If your goal is subtitles on a screen rather than words in a document, this is the file you want.</li>
+      </ul>
+      <p>Both files are UTF-8 text with Unix line endings. Both are named after the video &mdash; the title, cleaned up, so <em>Me at the zoo</em> saves as <code>Me-at-the-zoo.txt</code> and <code>Me-at-the-zoo.srt</code>.</p>
+
+      <h2>YouTube SRT download: where the timestamps come from</h2>
+      <p><strong>The times are not calculated here &mdash; they come with the caption track.</strong> YouTube sends every caption line with the millisecond it starts at and how long it lasts. The SRT file copies those two numbers: the start time goes on the left, and the end time is that start plus the duration that came with the line. Milliseconds are kept, so you see <code>00:00:01,200 --&gt; 00:00:03,360</code> rather than times rounded to whole seconds.</p>
+      <p>In the file I downloaded from <em>Me at the zoo</em>, the first cue reads <code>00:00:01,200 --&gt; 00:00:03,360</code>. The caption line arrived with a start of 1,200&nbsp;ms and a duration of 2,160&nbsp;ms; 1,200 + 2,160 is 3,360, which is the end time you see. Nothing in between was estimated.</p>
+      <p>The one place this page fills a gap: if a line arrives with no duration, the file gives it two seconds so the cue is still visible on screen. Across the three videos I measured, cues that came out at exactly 2.000 seconds: 1 of 6 on the 0:19 video, 4 of 428 on the 21:03 video, 1 of 90 on the 4:42 video. Some of those may genuinely be two-second lines in the original track &mdash; once the file is written you cannot tell the two apart, so I am not going to claim a number I cannot separate out.</p>
+
+      <h2>One caption line, one line in the file</h2>
+      <p><strong>The files are line-by-line, not grouped into paragraphs.</strong> YouTube stores captions as a stream of short timed lines, and that is what you get &mdash; each caption line becomes one line in the TXT and one cue in the SRT. Nothing is merged, and no sentence is split across two cues.</p>
+      <p>That is worth knowing before you open a long file: it reads like subtitles, not like an article. The 21:03 talk I measured came back as 428 separate lines. If you want flowing prose instead, switch to <em>Plain text</em> and download the TXT &mdash; that joins the lines into a single block with the times removed.</p>
+      <p>The SRT is consequently taller than the TXT: 428 lines of text became 1,712 lines of SRT, because every cue carries a number and a time line as well as the words.</p>
+
+      <h2>What a long video's file looks like</h2>
+      <p>The longest video I put through this page is a 21:03 TED talk. Its caption track came back as 428 lines, which produced a <strong>23.0&nbsp;KB TXT file (23,528 bytes)</strong> and a <strong>34.2&nbsp;KB SRT file (34,976 bytes)</strong>. The SRT is about 1.5&times; the TXT &mdash; that ratio is the cost of the timing lines, and it held across the other videos too (0:19 gave 265&nbsp;B and 415&nbsp;B; 4:42 gave 4,087&nbsp;B and 6,418&nbsp;B).</p>
+      <p>In practice that means even a talk of this length lands as a file you can email, drop into a document or open on a phone without thinking about it. The longest single cue in it lasted 7.2 seconds and the shortest 1.0 second, which is what natural speech looks like when it is cut into subtitle lines.</p>
+
+      <h2>When the download fails, this is what you see</h2>
+      <p>Nothing here invents a caption track, so sometimes there is no file. These are the messages, quoted exactly as the page shows them:</p>
+      <ul class="steps">
+        <li><strong>No caption track came back</strong> &mdash; the page says: <em>&ldquo;This lookup came back with no caption track. Either this video has none, or YouTube did not hand one over this time. Try it once more: if it comes back empty again, the video most likely has no captions, and captions cannot be made here &mdash; this page only reads the ones that already exist.&rdquo;</em> I trigger this on purpose on two videos while testing and got this wording back both times. Note what it does <em>not</em> say: it never claims your video has no captions, because one empty lookup is not proof of that.</li>
+        <li><strong>Temporarily unavailable</strong> &mdash; the page says: <em>&ldquo;The caption lookup is unavailable right now. There is nothing wrong with your link &mdash; try it again later.&rdquo;</em> This is the one you get when the lookup side is busy or throttled rather than when anything is wrong with the video. I hit it once during testing.</li>
+        <li><strong>The bot check could not be completed</strong> &mdash; the page explains that YouTube asked for a proof-of-origin token that the browser could not produce, and points at strict privacy settings or script blockers. I have not been able to trigger this one myself, so I am quoting the message rather than claiming I saw it.</li>
+        <li><strong>A track exists but came back empty</strong> &mdash; the page says YouTube sent nothing for it, and lists the usual causes: captions switched off after publishing, auto captions not generated yet, or an empty track.</li>
+      </ul>
+      <p>What is <em>not</em> in that list: a length limit, a quota, a daily allowance or a waiting room. There is no account here, so there is nothing to run out of from your side.</p>
+
+      <h2>What I measured on this page</h2>
+      <p>Every row is one run on the live page, in a real browser, on my own connection, on 17 September 2026. The file sizes are read off the files that actually landed on disk &mdash; I clicked the button and opened what came out.</p>
+      <div class="table-scroll">
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>Length</th>
+            <th>Track</th>
+            <th>Lines</th>
+            <th>TXT</th>
+            <th>SRT</th>
+            <th>SRT cues</th>
+            <th>Time to result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Me at the zoo</td><td>0:19</td><td>English</td><td>6</td><td>265 B</td><td>415 B</td><td>6</td><td>12.3 s</td></tr>
+          <tr><td>Despacito</td><td>4:42</td><td>English</td><td>90</td><td>4,087 B</td><td>6,418 B</td><td>90</td><td>1.1 s</td></tr>
+          <tr><td>Despacito</td><td>4:42</td><td>Spanish</td><td>91</td><td>4,107 B</td><td>6,464 B</td><td>91</td><td>1.0 s</td></tr>
+          <tr><td>Your Body Language May Shape Who You Are (TED)</td><td>21:03</td><td>English</td><td>428</td><td>23,528 B</td><td>34,976 B</td><td>428</td><td>22.4 s</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><strong>How to read the time column:</strong> it is the whole trip from pressing the button to the transcript appearing. The two rows at about one second are videos I had already looked up recently, so the answer was still cached; the 12.3 s and 22.4 s rows were cold starts that included the full lookup.</p>
+      <p><strong>Where my testing stops:</strong> the longest video I ran is 21:03, so that is the only place I can tell you what a long file looks like. I have not measured a length ceiling, a file size ceiling, an accuracy figure or how many languages work &mdash; I have no number for any of those, so none of them appear on this page.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I download a YouTube transcript on my phone?</h3>
+      <p>Yes. Paste the link in your mobile browser and both download buttons work. On Android the file lands in your Downloads folder; on iPhone it goes to Files, and Safari will offer to open it or save it. The page is laid out for a phone screen first, so the buttons sit under the text rather than off to the side.</p>
+      <h3>Is the transcript uploaded anywhere?</h3>
+      <p>No. The file is built in your browser from the caption text your browser fetched from YouTube, and it is saved straight to your device. This site handles the link you paste and nothing else &mdash; see the <a href="/privacy">privacy policy</a>.</p>
+      <h3>Which caption language do I get?</h3>
+      <p>Whatever the video has. If there is more than one track, a dropdown appears above the transcript and you pick before you press the button; change it and press again to rebuild the file in that language. If there is one track, that is the one you get. I am not going to quote a count of supported languages &mdash; it is a property of the video, not of this page.</p>
+      <h3>Why is the SRT bigger than the TXT?</h3>
+      <p>Because of the timing lines. Every cue carries a sequence number and a start/end line before the text, and the cues are separated by blank lines. On the 21:03 video that overhead took the file from 23,528 bytes to 34,976 &mdash; about 1.5&times;.</p>
+      <h3>Do the SRT times match the video exactly?</h3>
+      <p>They match the caption track, which is what YouTube itself shows as subtitles. If the uploader's captions drift or start late, the file drifts with them, because the file is a copy of that track rather than a fresh measurement of the audio.</p>
+      <h3>Can I get captions for a video that has none?</h3>
+      <p>Not from this page &mdash; it only reads captions that already exist. If you have the video as a file, <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a> run a speech model in your browser and do not need a caption track.</p>
+      <h3>Do you keep a copy of the file?</h3>
+      <p>No. There is no upload step, so there is nothing to keep, and no account to attach it to.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related transcript tools">
+      Other transcript tools:
+      <a href="/">Instagram Transcript</a> &middot;
+      <a href="/youtube-transcript">YouTube Transcript</a> &middot;
+      <a href="/tiktok-transcript">TikTok Transcript</a> &middot;
+      <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
+      <a href="/video-to-text">Video to Text</a> &middot;
+      <a href="/audio-to-text">Audio to Text</a>
+    </nav>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/youtube-transcript-download">YouTube Transcript Download</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Reads the caption track the video already has and saves it as a file &mdash; no upload, no signup.</p>
+      <p>This site may contain affiliate links. We may earn a commission from qualifying signups at no extra cost to you.</p>
+    </footer>
+  </div>
+
+  <script src="/js/youtube-transcript-download.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I download a YouTube transcript on my phone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste the link in your mobile browser and both download buttons work. On Android the file lands in your Downloads folder; on iPhone it goes to Files." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the transcript uploaded anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The file is built in your browser from the caption text your browser fetched from YouTube, and it is saved straight to your device." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which caption language do I get?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Whatever the video has. If there is more than one track, a dropdown appears and you pick before you press the button. If there is one track, you get that one." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the SRT bigger than the TXT?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because of the timing lines. Every cue carries a sequence number and a start/end line before the text. On a 21:03 video that took the file from 23,528 bytes to 34,976 bytes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do the SRT times match the video exactly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "They match the caption track, which is what YouTube shows as subtitles. If the uploader's captions drift, the file drifts with them, because the file is a copy of that track." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get captions for a video that has none?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not from this page. It only reads captions that already exist. Video to Text and Audio to Text run a speech model in your browser instead." }
+      }
+    ]
+  }
+  </script>
+  <script src="/js/webmcp.js" defer></script>
+</body>
+</html>

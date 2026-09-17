@@ -59,6 +59,14 @@ const PAGES = [
     keywords: ["facebook", "meta", "video", "transcript"],
   },
   {
+    title: "YouTube Transcript Download",
+    url: ORIGIN + "/youtube-transcript-download",
+    summary: "Take a YouTube video's caption track away as a file: TXT for reading and writing, SRT for subtitles and video editors.",
+    accepts: ["youtube.com URLs", "youtu.be URLs", "/shorts/ URLs"],
+    limits: ["reads the caption track the video already has - it cannot create captions", "one video at a time"],
+    keywords: ["youtube", "transcript download", "subtitles download", "srt", "txt", "captions"],
+  },
+  {
     title: "About",
     url: ORIGIN + "/about",
     summary: "What InstaScript does, how it runs in the browser, and its limits.",

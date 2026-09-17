@@ -346,8 +346,23 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
         tracks: tracks.length,
         browserMs: browserMs || null,
       });
-      // A player response is a definitive answer, tracks or not.
+      // A player response is a definitive answer - but only if the page really
+      // loaded. If the player refused the video, or the page came back without
+      // the video details, we learned nothing about the captions, and saying
+      // "no captions" would be a guess. Report it as unavailable instead.
       if (pr) {
+        const complete =
+          !!(pr.videoDetails && pr.videoDetails.title) &&
+          (!pr.playabilityStatus || pr.playabilityStatus.status === "OK");
+        if (!complete) {
+          debug.push({
+            step: "browser-rendering",
+            incomplete: true,
+            playability: pr.playabilityStatus?.status || null,
+            hasTitle: !!(pr.videoDetails && pr.videoDetails.title),
+          });
+          return { browserFailed: true };
+        }
         return {
           tracks,
           videoDetails: pr.videoDetails || {},
@@ -496,8 +511,10 @@ async function handle(input, env, diag) {
       {
         ok: false,
         code: "no_caption_track",
+        // Never claim the video has no captions. One empty lookup is not proof
+        // of that - say what happened and let them try once more.
         message:
-          "YouTube did not return any caption track for this video. That usually means the video has no captions at all, or it is private, members-only, age-restricted or removed. This page reads captions that already exist - it cannot transcribe audio.",
+          "This lookup came back with no caption track. Either this video has none, or YouTube did not hand one over this time. Try it once more: if it comes back empty again, the video most likely has no captions, and captions cannot be made here - this page only reads the ones that already exist.",
         ...(diag ? { debug } : {}),
       },
       404
