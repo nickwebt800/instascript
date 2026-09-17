@@ -738,3 +738,39 @@ body {
   .yt-form .url-input { width: 100%; }
   .yt-form .btn-primary { width: 100%; }
 }
+
+/* ===== Tutorial page: answer block, inline code ===== */
+.answer-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+.answer-box p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+.answer-box strong { color: var(--text); }
+@media (min-width: 480px) {
+  .answer-box { padding: 22px 26px; }
+}
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  overflow-wrap: anywhere;
+}
+.answer-box code { background: var(--primary-light); border-color: var(--primary-light); }
+.steps.disc { list-style: disc; }
+.content-card ol.steps { margin-bottom: 16px; }
+.content-card.reading p,
+.content-card.reading ul li,
+.content-card.reading ol li { font-size: 0.95rem; line-height: 1.8; }
+.content-card.reading h2 { margin-top: 26px; }
