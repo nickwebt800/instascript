@@ -306,12 +306,19 @@ async function run(event) {
 
   const select = $("langSelect");
   if (select && meta.tracks && meta.tracks.length > 1) {
+    // Rebuilding the option list wipes the current value, so remember the
+    // language the visitor already picked and put it back. Without this the
+    // second lookup quietly fell back to the first track - usually English.
+    const previous = select.value;
     select.innerHTML = meta.tracks
       .map(
         (t) =>
           `<option value="${t.languageCode}">${t.languageName}${t.isGenerated ? " (auto)" : ""}</option>`
       )
       .join("");
+    if (previous && Array.from(select.options).some((o) => o.value === previous)) {
+      select.value = previous;
+    }
     show(els.trackRow);
   } else if (select) {
     hide(els.trackRow);
