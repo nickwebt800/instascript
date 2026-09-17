@@ -689,3 +689,52 @@ body {
   .bench-table th,
   .bench-table td { padding: 7px 6px; }
 }
+
+/* ===== YouTube transcript page ===== */
+.track-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.track-row label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.lang-select {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  max-width: 100%;
+}
+.meta-line {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+.btn-ghost.active {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0;
+}
+.table-scroll .bench-table { margin: 0; }
+.yt-nav,
+.yt-actions { flex-wrap: wrap; justify-content: flex-start; }
+.yt-nav { justify-content: center; }
+
+@media (max-width: 480px) {
+  .yt-form { flex-direction: column; align-items: stretch; }
+  .yt-form .url-input { width: 100%; }
+  .yt-form .btn-primary { width: 100%; }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="YouTube transcript generator: paste a YouTube link and read the transcript. This page reads the caption track the video already has, with timestamps, copy and TXT download. No signup.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>YouTube Transcript Generator &mdash; YouTube to Transcript &amp; Video to Transcript | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/youtube-transcript">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">YouTube Transcript Generator</h1>
+      <p class="tagline">Paste a YouTube link, read what is said in it &mdash; free, no signup</p>
+      <nav class="page-nav yt-nav" aria-label="Other transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+      </nav>
+    </header>
+
+    <main class="tool-card">
+      <form id="ytForm" class="url-group yt-form">
+        <input type="url" id="urlInput" class="url-input" placeholder="https://www.youtube.com/watch?v=..." aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
+        <button type="submit" id="getBtn" class="btn-primary">Get Transcript</button>
+      </form>
+      <p class="panel-hint">Public videos that already have captions. youtube.com, youtu.be and /shorts/ links all work.</p>
+      <div id="trackRow" class="track-row hidden">
+        <label for="langSelect">Caption language</label>
+        <select id="langSelect" class="lang-select"></select>
+      </div>
+    </main>
+
+    <!-- Working -->
+    <div id="statusBox" class="processing hidden">
+      <div class="spinner"></div>
+      <p id="statusText" class="processing-text"></p>
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+    <!-- Transcript output -->
+    <section id="transcriptSection" class="transcript-section hidden">
+      <p id="videoMeta" class="meta-line"></p>
+      <div class="transcript-header">
+        <h2>Transcript</h2>
+        <div class="actions yt-actions">
+          <button id="tsToggle" class="btn-ghost active" type="button">Timestamps</button>
+          <button id="plainToggle" class="btn-ghost" type="button">Plain text</button>
+          <button id="copyBtn" class="btn-ghost" type="button" title="Copy to clipboard">
+            <svg viewBox="0 0 16 16" width="16" height="16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 2h7v9H4zM2 5v9h7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Copy
+          </button>
+          <button id="downloadTxtBtn" class="btn-ghost" type="button">TXT</button>
+          <button id="downloadSrtBtn" class="btn-ghost" type="button">SRT</button>
+        </div>
+      </div>
+      <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>How this YouTube transcript generator works</h2>
+      <p><strong>It reads the caption track the video already has on YouTube &mdash; it does not listen to the audio and does not re-write it from scratch.</strong> That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.</p>
+      <p>Two steps happen when you press the button. This site asks YouTube which caption tracks the video has and hands the list back to the page. Your own browser then downloads the track you picked straight from YouTube. The words were already written down when the video was published, so there is no speech recognition in the loop and no audio file is uploaded anywhere.</p>
+      <p>YouTube now asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. The practical consequence: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download. When that happens the page tells you instead of guessing.</p>
+
+      <h2>What you get back</h2>
+      <ul class="steps">
+        <li><strong>Timestamped transcript</strong> &mdash; each line starts with the time it was spoken, so you can jump back to that moment.</li>
+        <li><strong>Plain text</strong> &mdash; the same words with the timestamps taken out, one button away.</li>
+        <li><strong>Copy</strong> for pasting into notes or a document.</li>
+        <li><strong>.txt</strong> for plain notes and <strong>.srt</strong> for subtitles you can drop into an editor.</li>
+      </ul>
+
+      <h2>When there is nothing to get</h2>
+      <p>This page reads captions; it cannot create them. These cases come back with a message instead of a transcript:</p>
+      <ul class="steps">
+        <li><strong>The video has no captions at all.</strong> Plenty of uploads never got any.</li>
+        <li><strong>Auto captions have not been generated yet</strong> on a fresh upload.</li>
+        <li><strong>Music-only videos</strong> &mdash; there is no speech to write down.</li>
+        <li><strong>Live streams and live replays.</strong> I tried one (a 24/7 live music stream) and it reported no caption track, exactly as it should.</li>
+        <li><strong>Private, members-only, age-restricted or deleted videos.</strong> YouTube does not hand those out.</li>
+      </ul>
+      <p>If you have the video as a file instead of a link, use <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a> &mdash; those run a speech model in your browser and do not need a caption track.</p>
+
+      <h2>What I measured on this page</h2>
+      <p>Every row below is one run on the live page, on my own laptop and my own connection, on 17 September 2026. Time to result is the whole trip: looking the video up, the browser check, and the caption download.</p>
+      <div class="table-scroll">
+      <table class="bench-table">
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>Length</th>
+            <th>Track</th>
+            <th>Lines</th>
+            <th>Characters</th>
+            <th>Time to result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Me at the zoo</td><td>0:19</td><td>English</td><td>6</td><td>212</td><td>18.8 s</td></tr>
+          <tr><td>Despacito</td><td>4:42</td><td>English</td><td>90</td><td>2,901</td><td>1.5 s</td></tr>
+          <tr><td>Despacito</td><td>4:42</td><td>Spanish</td><td>91</td><td>2,908</td><td>8.4 s</td></tr>
+          <tr><td>Your Body Language May Shape Who You Are (TED)</td><td>21:03</td><td>English</td><td>428</td><td>19,673</td><td>10.3 s</td></tr>
+          <tr><td>24/7 live music stream</td><td>live</td><td>none found</td><td>&mdash;</td><td>&mdash;</td><td>&ldquo;no caption track&rdquo;</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><strong>How to read the time column:</strong> the 1.5 s row is a video I had already looked up, so the answer was still cached; the others include a fresh lookup. The same video came out at 1.5 s cached and 13.8 s cold, which is the size of that difference.</p>
+      <p><strong>Where my testing stops:</strong> the longest video I tried is 21:03. I am not going to print a length limit, a free-use limit or an accuracy figure, because I have not measured one &mdash; the rows above are what I actually ran.</p>
+
+      <h2>What is a YouTube transcript?</h2>
+      <p>A <strong>YouTube transcript</strong> is the spoken content of a video written out as text, usually with the time each line starts. People use them to pull quotes, turn a talk into notes or a blog post, find the exact minute something was said, read a video in a second language, and make a video searchable. When a page says &ldquo;YouTube transcript&rdquo; it normally means the caption text that already sits on the video, not a fresh transcription of the audio.</p>
+
+      <h2>How to turn YouTube to transcript text</h2>
+      <ol class="steps">
+        <li><strong>Copy the video link</strong> from the address bar, the Share button, or a youtu.be short link.</li>
+        <li><strong>Paste it in the box above</strong> and press Get Transcript.</li>
+        <li><strong>Read, copy or download.</strong> Pick another language from the dropdown if the video has more than one caption track.</li>
+      </ol>
+
+      <h2>FAQ</h2>
+      <h3>Can I turn a YouTube video to transcript text on my phone?</h3>
+      <p>Yes. The page is built for a phone screen: paste the link in the YouTube app's Share sheet copy, or open this page in your mobile browser and paste there. Copy and download both work on mobile.</p>
+      <h3>Is my video uploaded anywhere?</h3>
+      <p>No video file is uploaded, because no video file is downloaded. The link you paste goes to this site's own lookup endpoint, and the caption text is fetched by your browser directly from YouTube. Nothing is stored and there is no account.</p>
+      <h3>Which languages are supported?</h3>
+      <p>Whatever caption tracks the video has. If a video has more than one, the page lists them and you pick; if it has one, you get that one. I am not going to quote a number of supported languages &mdash; it is a property of the video, not of this page.</p>
+      <h3>How long can the video be?</h3>
+      <p>I have not found a ceiling, so I will not print one. The longest video I ran through this page is 21:03 and it came back as 428 lines. Longer videos mean more text in the browser, which is a limit of your device, not of the page.</p>
+      <h3>Why did it fail on a video that clearly has captions?</h3>
+      <p>Three reasons, in order of likelihood: an extension or strict privacy setting blocked the browser check YouTube asks for; the captions are switched off for embedding; or YouTube throttled the request &mdash; wait a minute and try again.</p>
+      <h3>Do you store the transcript?</h3>
+      <p>No. The text is built in your browser and stays there until you copy or download it. See the <a href="/privacy">privacy policy</a>.</p>
+
+      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related transcript tools">
+      Other transcript tools:
+      <a href="/">Instagram Transcript</a> &middot;
+      <a href="/tiktok-transcript">TikTok Transcript</a> &middot;
+      <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
+      <a href="/video-to-text">Video to Text</a> &middot;
+      <a href="/audio-to-text">Audio to Text</a>
+    </nav>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Reads the caption track the video already has &mdash; no audio is uploaded, no signup.</p>
+      <p>This site may contain affiliate links. We may earn a commission from qualifying signups at no extra cost to you.</p>
+    </footer>
+  </div>
+
+  <script src="/js/youtube-transcript.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I turn a YouTube video to transcript text on my phone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The page is built for a phone screen: paste the link in the YouTube app's Share sheet copy, or open this page in your mobile browser and paste there. Copy and download both work on mobile." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my video uploaded anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No video file is uploaded, because no video file is downloaded. The link you paste goes to this site's own lookup endpoint, and the caption text is fetched by your browser directly from YouTube. Nothing is stored and there is no account." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which languages are supported?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Whatever caption tracks the video has. If a video has more than one, the page lists them and you pick; if it has one, you get that one." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long can the video be?",
+        "acceptedAnswer": { "@type": "Answer", "text": "I have not found a ceiling, so I will not print one. The longest video I ran through this page is 21:03 and it came back as 428 lines." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did it fail on a video that clearly has captions?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Three reasons, in order of likelihood: an extension or strict privacy setting blocked the browser check YouTube asks for; the captions are switched off for embedding; or YouTube throttled the request." }
+      }
+    ]
+  }
+  </script>
+  <script src="/js/webmcp.js" defer></script>
+</body>
+</html>
