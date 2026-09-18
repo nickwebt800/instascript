@@ -458,6 +458,132 @@ async function handleMcp(request, env) {
   return json({ jsonrpc: "2.0", id, error: { code: -32601, message: "Method not found: " + method } });
 }
 
+/* ------------------------------------------------------ 404 / not found */
+
+// Every path this site actually serves, taken from the deployed file list.
+// Cloudflare Pages currently answers an unmatched path with the home page and
+// HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
+const KNOWN_FILES = new Set([
+  "/LICENSE",
+  "/README.md",
+  "/SUBMISSION-GUIDE.md",
+  "/about.html",
+  "/about.md",
+  "/ai/index.html",
+  "/ai/index.ilang",
+  "/ai/skills/site-lookup/SKILL.md",
+  "/app.js",
+  "/audio-to-text.html",
+  "/audio-to-text.md",
+  "/benchmark/README.md",
+  "/benchmark/whisper-tiny-en-browser-benchmark.csv",
+  "/contact.html",
+  "/contact.md",
+  "/data/README.md",
+  "/data/browser-whisper-tools-comparison.csv",
+  "/facebook-video-transcript.html",
+  "/facebook-video-transcript.md",
+  "/how-to-get-a-transcript-of-a-youtube-video.html",
+  "/how-to-get-a-transcript-of-a-youtube-video.md",
+  "/index.html",
+  "/index.md",
+  "/js/webmcp.js",
+  "/js/youtube-transcript-download.js",
+  "/js/youtube-transcript.js",
+  "/js/yt-pot.js",
+  "/openapi.json",
+  "/privacy.html",
+  "/privacy.md",
+  "/robots.txt",
+  "/sitemap.xml",
+  "/style.css",
+  "/tiktok-transcript.html",
+  "/tiktok-transcript.md",
+  "/video-to-text.html",
+  "/video-to-text.md",
+  "/youtube-transcript-download.html",
+  "/youtube-transcript-download.md",
+  "/youtube-transcript.html",
+  "/youtube-transcript.md",
+]);
+
+// Endpoints that are produced by Functions rather than by a file on disk.
+const KNOWN_ROUTES = new Set([
+  "/api/extract",
+  "/api/proxy",
+  "/api/youtube-transcript",
+  "/api/pages",
+  "/api/benchmark",
+  "/mcp",
+  "/auth.md",
+  "/.well-known/api-catalog",
+  "/.well-known/mcp/server-card.json",
+  "/.well-known/agent-skills/index.json",
+  "/.well-known/ai-catalog.json",
+  "/.well-known/oauth-authorization-server",
+  "/.well-known/oauth-protected-resource",
+  "/.well-known/jwks.json",
+]);
+
+function isServed(p) {
+  if (KNOWN_ROUTES.has(p)) return true;
+  if (p.startsWith("/agent-auth/")) return true;
+  if (KNOWN_FILES.has(p)) return true;
+  if (p.endsWith("/")) return KNOWN_FILES.has(p + "index.html");
+  if (KNOWN_FILES.has(p + ".html")) return true;
+  if (KNOWN_FILES.has(p + "/index.html")) return true;
+  return false;
+}
+
+const NOT_FOUND_HTML = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>404 - Page not found | InstaScript</title>
+<style>
+  body { font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+         margin: 0; padding: 48px 20px; max-width: 640px; color: #16181d; background: #fff; }
+  h1 { font-size: 1.5rem; margin: 0 0 12px; }
+  p { margin: 0 0 16px; }
+  a { color: #0b5fff; }
+  ul { padding-left: 20px; }
+</style>
+</head>
+<body>
+<h1>404 - Page not found</h1>
+<p>That address does not exist on InstaScript. Nothing was removed and nothing moved; it was never here.</p>
+<p>These pages are:</p>
+<ul>
+  <li><a href="/">Instagram Transcript</a></li>
+  <li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li>
+  <li><a href="/youtube-transcript">YouTube Transcript</a></li>
+  <li><a href="/video-to-text">Transcribe Video</a></li>
+  <li><a href="/audio-to-text">Transcribe Audio</a></li>
+  <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
+  <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/contact">Contact</a></li>
+</ul>
+</body>
+</html>
+`;
+
+function notFound(p) {
+  const headers = new Headers({
+    "Cache-Control": "no-store",
+    "X-Robots-Tag": "noindex",
+    ...CORS,
+  });
+  if (p.endsWith(".txt")) {
+    headers.set("Content-Type", "text/plain; charset=utf-8");
+    return new Response("404 Not Found\n", { status: 404, headers });
+  }
+  headers.set("Content-Type", "text/html; charset=utf-8");
+  return new Response(NOT_FOUND_HTML, { status: 404, headers });
+}
+
 /* --------------------------------------------------------------- markdown */
 
 const MD_MAP = {
@@ -573,6 +699,11 @@ export async function onRequest(ctx) {
         },
         { status: 503, headers: { "Cache-Control": "no-store" } }
       );
+    }
+
+    // Anything not on the served list is a real 404, not the home page.
+    if (!isServed(p)) {
+      return notFound(p);
     }
 
     // Markdown content negotiation
