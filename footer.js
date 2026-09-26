@@ -17,6 +17,7 @@
     ["How to Get a YouTube Transcript", "/how-to-get-a-transcript-of-a-youtube-video"],
     ["TXT to SRT", "/txt-to-srt"],
     ["VTT to SRT", "/vtt-to-srt"],
+    ["SRT to Text", "/srt-to-text"],
     ["Privacy Policy", "/privacy"],
     ["About", "/about"],
     ["Contact", "/contact"]

@@ -91,6 +91,14 @@ const PAGES = [
     keywords: ["vtt to srt", "srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
   },
   {
+    title: "SRT to Text Converter",
+    url: ORIGIN + "/srt-to-text",
+    summary: "Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.",
+    accepts: ["SRT", "VTT", "pasted subtitle text"],
+    limits: ["one local subtitle file at a time", "no audio transcription", "no upload or account"],
+    keywords: ["srt to text", "vtt to text", "subtitle to text", "srt converter", "vtt converter", "plain text"],
+  },
+  {
     title: "Transcribe Audio",
     url: ORIGIN + "/audio-to-text",
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
@@ -552,6 +560,8 @@ const KNOWN_FILES = new Set([
   "/txt-to-srt.js",
   "/vtt-to-srt.html",
   "/vtt-to-srt.js",
+  "/srt-to-text.html",
+  "/srt-to-text.js",
   "/reels-to-text.html",
   "/js/webmcp.js",
   "/js/youtube-transcript-download.js",
@@ -632,6 +642,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
+  <li><a href="/srt-to-text">SRT to Text Converter</a></li>
   <li><a href="/about">About</a></li>
   <li><a href="/contact">Contact</a></li>
 </ul>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert SRT or VTT subtitles to clean plain text in your browser. Paste text or open one local subtitle file with no upload or account.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/srt-to-text">
+  <title>SRT to Text Converter | VTT to Text | InstaScript</title>
+  <link rel="stylesheet" href="/style.css?v=srt-to-text-1">
+</head>
+<body class="subtitle-converter-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">SRT to Text Converter</h1>
+      <p class="tagline">Turn SRT or VTT subtitles into clean plain text in your browser</p>
+      <nav class="page-nav" aria-label="Subtitle tools">
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/srt-to-text" aria-current="page">SRT to Text</a>
+        <a href="/">Instagram Transcript</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="converter-title">
+      <div class="tool-intro-row">
+        <div>
+          <h2 id="converter-title">Remove subtitle timecodes</h2>
+          <p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p>
+        </div>
+        <label class="file-button" for="subtitleFile">Open SRT / VTT<input id="subtitleFile" type="file" accept=".srt,.vtt,application/x-subrip,text/vtt,text/plain" hidden></label>
+      </div>
+
+      <label class="sr-only" for="subtitleText">Subtitle text</label>
+      <textarea id="subtitleText" class="source-text converter-source" rows="10" spellcheck="false" placeholder="Paste SRT or VTT subtitle text here..."></textarea>
+      <p class="input-hint">Accepted input: one local .srt or .vtt file, or pasted subtitle text.</p>
+
+      <div class="converter-controls">
+        <button id="convertBtn" class="btn-primary" type="button">Convert to plain text</button>
+        <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
+      </div>
+      <p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
+
+      <section id="resultSection" class="converter-result hidden" aria-labelledby="result-title">
+        <div class="editor-header">
+          <div>
+            <h2 id="result-title">Plain text result</h2>
+            <p id="resultSummary">Review the text before you copy or download it.</p>
+          </div>
+          <div class="export-actions">
+            <button id="copyResultBtn" class="btn-primary" type="button">Copy text</button>
+            <button id="downloadResultBtn" class="btn-ghost" type="button">Download TXT</button>
+          </div>
+        </div>
+        <label class="sr-only" for="resultText">Plain text result</label>
+        <textarea id="resultText" class="result-text" rows="12" spellcheck="true"></textarea>
+      </section>
+    </main>
+
+    <section class="content-card reading">
+      <h2>Supported subtitle formats</h2>
+      <p>This SRT to text converter reads one <strong>SRT</strong> or <strong>VTT</strong> source at a time. Paste subtitle text or open one local file, then get the cue text without sequence numbers or timecodes. The result remains editable and can be copied or downloaded as a TXT file.</p>
+      <p>This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server. It handles one local subtitle file at a time.</p>
+
+      <h2>How conversion works</h2>
+      <p>The browser finds each subtitle cue, removes its sequence number and start/end time, and keeps the spoken text and line breaks. Cue text is joined in reading order. Common VTT markup tags are removed from the plain-text result.</p>
+      <p>If the pasted content has no usable SRT or VTT cues, the page reports that it could not find subtitle text so you can correct the source.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I convert SRT to text without uploading the file?</h3>
+      <p>Yes. Paste the SRT text or open one local SRT file. Reading and conversion happen in this browser.</p>
+      <h3>Does this also work as a VTT to text converter?</h3>
+      <p>Yes. Paste or open a VTT file and choose <strong>Convert to plain text</strong>. WEBVTT headers, cue numbers, and timecodes are left out of the result.</p>
+      <h3>Can I edit the plain text before downloading?</h3>
+      <p>Yes. The result is editable. Make any changes, then copy the text or download it as a TXT file.</p>
+      <h3>Can I convert several subtitle files at once?</h3>
+      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
+    </section>
+
+    <footer class="footer" data-site-footer>
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/srt-to-text">SRT to Text</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+  <script src="/srt-to-text.js" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+  <script src="/footer.js" defer></script>
+</body>
+</html>
