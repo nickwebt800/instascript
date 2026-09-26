@@ -73,6 +73,29 @@ body {
   margin-bottom: 28px;
 }
 
+/* ===== Homepage trust strip ===== */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: -8px 0 28px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 15px 16px;
+  background: var(--surface);
+}
+
+.trust-item strong { font-size: .85rem; color: var(--text); }
+.trust-item span { font-size: .78rem; line-height: 1.4; color: var(--text-muted); }
+
 /* ===== Tabs ===== */
 .tabs {
   display: flex;
@@ -397,11 +420,27 @@ body {
 }
 
 .footer-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(150px, 1fr) minmax(110px, .7fr);
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.footer-group {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 8px 18px;
-  margin-bottom: 14px;
+  align-content: flex-start;
+  gap: 6px 16px;
+}
+
+.footer-group-title {
+  flex-basis: 100%;
+  margin-bottom: 2px;
+  color: var(--text);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .footer-nav a {
@@ -859,8 +898,11 @@ html:has(body.subtitle-converter-page) { overflow-x: hidden; }
 @media (max-width: 480px) {
   .container { padding-left: 16px; padding-right: 16px; }
   .tool-card, .subtitle-tool { padding: 16px; }
+  .trust-strip { grid-template-columns: 1fr; gap: 1px; }
+  .trust-item { padding: 13px 14px; }
   .tool-index ul { grid-template-columns: 1fr; gap: 8px; }
-  .footer-nav { gap: 8px 14px; }
+  .footer-nav { grid-template-columns: 1fr; gap: 18px; }
+  .footer-group { gap: 6px 14px; }
   .tool-intro-row, .editor-header { flex-direction: column; align-items: stretch; }
   .file-button { width: 100%; }
   .settings-grid { grid-template-columns: 1fr; gap: 10px; }
