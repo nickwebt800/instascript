@@ -845,4 +845,10 @@ html:has(body.txt-to-srt-page) { overflow-x: hidden; }
   .tool-actions, .export-actions { align-items: stretch; }
   .tool-actions button, .export-actions button { flex: 1 1 100%; min-height: 42px; }
   .source-text { min-height: 160px; }
+  .subtitle-table { min-width: 0; table-layout: fixed; font-size: .76rem; }
+  .subtitle-table th:nth-child(2), .subtitle-table th:nth-child(3) { width: 82px; }
+  .subtitle-table th:last-child, .subtitle-table td:last-child { width: 32px; }
+  .subtitle-table input, .subtitle-table textarea { padding: 5px 3px; font-size: .76rem; }
+  .subtitle-table .remove-row { width: 26px; overflow: hidden; font-size: 0; }
+  .subtitle-table .remove-row::after { content: "×"; font-size: 1rem; }
 }
