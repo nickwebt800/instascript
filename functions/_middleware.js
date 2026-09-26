@@ -538,6 +538,7 @@ const KNOWN_FILES = new Set([
   "/data/README.md",
   "/data/browser-whisper-tools-comparison.csv",
   "/facebook-video-transcript.html",
+  "/footer.js",
   "/facebook-video-transcript.md",
   "/how-to-get-a-transcript-of-a-youtube-video.html",
   "/how-to-get-a-transcript-of-a-youtube-video.md",
