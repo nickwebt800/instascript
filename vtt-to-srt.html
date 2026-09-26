@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert VTT to SRT, SRT to VTT, or SBV subtitles in your browser. Paste text or open one local file with no upload or account.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/vtt-to-srt">
+  <title>VTT to SRT Converter | SRT, VTT and SBV | InstaScript</title>
+  <link rel="stylesheet" href="/style.css?v=vtt-to-srt-1">
+</head>
+<body class="subtitle-converter-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">VTT to SRT Converter</h1>
+      <p class="tagline">Convert VTT, SRT or SBV subtitles in your browser</p>
+      <nav class="page-nav" aria-label="Subtitle tools">
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt" aria-current="page">VTT to SRT</a>
+        <a href="/">Instagram Transcript</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="converter-title">
+      <div class="tool-intro-row">
+        <div>
+          <h2 id="converter-title">Convert one subtitle file</h2>
+          <p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p>
+        </div>
+        <label class="file-button" for="subtitleFile">Open VTT / SRT / SBV<input id="subtitleFile" type="file" accept=".vtt,.srt,.sbv,text/vtt,application/x-subrip,text/plain" hidden></label>
+      </div>
+
+      <label class="sr-only" for="subtitleText">Subtitle text</label>
+      <textarea id="subtitleText" class="source-text converter-source" rows="10" spellcheck="false" placeholder="Paste VTT, SRT or SBV text here..."></textarea>
+      <p class="input-hint">Accepted input: one local .vtt, .srt or .sbv file, or pasted subtitle text.</p>
+
+      <div class="converter-controls">
+        <label>Output format
+          <select id="outputFormat">
+            <option value="srt">SRT</option>
+            <option value="vtt">VTT</option>
+          </select>
+        </label>
+        <button id="convertBtn" class="btn-primary" type="button">Convert subtitle</button>
+        <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
+      </div>
+      <p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
+
+      <section id="resultSection" class="converter-result hidden" aria-labelledby="result-title">
+        <div class="editor-header">
+          <div>
+            <h2 id="result-title">Converted subtitle</h2>
+            <p id="resultSummary">Review the text before you copy or download it.</p>
+          </div>
+          <div class="export-actions">
+            <button id="copyResultBtn" class="btn-primary" type="button">Copy result</button>
+            <button id="downloadResultBtn" class="btn-ghost" type="button">Download result</button>
+          </div>
+        </div>
+        <label class="sr-only" for="resultText">Converted subtitle result</label>
+        <textarea id="resultText" class="result-text" rows="12" spellcheck="false"></textarea>
+      </section>
+    </main>
+
+    <section class="content-card reading">
+      <h2>Supported subtitle formats</h2>
+      <p>This subtitle converter reads one <strong>VTT</strong>, <strong>SRT</strong> or <strong>SBV</strong> source at a time. It accepts local files and pasted text, then writes standard <strong>SRT</strong> or <strong>WebVTT</strong>. Cue order, time ranges, line breaks and subtitle text are kept while format-specific headers and separators are normalized.</p>
+      <p>SBV input uses the comma-separated time-range form commonly found in SubViewer files. This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server.</p>
+
+      <h2>How conversion works</h2>
+      <p>The browser reads each cue's start time, end time and text. SRT output receives numbered cues and comma milliseconds. VTT output receives a <strong>WEBVTT</strong> header and period milliseconds. Existing cue times are not recalculated or rounded beyond the format's three-digit millisecond field.</p>
+      <p>If a source has a cue that does not match the selected subtitle syntax, it is not silently invented. The page reports that it could not find usable cues so you can correct the pasted text.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I convert VTT to SRT without uploading the file?</h3>
+      <p>Yes. Paste the VTT text or open one local VTT file. Reading and conversion happen in this browser.</p>
+      <h3>Can I convert SRT to VTT on this page?</h3>
+      <p>Yes. Open or paste SRT, choose <strong>VTT</strong> under Output format, then copy or download the WebVTT result.</p>
+      <h3>Does it support SBV?</h3>
+      <p>Yes. SBV is accepted as an input format. Choose SRT or VTT for the output.</p>
+      <h3>Can I convert several files at once?</h3>
+      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+  <script src="/vtt-to-srt.js" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+</body>
+</html>

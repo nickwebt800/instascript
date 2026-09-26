@@ -19,3 +19,11 @@ When all five are used, stop publishing and ask the group for the next batch.
 | 6 | `txt to srt` | not supplied | used 2026-09-26 |
 
 `txt to srt converter`, `text to srt`, and `txt file to srt` are treated as one intent family for this page. Search volume was not supplied for this family and is not estimated here.
+
+## Added target supplied for this page
+
+| Order | Keyword | US monthly search | Status |
+|---:|---|---|---|
+| 7 | `vtt to srt` | not supplied | used 2026-09-26 |
+
+`srt to vtt`, `sbv to srt`, and `subtitle converter` are treated as one conversion intent family for this page. Search volume was not supplied for this family and is not estimated here.

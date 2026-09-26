@@ -777,8 +777,11 @@ code {
 
 /* ===== TXT to SRT editor ===== */
 .txt-to-srt-page .container { max-width: 920px; }
-.txt-to-srt-page { overflow-x: hidden; }
-html:has(body.txt-to-srt-page) { overflow-x: hidden; }
+.subtitle-converter-page .container { max-width: 920px; }
+.txt-to-srt-page,
+.subtitle-converter-page { overflow-x: hidden; }
+html:has(body.txt-to-srt-page),
+html:has(body.subtitle-converter-page) { overflow-x: hidden; }
 .subtitle-tool {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -832,6 +835,15 @@ html:has(body.txt-to-srt-page) { overflow-x: hidden; }
 .row-number { color: var(--text-muted); padding-top: 16px !important; }
 .remove-row { border: 0; background: transparent; color: var(--danger); font: .8rem var(--font); cursor: pointer; padding: 7px 0; }
 .export-actions { justify-content: flex-start; flex-wrap: wrap; margin-top: 16px; }
+.converter-controls { display: flex; align-items: end; gap: 10px; margin-top: 18px; }
+.converter-controls label { display: flex; flex-direction: column; gap: 5px; color: var(--text-muted); font-size: .79rem; line-height: 1.25; min-width: 150px; }
+.converter-controls select { min-height: 42px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--text); font: .9rem var(--font); }
+.converter-controls .btn-primary { width: auto; min-height: 42px; }
+.converter-result { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 20px; }
+.converter-result .editor-header { align-items: end; }
+.converter-result .export-actions { margin-top: 0; }
+.result-text { display: block; width: 100%; min-height: 250px; margin-top: 14px; resize: vertical; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; color: var(--text); background: #fff; font: .84rem/1.6 var(--mono); white-space: pre; }
+.result-text:focus, .converter-controls select:focus { outline: 2px solid rgba(99,91,255,.25); border-color: var(--primary); }
 .hidden { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 720px) {
@@ -845,6 +857,12 @@ html:has(body.txt-to-srt-page) { overflow-x: hidden; }
   .tool-actions, .export-actions { align-items: stretch; }
   .tool-actions button, .export-actions button { flex: 1 1 100%; min-height: 42px; }
   .source-text { min-height: 160px; }
+  .converter-controls { align-items: stretch; flex-direction: column; }
+  .converter-controls label { min-width: 0; }
+  .converter-controls .btn-primary { width: 100%; }
+  .converter-result .editor-header { align-items: stretch; }
+  .converter-result .export-actions { margin-top: 10px; }
+  .result-text { min-height: 220px; font-size: .76rem; }
   .subtitle-table { min-width: 0; table-layout: fixed; font-size: .76rem; }
   .subtitle-table th:nth-child(2), .subtitle-table th:nth-child(3) { width: 82px; }
   .subtitle-table th:last-child, .subtitle-table td:last-child { width: 32px; }
