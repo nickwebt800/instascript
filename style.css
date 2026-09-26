@@ -778,6 +778,7 @@ code {
 /* ===== TXT to SRT editor ===== */
 .txt-to-srt-page .container { max-width: 920px; }
 .txt-to-srt-page { overflow-x: hidden; }
+html:has(body.txt-to-srt-page) { overflow-x: hidden; }
 .subtitle-tool {
   background: var(--surface);
   border: 1px solid var(--border);
