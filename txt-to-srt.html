@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert TXT, SRT or VTT text into editable SRT and VTT subtitles in your browser. No upload, no account.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/txt-to-srt">
+  <title>TXT to SRT Converter | Free Browser Subtitle Tool | InstaScript</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="txt-to-srt-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">TXT to SRT Converter</h1>
+      <p class="tagline">Turn plain text into editable SRT or VTT subtitles</p>
+      <nav class="page-nav" aria-label="Transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/txt-to-srt" aria-current="page">TXT to SRT</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="tool-title">
+      <div class="tool-intro-row">
+        <div>
+          <h2 id="tool-title">Build your subtitle file</h2>
+          <p class="privacy-line"><strong>No signup. No upload.</strong> Text stays in this browser.</p>
+        </div>
+        <label class="file-button" for="fileInput">Open TXT / SRT / VTT<input id="fileInput" type="file" accept=".txt,.srt,.vtt,text/plain" hidden></label>
+      </div>
+
+      <div class="mode-switch" role="tablist" aria-label="Input mode">
+        <button class="mode-button active" type="button" role="tab" aria-selected="true" data-mode="plain">Plain text timing</button>
+        <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="timestamps">Existing timestamps</button>
+      </div>
+
+      <label class="sr-only" for="sourceText">Text to convert</label>
+      <textarea id="sourceText" class="source-text" rows="9" spellcheck="true" placeholder="Paste plain text here, one line or sentence at a time..."></textarea>
+      <p class="input-hint">Plain text mode accepts numbered lines. Existing timestamps mode reads SRT and VTT time ranges.</p>
+
+      <section class="settings-panel" aria-labelledby="settings-title">
+        <h3 id="settings-title">Timing settings</h3>
+        <div class="settings-grid">
+          <label>Start time<input id="startTime" type="text" value="00:00:00.000" inputmode="numeric"></label>
+          <label>Default duration (s)<input id="defaultDuration" type="number" value="3" min="0.1" step="0.1"></label>
+          <label>Gap between entries (s)<input id="entryGap" type="number" value="0.1" min="0" step="0.01"></label>
+          <label>Max characters per line<input id="maxChars" type="number" value="42" min="1" step="1"></label>
+          <label>Shortest duration (s)<input id="minSeconds" type="number" value="0.8" min="0.1" step="0.1"></label>
+          <label>Longest duration (s)<input id="maxSeconds" type="number" value="7" min="0.1" step="0.1"></label>
+          <label>Split mode<select id="splitMode"><option value="line">By line</option><option value="sentence">By sentence</option></select></label>
+          <label>Reading speed limit (characters / second)<input id="charsPerSecond" type="number" value="17" min="1" step="1"></label>
+        </div>
+        <p class="settings-note">Reading speed sets a minimum time for longer entries. All timecodes are written to milliseconds.</p>
+      </section>
+
+      <div class="tool-actions">
+        <button id="generateBtn" class="btn-primary" type="button">Generate timeline</button>
+        <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
+      </div>
+      <p id="status" class="tool-status" role="status" aria-live="polite"></p>
+
+      <section id="editorSection" class="subtitle-editor hidden" aria-labelledby="editor-title">
+        <div class="editor-header">
+          <div>
+            <h2 id="editor-title">Edit before export</h2>
+            <p>Change any number, timecode or caption. Long captions are wrapped at word boundaries when generated.</p>
+          </div>
+          <button id="addRowBtn" class="btn-ghost" type="button">Add entry</button>
+        </div>
+        <div class="editor-scroll">
+          <table class="subtitle-table">
+            <thead><tr><th scope="col">#</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Caption</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead>
+            <tbody id="subtitleRows"></tbody>
+          </table>
+        </div>
+        <div class="export-actions">
+          <button id="copySrtBtn" class="btn-primary" type="button">Copy SRT</button>
+          <button id="downloadSrtBtn" class="btn-ghost" type="button">Download SRT</button>
+          <button id="downloadVttBtn" class="btn-ghost" type="button">Download VTT</button>
+        </div>
+      </section>
+    </main>
+
+    <section class="content-card reading">
+      <h2>What this TXT to SRT converter supports</h2>
+      <p>Paste plain text or open a local <strong>.txt</strong> file to create subtitle cues. You can also open an existing <strong>.srt</strong> or <strong>.vtt</strong> file, switch to existing timestamps mode, edit every cue, and export either format. Only one local text file is handled at a time.</p>
+      <p>The converter does not send text to a server. It needs no account, login, history, project storage, paid API, or batch upload.</p>
+
+      <h2>How timing works</h2>
+      <p>In plain text mode, each line or sentence becomes a cue. The first cue starts at your chosen start time. Its duration uses the default duration and the reading-speed limit, then stays inside your shortest and longest duration settings. The next cue starts after the previous cue plus the entry gap.</p>
+      <p>Captions longer than the character limit are split at word boundaries. Existing SRT and VTT ranges are read as-is and rewritten with millisecond precision. If a source cue has no usable end time, the plain-text timing settings provide its fallback duration.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I convert a TXT file to SRT without uploading it?</h3>
+      <p>Yes. Choose <strong>Open TXT / SRT / VTT</strong>. The file is read locally by your browser and is not uploaded.</p>
+      <h3>Can I use this as a TXT to SRT converter for numbered text?</h3>
+      <p>Yes. Plain text mode removes common leading line numbers such as “1.” or “2)” before it creates cues.</p>
+      <h3>What is the difference between SRT and VTT?</h3>
+      <p>SRT uses comma-separated milliseconds and numbered cues. VTT starts with <strong>WEBVTT</strong> and uses a period before milliseconds. The editor can download both from the same entries.</p>
+      <h3>Does this make subtitles from audio?</h3>
+      <p>No. This page times text you provide. Use the <a href="/audio-to-text">Audio to Text</a> tool when you need a transcript first.</p>
+    </section>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+  <script src="/txt-to-srt.js" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instagram transcript generator with timestamped text and TXT or SRT downloads. Upload a Reel or paste a public Instagram URL; processing runs in your browser.">
+  <link rel="canonical" href="https://instascript.app/instagram-transcript-generator">
+  <title>Instagram Transcript Generator: Timestamped Text, TXT and SRT | InstaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Instagram Transcript Generator</h1>
+      <p class="tagline">Get the spoken words from a Reel as timestamped text</p>
+      <nav class="page-nav" aria-label="Transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+      </nav>
+    </header>
+
+    <section class="content-card answer-first">
+      <h2>The short answer</h2>
+      <p>Use the InstaScript tool on the <a href="/">Instagram Transcript</a> page. Paste a public Reel URL, or upload the video file, then press <strong>Get Transcript</strong>. The result is a searchable transcript with timestamps that you can copy or download as <strong>.txt</strong> or <strong>.srt</strong>.</p>
+      <ol class="steps">
+        <li>Open the tool and choose <strong>Paste URL</strong> for a public Reel, or <strong>Upload File</strong> for a saved video.</li>
+        <li>Wait for the browser to extract the audio and run Whisper speech recognition.</li>
+        <li>Copy the text, or download SRT when you need subtitles aligned to the clip.</li>
+      </ol>
+      <p class="bench-note"><strong>Privacy detail:</strong> uploaded files are processed in your browser. The URL option needs a server-side fetch only to obtain the public media file; the speech model still runs locally in the page.</p>
+    </section>
+
+    <section class="content-card">
+      <h2>What this Instagram transcript generator returns</h2>
+      <p>An Instagram transcript is the spoken audio written out in reading order. InstaScript keeps each segment connected to a start time, which makes it useful for checking a quote, searching a Reel, preparing captions, or handing a clip to an editor.</p>
+      <pre class="example">[00:00] The first setting controls the audio track
+[00:05] then export the transcript as a subtitle file
+[00:11] so the words stay attached to the Reel</pre>
+      <p>The plain-text download is convenient for notes and research. The SRT download is a standard subtitle file: it contains numbered cues, start and end times, and the words for each cue.</p>
+
+      <h2>URL versus saved video</h2>
+      <p>A public URL is quickest when the Reel is available without a login. Private posts, removed posts, login-gated pages, and some region-restricted media cannot be fetched by a public web tool. In those cases, save a copy that you are allowed to use and choose the upload option instead.</p>
+      <p>Uploading also gives you a predictable file boundary: the page accepts common MP4, MOV and WebM video files up to 100 MB. The browser needs an audio track it can decode; a silent clip cannot produce spoken words.</p>
+
+      <h2>Why the first run is slower</h2>
+      <p>The speech model is downloaded to the browser the first time. After that, the cached model is reused. These are measured runs on one laptop using the WASM build without WebGPU, so they describe the shape of the work rather than a promise for every device:</p>
+      <table class="bench-table">
+        <thead><tr><th>Audio length</th><th>Time to transcribe</th><th>Model download</th></tr></thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>first run</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>cached</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>cached</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>cached</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>cached</td></tr>
+        </tbody>
+      </table>
+      <p class="bench-note">The full method and raw rows are in the <a href="https://github.com/nickwebt800/instascript/tree/main/benchmark">benchmark directory</a>. A newer phone or laptop may be faster; a first visit on a slower connection may be slower.</p>
+
+      <h2>Common questions</h2>
+      <h3>Can it transcribe every Instagram Reel?</h3>
+      <p>No. The URL path needs a public page and a media URL that Instagram exposes to an unauthenticated request. Use a local copy for a private, expired, or login-only post.</p>
+      <h3>Does it create captions from the text?</h3>
+      <p>It creates a timestamped transcript and an SRT file. You can import the SRT into a video editor or player that supports external subtitles.</p>
+      <h3>Is the transcript accurate for music?</h3>
+      <p>Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy, so review quotes before publishing them.</p>
+      <h3>Which language does this page support?</h3>
+      <p>The current browser model is tuned for English. For non-English speech, treat the output as a draft and verify it against the audio.</p>
+      <p class="disclaimer">InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related pages">
+      More: <a href="/">Instagram Transcript</a> &middot;
+      <a href="/video-to-text">Video to Text</a> &middot;
+      <a href="/audio-to-text">Audio to Text</a>
+    </nav>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs in your browser &mdash; no signup.</p>
+    </footer>
+  </div>
+</body>
+</html>

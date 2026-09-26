@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert an Instagram video to text from a public URL or saved file. Get timestamped transcript text, TXT and SRT downloads in your browser.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Instagram Video to Text: Transcript, TXT and SRT | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/instagram-video-to-text">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Instagram Video to Text</h1>
+      <p class="tagline">Turn a Reel or saved Instagram video into timestamped text</p>
+      <nav class="page-nav" aria-label="Transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+        <a href="/video-to-text">Video to Text</a>
+      </nav>
+    </header>
+
+    <main class="content-card answer-first">
+      <h2>The short answer</h2>
+      <p>To convert an Instagram video to text, open the <a href="/">Instagram Transcript</a> tool and paste a public Instagram URL, or upload a saved MP4, MOV or WebM file. InstaScript transcribes the spoken audio in your browser, keeps timestamped segments, and lets you copy the result or download <strong>TXT</strong> or <strong>SRT</strong>.</p>
+      <ol class="steps">
+        <li>Choose <strong>Paste URL</strong> for a public video that opens without a login, or choose <strong>Upload File</strong> for a saved copy.</li>
+        <li>Wait for the media to load and for the browser speech model to process the audio.</li>
+        <li>Review the timestamps, then copy the transcript or download TXT for notes and SRT for subtitles.</li>
+      </ol>
+      <p class="bench-note"><strong>Important:</strong> this converts spoken audio to text. It does not extract the written Instagram caption, comments, or text burned into the video.</p>
+    </main>
+
+    <section class="content-card">
+      <h2>Public Instagram URL or saved video?</h2>
+      <p>Use a public URL when the post can be opened without an Instagram login and its media can be reached by the fetch path. The page needs the URL only to obtain the public media; speech recognition starts in your browser after the media is available.</p>
+      <p>Upload a saved file when the post is private, deleted, login-gated, region-restricted, or the URL returns a page without playable media. The upload path accepts MP4, MOV and WebM files up to 100 MB. Use only a copy you have permission to process.</p>
+      <p>A correct-looking link can still fail because a session is required, the media address has expired, or the response has no audio track. A saved file bypasses that URL-specific failure, but a silent video still has no spoken words to transcribe.</p>
+
+      <h2>What the text output looks like</h2>
+      <p>The result is divided into recognized speech segments and tied to the point where each segment begins:</p>
+      <pre class="example">[00:00] The first step is to open the video tool
+[00:05] then choose the saved Instagram file
+[00:11] and download the transcript as subtitles</pre>
+      <p><strong>TXT</strong> is best for searching, editing, quoting, and notes. <strong>SRT</strong> adds numbered subtitle cues with start and end times for a compatible editor or player. The SRT is made from recognized speech segments; it is not Instagram's original caption track.</p>
+
+      <h2>Where processing happens</h2>
+      <p>For an uploaded file, the page decodes the media and runs the English speech model on your device. The file is not placed in an upload queue, and the transcript is not stored as an account record. For a public URL, the site has to fetch the public media first, so that network step is different from the local upload path.</p>
+      <p>The browser model works in short audio passes. The first visit can take longer because the model must load; later runs can reuse the cached model. The privacy boundary and current limits are described on the <a href="/privacy">privacy page</a>.</p>
+
+      <h2>How long does Instagram video to text take?</h2>
+      <p>These are measured browser timings on one machine using the WASM path. They are single observations, not averages, and do not include the time needed to fetch a particular Instagram URL.</p>
+      <table class="bench-table">
+        <thead><tr><th>Audio length</th><th>Wall-clock time</th><th>Model state</th></tr></thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>first run, model load included</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>cached</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>cached</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>cached</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>cached</td></tr>
+        </tbody>
+      </table>
+      <p class="bench-note">The raw rows and method are published in the <a href="https://github.com/nickwebt800/instascript/tree/main/benchmark">benchmark directory</a>. Your device, browser cache, connection, and audio can change the result.</p>
+
+      <h2>Check the transcript before using it</h2>
+      <p>Music, sound effects, fast speech, accents, names, numbers, and overlapping speakers can change the output. Replay the relevant timestamp before publishing a quote or using the words as an official record. The current browser model is English-focused, so non-English speech should be treated as a draft.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I convert a private Instagram video from its URL?</h3>
+      <p>No. The public URL path needs media available without a login. If you are allowed to use the video, save it and upload the local file instead.</p>
+      <h3>Does this read text written in the Reel?</h3>
+      <p>No. It recognizes spoken audio. Post captions, comments, and text displayed inside the frames are separate content.</p>
+      <h3>Which file should I download?</h3>
+      <p>Choose TXT for a plain transcript and SRT when you need timestamped subtitles in a compatible editor or player.</p>
+      <h3>Is InstaScript affiliated with Instagram?</h3>
+      <p>No. InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
+
+      <p class="disclaimer">Keep permission, privacy, and copyright in mind when saving or republishing an Instagram video or its transcript.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related pages">
+      More:
+      <a href="/">Instagram Transcript</a> &middot;
+      <a href="/instagram-transcript-generator">Instagram Transcript Generator</a> &middot;
+      <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &middot;
+      <a href="/video-to-text">Video to Text</a>
+    </nav>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+        <a href="/instagram-video-to-text">Instagram Video to Text</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/tiktok-transcript">TikTok Transcript</a>
+        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs in your browser &mdash; no signup.</p>
+    </footer>
+  </div>
+</body>
+</html>

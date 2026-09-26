@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turn a public Instagram Reel URL or saved file into timestamped spoken text with TXT and SRT downloads in your browser.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Reels to Text: Spoken Transcript, TXT and SRT | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/reels-to-text">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Reels to Text</h1>
+      <p class="tagline">Turn a public Reel or saved file into timestamped spoken text</p>
+      <nav class="page-nav" aria-label="Transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+        <a href="/instagram-video-to-text">Instagram Video to Text</a>
+        <a href="/video-to-text">Video to Text</a>
+      </nav>
+    </header>
+
+    <main class="content-card answer-first">
+      <h2>The direct answer</h2>
+      <p>To turn a Reel into text, open the <a href="/">Instagram Transcript</a> tool and paste a public Reel URL, or upload a saved MP4, MOV or WebM file. It recognizes spoken audio in your browser and provides timestamped text plus TXT and SRT downloads.</p>
+      <ol class="steps">
+        <li>Choose <strong>Paste URL</strong> for a public Reel, or <strong>Upload File</strong> for a saved copy.</li>
+        <li>Let the media load and the browser speech model finish.</li>
+        <li>Check the timestamps, then copy the text or download TXT/SRT.</li>
+      </ol>
+      <p class="bench-note"><strong>Scope:</strong> this is a speech transcript. It does not extract captions, comments, hashtags, or words printed inside the video frames.</p>
+    </main>
+
+    <section class="content-card">
+      <h2>Public Reel URL or saved file?</h2>
+      <p>Use a public URL when it opens without a login and its media is reachable. Use a saved file for private, deleted, region-limited, or login-gated Reels. A link can still fail if its media address expired or the video has no audio; a silent file has no speech to recognize.</p>
+
+      <h2>Timestamped output</h2>
+      <pre class="example">[00:00] Open the Reel transcript tool
+[00:04] paste a public link or select the saved file
+[00:10] review the words before you publish them</pre>
+      <p><strong>TXT</strong> is useful for searching and editing. <strong>SRT</strong> adds numbered start/end cues for subtitle editors and players. It is generated from recognized speech, not Instagram's original caption track.</p>
+
+      <h2>Processing boundary</h2>
+      <p>Uploaded media is decoded and transcribed on your device. A public URL is fetched first, then the browser handles speech recognition. The first run can be slower while the model downloads; later runs may use its cache.</p>
+
+      <h2>Measured browser timings</h2>
+      <table class="bench-table"><thead><tr><th>Audio length</th><th>Wall-clock time</th><th>Model state</th></tr></thead><tbody>
+        <tr><td>11 s</td><td>16.89 s</td><td>first run, model load included</td></tr>
+        <tr><td>11 s</td><td>6.49 s</td><td>cached</td></tr>
+        <tr><td>30 s</td><td>8.98 s</td><td>cached</td></tr>
+        <tr><td>60 s</td><td>16.06 s</td><td>cached</td></tr>
+        <tr><td>120 s</td><td>28.58 s</td><td>cached</td></tr>
+      </tbody></table>
+      <p class="bench-note">Single WASM observations on one laptop; URL fetch time is not included. See the <a href="https://github.com/nickwebt800/instascript/tree/main/benchmark">raw benchmark</a> for method and limits.</p>
+
+      <h2>Review before publishing</h2>
+      <p>Music, effects, accents, names, numbers, fast speech, and overlapping speakers can change the result. Replay important timestamps. Non-English speech is a draft with the current English-focused browser model.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I use a private Reel URL?</h3><p>No. Upload a saved copy you have permission to process.</p>
+      <h3>Does it read words shown on screen?</h3><p>No. It recognizes spoken audio; use OCR for text in the frames.</p>
+      <h3>Which download should I choose?</h3><p>Choose TXT for plain text and SRT for timestamped subtitles.</p>
+      <h3>Is InstaScript affiliated with Instagram?</h3><p>No. InstaScript is independent of Instagram and Meta.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &middot; <a href="/instagram-video-to-text">Instagram Video to Text</a> &middot; <a href="/video-to-text">Video to Text</a></nav>
+    <footer class="footer"><nav class="footer-nav"><a href="/">Instagram Transcript</a> <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> <a href="/reels-to-text">Reels to Text</a> <a href="/instagram-video-to-text">Instagram Video to Text</a> <a href="/video-to-text">Video to Text</a> <a href="/audio-to-text">Audio to Text</a> <a href="/privacy">Privacy Policy</a> <a href="/about">About</a> <a href="/contact">Contact</a></nav><p>Runs in your browser &mdash; no signup.</p></footer>
+  </div>
+</body>
+</html>

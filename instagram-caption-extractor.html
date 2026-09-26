@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instagram caption extractor guide: separate written post captions from spoken transcript text, verify OCR limits, and export a checked TXT or SRT file.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Instagram Caption Extractor: Caption Text vs Transcript | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/instagram-caption-extractor">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Instagram Caption Extractor</h1>
+      <p class="tagline">Tell written captions apart from spoken words before you export</p>
+      <nav class="page-nav" aria-label="Transcript tools">
+        <a href="/">Instagram Transcript</a>
+        <a href="/reels-to-text">Reels to Text</a>
+        <a href="/instagram-video-to-text">Instagram Video to Text</a>
+        <a href="/video-to-text">Video to Text</a>
+      </nav>
+    </header>
+
+    <main class="content-card answer-first">
+      <h2>The short answer</h2>
+      <p>An Instagram caption extractor can mean two different things. The <strong>post caption</strong> is the written text below a post; the <strong>video transcript</strong> is the speech in the audio. InstaScript handles the second: open the <a href="/">Instagram Transcript</a> tool, paste a public URL or upload a saved video, then review and download the spoken words as TXT or SRT.</p>
+      <ol class="steps">
+        <li>Decide whether you need the post description, words spoken in the video, or text visible in its frames.</li>
+        <li>For spoken words, paste a public URL or upload an MP4, MOV or WebM file.</li>
+        <li>Check the timestamped result against the audio before quoting or publishing it.</li>
+      </ol>
+      <p class="bench-note"><strong>Boundary:</strong> the transcript tool does not scrape Instagram's written caption, comments, hashtags, or text printed inside a frame.</p>
+    </main>
+
+    <section class="content-card">
+      <h2>Three kinds of Instagram text</h2>
+      <table class="bench-table">
+        <thead><tr><th>Text you want</th><th>Where it lives</th><th>Best check</th></tr></thead>
+        <tbody>
+          <tr><td>Post caption</td><td>The description under the post</td><td>Read or copy it from the post page while signed in if required</td></tr>
+          <tr><td>Spoken transcript</td><td>Audio in the saved video or public media</td><td>Run the file through the browser transcript tool, then replay timestamps</td></tr>
+          <tr><td>On-screen words</td><td>Text rendered in a video frame</td><td>Inspect the frame or use a separate OCR workflow</td></tr>
+        </tbody>
+      </table>
+      <p>Calling all three “captions” creates bad exports. A post description may contain hashtags that are never spoken, while a transcript may contain words absent from the description. Keep the source type in the filename or notes so a later editor knows what was extracted.</p>
+
+      <h2>How to extract and verify spoken caption text</h2>
+      <p>Use a public URL only when the post opens without a login and its media can be fetched. A private, removed, region-limited, or expired link can return a page without playable audio. Save a copy you have permission to process and upload that file instead. Uploads accept MP4, MOV and WebM files up to 100 MB.</p>
+      <p>After processing, compare the transcript with the waveform or replay each important segment. A useful review pass checks names, numbers, URLs, product terms, and any sentence spoken over music. Mark uncertain words rather than silently “fixing” them.</p>
+      <pre class="example">[00:00] The caption says one thing
+[00:04] but the speaker adds a second detail
+[00:09] so I keep both sources in my notes</pre>
+      <p>Download <strong>TXT</strong> for searchable notes and <strong>SRT</strong> when an editor or player needs numbered subtitle cues. The SRT contains recognized speech segments and timestamps; it is not a copy of Instagram's post caption.</p>
+
+      <h2>Accuracy checks that catch real errors</h2>
+      <ul>
+        <li><strong>Music:</strong> replay short sections where lyrics or sound effects overlap speech.</li>
+        <li><strong>Two speakers:</strong> label the speaker yourself; the output is text with timing, not speaker diarization.</li>
+        <li><strong>Accents and names:</strong> check proper nouns against the original audio and a trusted spelling.</li>
+        <li><strong>Non-English speech:</strong> treat the English-focused browser model as a draft and verify every important line.</li>
+        <li><strong>On-screen text:</strong> pause the video and inspect the frame; speech recognition cannot see pixels.</li>
+      </ul>
+
+      <h2>Privacy and processing boundary</h2>
+      <p>For an uploaded file, decoding and speech recognition run on your device. A public URL still needs a network fetch to obtain media before local processing begins. No account record is created for the transcript, but you remain responsible for permission to save and use the video.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can this copy the written Instagram post caption?</h3>
+      <p>No. This page points you to the distinction and transcribes spoken audio. Copy the written description from the post itself when you are allowed to access it.</p>
+      <h3>Can it read words displayed in a Reel?</h3>
+      <p>No. Text burned into frames requires visual inspection or OCR. The transcript covers speech only.</p>
+      <h3>What should I publish after extraction?</h3>
+      <p>Keep the original media, the TXT or SRT file, and a short review note with the timestamps you checked. That makes corrections traceable.</p>
+      <h3>Is InstaScript affiliated with Instagram?</h3>
+      <p>No. InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
+
+      <p class="disclaimer">Respect privacy, permission, and copyright when saving, extracting, or republishing Instagram content.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related pages">
+      More:
+      <a href="/">Instagram Transcript</a> &middot;
+      <a href="/reels-to-text">Reels to Text</a> &middot;
+      <a href="/instagram-video-to-text">Instagram Video to Text</a> &middot;
+      <a href="/privacy">Privacy Policy</a>
+    </nav>
+
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+        <a href="/instagram-video-to-text">Instagram Video to Text</a>
+        <a href="/reels-to-text">Reels to Text</a>
+        <a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+        <a href="/video-to-text">Video to Text</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs in your browser &mdash; no signup.</p>
+    </footer>
+  </div>
+</body>
+</html>

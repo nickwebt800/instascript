@@ -38,6 +38,11 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 
 ## More transcription tools
 
+- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — transcribe a public Reel URL or saved video, then download TXT or SRT.
+- [Instagram Video to Text](https://instascript.app/instagram-video-to-text) — convert a public Instagram video or saved file into timestamped spoken text.
+- [Reels to Text](https://instascript.app/reels-to-text) — turn a public Reel or saved file into timestamped spoken text.
+- [Instagram Caption Extractor](https://instascript.app/instagram-caption-extractor) — separate written post captions from spoken transcript text and verify the result.
+- [TXT to SRT Converter](https://instascript.app/txt-to-srt) — turn plain text or an existing subtitle file into editable SRT or VTT in the browser.
 - [Video to Text](https://instascript.app/video-to-text) — turn an MP4, MOV or WebM file into a timestamped video transcript.
 - [Audio to Text](https://instascript.app/audio-to-text) — transcribe an MP3, WAV or voice memo into written text.
 - [TikTok Transcript](https://instascript.app/tiktok-transcript) — save a TikTok video and read what is said in it.

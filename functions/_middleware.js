@@ -35,6 +35,54 @@ const PAGES = [
     keywords: ["video", "video to text", "mp4", "mov", "webm", "transcribe video"],
   },
   {
+    title: "Instagram Transcript Generator",
+    url: ORIGIN + "/instagram-transcript-generator",
+    summary: "Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.",
+    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
+    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
+    keywords: ["instagram transcript generator", "instagram transcript", "reel transcript", "srt", "txt"],
+  },
+  {
+    title: "Instagram Reels Transcript",
+    url: ORIGIN + "/instagram-reels-transcript",
+    summary: "Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.",
+    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
+    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
+    keywords: ["instagram reels transcript", "instagram reel transcript", "reels transcript", "srt", "txt"],
+  },
+  {
+    title: "Instagram Video to Text",
+    url: ORIGIN + "/instagram-video-to-text",
+    summary: "Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.",
+    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM"],
+    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
+    keywords: ["instagram video to text", "instagram video transcript", "video to text", "srt", "txt"],
+  },
+  {
+    title: "Reels to Text",
+    url: ORIGIN + "/reels-to-text",
+    summary: "Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.",
+    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
+    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
+    keywords: ["reels to text", "reel transcript", "instagram reel", "srt", "txt"],
+  },
+  {
+    title: "Instagram Caption Extractor",
+    url: ORIGIN + "/instagram-caption-extractor",
+    summary: "Separate written Instagram post captions from spoken transcript text and verify the result before export.",
+    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM"],
+    limits: ["spoken audio only", "English-focused browser model", "written captions and on-screen text need separate checks"],
+    keywords: ["instagram caption extractor", "instagram caption", "caption text", "reel caption", "transcript"],
+  },
+  {
+    title: "TXT to SRT Converter",
+    url: ORIGIN + "/txt-to-srt",
+    summary: "Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.",
+    accepts: ["UTF-8 TXT", "SRT", "VTT"],
+    limits: ["one local text file at a time", "no audio transcription", "no upload or account"],
+    keywords: ["txt to srt", "txt to srt converter", "text to srt", "txt file to srt", "srt", "vtt", "subtitles"],
+  },
+  {
     title: "Transcribe Audio",
     url: ORIGIN + "/audio-to-text",
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
@@ -487,6 +535,13 @@ const KNOWN_FILES = new Set([
   "/how-to-get-a-transcript-of-a-youtube-video.md",
   "/index.html",
   "/index.md",
+  "/instagram-reels-transcript.html",
+  "/instagram-transcript-generator.html",
+  "/instagram-video-to-text.html",
+  "/instagram-caption-extractor.html",
+  "/txt-to-srt.html",
+  "/txt-to-srt.js",
+  "/reels-to-text.html",
   "/js/webmcp.js",
   "/js/youtube-transcript-download.js",
   "/js/youtube-transcript.js",
@@ -563,6 +618,8 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
+  <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
+  <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/about">About</a></li>
   <li><a href="/contact">Contact</a></li>
 </ul>
@@ -603,6 +660,12 @@ const MD_MAP = {
   "/privacy.html": "/privacy.md",
   "/contact": "/contact.md",
   "/contact.html": "/contact.md",
+  "/instagram-video-to-text": "/instagram-video-to-text.md",
+  "/instagram-video-to-text.html": "/instagram-video-to-text.md",
+  "/instagram-caption-extractor": "/instagram-caption-extractor.md",
+  "/instagram-caption-extractor.html": "/instagram-caption-extractor.md",
+  "/reels-to-text": "/reels-to-text.md",
+  "/reels-to-text.html": "/reels-to-text.md",
 };
 
 function wantsMarkdown(request) {
