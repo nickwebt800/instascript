@@ -612,17 +612,35 @@ body {
 }
 
 .page-nav a {
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 6px;
   color: var(--text-muted);
   text-decoration: none;
   white-space: nowrap;
-  border-bottom: 1px solid transparent;
   transition: color 0.15s ease;
 }
 
 .page-nav a:hover {
   color: var(--primary);
-  border-bottom-color: var(--primary);
+  border-color: var(--border);
+  background: var(--surface);
 }
+
+.page-nav a[aria-current="page"] {
+  color: var(--primary);
+  border-color: rgba(217,83,63,.28);
+  background: var(--primary-light);
+  font-weight: 700;
+}
+
+.tool-header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-header .brand a { color: var(--text); }
+.tool-header .brand a:hover { color: var(--primary); }
 
 /* ===== Home tool index ===== */
 .tool-index {
@@ -835,6 +853,11 @@ html:has(body.subtitle-converter-page) { overflow-x: hidden; }
   box-shadow: var(--shadow);
   padding: 28px;
   margin-bottom: 28px;
+}
+
+.subtitle-tool .tool-intro-row {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
 }
 .tool-intro-row,
 .editor-header,
