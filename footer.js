@@ -18,6 +18,7 @@
       ["How to Get a YouTube Transcript", "/how-to-get-a-transcript-of-a-youtube-video"]
     ]},
     { title: "Subtitle tools", links: [
+      ["Subtitle Editor", "/subtitle-editor"],
       ["TXT to SRT", "/txt-to-srt"],
       ["VTT to SRT", "/vtt-to-srt"],
       ["SRT to Text", "/srt-to-text"]

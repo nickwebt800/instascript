@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit SRT, VTT or SBV subtitle files in your browser. Change timing and text, add or remove cues, shift all timecodes, export SRT or VTT. No upload, no account.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/subtitle-editor">
+  <title>Subtitle Editor | Edit SRT and VTT in Your Browser | InstaScript</title>
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="subtitle-converter-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Subtitle Editor</h1>
+      <p class="tagline">Edit SRT, VTT or SBV subtitles in your browser</p>
+      <nav class="page-nav" aria-label="Subtitle tools">
+        <a href="/subtitle-editor" aria-current="page">Subtitle Editor</a>
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/srt-to-text">SRT to Text</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="tool-title">
+      <div class="tool-intro-row">
+        <div>
+          <h2 id="tool-title">Open or paste a subtitle file</h2>
+          <p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p>
+        </div>
+        <label class="file-button" for="subtitleFile">Open SRT / VTT / SBV<input id="subtitleFile" type="file" accept=".srt,.vtt,.sbv,application/x-subrip,text/vtt,text/plain" hidden></label>
+      </div>
+
+      <label class="sr-only" for="subtitleText">Subtitle text</label>
+      <textarea id="subtitleText" class="source-text converter-source" rows="10" spellcheck="false" placeholder="Paste SRT, VTT or SBV subtitle text here..."></textarea>
+      <p class="input-hint">Accepted input: one local .srt, .vtt or .sbv file, or pasted subtitle text.</p>
+
+      <div class="converter-controls">
+        <button id="loadBtn" class="btn-primary" type="button">Load into editor</button>
+        <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
+      </div>
+      <p id="editorStatus" class="tool-status" role="status" aria-live="polite"></p>
+
+      <section id="editorSection" class="subtitle-editor hidden" aria-labelledby="editor-title">
+        <div class="editor-header">
+          <div>
+            <h2 id="editor-title">Edit your subtitles</h2>
+            <p>Change any timecode or caption. Add or remove entries. Shift all times at once.</p>
+          </div>
+          <button id="addRowBtn" class="btn-ghost" type="button">Add entry</button>
+        </div>
+
+        <div class="shift-row" style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap;">
+          <label style="font-size:.84rem;color:var(--text-muted);">Shift all times (seconds)
+            <input id="shiftSeconds" type="number" step="0.1" inputmode="numeric" style="display:block;width:130px;padding:7px;border:1px solid var(--border);border-radius:5px;font:.86rem var(--font);color:var(--text);background:#fff;margin-top:4px;">
+          </label>
+          <button id="applyShiftBtn" class="btn-ghost" type="button">Apply shift</button>
+        </div>
+
+        <div class="editor-scroll">
+          <table class="subtitle-table">
+            <thead><tr><th scope="col">#</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Caption</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead>
+            <tbody id="subtitleRows"></tbody>
+          </table>
+        </div>
+        <div class="export-actions">
+          <button id="copySrtBtn" class="btn-primary" type="button">Copy SRT</button>
+          <button id="downloadSrtBtn" class="btn-ghost" type="button">Download SRT</button>
+          <button id="downloadVttBtn" class="btn-ghost" type="button">Download VTT</button>
+        </div>
+      </section>
+    </main>
+
+    <section class="content-card reading">
+      <h2>What this subtitle editor does</h2>
+      <p>A subtitle editor lets you open an existing subtitle file, change the text and timing of each cue, add or remove entries, and export the result. This page reads one <strong>SRT</strong>, <strong>VTT</strong> or <strong>SBV</strong> file at a time, parses it into individual cues, and shows them in an editable table where you can fix start times, end times and caption text before exporting.</p>
+      <p>Each cue becomes one row. Change the start or end time and the new value takes effect immediately. Edit the caption text to fix typos, rephrase, or trim a line. Add a new entry with the <strong>Add entry</strong> button, or remove one with its <strong>Remove</strong> button. The <strong>Shift all times</strong> field adds or subtracts a number of seconds from every timecode at once, which is the fastest way to fix a subtitle file that is uniformly early or late.</p>
+      <p>Everything runs in your browser. No subtitle text is uploaded, no account is required, and nothing is stored after you leave the page.</p>
+
+      <h2>Supported formats</h2>
+      <p>This subtitle editor reads <strong>SRT</strong> (numbered cues with comma-separated milliseconds), <strong>WebVTT</strong> (WEBVTT header with period-separated milliseconds), and <strong>SBV</strong> (comma-separated time ranges). Output is standard <strong>SRT</strong> or <strong>WebVTT</strong>. Cue order, time ranges, line breaks and subtitle text are preserved during editing.</p>
+      <p>The editor handles one local file at a time. It does not transcribe audio, merge multiple files, store projects, require a login, or send subtitle text to a server.</p>
+
+      <h2>How editing works</h2>
+      <p>When you load a subtitle file, each cue is split into a start time, an end time and its caption text. These appear as editable fields in the table. Timecodes use the <code>HH:MM:SS,mmm</code> format for SRT and <code>HH:MM:SS.mmm</code> for VTT. You can type times in any common shorthand such as <code>1:23.4</code> or <code>00:01:23,400</code> and the editor reads the numbers.</p>
+      <p>Shifting all timecodes is arithmetic: the editor adds your shift value (in seconds) to every start and end time. Negative values move subtitles earlier. Times below zero are clamped to zero so the cue does not get a negative start.</p>
+      <p>If a source has a cue that does not match SRT, VTT or SBV syntax, the editor reports that no usable cues were found so you can correct the pasted text.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I edit SRT files without uploading them?</h3>
+      <p>Yes. Open one local SRT file or paste its text. Parsing and editing happen in this browser only.</p>
+      <h3>Can I edit VTT files here too?</h3>
+      <p>Yes. Paste or open a VTT file. The WEBVTT header and period-separated milliseconds are handled automatically.</p>
+      <h3>Does this subtitle editor support SBV?</h3>
+      <p>Yes. SBV input with comma-separated time ranges is accepted. Export as SRT or VTT.</p>
+      <h3>Can I shift all subtitle times at once?</h3>
+      <p>Yes. Enter a number of seconds in the <strong>Shift all times</strong> field and click <strong>Apply shift</strong>. Use a negative number to move subtitles earlier.</p>
+      <h3>Can I edit several subtitle files at once?</h3>
+      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
+      <h3>Does this editor show a video preview?</h3>
+ <p>No. This editor works on the subtitle text and timecodes only. It does not play a video or show an audio waveform. If you need to check the result against the video, export the SRT or VTT and open it in your media player.</p>
+      <h3>How do I get subtitles to edit?</h3>
+      <p>If you have a video or audio file and need text first, use the <a href="/">Instagram Transcript</a> tool or <a href="/video-to-text">Video to Text</a> to get an SRT. Then open that SRT here to edit timing and captions. If you have plain text and want to build subtitles from scratch, use the <a href="/txt-to-srt">TXT to SRT Converter</a>.</p>
+    </section>
+
+    <footer class="footer" data-site-footer>
+      <nav class="footer-nav">
+        <a href="/">Instagram Transcript</a>
+        <a href="/txt-to-srt">TXT to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/srt-to-text">SRT to Text</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+  <script src="/subtitle-editor.js" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+  <script src="/footer.js?v=hierarchy-20260927" defer></script>
+</body>
+</html>

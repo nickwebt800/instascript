@@ -91,6 +91,14 @@ const PAGES = [
     keywords: ["vtt to srt", "srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
   },
   {
+    title: "Subtitle Editor",
+    url: ORIGIN + "/subtitle-editor",
+    summary: "Edit an SRT, VTT or SBV file in the browser. Change cue timing and text, add or remove entries, shift all timecodes, export SRT or VTT.",
+    accepts: ["SRT", "VTT", "SBV", "pasted subtitle text"],
+    limits: ["one local subtitle file at a time", "no video preview or audio waveform", "no audio transcription", "no upload or account"],
+    keywords: ["subtitle editor", "srt editor", "vtt editor", "edit subtitles", "subtitle timing", "caption editor"],
+  },
+  {
     title: "SRT to Text Converter",
     url: ORIGIN + "/srt-to-text",
     summary: "Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.",
@@ -560,6 +568,9 @@ const KNOWN_FILES = new Set([
   "/txt-to-srt.js",
   "/vtt-to-srt.html",
   "/vtt-to-srt.js",
+  "/subtitle-editor.html",
+  "/subtitle-editor.js",
+  "/subtitle-editor.md",
   "/srt-to-text.html",
   "/srt-to-text.js",
   "/reels-to-text.html",
@@ -640,6 +651,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
+  <li><a href="/subtitle-editor">Subtitle Editor</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
   <li><a href="/srt-to-text">SRT to Text Converter</a></li>
@@ -689,6 +701,8 @@ const MD_MAP = {
   "/instagram-caption-extractor.html": "/instagram-caption-extractor.md",
   "/reels-to-text": "/reels-to-text.md",
   "/reels-to-text.html": "/reels-to-text.md",
+  "/subtitle-editor": "/subtitle-editor.md",
+  "/subtitle-editor.html": "/subtitle-editor.md",
 };
 
 function wantsMarkdown(request) {
