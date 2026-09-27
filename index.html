@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#f8f9fa">
   <meta name="saashub-verification" content="t8k05b7qh311" />
   <title>InstaScript - Instagram Transcript Tool</title>
-  <link rel="stylesheet" href="/style.css?v=design-20260927c">
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
 </head>
 <body>
   <div class="container">
@@ -18,13 +18,13 @@
 
     <main class="tool-card">
       <!-- Tab switch -->
-      <div class="tabs">
-        <button class="tab active" data-tab="upload">Upload File</button>
-        <button class="tab" data-tab="url">Paste URL</button>
+      <div class="tabs" role="tablist" aria-label="Transcript input method">
+        <button class="tab active" id="tab-upload" role="tab" aria-selected="true" aria-controls="panel-upload" data-tab="upload">Upload File</button>
+        <button class="tab" id="tab-url" role="tab" aria-selected="false" aria-controls="panel-url" data-tab="url">Paste URL</button>
       </div>
 
       <!-- Upload panel -->
-      <div class="tab-panel active" id="panel-upload">
+      <div class="tab-panel active" id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
         <div class="drop-zone" id="dropZone">
           <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
             <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,7 +43,7 @@
       </div>
 
       <!-- URL panel -->
-      <div class="tab-panel" id="panel-url">
+      <div class="tab-panel" id="panel-url" role="tabpanel" aria-labelledby="tab-url">
         <div class="url-group">
           <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
           <button id="urlBtn" class="btn-primary">Get Transcript</button>
@@ -128,25 +128,40 @@
       <p>Yes. Paste a public Instagram Reel or video post URL above. The page fetches the media link, while the speech recognition runs in your browser and returns the transcript when the audio is supported.</p>
     </section>
 
-    <section class="tool-index">
-      <h2>More transcription tools</h2>
-      <ul>
-        <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a> &mdash; timestamped Reel text with TXT and SRT downloads.</li>
-        <li><a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &mdash; public Reel URLs or saved files, with timestamped text and SRT output.</li>
-        <li><a href="/instagram-video-to-text">Instagram Video to Text</a> &mdash; convert a public Instagram video or saved file into timestamped spoken text.</li>
-        <li><a href="/reels-to-text">Reels to Text</a> &mdash; turn a public Reel or saved file into timestamped spoken text.</li>
-        <li><a href="/instagram-caption-extractor">Instagram Caption Extractor</a> &mdash; separate written post captions from spoken transcript text and verify the result.</li>
-        <li><a href="/video-to-text">Video to Text</a> &mdash; turn an MP4, MOV or WebM file into a timestamped video transcript.</li>
-        <li><a href="/audio-to-text">Audio to Text</a> &mdash; transcribe an MP3, WAV or voice memo into written text.</li>
-        <li><a href="/tiktok-transcript">TikTok Transcript</a> &mdash; save a TikTok video and read what is said in it.</li>
-        <li><a href="/facebook-video-transcript">Facebook Video Transcript</a> &mdash; get the spoken words out of a Facebook video file.</li>
-        <li><a href="/youtube-transcript">YouTube Transcript</a> &mdash; paste a YouTube link and read the caption track it already has.</li>
-        <li><a href="/youtube-transcript-download">YouTube Transcript Download</a> &mdash; take that same caption track away as a TXT or SRT file.</li>
-        <li><a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a> &mdash; the four steps on YouTube itself, and what the transcript panel really hands you.</li>
-        <li><a href="/txt-to-srt">TXT to SRT Converter</a> &mdash; turn plain text or an existing subtitle file into editable SRT or VTT.</li>
-        <li><a href="/vtt-to-srt">VTT to SRT Converter</a> &mdash; convert VTT, SRT or SBV subtitles to SRT or VTT in the browser.</li>
-        <li><a href="/srt-to-text">SRT to Text Converter</a> &mdash; remove SRT or VTT timecodes and copy clean plain text in the browser.</li>
-      </ul>
+    <section class="tool-index" aria-labelledby="tool-index-title">
+      <h2 id="tool-index-title">Tools by task</h2>
+      <div class="tool-groups">
+        <section class="tool-group" aria-labelledby="transcript-tools-title">
+          <h3 id="transcript-tools-title">Transcript tools</h3>
+          <ul>
+            <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a> &mdash; timestamped Reel text with TXT and SRT downloads.</li>
+            <li><a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &mdash; public Reel URLs or saved files, with timestamped text and SRT output.</li>
+            <li><a href="/instagram-video-to-text">Instagram Video to Text</a> &mdash; convert a public Instagram video or saved file into timestamped spoken text.</li>
+            <li><a href="/reels-to-text">Reels to Text</a> &mdash; turn a public Reel or saved file into timestamped spoken text.</li>
+            <li><a href="/instagram-caption-extractor">Instagram Caption Extractor</a> &mdash; separate written post captions from spoken transcript text and verify the result.</li>
+            <li><a href="/video-to-text">Video to Text</a> &mdash; turn an MP4, MOV or WebM file into a timestamped video transcript.</li>
+            <li><a href="/audio-to-text">Audio to Text</a> &mdash; transcribe an MP3, WAV or voice memo into written text.</li>
+            <li><a href="/tiktok-transcript">TikTok Transcript</a> &mdash; save a TikTok video and read what is said in it.</li>
+            <li><a href="/facebook-video-transcript">Facebook Video Transcript</a> &mdash; get the spoken words out of a Facebook video file.</li>
+          </ul>
+        </section>
+        <section class="tool-group" aria-labelledby="youtube-tools-title">
+          <h3 id="youtube-tools-title">YouTube tools</h3>
+          <ul>
+            <li><a href="/youtube-transcript">YouTube Transcript</a> &mdash; paste a YouTube link and read the caption track it already has.</li>
+            <li><a href="/youtube-transcript-download">YouTube Transcript Download</a> &mdash; take that same caption track away as a TXT or SRT file.</li>
+            <li><a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a> &mdash; the four steps on YouTube itself, and what the transcript panel really hands you.</li>
+          </ul>
+        </section>
+        <section class="tool-group" aria-labelledby="subtitle-tools-title">
+          <h3 id="subtitle-tools-title">Subtitle tools</h3>
+          <ul>
+            <li><a href="/txt-to-srt">TXT to SRT Converter</a> &mdash; turn plain text or an existing subtitle file into editable SRT or VTT.</li>
+            <li><a href="/vtt-to-srt">VTT to SRT Converter</a> &mdash; convert VTT, SRT or SBV subtitles to SRT or VTT in the browser.</li>
+            <li><a href="/srt-to-text">SRT to Text Converter</a> &mdash; remove SRT or VTT timecodes and copy clean plain text in the browser.</li>
+          </ul>
+        </section>
+      </div>
     </section>
 
     <section class="content-card">
@@ -186,7 +201,7 @@
     </footer>
   </div>
 
-  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script type="module" src="app.js?v=homepage-input-20260927"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>
 </body>

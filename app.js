@@ -46,9 +46,13 @@ let lastResult = null;
 // ── Tab switching ──
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    tabs.forEach((t) => t.classList.remove("active"));
+    tabs.forEach((t) => {
+      t.classList.remove("active");
+      t.setAttribute("aria-selected", "false");
+    });
     panels.forEach((p) => p.classList.remove("active"));
     tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
     $("panel-" + tab.dataset.tab).classList.add("active");
     hideError();
   });
