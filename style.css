@@ -1165,6 +1165,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   border-top-color: var(--line);
 }
 .content-card h2, .tool-index h2 { font-size: 1.75rem; letter-spacing: -.045em; }
+.content-title { margin: 0 0 24px; color: var(--ink); font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -.045em; line-height: 1.08; }
 .content-card h3 { font-size: 1rem; }
 .content-card p, .content-card ul li { font-size: .95rem; line-height: 1.75; }
 .bench-table { margin-top: 20px; font-size: .88rem; }
