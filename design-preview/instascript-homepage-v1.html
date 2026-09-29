@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InstaScript concept preview</title>
+  <style>
+    :root {
+      --canvas: #f6f7f8;
+      --surface: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e2e7ed;
+      --accent: #d9533f;
+      --accent-deep: #b94332;
+      --accent-soft: #fff0ec;
+      --radius: 14px;
+      --shadow: 0 18px 50px rgba(23, 32, 51, .09);
+      --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: var(--font);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { width: 100%; max-width: 1180px; margin: 0 auto; padding: 26px 28px 72px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; font-size: 20px; }
+    .brand-mark { width: 28px; height: 28px; border-radius: 9px; background: var(--accent); display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; box-shadow: 0 5px 14px rgba(217,83,63,.24); }
+    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 72px; align-items: center; padding: 92px 0 78px; }
+    .hero > * { min-width: 0; }
+    .eyebrow { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .13em; font-weight: 800; margin-bottom: 18px; }
+    h1 { max-width: 560px; margin: 0; font-size: clamp(42px, 5vw, 70px); line-height: .98; letter-spacing: -.065em; overflow-wrap: anywhere; }
+    .hero-copy { max-width: 490px; margin: 22px 0 28px; font-size: 18px; color: var(--muted); line-height: 1.6; }
+    .hero-note { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13px; }
+    .shield { width: 18px; height: 18px; border: 1.5px solid var(--accent); border-radius: 6px 6px 9px 9px; position: relative; }
+    .shield::after { content: ""; position: absolute; left: 5px; top: 3px; width: 5px; height: 8px; border-right: 1.5px solid var(--accent); border-bottom: 1.5px solid var(--accent); transform: rotate(45deg); }
+    .tool { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
+    .tool-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .tool-title { font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+    .tool-subtitle { color: var(--muted); font-size: 13px; margin-top: 3px; }
+    .local-badge { color: #18794e; background: #edf9f2; border: 1px solid #c9efd9; border-radius: 999px; padding: 6px 10px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; background: var(--canvas); border-radius: 10px; margin-bottom: 18px; }
+    .tab { border: 0; border-radius: 7px; padding: 10px; background: transparent; color: var(--muted); font: inherit; font-size: 13px; font-weight: 750; }
+    .tab.active { color: var(--ink); background: var(--surface); box-shadow: 0 2px 7px rgba(23,32,51,.08); }
+    .tab-panel[hidden] { display: none; }
+    .panel-hint { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
+    .link { color: var(--accent); text-decoration: underline; }
+    .drop { min-height: 205px; border: 1.5px dashed #c9d1db; border-radius: 12px; display: grid; place-items: center; text-align: center; padding: 24px; background: linear-gradient(180deg, #fff, #fcfdfe); }
+    .drop:hover { border-color: var(--accent); background: var(--accent-soft); }
+    .upload-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 13px; color: var(--accent); background: var(--accent-soft); margin: 0 auto 12px; font-size: 24px; }
+    .drop strong { display: block; font-size: 15px; }
+    .drop span { display: block; color: var(--muted); font-size: 13px; margin-top: 5px; }
+    .format-line { color: var(--muted); font-size: 11px; margin-top: 14px; }
+    .tool-action { width: 100%; border: 0; border-radius: 9px; margin-top: 16px; padding: 13px 16px; color: #fff; background: var(--accent); font: inherit; font-weight: 800; font-size: 14px; }
+    .tool-action:hover { background: var(--accent-deep); }
+    .url-row .tool-action { width: auto; min-width: 145px; margin-top: 0; border: 0; color: #fff; background: var(--accent); }
+    .url-row .tool-action:hover { background: var(--accent-deep); }
+    .file-info { margin-top: 16px; padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--canvas); }
+    .file-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+    .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-size { color: var(--muted); white-space: nowrap; }
+    .url-note { margin-top: 12px; padding: 12px; border: 1px solid #ffe082; border-radius: 9px; color: #8a5b00; background: #fff8e1; font-size: 12px; }
+    .hidden { display: none !important; }
+    .url-row { display: flex; gap: 9px; margin-top: 16px; }
+    .url-row input { min-width: 0; flex: 1; border: 1px solid var(--line); border-radius: 9px; padding: 12px; font: inherit; color: var(--muted); background: #fff; }
+    .url-row button { border: 1px solid var(--accent); border-radius: 9px; padding: 0 16px; color: var(--accent); background: #fff; font: inherit; font-weight: 800; }
+    .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 24px 0; }
+    .trust strong { display: block; font-size: 14px; margin-bottom: 4px; }
+    .trust span { display: block; color: var(--muted); font-size: 13px; }
+    .section { padding: 78px 0 0; }
+    .section-head { max-width: 580px; margin-bottom: 28px; }
+    .section-head h2 { margin: 0 0 9px; font-size: 32px; letter-spacing: -.045em; line-height: 1.05; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 16px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .step { background: var(--surface); padding: 25px; min-height: 142px; }
+    .step-number { color: var(--accent); font-size: 12px; font-weight: 800; margin-bottom: 20px; }
+    .step h3 { margin: 0 0 7px; font-size: 16px; }
+    .step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .proof { display: grid; grid-template-columns: .85fr 1.15fr; gap: 42px; align-items: center; padding: 76px 0 0; }
+    .proof h2 { font-size: 34px; line-height: 1.05; letter-spacing: -.045em; margin: 0 0 12px; }
+    .proof p { color: var(--muted); max-width: 420px; }
+    .transcript { background: #202936; border-radius: 14px; box-shadow: var(--shadow); padding: 22px 24px; color: #edf2f7; }
+    .transcript-bar { color: #aeb8c5; font-size: 11px; display: flex; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.12); margin-bottom: 15px; }
+    .line { display: grid; grid-template-columns: 58px 1fr; gap: 10px; padding: 9px 0; font-size: 13px; }
+    .time { color: #f08b79; font-variant-numeric: tabular-nums; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); margin-top: 78px; padding-top: 22px; color: var(--muted); font-size: 12px; }
+    .seo-section { border-top: 1px solid var(--line); padding: 58px 0 0; margin-top: 78px; }
+    .seo-section h2 { margin: 0 0 10px; font-size: 28px; line-height: 1.1; letter-spacing: -.04em; }
+    .seo-section h3 { margin: 28px 0 8px; font-size: 17px; }
+    .seo-section p { max-width: 75ch; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .benchmark-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+    .benchmark-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 13px; }
+    .benchmark-table th, .benchmark-table td { text-align: left; padding: 13px 15px; border-bottom: 1px solid var(--line); }
+    .benchmark-table th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+    .benchmark-table tr:last-child td { border-bottom: 0; }
+    .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; }
+    .faq h3 { margin-top: 0; }
+    .faq p { margin-top: 0; }
+    .tool-index { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 32px; }
+    .tool-group h3 { margin: 0 0 13px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    .tool-group ul { list-style: none; padding: 0; margin: 0; }
+    .tool-group li { margin: 0 0 10px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .tool-group a { color: var(--accent-deep); font-weight: 750; }
+    .recommended { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+    .recommended p { margin: 0; }
+    .footer { display: block; }
+    .footer-links { display: grid; grid-template-columns: 1.25fr 1fr .7fr; gap: 32px; margin-bottom: 24px; }
+    .footer-links h3 { margin: 0 0 10px; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .footer-links a { display: block; margin: 0 0 7px; color: var(--muted); font-size: 13px; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-notes { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 18px; }
+    .launch-badge { display: flex; justify-content: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .launch-badge img { width: 200px; height: 48px; object-fit: contain; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 64px; }
+      .hero-copy { font-size: 17px; }
+      .proof { grid-template-columns: 1fr; }
+      .benchmark-layout { grid-template-columns: 1fr; gap: 24px; }
+      .tool-index { grid-template-columns: 1fr 1fr; }
+      .footer-links { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page { padding: 20px 16px 48px; }
+      .nav-links { display: none; }
+      .hero { padding: 58px 0 54px; }
+      h1 { width: 100%; max-width: 100%; font-size: 38px; }
+      .hero-copy, .tool { width: 100%; max-width: 100%; }
+      .local-badge { white-space: normal; }
+      .tool-top { flex-wrap: wrap; }
+      .trust, .steps { grid-template-columns: 1fr; }
+      .trust { gap: 18px; }
+      .url-row { flex-direction: column; }
+      .url-row button { min-height: 42px; }
+      .footer { flex-direction: column; }
+      .faq, .tool-index, .footer-links { grid-template-columns: 1fr; }
+      .footer-notes { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#"><span class="brand-mark">IS</span> InstaScript</a>
+      <div class="nav-links"><a href="#how">How it works</a><a href="#privacy">Privacy</a><a href="#tools">Tools</a></div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Instagram transcript generator</div>
+        <h1>Instagram videos to text, in your browser.</h1>
+        <p class="hero-copy">Drop a file or paste a public Reel URL. Get a clean, timestamped transcript without an account or a server upload.</p>
+        <div class="hero-note"><span class="shield" aria-hidden="true"></span> Your files stay on your device.</div>
+      </div>
+
+      <main class="tool tool-card" aria-label="Transcript tool">
+        <div class="tool-top"><div><div class="tool-title">Create a transcript</div><div class="tool-subtitle">Choose a source to get started.</div></div><span class="local-badge">Browser-first</span></div>
+        <div class="tabs" role="tablist" aria-label="Transcript input method">
+          <button class="tab" id="tab-upload" role="tab" aria-selected="false" aria-controls="panel-upload" data-tab="upload">Upload File</button>
+          <button class="tab active" id="tab-url" role="tab" aria-selected="true" aria-controls="panel-url" data-tab="url">Paste URL</button>
+        </div>
+
+        <div class="tab-panel" id="panel-upload" role="tabpanel" aria-labelledby="tab-upload" hidden>
+          <div class="drop" id="dropZone">
+            <div>
+              <div class="upload-icon" aria-hidden="true">↑</div>
+              <strong>Drop your file here<br>or <span class="link">browse</span></strong>
+              <span class="format-line">MP4, MOV, WebM, MP3, WAV, M4A, OGG - up to 100 MB</span>
+              <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
+            </div>
+          </div>
+          <div id="fileInfo" class="file-info hidden"><div class="file-row"><span id="fileName" class="file-name"></span><span id="fileSize" class="file-size"></span></div><button id="transcribeBtn" class="tool-action">Transcribe</button></div>
+        </div>
+
+        <div class="tab-panel active" id="panel-url" role="tabpanel" aria-labelledby="tab-url">
+          <div class="url-row"><input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/..." aria-label="Instagram Reel URL"><button id="urlBtn" class="tool-action">Get Transcript</button></div>
+          <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+          <div id="urlNote" class="url-note hidden"></div>
+        </div>
+      </main>
+    </section>
+
+    <section class="trust" id="privacy"><div><strong>No account</strong><span>Start immediately without registration or history.</span></div><div><strong>Local processing</strong><span>Speech recognition runs in your browser.</span></div><div><strong>Ready to export</strong><span>Copy or download TXT and SRT.</span></div></section>
+
+    <section class="section" id="how"><div class="section-head"><h2>From Reel to readable text.</h2><p>Keep the workflow simple, with the useful details visible at every step.</p></div><div class="steps"><div class="step"><div class="step-number">01</div><h3>Choose a source</h3><p>Upload a saved file or paste a public Instagram URL.</p></div><div class="step"><div class="step-number">02</div><h3>Let the browser work</h3><p>The audio is transcribed locally with clear progress feedback.</p></div><div class="step"><div class="step-number">03</div><h3>Copy or export</h3><p>Review timestamps, then copy the text or download SRT.</p></div></div></section>
+
+    <section class="proof"><div><div class="eyebrow">A clearer result</div><h2>Useful text, ready to use.</h2><p>Keep the transcript readable first. Timestamps stay available when you need them for editing, captions or notes.</p></div><div class="transcript"><div class="transcript-bar"><span>Transcript</span><span>Copy · TXT · SRT</span></div><div class="line"><span class="time">00:00</span><span>Today I want to show you a faster way to turn a Reel into notes.</span></div><div class="line"><span class="time">00:07</span><span>Drop the file here, let the browser process the audio, and export the text.</span></div><div class="line"><span class="time">00:15</span><span>No account, no upload queue, just the words you need.</span></div></div></section>
+
+    <section class="seo-section" aria-labelledby="speed-title">
+      <div class="benchmark-layout">
+        <div><div class="eyebrow">Measured in the browser</div><h2 id="speed-title">How long does a transcript take?</h2><p>The first run is slower because the speech model needs to load. Later runs reuse it in the page. These measurements are a guide, not a promise for every device.</p></div>
+        <table class="benchmark-table"><thead><tr><th>Audio length</th><th>Transcription time</th><th>Model download</th></tr></thead><tbody><tr><td>11 seconds</td><td>16.89 seconds</td><td>First run</td></tr><tr><td>30 seconds</td><td>8.98 seconds</td><td>Already loaded</td></tr><tr><td>60 seconds</td><td>16.06 seconds</td><td>Already loaded</td></tr><tr><td>120 seconds</td><td>28.58 seconds</td><td>Already loaded</td></tr></tbody></table>
+      </div>
+    </section>
+
+    <section class="seo-section" aria-labelledby="works-title">
+      <div class="section-head"><div class="eyebrow">The simple version</div><h2 id="works-title">How an Instagram transcript generator works</h2><p>Instagram to text means turning spoken words in a public Reel or uploaded recording into readable text with timestamps.</p></div>
+      <div class="faq"><div><h3>Start with a public link or saved file</h3><p>Paste a public Instagram Reel or video post URL, or choose a video or audio file from your device.</p></div><div><h3>Speech recognition runs in the page</h3><p>After the media is available, the browser processes the audio and returns a transcript when the format is supported.</p></div><div><h3>Export the result</h3><p>Copy clean text for notes, or download TXT and SRT files for editing and captions.</p></div><div><h3>No account is required</h3><p>There is no registration flow or transcript history to manage.</p></div></div>
+    </section>
+
+    <section class="seo-section" aria-labelledby="faq-title"><div class="section-head"><div class="eyebrow">Answers before you start</div><h2 id="faq-title">FAQ</h2></div><div class="faq"><div><h3>Can I make an Instagram Reels transcript from a public link?</h3><p>Yes. Paste a public Instagram Reel or video post URL above. The page fetches the media link while speech recognition runs in your browser.</p></div><div><h3>Does InstaScript upload my files?</h3><p>Uploaded files are processed in the browser. The privacy message and the current processing behavior should remain visible near the tool.</p></div><div><h3>Can I download subtitles?</h3><p>Yes. The transcript output supports copying text and downloading TXT or SRT.</p></div><div><h3>What file types are supported?</h3><p>MP4, MOV, WebM, MP3, WAV, M4A and OGG are supported up to the current file-size limit.</p></div></div></section>
+
+    <section class="seo-section" id="tools" aria-labelledby="tools-title"><div class="section-head"><div class="eyebrow">Explore the toolkit</div><h2 id="tools-title">Tools by task</h2></div><div class="tool-index"><div class="tool-group"><h3>Transcript tools</h3><ul><li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li><li><a href="/instagram-reels-transcript">Instagram Reels Transcript</a></li><li><a href="/instagram-video-to-text">Instagram Video to Text</a></li><li><a href="/reels-to-text">Reels to Text</a></li><li><a href="/instagram-caption-extractor">Instagram Caption Extractor</a></li><li><a href="/video-to-text">Video to Text</a></li><li><a href="/audio-to-text">Audio to Text</a></li></ul></div><div class="tool-group"><h3>More video sources</h3><ul><li><a href="/tiktok-transcript">TikTok Transcript</a></li><li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li><li><a href="/youtube-transcript">YouTube Transcript</a></li><li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a></li><li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li></ul></div><div class="tool-group"><h3>Subtitle tools</h3><ul><li><a href="/subtitle-editor">Subtitle Editor</a></li><li><a href="/txt-to-srt">TXT to SRT Converter</a></li><li><a href="/vtt-to-srt">VTT to SRT Converter</a></li><li><a href="/ass-to-srt">ASS to SRT Converter</a></li><li><a href="/srt-to-text">SRT to Text Converter</a></li></ul></div></div></section>
+
+    <section class="seo-section" aria-labelledby="recommended-title"><div class="recommended"><div class="eyebrow">For creators who need narration</div><h2 id="recommended-title">Recommended</h2><p><a href="#">ElevenLabs</a> is an AI voice generator and text-to-speech studio for turning written scripts into narration. The affiliate disclosure remains visible and should not be hidden in the redesign.</p></div></section>
+
+    <footer class="footer"><div class="footer-links"><div><h3>Transcript</h3><a href="/">Instagram Transcript</a><a href="/instagram-transcript-generator">Instagram Transcript Generator</a><a href="/instagram-reels-transcript">Instagram Reels Transcript</a><a href="/instagram-video-to-text">Instagram Video to Text</a><a href="/reels-to-text">Reels to Text</a><a href="/instagram-caption-extractor">Instagram Caption Extractor</a><a href="/video-to-text">Video to Text</a><a href="/audio-to-text">Audio to Text</a></div><div><h3>Sources and subtitles</h3><a href="/tiktok-transcript">TikTok Transcript</a><a href="/facebook-video-transcript">Facebook Video Transcript</a><a href="/youtube-transcript">YouTube Transcript</a><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/txt-to-srt">TXT to SRT</a><a href="/vtt-to-srt">VTT to SRT</a><a href="/ass-to-srt">ASS to SRT</a></div><div><h3>About</h3><a href="/privacy">Privacy Policy</a><a href="/about">About</a><a href="/contact">Contact</a></div></div><div class="footer-notes"><span>Runs entirely in your browser. No upload to any server, no signup.</span><span>InstaScript · Instagram transcript tool</span></div><div class="launch-badge"><a href="https://smollaunch.com" target="_blank" rel="noopener"><img src="https://smollaunch.com/badges/featured.svg" alt="InstaScript - Featured on Smol Launch" loading="lazy" width="250" height="60"></a></div></footer>
+  </div>
+</body>
+</html>

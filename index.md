@@ -45,6 +45,8 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Subtitle Editor](https://instascript.app/subtitle-editor) — edit SRT, VTT or SBV cues, change timing and text, shift all timecodes and export.
 - [TXT to SRT Converter](https://instascript.app/txt-to-srt) — turn plain text or an existing subtitle file into editable SRT or VTT in the browser.
 - [VTT to SRT Converter](https://instascript.app/vtt-to-srt) — convert VTT, SRT or SBV subtitles to SRT or VTT in the browser.
+- [YouTube Shorts Transcript](https://instascript.app/youtube-shorts-transcript) — read a Short's existing caption track and export timed TXT or SRT.
+- [ASS to SRT Converter](https://instascript.app/ass-to-srt) — convert ASS or SSA dialogue cues to reviewable SRT locally.
 - [Video to Text](https://instascript.app/video-to-text) — turn an MP4, MOV or WebM file into a timestamped video transcript.
 - [Audio to Text](https://instascript.app/audio-to-text) — transcribe an MP3, WAV or voice memo into written text.
 - [TikTok Transcript](https://instascript.app/tiktok-transcript) — save a TikTok video and read what is said in it.

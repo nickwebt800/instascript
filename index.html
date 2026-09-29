@@ -4,19 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free Instagram transcript tool: turn Reels, video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into text. Paste-a-link takes public Instagram URLs.">
-  <meta name="theme-color" content="#f8f9fa">
+  <meta name="theme-color" content="#f6f7f8">
   <meta name="saashub-verification" content="t8k05b7qh311" />
   <title>InstaScript - Instagram Transcript Tool</title>
-  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+  <link rel="canonical" href="https://instascript.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="InstaScript - Instagram Transcript Tool">
+  <meta property="og:description" content="Turn Instagram Reels, video and audio files into timestamped text in your browser. No account required.">
+  <meta property="og:url" content="https://instascript.app/">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="InstaScript - Instagram Transcript Tool">
+  <meta name="twitter:description" content="Turn Instagram Reels, video and audio files into timestamped text in your browser.">
+  <link rel="stylesheet" href="/style.css?v=design-20260929a">
 </head>
 <body>
   <div class="container">
-    <header class="header">
-      <a href="/" class="logo-link"><h1 class="logo">InstaScript</h1></a>
-      <p class="tagline">Turn Instagram Reels and any video or audio file into text</p>
-    </header>
+    <section class="hero-row" aria-labelledby="home-title">
+      <header class="header">
+        <a href="/" class="logo-link"><span class="logo-mark" aria-hidden="true">IS</span><span class="logo">InstaScript</span></a>
+        <p class="eyebrow">Instagram transcript generator</p>
+        <h1 id="home-title" class="hero-title">Instagram videos to text, in your browser.</h1>
+        <p class="tagline">Drop a file or paste a public Reel URL. Get a clean, timestamped transcript without an account or a server upload.</p>
+        <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your files stay on your device.</p>
+      </header>
 
-    <main class="tool-card">
+    <main class="tool-card" aria-label="Transcript tool">
+      <div class="tool-heading">
+        <div><h2>Create a transcript</h2><p>Choose a source to get started.</p></div>
+        <span class="local-badge">Browser-first</span>
+      </div>
       <!-- Tab switch -->
       <div class="tabs" role="tablist" aria-label="Transcript input method">
         <button class="tab active" id="tab-upload" role="tab" aria-selected="true" aria-controls="panel-upload" data-tab="upload">Upload File</button>
@@ -52,6 +69,7 @@
         <div id="urlNote" class="url-note hidden"></div>
       </div>
     </main>
+    </section>
 
     <section class="trust-strip" aria-label="InstaScript highlights">
       <div class="trust-item">
@@ -149,6 +167,7 @@
           <h3 id="youtube-tools-title">YouTube tools</h3>
           <ul>
             <li><a href="/youtube-transcript">YouTube Transcript</a> &mdash; paste a YouTube link and read the caption track it already has.</li>
+            <li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a> &mdash; handle <code>/shorts/</code> links, caption gaps and TXT/SRT export.</li>
             <li><a href="/youtube-transcript-download">YouTube Transcript Download</a> &mdash; take that same caption track away as a TXT or SRT file.</li>
             <li><a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a> &mdash; the four steps on YouTube itself, and what the transcript panel really hands you.</li>
           </ul>
@@ -159,6 +178,7 @@
             <li><a href="/subtitle-editor">Subtitle Editor</a> &mdash; edit SRT, VTT or SBV cues, change timing and text, shift all timecodes and export.</li>
             <li><a href="/txt-to-srt">TXT to SRT Converter</a> &mdash; turn plain text or an existing subtitle file into editable SRT or VTT.</li>
             <li><a href="/vtt-to-srt">VTT to SRT Converter</a> &mdash; convert VTT, SRT or SBV subtitles to SRT or VTT in the browser.</li>
+            <li><a href="/ass-to-srt">ASS to SRT Converter</a> &mdash; convert ASS or SSA dialogue cues to reviewable SRT locally.</li>
             <li><a href="/srt-to-text">SRT to Text Converter</a> &mdash; remove SRT or VTT timecodes and copy clean plain text in the browser.</li>
           </ul>
         </section>
@@ -184,11 +204,13 @@
         <a href="/tiktok-transcript">TikTok Transcript</a>
         <a href="/facebook-video-transcript">Facebook Video Transcript</a>
         <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
         <a href="/youtube-transcript-download">YouTube Transcript Download</a>
         <a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a>
         <a href="/subtitle-editor">Subtitle Editor</a>
         <a href="/txt-to-srt">TXT to SRT</a>
         <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/ass-to-srt">ASS to SRT</a>
         <a href="/privacy">Privacy Policy</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
@@ -203,6 +225,18 @@
     </footer>
   </div>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "InstaScript",
+    "url": "https://instascript.app/",
+    "description": "Browser-based Instagram transcript tool for Reels, video and audio files.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
   <script type="module" src="app.js?v=homepage-input-20260927"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>

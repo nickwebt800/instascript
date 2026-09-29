@@ -37,8 +37,8 @@ Use exactly one unused canonical keyword per page, in this order. Values below a
 | 8 | `youtube transcript` | 110000 | low | 4.4-18.58 | covered existing `/youtube-transcript` |
 | 9 | `tiktok transcript` | 8100 | low | 2.93-35.86 | covered existing `/tiktok-transcript` |
 | 10 | `subtitle editor` | 5400 | low | 3.83-21.72 | used 2026-09-28 |
-| 11 | `ass to srt` | 320 | low | — | unused |
-| 12 | `youtube shorts transcript` | 170 | low | 1.84-9.58 | unused |
+| 11 | `ass to srt` | 320 | low | — | used 2026-09-28 |
+| 12 | `youtube shorts transcript` | 170 | low | 1.84-9.58 | used 2026-09-29 |
 | 13 | `twitter video transcript` | 110 | low | 8.2-18.21 | unused |
 
 `youtube transcript generator`, `youtube video transcript`, and `transcript youtube video` merge into the `youtube transcript` page. `ssa to srt` merges into the `ass to srt` page.

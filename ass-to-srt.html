@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert ASS or SSA subtitle files to clean SRT subtitles in your browser. Preserve cue timing, unwrap line breaks and review the result locally.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/ass-to-srt">
+  <title>ASS to SRT Converter | Convert ASS and SSA Subtitles | InstaScript</title>
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="subtitle-converter-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">ASS to SRT Converter</h1>
+      <p class="tagline">Convert ASS or SSA subtitles in your browser</p>
+      <nav class="page-nav" aria-label="Subtitle tools">
+        <a href="/ass-to-srt" aria-current="page">ASS to SRT</a>
+        <a href="/vtt-to-srt">VTT to SRT</a>
+        <a href="/subtitle-editor">Subtitle Editor</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="converter-title">
+      <div class="tool-intro-row">
+        <div>
+          <h2 id="converter-title">Convert one ASS or SSA file</h2>
+          <p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p>
+        </div>
+        <label class="file-button" for="subtitleFile">Open ASS / SSA<input id="subtitleFile" type="file" accept=".ass,.ssa,text/plain" hidden></label>
+      </div>
+      <label class="sr-only" for="subtitleText">ASS or SSA subtitle text</label>
+      <textarea id="subtitleText" class="source-text converter-source" rows="11" spellcheck="false" placeholder="Paste ASS or SSA subtitle text here..."></textarea>
+      <p class="input-hint">Accepted input: one local .ass or .ssa file, or pasted subtitle text.</p>
+      <div class="converter-controls">
+        <button id="convertBtn" class="btn-primary" type="button">Convert to SRT</button>
+        <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
+      </div>
+      <p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
+      <section id="resultSection" class="converter-result hidden" aria-labelledby="result-title">
+        <div class="editor-header">
+          <div><h2 id="result-title">SRT result</h2><p id="resultSummary">Review the converted cues before export.</p></div>
+          <div class="export-actions"><button id="copyResultBtn" class="btn-primary" type="button">Copy SRT</button><button id="downloadResultBtn" class="btn-ghost" type="button">Download SRT</button></div>
+        </div>
+        <label class="sr-only" for="resultText">SRT result</label>
+        <textarea id="resultText" class="result-text" rows="14" spellcheck="false"></textarea>
+      </section>
+    </main>
+
+    <section class="content-card reading">
+      <h2>What ASS to SRT conversion keeps</h2>
+      <p>ASS and SSA files store timed dialogue inside an <code>[Events]</code> section. This converter reads each <strong>Dialogue:</strong> line, maps its start and end times to SRT's comma-millisecond format, and writes the dialogue text as a numbered SRT cue. It also turns ASS's <code>\N</code> line-break marker into a real line break.</p>
+      <p>ASS styling is presentation metadata, not spoken text. The conversion removes inline override tags such as <code>{\an8}</code> so the exported SRT contains readable captions. Cue timing, order, and text remain available for review in the result box.</p>
+      <h2>Private, local workflow</h2>
+      <p>Open one local file or paste its contents, then convert. Parsing happens in this browser; no subtitle text is uploaded, stored, or sent to a server. The page does not transcribe audio, render a video preview, merge files, or recreate ASS styling in SRT.</p>
+      <h2>FAQ</h2>
+      <h3>Does it support SSA files?</h3><p>Yes. SSA uses the same dialogue structure as ASS for the fields this converter needs. Open a <code>.ssa</code> file or paste its text.</p>
+      <h3>What if the file has a custom Events format?</h3><p>The parser reads the <code>Format:</code> line in <code>[Events]</code> and finds the Start, End and Text columns. If there is no usable dialogue format, it reports the problem instead of guessing.</p>
+      <h3>Are fonts, colors and positioning preserved?</h3><p>No. SRT has no equivalent for ASS styles and positioning. Inline style tags are stripped while the caption words and timing are retained.</p>
+      <h3>Can I edit the converted captions?</h3><p>Yes. Review or correct the SRT in the result box, then copy or download it. For cue-by-cue timing edits, open the result in the <a href="/subtitle-editor">Subtitle Editor</a>.</p>
+    </section>
+    <footer class="footer" data-site-footer>
+      <nav class="footer-nav"><a href="/">Instagram Transcript</a><a href="/ass-to-srt">ASS to SRT</a><a href="/vtt-to-srt">VTT to SRT</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/privacy">Privacy Policy</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+    </footer>
+  </div>
+  <script src="/ass-to-srt.js" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+  <script src="/footer.js?v=hierarchy-20260927" defer></script>
+</body>
+</html>

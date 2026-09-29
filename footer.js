@@ -14,6 +14,7 @@
       ["TikTok Transcript", "/tiktok-transcript"],
       ["Facebook Video Transcript", "/facebook-video-transcript"],
       ["YouTube Transcript", "/youtube-transcript"],
+      ["YouTube Shorts Transcript", "/youtube-shorts-transcript"],
       ["YouTube Transcript Download", "/youtube-transcript-download"],
       ["How to Get a YouTube Transcript", "/how-to-get-a-transcript-of-a-youtube-video"]
     ]},
@@ -21,6 +22,7 @@
       ["Subtitle Editor", "/subtitle-editor"],
       ["TXT to SRT", "/txt-to-srt"],
       ["VTT to SRT", "/vtt-to-srt"],
+      ["ASS to SRT", "/ass-to-srt"],
       ["SRT to Text", "/srt-to-text"]
     ]},
     { title: "Site", links: [

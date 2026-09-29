@@ -91,6 +91,14 @@ const PAGES = [
     keywords: ["vtt to srt", "srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
   },
   {
+    title: "ASS to SRT Converter",
+    url: ORIGIN + "/ass-to-srt",
+    summary: "Convert one ASS or SSA subtitle file to reviewable SRT cues in the browser, preserving timing and dialogue text.",
+    accepts: ["ASS", "SSA", "pasted subtitle text"],
+    limits: ["one local subtitle file at a time", "ASS styles and positioning are not represented in SRT", "no upload or account"],
+    keywords: ["ass to srt", "ssa to srt", "ass subtitle converter", "ssa subtitle converter", "subtitle converter", "srt"],
+  },
+  {
     title: "Subtitle Editor",
     url: ORIGIN + "/subtitle-editor",
     summary: "Edit an SRT, VTT or SBV file in the browser. Change cue timing and text, add or remove entries, shift all timecodes, export SRT or VTT.",
@@ -137,6 +145,14 @@ const PAGES = [
     accepts: ["youtube.com URLs", "youtu.be URLs", "/shorts/ URLs"],
     limits: ["reads the caption track the video already has - it cannot create captions", "one video at a time"],
     keywords: ["youtube", "transcript download", "subtitles download", "srt", "txt", "captions"],
+  },
+  {
+    title: "YouTube Shorts Transcript",
+    url: ORIGIN + "/youtube-shorts-transcript",
+    summary: "Read an existing caption track from a public YouTube Short, with timestamped copy plus TXT and SRT export.",
+    accepts: ["youtube.com/shorts/ URLs", "youtube.com watch URLs", "youtu.be URLs"],
+    limits: ["reads captions the Short already has", "private or unavailable Shorts need a saved file", "on-screen text and comments are not transcribed"],
+    keywords: ["youtube shorts transcript", "shorts transcript", "youtube short captions", "shorts captions", "youtube", "transcript"],
   },
   {
     title: "About",
@@ -568,6 +584,11 @@ const KNOWN_FILES = new Set([
   "/txt-to-srt.js",
   "/vtt-to-srt.html",
   "/vtt-to-srt.js",
+  "/ass-to-srt.html",
+  "/ass-to-srt.js",
+  "/ass-to-srt.md",
+  "/youtube-shorts-transcript.html",
+  "/youtube-shorts-transcript.md",
   "/subtitle-editor.html",
   "/subtitle-editor.js",
   "/subtitle-editor.md",
@@ -646,6 +667,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/">Instagram Transcript</a></li>
   <li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li>
   <li><a href="/youtube-transcript">YouTube Transcript</a></li>
+  <li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a></li>
   <li><a href="/video-to-text">Transcribe Video</a></li>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
@@ -654,6 +676,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/subtitle-editor">Subtitle Editor</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
+  <li><a href="/ass-to-srt">ASS to SRT Converter</a></li>
   <li><a href="/srt-to-text">SRT to Text Converter</a></li>
   <li><a href="/about">About</a></li>
   <li><a href="/contact">Contact</a></li>
@@ -703,6 +726,10 @@ const MD_MAP = {
   "/reels-to-text.html": "/reels-to-text.md",
   "/subtitle-editor": "/subtitle-editor.md",
   "/subtitle-editor.html": "/subtitle-editor.md",
+  "/ass-to-srt": "/ass-to-srt.md",
+  "/ass-to-srt.html": "/ass-to-srt.md",
+  "/youtube-shorts-transcript": "/youtube-shorts-transcript.md",
+  "/youtube-shorts-transcript.html": "/youtube-shorts-transcript.md",
 };
 
 function wantsMarkdown(request) {
