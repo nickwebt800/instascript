@@ -7,6 +7,14 @@
   <meta name="theme-color" content="#f8f9fa">
   <title>TikTok Transcript &amp; Video Transcription Tool | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/tiktok-transcript">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instascript.app/tiktok-transcript">
+  <meta property="og:title" content="TikTok Transcript Tool | InstaScript">
+  <meta property="og:description" content="Turn a saved TikTok video into timestamped text in your browser.">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TikTok Transcript Tool | InstaScript">
+  <meta name="twitter:description" content="Turn a saved TikTok video into timestamped text in your browser.">
   <link rel="stylesheet" href="/style.css?v=design-20260927d">
 </head>
 <body class="upload-only">
@@ -24,7 +32,15 @@
     </nav>
     </header>
 
-    <main class="tool-card">
+    <main class="tool-card" aria-labelledby="tool-heading">
+      <div class="tool-heading">
+        <div>
+          <h2 id="tool-heading">TikTok transcript</h2>
+          <p>Upload a saved TikTok video for local transcription</p>
+        </div>
+        <span class="local-badge">Runs in your browser</span>
+      </div>
+      <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your file stays on this device</p>
       <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
       <div class="tabs">
         <button class="tab active" data-tab="upload">Upload File</button>
