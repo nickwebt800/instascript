@@ -1,6 +1,6 @@
 # InstaScript
 
-A free, browser-based tool that converts Instagram Reels and videos into text transcripts. Runs OpenAI's Whisper speech recognition model entirely in the browser using transformers.js — no server-side audio processing, no signup, no payment.
+A free, browser-based tool that converts public Instagram Reels and videos into timestamped English transcripts. Runs OpenAI's Whisper speech recognition model entirely in the browser using transformers.js — no server-side audio processing for uploaded files, no signup, no payment.
 
 Live at **[instascript.app](https://instascript.app)**.
 
@@ -10,6 +10,8 @@ Live at **[instascript.app](https://instascript.app)**.
 2. InstaScript extracts the audio client-side using the Web Audio API.
 3. The audio is passed through `whisper-tiny.en` (~40 MB) via `@huggingface/transformers.js`.
 4. The transcript is displayed with timestamps. Copy to clipboard or download as TXT/SRT.
+
+The current speech model supports English audio. The first run downloads the model to the browser cache; later runs are faster on the same device.
 
 When using the URL input, a Cloudflare Pages Function fetches the Instagram page server-side to extract the video URL (browsers can't do this directly due to CORS). The video is then proxied to the browser, where all transcription happens locally.
 
@@ -87,7 +89,7 @@ The `benchmark/` directory contains [measured in-browser transcription timings](
 
 ## Privacy
 
-InstaScript does not collect, store, or transmit user data. File uploads are processed entirely in the browser. URL-based transcription fetches the Instagram page server-side (via Cloudflare Functions) but does not store the video or transcript anywhere. See [privacy.html](privacy.html) for the full policy.
+InstaScript does not collect, store, or transmit uploaded file contents or transcripts. File uploads are processed entirely in the browser. URL-based transcription fetches the Instagram page server-side (via Cloudflare Functions), temporarily proxies the public media to the browser, and does not store the video or transcript. See [privacy.html](privacy.html) for the full policy.
 
 ## License
 

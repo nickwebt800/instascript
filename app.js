@@ -10,7 +10,7 @@ const LANGUAGE_CHECK_SECONDS = 20;
 const AUDIO_SAMPLE_RATE = 16000;
 const ENGLISH_LANGUAGE_TOKEN_ID = 50259;
 const LANGUAGE_REJECTION_MESSAGE =
-  "This audio isn't in English. This tool only transcribes English audio.";
+  "This file appears to contain non-English audio. InstaScript currently supports English speech.";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
 
 // ── DOM ──
@@ -28,6 +28,7 @@ const urlBtn = $("urlBtn");
 const urlNote = $("urlNote");
 const processing = $("processing");
 const processingText = $("processingText");
+const processingHint = $("processingHint");
 const progressBar = $("progressBar");
 const progressFill = $("progressFill");
 const errorBox = $("errorBox");
@@ -36,12 +37,19 @@ const transcriptOutput = $("transcriptOutput");
 const copyBtn = $("copyBtn");
 const downloadTxtBtn = $("downloadTxtBtn");
 const downloadSrtBtn = $("downloadSrtBtn");
+const transcribeAnotherBtn = $("transcribeAnotherBtn");
+const pasteAnotherBtn = $("pasteAnotherBtn");
 
 let selectedFile = null;
 let transcriber = null;
 let languageDetector = null;
 let currentTranscript = "";
 let lastResult = null;
+
+function activateTab(name) {
+  const tab = document.querySelector(`.tab[data-tab="${name}"]`);
+  if (tab) tab.click();
+}
 
 // ── Tab switching ──
 tabs.forEach((tab) => {
@@ -104,6 +112,22 @@ transcribeBtn.addEventListener("click", () => {
   if (selectedFile) runTranscription(selectedFile);
 });
 
+transcribeAnotherBtn?.addEventListener("click", () => {
+  selectedFile = null;
+  fileInput.value = "";
+  fileInfo.classList.add("hidden");
+  hideTranscript();
+  activateTab("upload");
+  dropZone.focus?.();
+});
+
+pasteAnotherBtn?.addEventListener("click", () => {
+  urlInput.value = "";
+  hideTranscript();
+  activateTab("url");
+  urlInput.focus();
+});
+
 // ── URL button ──
 urlBtn.addEventListener("click", handleUrl);
 urlInput.addEventListener("keydown", (e) => {
@@ -113,11 +137,11 @@ urlInput.addEventListener("keydown", (e) => {
 function handleUrl() {
   const url = urlInput.value.trim();
   if (!url) {
-    showError("Please paste an Instagram URL first.");
+    showError("Paste a public Instagram Reel or video post URL first.");
     return;
   }
   if (!url.includes("instagram.com")) {
-    showError("That doesn't look like an Instagram URL.");
+    showError("Please use a public Instagram Reel or video post URL.");
     return;
   }
   urlNote.classList.add("hidden");
@@ -175,7 +199,7 @@ async function runUrlTranscription(instagramUrl) {
     }
 
     if (!data.videoUrl) {
-      showError("No video found in this Instagram post.");
+      showError("No video was found in this post. Try a public Reel or upload the downloaded file instead.");
       return;
     }
 
@@ -185,7 +209,7 @@ async function runUrlTranscription(instagramUrl) {
     const videoRes = await fetch(proxyUrl);
 
     if (!videoRes.ok) {
-      showError("Could not download the video. The post may be private or expired.");
+      showError("Could not download this video. The post may be private or expired; try a public Reel or upload the file instead.");
       return;
     }
 
@@ -496,6 +520,11 @@ function downloadFile(content, filename, mime) {
 function showProcessing(text) {
   processing.classList.remove("hidden");
   processingText.textContent = text;
+  if (processingHint) {
+    processingHint.textContent = text.toLowerCase().includes("first time") || text.toLowerCase().includes("model")
+      ? "The first run downloads a small AI model and may take 20–60 seconds. Later runs are faster because it is cached in your browser."
+      : "Your audio is processed in your browser. Keep this tab open while the transcript is prepared.";
+  }
 }
 
 function showError(msg) {

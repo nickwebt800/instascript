@@ -3,51 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free Instagram transcript tool: turn Reels, video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into text. Paste-a-link takes public Instagram URLs.">
+  <meta name="description" content="Convert public Instagram Reels and video files into timestamped English text. Free, no account required, with TXT and SRT export.">
   <meta name="theme-color" content="#f6f7f8">
   <meta name="saashub-verification" content="t8k05b7qh311" />
-  <title>InstaScript - Instagram Transcript Tool</title>
+  <title>Instagram Reel to Text — Free Transcript Generator | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="InstaScript - Instagram Transcript Tool">
-  <meta property="og:description" content="Turn Instagram Reels, video and audio files into timestamped text in your browser. No account required.">
+  <meta property="og:title" content="Instagram Reel to Text — Free Transcript Generator | InstaScript">
+  <meta property="og:description" content="Convert public Instagram Reels and video files into timestamped English text. Free, no account required, with TXT and SRT export.">
   <meta property="og:url" content="https://instascript.app/">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="InstaScript - Instagram Transcript Tool">
-  <meta name="twitter:description" content="Turn Instagram Reels, video and audio files into timestamped text in your browser.">
-  <link rel="stylesheet" href="/style.css?v=design-20260929a">
+  <meta name="twitter:title" content="Instagram Reel to Text — Free Transcript Generator | InstaScript">
+  <meta name="twitter:description" content="Convert public Instagram Reels and video files into timestamped English text. Free, no account required, with TXT and SRT export.">
+  <link rel="stylesheet" href="/style.css?v=ctr-upgrade-20260930">
 </head>
 <body>
   <div class="container">
     <section class="hero-row" aria-labelledby="home-title">
       <header class="header">
         <a href="/" class="logo-link"><span class="logo-mark" aria-hidden="true">IS</span><span class="logo">InstaScript</span></a>
-        <p class="eyebrow">Instagram transcript generator</p>
-        <h1 id="home-title" class="hero-title">Instagram videos to text, in your browser.</h1>
-        <p class="tagline">Drop a file or paste a public Reel URL. Get a clean, timestamped transcript without an account or a server upload.</p>
-        <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your files stay on your device.</p>
+        <p class="eyebrow">Instagram Reel transcript</p>
+        <h1 id="home-title" class="hero-title">Turn any Instagram Reel into text</h1>
+        <p class="tagline">Paste a public Reel link or upload a video. Get an English transcript with timestamps in seconds — no account required.</p>
+        <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Files are processed in your browser.</p>
       </header>
 
     <main class="tool-card" aria-label="Transcript tool">
       <div class="tool-heading">
-        <div><h2>Create a transcript</h2><p>Choose a source to get started.</p></div>
+        <div><h2>Create a transcript</h2><p>Paste a public Reel URL or upload a file.</p></div>
         <span class="local-badge">Browser-first</span>
       </div>
       <!-- Tab switch -->
       <div class="tabs" role="tablist" aria-label="Transcript input method">
-        <button class="tab active" id="tab-upload" role="tab" aria-selected="true" aria-controls="panel-upload" data-tab="upload">Upload File</button>
-        <button class="tab" id="tab-url" role="tab" aria-selected="false" aria-controls="panel-url" data-tab="url">Paste URL</button>
+        <button class="tab" id="tab-upload" role="tab" aria-selected="false" aria-controls="panel-upload" data-tab="upload">Upload video or audio</button>
+        <button class="tab active" id="tab-url" role="tab" aria-selected="true" aria-controls="panel-url" data-tab="url">Paste Reel URL</button>
       </div>
 
       <!-- Upload panel -->
-      <div class="tab-panel active" id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
+      <div class="tab-panel" id="panel-upload" role="tabpanel" aria-labelledby="tab-upload">
         <div class="drop-zone" id="dropZone">
           <svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48">
             <path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p class="drop-text">Drop your file here<br>or <span class="link">browse</span></p>
-          <p class="drop-hint">MP4, MOV, WebM, MP3, WAV, M4A, OGG &mdash; up to 100 MB</p>
+          <p class="drop-text">Drop your file here<br>or <span class="link">choose a file</span></p>
+          <p class="drop-hint">English audio · MP4, MOV, WebM, MP3, WAV, M4A, OGG · up to 100 MB</p>
           <input type="file" id="fileInput" accept="video/*,audio/*" hidden>
         </div>
         <div id="fileInfo" class="file-info hidden">
@@ -55,17 +55,18 @@
             <span id="fileName" class="file-name"></span>
             <span id="fileSize" class="file-size"></span>
           </div>
-          <button id="transcribeBtn" class="btn-primary">Transcribe</button>
+          <button id="transcribeBtn" class="btn-primary">Transcribe this file</button>
         </div>
       </div>
 
       <!-- URL panel -->
-      <div class="tab-panel" id="panel-url" role="tabpanel" aria-labelledby="tab-url">
+      <div class="tab-panel active" id="panel-url" role="tabpanel" aria-labelledby="tab-url">
         <div class="url-group">
           <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
-          <button id="urlBtn" class="btn-primary">Get Transcript</button>
+          <button id="urlBtn" class="btn-primary">Get my Reel transcript</button>
         </div>
-        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+        <p class="panel-hint">Public Instagram Reel or video post URL · English audio only</p>
+        <p class="panel-hint panel-hint-secondary">For public Reel links, we temporarily fetch the media URL so your browser can process it.</p>
         <div id="urlNote" class="url-note hidden"></div>
       </div>
     </main>
@@ -73,23 +74,36 @@
 
     <section class="trust-strip" aria-label="InstaScript highlights">
       <div class="trust-item">
-        <strong>Browser-first</strong>
-        <span>Files stay on your device.</span>
-      </div>
-      <div class="trust-item">
         <strong>No account</strong>
-        <span>Start without registration or history.</span>
+        <span>Start immediately.</span>
       </div>
       <div class="trust-item">
-        <strong>Ready to export</strong>
-        <span>Copy or download TXT and SRT.</span>
+        <strong>Timestamps included</strong>
+        <span>Copy or export TXT/SRT.</span>
       </div>
+      <div class="trust-item">
+        <strong>Browser processing</strong>
+        <span>Your uploaded file stays on your device.</span>
+      </div>
+    </section>
+
+    <section class="sample-card" aria-labelledby="sample-title">
+      <div>
+        <p class="sample-kicker">See the result before you start</p>
+        <h2 id="sample-title">Timestamped text you can copy or export</h2>
+      </div>
+      <div class="sample-output" aria-label="Example transcript">
+        <p><span class="timestamp">[00:00]</span>Welcome back to the channel.</p>
+        <p><span class="timestamp">[00:04]</span>Today we are looking at three simple ideas.</p>
+      </div>
+      <p class="sample-note">Every transcript includes timestamps and can be downloaded as TXT or SRT.</p>
     </section>
 
     <!-- Processing -->
     <div id="processing" class="processing hidden">
       <div class="spinner"></div>
       <p id="processingText" class="processing-text">Loading AI model...</p>
+      <p id="processingHint" class="processing-hint">The first run downloads a small AI model and may take 20–60 seconds. Later runs are faster because it is cached in your browser.</p>
       <div id="progressBar" class="progress-bar hidden">
         <div class="progress-fill" id="progressFill"></div>
       </div>
@@ -112,6 +126,10 @@
         </div>
       </div>
       <div id="transcriptOutput" class="transcript-output"></div>
+      <div class="transcript-next">
+        <button id="transcribeAnotherBtn" class="btn-ghost">Transcribe another file</button>
+        <button id="pasteAnotherBtn" class="btn-ghost">Paste another Reel URL</button>
+      </div>
     </section>
 
     <section class="content-card">
@@ -142,8 +160,12 @@
       <h2>How an Instagram transcript generator works</h2>
       <p><strong>Instagram to text</strong> means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT or SRT.</p>
       <h2>FAQ</h2>
-      <h3>Can I make an Instagram Reels transcript from a public link?</h3>
-      <p>Yes. Paste a public Instagram Reel or video post URL above. The page fetches the media link, while the speech recognition runs in your browser and returns the transcript when the audio is supported.</p>
+      <h3>How do I transcribe an Instagram Reel?</h3>
+      <p>Paste a public Instagram Reel or video post URL above, or upload a downloaded video. The speech recognition runs in your browser and returns timestamped text.</p>
+      <h3>Does InstaScript support non-English audio?</h3>
+      <p>InstaScript currently supports English speech. Non-English audio is rejected before transcription.</p>
+      <h3>Do I need an account?</h3>
+      <p>No. You can start without registration, and results can be copied or downloaded as TXT or SRT.</p>
     </section>
 
     <section class="tool-index" aria-labelledby="tool-index-title">
@@ -215,7 +237,7 @@
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
       </nav>
-      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+      <p>Uploaded files are processed in your browser; public Reel URLs use a temporary media fetch. No signup.</p>
       <p>This Instagram transcript page may contain affiliate links. Qualifying signups may earn us a commission at no extra cost to you.</p>
       <div style="margin-top: 16px; text-align: center;">
         <a href="https://smollaunch.com" target="_blank" rel="noopener">
@@ -231,13 +253,36 @@
     "@type": "WebApplication",
     "name": "InstaScript",
     "url": "https://instascript.app/",
-    "description": "Browser-based Instagram transcript tool for Reels, video and audio files.",
+    "description": "Free browser-based tool that converts public Instagram Reels and video files into timestamped English text with TXT and SRT export.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-  <script type="module" src="app.js?v=homepage-input-20260927"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I transcribe an Instagram Reel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Paste a public Instagram Reel or video post URL, or upload a downloaded video. InstaScript returns timestamped spoken text in your browser." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does InstaScript support non-English audio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "InstaScript currently supports English speech. Non-English audio is rejected before transcription." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an account to transcribe a Reel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. You can start without registration, and results can be copied or downloaded as TXT or SRT." }
+      }
+    ]
+  }
+  </script>
+  <script type="module" src="app.js?v=ctr-upgrade-20260930"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>
 </body>
