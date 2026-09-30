@@ -4,3 +4,7 @@ dist/
 .wrangler/
 .DS_Store
 *.log
+
+# Local deployment and analysis artifacts kept out of the repository.
+/_headers
+/twitter-video-transcript.md
