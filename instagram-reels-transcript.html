@@ -23,11 +23,12 @@
       <p class="brand"><a href="/">InstaScript</a></p>
       <h1 class="page-h1">Instagram Reels Transcript</h1>
       <p class="tagline">Turn a public Reel or saved video into timestamped text</p>
-      <nav class="page-nav" aria-label="Transcript tools">
+      <nav class="page-nav" aria-label="Site navigation">
         <a href="/">Instagram Transcript</a>
-        <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
         <a href="/video-to-text">Video to Text</a>
-        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </nav>
     </header>
 
@@ -117,6 +118,33 @@
       <p>Runs in your browser &mdash; no signup.</p>
     </footer>
   </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to create an Instagram Reels transcript",
+    "description": "Create timestamped text from a public Instagram Reel or a saved video file.",
+    "totalTime": "PT2M",
+    "step": [
+      { "@type": "HowToStep", "name": "Choose a public Reel URL or saved file", "text": "Use Paste Reel URL for a public Reel, or choose Upload video or audio for a saved Reel video." },
+      { "@type": "HowToStep", "name": "Let the browser transcribe the audio", "text": "Let the page fetch or decode the media, then wait while the speech model runs in your browser." },
+      { "@type": "HowToStep", "name": "Review and download the transcript", "text": "Check the timestamps, then copy the result or download TXT or SRT." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Can I transcribe a private Instagram Reel?", "acceptedAnswer": { "@type": "Answer", "text": "Not through the public URL path. If you are allowed to use it, save the video and upload the local file instead." } },
+      { "@type": "Question", "name": "Does this extract Instagram's written caption?", "acceptedAnswer": { "@type": "Answer", "text": "No. It transcribes spoken audio. Text written in the post description or burned into the video is a different type of content." } },
+      { "@type": "Question", "name": "Can I download subtitles from the result?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Download SRT for a subtitle track, or TXT for a plain reading copy." } },
+      { "@type": "Question", "name": "What if the Reel has music but no speech?", "acceptedAnswer": { "@type": "Answer", "text": "The tool needs spoken audio to produce useful words. Music, lyrics, crowd noise, and sound effects can create empty or inaccurate segments." } },
+      { "@type": "Question", "name": "Is this affiliated with Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "No. InstaScript is an independent project and is not affiliated with Instagram or Meta." } }
+    ]
+  }
+  </script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>
 </body>
 </html>

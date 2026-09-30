@@ -23,11 +23,12 @@
       <p class="brand"><a href="/">InstaScript</a></p>
       <h1 class="page-h1">Instagram Video to Text</h1>
       <p class="tagline">Turn a Reel or saved Instagram video into timestamped text</p>
-      <nav class="page-nav" aria-label="Transcript tools">
+      <nav class="page-nav" aria-label="Site navigation">
         <a href="/">Instagram Transcript</a>
-        <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
-        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
         <a href="/video-to-text">Video to Text</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </nav>
     </header>
 
@@ -114,6 +115,32 @@
       <p>Runs in your browser &mdash; no signup.</p>
     </footer>
   </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to convert an Instagram video to text",
+    "description": "Convert a public Instagram video or a saved file into timestamped spoken text.",
+    "totalTime": "PT2M",
+    "step": [
+      { "@type": "HowToStep", "name": "Choose a public URL or saved video", "text": "Use Paste Reel URL for a public video, or choose Upload video or audio for a saved copy." },
+      { "@type": "HowToStep", "name": "Wait for browser transcription", "text": "Let the media load and let the browser speech model process the audio." },
+      { "@type": "HowToStep", "name": "Review and export the text", "text": "Review the timestamps, then copy the transcript or download TXT or SRT." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Can I convert a private Instagram video from its URL?", "acceptedAnswer": { "@type": "Answer", "text": "No. The public URL path needs media available without a login. If you are allowed to use the video, save it and upload the local file instead." } },
+      { "@type": "Question", "name": "Does this read text written in the Reel?", "acceptedAnswer": { "@type": "Answer", "text": "No. It recognizes spoken audio. Post captions, comments, and text displayed inside the frames are separate content." } },
+      { "@type": "Question", "name": "Which file should I download?", "acceptedAnswer": { "@type": "Answer", "text": "Choose TXT for a plain transcript and SRT when you need timestamped subtitles in a compatible editor or player." } },
+      { "@type": "Question", "name": "Is InstaScript affiliated with Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "No. InstaScript is an independent project and is not affiliated with Instagram or Meta." } }
+    ]
+  }
+  </script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>
 </body>
 </html>

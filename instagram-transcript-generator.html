@@ -22,10 +22,12 @@
       <p class="brand"><a href="/">InstaScript</a></p>
       <h1 class="page-h1">Instagram Transcript Generator</h1>
       <p class="tagline">Get the spoken words from a Reel as timestamped text</p>
-      <nav class="page-nav" aria-label="Transcript tools">
+      <nav class="page-nav" aria-label="Site navigation">
         <a href="/">Instagram Transcript</a>
         <a href="/video-to-text">Video to Text</a>
-        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/youtube-transcript">YouTube Transcript</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
       </nav>
     </header>
 
@@ -80,6 +82,9 @@
 
     <nav class="related-links" aria-label="Related pages">
       More: <a href="/">Instagram Transcript</a> &middot;
+      <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &middot;
+      <a href="/instagram-video-to-text">Instagram Video to Text</a> &middot;
+      <a href="/reels-to-text">Reels to Text</a> &middot;
       <a href="/video-to-text">Video to Text</a> &middot;
       <a href="/audio-to-text">Audio to Text</a>
     </nav>
@@ -87,6 +92,9 @@
     <footer class="footer" data-site-footer>
       <nav class="footer-nav">
         <a href="/">Instagram Transcript</a>
+        <a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+        <a href="/instagram-video-to-text">Instagram Video to Text</a>
+        <a href="/reels-to-text">Reels to Text</a>
         <a href="/video-to-text">Video to Text</a>
         <a href="/audio-to-text">Audio to Text</a>
         <a href="/privacy">Privacy Policy</a>
@@ -96,6 +104,32 @@
       <p>Runs in your browser &mdash; no signup.</p>
     </footer>
   </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use an Instagram Transcript Generator",
+    "description": "Generate timestamped spoken text from a public Instagram Reel or a saved video.",
+    "totalTime": "PT2M",
+    "step": [
+      { "@type": "HowToStep", "name": "Open the transcript generator", "text": "Choose Paste Reel URL for a public Reel, or Upload video or audio for a saved video." },
+      { "@type": "HowToStep", "name": "Run browser speech recognition", "text": "Wait while the browser extracts audio and runs Whisper speech recognition." },
+      { "@type": "HowToStep", "name": "Copy or download the transcript", "text": "Copy the timestamped text, or download TXT or SRT when you need a file." }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Can it transcribe every Instagram Reel?", "acceptedAnswer": { "@type": "Answer", "text": "No. The URL path needs a public page and a media URL exposed to an unauthenticated request. Use a local copy for a private, expired, or login-only post." } },
+      { "@type": "Question", "name": "Does it create captions from the text?", "acceptedAnswer": { "@type": "Answer", "text": "It creates a timestamped transcript and an SRT file that can be imported into a compatible video editor or player." } },
+      { "@type": "Question", "name": "Is the transcript accurate for music?", "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy." } },
+      { "@type": "Question", "name": "Which language does this page support?", "acceptedAnswer": { "@type": "Answer", "text": "The current browser model is tuned for English. For non-English speech, treat the output as a draft and verify it against the audio." } }
+    ]
+  }
+  </script>
   <script src="/footer.js?v=hierarchy-20260927" defer></script>
 </body>
 </html>
