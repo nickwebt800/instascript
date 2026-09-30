@@ -15,6 +15,7 @@
       ["Facebook Video Transcript", "/facebook-video-transcript"],
       ["YouTube Transcript", "/youtube-transcript"],
       ["YouTube Shorts Transcript", "/youtube-shorts-transcript"],
+      ["Twitter Video Transcript", "/twitter-video-transcript"],
       ["YouTube Transcript Download", "/youtube-transcript-download"],
       ["How to Get a YouTube Transcript", "/how-to-get-a-transcript-of-a-youtube-video"]
     ]},

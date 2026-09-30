@@ -155,6 +155,14 @@ const PAGES = [
     keywords: ["youtube shorts transcript", "shorts transcript", "youtube short captions", "shorts captions", "youtube", "transcript"],
   },
   {
+    title: "Twitter Video Transcript",
+    url: ORIGIN + "/twitter-video-transcript",
+    summary: "Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.",
+    accepts: ["MP4", "MOV", "WebM", "saved X videos"],
+    limits: ["English-focused browser model", "up to 100 MB", "post URLs are not fetched directly; protected or removed posts need a permitted saved file"],
+    keywords: ["twitter video transcript", "x video transcript", "twitter transcript", "video transcript", "srt", "txt"],
+  },
+  {
     title: "About",
     url: ORIGIN + "/about",
     summary: "What InstaScript does, how it runs in the browser, and its limits.",
@@ -589,6 +597,8 @@ const KNOWN_FILES = new Set([
   "/ass-to-srt.md",
   "/youtube-shorts-transcript.html",
   "/youtube-shorts-transcript.md",
+  "/twitter-video-transcript.html",
+  "/twitter-video-transcript.md",
   "/subtitle-editor.html",
   "/subtitle-editor.js",
   "/subtitle-editor.md",
@@ -668,6 +678,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li>
   <li><a href="/youtube-transcript">YouTube Transcript</a></li>
   <li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a></li>
+  <li><a href="/twitter-video-transcript">Twitter Video Transcript</a></li>
   <li><a href="/video-to-text">Transcribe Video</a></li>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
@@ -730,6 +741,8 @@ const MD_MAP = {
   "/ass-to-srt.html": "/ass-to-srt.md",
   "/youtube-shorts-transcript": "/youtube-shorts-transcript.md",
   "/youtube-shorts-transcript.html": "/youtube-shorts-transcript.md",
+  "/twitter-video-transcript": "/twitter-video-transcript.md",
+  "/twitter-video-transcript.html": "/twitter-video-transcript.md",
 };
 
 function wantsMarkdown(request) {
