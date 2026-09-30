@@ -1025,6 +1025,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .logo { font-size: 1.35rem; letter-spacing: -.03em; }
+.hero-row .home-nav { margin-top: 18px; }
+.hero-row .eyebrow { margin-top: 28px; }
 .eyebrow {
   margin: 38px 0 16px;
   color: var(--accent);
