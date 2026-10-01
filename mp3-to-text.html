@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Audio to text in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.">
+  <meta name="description" content="MP3 to text in your browser: drop in an MP3 and get spoken words with timestamps, TXT and SRT downloads. Your file stays on this device.">
   <meta name="theme-color" content="#f8f9fa">
-  <title>Transcribe Audio &mdash; MP3, WAV &amp; Voice Memos to Text | InstaScript</title>
-  <link rel="canonical" href="https://instascript.app/audio-to-text">
+  <title>MP3 to Text: Transcribe an MP3 File in Your Browser | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/mp3-to-text">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://instascript.app/audio-to-text">
-  <meta property="og:title" content="Transcribe Audio to Text | InstaScript">
-  <meta property="og:description" content="Turn MP3, WAV and voice memos into timestamped text in your browser.">
+  <meta property="og:url" content="https://instascript.app/mp3-to-text">
+  <meta property="og:title" content="MP3 to Text | InstaScript">
+  <meta property="og:description" content="Turn an MP3 into timestamped text, TXT or SRT in your browser.">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Transcribe Audio to Text | InstaScript">
@@ -21,8 +21,8 @@
   <div class="container">
     <header class="header">
       <p class="brand"><a href="/">InstaScript</a></p>
-      <h1 class="page-h1">Transcribe Audio &mdash; MP3, WAV &amp; Voice Memos to Text</h1>
-      <p class="tagline">Turn an audio file into text &mdash; free, in your browser</p>
+      <h1 class="page-h1">MP3 to Text: Transcribe an MP3 File in Your Browser</h1>
+      <p class="tagline">Turn an MP3 into readable text &mdash; free, locally in your browser</p>
     <nav class="page-nav" aria-label="Site navigation">
       <a href="/">Instagram Transcript</a>
       <a href="/video-to-text">Video to Text</a>
@@ -35,16 +35,14 @@
     <main class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
-          <h2 id="tool-heading">Audio to text</h2>
-          <p>Local transcription for MP3, WAV and voice memos</p>
+          <h2 id="tool-heading">MP3 to text</h2>
+          <p>Local MP3 transcription with timed TXT and SRT output</p>
         </div>
         <span class="local-badge">Runs in your browser</span>
       </div>
       <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your file stays on this device</p>
-      <!-- Tab switch (URL tab hidden on this page: link fetching is Instagram-only today) -->
       <div class="tabs">
-<button class="tab active" data-tab="upload">Upload video or audio</button>
-<button class="tab" data-tab="url">Paste Reel URL</button>
+<button class="tab active" data-tab="upload">Upload MP3</button>
       </div>
 
       <!-- Upload panel -->
@@ -64,18 +62,14 @@
           </div>
 <button id="transcribeBtn" class="btn-primary">Transcribe this file</button>
         </div>
-        <p class="panel-hint">Voice memos, podcast files and recorded calls all work.</p>
+        <p class="panel-hint">MP3 files up to 100 MB work here; the speech model runs on this device.</p>
       </div>
-
-      <!-- URL panel (kept for parity with the tool; Instagram links only) -->
-      <div class="tab-panel" id="panel-url">
-        <div class="url-group">
-          <input type="url" id="urlInput" class="url-input" placeholder="https://www.instagram.com/reel/...">
-<button id="urlBtn" class="btn-primary">Get my Reel transcript</button>
-        </div>
-        <p class="panel-hint">Paste a public Instagram Reel or video post URL</p>
+      <div class="tab-panel" id="panel-url" style="display:none" aria-hidden="true">
+        <input type="url" id="urlInput" tabindex="-1" aria-hidden="true">
+        <button id="urlBtn" type="button" tabindex="-1" aria-hidden="true">URL disabled</button>
         <div id="urlNote" class="url-note hidden"></div>
       </div>
+
     </main>
 
     <!-- Processing -->
@@ -107,62 +101,63 @@
     </section>
 
     <section class="content-card">
-      <h2>What does turning audio into text mean?</h2>
-      <p><strong>Audio to text</strong> means converting the speech in a sound file into written words. The audio file is not changed; you get a text version of what was said, usually with a time marker at the start of each line so you can find that part of the recording again.</p>
-      <p>The same job goes by a few names: an <strong>audio transcript generator</strong>, an <strong>audio to text converter</strong>, or just audio to text. Whichever you call it, the work is identical &mdash; the file stays on your device and the spoken words come back as text you can copy, search or download.</p>
-      <p>People run audio to text on voice memos and voice notes, interviews, podcast episodes, recorded meetings and lectures, dictation, and any clip where reading is easier than listening. Unlike dictation built into an app, this works on a file you already have.</p>
+      <h2>MP3 to text: the direct answer</h2>
+      <p><strong>MP3 to text</strong> means turning the spoken audio in an MP3 file into searchable words. Drop the file above, press <strong>Transcribe this file</strong>, and the result appears with time markers. Copy the plain transcript, download <strong>.txt</strong> for notes, or download <strong>.srt</strong> when another editor needs timed captions.</p>
+      <p>This MP3 to text converter works on a file you already have. It does not fetch a streaming page, read music metadata as speech, or create a transcript from a title alone. Only the decoded audio is sent to the browser model.</p>
 
-      <h2>How to use an audio transcript generator in 3 steps</h2>
+      <h2>Three steps from MP3 to a transcript</h2>
       <ol class="steps">
-        <li><strong>Have the audio file ready.</strong> MP3, WAV, M4A and OGG all work, including voice memos exported from your phone, up to 100 MB.</li>
-        <li><strong>Drop the file into the box above</strong> &mdash; or tap it to choose a recording on your phone.</li>
-        <li><strong>Press Transcribe.</strong> The text comes back with timestamps. Copy it, or download it as .txt or .srt.</li>
+        <li><strong>Choose one MP3.</strong> Files can be up to 100 MB. A clear voice recording gives the model the best starting signal.</li>
+        <li><strong>Wait for the local model.</strong> The first run downloads the speech model into the browser cache; later runs on the same device can skip that download.</li>
+        <li><strong>Review and export.</strong> Check names, numbers and short words, then copy the text or download TXT/SRT.</li>
       </ol>
 
-      <h2>What the transcript looks like</h2>
-      <p>Every line starts with the moment it was spoken, so long recordings stay easy to scan:</p>
-      <pre class="example">[00:00] Quick note to myself about the client call
-[00:06] they want the report by Friday morning
-[00:12] and they asked for the numbers broken out by region</pre>
-      <p>Download the text as <strong>.txt</strong> to paste into notes or documents, or as <strong>.srt</strong> when you need timed captions.</p>
+      <h2>What the MP3 transcript looks like</h2>
+      <p>Each line keeps its starting time so you can jump back to the source recording:</p>
+      <pre class="example">[00:00] Thanks for joining the project update
+[00:07] I will send the revised figures this afternoon
+[00:14] please flag anything that needs a second look</pre>
+      <p>TXT is the simplest reading and search format. SRT keeps numbered cues and time ranges for caption tools. Neither export contains speaker identity unless the speaker says it.</p>
 
-      <h2>How long does an audio file take?</h2>
-      <p>These five runs were measured on this page with audio files of known length. Nothing here is estimated: each row is one run, timed from the click on <em>Transcribe</em> to the moment the transcript appeared.</p>
+      <h2>Measured browser timings</h2>
+      <p>The timings below are single runs from this site's browser benchmark, measured from the click to the visible transcript. They are observations for one laptop and one WASM setup, not a promise for every device.</p>
       <table class="bench-table">
-        <thead>
-          <tr>
-            <th>Audio length</th>
-            <th>Time to transcribe</th>
-            <th>Model download included</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Audio length</th><th>Elapsed time</th><th>Model download</th></tr></thead>
         <tbody>
-          <tr><td>11 s</td><td>16.89 s</td><td>yes &mdash; first run on a fresh page</td></tr>
-          <tr><td>11 s</td><td>6.49 s</td><td>no</td></tr>
+          <tr><td>11 s</td><td>16.89 s</td><td>yes, first run</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>no, cached</td></tr>
           <tr><td>30 s</td><td>8.98 s</td><td>no</td></tr>
           <tr><td>60 s</td><td>16.06 s</td><td>no</td></tr>
           <tr><td>120 s</td><td>28.58 s</td><td>no</td></tr>
         </tbody>
       </table>
-      <p><strong>Reading the audio timings:</strong> the first row includes model download, whereas the following runs benefit from the model already being loaded. The later figures work out at roughly a quarter of the recording length; that ratio is calculated from the table rather than measured separately.</p>
-      <p class="bench-note">The audio measurements were made on one laptop in one browser with WASM and no WebGPU, using one run per length. Phone hardware, browser load and model cache state can change the result, so these figures describe this test setup only.</p>
-      <p class="bench-note">For the complete source numbers, download the <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">audio timing CSV</a> and see the <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">written benchmark method</a>.</p>
+      <p class="bench-note">The complete rows and method are available in the <a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">benchmark CSV</a>. A busy phone, a cold cache, background tabs or long silence can change the elapsed time.</p>
+
+      <h2>Privacy and file boundaries</h2>
+      <p>The MP3 is decoded and transcribed in your browser. There is no account, transcript history or server upload in this workflow. Once you close the page, the output is yours to save; the site does not keep a copy.</p>
+      <p>The page accepts one local file at a time and supports English speech. It does not separate speakers automatically, translate speech, or reliably recover words covered by music, clipping, heavy noise or overlapping voices.</p>
+
+      <h2>How to check the result</h2>
+      <ul>
+        <li>Replay the audio at each timestamp where a name, number or date matters.</li>
+        <li>Listen for music beds, room echo and crosstalk; these can hide short words.</li>
+        <li>Compare the first and last seconds because abrupt cuts can shift a cue boundary.</li>
+        <li>Keep the original MP3 beside the TXT or SRT so edits remain traceable.</li>
+      </ul>
 
       <h2>FAQ</h2>
-      <h3>Which audio formats can I transcribe?</h3>
-      <p>MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB.</p>
-      <h3>Is voice transcription a different job?</h3>
-      <p>It is the same job described two ways: spoken voice in, written text out. A voice memo recorded on a phone is just an audio file, so it goes through the same box above.</p>
-      <h3>Does the audio leave my device?</h3>
-      <p>No. The model runs in your browser and the file is not uploaded anywhere. There is no account to create and nothing is stored on a server.</p>
-      <h3>How long a recording can I transcribe?</h3>
-      <p>Up to 100 MB per file. The audio is handled in 30-second passes, so an hour-long recording takes noticeably longer than a short memo and uses more memory in the browser.</p>
-      <h3>Can I use this audio to text converter on my phone?</h3>
-      <p>Yes. Open this page in a mobile browser and pick the recording from your phone. The first run downloads the speech model, so allow a little extra time on mobile data.</p>
-      <h3>Which languages are supported?</h3>
-      <p>English. The spoken language is identified first, and non-English audio returns a notice instead of a guess.</p>
+      <h3>What is the difference between MP3 transcription and MP3 to text?</h3>
+      <p>They describe the same conversion: spoken audio in an MP3 becomes written text. “MP3 to text converter” usually emphasizes the file workflow; “MP3 transcription” emphasizes the speech result.</p>
+      <h3>Does the MP3 leave my device?</h3>
+      <p>No. The model runs in the browser and the file is processed locally. Do not close the tab until you have downloaded the output.</p>
+      <h3>Can it transcribe music or non-speech?</h3>
+      <p>It is intended for English speech. Instrumental sections, lyrics, sound effects and overlapping voices can produce omissions or incorrect words, so review the transcript against the audio.</p>
+      <h3>Why is the first MP3 slower?</h3>
+      <p>The first run includes downloading and starting the speech model. A later file can use the cached model, which is why the benchmark has separate first-run and cached rows.</p>
+      <h3>Can I make captions from the result?</h3>
+      <p>Yes. Download SRT for timed cues, then inspect the cue breaks in your caption editor. The export contains speech timing, not styling or a video preview.</p>
 
-      <p class="disclaimer">This audio transcription page is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
+      <p class="disclaimer">This MP3 transcription page is an independent personal project. It does not store uploaded files or claim affiliation with any audio platform.</p>
     </section>
 
     <section class="content-card">

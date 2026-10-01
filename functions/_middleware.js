@@ -123,6 +123,14 @@ const PAGES = [
     keywords: ["audio", "audio to text", "mp3", "wav", "voice", "transcribe audio"],
   },
   {
+    title: "MP3 to Text",
+    url: ORIGIN + "/mp3-to-text",
+    summary: "Transcribe a local MP3 into timestamped text, then download TXT or SRT.",
+    accepts: ["MP3"],
+    limits: ["English only", "up to 100 MB", "one local file at a time", "no upload or account"],
+    keywords: ["mp3 to text", "mp3 transcription", "mp3 to text converter", "mp3", "audio transcript", "srt", "txt"],
+  },
+  {
     title: "TikTok Transcript",
     url: ORIGIN + "/tiktok-transcript",
     summary: "Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.",
@@ -571,6 +579,8 @@ const KNOWN_FILES = new Set([
   "/app.js",
   "/audio-to-text.html",
   "/audio-to-text.md",
+  "/mp3-to-text.html",
+  "/mp3-to-text.md",
   "/benchmark/README.md",
   "/benchmark/whisper-tiny-en-browser-benchmark.csv",
   "/contact.html",
@@ -681,6 +691,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/twitter-video-transcript">Twitter Video Transcript</a></li>
   <li><a href="/video-to-text">Transcribe Video</a></li>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
+  <li><a href="/mp3-to-text">MP3 to Text</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
@@ -719,6 +730,8 @@ const MD_MAP = {
   "/video-to-text.html": "/video-to-text.md",
   "/audio-to-text": "/audio-to-text.md",
   "/audio-to-text.html": "/audio-to-text.md",
+  "/mp3-to-text": "/mp3-to-text.md",
+  "/mp3-to-text.html": "/mp3-to-text.md",
   "/tiktok-transcript": "/tiktok-transcript.md",
   "/tiktok-transcript.html": "/tiktok-transcript.md",
   "/facebook-video-transcript": "/facebook-video-transcript.md",

@@ -58,7 +58,7 @@ Use exactly one unused canonical keyword per page, in this order. Values below a
 
 | Order | Keyword | US monthly search | Competition label | Status |
 |---:|---|---:|---|---|
-| 14 | `mp3 to text` | 3600 | medium | unused |
+| 14 | `mp3 to text` | 3600 | medium | used 2026-10-01 |
 | 15 | `podcast transcript` | 2400 | medium | unused |
 | 16 | `mp4 to text` | 1300 | medium | unused |
 | 17 | `zoom transcript` | 880 | medium | unused |
