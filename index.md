@@ -52,6 +52,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Audio to Text](https://instascript.app/audio-to-text) — transcribe an MP3, WAV or voice memo into written text.
 - [MP3 to Text](https://instascript.app/mp3-to-text) — transcribe a local MP3 into timestamped TXT or SRT.
 - [Podcast Transcript](https://instascript.app/podcast-transcript) — turn a local podcast episode into timestamped TXT or SRT.
+- [MP4 to Text](https://instascript.app/mp4-to-text) — transcribe a local MP4 into timestamped TXT or SRT.
 - [TikTok Transcript](https://instascript.app/tiktok-transcript) — save a TikTok video and read what is said in it.
 - [Facebook Video Transcript](https://instascript.app/facebook-video-transcript) — get the spoken words out of a Facebook video file.
 
