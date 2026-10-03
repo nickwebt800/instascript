@@ -14,6 +14,7 @@
       ["MP3 to Text", "/mp3-to-text"],
       ["Podcast Transcript", "/podcast-transcript"],
       ["MP4 to Text", "/mp4-to-text"],
+      ["Zoom Transcript", "/zoom-transcript"],
       ["TikTok Transcript", "/tiktok-transcript"],
       ["Facebook Video Transcript", "/facebook-video-transcript"],
       ["YouTube Transcript", "/youtube-transcript"],

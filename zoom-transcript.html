@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zoom transcript in your browser: transcribe one local Zoom recording and export timestamped TXT or SRT. Your file stays on this device.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Zoom Transcript: Transcribe a Recording in Your Browser | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/zoom-transcript">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instascript.app/zoom-transcript">
+  <meta property="og:title" content="Zoom Transcript | InstaScript">
+  <meta property="og:description" content="Turn a local Zoom recording into timestamped spoken text, TXT or SRT in your browser.">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Zoom Transcript | InstaScript">
+  <meta name="twitter:description" content="Transcribe a permitted local Zoom recording in your browser.">
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Zoom Transcript: Transcribe a Recording in Your Browser</h1>
+      <p class="tagline">Turn a local meeting recording into searchable text with timed exports</p>
+      <nav class="page-nav" aria-label="Site navigation"><a href="/">Instagram Transcript</a><a href="/audio-to-text">Audio to Text</a><a href="/video-to-text">Video to Text</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    </header>
+    <main class="tool-card" aria-labelledby="tool-heading">
+      <div class="tool-heading"><div><h2 id="tool-heading">Zoom recording to text</h2><p>Local audio or video to timestamped TXT and SRT</p></div><span class="local-badge">Runs in your browser</span></div>
+      <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your file stays on this device</p>
+      <div class="tabs"><button class="tab active" data-tab="upload">Upload recording</button></div>
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone"><p class="drop-text">Drop your recording here<br>or <span class="link">browse</span></p><p class="drop-hint">MP4, MOV, WebM, MP3, WAV or M4A &mdash; up to 100 MB</p><input type="file" id="fileInput" accept="video/*,audio/*" hidden></div>
+        <div id="fileInfo" class="file-info hidden"><div class="file-row"><span id="fileName" class="file-name"></span><span id="fileSize" class="file-size"></span></div><button id="transcribeBtn" class="btn-primary">Transcribe this file</button></div>
+        <p class="panel-hint">One local recording at a time; the model reads its audio track.</p>
+      </div>
+      <div class="tab-panel" id="panel-url" style="display:none" aria-hidden="true"><input type="url" id="urlInput" tabindex="-1" aria-hidden="true"><button id="urlBtn" type="button" tabindex="-1" aria-hidden="true">URL disabled</button></div>
+    </main>
+    <div id="processing" class="processing hidden"><div class="spinner"></div><p id="processingText" class="processing-text">Loading AI model...</p><div id="progressBar" class="progress-bar hidden"><div class="progress-fill" id="progressFill"></div></div></div>
+    <div id="errorBox" class="error-box hidden"></div>
+    <section id="transcriptSection" class="transcript-section hidden"><div class="transcript-header"><h2>Transcript</h2><div class="actions"><button id="copyBtn" class="btn-ghost">Copy</button><button id="downloadTxtBtn" class="btn-ghost">TXT</button><button id="downloadSrtBtn" class="btn-ghost">SRT</button></div></div><div id="transcriptOutput" class="transcript-output"></div></section>
+    <section class="content-card">
+      <h2>Zoom transcript: the direct answer</h2>
+      <p><strong>Zoom transcript</strong> means turning the spoken audio in a meeting recording into searchable words. Choose one recording above, press <strong>Transcribe this file</strong>, and review timestamped segments. Copy the text, download <strong>.txt</strong> for notes, or download <strong>.srt</strong> for timed subtitle cues.</p>
+      <p>This page does not sign in to a meeting account or fetch a private cloud recording. Export a recording you are allowed to use, save it locally, and select that file here.</p>
+      <h2>How to transcribe a Zoom recording</h2>
+      <ol class="steps"><li><strong>Export one recording.</strong> Choose an MP4, MOV, WebM, MP3, WAV or M4A file up to 100 MB.</li><li><strong>Start the local model.</strong> The first run downloads the speech model; later runs can reuse the browser cache.</li><li><strong>Check and export.</strong> Replay names, numbers and decisions at their timestamps, then copy TXT or download SRT.</li></ol>
+      <h2>Example output</h2>
+      <pre class="example">[00:00] Thanks for joining the weekly review
+[00:08] The delivery date moved to Thursday
+[00:15] I will send the action list after this call</pre>
+      <p>TXT is easy to search and share. SRT keeps numbered cues and time ranges. The export does not identify speakers unless someone says their name.</p>
+      <h2>Measured browser timings</h2>
+      <p>These single runs come from the site's WASM browser benchmark. They are observations from one laptop, not a promise for every meeting length, browser or phone.</p>
+      <table class="bench-table"><thead><tr><th>Audio length</th><th>Elapsed time</th><th>Model download</th></tr></thead><tbody><tr><td>11 s</td><td>16.89 s</td><td>yes, first run</td></tr><tr><td>11 s</td><td>6.49 s</td><td>no, cached</td></tr><tr><td>30 s</td><td>8.98 s</td><td>no</td></tr><tr><td>60 s</td><td>16.06 s</td><td>no</td></tr><tr><td>120 s</td><td>28.58 s</td><td>no</td></tr></tbody></table>
+      <p class="bench-note"><a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">Raw benchmark CSV</a> contains the measured rows and method notes. A long meeting, silence and device load can change elapsed time.</p>
+      <h2>Privacy and review limits</h2>
+      <p>The selected recording is decoded and transcribed in your browser. There is no account, transcript history or server upload in this local-file workflow. Save the result before closing the tab.</p>
+      <p>The model is intended for English speech. Crosstalk, room echo, muted sections, names, acronyms and overlapping voices can change words or cue boundaries. It does not translate, label speakers or read slides and chat text.</p>
+      <h2>FAQ</h2>
+      <h3>Can I paste a Zoom cloud link?</h3><p>No. Download a recording you are permitted to use and choose the local file. This page does not fetch private or access-controlled links.</p>
+      <h3>Does the recording leave my device?</h3><p>No for this local-file workflow. The speech model runs in the browser and the page does not keep a server copy.</p>
+      <h3>Can I make subtitles from a meeting?</h3><p>Yes. Download SRT, then inspect cue breaks in a subtitle editor. The export contains speech timing, not speaker labels or styling.</p>
+      <h3>Why is the first run slower?</h3><p>The first run downloads and initializes the speech model. A later recording can use the cached model.</p>
+    </section>
+    <nav class="related-links" aria-label="Related transcript tools">Other transcript tools: <a href="/audio-to-text">Audio to Text</a> &middot; <a href="/video-to-text">Video to Text</a> &middot; <a href="/mp4-to-text">MP4 to Text</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a></nav>
+    <footer class="footer" data-site-footer><nav class="footer-nav"><a href="/">Instagram Transcript</a><a href="/audio-to-text">Audio to Text</a><a href="/video-to-text">Video to Text</a><a href="/mp4-to-text">MP4 to Text</a><a href="/privacy">Privacy Policy</a><a href="/about">About</a><a href="/contact">Contact</a></nav><p>Runs locally in your browser for uploaded files &mdash; no signup.</p></footer>
+  </div>
+  <script type="module" src="app.js?v=lang-token-fix"></script>
+  <script src="/js/webmcp.js" defer></script><script src="/footer.js?v=hierarchy-20261001" defer></script>
+</body>
+</html>

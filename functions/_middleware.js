@@ -147,6 +147,14 @@ const PAGES = [
     keywords: ["mp4 to text", "mp4 to transcript", "mp4 transcription", "transcribe mp4 to text", "video transcript", "srt", "txt"],
   },
   {
+    title: "Zoom Transcript",
+    url: ORIGIN + "/zoom-transcript",
+    summary: "Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.",
+    accepts: ["MP4", "MOV", "WebM", "MP3", "WAV", "M4A"],
+    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "private Zoom links are not fetched"],
+    keywords: ["zoom transcript", "zoom transcription", "transcribe zoom", "zoom meeting transcription", "meeting transcript", "srt", "txt"],
+  },
+  {
     title: "TikTok Transcript",
     url: ORIGIN + "/tiktok-transcript",
     summary: "Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.",
@@ -601,6 +609,8 @@ const KNOWN_FILES = new Set([
   "/podcast-transcript.md",
   "/mp4-to-text.html",
   "/mp4-to-text.md",
+  "/zoom-transcript.html",
+  "/zoom-transcript.md",
   "/benchmark/README.md",
   "/benchmark/whisper-tiny-en-browser-benchmark.csv",
   "/contact.html",
@@ -712,6 +722,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/video-to-text">Transcribe Video</a></li>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
   <li><a href="/mp3-to-text">MP3 to Text</a></li>
+  <li><a href="/zoom-transcript">Zoom Transcript</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
@@ -756,6 +767,8 @@ const MD_MAP = {
   "/podcast-transcript.html": "/podcast-transcript.md",
   "/mp4-to-text": "/mp4-to-text.md",
   "/mp4-to-text.html": "/mp4-to-text.md",
+  "/zoom-transcript": "/zoom-transcript.md",
+  "/zoom-transcript.html": "/zoom-transcript.md",
   "/tiktok-transcript": "/tiktok-transcript.md",
   "/tiktok-transcript.html": "/tiktok-transcript.md",
   "/facebook-video-transcript": "/facebook-video-transcript.md",
