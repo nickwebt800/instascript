@@ -12,6 +12,7 @@
       ["Video to Text", "/video-to-text"],
       ["Audio to Text", "/audio-to-text"],
       ["MP3 to Text", "/mp3-to-text"],
+      ["M4A to Text", "/m4a-to-text"],
       ["Podcast Transcript", "/podcast-transcript"],
       ["MP4 to Text", "/mp4-to-text"],
       ["Zoom Transcript", "/zoom-transcript"],

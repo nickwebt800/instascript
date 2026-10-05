@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="M4A to text in your browser: transcribe one local M4A file and export timestamped TXT or SRT while the file stays on your device.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>M4A to Text: Transcribe an M4A File in Your Browser | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/m4a-to-text">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instascript.app/m4a-to-text">
+  <meta property="og:title" content="M4A to Text | InstaScript">
+  <meta property="og:description" content="Turn a local M4A recording into timestamped text, TXT or SRT in your browser.">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="M4A to Text | InstaScript">
+  <meta name="twitter:description" content="Transcribe one local M4A file in your browser and export TXT or SRT.">
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">M4A to Text: Transcribe an M4A File in Your Browser</h1>
+      <p class="tagline">Turn a local M4A recording into searchable text with timed exports</p>
+      <nav class="page-nav" aria-label="Site navigation"><a href="/">Instagram Transcript</a><a href="/audio-to-text">Audio to Text</a><a href="/video-to-text">Video to Text</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    </header>
+    <main class="tool-card" aria-labelledby="tool-heading">
+      <div class="tool-heading"><div><h2 id="tool-heading">M4A to text</h2><p>Local M4A transcription with timed TXT and SRT output</p></div><span class="local-badge">Runs in your browser</span></div>
+      <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Your file stays on this device</p>
+      <div class="tabs"><button class="tab active" data-tab="upload">Upload M4A</button></div>
+      <div class="tab-panel active" id="panel-upload">
+        <div class="drop-zone" id="dropZone"><svg class="drop-icon" viewBox="0 0 48 48" width="48" height="48" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M24 6v24m0-24l-8 8m8-8l8 8M8 30v8a4 4 0 004 4h24a4 4 0 004-4v-8" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="drop-text">Drop your M4A file here<br>or <span class="link">browse</span></p><p class="drop-hint">M4A, MP3, WAV or OGG &mdash; up to 100 MB</p><input type="file" id="fileInput" accept="video/*,audio/*" hidden></div>
+        <div id="fileInfo" class="file-info hidden"><div class="file-row"><span id="fileName" class="file-name"></span><span id="fileSize" class="file-size"></span></div><button id="transcribeBtn" class="btn-primary">Transcribe this file</button></div>
+        <p class="panel-hint">One local file at a time; the browser reads the audio track.</p>
+      </div>
+      <div class="tab-panel" id="panel-url" style="display:none" aria-hidden="true"><input type="url" id="urlInput" tabindex="-1" aria-hidden="true"><button id="urlBtn" type="button" tabindex="-1" aria-hidden="true">URL disabled</button></div>
+    </main>
+    <div id="processing" class="processing hidden"><div class="spinner"></div><p id="processingText" class="processing-text">Loading AI model...</p><div id="progressBar" class="progress-bar hidden"><div class="progress-fill" id="progressFill"></div></div></div>
+    <div id="errorBox" class="error-box hidden"></div>
+    <section id="transcriptSection" class="transcript-section hidden"><div class="transcript-header"><h2>Transcript</h2><div class="actions"><button id="copyBtn" class="btn-ghost">Copy</button><button id="downloadTxtBtn" class="btn-ghost">TXT</button><button id="downloadSrtBtn" class="btn-ghost">SRT</button></div></div><div id="transcriptOutput" class="transcript-output"></div></section>
+    <section class="content-card">
+      <h2>M4A to text: the direct answer</h2>
+      <p><strong>M4A to text</strong> means turning the spoken audio in an M4A file into searchable words. Choose one local file above, press <strong>Transcribe this file</strong>, and review timestamped segments. Copy the transcript, download <strong>.txt</strong> for notes, or download <strong>.srt</strong> for timed subtitle cues.</p>
+      <p>M4A is a container, so the browser must be able to decode the codec inside it. This page reads a local recording and its audio track; it does not fetch a phone backup, cloud link or file name as a transcript.</p>
+      <h2>How to transcribe an M4A recording</h2>
+      <ol class="steps"><li><strong>Choose one M4A.</strong> Use a file up to 100 MB. A clear voice recording is easier to check than music or a clipped memo.</li><li><strong>Start the browser model.</strong> The first run downloads the speech model into the cache. Later runs on the same device can reuse it.</li><li><strong>Review and export.</strong> Replay names, numbers and dates at their timestamps, then copy TXT or download SRT.</li></ol>
+      <h2>Example M4A transcript</h2>
+      <pre class="example">[00:00] The customer call starts at nine
+[00:07] Please send the revised outline today
+[00:15] I will check the final numbers before lunch</pre>
+      <p>TXT is easy to search. SRT preserves numbered cues and time ranges for subtitle tools. Neither format adds speaker labels or styling.</p>
+      <h2>Measured browser timings</h2>
+      <p>These are single runs from the site's WASM browser benchmark on one laptop. They show elapsed processing time, not a guarantee for every M4A codec, browser or device.</p>
+      <table class="bench-table"><thead><tr><th>Audio length</th><th>Elapsed time</th><th>Model download</th></tr></thead><tbody><tr><td>11 s</td><td>16.89 s</td><td>yes, first run</td></tr><tr><td>11 s</td><td>6.49 s</td><td>no, cached</td></tr><tr><td>30 s</td><td>8.98 s</td><td>no</td></tr><tr><td>60 s</td><td>16.06 s</td><td>no</td></tr><tr><td>120 s</td><td>28.58 s</td><td>no</td></tr></tbody></table>
+      <p class="bench-note"><a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">Raw benchmark CSV</a> contains the measured rows and method notes. Cache state, silence and device load change elapsed time.</p>
+      <h2>Privacy and M4A limits</h2>
+      <p>The selected M4A is decoded and transcribed in your browser. There is no account, transcript history or server upload in this local-file workflow. Save the result before closing the tab.</p>
+      <p>The model is intended for English speech. Unsupported codecs, DRM, damaged containers, music, echo, clipping and overlapping voices can cause an error or missing words. It does not translate, identify speakers or read cover art and metadata.</p>
+      <h2>How to check the result</h2>
+      <ul><li>Play the original at every timestamp where a name, number or date matters.</li><li>Listen for music beds, silence and crosstalk that can hide short words.</li><li>Check the opening and closing seconds after an abrupt recording cut.</li><li>Keep the original M4A beside the TXT or SRT so edits remain traceable.</li></ul>
+      <h2>FAQ</h2>
+      <h3>Can I paste an M4A link?</h3><p>No. Save a recording you are allowed to use and choose the local file. This page does not fetch private cloud links.</p>
+      <h3>Does the M4A leave my device?</h3><p>No for this local workflow. The model runs in the browser and the page does not keep a server copy.</p>
+      <h3>What if the M4A will not decode?</h3><p>Try opening it in a player first or export a browser-friendly audio file such as WAV or MP3. The extension alone does not identify the codec.</p>
+      <h3>Can I make captions from the result?</h3><p>Yes. Download SRT and inspect cue breaks in a subtitle editor. The export contains speech timing, not styling or a video preview.</p>
+      <h3>Why is the first run slower?</h3><p>The first run loads and initializes the speech model. A later file can reuse the cached model.</p>
+    </section>
+    <nav class="related-links" aria-label="Related transcript tools">Other transcript tools: <a href="/audio-to-text">Audio to Text</a> &middot; <a href="/mp3-to-text">MP3 to Text</a> &middot; <a href="/podcast-transcript">Podcast Transcript</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a></nav>
+    <footer class="footer" data-site-footer><nav class="footer-nav"><a href="/">Instagram Transcript</a><a href="/audio-to-text">Audio to Text</a><a href="/mp3-to-text">MP3 to Text</a><a href="/privacy">Privacy Policy</a><a href="/about">About</a><a href="/contact">Contact</a></nav><p>Runs locally in your browser for uploaded files &mdash; no signup.</p></footer>
+  </div>
+  <script type="module" src="app.js?v=lang-token-fix"></script><script src="/js/webmcp.js" defer></script><script src="/footer.js?v=hierarchy-20261001" defer></script>
+</body>
+</html>
