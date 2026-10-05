@@ -63,7 +63,7 @@ Use exactly one unused canonical keyword per page, in this order. Values below a
 | 16 | `mp4 to text` | 1300 | medium | used 2026-10-03 |
 | 17 | `zoom transcript` | 880 | medium | used 2026-10-04 |
 | 18 | `m4a to text` | 590 | medium | used 2026-10-05 |
-| 19 | `voice memo to text` | 590 | medium | unused |
+| 19 | `voice memo to text` | 590 | medium | used 2026-10-06 |
 | 20 | `wav to text` | 260 | medium | unused |
 | 21 | `vimeo transcript` | 260 | low | unused |
 
