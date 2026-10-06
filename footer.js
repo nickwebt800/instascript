@@ -13,6 +13,7 @@
       ["Audio to Text", "/audio-to-text"],
       ["MP3 to Text", "/mp3-to-text"],
       ["M4A to Text", "/m4a-to-text"],
+      ["WAV to Text", "/wav-to-text"],
       ["Voice Memo to Text", "/voice-memo-to-text"],
       ["Podcast Transcript", "/podcast-transcript"],
       ["MP4 to Text", "/mp4-to-text"],

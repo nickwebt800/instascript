@@ -139,6 +139,14 @@ const PAGES = [
     keywords: ["m4a to text", "transcribe m4a to text", "m4a transcription", "m4a", "audio transcript", "srt", "txt"],
   },
   {
+    title: "WAV to Text",
+    url: ORIGIN + "/wav-to-text",
+    summary: "Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.",
+    accepts: ["WAV", "MP3", "M4A", "OGG"],
+    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "browser-readable sample formats only"],
+    keywords: ["wav to text", "transcribe wav files", "wav transcription", "wav", "audio transcript", "srt", "txt"],
+  },
+  {
     title: "Voice Memo to Text",
     url: ORIGIN + "/voice-memo-to-text",
     summary: "Turn one local voice memo into timestamped text, TXT or SRT in the browser.",
@@ -623,6 +631,8 @@ const KNOWN_FILES = new Set([
   "/mp3-to-text.md",
   "/m4a-to-text.html",
   "/m4a-to-text.md",
+  "/wav-to-text.html",
+  "/wav-to-text.md",
   "/voice-memo-to-text.html",
   "/voice-memo-to-text.md",
   "/podcast-transcript.html",
@@ -743,6 +753,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/audio-to-text">Transcribe Audio</a></li>
   <li><a href="/mp3-to-text">MP3 to Text</a></li>
   <li><a href="/m4a-to-text">M4A to Text</a></li>
+  <li><a href="/wav-to-text">WAV to Text</a></li>
   <li><a href="/zoom-transcript">Zoom Transcript</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
@@ -786,6 +797,8 @@ const MD_MAP = {
   "/mp3-to-text.html": "/mp3-to-text.md",
   "/m4a-to-text": "/m4a-to-text.md",
   "/m4a-to-text.html": "/m4a-to-text.md",
+  "/wav-to-text": "/wav-to-text.md",
+  "/wav-to-text.html": "/wav-to-text.md",
   "/voice-memo-to-text": "/voice-memo-to-text.md",
   "/voice-memo-to-text.html": "/voice-memo-to-text.md",
   "/podcast-transcript": "/podcast-transcript.md",
