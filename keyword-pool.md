@@ -43,7 +43,7 @@ Use exactly one unused canonical keyword per page, in this order. Values below a
 
 `youtube transcript generator`, `youtube video transcript`, and `transcript youtube video` merge into the `youtube transcript` page. `ssa to srt` merges into the `ass to srt` page.
 
-Backup only, not publish targets until explicitly activated: `subtitle generator` (1600, medium, 5.85-26.67) and `add subtitles to video` (1900, medium, 8.05-30.51).
+Backup only, not publish targets until explicitly activated: `add subtitles to video` (1900, medium, 8.05-30.51).
 
 Merge-only families:
 
@@ -81,3 +81,24 @@ These are real search phrases supplied by the owner. Use each naturally once on 
 | `voice memo to text` | `/voice-memo-to-text` | `transcribe voice memos`; `transcribe iphone voice memo` | used -> `/voice-memo-to-text` |
 | `wav to text` | `/wav-to-text` | `transcribe wav files` | used -> `/wav-to-text` |
 | `vimeo transcript` | `/vimeo-transcript` | none supplied | used 2026-10-08 -> `/vimeo-transcript` |
+
+## Fourth batch supplied 2026-10-08
+
+Use exactly one unused canonical keyword per new page, in this order. Values below are supplied by the owner; do not estimate or replace them. Existing intent families remain one page only.
+
+| Order | Keyword | US monthly search | Competition label | Status |
+|---:|---|---:|---|---|
+| 22 | `audio transcription` | 33000 | low | covered existing `/audio-to-text` (primary keyword updated) |
+| 23 | `video transcript` | 27000 | medium | covered existing `/video-to-text` (primary keyword updated) |
+| 24 | `caption generator` | 2900 | low | unused |
+| 25 | `podcast transcription` | 2400 | medium | covered existing `/podcast-transcript` |
+| 26 | `zoom transcription` | 1900 | medium | covered existing `/zoom-transcript` |
+| 27 | `subtitle generator` | 1600 | medium | unused |
+| 28 | `voice message to text` | 590 | low | covered existing `/voice-memo-to-text` |
+| 29 | `whatsapp voice to text` | 210 | low | unused |
+
+### Fourth-batch merge-only spellings
+
+- `zoom meeting transcription` (590) and `transcribe zoom` (1900) merge into `/zoom-transcript` with `zoom transcription`.
+- `podcast transcription` merges into `/podcast-transcript`.
+- `voice message to text` merges into `/voice-memo-to-text`.

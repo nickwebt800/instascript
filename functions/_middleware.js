@@ -27,12 +27,12 @@ const PAGES = [
     keywords: ["instagram", "reel", "reels", "transcript", "caption", "home", "ig"],
   },
   {
-    title: "Transcribe Video",
+    title: "Video Transcript",
     url: ORIGIN + "/video-to-text",
     summary: "Turn an MP4, MOV or WebM video file into a timestamped transcript.",
     accepts: ["MP4", "MOV", "WebM"],
     limits: ["English only", "up to 100 MB", "no video links - upload the file"],
-    keywords: ["video", "video to text", "mp4", "mov", "webm", "transcribe video"],
+    keywords: ["video transcript", "video", "video to text", "mp4", "mov", "webm", "transcribe video"],
   },
   {
     title: "Instagram Transcript Generator",
@@ -115,12 +115,12 @@ const PAGES = [
     keywords: ["srt to text", "vtt to text", "subtitle to text", "srt converter", "vtt converter", "plain text"],
   },
   {
-    title: "Transcribe Audio",
+    title: "Audio Transcription",
     url: ORIGIN + "/audio-to-text",
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
     accepts: ["MP3", "WAV", "M4A", "OGG"],
     limits: ["English only", "up to 100 MB"],
-    keywords: ["audio", "audio to text", "mp3", "wav", "voice", "transcribe audio"],
+    keywords: ["audio transcription", "audio", "audio to text", "mp3", "wav", "voice", "transcribe audio"],
   },
   {
     title: "MP3 to Text",

@@ -1,12 +1,12 @@
-# Transcribe Audio — MP3, WAV & Voice Memos to Text | InstaScript
+# Audio Transcription — MP3, WAV & Voice Memos to Text | InstaScript
 
-> Audio to text in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.
+> Audio transcription in your browser: upload an MP3, WAV, M4A or voice memo and get the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.
 
 Canonical: <https://instascript.app/audio-to-text>
 
 [InstaScript](https://instascript.app/)
 
-# Transcribe Audio — MP3, WAV & Voice Memos to Text
+# Audio Transcription — MP3, WAV & Voice Memos to Text
 
 Turn an audio file into text — free, in your browser
 
@@ -14,7 +14,7 @@ Voice memos, podcast files and recorded calls all work.
 
 Paste a public Instagram Reel or video post URL
 
-## What does turning audio into text mean?
+## What does audio transcription mean?
 
 **Audio to text** means converting the speech in a sound file into written words. The audio file is not changed; you get a text version of what was said, usually with a time marker at the start of each line so you can find that part of the recording again.
 

@@ -1,4 +1,4 @@
-# Transcribe Video — MP4, MOV, WebM to Text | InstaScript
+# Video Transcript — MP4, MOV, WebM to Text | InstaScript
 
 > Video transcript generator in your browser: drop an MP4, MOV or WebM file and read the spoken words with timestamps. Copy the text or download TXT / SRT. No signup.
 
@@ -6,7 +6,7 @@ Canonical: <https://instascript.app/video-to-text>
 
 [InstaScript](https://instascript.app/)
 
-# Transcribe Video — MP4, MOV, WebM to Text
+# Video Transcript — MP4, MOV, WebM to Text
 
 Turn a video file into text — free, in your browser
 
@@ -14,7 +14,7 @@ Any video file on your device works — screen recordings included.
 
 Paste a public Instagram Reel or video post URL
 
-## What does turning a video into text mean?
+## What does a video transcript mean?
 
 **Video to text** means taking the speech inside a video file and writing it out as readable text. The video itself is not changed — you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.
 
