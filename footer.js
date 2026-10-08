@@ -18,6 +18,7 @@
       ["Podcast Transcript", "/podcast-transcript"],
       ["MP4 to Text", "/mp4-to-text"],
       ["Zoom Transcript", "/zoom-transcript"],
+      ["Vimeo Transcript", "/vimeo-transcript"],
       ["TikTok Transcript", "/tiktok-transcript"],
       ["Facebook Video Transcript", "/facebook-video-transcript"],
       ["YouTube Transcript", "/youtube-transcript"],

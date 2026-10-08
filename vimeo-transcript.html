@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turn a Vimeo recording you are allowed to use into a timestamped transcript. Download the file, upload it to InstaScript, and export TXT or SRT in your browser.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Vimeo Transcript: Turn a Video File into Text | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/vimeo-transcript">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instascript.app/vimeo-transcript">
+  <meta property="og:title" content="Vimeo Transcript | InstaScript">
+  <meta property="og:description" content="Download a permitted Vimeo recording, upload it locally, and export timestamped TXT or SRT.">
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Vimeo Transcript</h1>
+      <p class="tagline">Download a permitted Vimeo video, then turn the file into timestamped text</p>
+      <nav class="page-nav" aria-label="Site navigation">
+        <a href="/">Instagram Transcript</a>
+        <a href="/video-to-text" aria-current="page">Video to Text</a>
+        <a href="/audio-to-text">Audio to Text</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="tool-card" aria-labelledby="tool-heading">
+      <div class="tool-heading"><div><h2 id="tool-heading">Use your Vimeo file</h2><p>Vimeo links are not fetched directly</p></div><span class="local-badge">No signup</span></div>
+      <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> The file is processed in your browser</p>
+      <p>Download the recording from Vimeo when you have permission, then open <a href="/video-to-text">Video to Text</a> and choose the saved MP4, MOV or WebM file.</p>
+      <p class="panel-hint">The model transcribes English speech. It does not read Vimeo comments, descriptions, slides or on-screen text.</p>
+      <a class="btn-primary" href="/video-to-text">Open Video to Text</a>
+    </main>
+
+    <section class="content-card">
+      <h2>How to get a Vimeo transcript</h2>
+      <ol class="steps">
+        <li>Open the Vimeo recording and use its download option, if the owner has enabled one.</li>
+        <li>Save the file on your device. Do not download or process a video you are not allowed to use.</li>
+        <li>Open <a href="/video-to-text">Video to Text</a>, select the file, and wait for the timestamped result.</li>
+        <li>Copy the text, or download <strong>.txt</strong> for notes and <strong>.srt</strong> for subtitle editors.</li>
+      </ol>
+
+      <h2>What this Vimeo transcript workflow can and cannot do</h2>
+      <p><strong>The Vimeo page is only the source of a file. InstaScript does not log in to Vimeo, bypass privacy controls, or fetch a private link.</strong> Once you select a permitted local file, speech recognition runs on your device. Nothing is uploaded for transcription and no transcript is stored by this site.</p>
+      <ul class="steps">
+        <li>Works with browser-readable MP4, MOV and WebM files up to the tool's 100 MB upload limit.</li>
+        <li>Returns spoken English with segment timestamps, plus TXT and SRT export.</li>
+        <li>Does not transcribe music, comments, descriptions, speaker labels or text shown only in the picture.</li>
+        <li>Noise, room echo, overlapping speakers and strong accents need a manual review.</li>
+      </ul>
+
+      <h2>Why a saved file is the reliable route</h2>
+      <p>A Vimeo URL can point to a private showcase, an embed, or a player that requires a session. Treating every link as downloadable would either fail unpredictably or encourage access outside the owner's settings. A saved file gives you a clear permission boundary and lets the browser decode the exact media you selected.</p>
+
+      <h2>FAQ</h2>
+      <h3>Can I paste a Vimeo URL here?</h3>
+      <p>No. This page does not fetch Vimeo URLs. Download a file using Vimeo's own controls when available, then use <a href="/video-to-text">Video to Text</a>.</p>
+      <h3>Is the video uploaded?</h3>
+      <p>No. The selected file stays in the browser while the speech model runs. See the <a href="/privacy">privacy policy</a> for the processing boundary.</p>
+      <h3>Can it make subtitles?</h3>
+      <p>Yes. The result includes segment timestamps and an SRT download. Review the cues before publishing, especially where speakers overlap or music covers speech.</p>
+      <h3>Does it support every language?</h3>
+      <p>The included model is English-focused. Non-English speech may be incomplete or incorrect.</p>
+
+      <p class="disclaimer">InstaScript is an independent project. It is not affiliated with or endorsed by Vimeo.</p>
+    </section>
+
+    <nav class="related-links" aria-label="Related transcript tools">Related tools: <a href="/video-to-text">Video to Text</a> · <a href="/audio-to-text">Audio to Text</a> · <a href="/mp4-to-text">MP4 to Text</a> · <a href="/podcast-transcript">Podcast Transcript</a></nav>
+    <footer class="footer" data-site-footer></footer>
+  </div>
+  <script src="/footer.js?v=hierarchy-20261001" defer></script>
+  <script src="/js/webmcp.js" defer></script>
+</body>
+</html>

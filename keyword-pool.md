@@ -65,7 +65,7 @@ Use exactly one unused canonical keyword per page, in this order. Values below a
 | 18 | `m4a to text` | 590 | medium | used 2026-10-05 |
 | 19 | `voice memo to text` | 590 | medium | used 2026-10-06 |
 | 20 | `wav to text` | 260 | medium | used 2026-10-07 |
-| 21 | `vimeo transcript` | 260 | low | unused |
+| 21 | `vimeo transcript` | 260 | low | used 2026-10-08 |
 
 ### Same-family spellings
 
@@ -80,4 +80,4 @@ These are real search phrases supplied by the owner. Use each naturally once on 
 | `m4a to text` | `/m4a-to-text` | `transcribe m4a to text` | used -> `/m4a-to-text` |
 | `voice memo to text` | `/voice-memo-to-text` | `transcribe voice memos`; `transcribe iphone voice memo` | used -> `/voice-memo-to-text` |
 | `wav to text` | `/wav-to-text` | `transcribe wav files` | used -> `/wav-to-text` |
-| `vimeo transcript` | `/vimeo-transcript` | none supplied | used -> `/vimeo-transcript` |
+| `vimeo transcript` | `/vimeo-transcript` | none supplied | used 2026-10-08 -> `/vimeo-transcript` |
