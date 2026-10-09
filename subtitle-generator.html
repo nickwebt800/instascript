@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate a timed English subtitle draft from a public Instagram video or local media, then review and export TXT or SRT in your browser.">
+  <meta name="theme-color" content="#f8f9fa">
+  <title>Subtitle Generator: Timed TXT and SRT Drafts | InstaScript</title>
+  <link rel="canonical" href="https://instascript.app/subtitle-generator">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://instascript.app/subtitle-generator">
+  <meta property="og:title" content="Subtitle Generator | InstaScript">
+  <meta property="og:description" content="Generate a timed English speech subtitle draft from local media or a public Instagram video, then review TXT or SRT.">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Subtitle Generator | InstaScript">
+  <meta name="twitter:description" content="Create a timed English speech subtitle draft in your browser.">
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="upload-only">
+  <div class="container">
+    <header class="header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Subtitle Generator</h1>
+      <p class="tagline">Create a timed English subtitle draft from speech</p>
+      <nav class="page-nav" aria-label="Site navigation"><a href="/">Instagram Transcript</a><a href="/caption-generator">Caption Generator</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    </header>
+
+    <main class="content-card answer-first">
+      <h2>The direct answer</h2>
+      <p>To generate subtitles, open the <a href="/">Instagram Transcript</a> tool, paste a public Instagram Reel or video URL, or select a saved MP4, MOV, WebM, MP3, WAV, M4A, or OGG file. InstaScript recognizes English speech in your browser and returns timestamped cues you can download as SRT or TXT.</p>
+      <ol class="steps"><li>Use a public URL that works without a login, or choose a file you may process.</li><li>Let the browser create speech segments and timestamps.</li><li>Replay important cues, correct wording and timing, then export SRT for a subtitle player or TXT for notes.</li></ol>
+      <p class="bench-note"><strong>Boundary:</strong> this is a speech subtitle draft. It does not burn captions into video, read text in frames, translate speech, add visual styling, or identify speakers.</p>
+    </main>
+
+    <section class="content-card">
+      <h2>What you get</h2>
+      <table class="bench-table"><thead><tr><th>Output</th><th>Use it for</th><th>Review</th></tr></thead><tbody><tr><td>Timestamped cues</td><td>Checking each spoken segment</td><td>Names, numbers, URLs and line breaks</td></tr><tr><td>SRT</td><td>Players and subtitle editors</td><td>Cue duration, overlap and reading speed</td></tr><tr><td>TXT</td><td>Searchable notes or a script draft</td><td>Paragraph breaks and spelling</td></tr></tbody></table>
+      <p>Use the <a href="/subtitle-editor">Subtitle Editor</a> to change cue text or shift timings before publishing. Keep the source recording beside the export so corrections can be checked against the audio.</p>
+
+      <h2>Public URL or local file</h2>
+      <p>A public Instagram URL can fail when the media is private, removed, region-limited, expired, or protected by a login. Save a copy you are allowed to use and upload it instead. Uploads are limited to 100 MB and decoded on your device. URL fetch time is separate from local transcription.</p>
+      <pre class="example">1
+00:00:00,000 --> 00:00:03,000
+Review the first subtitle cue
+
+2
+00:00:03,000 --> 00:00:06,000
+Correct names before export</pre>
+
+      <h2>Measured browser timings</h2>
+      <table class="bench-table"><thead><tr><th>Audio length</th><th>Wall-clock time</th><th>Model state</th></tr></thead><tbody><tr><td>11 s</td><td>16.89 s</td><td>first run, model load included</td></tr><tr><td>11 s</td><td>6.49 s</td><td>cached</td></tr><tr><td>30 s</td><td>8.98 s</td><td>cached</td></tr><tr><td>60 s</td><td>16.06 s</td><td>cached</td></tr><tr><td>120 s</td><td>28.58 s</td><td>cached</td></tr></tbody></table>
+      <p class="bench-note">Single WASM observations on one laptop; URL fetch time is excluded. Your device and browser may differ. See the <a href="https://github.com/nickwebt800/instascript/tree/main/benchmark">measured method</a>.</p>
+
+      <h2>Review before publishing</h2>
+      <ul><li>Replay words covered by music, effects, echo, clipping, or crosstalk.</li><li>Check accents, names, numbers, product terms, and URLs against the recording.</li><li>Split long cues and remove overlaps when viewers need more reading time.</li><li>Text printed in frames needs visual inspection or OCR; speech recognition cannot see it.</li><li>The current browser model is English-focused, so non-English speech needs full manual review.</li></ul>
+
+      <h2>FAQ</h2>
+      <h3>Does this burn subtitles into my video?</h3><p>No. It creates editable TXT and SRT files. A video editor can style or burn them later.</p>
+      <h3>Does it copy the post's written caption?</h3><p>No. It transcribes spoken audio. The written post description is a separate piece of content.</p>
+      <h3>Is an uploaded recording stored?</h3><p>Uploaded media is decoded and transcribed in your browser. A public URL needs a temporary media fetch before local processing; the transcript is not saved as an account record.</p>
+      <h3>Is InstaScript affiliated with Instagram?</h3><p>No. InstaScript is independent of Instagram and Meta.</p>
+    </section>
+    <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/caption-generator">Caption Generator</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a> &middot; <a href="/privacy">Privacy Policy</a></nav>
+    <footer class="footer" data-site-footer><nav class="footer-nav"><a href="/">Instagram Transcript</a></nav><p>Runs in your browser &mdash; no signup.</p></footer>
+  </div>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to generate subtitles","description":"Create a timed English speech subtitle draft and export TXT or SRT.","step":[{"@type":"HowToStep","name":"Choose media","text":"Paste a public Instagram URL or upload a saved audio/video file."},{"@type":"HowToStep","name":"Generate cues","text":"Let the browser recognize English speech and create timestamped segments."},{"@type":"HowToStep","name":"Review and export","text":"Check important timestamps, edit cues, and download TXT or SRT."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this burn subtitles into my video?","acceptedAnswer":{"@type":"Answer","text":"No. It creates editable TXT and SRT files."}},{"@type":"Question","name":"Does it copy the post's written caption?","acceptedAnswer":{"@type":"Answer","text":"No. It transcribes spoken audio, not the written post description."}},{"@type":"Question","name":"Is an uploaded recording stored?","acceptedAnswer":{"@type":"Answer","text":"Uploaded media is decoded and transcribed in your browser."}]}</script>
+  <script src="/footer.js?v=hierarchy-20261001" defer></script>
+</body>
+</html>

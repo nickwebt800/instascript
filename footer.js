@@ -10,6 +10,7 @@
       ["Reels to Text", "/reels-to-text"],
       ["Instagram Caption Extractor", "/instagram-caption-extractor"],
       ["Caption Generator", "/caption-generator"],
+      ["Subtitle Generator", "/subtitle-generator"],
       ["Video to Text", "/video-to-text"],
       ["Audio to Text", "/audio-to-text"],
       ["MP3 to Text", "/mp3-to-text"],

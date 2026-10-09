@@ -93,7 +93,7 @@ Use exactly one unused canonical keyword per new page, in this order. Values bel
 | 24 | `caption generator` | 2900 | low | used 2026-10-09 |
 | 25 | `podcast transcription` | 2400 | medium | covered existing `/podcast-transcript` |
 | 26 | `zoom transcription` | 1900 | medium | covered existing `/zoom-transcript` |
-| 27 | `subtitle generator` | 1600 | medium | unused |
+| 27 | `subtitle generator` | 1600 | medium | used 2026-10-10 |
 | 28 | `voice message to text` | 590 | low | covered existing `/voice-memo-to-text` |
 | 29 | `whatsapp voice to text` | 210 | low | unused |
 

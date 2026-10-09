@@ -83,6 +83,14 @@ const PAGES = [
     keywords: ["caption generator", "caption maker", "video captions", "srt captions", "timed captions", "subtitle generator"],
   },
   {
+    title: "Subtitle Generator",
+    url: ORIGIN + "/subtitle-generator",
+    summary: "Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
+    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG"],
+    limits: ["English-focused browser model", "up to 100 MB for uploads", "speech only - no OCR, translation, styling or speaker labels"],
+    keywords: ["subtitle generator", "subtitle maker", "srt generator", "timed subtitles", "speech subtitles", "caption generator"],
+  },
+  {
     title: "TXT to SRT Converter",
     url: ORIGIN + "/txt-to-srt",
     summary: "Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.",
@@ -678,6 +686,8 @@ const KNOWN_FILES = new Set([
   "/instagram-caption-extractor.html",
   "/caption-generator.html",
   "/caption-generator.md",
+  "/subtitle-generator.html",
+  "/subtitle-generator.md",
   "/txt-to-srt.html",
   "/txt-to-srt.js",
   "/vtt-to-srt.html",
@@ -779,6 +789,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
   <li><a href="/caption-generator">Caption Generator</a></li>
+  <li><a href="/subtitle-generator">Subtitle Generator</a></li>
   <li><a href="/subtitle-editor">Subtitle Editor</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
@@ -846,6 +857,8 @@ const MD_MAP = {
   "/instagram-caption-extractor.html": "/instagram-caption-extractor.md",
   "/caption-generator": "/caption-generator.md",
   "/caption-generator.html": "/caption-generator.md",
+  "/subtitle-generator": "/subtitle-generator.md",
+  "/subtitle-generator.html": "/subtitle-generator.md",
   "/reels-to-text": "/reels-to-text.md",
   "/reels-to-text.html": "/reels-to-text.md",
   "/subtitle-editor": "/subtitle-editor.md",
