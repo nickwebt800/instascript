@@ -17,6 +17,7 @@
       ["M4A to Text", "/m4a-to-text"],
       ["WAV to Text", "/wav-to-text"],
       ["Voice Memo to Text", "/voice-memo-to-text"],
+      ["WhatsApp Voice to Text", "/whatsapp-voice-to-text"],
       ["Podcast Transcript", "/podcast-transcript"],
       ["MP4 to Text", "/mp4-to-text"],
       ["Zoom Transcript", "/zoom-transcript"],

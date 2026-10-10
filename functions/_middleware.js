@@ -171,6 +171,14 @@ const PAGES = [
     keywords: ["voice memo to text", "transcribe voice memos", "transcribe iphone voice memo", "voice memo transcription", "audio transcript", "srt", "txt"],
   },
   {
+    title: "WhatsApp Voice to Text",
+    url: ORIGIN + "/whatsapp-voice-to-text",
+    summary: "Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.",
+    accepts: ["permitted local audio files", "M4A", "MP3", "WAV", "OGG"],
+    limits: ["English-focused browser model", "up to 100 MB", "WhatsApp chat links are not fetched", "speech only"],
+    keywords: ["whatsapp voice to text", "whatsapp audio to text", "voice message transcript", "whatsapp transcript", "audio transcript", "srt", "txt"],
+  },
+  {
     title: "Podcast Transcript",
     url: ORIGIN + "/podcast-transcript",
     summary: "Turn a local podcast episode into timestamped text, TXT or SRT in the browser.",
@@ -659,6 +667,8 @@ const KNOWN_FILES = new Set([
   "/wav-to-text.md",
   "/voice-memo-to-text.html",
   "/voice-memo-to-text.md",
+  "/whatsapp-voice-to-text.html",
+  "/whatsapp-voice-to-text.md",
   "/podcast-transcript.html",
   "/podcast-transcript.md",
   "/mp4-to-text.html",
@@ -790,6 +800,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
   <li><a href="/caption-generator">Caption Generator</a></li>
   <li><a href="/subtitle-generator">Subtitle Generator</a></li>
+  <li><a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a></li>
   <li><a href="/subtitle-editor">Subtitle Editor</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
@@ -833,6 +844,8 @@ const MD_MAP = {
   "/wav-to-text.html": "/wav-to-text.md",
   "/voice-memo-to-text": "/voice-memo-to-text.md",
   "/voice-memo-to-text.html": "/voice-memo-to-text.md",
+  "/whatsapp-voice-to-text": "/whatsapp-voice-to-text.md",
+  "/whatsapp-voice-to-text.html": "/whatsapp-voice-to-text.md",
   "/podcast-transcript": "/podcast-transcript.md",
   "/podcast-transcript.html": "/podcast-transcript.md",
   "/mp4-to-text": "/mp4-to-text.md",

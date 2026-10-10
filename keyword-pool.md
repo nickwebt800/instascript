@@ -95,7 +95,7 @@ Use exactly one unused canonical keyword per new page, in this order. Values bel
 | 26 | `zoom transcription` | 1900 | medium | covered existing `/zoom-transcript` |
 | 27 | `subtitle generator` | 1600 | medium | used 2026-10-10 |
 | 28 | `voice message to text` | 590 | low | covered existing `/voice-memo-to-text` |
-| 29 | `whatsapp voice to text` | 210 | low | unused |
+| 29 | `whatsapp voice to text` | 210 | low | used 2026-10-11 |
 
 ### Fourth-batch merge-only spellings
 
