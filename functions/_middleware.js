@@ -32,7 +32,7 @@ const PAGES = [
     summary: "Turn an MP4, MOV or WebM video file into a timestamped transcript.",
     accepts: ["MP4", "MOV", "WebM"],
     limits: ["English only", "up to 100 MB", "no video links - upload the file"],
-    keywords: ["video transcript", "video", "video to text", "mp4", "mov", "webm", "transcribe video"],
+    keywords: ["video transcript", "video", "video to text", "mp4", "mov", "mov to text", "webm", "webm to text", "transcribe video"],
   },
   {
     title: "Instagram Transcript Generator",
@@ -96,7 +96,7 @@ const PAGES = [
     summary: "Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.",
     accepts: ["UTF-8 TXT", "SRT", "VTT"],
     limits: ["one local text file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["txt to srt", "txt to srt converter", "text to srt", "txt file to srt", "srt", "vtt", "subtitles"],
+    keywords: ["txt to srt", "txt to srt converter", "text to srt", "convert txt to srt", "txt file to srt", "srt file generator", "create srt file", "srt", "vtt", "subtitles"],
   },
   {
     title: "VTT to SRT Converter",
@@ -104,7 +104,7 @@ const PAGES = [
     summary: "Convert VTT to SRT, SRT to VTT, or SBV subtitles in one browser-based subtitle tool.",
     accepts: ["VTT", "SRT", "SBV", "pasted subtitle text"],
     limits: ["one local subtitle file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["vtt to srt", "srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
+    keywords: ["vtt to srt", "srt to vtt", "srt to webvtt", "convert srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
   },
   {
     title: "ASS to SRT Converter",
@@ -128,7 +128,7 @@ const PAGES = [
     summary: "Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.",
     accepts: ["SRT", "VTT", "pasted subtitle text"],
     limits: ["one local subtitle file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["srt to text", "vtt to text", "subtitle to text", "srt converter", "vtt converter", "plain text"],
+    keywords: ["srt to text", "srt to txt", "convert srt to txt", "vtt to text", "vtt to txt", "subtitle to text", "srt converter", "vtt converter", "plain text"],
   },
   {
     title: "Audio Transcription",
@@ -136,7 +136,7 @@ const PAGES = [
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
     accepts: ["MP3", "WAV", "M4A", "OGG"],
     limits: ["English only", "up to 100 MB"],
-    keywords: ["audio transcription", "audio", "audio to text", "mp3", "wav", "voice", "transcribe audio"],
+    keywords: ["audio transcription", "audio", "audio to text", "mp3", "wav", "flac", "flac to text", "aac", "aac to text", "ogg", "ogg to text", "voice", "transcribe audio"],
   },
   {
     title: "MP3 to Text",

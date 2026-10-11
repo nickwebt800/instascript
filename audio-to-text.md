@@ -62,7 +62,7 @@ For the complete source numbers, download the [audio timing CSV](https://raw.git
 
 ### Which audio formats can I transcribe?
 
-MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB.
+MP3, WAV, M4A and OGG, plus FLAC and AAC when your browser can decode them. That covers common **FLAC to text**, **AAC to text** and **OGG to text** requests; if the file plays in the browser, its speech can be transcribed. Files up to 100 MB.
 
 ### Is voice transcription a different job?
 

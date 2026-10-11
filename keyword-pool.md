@@ -102,3 +102,23 @@ Use exactly one unused canonical keyword per new page, in this order. Values bel
 - `zoom meeting transcription` (590) and `transcribe zoom` (1900) merge into `/zoom-transcript` with `zoom transcription`.
 - `podcast transcription` merges into `/podcast-transcript`.
 - `voice message to text` merges into `/voice-memo-to-text`.
+
+## Fifth batch supplied 2026-10-11
+
+Use exactly one unused canonical keyword per new page, in this order. Values below are supplied by the owner; do not estimate or replace them. The daily publication gate is one page per calendar day.
+
+| Order | Keyword | US monthly search | Competition label | First-page bid | Status |
+|---:|---|---:|---|---:|---|
+| 30 | `voicemail transcription` | 1900 | medium | 12.69-51.39 | unused |
+| 31 | `voicemail to text` | 18000 | medium | 9.32-28.96 | queued with `/voicemail-transcription` |
+| 32 | `subtitle translator` | 1300 | low | 9.18-54.25 | unused |
+| 33 | `srt to vtt` | 720 | low | 7.67-23.92 | unused |
+| 34 | `voice notes to text` | 320 | medium | 12.39-44.46 | unused |
+
+### Fifth-batch merge-only spellings
+
+- `srt translator`, `translate srt`, and `translate srt file` merge into `/subtitle-translator` when that page is published; status remains queued with that canonical page.
+- `srt to webvtt` and `convert srt to vtt` merge into `/srt-to-vtt` when that page is published; status remains queued with that canonical page.
+- `transcribe voice notes`, `transcribe iphone voice memo`, `iphone transcribe voice memo`, and `voice message to text` merge into `/voice-memo-to-text`; status `used -> /voice-memo-to-text`.
+- `text to srt`, `convert txt to srt`, `srt to txt`, `convert srt to txt`, `subtitle converter`, `srt file generator`, and `create srt file` merge into the existing subtitle conversion pages; status `used -> existing conversion pages`.
+- `flac to text`, `aac to text`, `mov to text`, `webm to text`, and `ogg to text` merge into the existing `/audio-to-text` and `/video-to-text` format explanations; status `used -> existing format pages`.

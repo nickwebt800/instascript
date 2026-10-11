@@ -62,7 +62,7 @@ The underlying timings are available in the [raw benchmark CSV](https://raw.gith
 
 ### Which video formats can I convert to text?
 
-MP4, MOV and WebM, plus anything else your browser can decode. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.
+MP4, MOV and WebM, plus anything else your browser can decode. That covers common **MOV to text** and **WebM to text** requests. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.
 
 ### How long does a video take?
 
