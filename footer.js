@@ -36,7 +36,8 @@
       ["TXT to SRT", "/txt-to-srt"],
       ["VTT to SRT", "/vtt-to-srt"],
       ["ASS to SRT", "/ass-to-srt"],
-      ["SRT to Text", "/srt-to-text"]
+      ["SRT to Text", "/srt-to-text"],
+      ["Subtitle Translator", "/subtitle-translator"]
     ]},
     { title: "Site", links: [
       ["Privacy Policy", "/privacy"],

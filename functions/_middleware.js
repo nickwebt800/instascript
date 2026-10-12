@@ -131,6 +131,14 @@ const PAGES = [
     keywords: ["srt to text", "srt to txt", "convert srt to txt", "vtt to text", "vtt to txt", "subtitle to text", "srt converter", "vtt converter", "plain text"],
   },
   {
+    title: "Subtitle Translator",
+    url: ORIGIN + "/subtitle-translator",
+    summary: "Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.",
+    accepts: ["SRT", "VTT", "pasted subtitle text"],
+    limits: ["manual translation entry", "one local subtitle file at a time", "no upload or account"],
+    keywords: ["subtitle translator", "srt translator", "translate srt", "translate srt file", "subtitle translation", "translated subtitles"],
+  },
+  {
     title: "Audio Transcription",
     url: ORIGIN + "/audio-to-text",
     summary: "Transcribe an MP3, WAV or voice memo into written text.",
@@ -726,6 +734,9 @@ const KNOWN_FILES = new Set([
   "/subtitle-editor.md",
   "/srt-to-text.html",
   "/srt-to-text.js",
+  "/subtitle-translator.html",
+  "/subtitle-translator.js",
+  "/subtitle-translator.md",
   "/reels-to-text.html",
   "/js/webmcp.js",
   "/js/youtube-transcript-download.js",
@@ -838,6 +849,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
   <li><a href="/ass-to-srt">ASS to SRT Converter</a></li>
   <li><a href="/srt-to-text">SRT to Text Converter</a></li>
+  <li><a href="/subtitle-translator">Subtitle Translator</a></li>
   <li><a href="/about">About</a></li>
   <li><a href="/contact">Contact</a></li>
 </ul>
@@ -924,6 +936,8 @@ const MD_MAP = {
   "/vtt-to-srt.html": "/vtt-to-srt.md",
   "/srt-to-text": "/srt-to-text.md",
   "/srt-to-text.html": "/srt-to-text.md",
+  "/subtitle-translator": "/subtitle-translator.md",
+  "/subtitle-translator.html": "/subtitle-translator.md",
   "/youtube-shorts-transcript": "/youtube-shorts-transcript.md",
   "/youtube-shorts-transcript.html": "/youtube-shorts-transcript.md",
   "/twitter-video-transcript": "/twitter-video-transcript.md",

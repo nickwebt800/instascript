@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Translate SRT subtitles in your browser while keeping their timecodes. Open one local SRT or VTT file, edit translated cues, and download SRT without uploading it.">
+  <meta name="theme-color" content="#f8f9fa">
+  <link rel="canonical" href="https://instascript.app/subtitle-translator">
+  <link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://instascript.app/subtitle-translator">
+  <meta property="og:title" content="Subtitle Translator | Edit SRT Timecodes | InstaScript">
+  <meta property="og:description" content="Edit translated SRT cues locally while preserving the original subtitle timing.">
+  <meta property="og:site_name" content="InstaScript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Subtitle Translator | InstaScript">
+  <meta name="twitter:description" content="Edit translated SRT cues locally while preserving the original subtitle timing.">
+  <title>Subtitle Translator: Edit SRT Cues Locally | InstaScript</title>
+  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+</head>
+<body class="subtitle-converter-page">
+  <div class="container">
+    <header class="header tool-header">
+      <p class="brand"><a href="/">InstaScript</a></p>
+      <h1 class="page-h1">Subtitle Translator</h1>
+      <p class="tagline">Translate subtitle cues while keeping the original timing</p>
+      <nav class="page-nav" aria-label="Site navigation">
+        <a href="/">Instagram Transcript</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/srt-to-vtt">SRT to VTT</a><a href="/about">About</a><a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="subtitle-tool" aria-labelledby="translator-title">
+      <div class="tool-intro-row">
+        <div><h2 id="translator-title">Open a subtitle file, then replace each cue</h2><p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p></div>
+        <label class="file-button" for="subtitleFile">Open SRT / VTT<input id="subtitleFile" type="file" accept=".srt,.vtt,text/plain,text/vtt,application/x-subrip" hidden></label>
+      </div>
+      <p class="input-hint">This is a local translation editor. It preserves timing; it does not call an automatic translation service.</p>
+      <div id="cueEditor" class="cue-editor hidden" aria-live="polite"></div>
+      <div class="converter-controls"><button id="exportBtn" class="btn-primary" type="button" disabled>Download translated SRT</button><button id="clearBtn" class="btn-ghost" type="button">Clear</button></div>
+      <p id="translatorStatus" class="tool-status" role="status" aria-live="polite">Open one SRT or VTT file to begin.</p>
+    </main>
+
+    <section class="content-card reading">
+      <h2>What a subtitle translator does here</h2>
+      <p>Open an existing SRT or VTT file, read each source cue, and type the translated wording beside it. The editor keeps the original start and end times, so the downloaded SRT stays aligned with the recording. This is useful when you already have a transcript and need a reviewable subtitle translation.</p>
+      <p>The page does not listen to audio, identify speech, or send text to a translation API. It also does not guarantee that a literal translation fits a viewer's reading speed. Review names, numbers, line breaks, punctuation, and cue length in the target language before publishing.</p>
+      <h2>Translation workflow</h2>
+      <ol class="steps"><li>Open one local SRT or VTT file.</li><li>Type the target-language text in each editable cue.</li><li>Download the translated SRT and check it against the video.</li></ol>
+      <pre class="example">1
+00:00:00,000 --> 00:00:03,000
+Translated cue text goes here
+
+2
+00:00:03,000 --> 00:00:06,000
+Keep each line easy to read</pre>
+      <h2>FAQ</h2>
+      <h3>Does it translate automatically?</h3><p>No. It is a local cue editor. You supply or paste the translation, which keeps the text private and makes each wording change reviewable.</p>
+      <h3>Can I translate an SRT to another language?</h3><p>Yes. Open the SRT, enter the target-language cue text, and download a new SRT with the original timing.</p>
+      <h3>Can I use a VTT file?</h3><p>Yes. VTT timing and cue text are read locally, then exported as SRT.</p>
+      <h3>Does it translate the spoken audio?</h3><p>No. For speech recognition first, use the <a href="/">Instagram Transcript</a> tool, then review the generated subtitle cues here.</p>
+    </section>
+    <footer class="footer" data-site-footer><nav class="footer-nav"><a href="/">Instagram Transcript</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/srt-to-text">SRT to Text</a><a href="/privacy">Privacy Policy</a><a href="/about">About</a><a href="/contact">Contact</a></nav><p>Runs entirely in your browser &mdash; no upload, no signup.</p></footer>
+  </div>
+  <script src="/subtitle-translator.js" defer></script><script src="/js/webmcp.js" defer></script><script src="/footer.js?v=cache-fix-20261013b" defer></script>
+</body>
+</html>

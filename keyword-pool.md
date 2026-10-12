@@ -111,7 +111,7 @@ Use exactly one unused canonical keyword per new page, in this order. Values bel
 |---:|---|---:|---|---:|---|
 | 30 | `voicemail transcription` | 1900 | medium | 12.69-51.39 | used 2026-10-12 |
 | 31 | `voicemail to text` | 18000 | medium | 9.32-28.96 | queued with `/voicemail-transcription` |
-| 32 | `subtitle translator` | 1300 | low | 9.18-54.25 | unused |
+| 32 | `subtitle translator` | 1300 | low | 9.18-54.25 | used 2026-10-13 |
 | 33 | `srt to vtt` | 720 | low | 7.67-23.92 | unused |
 | 34 | `voice notes to text` | 320 | medium | 12.39-44.46 | unused |
 
