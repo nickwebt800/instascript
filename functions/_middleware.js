@@ -664,6 +664,8 @@ const KNOWN_FILES = new Set([
   "/ai/index.html",
   "/ai/index.ilang",
   "/ai/skills/site-lookup/SKILL.md",
+  "/assets/logo-256.png",
+  "/assets/logo-512.png",
   "/app.js",
   "/audio-to-text.html",
   "/audio-to-text.md",
