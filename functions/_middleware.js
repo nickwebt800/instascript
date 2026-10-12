@@ -171,6 +171,14 @@ const PAGES = [
     keywords: ["voice memo to text", "transcribe voice memos", "transcribe iphone voice memo", "voice memo transcription", "audio transcript", "srt", "txt"],
   },
   {
+    title: "Voicemail Transcription",
+    url: ORIGIN + "/voicemail-transcription",
+    summary: "Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.",
+    accepts: ["permitted local voicemail files", "M4A", "MP3", "WAV", "OGG"],
+    limits: ["English-focused browser model", "up to 100 MB", "carrier and private voicemail links are not fetched", "speech only"],
+    keywords: ["voicemail transcription", "voicemail to text", "voicemail transcript", "transcribe voicemail", "audio transcript", "srt", "txt"],
+  },
+  {
     title: "WhatsApp Voice to Text",
     url: ORIGIN + "/whatsapp-voice-to-text",
     summary: "Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.",
@@ -667,6 +675,8 @@ const KNOWN_FILES = new Set([
   "/wav-to-text.md",
   "/voice-memo-to-text.html",
   "/voice-memo-to-text.md",
+  "/voicemail-transcription.html",
+  "/voicemail-transcription.md",
   "/whatsapp-voice-to-text.html",
   "/whatsapp-voice-to-text.md",
   "/podcast-transcript.html",
@@ -794,6 +804,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/mp3-to-text">MP3 to Text</a></li>
   <li><a href="/m4a-to-text">M4A to Text</a></li>
   <li><a href="/wav-to-text">WAV to Text</a></li>
+  <li><a href="/voicemail-transcription">Voicemail Transcription</a></li>
   <li><a href="/zoom-transcript">Zoom Transcript</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
@@ -846,6 +857,8 @@ const MD_MAP = {
   "/wav-to-text.html": "/wav-to-text.md",
   "/voice-memo-to-text": "/voice-memo-to-text.md",
   "/voice-memo-to-text.html": "/voice-memo-to-text.md",
+  "/voicemail-transcription": "/voicemail-transcription.md",
+  "/voicemail-transcription.html": "/voicemail-transcription.md",
   "/whatsapp-voice-to-text": "/whatsapp-voice-to-text.md",
   "/whatsapp-voice-to-text.html": "/whatsapp-voice-to-text.md",
   "/podcast-transcript": "/podcast-transcript.md",

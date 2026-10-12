@@ -109,7 +109,7 @@ Use exactly one unused canonical keyword per new page, in this order. Values bel
 
 | Order | Keyword | US monthly search | Competition label | First-page bid | Status |
 |---:|---|---:|---|---:|---|
-| 30 | `voicemail transcription` | 1900 | medium | 12.69-51.39 | unused |
+| 30 | `voicemail transcription` | 1900 | medium | 12.69-51.39 | used 2026-10-12 |
 | 31 | `voicemail to text` | 18000 | medium | 9.32-28.96 | queued with `/voicemail-transcription` |
 | 32 | `subtitle translator` | 1300 | low | 9.18-54.25 | unused |
 | 33 | `srt to vtt` | 720 | low | 7.67-23.92 | unused |
