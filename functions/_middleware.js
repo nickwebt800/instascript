@@ -773,6 +773,25 @@ function isServed(p) {
   return false;
 }
 
+function redirectTrailingSlash(url) {
+  if (!url.pathname.endsWith("/") || url.pathname === "/" || url.pathname === "/ai/") {
+    return null;
+  }
+  const canonicalPath = url.pathname.slice(0, -1);
+  if (!Object.prototype.hasOwnProperty.call(MD_MAP, canonicalPath)) return null;
+
+  const location = new URL(url);
+  location.pathname = canonicalPath;
+  return new Response(null, {
+    status: 301,
+    headers: {
+      Location: location.toString(),
+      "Cache-Control": "public, max-age=3600",
+      ...CORS,
+    },
+  });
+}
+
 const NOT_FOUND_HTML = `<!doctype html>
 <html lang="en">
 <head>
@@ -1006,6 +1025,8 @@ export async function onRequest(ctx) {
     }
 
     // Anything not on the served list is a real 404, not the home page.
+    const trailingSlashRedirect = redirectTrailingSlash(url);
+    if (trailingSlashRedirect) return trailingSlashRedirect;
     if (!isServed(p)) {
       return notFound(p);
     }

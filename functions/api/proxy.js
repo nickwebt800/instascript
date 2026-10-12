@@ -8,6 +8,7 @@ const ALLOWED_DOMAINS = [
   "fbcdn.net",
   "instagram.com",
 ];
+const MAX_MEDIA_BYTES = 100 * 1024 * 1024;
 
 function isAllowedHost(host) {
   const normalized = host.toLowerCase().replace(/\.$/, "");
@@ -68,7 +69,40 @@ export async function onRequestGet({ request }) {
       );
     }
 
-    const blob = await response.blob();
+    const contentLength = Number(response.headers.get("Content-Length"));
+    if (Number.isFinite(contentLength) && contentLength > MAX_MEDIA_BYTES) {
+      return Response.json(
+        { error: "Media file is larger than the 100 MB limit." },
+        { status: 413, headers: corsHeaders }
+      );
+    }
+
+    if (!response.body) {
+      return Response.json(
+        { error: "The media response had no body." },
+        { status: 502, headers: corsHeaders }
+      );
+    }
+
+    const reader = response.body.getReader();
+    const chunks = [];
+    let totalBytes = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      totalBytes += value.byteLength;
+      if (totalBytes > MAX_MEDIA_BYTES) {
+        await reader.cancel();
+        return Response.json(
+          { error: "Media file is larger than the 100 MB limit." },
+          { status: 413, headers: corsHeaders }
+        );
+      }
+      chunks.push(value);
+    }
+    const blob = new Blob(chunks, {
+      type: response.headers.get("Content-Type") || "video/mp4",
+    });
 
     return new Response(blob, {
       headers: {

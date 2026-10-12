@@ -46,6 +46,22 @@ let languageDetector = null;
 let currentTranscript = "";
 let lastResult = null;
 
+if (dropZone) {
+  dropZone.setAttribute("role", "button");
+  dropZone.setAttribute("tabindex", "0");
+  dropZone.setAttribute("aria-label", "Choose an audio or video file");
+  dropZone.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
+}
+processing?.setAttribute("role", "status");
+processing?.setAttribute("aria-live", "polite");
+processingText?.setAttribute("aria-live", "polite");
+errorBox?.setAttribute("role", "alert");
+
 function activateTab(name) {
   const tab = document.querySelector(`.tab[data-tab="${name}"]`);
   if (tab) tab.click();
@@ -452,7 +468,7 @@ function displayLanguageRejected() {
 // ── Copy ──
 copyBtn.addEventListener("click", async () => {
   try {
-    await navigator.clipboard.writeText(currentTranscript);
+    await copyToClipboard(currentTranscript);
     copyBtn.classList.add("copied");
     copyBtn.querySelector("svg + *")?.remove();
     const old = copyBtn.innerHTML;
@@ -466,6 +482,28 @@ copyBtn.addEventListener("click", async () => {
     showError("Could not copy to clipboard.");
   }
 });
+
+async function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Fall back for embedded or restricted browser contexts.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  if (!copied) throw new Error("Clipboard unavailable");
+}
 
 // ── Download TXT ──
 downloadTxtBtn.addEventListener("click", () => {
