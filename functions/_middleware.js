@@ -1004,8 +1004,11 @@ export async function onRequest(ctx) {
         const rows = await loadBenchmark(env);
         const ls = url.searchParams.get("length_seconds");
         let out = rows;
-        if (ls) {
+        if (url.searchParams.has("length_seconds")) {
           const target = Number(ls);
+          if (!Number.isFinite(target) || target <= 0) {
+            return json({ error: "length_seconds must be a positive number." }, 400);
+          }
           out = rows.slice().sort((a, b) => Math.abs(a.audio_seconds - target) - Math.abs(b.audio_seconds - target)).slice(0, 1);
         }
         return json({ note: "Single measurements, one machine, WASM build without WebGPU. Not averages.", source_url: BENCH_SOURCE, rows: out });

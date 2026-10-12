@@ -41,14 +41,15 @@
         "operationId": "getBenchmark",
         "parameters": [
           { "name": "length_seconds", "in": "query", "required": false,
-            "schema": { "type": "integer", "minimum": 1 },
+            "schema": { "type": "number", "exclusiveMinimum": 0 },
             "description": "Return the measured row whose audio length is closest to this value. Omit to return all rows." }
         ],
         "responses": {
           "200": {
             "description": "Measured rows. Each row is a single run, not an average.",
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BenchmarkResult" } } }
-          }
+          },
+          "400": { "description": "length_seconds is not a positive number." }
         }
       }
     },
