@@ -6,19 +6,20 @@
 const ALLOWED_DOMAINS = [
   "cdninstagram.com",
   "fbcdn.net",
-  "scontent.cdninstagram.com",
-  "scontent-",
-  "video.cdninstagram.com",
   "instagram.com",
 ];
+
+function isAllowedHost(host) {
+  const normalized = host.toLowerCase().replace(/\.$/, "");
+  return ALLOWED_DOMAINS.some(
+    (domain) => normalized === domain || normalized.endsWith("." + domain)
+  );
+}
 
 function isAllowed(url) {
   try {
     const parsed = new URL(url);
-    const host = parsed.hostname;
-    return ALLOWED_DOMAINS.some((d) =>
-      d.endsWith("-") ? host.startsWith(d) : host.includes(d)
-    );
+    return ["http:", "https:"].includes(parsed.protocol) && isAllowedHost(parsed.hostname);
   } catch {
     return false;
   }

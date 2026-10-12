@@ -129,8 +129,9 @@ pasteAnotherBtn?.addEventListener("click", () => {
 });
 
 // ── URL button ──
-urlBtn.addEventListener("click", handleUrl);
-urlInput.addEventListener("keydown", (e) => {
+// Local-only pages intentionally omit the URL controls.
+urlBtn?.addEventListener("click", handleUrl);
+urlInput?.addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleUrl();
 });
 
@@ -397,6 +398,7 @@ async function runTranscription(file) {
     });
 
     currentTranscript = result.text || "";
+    lastResult = result;
     displayTranscript(result);
   } catch (err) {
     console.error(err);
@@ -472,7 +474,7 @@ downloadTxtBtn.addEventListener("click", () => {
 
 // ── Download SRT ──
 downloadSrtBtn.addEventListener("click", () => {
-  const srt = toSRT(window._lastResult);
+  const srt = toSRT(lastResult);
   downloadFile(srt, "transcript.srt", "text/plain");
 });
 
