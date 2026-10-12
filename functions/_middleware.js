@@ -1007,7 +1007,7 @@ export async function onRequest(ctx) {
         if (url.searchParams.has("length_seconds")) {
           const target = Number(ls);
           if (!Number.isFinite(target) || target <= 0) {
-            return json({ error: "length_seconds must be a positive number." }, 400);
+            return json({ error: "length_seconds must be a positive number." }, { status: 400 });
           }
           out = rows.slice().sort((a, b) => Math.abs(a.audio_seconds - target) - Math.abs(b.audio_seconds - target)).slice(0, 1);
         }
