@@ -324,7 +324,9 @@ async function run(event) {
     hide(els.trackRow);
   }
 
-  if (meta.segments && meta.segments.length) {
+  // Server-side segments are for the default track only. Fetch the selected
+  // track in the browser when more than one language is available.
+  if (meta.segments && meta.segments.length && (!meta.tracks || meta.tracks.length <= 1)) {
     state.segments = meta.segments;
     finish(meta);
     return;

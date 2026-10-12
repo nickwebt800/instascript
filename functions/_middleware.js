@@ -392,7 +392,7 @@ function apiCatalog() {
   return {
     linkset: [
       {
-        anchor: ORIGIN + "/api/agent",
+        anchor: ORIGIN + "/api/pages",
         "service-desc": [{ href: ORIGIN + "/openapi.json", type: "application/json" }],
         "service-doc": [{ href: ORIGIN + "/ai/", type: "text/html" }],
         status: [{ href: ORIGIN + "/api/pages", type: "application/json" }],

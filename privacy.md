@@ -8,7 +8,7 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: September 16, 2026
+Last updated: October 13, 2026
 
 ### 1. Data We Collect
 
@@ -22,8 +22,9 @@ When you paste a public Instagram URL — the only link type supported today —
 
 ### 3. Third-Party Services
 
-- **Hugging Face CDN** — delivers the AI speech recognition model to your browser on first use (~40 MB, cached afterward).
-- **Cloudflare** — hosts this website and provides CDN delivery. Cloudflare also measures traffic to this site on our behalf (aggregate page views and referrers), and may set cookies needed for security and bot protection.
+- **Hugging Face CDN** — delivers the speech models to your browser on first use; the browser caches them afterward.
+- **Cloudflare** — hosts this website and provides CDN delivery. Cloudflare may also fetch public Instagram embed pages through its Browser Rendering service when the normal fetch is rate-limited, and may measure traffic to this site on our behalf (aggregate page views and referrers). It may set cookies needed for security and bot protection.
+- **Jina AI Reader** — may receive the public Instagram embed URL as a fallback when the site's normal and Cloudflare fetches cannot resolve it. It returns page content to the extraction function; uploaded files and transcripts are not sent there.
 
 ### 4. Advertising
 

@@ -10,7 +10,7 @@ Paste a public Instagram Reel or video post URL
 
 ## How long does a transcript take?
 
-For a Reel the short rows are the useful ones: 30 seconds of speech came out at 8.98 s, and 120 seconds at 28.58 s, once the model was already in the page. The first run on a fresh page is the slow one, because it has to fetch the model before it can start. The rows below were measured with audio files of known length; a Reel goes through the same audio path, so one with the same spoken length should land in the same range — **that step is inference**, the rows themselves are measured.
+For a Reel the short rows are the useful ones: 30 seconds of speech came out at 8.98 s, and 120 seconds at 28.58 s, once the transcription model was already in the page. The first run on a fresh page is the slow one, because it has to fetch the language detection and transcription models before it can start. The rows below were measured with audio files of known length; a Reel goes through the same audio path, so one with the same spoken length should land in the same range — **that step is inference**, the rows themselves are measured.
 
 | Audio length | Time to transcribe | Model download included |
 | --- | --- | --- |

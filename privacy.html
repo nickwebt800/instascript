@@ -36,7 +36,7 @@
 
     <main class="content-card">
       <h1 class="content-title">Privacy Policy</h1>
-      <p class="updated">Last updated: September 16, 2026</p>
+      <p class="updated">Last updated: October 13, 2026</p>
 
       <h3>1. Data We Collect</h3>
       <p>InstaScript runs entirely in your browser. When you upload a file for transcription, the audio is processed locally on your device using in-browser AI. <strong>Your uploaded files are never sent to or stored on any server.</strong></p>
@@ -47,8 +47,9 @@
 
       <h3>3. Third-Party Services</h3>
       <ul>
-        <li><strong>Hugging Face CDN</strong> — delivers the AI speech recognition model to your browser on first use (~40 MB, cached afterward).</li>
-        <li><strong>Cloudflare</strong> &mdash; hosts this website and provides CDN delivery. Cloudflare also measures traffic to this site on our behalf (aggregate page views and referrers), and may set cookies needed for security and bot protection.</li>
+        <li><strong>Hugging Face CDN</strong> &mdash; delivers the speech models to your browser on first use; the browser caches them afterward.</li>
+        <li><strong>Cloudflare</strong> &mdash; hosts this website and provides CDN delivery. Cloudflare may also fetch public Instagram embed pages through its Browser Rendering service when the normal fetch is rate-limited, and may measure traffic to this site on our behalf (aggregate page views and referrers). It may set cookies needed for security and bot protection.</li>
+        <li><strong>Jina AI Reader</strong> &mdash; may receive the public Instagram embed URL as a fallback when the site's normal and Cloudflare fetches cannot resolve it. It returns page content to the extraction function; uploaded files and transcripts are not sent there.</li>
       </ul>
 
       <h3>4. Advertising</h3>
@@ -87,6 +88,6 @@
     </footer>
   </div>
 <script src="/js/webmcp.js" defer></script>
-  <script src="/footer.js?v=hierarchy-20261001" defer></script>
+  <script src="/footer.js?v=cache-fix-20261013" defer></script>
 </body>
 </html>

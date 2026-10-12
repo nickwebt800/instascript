@@ -28,7 +28,7 @@ Raw data: [`whisper-tiny-en-browser-benchmark.csv`](whisper-tiny-en-browser-benc
   It does **not** cover file selection.
 - **Runs 2–5** reuse the model already loaded in the page, so they measure
   processing alone.
-- **Run 1** additionally covers the ~40 MB model download, WASM init and encoder
+- **Run 1** additionally covers model download, WASM init and encoder
   warm-up.
 
 ### Derived figures (these are calculations, clearly marked)

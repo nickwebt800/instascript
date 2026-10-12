@@ -8,17 +8,17 @@ Live at **[instascript.app](https://instascript.app)**.
 
 1. Upload an audio/video file, or paste a public Instagram Reel/video URL.
 2. InstaScript extracts the audio client-side using the Web Audio API.
-3. The audio is passed through `whisper-tiny.en` (~40 MB) via `@huggingface/transformers.js`.
+3. The audio is checked with a language detection model and then passed through `whisper-tiny.en` via `@huggingface/transformers.js`.
 4. The transcript is displayed with timestamps. Copy to clipboard or download as TXT/SRT.
 
-The current speech model supports English audio. The first run downloads the model to the browser cache; later runs are faster on the same device.
+The current speech pipeline supports English audio. The first run downloads both the language detection and transcription models to the browser cache; later runs are faster on the same device.
 
 When using the URL input, a Cloudflare Pages Function fetches the Instagram page server-side to extract the video URL (browsers can't do this directly due to CORS). The video is then proxied to the browser, where all transcription happens locally.
 
 ## Tech Stack
 
 - **Frontend:** Vanilla HTML, CSS, JavaScript (no framework, no build step)
-- **AI Model:** `onnx-community/whisper-tiny.en` (English-only, ~40 MB, cached by browser after first load)
+- **AI Models:** `onnx-community/whisper-tiny` for language detection and `onnx-community/whisper-tiny.en` for English transcription (cached by the browser after first load)
 - **Inference:** [@huggingface/transformers.js](https://github.com/huggingface/transformers.js) v3 (runs in-browser via WASM)
 - **Hosting:** [Cloudflare Pages](https://pages.cloudflare.com/) with serverless Functions for Instagram URL fetching
 
@@ -85,7 +85,7 @@ No environment variables or secrets are needed. The Instagram extraction and pro
 
 The `data/` directory contains a [comparison of browser-based Whisper transcription tools](data/README.md) in both human-readable (Markdown) and machine-readable (CSV) formats. This is a real reference resource — contributions and corrections are welcome.
 
-The `benchmark/` directory contains [measured in-browser transcription timings](benchmark/README.md) for `whisper-tiny.en` on WASM: how long 11 s, 30 s, 60 s and 120 s of audio actually take, and how much of the first run is model download. Raw numbers are in [CSV](benchmark/whisper-tiny-en-browser-benchmark.csv), with the measurement method, environment and limitations written out so anyone can reproduce or dispute them.
+The `benchmark/` directory contains [measured in-browser transcription timings](benchmark/README.md) for `whisper-tiny.en` on WASM: how long 11 s, 30 s, 60 s and 120 s of audio actually take, and how much of the first run is model loading. The language detection model is an additional first-run dependency in the current app. Raw numbers are in [CSV](benchmark/whisper-tiny-en-browser-benchmark.csv), with the measurement method, environment and limitations written out so anyone can reproduce or dispute them.
 
 ## Privacy
 

@@ -13,7 +13,7 @@ A comparison of web tools that run OpenAI's Whisper speech recognition model dir
 
 ## Key Differences
 
-- **InstaScript** focuses on Instagram Reels and videos — it includes server-side URL fetching via Cloudflare Functions so users can paste an Instagram link directly. Uses the smallest English-only Whisper model (~40 MB) for fast first-load.
+- **InstaScript** focuses on Instagram Reels and videos — it includes server-side URL fetching via Cloudflare Functions so users can paste an Instagram link directly. It uses Whisper tiny for language detection and the English-only Whisper tiny checkpoint for transcription in the browser.
 - **Whisper-Web** (by PierreMesure, fork of Xenova/whisper-web) supports multiple models including large-v3-turbo and Swedish/Norwegian fine-tunes. Supports WebGPU acceleration and PWA (offline use). Multi-language UI.
 - **Web Whisper** (by Pluja) is a self-hostable option on Codeberg. AGPL licensed.
 - **Monster API** runs Whisper server-side — audio is uploaded to their servers, not processed in-browser. Requires an API key/signup.

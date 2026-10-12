@@ -39,7 +39,7 @@ Questions about the site, or about your data, go to [contact@instascript.app](ht
 ### Tech Stack
 
 - **Frontend:** Vanilla HTML, CSS, and JavaScript (no framework)
-- **AI Model:** Whisper (tiny English variant, ~40 MB)
+- **AI Models:** Whisper tiny for language detection and Whisper tiny English for transcription
 - **Inference:** @huggingface/transformers.js (runs in-browser via WASM)
 - **Hosting:** Cloudflare Pages with serverless Functions for URL fetching
 

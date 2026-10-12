@@ -83,26 +83,28 @@ tabs.forEach((tab) => {
 });
 
 // ── File upload: drag & drop ──
-dropZone.addEventListener("click", () => fileInput.click());
+if (dropZone && fileInput) {
+  dropZone.addEventListener("click", () => fileInput.click());
 
-dropZone.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  dropZone.classList.add("drag-over");
-});
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropZone.classList.add("drag-over");
+  });
 
-dropZone.addEventListener("dragleave", () => {
-  dropZone.classList.remove("drag-over");
-});
+  dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("drag-over");
+  });
 
-dropZone.addEventListener("drop", (e) => {
-  e.preventDefault();
-  dropZone.classList.remove("drag-over");
-  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-});
+  dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropZone.classList.remove("drag-over");
+    if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+  });
 
-fileInput.addEventListener("change", (e) => {
-  if (e.target.files.length) handleFile(e.target.files[0]);
-});
+  fileInput.addEventListener("change", (e) => {
+    if (e.target.files.length) handleFile(e.target.files[0]);
+  });
+}
 
 function handleFile(file) {
   if (file.size > MAX_FILE_SIZE) {
@@ -110,9 +112,9 @@ function handleFile(file) {
     return;
   }
   selectedFile = file;
-  fileName.textContent = file.name;
-  fileSize.textContent = formatSize(file.size);
-  fileInfo.classList.remove("hidden");
+  if (fileName) fileName.textContent = file.name;
+  if (fileSize) fileSize.textContent = formatSize(file.size);
+  fileInfo?.classList.remove("hidden");
   hideError();
   hideTranscript();
 }
@@ -124,24 +126,24 @@ function formatSize(bytes) {
 }
 
 // ── Transcribe button ──
-transcribeBtn.addEventListener("click", () => {
+transcribeBtn?.addEventListener("click", () => {
   if (selectedFile) runTranscription(selectedFile);
 });
 
 transcribeAnotherBtn?.addEventListener("click", () => {
   selectedFile = null;
-  fileInput.value = "";
-  fileInfo.classList.add("hidden");
+  if (fileInput) fileInput.value = "";
+  fileInfo?.classList.add("hidden");
   hideTranscript();
   activateTab("upload");
-  dropZone.focus?.();
+  dropZone?.focus?.();
 });
 
 pasteAnotherBtn?.addEventListener("click", () => {
-  urlInput.value = "";
+  if (urlInput) urlInput.value = "";
   hideTranscript();
   activateTab("url");
-  urlInput.focus();
+  urlInput?.focus();
 });
 
 // ── URL button ──
@@ -161,7 +163,7 @@ function handleUrl() {
     showError("Please use a public Instagram Reel or video post URL.");
     return;
   }
-  urlNote.classList.add("hidden");
+  urlNote?.classList.add("hidden");
   hideError();
   hideTranscript();
   urlBtn.disabled = true;
@@ -466,7 +468,7 @@ function displayLanguageRejected() {
 }
 
 // ── Copy ──
-copyBtn.addEventListener("click", async () => {
+copyBtn?.addEventListener("click", async () => {
   try {
     await copyToClipboard(currentTranscript);
     copyBtn.classList.add("copied");
@@ -506,12 +508,12 @@ async function copyToClipboard(text) {
 }
 
 // ── Download TXT ──
-downloadTxtBtn.addEventListener("click", () => {
+downloadTxtBtn?.addEventListener("click", () => {
   downloadFile(currentTranscript + "\n", "transcript.txt", "text/plain");
 });
 
 // ── Download SRT ──
-downloadSrtBtn.addEventListener("click", () => {
+downloadSrtBtn?.addEventListener("click", () => {
   const srt = toSRT(lastResult);
   downloadFile(srt, "transcript.srt", "text/plain");
 });
@@ -520,14 +522,24 @@ function toSRT(result) {
   if (!result || !result.chunks) return currentTranscript;
   return result.chunks
     .map((chunk, i) => {
-      const start = srtTime(chunk.timestamp[0]);
-      const end = srtTime(chunk.timestamp[1]);
+      const rawStart = Number(chunk.timestamp?.[0]);
+      const startSeconds = Number.isFinite(rawStart) ? Math.max(0, rawStart) : 0;
+      const nextStart = Number(result.chunks[i + 1]?.timestamp?.[0]);
+      const rawEnd = Number(chunk.timestamp?.[1]);
+      const endSeconds = Number.isFinite(rawEnd) && rawEnd > startSeconds
+        ? rawEnd
+        : Number.isFinite(nextStart) && nextStart > startSeconds
+          ? nextStart
+          : startSeconds + 2;
+      const start = srtTime(startSeconds);
+      const end = srtTime(endSeconds);
       return `${i + 1}\n${start} --> ${end}\n${chunk.text.trim()}\n`;
     })
     .join("\n");
 }
 
 function srtTime(sec) {
+  sec = Number.isFinite(Number(sec)) ? Math.max(0, Number(sec)) : 0;
   const h = Math.floor(sec / 3600);
   const m = Math.floor((sec % 3600) / 60);
   const s = Math.floor(sec % 60);
@@ -558,22 +570,23 @@ function downloadFile(content, filename, mime) {
 
 // ── UI helpers ──
 function showProcessing(text) {
-  processing.classList.remove("hidden");
-  processingText.textContent = text;
+  processing?.classList.remove("hidden");
+  if (processingText) processingText.textContent = text;
   if (processingHint) {
     processingHint.textContent = text.toLowerCase().includes("first time") || text.toLowerCase().includes("model")
-      ? "The first run downloads a small AI model and may take 20–60 seconds. Later runs are faster because it is cached in your browser."
+      ? "The first run downloads language detection and transcription models and may take longer. Later runs are faster because they are cached in your browser."
       : "Your audio is processed in your browser. Keep this tab open while the transcript is prepared.";
   }
 }
 
 function showError(msg) {
+  if (!errorBox) return;
   errorBox.textContent = msg;
   errorBox.classList.remove("hidden");
 }
 
 function hideError() {
-  errorBox.classList.add("hidden");
+  errorBox?.classList.add("hidden");
 }
 
 function hideTranscript() {

@@ -71,7 +71,9 @@
               "properties": { "videoUrl": { "type": "string" }, "caption": { "type": "string" },
                               "type": { "type": "string" } } } } } },
           "400": { "description": "Missing, malformed or non-Instagram URL." },
-          "502": { "description": "Instagram could not be reached or the post is not public." }
+          "404": { "description": "The public post was reachable, but no usable media or caption was found." },
+          "500": { "description": "The extraction service encountered an unexpected error." },
+          "502": { "description": "Instagram or a fallback fetch service could not be reached." }
         }
       }
     }

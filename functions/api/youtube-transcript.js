@@ -521,14 +521,15 @@ async function handle(input, env, diag) {
     );
   }
 
-  const tracks = orderTracks(found.tracks).map((t) => ({
+  const orderedTracks = orderTracks(found.tracks);
+  const tracks = orderedTracks.map((t) => ({
     languageCode: t.languageCode,
     languageName: trackName(t),
     isGenerated: t.kind === "asr",
     url: captionUrl(t.baseUrl, "json3"),
   }));
 
-  const segments = await fetchSegments(found.tracks[0].baseUrl, debug);
+  const segments = await fetchSegments(orderedTracks[0].baseUrl, debug);
 
   return json(
     {

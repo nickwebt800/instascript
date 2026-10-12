@@ -40,7 +40,7 @@ git push -u origin main
 **Tagline:** Turn Instagram Reels & Videos into Text
 **Category:** Video, Transcription, or Social Media
 **Description (150 words):**
-InstaScript is a free tool that converts Instagram Reels and videos into text transcripts. It runs OpenAI's Whisper speech recognition model entirely in the browser using transformers.js — no audio is uploaded to any server, no account is required, and no payment is needed. Users can either upload a video/audio file directly or paste a public Instagram URL to get the transcript. Output includes timestamped segments, and can be copied to clipboard or downloaded as TXT or SRT subtitle files. The tool uses the whisper-tiny.en model (~40 MB), which is cached by the browser after first load. It works on both desktop and mobile browsers.
+InstaScript is a free tool that converts Instagram Reels and videos into text transcripts. It runs OpenAI's Whisper speech recognition model entirely in the browser using transformers.js — no audio is uploaded to any server, no account is required, and no payment is needed. Users can either upload a video/audio file directly or paste a public Instagram URL to get the transcript. Output includes timestamped segments, and can be copied to clipboard or downloaded as TXT or SRT subtitle files. The tool uses a Whisper tiny model for language detection and the English-only whisper-tiny.en model for transcription; both are cached by the browser after first load. It works on both desktop and mobile browsers.
 
 ---
 
