@@ -7,3 +7,8 @@ dist/
 
 # Local deployment and analysis artifacts stay outside the repository.
 # _headers and page Markdown are runtime assets and must be versioned.
+/design-preview/
+/benchmark/competitor-gap-analysis.md
+/keyword-pool.md
+/content-log.csv
+/SUBMISSION-GUIDE.md
