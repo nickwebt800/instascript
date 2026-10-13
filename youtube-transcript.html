@@ -87,7 +87,7 @@
     <section class="content-card">
       <h2>How this YouTube transcript generator works</h2>
       <p><strong>It reads the caption track the video already has on YouTube &mdash; it does not listen to the audio and does not re-write it from scratch.</strong> That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.</p>
-      <p>Two steps happen when you press the button. This site asks YouTube which caption tracks the video has and hands the list back to the page. Your own browser then downloads the track you picked straight from YouTube. The words were already written down when the video was published, so there is no speech recognition in the loop and no audio file is uploaded anywhere.</p>
+      <p>This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.</p>
       <p>YouTube now asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. The practical consequence: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download. When that happens the page tells you instead of guessing.</p>
 
       <h2>What you get back</h2>
@@ -150,7 +150,7 @@
       <h3>Can I turn a YouTube video to transcript text on my phone?</h3>
       <p>Yes. The page is built for a phone screen: paste the link in the YouTube app's Share sheet copy, or open this page in your mobile browser and paste there. Copy and download both work on mobile.</p>
       <h3>Is my video uploaded anywhere?</h3>
-      <p>No video file is uploaded, because no video file is downloaded. The link you paste goes to this site's own lookup endpoint, and the caption text is fetched by your browser directly from YouTube. Nothing is stored and there is no account.</p>
+      <p>No video file is uploaded. Your link goes to this site's lookup endpoint, which may fetch caption text from YouTube and cache the response for one hour. The browser fetches caption tracks directly when required and creates exports locally. There is no account history.</p>
       <h3>Which languages are supported?</h3>
       <p>Whatever caption tracks the video has. If a video has more than one, the page lists them and you pick; if it has one, you get that one. I am not going to quote a number of supported languages &mdash; it is a property of the video, not of this page.</p>
       <h3>How long can the video be?</h3>
@@ -158,7 +158,7 @@
       <h3>Why did it fail on a video that clearly has captions?</h3>
       <p>Three reasons, in order of likelihood: an extension or strict privacy setting blocked the browser check YouTube asks for; the captions are switched off for embedding; or YouTube throttled the request &mdash; wait a minute and try again.</p>
       <h3>Do you store the transcript?</h3>
-      <p>No. The text is built in your browser and stays there until you copy or download it. See the <a href="/privacy">privacy policy</a>.</p>
+      <p>There is no account history. Successful caption lookup responses may be cached for one hour; exports are created in your browser. See the <a href="/privacy">privacy policy</a>.</p>
 
       <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
     </section>
@@ -208,7 +208,7 @@
       {
         "@type": "Question",
         "name": "Is my video uploaded anywhere?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No video file is uploaded, because no video file is downloaded. The link you paste goes to this site's own lookup endpoint, and the caption text is fetched by your browser directly from YouTube. Nothing is stored and there is no account." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No video file is uploaded. Your link goes to this site's lookup endpoint, which may fetch caption text from YouTube and cache the response for one hour. The browser fetches caption tracks directly when required and creates exports locally. There is no account history." }
       },
       {
         "@type": "Question",

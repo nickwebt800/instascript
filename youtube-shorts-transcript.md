@@ -27,7 +27,7 @@ Shorts often cut between speakers or overlay music under a sentence. Replay ever
 
 ## Privacy and processing boundary
 
-The link lookup is needed to discover the caption track. Your browser then fetches the selected track and builds the transcript and downloads locally. The transcript is not stored as an account record. If you switch to a saved video in [Video to Text](https://instascript.app/video-to-text), decoding and speech recognition happen on your device; no arbitrary video URL is transcribed server-side.
+This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser. If you switch to a saved video in [Video to Text](https://instascript.app/video-to-text), decoding and speech recognition happen on your device; no arbitrary video URL is transcribed server-side.
 
 ## FAQ
 

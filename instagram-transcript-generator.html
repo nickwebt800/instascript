@@ -80,7 +80,7 @@
       <h3>Is the transcript accurate for music?</h3>
       <p>Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy, so review quotes before publishing them.</p>
       <h3>Which language does this page support?</h3>
-      <p>The current browser model is tuned for English. For non-English speech, treat the output as a draft and verify it against the audio.</p>
+      <p>Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.</p>
       <p class="disclaimer">InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
     </section>
 
@@ -132,7 +132,7 @@
       { "@type": "Question", "name": "Can it transcribe every Instagram Reel?", "acceptedAnswer": { "@type": "Answer", "text": "No. The URL path needs a public page and a media URL exposed to an unauthenticated request. Use a local copy for a private, expired, or login-only post." } },
       { "@type": "Question", "name": "Does it create captions from the text?", "acceptedAnswer": { "@type": "Answer", "text": "It creates a timestamped transcript and an SRT file that can be imported into a compatible video editor or player." } },
       { "@type": "Question", "name": "Is the transcript accurate for music?", "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy." } },
-      { "@type": "Question", "name": "Which language does this page support?", "acceptedAnswer": { "@type": "Answer", "text": "The current browser model is tuned for English. For non-English speech, treat the output as a draft and verify it against the audio." } }
+      { "@type": "Question", "name": "Which language does this page support?", "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript." } }
     ]
   }
   </script>

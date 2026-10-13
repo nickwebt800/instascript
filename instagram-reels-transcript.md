@@ -55,3 +55,7 @@ Yes. Download SRT for a subtitle track or TXT for plain text, then review the re
 ### Is InstaScript affiliated with Instagram?
 
 No. InstaScript is independent of Instagram and Meta.
+
+## Language checks
+
+Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.

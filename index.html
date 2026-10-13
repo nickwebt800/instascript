@@ -169,13 +169,14 @@
 
     <section class="content-card">
       <h2>How an Instagram transcript generator works</h2>
+      <p>A written post description is not a speech transcript. If playable video cannot be fetched, no transcript is created; upload a saved video or try another public Reel. SRT export is available only when the speech result has timestamped segments.</p>
       <p><strong>Instagram to text</strong> means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT or SRT.</p>
       <p>For a public Reel workflow, use the <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> guide. For a saved video, use <a href="/instagram-video-to-text">Instagram Video to Text</a>. You can also start with the <a href="/instagram-transcript-generator">Instagram Transcript Generator</a> or the <a href="/reels-to-text">Reels to Text</a> tool.</p>
       <h2>FAQ</h2>
       <h3>How do I transcribe an Instagram Reel?</h3>
       <p>Paste a public Instagram Reel or video post URL above, or upload a downloaded video. The speech recognition runs in your browser and returns timestamped text.</p>
       <h3>Does InstaScript support non-English audio?</h3>
-      <p>InstaScript currently supports English speech. Non-English audio is rejected before transcription.</p>
+      <p>Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.</p>
       <h3>Do I need an account?</h3>
       <p>No. You can start without registration, and results can be copied or downloaded as TXT or SRT.</p>
     </section>
@@ -304,7 +305,7 @@
       {
         "@type": "Question",
         "name": "Does InstaScript support non-English audio?",
-        "acceptedAnswer": { "@type": "Answer", "text": "InstaScript currently supports English speech. Non-English audio is rejected before transcription." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript." }
       },
       {
         "@type": "Question",
@@ -314,7 +315,7 @@
     ]
   }
   </script>
-  <script type="module" src="app.js?v=cache-fix-20261013b"></script>
+  <script type="module" src="app.js?v=p0-20261013"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=cache-fix-20261013b" defer></script>
 </body>

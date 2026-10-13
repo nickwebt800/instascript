@@ -55,3 +55,7 @@ Speech recognition is designed for spoken audio. Loud music, overlapping speaker
 The current browser model is tuned for English. Verify the output against the audio.
 
 InstaScript is independent of Instagram and Meta.
+
+## Language checks
+
+Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.

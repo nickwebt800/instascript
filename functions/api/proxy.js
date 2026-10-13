@@ -30,6 +30,7 @@ export async function onRequestGet({ request }) {
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Cache-Control": "no-store",
   };
 
   if (request.method === "OPTIONS") {
@@ -108,7 +109,7 @@ export async function onRequestGet({ request }) {
       headers: {
         "Content-Type": response.headers.get("Content-Type") || "video/mp4",
         "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "public, max-age=86400",
+        "Cache-Control": "no-store",
       },
     });
   } catch (err) {

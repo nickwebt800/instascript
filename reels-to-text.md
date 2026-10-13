@@ -48,7 +48,7 @@ See the [raw benchmark rows](https://github.com/nickwebt800/instascript/tree/mai
 
 ## Review before relying on it
 
-Music, effects, quick speech, accents, names, numbers, and people talking over one another can change a segment. Replay the timestamp before using a line as a quote or record. The current browser model is English-focused, so non-English speech should be treated as a draft.
+Music, effects, quick speech, accents, names, numbers, and people talking over one another can change a segment. Replay the timestamp before using a line as a quote or record. Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
 
 ## FAQ
 

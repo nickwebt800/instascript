@@ -204,16 +204,10 @@ async function runUrlTranscription(instagramUrl) {
 
     const data = await extractRes.json();
 
-    // If it's a text post (no video), show the caption as transcript
+    // Older deployments may return post metadata without playable media.
+    // A written description is not speech and must never become a transcript.
     if (data.type === "text" && data.caption) {
-      currentTranscript = data.caption;
-      lastResult = null;
-      transcriptOutput.innerHTML = "";
-      const p = document.createElement("p");
-      p.textContent = data.caption;
-      transcriptOutput.appendChild(p);
-      processing.classList.add("hidden");
-      transcriptSection.classList.remove("hidden");
+      showError("Only a written post description was found, not playable video. No speech transcript was created. Upload a saved video or try another public Reel.");
       return;
     }
 
@@ -240,10 +234,7 @@ async function runUrlTranscription(instagramUrl) {
 
     showProcessing("Checking audio language...");
     await releaseTranscriber();
-    if (!(await detectEnglishLanguage(audioData))) {
-      displayLanguageRejected();
-      return;
-    }
+    if (!handleLanguageCheck(await detectEnglishLanguage(audioData))) return;
 
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
@@ -259,7 +250,6 @@ async function runUrlTranscription(instagramUrl) {
     lastResult = result;
     displayTranscript(result);
   } catch (err) {
-    console.error(err);
     showError(
       err.message || "Something went wrong while processing this URL."
     );
@@ -293,8 +283,8 @@ async function releaseTranscriber() {
   transcriber = null;
 }
 
-// Detect language from the first 20 seconds. Any missing/uncertain token is
-// treated as non-English so the English-only model can never emit a guess.
+// Detect language from the first 20 seconds. Only a recognized language token
+// can identify non-English speech; missing output and technical failures differ.
 async function detectEnglishLanguage(audioData) {
   let detector = null;
   try {
@@ -303,7 +293,7 @@ async function detectEnglishLanguage(audioData) {
       0,
       Math.min(audioData.length, LANGUAGE_CHECK_SECONDS * AUDIO_SAMPLE_RATE)
     );
-    if (!sample.length) return false;
+    if (!sample.length) return { status: "uncertain" };
 
     const inputs = await detector.processor(sample);
     const hopLength = detector.processor.feature_extractor.config.hop_length;
@@ -317,19 +307,34 @@ async function detectEnglishLanguage(audioData) {
     });
     const tokenRows = (generated.sequences || generated).tolist?.() || [];
     const tokenIds = Array.isArray(tokenRows[0]) ? tokenRows[0] : tokenRows;
-    if (tokenIds.length < 2) return false;
+    if (tokenIds.length < 2) return { status: "uncertain" };
 
-    return Number(tokenIds[1]) === ENGLISH_LANGUAGE_TOKEN_ID;
-  } catch (err) {
-    console.warn("Language detection failed; rejecting as non-English.", err);
-    return false;
+    const tokenId = Number(tokenIds[1]);
+    if (tokenId === ENGLISH_LANGUAGE_TOKEN_ID) return { status: "english" };
+    const token = detector.tokenizer.decode([tokenId], { skip_special_tokens: false });
+    return { status: /^<\|[a-z]{2,3}\|>$/.test(token) ? "non_english" : "uncertain" };
+  } catch {
+    // Do not log model exceptions: they can contain request or input details.
+    return { status: "failed" };
   } finally {
     // Do not keep two Whisper checkpoints in browser memory for English jobs.
     if (detector) {
       await detector.dispose?.().catch(() => {});
       languageDetector = null;
     }
+    progressBar.classList.add("hidden");
   }
+}
+
+function handleLanguageCheck(result) {
+  if (result.status === "english") return true;
+  const messages = {
+    non_english: LANGUAGE_REJECTION_MESSAGE + " Choose an English recording to try again.",
+    uncertain: "Could not determine the audio language. Try a recording with clear English speech near the beginning. No transcript was created.",
+    failed: "The language check could not run. Check your connection and retry using the same file or URL. No transcript was created.",
+  };
+  showError(messages[result.status] || messages.uncertain);
+  return false;
 }
 
 async function loadLanguageDetector() {
@@ -400,10 +405,7 @@ async function runTranscription(file) {
 
     showProcessing("Checking audio language...");
     await releaseTranscriber();
-    if (!(await detectEnglishLanguage(audioData))) {
-      displayLanguageRejected();
-      return;
-    }
+    if (!handleLanguageCheck(await detectEnglishLanguage(audioData))) return;
 
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
@@ -419,7 +421,6 @@ async function runTranscription(file) {
     lastResult = result;
     displayTranscript(result);
   } catch (err) {
-    console.error(err);
     showError(
       err.message ||
         "Something went wrong during transcription. Please try a different file."
@@ -432,8 +433,17 @@ async function runTranscription(file) {
 
 // ── Display transcript ──
 function displayTranscript(result) {
+  if (!currentTranscript.trim()) {
+    hideTranscript();
+    showError("No speech transcript was produced. Try a recording with clear English speech.");
+    return;
+  }
   transcriptOutput.innerHTML = "";
   transcriptSection.classList.remove("language-rejected");
+  if (downloadSrtBtn) {
+    downloadSrtBtn.disabled = !hasTranscriptTiming(result);
+    downloadSrtBtn.title = downloadSrtBtn.disabled ? "SRT export requires timestamped speech segments." : "";
+  }
 
   if (result.chunks && result.chunks.length) {
     result.chunks.forEach((chunk) => {
@@ -452,18 +462,6 @@ function displayTranscript(result) {
   }
 
   processing.classList.add("hidden");
-  transcriptSection.classList.remove("hidden");
-}
-
-function displayLanguageRejected() {
-  currentTranscript = LANGUAGE_REJECTION_MESSAGE;
-  lastResult = null;
-  window._lastResult = null;
-  transcriptOutput.innerHTML = "";
-  const p = document.createElement("p");
-  p.textContent = LANGUAGE_REJECTION_MESSAGE;
-  transcriptOutput.appendChild(p);
-  transcriptSection.classList.add("language-rejected");
   transcriptSection.classList.remove("hidden");
 }
 
@@ -514,18 +512,28 @@ downloadTxtBtn?.addEventListener("click", () => {
 
 // ── Download SRT ──
 downloadSrtBtn?.addEventListener("click", () => {
+  if (!hasTranscriptTiming(lastResult)) {
+    showError("SRT export requires timestamped speech segments. No subtitle file was downloaded.");
+    return;
+  }
   const srt = toSRT(lastResult);
   downloadFile(srt, "transcript.srt", "text/plain");
 });
 
+function hasTranscriptTiming(result) {
+  return Array.isArray(result?.chunks) && result.chunks.length > 0 && result.chunks.every(
+    (chunk) => typeof chunk.timestamp?.[0] === "number" && Number.isFinite(chunk.timestamp[0]) && chunk.timestamp[0] >= 0 && typeof chunk.text === "string" && chunk.text.trim()
+  );
+}
+
 function toSRT(result) {
-  if (!result || !result.chunks) return currentTranscript;
+  if (!hasTranscriptTiming(result)) return "";
   return result.chunks
     .map((chunk, i) => {
       const rawStart = Number(chunk.timestamp?.[0]);
       const startSeconds = Number.isFinite(rawStart) ? Math.max(0, rawStart) : 0;
       const nextStart = Number(result.chunks[i + 1]?.timestamp?.[0]);
-      const rawEnd = Number(chunk.timestamp?.[1]);
+      const rawEnd = chunk.timestamp?.[1] == null ? NaN : Number(chunk.timestamp[1]);
       const endSeconds = Number.isFinite(rawEnd) && rawEnd > startSeconds
         ? rawEnd
         : Number.isFinite(nextStart) && nextStart > startSeconds
@@ -540,10 +548,11 @@ function toSRT(result) {
 
 function srtTime(sec) {
   sec = Number.isFinite(Number(sec)) ? Math.max(0, Number(sec)) : 0;
-  const h = Math.floor(sec / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = Math.floor(sec % 60);
-  const ms = Math.floor((sec % 1) * 1000);
+  const totalMs = Math.round(sec * 1000);
+  const h = Math.floor(totalMs / 3600000);
+  const m = Math.floor(totalMs / 60000) % 60;
+  const s = Math.floor(totalMs / 1000) % 60;
+  const ms = totalMs % 1000;
   return `${pad(h, 2)}:${pad(m, 2)}:${pad(s, 2)},${pad(ms, 3)}`;
 }
 
@@ -590,6 +599,9 @@ function hideError() {
 }
 
 function hideTranscript() {
+  currentTranscript = "";
+  lastResult = null;
+  if (downloadSrtBtn) downloadSrtBtn.disabled = true;
   transcriptSection.classList.add("hidden");
   transcriptSection.classList.remove("language-rejected");
 }

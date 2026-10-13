@@ -18,7 +18,7 @@ Paste a YouTube link above and press **Get Transcript**. Public videos that alre
 
 **It reads the caption track the video already has on YouTube — it does not listen to the audio and does not re-write it from scratch.** That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.
 
-Two steps happen when you press the button. This site asks YouTube which caption tracks the video has and hands the list back to the page. Your own browser then downloads the track you picked straight from YouTube. The words were already written down when the video was published, so there is no speech recognition in the loop and no audio file is uploaded anywhere.
+This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.
 
 YouTube now asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. The practical consequence: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download. When that happens the page tells you instead of guessing.
 
@@ -75,7 +75,7 @@ Yes. The page is built for a phone screen: paste the link in the YouTube app's S
 
 ### Is my video uploaded anywhere?
 
-No video file is uploaded, because no video file is downloaded. The link you paste goes to this site's own lookup endpoint, and the caption text is fetched by your browser directly from YouTube. Nothing is stored and there is no account.
+No video file is uploaded. Your link goes to this site's lookup endpoint, which may fetch caption text from YouTube and cache the response for one hour. The browser fetches caption tracks directly when required and creates exports locally. There is no account history.
 
 ### Which languages are supported?
 
@@ -91,6 +91,6 @@ Three reasons, in order of likelihood: an extension or strict privacy setting bl
 
 ### Do you store the transcript?
 
-No. The text is built in your browser and stays there until you copy or download it. See the [privacy policy](https://instascript.app/privacy).
+There is no account history. Successful caption lookup responses may be cached for one hour; exports are created in your browser. See the [privacy policy](https://instascript.app/privacy).
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.

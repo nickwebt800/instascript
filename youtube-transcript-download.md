@@ -18,7 +18,7 @@ Paste a public YouTube link above and press **Download Transcript**. youtube.com
 
 **It reads the caption track the video already has and writes it to a file — it never listens to the audio and never re-writes the words from scratch.** Nothing has to play through, which is why the file is ready in seconds.
 
-Two things happen when you press the button. This site asks YouTube which caption tracks the video has and hands that list to the page. Your own browser then fetches the track you picked straight from YouTube, and **the file is assembled in your browser and saved by your browser**. No copy of your transcript is sent to this site, no file is parked on a server, and there is nothing to delete afterwards.
+This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.
 
 YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result. An extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists.
 
@@ -83,7 +83,7 @@ The time column is the whole trip from pressing the button to the transcript app
 
 **Can I get captions for a video that has none?** Not from this page — it only reads captions that already exist. [Video to Text](https://instascript.app/video-to-text) or [Audio to Text](https://instascript.app/audio-to-text) run a speech model in your browser instead.
 
-**Do you keep a copy of the file?** No. There is no upload step, so there is nothing to keep.
+**Do you keep a copy of the file?** The exported file is created locally and is not uploaded. Successful lookup responses, including available caption text, may be cached for one hour. There is no account history.
 
 ---
 

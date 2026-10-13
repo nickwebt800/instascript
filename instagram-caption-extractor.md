@@ -39,7 +39,7 @@ TXT is useful for searching and notes. SRT adds numbered, timestamped cues for a
 - Music and sound effects can hide syllables.
 - Overlapping speakers need manual speaker labels.
 - Accents, names, and numbers need an audio check.
-- The English-focused model makes non-English output a draft.
+- Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
 - Text visible in frames needs visual inspection or OCR.
 
 ## Processing boundary

@@ -11,8 +11,9 @@ InstaScript turns public Instagram Reels, video files, and audio files into text
 ## Supported inputs
 
 - Local MP4, MOV, WebM, MP3, WAV, M4A, or OGG files up to 100 MB.
-- Public Instagram post and Reel URLs. TikTok and Facebook videos must be saved and uploaded as files.
-- English speech. Audio is processed in roughly 30-second chunks.
+- Speech-transcription links: public Instagram post and Reel URLs. TikTok and Facebook videos must be saved and opened as local files.
+- Speech recognition is English only. Audio is processed in roughly 30-second chunks.
+- Separate YouTube tools read existing captions from public links. Lookup responses, including available caption text, may be cached for one hour. See the [privacy policy](https://instascript.app/privacy).
 
 ## Machine-readable resources
 

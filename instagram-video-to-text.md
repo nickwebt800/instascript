@@ -48,7 +48,7 @@ The raw rows and method are in the [benchmark directory](https://github.com/nick
 
 ## Accuracy checks
 
-Music, sound effects, fast speech, accents, names, numbers, and overlapping speakers can change the output. Replay important timestamps before publishing a quote. The current browser model is English-focused, so non-English output is a draft.
+Music, sound effects, fast speech, accents, names, numbers, and overlapping speakers can change the output. Replay important timestamps before publishing a quote. Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
 
 ## FAQ
 

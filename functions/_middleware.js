@@ -277,7 +277,7 @@ const PAGES = [
   {
     title: "Privacy",
     url: ORIGIN + "/privacy",
-    summary: "Privacy policy: no upload, no account, no stored transcripts.",
+    summary: "Privacy policy: local files stay on-device; public link lookups use servers and YouTube caption responses may be cached for one hour. No account.",
     accepts: [],
     limits: [],
     keywords: ["privacy", "data", "gdpr", "policy"],
@@ -576,7 +576,7 @@ const TOOLS = [
   },
   {
     name: "site_info",
-    description: "What InstaScript does, the file types and links it accepts, and its limits (English only, 100 MB, ~30 second chunks, nothing uploaded).",
+    description: "What InstaScript does, the file types and links it accepts, and its limits (English speech recognition, 100 MB local files, and separate YouTube caption lookup).",
     inputSchema: { type: "object", properties: {} },
   },
 ];
@@ -605,10 +605,10 @@ async function mcpCall(name, args, env) {
     return {
       name: "InstaScript",
       url: ORIGIN,
-      does: "Turns Instagram Reels, video files and audio files into text inside the browser.",
-      accepts: { files: ["MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG"], max_file_size: "100 MB", links: ["public Instagram post and Reel URLs"] },
-      limits: ["English only (whisper-tiny.en)", "audio processed in ~30 second chunks", "TikTok and Facebook URLs are not fetched - upload the saved file", "no server-side transcription of arbitrary URLs"],
-      privacy: "Files are processed on the visitor's device. Nothing is uploaded, no account, no stored transcripts.",
+      does: "Transcribes English speech from Instagram Reels and local media in the browser; the separate YouTube tools read existing caption tracks.",
+      accepts: { files: ["MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG"], max_file_size: "100 MB", links: ["public Instagram post and Reel URLs", "public YouTube URLs with existing captions (separate YouTube tools)"] },
+      limits: ["speech recognition is English only (whisper-tiny.en)", "audio processed in ~30 second chunks", "language check failures and uncertain language stop transcription without claiming non-English speech", "written post descriptions are not speech transcripts", "YouTube tools cannot create captions", "TikTok and Facebook URLs are not fetched - upload the saved file", "no server-side transcription of arbitrary URLs"],
+      privacy: "Local files and edits stay on-device. Instagram media is temporarily buffered in server memory with no-store responses. YouTube lookup responses, including available caption text, may be cached for one hour. No account history.",
       source_url: ORIGIN + "/about",
     };
   }

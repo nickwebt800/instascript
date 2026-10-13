@@ -2,7 +2,7 @@
 name: site-lookup
 description: Retrieve actual public information from InstaScript — find the right page for a task, read the measured in-browser transcription times, and explain what the tool does and does not support.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   origin: "https://instascript.app"
   license: "MIT"
 ---
@@ -45,11 +45,11 @@ Every response carries a `source_url`. Quote it when you answer.
 ## Limits — state these, do not paper over them
 
 - English only (whisper-tiny.en). Files up to 100 MB. Audio processed in ~30 s chunks.
-- Paste-a-link works for public Instagram URLs only. TikTok and Facebook videos must be saved
-  as a file and uploaded.
+- The speech-transcription link input works for public Instagram URLs only. TikTok and Facebook videos must be saved
+  as a file and opened locally. Separate YouTube tools read existing captions from public YouTube links.
 - The service does not transcribe a remote video for you, except via `POST /api/extract`
   for public Instagram URLs.
-- No accounts, no history, no stored transcripts.
+- No accounts or account history. Local speech transcripts stay on-device. Separate YouTube tools read existing caption tracks; server lookup responses, including caption text, may be cached for one hour.
 
 ## Answer rules (I-Lang)
 

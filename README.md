@@ -11,7 +11,7 @@ Live at **[instascript.app](https://instascript.app)**.
 3. The audio is checked with a language detection model and then passed through `whisper-tiny.en` via `@huggingface/transformers.js`.
 4. The transcript is displayed with timestamps. Copy to clipboard or download as TXT/SRT.
 
-The current speech pipeline supports English audio. The first run downloads both the language detection and transcription models to the browser cache; later runs are faster on the same device.
+The current speech pipeline supports English audio. Detected non-English speech, uncertain language and technical detection failures have separate errors; none produces a transcript. The selected input is retained for retry. Written Instagram post descriptions are never used as speech transcripts. SRT export requires timestamped speech segments. The first run downloads both the language detection and transcription models to the browser cache; later runs are faster on the same device.
 
 When using the URL input, a Cloudflare Pages Function fetches the Instagram page server-side to extract the video URL (browsers can't do this directly due to CORS). The video is then proxied to the browser, where all transcription happens locally.
 
@@ -24,12 +24,14 @@ When using the URL input, a Cloudflare Pages Function fetches the Instagram page
 
 ## Features
 
-- Transcribe Instagram Reels, videos, and any audio/video file (MP4, WebM, MP3, WAV)
+- Transcribe public Instagram Reels and browser-decodable local files (MP4, MOV, WebM, MP3, WAV, M4A, OGG), up to 100 MB
+- Separate YouTube tools read existing caption tracks; they do not transcribe video audio
+- Subtitle Translator is a manual local editor for SRT/VTT, with validated SRT timing on export
 - Timestamped output with start/end times per segment
 - One-click copy to clipboard
 - Download as plain text (.txt) or subtitle format (.srt)
 - Mobile-friendly responsive design
-- Zero data collection — no analytics, no tracking, no cookies set by InstaScript
+- No account or application analytics; local files stay on-device. Public link lookup uses servers and third-party services, described in the privacy policy
 
 ## Project Structure
 
@@ -89,7 +91,7 @@ The `benchmark/` directory contains [measured in-browser transcription timings](
 
 ## Privacy
 
-InstaScript does not collect, store, or transmit uploaded file contents or transcripts. File uploads are processed entirely in the browser. URL-based transcription fetches the Instagram page server-side (via Cloudflare Functions), temporarily proxies the public media to the browser, and does not store the video or transcript. See [privacy.html](privacy.html) for the full policy.
+Local files and subtitle edits are processed in the browser and are not uploaded. Instagram URL lookup fetches public pages server-side, with optional Cloudflare Browser Rendering and Jina fallbacks. The media proxy buffers up to 100 MB in memory and returns no-store responses without saving media to persistent application storage. YouTube lookup may fetch existing caption text server-side and cache successful responses for one hour; browser downloads and bot checks contact YouTube/Google directly when required. Exports are generated locally. See [privacy.html](privacy.html) for the full policy.
 
 ## License
 

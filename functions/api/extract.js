@@ -1,7 +1,7 @@
 // Cloudflare Pages Function: /api/extract
 // Accepts POST { url: "https://instagram.com/reel/..." }
-// Fetches the Instagram page server-side, extracts video URL + caption.
-// Returns JSON { videoUrl, caption, type } or { error }
+// Resolves playable media; caption metadata is not a speech transcript.
+// Returns JSON { videoUrl, caption, type: "video" } or a non-success { error }.
 
 export async function onRequestPost({ request, env }) {
   const corsHeaders = {
@@ -188,15 +188,14 @@ export async function onRequestPost({ request, env }) {
       );
     }
 
-    // No video found — maybe it's a text/image post
+    // A post description is metadata, never a substitute for spoken audio.
     if (caption) {
       return Response.json(
         {
-          caption,
-          title,
-          type: "text",
+          code: "no_playable_video",
+          error: "Only a written post description was found, not playable video. No speech transcript was created. Upload a saved video or try another public Reel.",
         },
-        { headers: corsHeaders }
+        { status: 404, headers: corsHeaders }
       );
     }
 
@@ -205,7 +204,7 @@ export async function onRequestPost({ request, env }) {
         error:
           pageResponse && !pageResponse.ok
             ? `Instagram returned status ${pageResponse.status}. The post may be private, deleted, or rate-limited.`
-            : "Could not find video or text content on this Instagram page. It may require login or be private.",
+            : "Could not find playable video on this Instagram page. It may require login or be private. Upload a saved video or try another public Reel.",
       },
       { status: 404, headers: corsHeaders }
     );

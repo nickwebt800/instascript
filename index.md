@@ -30,6 +30,14 @@ Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/insta
 
 **Instagram to text** means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT or SRT.
 
+## Limits and errors
+
+Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
+
+A written post description is not a speech transcript. If playable video cannot be fetched, no transcript is created; upload a saved video or try another public Reel.
+
+SRT export is available only when the speech result has timestamped segments.
+
 ## FAQ
 
 ### Can I make an Instagram Reels transcript from a public link?

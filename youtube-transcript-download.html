@@ -88,7 +88,7 @@
     <section class="content-card">
       <h2>How this download works</h2>
       <p><strong>It reads the caption track the video already has and writes it to a file &mdash; it never listens to the audio and never re-writes the words from scratch.</strong> Nothing has to play through, which is why the file is ready in seconds rather than after a recording finishes.</p>
-      <p>Two things happen when you press the button. This site asks YouTube which caption tracks the video has and hands that list to the page. Your own browser then fetches the track you picked straight from YouTube, and <strong>the file is assembled in your browser and saved by your browser</strong>. No copy of your transcript is sent to this site, no file is parked on a server waiting for you, and there is nothing to delete afterwards.</p>
+      <p>This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.</p>
       <p>YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. One consequence worth knowing: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists. When that happens you get a message that says so.</p>
 
       <h2>YouTube subtitles download: TXT or SRT</h2>
@@ -165,7 +165,7 @@
       <p>Not from this page &mdash; it only reads captions that already exist. If you have the video as a file, <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a>
         <a href="/mp3-to-text">MP3 to Text</a> run a speech model in your browser and do not need a caption track.</p>
       <h3>Do you keep a copy of the file?</h3>
-      <p>No. There is no upload step, so there is nothing to keep, and no account to attach it to.</p>
+      <p>The exported file is created locally and is not uploaded. Successful lookup responses, including available caption text, may be cached for one hour. There is no account history.</p>
 
       <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
     </section>

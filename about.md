@@ -10,9 +10,9 @@ Turn video and audio into text — free, in your browser
 
 ## About InstaScript
 
-InstaScript is a free browser-based transcription tool. It turns video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into timestamped text, with .txt and .srt downloads. The paste-a-link option currently accepts public Instagram URLs only.
+InstaScript is a free browser-based transcription tool. It turns video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into timestamped text, with .txt and .srt downloads. The speech-transcription link input accepts public Instagram URLs. Separate YouTube tools read existing caption tracks from public YouTube links.
 
-It runs entirely in your web browser — no app to install, no account to create, and no payment required.
+File processing runs in your browser; public-link tools also use server lookups. No app to install, no account to create, and no payment required.
 
 ### How It Works
 
@@ -23,7 +23,7 @@ This means your files never leave your device when using the upload feature. The
 ### Features
 
 - Transcribe video files (MP4, MOV, WebM) and audio files (MP3, WAV, M4A, OGG) up to 100 MB
-- Paste a public Instagram URL and let the site fetch the video for you — Instagram is the only link type supported today; for TikTok or Facebook, save the file and upload it
+- Paste a public Instagram URL and let the site fetch the video for you — this speech-transcription input supports Instagram links; separate YouTube tools read existing captions. For TikTok or Facebook, save the file and upload it
 - Timestamped output with start and end times for each segment
 - Copy transcript to clipboard with one click
 - Download as plain text (.txt) or subtitle format (.srt)
@@ -45,7 +45,7 @@ Questions about the site, or about your data, go to [contact@instascript.app](ht
 
 ### Privacy
 
-InstaScript does not collect, store, or transmit your personal data. See our [Privacy Policy](https://instascript.app/privacy) for details.
+Local media files and subtitle edits stay in your browser. Public Instagram links use server-side media fetching; YouTube tools use server-side caption lookup, whose successful responses may be cached for one hour. See our [Privacy Policy](https://instascript.app/privacy) for details.
 
 ### Listing & Verification
 
