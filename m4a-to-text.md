@@ -80,3 +80,11 @@ The first run loads and initializes the speech model. A later file can reuse the
 - [MP3 to Text](https://instascript.app/mp3-to-text) — focus on MP3 files and timed exports.
 - [Podcast Transcript](https://instascript.app/podcast-transcript) — transcribe a local podcast recording.
 - [Subtitle Editor](https://instascript.app/subtitle-editor) — edit SRT, VTT or SBV timing and text.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.

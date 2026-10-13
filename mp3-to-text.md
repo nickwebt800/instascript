@@ -80,3 +80,11 @@ The first run includes downloading and starting the speech model. A later file c
 ### Can I make captions from the result?
 
 Yes. Download SRT for timed cues, then inspect cue breaks in your caption editor. The export contains speech timing, not styling or a video preview.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.

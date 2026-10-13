@@ -70,3 +70,11 @@ Yes. Download SRT, then inspect cue breaks in a subtitle editor. The export cont
 - [MP3 to Text](https://instascript.app/mp3-to-text) — focus on MP3 recordings and timed exports.
 - [M4A to Text](https://instascript.app/m4a-to-text) — focus on M4A recordings and timed exports.
 - [Subtitle Editor](https://instascript.app/subtitle-editor) — edit SRT, VTT or SBV timing and text.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.

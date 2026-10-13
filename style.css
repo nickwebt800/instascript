@@ -411,6 +411,24 @@ body {
   border-top: 0;
 }
 
+.processing .task-cancel {
+  margin-top: 14px;
+}
+
+.error-box .task-retry {
+  display: block;
+  margin-top: 12px;
+}
+
+.drop-zone[aria-disabled="true"] {
+  cursor: wait;
+}
+
+.task-cancel:disabled, .task-retry:disabled, .tab:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
 /* ===== Footer ===== */
 .footer {
   text-align: left;

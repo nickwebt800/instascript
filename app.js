@@ -12,6 +12,8 @@ const ENGLISH_LANGUAGE_TOKEN_ID = 50259;
 const LANGUAGE_REJECTION_MESSAGE =
   "This file appears to contain non-English audio. InstaScript currently supports English speech.";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
+const LOOKUP_TIMEOUT_MS = 60_000;
+const MEDIA_TIMEOUT_MS = 120_000;
 
 // ── DOM ──
 const $ = (id) => document.getElementById(id);
@@ -28,7 +30,13 @@ const urlBtn = $("urlBtn");
 const urlNote = $("urlNote");
 const processing = $("processing");
 const processingText = $("processingText");
-const processingHint = $("processingHint");
+let processingHint = $("processingHint");
+if (processing && !processingHint) {
+  processingHint = document.createElement("p");
+  processingHint.id = "processingHint";
+  processingHint.className = "processing-hint";
+  processing.appendChild(processingHint);
+}
 const progressBar = $("progressBar");
 const progressFill = $("progressFill");
 const errorBox = $("errorBox");
@@ -45,6 +53,107 @@ let transcriber = null;
 let languageDetector = null;
 let currentTranscript = "";
 let lastResult = null;
+let activeTask = null;
+let lastJob = null;
+
+// Shared controls cover every page using this transcription pipeline.
+const cancelBtn = document.createElement("button");
+cancelBtn.type = "button";
+cancelBtn.className = "btn-ghost task-cancel";
+cancelBtn.textContent = "Cancel processing";
+processing?.appendChild(cancelBtn);
+cancelBtn.addEventListener("click", cancelTask);
+
+const retryBtn = document.createElement("button");
+retryBtn.type = "button";
+retryBtn.className = "btn-ghost task-retry hidden";
+retryBtn.textContent = "Try the same input again";
+retryBtn.addEventListener("click", () => {
+  if (activeTask || !lastJob) return;
+  if (lastJob.kind === "file") return runTranscription(lastJob.file);
+  return runUrlTranscription(lastJob.url);
+});
+
+function setTaskControls(busy) {
+  [transcribeBtn, urlBtn, fileInput, urlInput, transcribeAnotherBtn, pasteAnotherBtn, ...tabs].forEach((control) => {
+    if (control) control.disabled = busy;
+  });
+  dropZone?.setAttribute("aria-disabled", String(busy));
+  cancelBtn.disabled = !busy;
+  retryBtn.disabled = busy;
+}
+
+function cancelledError() {
+  const error = new Error("Processing cancelled. Your input is kept so you can retry or choose another recording.");
+  error.code = "task_cancelled";
+  return error;
+}
+
+function checkTask(task = activeTask) {
+  if (task?.cancelled) throw cancelledError();
+}
+
+function cancelTask() {
+  if (!activeTask || activeTask.cancelled) return;
+  activeTask.cancelled = true;
+  activeTask.controller.abort();
+  cancelBtn.disabled = true;
+  progressBar?.classList.add("hidden");
+  if (processingText) processingText.textContent = "Cancelling processing...";
+  if (processingHint) processingHint.textContent = (activeTask.kind === "url" ? "The active link lookup or media download is stopped. " : "")
+    + "A model download or audio/model operation may need to finish first; its result is discarded before you can start again.";
+}
+
+async function runTask(job, operation) {
+  // Hold the lock until the current operation settles, including cancellation.
+  if (activeTask) return;
+  const task = { kind: job.kind, controller: new AbortController(), cancelled: false };
+  activeTask = task;
+  lastJob = job;
+  hideError();
+  hideTranscript();
+  setTaskControls(true);
+  try {
+    await operation(task);
+    checkTask(task);
+  } catch (error) {
+    hideTranscript();
+    showError(task.cancelled ? cancelledError().message : error?.message || "Processing failed. Try the same input again or choose another recording.");
+  } finally {
+    processing?.classList.add("hidden");
+    progressBar?.classList.add("hidden");
+    activeTask = null;
+    setTaskControls(false);
+  }
+}
+
+// The timeout covers both response headers and reading the response body.
+async function requestWithTimeout(url, options, readBody, timeoutMs, label, task) {
+  checkTask(task);
+  const controller = new AbortController();
+  const abort = () => controller.abort();
+  task.controller.signal.addEventListener("abort", abort, { once: true });
+  let timedOut = false;
+  const timer = setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, timeoutMs);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    const body = await readBody(response);
+    checkTask(task);
+    if (timedOut) throw new Error("Request timed out.");
+    return { response, body };
+  } catch {
+    checkTask(task);
+    throw new Error(timedOut
+      ? label + " timed out. Retry the same input, or upload a saved file instead."
+      : label + " could not be completed. Check your connection and retry the same input.");
+  } finally {
+    clearTimeout(timer);
+    task.controller.signal.removeEventListener("abort", abort);
+  }
+}
 
 if (dropZone) {
   dropZone.setAttribute("role", "button");
@@ -53,7 +162,7 @@ if (dropZone) {
   dropZone.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      fileInput.click();
+      if (!activeTask) fileInput.click();
     }
   });
 }
@@ -70,6 +179,8 @@ function activateTab(name) {
 // ── Tab switching ──
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
+    if (activeTask) return;
+    lastJob = null;
     tabs.forEach((t) => {
       t.classList.remove("active");
       t.setAttribute("aria-selected", "false");
@@ -84,7 +195,7 @@ tabs.forEach((tab) => {
 
 // ── File upload: drag & drop ──
 if (dropZone && fileInput) {
-  dropZone.addEventListener("click", () => fileInput.click());
+  dropZone.addEventListener("click", () => { if (!activeTask) fileInput.click(); });
 
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -107,7 +218,13 @@ if (dropZone && fileInput) {
 }
 
 function handleFile(file) {
+  if (activeTask) return;
+  lastJob = null;
+  retryBtn.classList.add("hidden");
+  hideTranscript();
   if (file.size > MAX_FILE_SIZE) {
+    selectedFile = null;
+    fileInfo?.classList.add("hidden");
     showError("File too large. Maximum size is 100 MB.");
     return;
   }
@@ -131,6 +248,8 @@ transcribeBtn?.addEventListener("click", () => {
 });
 
 transcribeAnotherBtn?.addEventListener("click", () => {
+  if (activeTask) return;
+  lastJob = null;
   selectedFile = null;
   if (fileInput) fileInput.value = "";
   fileInfo?.classList.add("hidden");
@@ -140,6 +259,8 @@ transcribeAnotherBtn?.addEventListener("click", () => {
 });
 
 pasteAnotherBtn?.addEventListener("click", () => {
+  if (activeTask) return;
+  lastJob = null;
   if (urlInput) urlInput.value = "";
   hideTranscript();
   activateTab("url");
@@ -152,57 +273,61 @@ urlBtn?.addEventListener("click", handleUrl);
 urlInput?.addEventListener("keydown", (e) => {
   if (e.key === "Enter") handleUrl();
 });
+urlInput?.addEventListener("input", () => {
+  if (!activeTask) {
+    lastJob = null;
+    hideError();
+  }
+});
 
 function handleUrl() {
+  if (activeTask) return;
   const url = urlInput.value.trim();
   if (!url) {
     showError("Paste a public Instagram Reel or video post URL first.");
     return;
   }
-  if (!url.includes("instagram.com")) {
+  let parsed;
+  try { parsed = new URL(url); } catch { /* Invalid input below. */ }
+  if (!parsed || !["http:", "https:"].includes(parsed.protocol) || !/(^|\.)instagram\.com$/i.test(parsed.hostname)) {
     showError("Please use a public Instagram Reel or video post URL.");
     return;
   }
   urlNote?.classList.add("hidden");
   hideError();
   hideTranscript();
-  urlBtn.disabled = true;
-  runUrlTranscription(url).finally(() => {
-    urlBtn.disabled = false;
-  });
+  return runUrlTranscription(url);
 }
 
 async function runUrlTranscription(instagramUrl) {
-  try {
+  return runTask({ kind: "url", url: instagramUrl }, async (task) => {
     // Step 1: Extract video URL via server-side function
     showProcessing("Fetching from Instagram...");
-    const extractRes = await fetch("/api/extract", {
+    const { response: extractRes, body: data } = await requestWithTimeout("/api/extract", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: instagramUrl }),
-    });
+    }, (response) => response.json().catch(() => null), LOOKUP_TIMEOUT_MS, "Instagram lookup", task);
 
     if (extractRes.status === 404) {
-      const err = await extractRes.json().catch(() => ({}));
-      if (err.error) {
-        showError(err.error);
+      if (data?.error) {
+        showError(data.error);
         return;
       }
       // A non-JSON 404 means the Pages Function route is not deployed.
-      urlNote.classList.remove("hidden");
-      urlNote.innerHTML =
-        "<strong>URL fetching needs deployment.</strong> The server-side function is not available on this deployment.";
-      processing.classList.add("hidden");
+      showError("The Instagram lookup service is unavailable on this deployment. Upload a saved file instead, or retry later.");
       return;
     }
 
     if (!extractRes.ok) {
-      const err = await extractRes.json().catch(() => ({}));
-      showError(err.error || `Server returned ${extractRes.status}.`);
+      showError(data?.error || `Instagram lookup returned ${extractRes.status}. Retry later or upload a saved file.`);
       return;
     }
 
-    const data = await extractRes.json();
+    if (!data || typeof data !== "object") {
+      showError("The Instagram lookup returned an unreadable response. Retry or upload a saved file.");
+      return;
+    }
 
     // Older deployments may return post metadata without playable media.
     // A written description is not speech and must never become a transcript.
@@ -219,25 +344,31 @@ async function runUrlTranscription(instagramUrl) {
     // Step 2: Download the video through the proxy (bypasses CORS)
     showProcessing("Downloading video...");
     const proxyUrl = "/api/proxy?url=" + encodeURIComponent(data.videoUrl);
-    const videoRes = await fetch(proxyUrl);
+    const { response: videoRes, body: videoBody } = await requestWithTimeout(proxyUrl, {},
+      (response) => response.ok ? response.blob() : response.json().catch(() => null),
+      MEDIA_TIMEOUT_MS, "Media download", task);
 
     if (!videoRes.ok) {
-      showError("Could not download this video. The post may be private or expired; try a public Reel or upload the file instead.");
+      showError(videoRes.status === 413 ? "This media exceeds the 100 MB limit. Choose a smaller saved file."
+        : "Could not download this video. The post may be private or expired; retry a public Reel or upload a saved file instead.");
       return;
     }
 
-    const videoBlob = await videoRes.blob();
+    const videoBlob = videoBody;
 
     // Step 3: Extract audio + transcribe (same as file upload)
     showProcessing("Extracting audio...");
     const audioData = await extractAudio(videoBlob);
+    checkTask(task);
 
     showProcessing("Checking audio language...");
     await releaseTranscriber();
+    checkTask(task);
     if (!handleLanguageCheck(await detectEnglishLanguage(audioData))) return;
 
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
+    checkTask(task);
 
     showProcessing("Transcribing...");
     const result = await model(audioData, {
@@ -245,17 +376,12 @@ async function runUrlTranscription(instagramUrl) {
       chunk_length_s: 30,
       stride_length_s: 5,
     });
+    checkTask(task);
 
     currentTranscript = result.text || "";
     lastResult = result;
     displayTranscript(result);
-  } catch (err) {
-    showError(
-      err.message || "Something went wrong while processing this URL."
-    );
-  } finally {
-    processing.classList.add("hidden");
-  }
+  });
 }
 
 // ── Model loading ──
@@ -266,6 +392,7 @@ async function loadModel() {
   progressFill.style.width = "0%";
   transcriber = await pipeline("automatic-speech-recognition", MODEL_ID, {
     progress_callback: (data) => {
+      if (activeTask?.cancelled) return;
       if (data.status === "progress" && data.progress != null) {
         progressFill.style.width = data.progress.toFixed(0) + "%";
         processingText.textContent =
@@ -289,6 +416,7 @@ async function detectEnglishLanguage(audioData) {
   let detector = null;
   try {
     detector = await loadLanguageDetector();
+    checkTask();
     const sample = audioData.subarray(
       0,
       Math.min(audioData.length, LANGUAGE_CHECK_SECONDS * AUDIO_SAMPLE_RATE)
@@ -296,6 +424,7 @@ async function detectEnglishLanguage(audioData) {
     if (!sample.length) return { status: "uncertain" };
 
     const inputs = await detector.processor(sample);
+    checkTask();
     const hopLength = detector.processor.feature_extractor.config.hop_length;
     const generated = await detector.model.generate({
       inputs: inputs.input_features,
@@ -305,6 +434,7 @@ async function detectEnglishLanguage(audioData) {
       decoder_input_ids: [[50258]],
       max_new_tokens: 1,
     });
+    checkTask();
     const tokenRows = (generated.sequences || generated).tolist?.() || [];
     const tokenIds = Array.isArray(tokenRows[0]) ? tokenRows[0] : tokenRows;
     if (tokenIds.length < 2) return { status: "uncertain" };
@@ -313,7 +443,8 @@ async function detectEnglishLanguage(audioData) {
     if (tokenId === ENGLISH_LANGUAGE_TOKEN_ID) return { status: "english" };
     const token = detector.tokenizer.decode([tokenId], { skip_special_tokens: false });
     return { status: /^<\|[a-z]{2,3}\|>$/.test(token) ? "non_english" : "uncertain" };
-  } catch {
+  } catch (error) {
+    if (error?.code === "task_cancelled" || activeTask?.cancelled) throw cancelledError();
     // Do not log model exceptions: they can contain request or input details.
     return { status: "failed" };
   } finally {
@@ -347,6 +478,7 @@ async function loadLanguageDetector() {
     LANGUAGE_MODEL_ID,
     {
       progress_callback: (data) => {
+        if (activeTask?.cancelled) return;
         if (data.status === "progress" && data.progress != null) {
           progressFill.style.width = data.progress.toFixed(0) + "%";
           processingText.textContent =
@@ -362,53 +494,55 @@ async function loadLanguageDetector() {
 // ── Audio extraction ──
 async function extractAudio(file) {
   const arrayBuffer = await file.arrayBuffer();
+  checkTask();
   const AudioCtx = window.AudioContext || window.webkitAudioContext;
   const audioCtx = new AudioCtx({ sampleRate: 16000 });
 
-  let audioBuffer;
   try {
-    audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-  } catch (err) {
-    throw new Error(
-      "Could not decode this file format. Try MP3, WAV, or MP4 with AAC audio."
-    );
-  }
-
-  // Mix to mono
-  let channelData;
-  if (audioBuffer.numberOfChannels > 1) {
-    channelData = new Float32Array(audioBuffer.length);
-    for (let i = 0; i < audioBuffer.length; i++) {
-      let sum = 0;
-      for (let ch = 0; ch < audioBuffer.numberOfChannels; ch++) {
-        sum += audioBuffer.getChannelData(ch)[i];
-      }
-      channelData[i] = sum / audioBuffer.numberOfChannels;
+    let audioBuffer;
+    try {
+      audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+    } catch {
+      throw new Error("Could not decode this file format. Try MP3, WAV, or MP4 with AAC audio.");
     }
-  } else {
-    channelData = audioBuffer.getChannelData(0);
-  }
+    checkTask();
 
-  audioCtx.close();
-  return channelData;
+    // Mix to mono
+    let channelData;
+    if (audioBuffer.numberOfChannels > 1) {
+      channelData = new Float32Array(audioBuffer.length);
+      for (let i = 0; i < audioBuffer.length; i++) {
+        let sum = 0;
+        for (let ch = 0; ch < audioBuffer.numberOfChannels; ch++) {
+          sum += audioBuffer.getChannelData(ch)[i];
+        }
+        channelData[i] = sum / audioBuffer.numberOfChannels;
+      }
+    } else {
+      channelData = audioBuffer.getChannelData(0);
+    }
+
+    return channelData;
+  } finally {
+    await audioCtx.close();
+  }
 }
 
 // ── Main transcription flow ──
 async function runTranscription(file) {
-  hideError();
-  hideTranscript();
-  transcribeBtn.disabled = true;
-
-  try {
+  return runTask({ kind: "file", file }, async (task) => {
     showProcessing("Extracting audio...");
     const audioData = await extractAudio(file);
+    checkTask(task);
 
     showProcessing("Checking audio language...");
     await releaseTranscriber();
+    checkTask(task);
     if (!handleLanguageCheck(await detectEnglishLanguage(audioData))) return;
 
     showProcessing("Loading AI model (first time only)...");
     const model = await loadModel();
+    checkTask(task);
 
     showProcessing("Transcribing...");
     const result = await model(audioData, {
@@ -416,19 +550,12 @@ async function runTranscription(file) {
       chunk_length_s: 30,
       stride_length_s: 5,
     });
+    checkTask(task);
 
     currentTranscript = result.text || "";
     lastResult = result;
     displayTranscript(result);
-  } catch (err) {
-    showError(
-      err.message ||
-        "Something went wrong during transcription. Please try a different file."
-    );
-  } finally {
-    processing.classList.add("hidden");
-    transcribeBtn.disabled = false;
-  }
+  });
 }
 
 // ── Display transcript ──
@@ -579,18 +706,29 @@ function downloadFile(content, filename, mime) {
 
 // ── UI helpers ──
 function showProcessing(text) {
+  checkTask();
   processing?.classList.remove("hidden");
   if (processingText) processingText.textContent = text;
   if (processingHint) {
-    processingHint.textContent = text.toLowerCase().includes("first time") || text.toLowerCase().includes("model")
-      ? "The first run downloads language detection and transcription models and may take longer. Later runs are faster because they are cached in your browser."
-      : "Your audio is processed in your browser. Keep this tab open while the transcript is prepared.";
+    const stage = text.toLowerCase();
+    processingHint.textContent = stage.includes("fetching")
+      ? "Looking up playable public media. You can cancel this request or use a saved file instead."
+      : stage.includes("downloading video")
+        ? "Downloading media for browser processing. You can cancel this download."
+        : stage.includes("language") && !stage.includes("loading")
+          ? "Checking the opening audio for English speech before transcription."
+          : stage.includes("first time") || stage.includes("model") || stage.includes("loading language")
+            ? "The first run downloads language detection and transcription models and may take longer. Later runs are faster because they are cached in your browser."
+            : "Your audio is processed in your browser. Keep this tab open while the transcript is prepared.";
   }
 }
 
-function showError(msg) {
+function showError(msg, canRetry = Boolean(activeTask)) {
   if (!errorBox) return;
   errorBox.textContent = msg;
+  retryBtn.classList.toggle("hidden", !lastJob || !canRetry);
+  retryBtn.disabled = Boolean(activeTask);
+  errorBox.appendChild(retryBtn);
   errorBox.classList.remove("hidden");
 }
 

@@ -79,3 +79,11 @@ No. The tool identifies the spoken language first and shows a short notice when 
 Yes, in a mobile browser. Save or screen-record the video first, then upload it from your phone. On the first run the speech model is downloaded to the browser.
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by Facebook, Meta, or OpenAI.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.

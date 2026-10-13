@@ -79,3 +79,11 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 [ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio for creators who want to turn written scripts into narration. A free tier is available to try.
 
 This homepage includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** aborts the active link lookup or media download. A model download or local audio/model operation already in progress may need to finish first; its result is discarded before another task can start.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file or submitted URL in this tab. Selecting a different input clears that retry target. Inputs are not saved as a server-side history.
+
+Instagram lookup has a 60-second timeout and media download has a 120-second timeout, including reading the response body. These limits do not apply to model loading or speech recognition.

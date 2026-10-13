@@ -79,3 +79,11 @@ English. The tool checks the audio language first and returns a message instead 
 Files up to 100 MB. Long clips are processed in 30-second chunks, so a long video takes proportionally longer and uses more memory on your device.
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by TikTok, ByteDance, or OpenAI.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.

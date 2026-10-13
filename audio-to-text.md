@@ -91,3 +91,11 @@ This audio transcription page is an independent personal project. It is not affi
 [ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio for turning spoken notes into polished audio. A free tier is available to try.
 
 This audio page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
+
+## Cancel and retry
+
+Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
+
+If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
+
+Model loading and speech recognition do not have a fixed timeout.
