@@ -5,6 +5,5 @@ dist/
 .DS_Store
 *.log
 
-# Local deployment and analysis artifacts kept out of the repository.
-/_headers
-/twitter-video-transcript.md
+# Local deployment and analysis artifacts stay outside the repository.
+# _headers and page Markdown are runtime assets and must be versioned.

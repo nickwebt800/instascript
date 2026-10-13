@@ -1,0 +1,29 @@
+/
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/instagram-reels-transcript
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/instagram-video-to-text
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/instagram-transcript-generator
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/reels-to-text
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/style.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/app.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/footer.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/assets/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
