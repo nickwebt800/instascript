@@ -1,5 +1,7 @@
 # How to Get a Transcript of a YouTube Video
 
+Canonical: <https://instascript.app/how-to-get-a-transcript-of-a-youtube-video>
+
 **Open the video.** **Expand the description** — the `…more` link under the title. At the foot of the expanded text there is a control labelled **Show transcript**. Press it and the transcript opens beside the player, already cut into timestamped lines. **Select, copy, paste.** That is the whole job, and the rest of this page is about the parts of it that almost nobody measures: what the panel actually contains, what a copy produces byte by byte, and the two places where the popular instructions quietly break.
 
 ## Where the control is — and where it isn't

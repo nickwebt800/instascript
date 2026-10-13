@@ -666,7 +666,6 @@ async function handleMcp(request, env) {
 const KNOWN_FILES = new Set([
   "/LICENSE",
   "/README.md",
-  "/SUBMISSION-GUIDE.md",
   "/about.html",
   "/about.md",
   "/ai/index.html",
