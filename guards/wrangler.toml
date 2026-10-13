@@ -1,0 +1,12 @@
+name = "instascript-guards"
+main = "worker.js"
+compatibility_date = "2026-09-21"
+workers_dev = false
+
+[[durable_objects.bindings]]
+name = "REQUEST_GUARD"
+class_name = "RequestGuard"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RequestGuard"]

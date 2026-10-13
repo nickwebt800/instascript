@@ -46,33 +46,46 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 
 ## More transcription tools
 
-- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — transcribe a public Reel URL or saved video, then download TXT or SRT.
-- [Instagram Video to Text](https://instascript.app/instagram-video-to-text) — convert a public Instagram video or saved file into timestamped spoken text.
-- [Reels to Text](https://instascript.app/reels-to-text) — turn a public Reel or saved file into timestamped spoken text.
-- [Instagram Caption Extractor](https://instascript.app/instagram-caption-extractor) — separate written post captions from spoken transcript text and verify the result.
-- [Caption Generator](https://instascript.app/caption-generator) — create a timed English speech caption draft and export TXT or SRT.
-- [Subtitle Generator](https://instascript.app/subtitle-generator) — create a timed English speech subtitle draft and export TXT or SRT.
-- [WhatsApp Voice to Text](https://instascript.app/whatsapp-voice-to-text) — turn a permitted local voice message into timestamped TXT or SRT.
-- [Subtitle Editor](https://instascript.app/subtitle-editor) — edit SRT, VTT or SBV cues, change timing and text, shift all timecodes and export.
-- [TXT to SRT Converter](https://instascript.app/txt-to-srt) — turn plain text or an existing subtitle file into editable SRT or VTT in the browser.
-- [VTT to SRT Converter](https://instascript.app/vtt-to-srt) — convert VTT, SRT or SBV subtitles to SRT or VTT in the browser.
-- [YouTube Shorts Transcript](https://instascript.app/youtube-shorts-transcript) — read a Short's existing caption track and export timed TXT or SRT.
-- [Twitter Video Transcript](https://instascript.app/twitter-video-transcript) — turn a permitted saved X video into spoken text with timestamps, TXT and SRT.
-- [ASS to SRT Converter](https://instascript.app/ass-to-srt) — convert ASS or SSA dialogue cues to reviewable SRT locally.
-- [Subtitle Translator](https://instascript.app/subtitle-translator) — edit translated SRT or VTT cues locally while keeping the original timing.
-- [Video to Text](https://instascript.app/video-to-text) — turn an MP4, MOV or WebM file into a timestamped video transcript.
-- [Audio to Text](https://instascript.app/audio-to-text) — transcribe an MP3, WAV or voice memo into written text.
-- [MP3 to Text](https://instascript.app/mp3-to-text) — transcribe a local MP3 into timestamped TXT or SRT.
-- [M4A to Text](https://instascript.app/m4a-to-text) — transcribe a local M4A into timestamped TXT or SRT.
-- [WAV to Text](https://instascript.app/wav-to-text) — transcribe a local WAV into timestamped TXT or SRT.
-- [Voice Memo to Text](https://instascript.app/voice-memo-to-text) — transcribe a local voice memo into timestamped TXT or SRT.
-- [Voicemail Transcription](https://instascript.app/voicemail-transcription) — turn a permitted local voicemail into timestamped TXT or SRT.
-- [Podcast Transcript](https://instascript.app/podcast-transcript) — turn a local podcast episode into timestamped TXT or SRT.
-- [MP4 to Text](https://instascript.app/mp4-to-text) — transcribe a local MP4 into timestamped TXT or SRT.
-- [Zoom Transcript](https://instascript.app/zoom-transcript) — turn a permitted local meeting recording into timestamped TXT or SRT.
-- [Vimeo Transcript](https://instascript.app/vimeo-transcript) — turn a permitted saved Vimeo video into timestamped TXT or SRT.
-- [TikTok Transcript](https://instascript.app/tiktok-transcript) — save a TikTok video and read what is said in it.
-- [Facebook Video Transcript](https://instascript.app/facebook-video-transcript) — get the spoken words out of a Facebook video file.
+### Transcript tools
+
+- [Instagram Transcript Generator](https://instascript.app/instagram-transcript-generator) — Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.
+- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.
+- [Instagram Video to Text](https://instascript.app/instagram-video-to-text) — Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.
+- [Reels to Text](https://instascript.app/reels-to-text) — Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.
+- [Instagram Caption Extractor](https://instascript.app/instagram-caption-extractor) — Separate written Instagram post captions from spoken transcript text and verify the result before export.
+- [Caption Generator](https://instascript.app/caption-generator) — Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT and SRT export.
+- [Subtitle Generator](https://instascript.app/subtitle-generator) — Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.
+- [WhatsApp Voice to Text](https://instascript.app/whatsapp-voice-to-text) — Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.
+- [Video to Text](https://instascript.app/video-to-text) — Turn an MP4, MOV or WebM video file into a timestamped transcript.
+- [Audio to Text](https://instascript.app/audio-to-text) — Transcribe an MP3, WAV or voice memo into written text.
+- [MP3 to Text](https://instascript.app/mp3-to-text) — Transcribe a local MP3 into timestamped text, then download TXT or SRT.
+- [M4A to Text](https://instascript.app/m4a-to-text) — Transcribe one local M4A recording into timestamped text, then download TXT or SRT.
+- [WAV to Text](https://instascript.app/wav-to-text) — Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.
+- [Voice Memo to Text](https://instascript.app/voice-memo-to-text) — Turn one local voice memo into timestamped text, TXT or SRT in the browser.
+- [Voicemail Transcription](https://instascript.app/voicemail-transcription) — Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.
+- [Podcast Transcript](https://instascript.app/podcast-transcript) — Turn a local podcast episode into timestamped text, TXT or SRT in the browser.
+- [MP4 to Text](https://instascript.app/mp4-to-text) — Transcribe the spoken audio in one local MP4 and export timestamped TXT or SRT in the browser.
+- [Zoom Transcript](https://instascript.app/zoom-transcript) — Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.
+- [Vimeo Transcript](https://instascript.app/vimeo-transcript) — Turn a permitted local Vimeo recording into timestamped spoken text, TXT or SRT in the browser.
+- [TikTok Transcript](https://instascript.app/tiktok-transcript) — Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.
+- [Facebook Video Transcript](https://instascript.app/facebook-video-transcript) — Get the spoken words out of a Facebook video by uploading the saved file.
+- [Twitter Video Transcript](https://instascript.app/twitter-video-transcript) — Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.
+
+### YouTube tools
+
+- [YouTube Transcript](https://instascript.app/youtube-transcript) — Read existing caption tracks from a public YouTube link and export TXT or SRT.
+- [YouTube Shorts Transcript](https://instascript.app/youtube-shorts-transcript) — Read an existing caption track from a public YouTube Short, with timestamped copy plus TXT and SRT export.
+- [YouTube Transcript Download](https://instascript.app/youtube-transcript-download) — Take a YouTube video's caption track away as a file: TXT for reading and writing, SRT for subtitles and video editors.
+- [How to Get a YouTube Transcript](https://instascript.app/how-to-get-a-transcript-of-a-youtube-video) — A guide to finding, copying and checking YouTube existing captions.
+
+### Subtitle tools
+
+- [TXT to SRT Converter](https://instascript.app/txt-to-srt) — Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.
+- [VTT to SRT Converter](https://instascript.app/vtt-to-srt) — Convert VTT to SRT, SRT to VTT, or SBV subtitles in one browser-based subtitle tool.
+- [Subtitle Editor](https://instascript.app/subtitle-editor) — Edit an SRT, VTT or SBV file in the browser. Change cue timing and text, add or remove entries, shift all timecodes, export SRT or VTT. Receive a transcript directly from another tab and review it with a local recording.
+- [ASS to SRT Converter](https://instascript.app/ass-to-srt) — Convert one ASS or SSA subtitle file to reviewable SRT cues in the browser, preserving timing and dialogue text.
+- [SRT to Text Converter](https://instascript.app/srt-to-text) — Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.
+- [Subtitle Translator](https://instascript.app/subtitle-translator) — Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.
 
 ## Recommended
 
@@ -87,3 +100,7 @@ Only one transcription task can run at a time. While processing, input controls 
 If a task fails or is cancelled, **Try the same input again** reuses the selected file or submitted URL in this tab. Selecting a different input clears that retry target. Inputs are not saved as a server-side history.
 
 Instagram lookup has a 60-second timeout and media download has a 120-second timeout, including reading the response body. These limits do not apply to model loading or speech recognition.
+
+## Review and edit your transcript
+
+After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT and SRT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.

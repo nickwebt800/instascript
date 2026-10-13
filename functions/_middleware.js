@@ -1,8 +1,11 @@
+import catalog from "../tool-catalog.json";
+import { checkRequestLimit } from "./_lib/guards.js";
+
 // Cloudflare Pages middleware for InstaScript.
 // Serves agent-discovery documents, Markdown negotiation, the public read API
 // and the MCP endpoint. Everything else falls through to the static assets.
 
-const ORIGIN = "https://instascript.app";
+const ORIGIN = catalog.origin;
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -17,280 +20,7 @@ const LINK_HEADER =
   '</ai/>; rel="service-doc", ' +
   '</.well-known/ai-catalog.json>; rel="describedby"';
 
-const PAGES = [
-  {
-    title: "Instagram Transcript",
-    url: ORIGIN + "/",
-    summary: "Turn an Instagram Reel or any video/audio file into text in the browser. Paste-a-link accepts public Instagram URLs.",
-    accepts: ["MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG", "public Instagram URLs"],
-    limits: ["English only", "up to 100 MB", "audio processed in ~30 second chunks"],
-    keywords: ["instagram", "reel", "reels", "transcript", "caption", "home", "ig"],
-  },
-  {
-    title: "Video Transcript",
-    url: ORIGIN + "/video-to-text",
-    summary: "Turn an MP4, MOV or WebM video file into a timestamped transcript.",
-    accepts: ["MP4", "MOV", "WebM"],
-    limits: ["English only", "up to 100 MB", "no video links - upload the file"],
-    keywords: ["video transcript", "video", "video to text", "mp4", "mov", "mov to text", "webm", "webm to text", "transcribe video"],
-  },
-  {
-    title: "Instagram Transcript Generator",
-    url: ORIGIN + "/instagram-transcript-generator",
-    summary: "Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.",
-    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
-    keywords: ["instagram transcript generator", "instagram transcript", "reel transcript", "srt", "txt"],
-  },
-  {
-    title: "Instagram Reels Transcript",
-    url: ORIGIN + "/instagram-reels-transcript",
-    summary: "Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.",
-    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
-    keywords: ["instagram reels transcript", "instagram reel transcript", "reels transcript", "srt", "txt"],
-  },
-  {
-    title: "Instagram Video to Text",
-    url: ORIGIN + "/instagram-video-to-text",
-    summary: "Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.",
-    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
-    keywords: ["instagram video to text", "instagram video transcript", "video to text", "srt", "txt"],
-  },
-  {
-    title: "Reels to Text",
-    url: ORIGIN + "/reels-to-text",
-    summary: "Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.",
-    accepts: ["public Instagram Reel URLs", "MP4", "MOV", "WebM"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "private or login-only URLs need a saved file"],
-    keywords: ["reels to text", "reel transcript", "instagram reel", "srt", "txt"],
-  },
-  {
-    title: "Instagram Caption Extractor",
-    url: ORIGIN + "/instagram-caption-extractor",
-    summary: "Separate written Instagram post captions from spoken transcript text and verify the result before export.",
-    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM"],
-    limits: ["spoken audio only", "English-focused browser model", "written captions and on-screen text need separate checks"],
-    keywords: ["instagram caption extractor", "instagram caption", "caption text", "reel caption", "transcript"],
-  },
-  {
-    title: "Caption Generator",
-    url: ORIGIN + "/caption-generator",
-    summary: "Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
-    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "speech only - no OCR, translation, styling or speaker labels"],
-    keywords: ["caption generator", "caption maker", "video captions", "srt captions", "timed captions", "subtitle generator"],
-  },
-  {
-    title: "Subtitle Generator",
-    url: ORIGIN + "/subtitle-generator",
-    summary: "Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
-    accepts: ["public Instagram video URLs", "MP4", "MOV", "WebM", "MP3", "WAV", "M4A", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB for uploads", "speech only - no OCR, translation, styling or speaker labels"],
-    keywords: ["subtitle generator", "subtitle maker", "srt generator", "timed subtitles", "speech subtitles", "caption generator"],
-  },
-  {
-    title: "TXT to SRT Converter",
-    url: ORIGIN + "/txt-to-srt",
-    summary: "Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.",
-    accepts: ["UTF-8 TXT", "SRT", "VTT"],
-    limits: ["one local text file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["txt to srt", "txt to srt converter", "text to srt", "convert txt to srt", "txt file to srt", "srt file generator", "create srt file", "srt", "vtt", "subtitles"],
-  },
-  {
-    title: "VTT to SRT Converter",
-    url: ORIGIN + "/vtt-to-srt",
-    summary: "Convert VTT to SRT, SRT to VTT, or SBV subtitles in one browser-based subtitle tool.",
-    accepts: ["VTT", "SRT", "SBV", "pasted subtitle text"],
-    limits: ["one local subtitle file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["vtt to srt", "srt to vtt", "srt to webvtt", "convert srt to vtt", "sbv to srt", "subtitle converter", "vtt converter", "srt converter"],
-  },
-  {
-    title: "ASS to SRT Converter",
-    url: ORIGIN + "/ass-to-srt",
-    summary: "Convert one ASS or SSA subtitle file to reviewable SRT cues in the browser, preserving timing and dialogue text.",
-    accepts: ["ASS", "SSA", "pasted subtitle text"],
-    limits: ["one local subtitle file at a time", "ASS styles and positioning are not represented in SRT", "no upload or account"],
-    keywords: ["ass to srt", "ssa to srt", "ass subtitle converter", "ssa subtitle converter", "subtitle converter", "srt"],
-  },
-  {
-    title: "Subtitle Editor",
-    url: ORIGIN + "/subtitle-editor",
-    summary: "Edit an SRT, VTT or SBV file in the browser. Change cue timing and text, add or remove entries, shift all timecodes, export SRT or VTT.",
-    accepts: ["SRT", "VTT", "SBV", "pasted subtitle text"],
-    limits: ["one local subtitle file at a time", "no video preview or audio waveform", "no audio transcription", "no upload or account"],
-    keywords: ["subtitle editor", "srt editor", "vtt editor", "edit subtitles", "subtitle timing", "caption editor"],
-  },
-  {
-    title: "SRT to Text Converter",
-    url: ORIGIN + "/srt-to-text",
-    summary: "Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.",
-    accepts: ["SRT", "VTT", "pasted subtitle text"],
-    limits: ["one local subtitle file at a time", "no audio transcription", "no upload or account"],
-    keywords: ["srt to text", "srt to txt", "convert srt to txt", "vtt to text", "vtt to txt", "subtitle to text", "srt converter", "vtt converter", "plain text"],
-  },
-  {
-    title: "Subtitle Translator",
-    url: ORIGIN + "/subtitle-translator",
-    summary: "Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.",
-    accepts: ["SRT", "VTT", "pasted subtitle text"],
-    limits: ["manual translation entry", "one local subtitle file at a time", "no upload or account"],
-    keywords: ["subtitle translator", "srt translator", "translate srt", "translate srt file", "subtitle translation", "translated subtitles"],
-  },
-  {
-    title: "Audio Transcription",
-    url: ORIGIN + "/audio-to-text",
-    summary: "Transcribe an MP3, WAV or voice memo into written text.",
-    accepts: ["MP3", "WAV", "M4A", "OGG"],
-    limits: ["English only", "up to 100 MB"],
-    keywords: ["audio transcription", "audio", "audio to text", "mp3", "wav", "flac", "flac to text", "aac", "aac to text", "ogg", "ogg to text", "voice", "transcribe audio"],
-  },
-  {
-    title: "MP3 to Text",
-    url: ORIGIN + "/mp3-to-text",
-    summary: "Transcribe a local MP3 into timestamped text, then download TXT or SRT.",
-    accepts: ["MP3"],
-    limits: ["English only", "up to 100 MB", "one local file at a time", "no upload or account"],
-    keywords: ["mp3 to text", "mp3 transcription", "mp3 to text converter", "mp3", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "M4A to Text",
-    url: ORIGIN + "/m4a-to-text",
-    summary: "Transcribe one local M4A recording into timestamped text, then download TXT or SRT.",
-    accepts: ["M4A"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "browser-supported codecs only"],
-    keywords: ["m4a to text", "transcribe m4a to text", "m4a transcription", "m4a", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "WAV to Text",
-    url: ORIGIN + "/wav-to-text",
-    summary: "Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.",
-    accepts: ["WAV", "MP3", "M4A", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "browser-readable sample formats only"],
-    keywords: ["wav to text", "transcribe wav files", "wav transcription", "wav", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "Voice Memo to Text",
-    url: ORIGIN + "/voice-memo-to-text",
-    summary: "Turn one local voice memo into timestamped text, TXT or SRT in the browser.",
-    accepts: ["M4A", "MP3", "WAV", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "private cloud links are not fetched"],
-    keywords: ["voice memo to text", "transcribe voice memos", "transcribe iphone voice memo", "voice memo transcription", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "Voicemail Transcription",
-    url: ORIGIN + "/voicemail-transcription",
-    summary: "Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.",
-    accepts: ["permitted local voicemail files", "M4A", "MP3", "WAV", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB", "carrier and private voicemail links are not fetched", "speech only"],
-    keywords: ["voicemail transcription", "voicemail to text", "voicemail transcript", "transcribe voicemail", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "WhatsApp Voice to Text",
-    url: ORIGIN + "/whatsapp-voice-to-text",
-    summary: "Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.",
-    accepts: ["permitted local audio files", "M4A", "MP3", "WAV", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB", "WhatsApp chat links are not fetched", "speech only"],
-    keywords: ["whatsapp voice to text", "whatsapp audio to text", "voice message transcript", "whatsapp transcript", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "Podcast Transcript",
-    url: ORIGIN + "/podcast-transcript",
-    summary: "Turn a local podcast episode into timestamped text, TXT or SRT in the browser.",
-    accepts: ["MP3", "WAV", "M4A", "OGG"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "Spotify and Riverside links are not fetched"],
-    keywords: ["podcast transcript", "podcast transcription", "spotify podcast transcript", "riverside fm transcript", "audio transcript", "srt", "txt"],
-  },
-  {
-    title: "MP4 to Text",
-    url: ORIGIN + "/mp4-to-text",
-    summary: "Transcribe the spoken audio in one local MP4 and export timestamped TXT or SRT in the browser.",
-    accepts: ["MP4", "MOV", "WebM"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "video links are not fetched"],
-    keywords: ["mp4 to text", "mp4 to transcript", "mp4 transcription", "transcribe mp4 to text", "video transcript", "srt", "txt"],
-  },
-  {
-    title: "Zoom Transcript",
-    url: ORIGIN + "/zoom-transcript",
-    summary: "Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.",
-    accepts: ["MP4", "MOV", "WebM", "MP3", "WAV", "M4A"],
-    limits: ["English-focused browser model", "up to 100 MB", "one local file at a time", "private Zoom links are not fetched"],
-    keywords: ["zoom transcript", "zoom transcription", "transcribe zoom", "zoom meeting transcription", "meeting transcript", "srt", "txt"],
-  },
-  {
-    title: "Vimeo Transcript",
-    url: ORIGIN + "/vimeo-transcript",
-    summary: "Turn a permitted local Vimeo recording into timestamped spoken text, TXT or SRT in the browser.",
-    accepts: ["MP4", "MOV", "WebM", "saved Vimeo videos"],
-    limits: ["English-focused browser model", "up to 100 MB", "Vimeo URLs are not fetched directly", "download permission is required"],
-    keywords: ["vimeo transcript", "vimeo transcription", "transcribe vimeo", "vimeo video transcript", "video transcript", "srt", "txt"],
-  },
-  {
-    title: "TikTok Transcript",
-    url: ORIGIN + "/tiktok-transcript",
-    summary: "Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.",
-    accepts: ["video files saved from TikTok"],
-    limits: ["English only", "up to 100 MB", "TikTok URLs are not supported - upload the file"],
-    keywords: ["tiktok", "tik tok", "transcript"],
-  },
-  {
-    title: "Facebook Video Transcript",
-    url: ORIGIN + "/facebook-video-transcript",
-    summary: "Get the spoken words out of a Facebook video by uploading the saved file.",
-    accepts: ["video files saved from Facebook"],
-    limits: ["English only", "up to 100 MB", "Facebook URLs are not supported - upload the file"],
-    keywords: ["facebook", "meta", "video", "transcript"],
-  },
-  {
-    title: "YouTube Transcript Download",
-    url: ORIGIN + "/youtube-transcript-download",
-    summary: "Take a YouTube video's caption track away as a file: TXT for reading and writing, SRT for subtitles and video editors.",
-    accepts: ["youtube.com URLs", "youtu.be URLs", "/shorts/ URLs"],
-    limits: ["reads the caption track the video already has - it cannot create captions", "one video at a time"],
-    keywords: ["youtube", "transcript download", "subtitles download", "srt", "txt", "captions"],
-  },
-  {
-    title: "YouTube Shorts Transcript",
-    url: ORIGIN + "/youtube-shorts-transcript",
-    summary: "Read an existing caption track from a public YouTube Short, with timestamped copy plus TXT and SRT export.",
-    accepts: ["youtube.com/shorts/ URLs", "youtube.com watch URLs", "youtu.be URLs"],
-    limits: ["reads captions the Short already has", "private or unavailable Shorts need a saved file", "on-screen text and comments are not transcribed"],
-    keywords: ["youtube shorts transcript", "shorts transcript", "youtube short captions", "shorts captions", "youtube", "transcript"],
-  },
-  {
-    title: "Twitter Video Transcript",
-    url: ORIGIN + "/twitter-video-transcript",
-    summary: "Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.",
-    accepts: ["MP4", "MOV", "WebM", "saved X videos"],
-    limits: ["English-focused browser model", "up to 100 MB", "post URLs are not fetched directly; protected or removed posts need a permitted saved file"],
-    keywords: ["twitter video transcript", "x video transcript", "twitter transcript", "video transcript", "srt", "txt"],
-  },
-  {
-    title: "About",
-    url: ORIGIN + "/about",
-    summary: "What InstaScript does, how it runs in the browser, and its limits.",
-    accepts: [],
-    limits: [],
-    keywords: ["about", "how it works", "model", "whisper", "limits", "supported"],
-  },
-  {
-    title: "Privacy",
-    url: ORIGIN + "/privacy",
-    summary: "Privacy policy: local files stay on-device; public link lookups use servers and YouTube caption responses may be cached for one hour. No account.",
-    accepts: [],
-    limits: [],
-    keywords: ["privacy", "data", "gdpr", "policy"],
-  },
-  {
-    title: "Contact",
-    url: ORIGIN + "/contact",
-    summary: "How to reach the maintainer.",
-    accepts: [],
-    limits: [],
-    keywords: ["contact", "email", "support"],
-  },
-];
+const PAGES = catalog.pages;
 
 const BENCH_FALLBACK = [
   { run: 1, file: "jfk_11s.wav", audio_seconds: 11, wall_clock_seconds: 16.89, includes_model_load: true, output_chars: 120 },
@@ -664,97 +394,37 @@ async function handleMcp(request, env) {
 // Cloudflare Pages currently answers an unmatched path with the home page and
 // HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
 const KNOWN_FILES = new Set([
+  ...catalog.pages.flatMap(page => ["/" + page.html, "/" + page.markdown]),
   "/LICENSE",
   "/README.md",
-  "/about.html",
-  "/about.md",
-  "/ai/index.html",
   "/ai/index.ilang",
   "/ai/skills/site-lookup/SKILL.md",
   "/assets/logo-256.png",
   "/assets/logo-512.png",
   "/app.js",
-  "/audio-to-text.html",
-  "/audio-to-text.md",
-  "/mp3-to-text.html",
-  "/mp3-to-text.md",
-  "/m4a-to-text.html",
-  "/m4a-to-text.md",
-  "/wav-to-text.html",
-  "/wav-to-text.md",
-  "/voice-memo-to-text.html",
-  "/voice-memo-to-text.md",
-  "/voicemail-transcription.html",
-  "/voicemail-transcription.md",
-  "/whatsapp-voice-to-text.html",
-  "/whatsapp-voice-to-text.md",
-  "/podcast-transcript.html",
-  "/podcast-transcript.md",
-  "/mp4-to-text.html",
-  "/mp4-to-text.md",
-  "/zoom-transcript.html",
-  "/vimeo-transcript.html",
-  "/vimeo-transcript.md",
-  "/zoom-transcript.md",
   "/benchmark/README.md",
   "/benchmark/whisper-tiny-en-browser-benchmark.csv",
-  "/contact.html",
-  "/contact.md",
   "/data/README.md",
   "/data/browser-whisper-tools-comparison.csv",
-  "/facebook-video-transcript.html",
   "/footer.js",
-  "/facebook-video-transcript.md",
-  "/how-to-get-a-transcript-of-a-youtube-video.html",
-  "/how-to-get-a-transcript-of-a-youtube-video.md",
-  "/index.html",
-  "/index.md",
-  "/instagram-reels-transcript.html",
-  "/instagram-transcript-generator.html",
-  "/instagram-video-to-text.html",
-  "/instagram-caption-extractor.html",
-  "/caption-generator.html",
-  "/caption-generator.md",
-  "/subtitle-generator.html",
-  "/subtitle-generator.md",
-  "/txt-to-srt.html",
   "/txt-to-srt.js",
-  "/vtt-to-srt.html",
   "/vtt-to-srt.js",
-  "/ass-to-srt.html",
   "/ass-to-srt.js",
-  "/ass-to-srt.md",
-  "/youtube-shorts-transcript.html",
-  "/youtube-shorts-transcript.md",
-  "/twitter-video-transcript.html",
-  "/twitter-video-transcript.md",
-  "/subtitle-editor.html",
   "/subtitle-editor.js",
-  "/subtitle-editor.md",
-  "/srt-to-text.html",
   "/srt-to-text.js",
-  "/subtitle-translator.html",
   "/subtitle-translator.js",
-  "/subtitle-translator.md",
-  "/reels-to-text.html",
   "/js/webmcp.js",
   "/js/youtube-transcript-download.js",
   "/js/youtube-transcript.js",
   "/js/yt-pot.js",
   "/openapi.json",
-  "/privacy.html",
-  "/privacy.md",
   "/robots.txt",
   "/sitemap.xml",
   "/style.css",
-  "/tiktok-transcript.html",
-  "/tiktok-transcript.md",
-  "/video-to-text.html",
-  "/video-to-text.md",
-  "/youtube-transcript-download.html",
-  "/youtube-transcript-download.md",
-  "/youtube-transcript.html",
-  "/youtube-transcript.md",
+  "/tool-catalog.json",
+  "/js/subtitles.js",
+  "/js/media-review.js",
+  "/js/transcript-transfer.js",
 ]);
 
 // Endpoints that are produced by Functions rather than by a file on disk.
@@ -872,85 +542,18 @@ function notFound(p) {
 
 /* --------------------------------------------------------------- markdown */
 
-const MD_MAP = {
-  "/": "/index.md",
-  "/index.html": "/index.md",
-  "/ai/": "/ai/index.md",
-  "/ai/index.html": "/ai/index.md",
-  "/video-to-text": "/video-to-text.md",
-  "/video-to-text.html": "/video-to-text.md",
-  "/audio-to-text": "/audio-to-text.md",
-  "/audio-to-text.html": "/audio-to-text.md",
-  "/mp3-to-text": "/mp3-to-text.md",
-  "/mp3-to-text.html": "/mp3-to-text.md",
-  "/m4a-to-text": "/m4a-to-text.md",
-  "/m4a-to-text.html": "/m4a-to-text.md",
-  "/wav-to-text": "/wav-to-text.md",
-  "/wav-to-text.html": "/wav-to-text.md",
-  "/voice-memo-to-text": "/voice-memo-to-text.md",
-  "/voice-memo-to-text.html": "/voice-memo-to-text.md",
-  "/voicemail-transcription": "/voicemail-transcription.md",
-  "/voicemail-transcription.html": "/voicemail-transcription.md",
-  "/whatsapp-voice-to-text": "/whatsapp-voice-to-text.md",
-  "/whatsapp-voice-to-text.html": "/whatsapp-voice-to-text.md",
-  "/podcast-transcript": "/podcast-transcript.md",
-  "/podcast-transcript.html": "/podcast-transcript.md",
-  "/mp4-to-text": "/mp4-to-text.md",
-  "/mp4-to-text.html": "/mp4-to-text.md",
-  "/zoom-transcript": "/zoom-transcript.md",
-  "/zoom-transcript.html": "/zoom-transcript.md",
-  "/vimeo-transcript": "/vimeo-transcript.md",
-  "/vimeo-transcript.html": "/vimeo-transcript.md",
-  "/tiktok-transcript": "/tiktok-transcript.md",
-  "/tiktok-transcript.html": "/tiktok-transcript.md",
-  "/facebook-video-transcript": "/facebook-video-transcript.md",
-  "/facebook-video-transcript.html": "/facebook-video-transcript.md",
-  "/about": "/about.md",
-  "/about.html": "/about.md",
-  "/privacy": "/privacy.md",
-  "/privacy.html": "/privacy.md",
-  "/contact": "/contact.md",
-  "/contact.html": "/contact.md",
-  "/instagram-video-to-text": "/instagram-video-to-text.md",
-  "/instagram-video-to-text.html": "/instagram-video-to-text.md",
-  "/instagram-reels-transcript": "/instagram-reels-transcript.md",
-  "/instagram-reels-transcript.html": "/instagram-reels-transcript.md",
-  "/instagram-transcript-generator": "/instagram-transcript-generator.md",
-  "/instagram-transcript-generator.html": "/instagram-transcript-generator.md",
-  "/instagram-caption-extractor": "/instagram-caption-extractor.md",
-  "/instagram-caption-extractor.html": "/instagram-caption-extractor.md",
-  "/caption-generator": "/caption-generator.md",
-  "/caption-generator.html": "/caption-generator.md",
-  "/subtitle-generator": "/subtitle-generator.md",
-  "/subtitle-generator.html": "/subtitle-generator.md",
-  "/reels-to-text": "/reels-to-text.md",
-  "/reels-to-text.html": "/reels-to-text.md",
-  "/subtitle-editor": "/subtitle-editor.md",
-  "/subtitle-editor.html": "/subtitle-editor.md",
-  "/ass-to-srt": "/ass-to-srt.md",
-  "/ass-to-srt.html": "/ass-to-srt.md",
-  "/txt-to-srt": "/txt-to-srt.md",
-  "/txt-to-srt.html": "/txt-to-srt.md",
-  "/vtt-to-srt": "/vtt-to-srt.md",
-  "/vtt-to-srt.html": "/vtt-to-srt.md",
-  "/srt-to-text": "/srt-to-text.md",
-  "/srt-to-text.html": "/srt-to-text.md",
-  "/subtitle-translator": "/subtitle-translator.md",
-  "/subtitle-translator.html": "/subtitle-translator.md",
-  "/youtube-shorts-transcript": "/youtube-shorts-transcript.md",
-  "/youtube-shorts-transcript.html": "/youtube-shorts-transcript.md",
-  "/twitter-video-transcript": "/twitter-video-transcript.md",
-  "/twitter-video-transcript.html": "/twitter-video-transcript.md",
-};
+const MD_MAP = Object.fromEntries(catalog.pages.flatMap(page => [[page.path, "/" + page.markdown], ["/" + page.html, "/" + page.markdown]]));
 
 function wantsMarkdown(request) {
-  const accept = request.headers.get("Accept") || "";
-  return accept.split(",").some((part) => {
+  const ranges = (request.headers.get("Accept") || "").split(",").map(part => {
     const [type, ...params] = part.split(";");
-    if (type.trim().toLowerCase() !== "text/markdown") return false;
-    const q = params.map((p) => p.trim()).find((p) => p.startsWith("q="));
-    return !q || parseFloat(q.slice(2)) > 0;
+    const param = params.find(value => /^\s*q=/i.test(value));
+    const quality = param ? Number(param.split("=")[1]) : 1;
+    return { type: type.trim().toLowerCase(), q: Number.isFinite(quality) && quality >= 0 && quality <= 1 ? quality : 0 };
   });
+  const markdown = ranges.find(range => range.type === "text/markdown")?.q || 0;
+  const html = ranges.find(range => range.type === "text/html")?.q;
+  return markdown > 0 && (html === undefined || markdown >= html);
 }
 
 function estimateTokens(md) {
@@ -966,6 +569,19 @@ export async function onRequest(ctx) {
 
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: CORS });
+  }
+
+  const costly = (p === "/api/extract" && request.method === "POST")
+    || (p === "/api/proxy" && request.method === "GET")
+    || (p === "/api/youtube-transcript" && ["GET", "POST"].includes(request.method));
+  if (costly) {
+    const guard = await checkRequestLimit(request, env);
+    if (!guard.allowed) {
+      const message = guard.unavailable ? "Request guard is temporarily unavailable. Retry shortly."
+        : "Too many link requests. Retry after " + guard.retryAfter + " seconds.";
+      return json({ ok: false, code: guard.unavailable ? "guard_unavailable" : "rate_limited", error: message, message },
+        { status: guard.unavailable ? 503 : 429, headers: { "Cache-Control": "no-store", "Retry-After": String(guard.retryAfter), "X-Robots-Tag": "noindex" } });
+    }
   }
 
   try {
@@ -1051,7 +667,7 @@ export async function onRequest(ctx) {
 
     // Markdown content negotiation
     if (wantsMarkdown(request)) {
-      const mdPath = MD_MAP[p] || (p.endsWith("/") ? p + "index.md" : p + ".md");
+      const mdPath = MD_MAP[p];
       if (mdPath) {
         try {
           const mdRes = await env.ASSETS.fetch(new Request(ORIGIN + mdPath));
@@ -1080,6 +696,9 @@ export async function onRequest(ctx) {
     const ct = response.headers.get("Content-Type") || "";
     if (response.status === 200 && ct.includes("text/html")) {
       const headers = new Headers(response.headers);
+      const vary = (headers.get("Vary") || "").split(",").map(value => value.trim()).filter(Boolean);
+      if (!vary.some(value => value.toLowerCase() === "accept")) vary.push("Accept");
+      headers.set("Vary", vary.join(", "));
       const existing = headers.get("Link");
       headers.set("Link", existing ? existing + ", " + LINK_HEADER : LINK_HEADER);
       return new Response(response.body, { status: response.status, statusText: response.statusText, headers });

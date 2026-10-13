@@ -429,6 +429,19 @@ body {
   cursor: wait;
 }
 
+.transcript-review { padding: 18px 20px; border-bottom: 1px solid var(--border); }
+.review-player { display: block; width: 100%; max-height: 360px; margin: 0 0 12px; }
+.review-hint { margin: 0 0 12px; color: var(--text-muted); font-size: .85rem; }
+.transcript-cue { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 12px; margin-bottom: 12px; align-items: start; }
+.transcript-cue .timestamp { padding: 8px 2px; border: 0; background: transparent; cursor: pointer; }
+.transcript-cue .timestamp:disabled { opacity: .55; cursor: default; }
+.transcript-cue-text { box-sizing: border-box; width: 100%; resize: vertical; padding: 8px; border: 1px solid var(--border); border-radius: 6px; font: inherit; color: inherit; background: #fff; }
+.editor-media { margin-top: 14px; }
+.cue-play { padding: 4px 8px; }
+@media (max-width: 480px) {
+  .transcript-cue { grid-template-columns: 60px minmax(0, 1fr); gap: 8px; }
+}
+
 /* ===== Footer ===== */
 .footer {
   text-align: left;

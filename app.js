@@ -1,4 +1,6 @@
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
+import { createMediaReview } from "./js/media-review.js?v=p2-20261013";
+import { sendTranscriptToEditor } from "./js/transcript-transfer.js?v=p2-20261013";
 
 // ── Config ──
 env.allowLocalModels = false;
@@ -55,6 +57,33 @@ let currentTranscript = "";
 let lastResult = null;
 let activeTask = null;
 let lastJob = null;
+let reviewMedia = null;
+
+const reviewPanel = document.createElement("div");
+reviewPanel.className = "transcript-review";
+const reviewPlayer = document.createElement("div");
+const reviewHint = document.createElement("p");
+reviewHint.className = "review-hint";
+reviewHint.textContent = "Replay a timestamp and edit the words below. Copy and downloads use your edits.";
+const reviewStatus = document.createElement("p");
+reviewStatus.className = "tool-status";
+reviewStatus.setAttribute("role", "status");
+const editorBtn = document.createElement("button");
+editorBtn.type = "button";
+editorBtn.className = "btn-ghost";
+editorBtn.textContent = "Open in Subtitle Editor";
+reviewPanel.append(reviewPlayer, reviewHint, editorBtn, reviewStatus);
+transcriptSection.insertBefore(reviewPanel, transcriptOutput);
+const mediaReview = createMediaReview(reviewPlayer, message => { reviewStatus.textContent = message; });
+editorBtn.addEventListener("click", () => {
+  if (!hasTranscriptTiming(lastResult)) return;
+  const cues = lastResult.chunks.map((chunk, index) => {
+    const start = chunk.timestamp[0], next = lastResult.chunks[index + 1]?.timestamp?.[0];
+    const end = chunk.timestamp[1] > start ? chunk.timestamp[1] : next > start ? next : start + 2;
+    return { start, end, text: chunk.text };
+  });
+  sendTranscriptToEditor(cues, reviewMedia, message => { reviewStatus.textContent = message; });
+});
 
 // Shared controls cover every page using this transcription pipeline.
 const cancelBtn = document.createElement("button");
@@ -380,6 +409,7 @@ async function runUrlTranscription(instagramUrl) {
 
     currentTranscript = result.text || "";
     lastResult = result;
+    reviewMedia = videoBlob;
     displayTranscript(result);
   });
 }
@@ -554,6 +584,7 @@ async function runTranscription(file) {
 
     currentTranscript = result.text || "";
     lastResult = result;
+    reviewMedia = file;
     displayTranscript(result);
   });
 }
@@ -567,6 +598,9 @@ function displayTranscript(result) {
   }
   transcriptOutput.innerHTML = "";
   transcriptSection.classList.remove("language-rejected");
+  mediaReview.set(reviewMedia);
+  reviewStatus.textContent = "";
+  editorBtn.disabled = !hasTranscriptTiming(result);
   if (downloadSrtBtn) {
     downloadSrtBtn.disabled = !hasTranscriptTiming(result);
     downloadSrtBtn.title = downloadSrtBtn.disabled ? "SRT export requires timestamped speech segments." : "";
@@ -574,17 +608,39 @@ function displayTranscript(result) {
 
   if (result.chunks && result.chunks.length) {
     result.chunks.forEach((chunk) => {
-      const p = document.createElement("p");
-      const ts = document.createElement("span");
+      const p = document.createElement("div");
+      p.className = "transcript-cue";
+      const ts = document.createElement("button");
+      ts.type = "button";
       ts.className = "timestamp";
       ts.textContent = formatTime(chunk.timestamp[0]);
+      ts.disabled = !mediaReview.player || !Number.isFinite(chunk.timestamp[0]);
+      ts.setAttribute("aria-label", "Play recording from " + formatTime(chunk.timestamp[0]));
+      ts.addEventListener("click", () => mediaReview.seek(chunk.timestamp[0]));
       p.appendChild(ts);
-      p.appendChild(document.createTextNode(chunk.text.trim()));
+      const text = document.createElement("textarea");
+      text.className = "transcript-cue-text";
+      text.rows = 2;
+      text.value = chunk.text.trim();
+      text.setAttribute("aria-label", "Transcript text at " + formatTime(chunk.timestamp[0]));
+      text.addEventListener("input", () => {
+        chunk.text = text.value;
+        currentTranscript = result.chunks.map(cue => cue.text.trim()).join(" ").trim();
+        result.text = currentTranscript;
+        const timed = hasTranscriptTiming(result);
+        if (downloadSrtBtn) downloadSrtBtn.disabled = !timed;
+        editorBtn.disabled = !timed;
+        reviewStatus.textContent = timed ? "Edits are used by Copy, TXT, SRT and Subtitle Editor." : "Every cue needs text before SRT export or opening Subtitle Editor.";
+      });
+      p.appendChild(text);
       transcriptOutput.appendChild(p);
     });
   } else {
-    const p = document.createElement("p");
-    p.textContent = currentTranscript;
+    const p = document.createElement("textarea");
+    p.className = "transcript-cue-text";
+    p.value = currentTranscript;
+    p.setAttribute("aria-label", "Transcript text");
+    p.addEventListener("input", () => { currentTranscript = p.value; });
     transcriptOutput.appendChild(p);
   }
 
@@ -737,6 +793,8 @@ function hideError() {
 }
 
 function hideTranscript() {
+  mediaReview.clear();
+  reviewMedia = null;
   currentTranscript = "";
   lastResult = null;
   if (downloadSrtBtn) downloadSrtBtn.disabled = true;

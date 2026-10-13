@@ -18,7 +18,7 @@ We do not require an account or ask for your name, email address or phone number
 
 ### 2. URL-Based Transcription
 
-**Instagram:** the public post URL is sent to our extraction endpoint. It fetches the page and resolves playable media, using the fallbacks in section 3 when needed. The media proxy buffers up to 100 MB in server memory before returning the file to your browser. Its responses use `Cache-Control: no-store`; the application does not save the media to persistent storage. Audio decoding and speech recognition then happen in your browser. A written post description is not a speech transcript.
+**Instagram:** the public post URL is sent to our extraction endpoint. It fetches the page and resolves playable media, using the fallbacks in section 3 when needed. The media proxy streams the file to your browser with a 100 MB transfer limit. Oversized transfers are rejected or interrupted. Its responses use `Cache-Control: no-store`; the application does not save the media to persistent storage. Audio decoding and speech recognition then happen in your browser. A written post description is not a speech transcript.
 
 **YouTube:** the link is sent to our caption lookup endpoint. The server queries YouTube, may use Cloudflare Browser Rendering, and may fetch existing caption text. Successful lookup responses, including caption URLs and any caption text returned by YouTube, may be cached by Cloudflare for up to one hour. When the browser fetches a selected caption track directly from YouTube, it may also contact Google services for a browser bot check. TXT and SRT exports are created locally. This workflow reads existing captions; it does not upload or transcribe video audio, and it does not create an account history.
 
@@ -53,3 +53,7 @@ We may update this Privacy Policy from time to time. Changes will be posted on t
 ### 8. Contact
 
 If you have questions about this Privacy Policy, or you want to ask what data we hold or have it deleted, email **contact@instascript.app** or visit our [contact page](https://instascript.app/contact).
+
+## Local review and abuse protection
+
+Local recording playback and subtitle edits remain in the browser. Opening Subtitle Editor passes the transcript and recording directly between same-origin tabs without uploading or saving a project. Abuse protection uses short-lived request counters keyed by a daily rotating IP digest, and browser lookup quota counters; it does not store raw IP addresses, submitted URLs, media or transcript text in these counters. Shared counters, when configured, expire after inactivity or at the end of the UTC day.

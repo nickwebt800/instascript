@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Subtitle Editor | InstaScript">
   <meta name="twitter:description" content="Edit SRT, VTT and SBV subtitles locally in your browser.">
   <title>Subtitle Editor | Edit SRT and VTT in Your Browser | InstaScript</title>
-  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+  <link rel="stylesheet" href="/style.css?v=p2-20261013">
 </head>
 <body class="subtitle-converter-page">
   <div class="container">
@@ -54,6 +54,9 @@
         <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
       </div>
       <p id="editorStatus" class="tool-status" role="status" aria-live="polite"></p>
+      <label class="file-button" for="reviewMediaFile">Open recording for review<input id="reviewMediaFile" type="file" accept="audio/*,video/*" hidden></label>
+      <p class="input-hint">Optional local audio/video playback. Click a cue number to seek; your recording stays in the browser. No waveform is shown.</p>
+      <div id="editorMedia" class="editor-media"></div>
 
       <section id="editorSection" class="subtitle-editor hidden" aria-labelledby="editor-title">
         <div class="editor-header">
@@ -89,7 +92,7 @@
       <h2>What this subtitle editor does</h2>
       <p>A subtitle editor lets you open an existing subtitle file, change the text and timing of each cue, add or remove entries, and export the result. This page reads one <strong>SRT</strong>, <strong>VTT</strong> or <strong>SBV</strong> file at a time, parses it into individual cues, and shows them in an editable table where you can fix start times, end times and caption text before exporting.</p>
       <p>Each cue becomes one row. Change the start or end time and the new value takes effect immediately. Edit the caption text to fix typos, rephrase, or trim a line. Add a new entry with the <strong>Add entry</strong> button, or remove one with its <strong>Remove</strong> button. The <strong>Shift all times</strong> field adds or subtracts a number of seconds from every timecode at once, which is the fastest way to fix a subtitle file that is uniformly early or late.</p>
-      <p>Everything runs in your browser. No subtitle text is uploaded, no account is required, and nothing is stored after you leave the page.</p>
+      <p>Everything runs in your browser. No subtitle text or review recording is uploaded and no account is required. A transcript can be sent directly from another InstaScript tab through same-origin browser messaging; it is not placed in the URL or persistent browser storage.</p>
 
       <h2>Supported formats</h2>
       <p>This subtitle editor reads <strong>SRT</strong> (numbered cues with comma-separated milliseconds), <strong>WebVTT</strong> (WEBVTT header with period-separated milliseconds), and <strong>SBV</strong> (comma-separated time ranges). Output is standard <strong>SRT</strong> or <strong>WebVTT</strong>. Cue order, time ranges, line breaks and subtitle text are preserved during editing.</p>
@@ -98,7 +101,7 @@
       <h2>How editing works</h2>
       <p>When you load a subtitle file, each cue is split into a start time, an end time and its caption text. These appear as editable fields in the table. Timecodes use the <code>HH:MM:SS,mmm</code> format for SRT and <code>HH:MM:SS.mmm</code> for VTT. You can type times in any common shorthand such as <code>1:23.4</code> or <code>00:01:23,400</code> and the editor reads the numbers.</p>
       <p>Shifting all timecodes is arithmetic: the editor adds your shift value (in seconds) to every start and end time. Negative values move subtitles earlier. Times below zero are clamped to zero so the cue does not get a negative start.</p>
-      <p>If a source has a cue that does not match SRT, VTT or SBV syntax, the editor reports that no usable cues were found so you can correct the pasted text.</p>
+      <p>Invalid source timecodes are rejected. During editing, blank cue text or an end time at or before its start disables export until corrected. Valid overlapping cues keep their original timing.</p>
 
       <h2>FAQ</h2>
       <h3>Can I edit SRT files without uploading them?</h3>
@@ -112,27 +115,60 @@
       <h3>Can I edit several subtitle files at once?</h3>
       <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
       <h3>Does this editor show a video preview?</h3>
- <p>No. This editor works on the subtitle text and timecodes only. It does not play a video or show an audio waveform. If you need to check the result against the video, export the SRT or VTT and open it in your media player.</p>
+ <p>Yes. Open a local audio or video recording with Open recording for review, then click a cue number to seek to its start. Playback depends on browser codec support. No audio waveform is shown and the recording is not uploaded.</p>
       <h3>How do I get subtitles to edit?</h3>
       <p>If you have a video or audio file and need text first, use the <a href="/">Instagram Transcript</a> tool or <a href="/video-to-text">Video to Text</a> to get an SRT. Then open that SRT here to edit timing and captions. If you have plain text and want to build subtitles from scratch, use the <a href="/txt-to-srt">TXT to SRT Converter</a>.</p>
     </section>
 
-    <footer class="footer" data-site-footer>
+    <section class="content-card"><p>Use subtitle text under 2 million characters and up to 10,000 cues. Every cue needs text and a valid end after its start before export.</p></section>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav">
-        <a href="/">Instagram Transcript</a>
-        <a href="/txt-to-srt">TXT to SRT</a>
-        <a href="/vtt-to-srt">VTT to SRT</a>
-        <a href="/srt-to-text">SRT to Text</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-              <a href="/mp3-to-text">MP3 to Text</a>
-      </nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav>
       <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
     </footer>
   </div>
-  <script src="/subtitle-editor.js" defer></script>
+  <script type="module" src="/subtitle-editor.js?v=p2-20261013"></script>
   <script src="/js/webmcp.js" defer></script>
-  <script src="/footer.js?v=release-20261013" defer></script>
+  <script src="/footer.js?v=p2-20261013" defer></script>
 </body>
 </html>

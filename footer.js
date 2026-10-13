@@ -1,77 +1,20 @@
 (function () {
   "use strict";
-
-  var groups = [
-    { title: "Transcript tools", links: [
-      ["Instagram Transcript", "/"],
-      ["Instagram Transcript Generator", "/instagram-transcript-generator"],
-      ["Instagram Reels Transcript", "/instagram-reels-transcript"],
-      ["Instagram Video to Text", "/instagram-video-to-text"],
-      ["Reels to Text", "/reels-to-text"],
-      ["Instagram Caption Extractor", "/instagram-caption-extractor"],
-      ["Caption Generator", "/caption-generator"],
-      ["Subtitle Generator", "/subtitle-generator"],
-      ["Video to Text", "/video-to-text"],
-      ["Audio to Text", "/audio-to-text"],
-      ["MP3 to Text", "/mp3-to-text"],
-      ["M4A to Text", "/m4a-to-text"],
-      ["WAV to Text", "/wav-to-text"],
-      ["Voice Memo to Text", "/voice-memo-to-text"],
-      ["Voicemail Transcription", "/voicemail-transcription"],
-      ["WhatsApp Voice to Text", "/whatsapp-voice-to-text"],
-      ["Podcast Transcript", "/podcast-transcript"],
-      ["MP4 to Text", "/mp4-to-text"],
-      ["Zoom Transcript", "/zoom-transcript"],
-      ["Vimeo Transcript", "/vimeo-transcript"],
-      ["TikTok Transcript", "/tiktok-transcript"],
-      ["Facebook Video Transcript", "/facebook-video-transcript"],
-      ["YouTube Transcript", "/youtube-transcript"],
-      ["YouTube Shorts Transcript", "/youtube-shorts-transcript"],
-      ["Twitter Video Transcript", "/twitter-video-transcript"],
-      ["YouTube Transcript Download", "/youtube-transcript-download"],
-      ["How to Get a YouTube Transcript", "/how-to-get-a-transcript-of-a-youtube-video"]
-    ]},
-    { title: "Subtitle tools", links: [
-      ["Subtitle Editor", "/subtitle-editor"],
-      ["TXT to SRT", "/txt-to-srt"],
-      ["VTT to SRT", "/vtt-to-srt"],
-      ["ASS to SRT", "/ass-to-srt"],
-      ["SRT to Text", "/srt-to-text"],
-      ["Subtitle Translator", "/subtitle-translator"]
-    ]},
-    { title: "Site", links: [
-      ["Privacy Policy", "/privacy"],
-      ["About", "/about"],
-      ["Contact", "/contact"]
-    ]}
-  ];
-
-  function buildNavigation() {
-    var nav = document.createElement("nav");
-    nav.className = "footer-nav";
-    nav.setAttribute("aria-label", "Site navigation");
-
-    groups.forEach(function (group) {
-      var section = document.createElement("div");
-      section.className = "footer-group";
-      var title = document.createElement("span");
-      title.className = "footer-group-title";
-      title.textContent = group.title;
-      section.appendChild(title);
-      group.links.forEach(function (item) {
-        var link = document.createElement("a");
-        link.href = item[1];
-        link.textContent = item[0];
-        section.appendChild(link);
+  // The complete generated static navigation is the fallback when fetch fails.
+  fetch("/tool-catalog.json?v=p2-20261013")
+    .then(function (response) { if (!response.ok) throw new Error("Catalog unavailable"); return response.json(); })
+    .then(function (catalog) {
+      document.querySelectorAll("footer[data-site-footer]").forEach(function (footer) {
+        var nav = document.createElement("nav"); nav.className = "footer-nav"; nav.setAttribute("aria-label", "Site navigation");
+        catalog.groups.forEach(function (group) {
+          var pages = catalog.pages.filter(function (page) { return page.footer && page.group === group.id; });
+          if (!pages.length) return;
+          var section = document.createElement("div"); section.className = "footer-group";
+          var title = document.createElement("span"); title.className = "footer-group-title"; title.textContent = group.title; section.appendChild(title);
+          pages.forEach(function (page) { var link = document.createElement("a"); link.href = page.path; link.textContent = page.label; section.appendChild(link); });
+          nav.appendChild(section);
+        });
+        footer.querySelector(".footer-nav")?.replaceWith(nav);
       });
-      nav.appendChild(section);
-    });
-
-    return nav;
-  }
-
-  document.querySelectorAll("footer[data-site-footer]").forEach(function (footer) {
-    var existing = footer.querySelector(".footer-nav");
-    if (existing) existing.replaceWith(buildNavigation());
-  });
+    }).catch(function () { /* Keep the generated static navigation. */ });
 })();

@@ -35,6 +35,7 @@ Instagram lookup has a 60-second timeout and media download has a 120-second tim
 - Transcribe public Instagram Reels and browser-decodable local files (MP4, MOV, WebM, MP3, WAV, M4A, OGG), up to 100 MB
 - Separate YouTube tools read existing caption tracks; they do not transcribe video audio
 - Subtitle Translator is a manual local editor for SRT/VTT, with validated SRT timing on export
+- Local recording playback, timestamp seeking, editable transcript cues and direct transfer to Subtitle Editor
 - Timestamped output with start/end times per segment
 - One-click copy to clipboard
 - Download as plain text (.txt) or subtitle format (.srt)
@@ -99,8 +100,16 @@ The `benchmark/` directory contains [measured in-browser transcription timings](
 
 ## Privacy
 
-Local files and subtitle edits are processed in the browser and are not uploaded. Instagram URL lookup fetches public pages server-side, with optional Cloudflare Browser Rendering and Jina fallbacks. The media proxy buffers up to 100 MB in memory and returns no-store responses without saving media to persistent application storage. YouTube lookup may fetch existing caption text server-side and cache successful responses for one hour; browser downloads and bot checks contact YouTube/Google directly when required. Exports are generated locally. See [privacy.html](privacy.html) for the full policy.
+Local files and subtitle edits are processed in the browser and are not uploaded. Instagram URL lookup fetches public pages server-side, with optional Cloudflare Browser Rendering and Jina fallbacks. The media proxy streams media with a 100 MB transfer limit and returns no-store responses without saving media to persistent application storage. YouTube lookup may fetch existing caption text server-side and cache successful responses for one hour; browser downloads and bot checks contact YouTube/Google directly when required. Exports are generated locally. See [privacy.html](privacy.html) for the full policy.
 
 ## License
 
 [MIT](LICENSE)
+
+## Catalog maintenance and request guards
+
+`tool-catalog.json` is the source for the middleware service catalog, public page representations, homepage tool directory, footer navigation and sitemap. After adding or changing a tool, run `node scripts/sync-catalog.cjs` and review the generated HTML, Markdown and XML.
+
+Upstream fetches validate each redirect host, bound response bytes and apply server-side deadlines. The media proxy streams at most 100 MB, rejects non-media responses, and aborts transfers that exceed the limit. Costly API requests are limited to 20 per client per minute. Cloudflare browser lookup reserves a conservative 50 seconds per attempt against an 8 minute UTC daily budget with a 12 second minimum spacing. Missing usage headers retain the reservation.
+
+Without a `REQUEST_GUARD` binding, counters are local to each runtime isolate and cannot enforce a global account budget. To enable shared limits, deploy the private worker using `guards/wrangler.toml`, then configure the Pages Durable Object binding shown in `guards/pages-binding.example.toml` for production and preview. A configured guard failure rejects expensive requests. This separate service is not created by deploying Pages alone. Keep guard configuration and maintenance scripts out of the static deployment package.

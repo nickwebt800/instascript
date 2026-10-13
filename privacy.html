@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="Privacy Policy | InstaScript">
   <meta name="twitter:description" content="Read how InstaScript handles files, transcripts, cookies and third-party services.">
   <title>Privacy Policy - InstaScript</title>
-  <link rel="stylesheet" href="/style.css?v=design-20260927d">
+  <link rel="stylesheet" href="/style.css?v=p2-20261013">
 </head>
 <body>
   <div class="container">
@@ -43,7 +43,7 @@
       <p>We do not require an account or ask for your name, email address or phone number to use the tools. Locally generated speech transcripts and subtitle edits stay in your browser tab unless you copy or download them. YouTube caption lookup responses may be cached as described in section 2. <strong>InstaScript does not run its own analytics, tracking or session-recording scripts.</strong> Basic traffic measurement, if any, comes from our host and is described in section 3.</p>
 
       <h3>2. URL-Based Transcription</h3>
-      <p><strong>Instagram:</strong> the public post URL is sent to our extraction endpoint. It fetches the page and resolves playable media, using the fallbacks in section 3 when needed. The media proxy buffers up to 100 MB in server memory before returning the file to your browser. Its responses use <code>Cache-Control: no-store</code>; the application does not save the media to persistent storage. Audio decoding and speech recognition then happen in your browser. A written post description is not a speech transcript.</p>
+      <p><strong>Instagram:</strong> the public post URL is sent to our extraction endpoint. It fetches the page and resolves playable media, using the fallbacks in section 3 when needed. The media proxy streams the file to your browser with a 100 MB transfer limit. Oversized transfers are rejected or interrupted. Its responses use <code>Cache-Control: no-store</code>; the application does not save the media to persistent storage. Audio decoding and speech recognition then happen in your browser. A written post description is not a speech transcript.</p>
       <p><strong>YouTube:</strong> the link is sent to our caption lookup endpoint. The server queries YouTube, may use Cloudflare Browser Rendering, and may fetch existing caption text. Successful lookup responses, including caption URLs and any caption text returned by YouTube, may be cached by Cloudflare for up to one hour. When the browser fetches a selected caption track directly from YouTube, it may also contact Google services for a browser bot check. TXT and SRT exports are created locally. This workflow reads existing captions; it does not upload or transcribe video audio, and it does not create an account history.</p>
 
       <h3>3. Third-Party Services</h3>
@@ -73,24 +73,55 @@
       <p>If you have questions about this Privacy Policy, or you want to ask what data we hold or have it deleted, email <strong>contact@instascript.app</strong> or visit our <a href="/contact">contact page</a>.</p>
     </main>
 
-    <footer class="footer" data-site-footer>
+    <section class="content-card"><h2>Local review and abuse protection</h2><p>Local recording playback and subtitle edits remain in the browser. Opening Subtitle Editor passes the transcript and recording directly between same-origin tabs without uploading or saving a project. Abuse protection uses short-lived request counters keyed by a daily rotating IP digest, and browser lookup quota counters; it does not store raw IP addresses, submitted URLs, media or transcript text in these counters. Shared counters, when configured, expire after inactivity or at the end of the UTC day.</p></section>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav">
-        <a href="/">Instagram Transcript</a>
-        <a href="/video-to-text">Video to Text</a>
-        <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a>
-        <a href="/tiktok-transcript">TikTok Transcript</a>
-        <a href="/facebook-video-transcript">Facebook Video Transcript</a>
-        <a href="/youtube-transcript">YouTube Transcript</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav>
       <p>Uploaded files are processed in your browser; public Reel URLs use a temporary media fetch. No signup.</p>
       <p>This site may contain affiliate links. We may earn a commission from qualifying signups at no extra cost to you.</p>
     </footer>
   </div>
 <script src="/js/webmcp.js" defer></script>
-  <script src="/footer.js?v=release-20261013" defer></script>
+  <script src="/footer.js?v=p2-20261013" defer></script>
 </body>
 </html>

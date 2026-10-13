@@ -82,3 +82,7 @@ Only one transcription task can run at a time. While processing, input controls 
 If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
 
 Model loading and speech recognition do not have a fixed timeout.
+
+## Review and edit your transcript
+
+After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT and SRT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.

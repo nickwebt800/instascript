@@ -8,7 +8,11 @@ Canonical: <https://instascript.app/subtitle-editor>
 
 A subtitle editor lets you fix the text and timing of cues inside a subtitle file. Open the [Subtitle Editor](https://instascript.app/subtitle-editor) page, choose **Open SRT / VTT / SBV** to load a local file, or paste subtitle text into the box. Click **Load into editor** and each cue appears as a row you can edit: start time, end time and caption text. Add entries, remove entries, or shift every timecode by a fixed number of seconds. Export the result as SRT or VTT.
 
-Nothing leaves your browser. The file is read locally, edited locally, and exported locally.
+Subtitle files and recordings are read locally, edited locally, and exported locally. A transcription tab can send its transcript and recording directly to this same-origin editor tab. That transfer is not uploaded or stored as a project.
+
+## Replay a recording
+
+Choose **Open recording for review** to preview audio or video. Click a cue number to seek to its start. The recording remains in this tab and is released when you clear the editor.
 
 ## What you can edit
 
@@ -36,11 +40,11 @@ Output is standard **SRT** or **WebVTT**. Cue order, time ranges, line breaks an
 
 Timecodes are stored as seconds internally and formatted back for display and export. You can type times in common shorthand such as `1:23.4` or `00:01:23,400` and the editor reads the numbers. The shift feature is simple arithmetic: it adds your shift value to every start and end time. Times below zero are clamped to zero.
 
-If a source has a cue that does not match SRT, VTT or SBV syntax, the editor reports that no usable cues were found so you can correct the pasted text.
+Invalid source timing or empty cues are rejected. During editing, Copy and downloads stay disabled until every cue has text and a valid end after its start. Use subtitles under 2 million characters and up to 10,000 cues.
 
 ## What this editor does not do
 
-- It does not show a video preview or an audio waveform.
+- It does not show an audio waveform. Optional local audio/video playback depends on browser codec support.
 - It does not transcribe audio. Use the [Instagram Transcript](https://instascript.app/) or [Video to Text](https://instascript.app/video-to-text) tool to get text first.
 - It does not merge multiple files, store projects, or require a login.
 - It does not send subtitle text to a server.
@@ -69,7 +73,7 @@ No. This page handles one subtitle file at a time so the workflow stays local an
 
 ### Does this editor show a video preview?
 
-No. It works on subtitle text and timecodes only. Export the SRT or VTT and open it in your media player to check the result against the video.
+Yes. Open a local recording and click a cue number to replay its start. Playback depends on your browser codec support; there is no waveform.
 
 ### How do I get subtitles to edit?
 

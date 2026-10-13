@@ -1,0 +1,5 @@
+# Merge this binding into Pages configuration after deploying the guard Worker.
+[[durable_objects.bindings]]
+name = "REQUEST_GUARD"
+class_name = "RequestGuard"
+script_name = "instascript-guards"

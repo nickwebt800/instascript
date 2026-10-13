@@ -44,3 +44,5 @@ Yes. Open the SRT, replace each cue's wording, and download a translated SRT wit
 ### Can I use a VTT file?
 
 Yes. VTT cues are read locally and exported as SRT. VTT timecodes are converted to SRT HH:MM:SS,mmm format. VTT positioning settings, style blocks and cue tags are not retained. Invalid timecodes, end times at or before the start, and empty cues must be corrected before export. Valid overlapping cues keep their original timing.
+
+Use subtitle text under 2 million characters and up to 10,000 cues. Invalid timing and empty source cues must be corrected before opening the file.

@@ -1,3 +1,5 @@
+import { guardedBrowserFetch } from "../_lib/guards.js";
+
 // Cloudflare Pages Function: /api/youtube-transcript
 // Reads the caption track a YouTube video already has. It never transcribes
 // audio and it never calls a paid or third-party speech-to-text service.
@@ -305,7 +307,7 @@ async function tracksFromBrowserRendering(videoId, env, debug) {
   for (const attempt of attempts) {
     if (browserBudgetLeft() <= 0) break;
     try {
-      const res = await fetch(
+      const res = await guardedBrowserFetch(env,
         `https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/content`,
         {
           method: "POST",

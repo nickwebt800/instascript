@@ -1,0 +1,1323 @@
+{
+  "origin": "https://instascript.app",
+  "groups": [
+    {
+      "id": "transcript",
+      "title": "Transcript tools"
+    },
+    {
+      "id": "youtube",
+      "title": "YouTube tools"
+    },
+    {
+      "id": "subtitle",
+      "title": "Subtitle tools"
+    },
+    {
+      "id": "site",
+      "title": "Site"
+    }
+  ],
+  "pages": [
+    {
+      "title": "Instagram Transcript",
+      "url": "https://instascript.app/",
+      "summary": "Turn an Instagram Reel or any video/audio file into text in the browser. Paste-a-link accepts public Instagram URLs.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM",
+        "MP3",
+        "WAV",
+        "M4A",
+        "OGG",
+        "public Instagram URLs"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB",
+        "audio processed in ~30 second chunks"
+      ],
+      "keywords": [
+        "instagram",
+        "reel",
+        "reels",
+        "transcript",
+        "caption",
+        "home",
+        "ig"
+      ],
+      "path": "/",
+      "label": "Instagram Transcript",
+      "html": "index.html",
+      "markdown": "index.md",
+      "group": "transcript",
+      "home": false,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "weekly",
+        "priority": "1.0"
+      }
+    },
+    {
+      "title": "Instagram Transcript Generator",
+      "url": "https://instascript.app/instagram-transcript-generator",
+      "summary": "Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.",
+      "accepts": [
+        "public Instagram Reel URLs",
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "private or login-only URLs need a saved file"
+      ],
+      "keywords": [
+        "instagram transcript generator",
+        "instagram transcript",
+        "reel transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/instagram-transcript-generator",
+      "label": "Instagram Transcript Generator",
+      "html": "instagram-transcript-generator.html",
+      "markdown": "instagram-transcript-generator.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-30",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Instagram Reels Transcript",
+      "url": "https://instascript.app/instagram-reels-transcript",
+      "summary": "Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.",
+      "accepts": [
+        "public Instagram Reel URLs",
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "private or login-only URLs need a saved file"
+      ],
+      "keywords": [
+        "instagram reels transcript",
+        "instagram reel transcript",
+        "reels transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/instagram-reels-transcript",
+      "label": "Instagram Reels Transcript",
+      "html": "instagram-reels-transcript.html",
+      "markdown": "instagram-reels-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-30",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Instagram Video to Text",
+      "url": "https://instascript.app/instagram-video-to-text",
+      "summary": "Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.",
+      "accepts": [
+        "public Instagram video URLs",
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "private or login-only URLs need a saved file"
+      ],
+      "keywords": [
+        "instagram video to text",
+        "instagram video transcript",
+        "video to text",
+        "srt",
+        "txt"
+      ],
+      "path": "/instagram-video-to-text",
+      "label": "Instagram Video to Text",
+      "html": "instagram-video-to-text.html",
+      "markdown": "instagram-video-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-30",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Reels to Text",
+      "url": "https://instascript.app/reels-to-text",
+      "summary": "Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.",
+      "accepts": [
+        "public Instagram Reel URLs",
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "private or login-only URLs need a saved file"
+      ],
+      "keywords": [
+        "reels to text",
+        "reel transcript",
+        "instagram reel",
+        "srt",
+        "txt"
+      ],
+      "path": "/reels-to-text",
+      "label": "Reels to Text",
+      "html": "reels-to-text.html",
+      "markdown": "reels-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-30",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Instagram Caption Extractor",
+      "url": "https://instascript.app/instagram-caption-extractor",
+      "summary": "Separate written Instagram post captions from spoken transcript text and verify the result before export.",
+      "accepts": [
+        "public Instagram video URLs",
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "spoken audio only",
+        "English-focused browser model",
+        "written captions and on-screen text need separate checks"
+      ],
+      "keywords": [
+        "instagram caption extractor",
+        "instagram caption",
+        "caption text",
+        "reel caption",
+        "transcript"
+      ],
+      "path": "/instagram-caption-extractor",
+      "label": "Instagram Caption Extractor",
+      "html": "instagram-caption-extractor.html",
+      "markdown": "instagram-caption-extractor.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-26",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Caption Generator",
+      "url": "https://instascript.app/caption-generator",
+      "summary": "Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
+      "accepts": [
+        "public Instagram video URLs",
+        "MP4",
+        "MOV",
+        "WebM",
+        "MP3",
+        "WAV",
+        "M4A",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "speech only - no OCR, translation, styling or speaker labels"
+      ],
+      "keywords": [
+        "caption generator",
+        "caption maker",
+        "video captions",
+        "srt captions",
+        "timed captions",
+        "subtitle generator"
+      ],
+      "path": "/caption-generator",
+      "label": "Caption Generator",
+      "html": "caption-generator.html",
+      "markdown": "caption-generator.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-09",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Subtitle Generator",
+      "url": "https://instascript.app/subtitle-generator",
+      "summary": "Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
+      "accepts": [
+        "public Instagram video URLs",
+        "MP4",
+        "MOV",
+        "WebM",
+        "MP3",
+        "WAV",
+        "M4A",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB for uploads",
+        "speech only - no OCR, translation, styling or speaker labels"
+      ],
+      "keywords": [
+        "subtitle generator",
+        "subtitle maker",
+        "srt generator",
+        "timed subtitles",
+        "speech subtitles",
+        "caption generator"
+      ],
+      "path": "/subtitle-generator",
+      "label": "Subtitle Generator",
+      "html": "subtitle-generator.html",
+      "markdown": "subtitle-generator.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-10",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "WhatsApp Voice to Text",
+      "url": "https://instascript.app/whatsapp-voice-to-text",
+      "summary": "Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.",
+      "accepts": [
+        "permitted local audio files",
+        "M4A",
+        "MP3",
+        "WAV",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "WhatsApp chat links are not fetched",
+        "speech only"
+      ],
+      "keywords": [
+        "whatsapp voice to text",
+        "whatsapp audio to text",
+        "voice message transcript",
+        "whatsapp transcript",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/whatsapp-voice-to-text",
+      "label": "WhatsApp Voice to Text",
+      "html": "whatsapp-voice-to-text.html",
+      "markdown": "whatsapp-voice-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-11",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "TXT to SRT Converter",
+      "url": "https://instascript.app/txt-to-srt",
+      "summary": "Convert plain TXT text or an existing SRT/VTT file into editable SRT and VTT subtitles in the browser.",
+      "accepts": [
+        "UTF-8 TXT",
+        "SRT",
+        "VTT"
+      ],
+      "limits": [
+        "one local text file at a time",
+        "no audio transcription",
+        "no upload or account"
+      ],
+      "keywords": [
+        "txt to srt",
+        "txt to srt converter",
+        "text to srt",
+        "convert txt to srt",
+        "txt file to srt",
+        "srt file generator",
+        "create srt file",
+        "srt",
+        "vtt",
+        "subtitles"
+      ],
+      "path": "/txt-to-srt",
+      "label": "TXT to SRT Converter",
+      "html": "txt-to-srt.html",
+      "markdown": "txt-to-srt.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-26",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "VTT to SRT Converter",
+      "url": "https://instascript.app/vtt-to-srt",
+      "summary": "Convert VTT to SRT, SRT to VTT, or SBV subtitles in one browser-based subtitle tool.",
+      "accepts": [
+        "VTT",
+        "SRT",
+        "SBV",
+        "pasted subtitle text"
+      ],
+      "limits": [
+        "one local subtitle file at a time",
+        "no audio transcription",
+        "no upload or account"
+      ],
+      "keywords": [
+        "vtt to srt",
+        "srt to vtt",
+        "srt to webvtt",
+        "convert srt to vtt",
+        "sbv to srt",
+        "subtitle converter",
+        "vtt converter",
+        "srt converter"
+      ],
+      "path": "/vtt-to-srt",
+      "label": "VTT to SRT Converter",
+      "html": "vtt-to-srt.html",
+      "markdown": "vtt-to-srt.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-26",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Subtitle Editor",
+      "url": "https://instascript.app/subtitle-editor",
+      "summary": "Edit an SRT, VTT or SBV file in the browser. Change cue timing and text, add or remove entries, shift all timecodes, export SRT or VTT. Receive a transcript directly from another tab and review it with a local recording.",
+      "accepts": [
+        "SRT",
+        "VTT",
+        "SBV",
+        "pasted subtitle text"
+      ],
+      "limits": [
+        "one local subtitle file at a time",
+        "optional local media playback; no waveform",
+        "no audio transcription",
+        "no upload or account"
+      ],
+      "keywords": [
+        "subtitle editor",
+        "srt editor",
+        "vtt editor",
+        "edit subtitles",
+        "subtitle timing",
+        "caption editor"
+      ],
+      "path": "/subtitle-editor",
+      "label": "Subtitle Editor",
+      "html": "subtitle-editor.html",
+      "markdown": "subtitle-editor.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "ASS to SRT Converter",
+      "url": "https://instascript.app/ass-to-srt",
+      "summary": "Convert one ASS or SSA subtitle file to reviewable SRT cues in the browser, preserving timing and dialogue text.",
+      "accepts": [
+        "ASS",
+        "SSA",
+        "pasted subtitle text"
+      ],
+      "limits": [
+        "one local subtitle file at a time",
+        "ASS styles and positioning are not represented in SRT",
+        "no upload or account"
+      ],
+      "keywords": [
+        "ass to srt",
+        "ssa to srt",
+        "ass subtitle converter",
+        "ssa subtitle converter",
+        "subtitle converter",
+        "srt"
+      ],
+      "path": "/ass-to-srt",
+      "label": "ASS to SRT Converter",
+      "html": "ass-to-srt.html",
+      "markdown": "ass-to-srt.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-28",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "SRT to Text Converter",
+      "url": "https://instascript.app/srt-to-text",
+      "summary": "Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.",
+      "accepts": [
+        "SRT",
+        "VTT",
+        "pasted subtitle text"
+      ],
+      "limits": [
+        "one local subtitle file at a time",
+        "no audio transcription",
+        "no upload or account"
+      ],
+      "keywords": [
+        "srt to text",
+        "srt to txt",
+        "convert srt to txt",
+        "vtt to text",
+        "vtt to txt",
+        "subtitle to text",
+        "srt converter",
+        "vtt converter",
+        "plain text"
+      ],
+      "path": "/srt-to-text",
+      "label": "SRT to Text Converter",
+      "html": "srt-to-text.html",
+      "markdown": "srt-to-text.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-26",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Subtitle Translator",
+      "url": "https://instascript.app/subtitle-translator",
+      "summary": "Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.",
+      "accepts": [
+        "SRT",
+        "VTT",
+        "pasted subtitle text"
+      ],
+      "limits": [
+        "manual translation entry",
+        "one local subtitle file at a time",
+        "no upload or account"
+      ],
+      "keywords": [
+        "subtitle translator",
+        "srt translator",
+        "translate srt",
+        "translate srt file",
+        "subtitle translation",
+        "translated subtitles"
+      ],
+      "path": "/subtitle-translator",
+      "label": "Subtitle Translator",
+      "html": "subtitle-translator.html",
+      "markdown": "subtitle-translator.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Video Transcript",
+      "url": "https://instascript.app/video-to-text",
+      "summary": "Turn an MP4, MOV or WebM video file into a timestamped transcript.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB",
+        "no video links - upload the file"
+      ],
+      "keywords": [
+        "video transcript",
+        "video",
+        "video to text",
+        "mp4",
+        "mov",
+        "mov to text",
+        "webm",
+        "webm to text",
+        "transcribe video"
+      ],
+      "path": "/video-to-text",
+      "label": "Video to Text",
+      "html": "video-to-text.html",
+      "markdown": "video-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "title": "Audio Transcription",
+      "url": "https://instascript.app/audio-to-text",
+      "summary": "Transcribe an MP3, WAV or voice memo into written text.",
+      "accepts": [
+        "MP3",
+        "WAV",
+        "M4A",
+        "OGG"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB"
+      ],
+      "keywords": [
+        "audio transcription",
+        "audio",
+        "audio to text",
+        "mp3",
+        "wav",
+        "flac",
+        "flac to text",
+        "aac",
+        "aac to text",
+        "ogg",
+        "ogg to text",
+        "voice",
+        "transcribe audio"
+      ],
+      "path": "/audio-to-text",
+      "label": "Audio to Text",
+      "html": "audio-to-text.html",
+      "markdown": "audio-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "title": "MP3 to Text",
+      "url": "https://instascript.app/mp3-to-text",
+      "summary": "Transcribe a local MP3 into timestamped text, then download TXT or SRT.",
+      "accepts": [
+        "MP3"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB",
+        "one local file at a time",
+        "no upload or account"
+      ],
+      "keywords": [
+        "mp3 to text",
+        "mp3 transcription",
+        "mp3 to text converter",
+        "mp3",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/mp3-to-text",
+      "label": "MP3 to Text",
+      "html": "mp3-to-text.html",
+      "markdown": "mp3-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "M4A to Text",
+      "url": "https://instascript.app/m4a-to-text",
+      "summary": "Transcribe one local M4A recording into timestamped text, then download TXT or SRT.",
+      "accepts": [
+        "M4A"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "browser-supported codecs only"
+      ],
+      "keywords": [
+        "m4a to text",
+        "transcribe m4a to text",
+        "m4a transcription",
+        "m4a",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/m4a-to-text",
+      "label": "M4A to Text",
+      "html": "m4a-to-text.html",
+      "markdown": "m4a-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "WAV to Text",
+      "url": "https://instascript.app/wav-to-text",
+      "summary": "Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.",
+      "accepts": [
+        "WAV",
+        "MP3",
+        "M4A",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "browser-readable sample formats only"
+      ],
+      "keywords": [
+        "wav to text",
+        "transcribe wav files",
+        "wav transcription",
+        "wav",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/wav-to-text",
+      "label": "WAV to Text",
+      "html": "wav-to-text.html",
+      "markdown": "wav-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Voice Memo to Text",
+      "url": "https://instascript.app/voice-memo-to-text",
+      "summary": "Turn one local voice memo into timestamped text, TXT or SRT in the browser.",
+      "accepts": [
+        "M4A",
+        "MP3",
+        "WAV",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "private cloud links are not fetched"
+      ],
+      "keywords": [
+        "voice memo to text",
+        "transcribe voice memos",
+        "transcribe iphone voice memo",
+        "voice memo transcription",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/voice-memo-to-text",
+      "label": "Voice Memo to Text",
+      "html": "voice-memo-to-text.html",
+      "markdown": "voice-memo-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Voicemail Transcription",
+      "url": "https://instascript.app/voicemail-transcription",
+      "summary": "Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.",
+      "accepts": [
+        "permitted local voicemail files",
+        "M4A",
+        "MP3",
+        "WAV",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "carrier and private voicemail links are not fetched",
+        "speech only"
+      ],
+      "keywords": [
+        "voicemail transcription",
+        "voicemail to text",
+        "voicemail transcript",
+        "transcribe voicemail",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/voicemail-transcription",
+      "label": "Voicemail Transcription",
+      "html": "voicemail-transcription.html",
+      "markdown": "voicemail-transcription.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Podcast Transcript",
+      "url": "https://instascript.app/podcast-transcript",
+      "summary": "Turn a local podcast episode into timestamped text, TXT or SRT in the browser.",
+      "accepts": [
+        "MP3",
+        "WAV",
+        "M4A",
+        "OGG"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "Spotify and Riverside links are not fetched"
+      ],
+      "keywords": [
+        "podcast transcript",
+        "podcast transcription",
+        "spotify podcast transcript",
+        "riverside fm transcript",
+        "audio transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/podcast-transcript",
+      "label": "Podcast Transcript",
+      "html": "podcast-transcript.html",
+      "markdown": "podcast-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "MP4 to Text",
+      "url": "https://instascript.app/mp4-to-text",
+      "summary": "Transcribe the spoken audio in one local MP4 and export timestamped TXT or SRT in the browser.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "video links are not fetched"
+      ],
+      "keywords": [
+        "mp4 to text",
+        "mp4 to transcript",
+        "mp4 transcription",
+        "transcribe mp4 to text",
+        "video transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/mp4-to-text",
+      "label": "MP4 to Text",
+      "html": "mp4-to-text.html",
+      "markdown": "mp4-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Zoom Transcript",
+      "url": "https://instascript.app/zoom-transcript",
+      "summary": "Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM",
+        "MP3",
+        "WAV",
+        "M4A"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "one local file at a time",
+        "private Zoom links are not fetched"
+      ],
+      "keywords": [
+        "zoom transcript",
+        "zoom transcription",
+        "transcribe zoom",
+        "zoom meeting transcription",
+        "meeting transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/zoom-transcript",
+      "label": "Zoom Transcript",
+      "html": "zoom-transcript.html",
+      "markdown": "zoom-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Vimeo Transcript",
+      "url": "https://instascript.app/vimeo-transcript",
+      "summary": "Turn a permitted local Vimeo recording into timestamped spoken text, TXT or SRT in the browser.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM",
+        "saved Vimeo videos"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "Vimeo URLs are not fetched directly",
+        "download permission is required"
+      ],
+      "keywords": [
+        "vimeo transcript",
+        "vimeo transcription",
+        "transcribe vimeo",
+        "vimeo video transcript",
+        "video transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/vimeo-transcript",
+      "label": "Vimeo Transcript",
+      "html": "vimeo-transcript.html",
+      "markdown": "vimeo-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-08",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "TikTok Transcript",
+      "url": "https://instascript.app/tiktok-transcript",
+      "summary": "Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.",
+      "accepts": [
+        "video files saved from TikTok"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB",
+        "TikTok URLs are not supported - upload the file"
+      ],
+      "keywords": [
+        "tiktok",
+        "tik tok",
+        "transcript"
+      ],
+      "path": "/tiktok-transcript",
+      "label": "TikTok Transcript",
+      "html": "tiktok-transcript.html",
+      "markdown": "tiktok-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "title": "Facebook Video Transcript",
+      "url": "https://instascript.app/facebook-video-transcript",
+      "summary": "Get the spoken words out of a Facebook video by uploading the saved file.",
+      "accepts": [
+        "video files saved from Facebook"
+      ],
+      "limits": [
+        "English only",
+        "up to 100 MB",
+        "Facebook URLs are not supported - upload the file"
+      ],
+      "keywords": [
+        "facebook",
+        "meta",
+        "video",
+        "transcript"
+      ],
+      "path": "/facebook-video-transcript",
+      "label": "Facebook Video Transcript",
+      "html": "facebook-video-transcript.html",
+      "markdown": "facebook-video-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "url": "https://instascript.app/youtube-transcript",
+      "title": "YouTube Transcript",
+      "summary": "Read existing caption tracks from a public YouTube link and export TXT or SRT.",
+      "accepts": [
+        "youtube.com URLs",
+        "youtu.be URLs",
+        "/shorts/ URLs"
+      ],
+      "limits": [
+        "existing captions only",
+        "no audio transcription"
+      ],
+      "keywords": [
+        "youtube transcript",
+        "youtube",
+        "captions"
+      ],
+      "path": "/youtube-transcript",
+      "label": "YouTube Transcript",
+      "html": "youtube-transcript.html",
+      "markdown": "youtube-transcript.md",
+      "group": "youtube",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-17",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "title": "YouTube Shorts Transcript",
+      "url": "https://instascript.app/youtube-shorts-transcript",
+      "summary": "Read an existing caption track from a public YouTube Short, with timestamped copy plus TXT and SRT export.",
+      "accepts": [
+        "youtube.com/shorts/ URLs",
+        "youtube.com watch URLs",
+        "youtu.be URLs"
+      ],
+      "limits": [
+        "reads captions the Short already has",
+        "private or unavailable Shorts need a saved file",
+        "on-screen text and comments are not transcribed"
+      ],
+      "keywords": [
+        "youtube shorts transcript",
+        "shorts transcript",
+        "youtube short captions",
+        "shorts captions",
+        "youtube",
+        "transcript"
+      ],
+      "path": "/youtube-shorts-transcript",
+      "label": "YouTube Shorts Transcript",
+      "html": "youtube-shorts-transcript.html",
+      "markdown": "youtube-shorts-transcript.md",
+      "group": "youtube",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-29",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "Twitter Video Transcript",
+      "url": "https://instascript.app/twitter-video-transcript",
+      "summary": "Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.",
+      "accepts": [
+        "MP4",
+        "MOV",
+        "WebM",
+        "saved X videos"
+      ],
+      "limits": [
+        "English-focused browser model",
+        "up to 100 MB",
+        "post URLs are not fetched directly; protected or removed posts need a permitted saved file"
+      ],
+      "keywords": [
+        "twitter video transcript",
+        "x video transcript",
+        "twitter transcript",
+        "video transcript",
+        "srt",
+        "txt"
+      ],
+      "path": "/twitter-video-transcript",
+      "label": "Twitter Video Transcript",
+      "html": "twitter-video-transcript.html",
+      "markdown": "twitter-video-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-30",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
+    },
+    {
+      "title": "YouTube Transcript Download",
+      "url": "https://instascript.app/youtube-transcript-download",
+      "summary": "Take a YouTube video's caption track away as a file: TXT for reading and writing, SRT for subtitles and video editors.",
+      "accepts": [
+        "youtube.com URLs",
+        "youtu.be URLs",
+        "/shorts/ URLs"
+      ],
+      "limits": [
+        "reads the caption track the video already has - it cannot create captions",
+        "one video at a time"
+      ],
+      "keywords": [
+        "youtube",
+        "transcript download",
+        "subtitles download",
+        "srt",
+        "txt",
+        "captions"
+      ],
+      "path": "/youtube-transcript-download",
+      "label": "YouTube Transcript Download",
+      "html": "youtube-transcript-download.html",
+      "markdown": "youtube-transcript-download.md",
+      "group": "youtube",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-17",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "url": "https://instascript.app/how-to-get-a-transcript-of-a-youtube-video",
+      "title": "How to Get a YouTube Transcript",
+      "summary": "A guide to finding, copying and checking YouTube existing captions.",
+      "accepts": [],
+      "limits": [
+        "guide only"
+      ],
+      "keywords": [
+        "youtube transcript guide",
+        "how to get a transcript"
+      ],
+      "path": "/how-to-get-a-transcript-of-a-youtube-video",
+      "label": "How to Get a YouTube Transcript",
+      "html": "how-to-get-a-transcript-of-a-youtube-video.html",
+      "markdown": "how-to-get-a-transcript-of-a-youtube-video.md",
+      "group": "youtube",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-17",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
+    },
+    {
+      "url": "https://instascript.app/ai/",
+      "title": "AI Agent Information",
+      "summary": "Public tool discovery, Markdown, API and MCP documentation.",
+      "accepts": [],
+      "limits": [
+        "read-only lookup"
+      ],
+      "keywords": [
+        "ai",
+        "mcp",
+        "api",
+        "agent"
+      ],
+      "path": "/ai/",
+      "label": "AI Agent Information",
+      "html": "ai/index.html",
+      "markdown": "ai/index.md",
+      "group": "site",
+      "home": false,
+      "footer": false,
+      "sitemap": {
+        "lastmod": "2026-09-16",
+        "changefreq": "monthly",
+        "priority": "0.5"
+      }
+    },
+    {
+      "title": "Privacy",
+      "url": "https://instascript.app/privacy",
+      "summary": "Privacy policy: local files stay on-device; public link lookups use servers and YouTube caption responses may be cached for one hour. No account.",
+      "accepts": [],
+      "limits": [],
+      "keywords": [
+        "privacy",
+        "data",
+        "gdpr",
+        "policy"
+      ],
+      "path": "/privacy",
+      "label": "Privacy Policy",
+      "html": "privacy.html",
+      "markdown": "privacy.md",
+      "group": "site",
+      "home": false,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-13",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
+    },
+    {
+      "title": "About",
+      "url": "https://instascript.app/about",
+      "summary": "What InstaScript does, how it runs in the browser, and its limits.",
+      "accepts": [],
+      "limits": [],
+      "keywords": [
+        "about",
+        "how it works",
+        "model",
+        "whisper",
+        "limits",
+        "supported"
+      ],
+      "path": "/about",
+      "label": "About",
+      "html": "about.html",
+      "markdown": "about.md",
+      "group": "site",
+      "home": false,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-12",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
+    },
+    {
+      "title": "Contact",
+      "url": "https://instascript.app/contact",
+      "summary": "How to reach the maintainer.",
+      "accepts": [],
+      "limits": [],
+      "keywords": [
+        "contact",
+        "email",
+        "support"
+      ],
+      "path": "/contact",
+      "label": "Contact",
+      "html": "contact.html",
+      "markdown": "contact.md",
+      "group": "site",
+      "home": false,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-09-12",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
+    }
+  ]
+}

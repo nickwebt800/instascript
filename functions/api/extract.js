@@ -1,3 +1,6 @@
+import { boundedFetch, readBoundedBody, upstreamError } from "../_lib/http.js";
+import { guardedBrowserFetch } from "../_lib/guards.js";
+
 // Cloudflare Pages Function: /api/extract
 // Accepts POST { url: "https://instagram.com/reel/..." }
 // Resolves playable media; caption metadata is not a speech transcript.
@@ -8,6 +11,8 @@ export async function onRequestPost({ request, env }) {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
+    "Cache-Control": "no-store",
+    "X-Robots-Tag": "noindex",
   };
 
   // Handle CORS preflight
@@ -15,8 +20,12 @@ export async function onRequestPost({ request, env }) {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const deadline = Date.now() + 55000;
+  const remaining = () => { const ms = deadline - Date.now(); if (ms <= 0) throw upstreamError("upstream_timeout"); return ms; };
   try {
-    const body = await request.json();
+    let body;
+    try { body = JSON.parse(new TextDecoder().decode(await readBoundedBody(new Response(request.body), 4096, { timeout: 5000 }))); }
+    catch (error) { return Response.json({ error: error.code === "upstream_timeout" ? "Request body timed out. Retry shortly." : error.code === "too_large" ? "Request is too large." : "Send a JSON object with a public Instagram URL." }, { status: error.code === "upstream_timeout" ? 408 : error.code === "too_large" ? 413 : 400, headers: corsHeaders }); }
     const url = body?.url;
 
     let parsedUrl;
@@ -29,7 +38,7 @@ export async function onRequestPost({ request, env }) {
     if (
       !parsedUrl ||
       !["http:", "https:"].includes(parsedUrl.protocol) ||
-      !/(^|\.)instagram\.com$/i.test(parsedUrl.hostname)
+      !/(^|\.)instagram\.com$/i.test(parsedUrl.hostname) || parsedUrl.username || parsedUrl.password || (parsedUrl.port && parsedUrl.port !== "443")
     ) {
       return Response.json(
         { error: "Please provide a valid Instagram URL." },
@@ -37,18 +46,13 @@ export async function onRequestPost({ request, env }) {
       );
     }
 
-    const fetchPage = async (targetUrl) => fetch(targetUrl, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Cache-Control": "no-cache",
-        "X-IG-App-ID": "936619743392459",
-        "X-Requested-With": "XMLHttpRequest",
-      },
-      redirect: "follow",
-    });
+    const fetchPage = async (targetUrl) => {
+      const target = new URL(targetUrl); target.protocol = "https:";
+      const { response, bytes } = await boundedFetch(target, { maximum: 4 * 1024 * 1024, timeout: Math.min(7000, remaining()),
+        options: { signal: request.signal, headers: { Accept: "text/html,application/xhtml+xml", "Accept-Language": "en-US,en;q=0.9", "Cache-Control": "no-cache" } },
+        allowUrl: url => url.protocol === "https:" && /(^|\.)instagram\.com$/i.test(url.hostname) && !url.username && !url.password && (!url.port || url.port === "443") });
+      return new Response(bytes, { status: response.status, headers: { "Content-Type": "text/html" } });
+    };
 
     // Instagram increasingly serves a login/429 page at the canonical URL.
     // The public embed URL still contains the media JSON for public posts.
@@ -113,9 +117,9 @@ export async function onRequestPost({ request, env }) {
 
     // If Instagram rate-limits the Pages fetch, use Cloudflare Browser
     // Rendering from the account edge to load the public embed page.
-    if (!videoUrl && env?.CF_BROWSER_RENDERING_TOKEN && env?.CF_ACCOUNT_ID) {
+    if (!videoUrl && Date.now() < deadline && env?.CF_BROWSER_RENDERING_TOKEN && env?.CF_ACCOUNT_ID) {
       try {
-        const renderResponse = await fetch(
+        const renderResponse = await guardedBrowserFetch(env,
           `https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/browser-rendering/content`,
           {
             method: "POST",
@@ -123,8 +127,9 @@ export async function onRequestPost({ request, env }) {
               Authorization: `Bearer ${env.CF_BROWSER_RENDERING_TOKEN}`,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ url: `${embedUrl.toString()}?__a=1` }),
-          }
+            signal: request.signal,
+            body: JSON.stringify({ url: `${embedUrl.toString()}?__a=1`, gotoOptions: { timeout: Math.min(30000, remaining()), waitUntil: "domcontentloaded" } }),
+          }, { deadline }
         );
         if (renderResponse.ok) {
           const rendered = await renderResponse.json();
@@ -138,18 +143,13 @@ export async function onRequestPost({ request, env }) {
 
     // Cloudflare egress IPs are sometimes rate-limited by Instagram. Jina's
     // reader can fetch the same public embed page and return its raw HTML.
-    if (!videoUrl) {
+    if (!videoUrl && Date.now() < deadline) {
       try {
         const jinaUrl = `https://r.jina.ai/http://${embedUrl.host}${embedUrl.pathname}`;
-        const jinaResponse = await fetch(jinaUrl, {
-          headers: {
-            Accept: "text/html,application/xhtml+xml",
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
-            "X-Return-Format": "html",
-          },
-          redirect: "follow",
-        });
+        const jina = await boundedFetch(jinaUrl, { maximum: 4 * 1024 * 1024, timeout: Math.min(10000, remaining()),
+          options: { signal: request.signal, headers: { Accept: "text/html", "X-Return-Format": "html" } },
+          allowUrl: url => url.protocol === "https:" && url.hostname === "r.jina.ai" });
+        const jinaResponse = new Response(jina.bytes, { status: jina.response.status });
         if (jinaResponse.ok) {
           html = await jinaResponse.text();
           videoUrl = extractVideoUrl(html);
@@ -159,20 +159,22 @@ export async function onRequestPost({ request, env }) {
       }
     }
 
+    if (!videoUrl && Date.now() >= deadline) return Response.json({ code: "upstream_timeout", error: "Instagram lookup timed out. Retry or upload a saved file." }, { status: 504, headers: corsHeaders });
+
     // Step 2: Extract video URL from meta tags
     // Extract caption/description
     let caption = "";
     const descMatch = html.match(/<meta\s+[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i)
       || html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:description["']/i);
     if (descMatch) {
-      caption = decodeURIComponent(descMatch[1].replace(/&amp;/g, "&"));
+      caption = descMatch[1].replace(/&amp;/g, "&");
     }
 
     const titleMatch = html.match(/<meta\s+[^>]*property=["']og:title["'][^>]*content=["']([^"']+)["']/i)
       || html.match(/<meta\s+[^>]*content=["']([^"']+)["'][^>]*property=["']og:title["']/i);
     let title = "";
     if (titleMatch) {
-      title = decodeURIComponent(titleMatch[1].replace(/&amp;/g, "&"));
+      title = titleMatch[1].replace(/&amp;/g, "&");
     }
 
     // If we found a video URL, return it
@@ -210,7 +212,7 @@ export async function onRequestPost({ request, env }) {
     );
   } catch (err) {
     return Response.json(
-      { error: `Server error: ${err.message}` },
+      { error: "Instagram lookup could not be completed. Retry or upload a saved file." },
       { status: 500, headers: corsHeaders }
     );
   }
