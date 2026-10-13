@@ -409,6 +409,7 @@ const KNOWN_FILES = new Set([
   "/footer.js",
   "/txt-to-srt.js",
   "/vtt-to-srt.js",
+  "/srt-to-vtt.js",
   "/ass-to-srt.js",
   "/subtitle-editor.js",
   "/srt-to-text.js",
@@ -516,6 +517,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/subtitle-editor">Subtitle Editor</a></li>
   <li><a href="/txt-to-srt">TXT to SRT Converter</a></li>
   <li><a href="/vtt-to-srt">VTT to SRT Converter</a></li>
+  <li><a href="/srt-to-vtt">SRT to VTT</a></li>
   <li><a href="/ass-to-srt">ASS to SRT Converter</a></li>
   <li><a href="/srt-to-text">SRT to Text Converter</a></li>
   <li><a href="/subtitle-translator">Subtitle Translator</a></li>

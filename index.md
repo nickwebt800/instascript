@@ -86,6 +86,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [ASS to SRT Converter](https://instascript.app/ass-to-srt) — Convert one ASS or SSA subtitle file to reviewable SRT cues in the browser, preserving timing and dialogue text.
 - [SRT to Text Converter](https://instascript.app/srt-to-text) — Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.
 - [Subtitle Translator](https://instascript.app/subtitle-translator) — Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.
+- [SRT to VTT](https://instascript.app/srt-to-vtt) — Validate numbered SRT cues locally, export plain-text WebVTT, and check the web-player handoff.
 
 ## Recommended
 

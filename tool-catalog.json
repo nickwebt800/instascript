@@ -1318,6 +1318,39 @@
         "changefreq": "monthly",
         "priority": "0.6"
       }
+    },
+    {
+      "title": "SRT to VTT",
+      "url": "https://instascript.app/srt-to-vtt",
+      "summary": "Validate numbered SRT cues locally, export plain-text WebVTT, and check the web-player handoff.",
+      "accepts": [
+        "numbered SRT files",
+        "pasted SRT"
+      ],
+      "limits": [
+        "1–10,000 cues",
+        "under 2 million characters",
+        "local files under 8 MB",
+        "source styling removed",
+        "no transcription or automatic translation"
+      ],
+      "keywords": [
+        "srt to vtt",
+        "srt to webvtt",
+        "convert srt to vtt"
+      ],
+      "path": "/srt-to-vtt",
+      "label": "SRT to VTT",
+      "html": "srt-to-vtt.html",
+      "markdown": "srt-to-vtt.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-14",
+        "changefreq": "monthly",
+        "priority": "0.9"
+      }
     }
   ]
 }
