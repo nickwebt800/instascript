@@ -39,17 +39,21 @@ TXT is easiest to search and edit. SRT contains numbered cues and time ranges fo
 
 ## Measured browser timings
 
-These single runs come from the site's measured browser benchmark. They show the first model load separately from cached processing; device, browser, cache and audio content change the result.
+These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
 
-| Audio length | Elapsed time | Model download |
-| --- | ---: | --- |
-| 11 s | 16.89 s | yes, first run |
-| 11 s | 6.49 s | no, cached |
-| 30 s | 8.98 s | no |
-| 60 s | 16.06 s | no |
-| 120 s | 28.58 s | no |
+| Audio length | Historical wall-clock time | Historical model load |
+| --- | --- | --- |
+| 11 s | 16.89 s | included |
+| 11 s | 6.49 s | already in memory |
+| 30 s | 8.98 s | already in memory |
+| 60 s | 16.06 s | already in memory |
+| 120 s | 28.58 s | already in memory |
 
-[Raw benchmark CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) contains the measured rows and method notes.
+In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
+
+One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
+
+Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
 ## Privacy and review limits
 

@@ -96,7 +96,7 @@ No environment variables or secrets are needed. The Instagram extraction and pro
 
 The `data/` directory contains a [comparison of browser-based Whisper transcription tools](data/README.md) in both human-readable (Markdown) and machine-readable (CSV) formats. This is a real reference resource — contributions and corrections are welcome.
 
-The `benchmark/` directory contains [measured in-browser transcription timings](benchmark/README.md) for `whisper-tiny.en` on WASM: how long 11 s, 30 s, 60 s and 120 s of audio actually take, and how much of the first run is model loading. The language detection model is an additional first-run dependency in the current app. Raw numbers are in [CSV](benchmark/whisper-tiny-en-browser-benchmark.csv), with the measurement method, environment and limitations written out so anyone can reproduce or dispute them.
+The `benchmark/` directory preserves [historical single-model timings](benchmark/whisper-tiny-en-browser-benchmark.csv) from 2026-09-14 and separately records the [current two-model English workflow](benchmark/current-english-browser-20261014.csv), measured on 2026-10-14 with 11, 30, 60 and 120 second public audio constructions. The historical rows do not measure today's language detection, disposal and reinitialization. Wall-clock time is not CPU time; two run totals cannot isolate model download or initialization. See the [method, environment, cache states and limitations](benchmark/README.md). The existing benchmark API/MCP retains its historical rows and links the current CSV separately.
 
 ## Privacy
 

@@ -42,21 +42,21 @@ The same text downloads as **.txt** (plain text) or **.srt** (a subtitle file mo
 
 ## How long does a video take to transcribe?
 
-It tracks the length of the soundtrack, not the size of the video file: a small MP4 and a large one with the same two minutes of speech take about the same time. The five rows below were measured with audio files of known length; a video goes through the same audio path, so a file with the same spoken length should land in the same range. **That last step is inference** — the rows themselves are measured.
+These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
 
-| Audio length | Time to transcribe | Model download included |
+| Audio length | Historical wall-clock time | Historical model load |
 | --- | --- | --- |
-| 11 s | 16.89 s | yes — first run on a fresh page |
-| 11 s | 6.49 s | no |
-| 30 s | 8.98 s | no |
-| 60 s | 16.06 s | no |
-| 120 s | 28.58 s | no |
+| 11 s | 16.89 s | included |
+| 11 s | 6.49 s | already in memory |
+| 30 s | 8.98 s | already in memory |
+| 60 s | 16.06 s | already in memory |
+| 120 s | 28.58 s | already in memory |
 
-**Reading the video timings:** the first run includes fetching the model, while later runs reuse it in the page. In these rows, the later runs take roughly a quarter of the recording length; that comparison is arithmetic from the measurements above, not a separate test.
+In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
 
-These video-page measurements came from one laptop, one browser and the WASM build without WebGPU, with one run at each length and no repeats. A different device may be faster or slower, so use the table to understand the pattern rather than as a promise.
+One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
-The underlying timings are available in the [raw benchmark CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv); the [benchmark README on GitHub](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md) records the method and environment.
+Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
 ## FAQ
 

@@ -42,21 +42,21 @@ Download the text as **.txt** to paste into notes or documents, or as **.srt** w
 
 ## How long does an audio file take?
 
-These five runs were measured on this page with audio files of known length. Nothing here is estimated: each row is one run, timed from the click on *Transcribe* to the moment the transcript appeared.
+These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
 
-| Audio length | Time to transcribe | Model download included |
+| Audio length | Historical wall-clock time | Historical model load |
 | --- | --- | --- |
-| 11 s | 16.89 s | yes — first run on a fresh page |
-| 11 s | 6.49 s | no |
-| 30 s | 8.98 s | no |
-| 60 s | 16.06 s | no |
-| 120 s | 28.58 s | no |
+| 11 s | 16.89 s | included |
+| 11 s | 6.49 s | already in memory |
+| 30 s | 8.98 s | already in memory |
+| 60 s | 16.06 s | already in memory |
+| 120 s | 28.58 s | already in memory |
 
-**Reading the audio timings:** the first row includes model download, whereas the following runs benefit from the model already being loaded. The later figures work out at roughly a quarter of the recording length; that ratio is calculated from the table rather than measured separately.
+In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
 
-The audio measurements were made on one laptop in one browser with WASM and no WebGPU, using one run per length. Phone hardware, browser load and model cache state can change the result, so these figures describe this test setup only.
+One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
-For the complete source numbers, download the [audio timing CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) and see the [written benchmark method](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
+Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
 ## FAQ
 

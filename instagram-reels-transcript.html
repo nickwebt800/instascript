@@ -66,18 +66,22 @@
       <p>This distinction matters if the Reel contains sensitive material: a saved file gives you the clearest local-processing boundary, while a public URL necessarily involves a network request for the media. The <a href="/privacy">privacy page</a> explains what the site does not retain.</p>
 
       <h2>How long does an Instagram Reel transcript take?</h2>
-      <p>The measured rows below are browser timings for known audio lengths on one machine. The first 11-second run includes model loading; later rows reuse the cached model. They are single measurements, not averages or a guarantee for every phone and laptop.</p>
+      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
       <table class="bench-table">
-        <thead><tr><th>Audio length</th><th>Wall-clock time</th><th>Model state</th></tr></thead>
+        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
         <tbody>
-          <tr><td>11 s</td><td>16.89 s</td><td>first run, model load included</td></tr>
-          <tr><td>11 s</td><td>6.49 s</td><td>cached</td></tr>
-          <tr><td>30 s</td><td>8.98 s</td><td>cached</td></tr>
-          <tr><td>60 s</td><td>16.06 s</td><td>cached</td></tr>
-          <tr><td>120 s</td><td>28.58 s</td><td>cached</td></tr>
+          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
         </tbody>
       </table>
-      <p class="bench-note">The raw rows and test method are in the <a href="https://github.com/nickwebt800/instascript/tree/main/benchmark">benchmark directory</a>. The table describes the processing path, not the time needed to download a particular Reel.</p>
+      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
+      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
+      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
+
+
 
       <h2>Accuracy checks worth doing</h2>
       <p>Short social videos often mix speech with music, sound effects, fast cuts, or two people speaking at once. Read the transcript while replaying the timestamped section when the wording matters. Proper names, numbers, whispered words, and accents deserve the same check.</p>

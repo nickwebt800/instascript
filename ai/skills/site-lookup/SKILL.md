@@ -2,7 +2,7 @@
 name: site-lookup
 description: Retrieve actual public information from InstaScript — find the right page for a task, read the measured in-browser transcription times, and explain what the tool does and does not support.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   origin: "https://instascript.app"
   license: "MIT"
 ---
@@ -27,7 +27,7 @@ equivalent HTTP endpoints:
 | Task | MCP tool | HTTP |
 |---|---|---|
 | Find a page for a task | `find_page` with `{ "query": "..." }` | `GET /api/pages?q=...` |
-| Measured transcription times | `get_benchmark` with `{ "length_seconds": 30 }` | `GET /api/benchmark?length_seconds=30` |
+| Historical single-model times (2026-09-14) | `get_benchmark` with `{ "length_seconds": 30 }` | `GET /api/benchmark?length_seconds=30` |
 | What the tool supports | `site_info` with `{}` | `GET /api/pages?q=about` |
 
 Every response carries a `source_url`. Quote it when you answer.
@@ -37,10 +37,11 @@ Every response carries a `source_url`. Quote it when you answer.
 - Pages: Instagram Transcript (`/`), Video to Text (`/video-to-text`), Audio to Text
   (`/audio-to-text`), TikTok Transcript (`/tiktok-transcript`), Facebook Video Transcript
   (`/facebook-video-transcript`), plus About, Privacy and Contact.
-- Benchmark: five measured rows. 11 s audio → 16.89 s on a fresh page (model download included),
+- Historical benchmark (2026-09-14, whisper-tiny.en only): five measured rows. 11 s audio → 16.89 s on a fresh page (model loading included),
   then 11 s → 6.49 s, 30 s → 8.98 s, 60 s → 16.06 s, 120 s → 28.58 s. One machine, WASM build,
-  no WebGPU, one run per length. Source CSV:
+  no WebGPU, one run per data point. These are not current two-model end-to-end predictions. Source CSV:
   https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv
+- Current workflow: whisper-tiny language detection followed by whisper-tiny.en transcription. The response's `current_source_url` links separate 2026-10-14 observations; `method_url` describes their boundaries. Current jobs dispose the English instance before detection, so cached resources do not imply a retained model. Wall-clock time is not CPU time; subtracting run totals does not isolate downloading or initialization. The closest historical row is not interpolation.
 
 ## Limits — state these, do not paper over them
 

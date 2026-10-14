@@ -51,7 +51,7 @@
     <h3>Public read-only API</h3>
     <ul>
       <li><code>GET /api/pages?q=WORDS</code> — find the public page that matches a task. Empty <code>q</code> lists all pages.</li>
-      <li><code>GET /api/benchmark?length_seconds=30</code> — measured in-browser transcription times. Without a parameter it returns all measured rows.</li>
+      <li><code>GET /api/benchmark?length_seconds=30</code> — historical 2026-09-14 single-model timings. Without a parameter it returns all historical rows; with a length it returns the closest observed row, not interpolation. Current two-model measurements are linked separately.</li>
       <li><code>POST /api/extract</code> — resolve a public Instagram URL to a video URL and caption. Instagram hosts only; other domains are rejected.</li>
     </ul>
     <p>These endpoints are read-only, need no key and return JSON with <code>source_url</code> fields pointing at the underlying data.</p>
@@ -59,12 +59,12 @@
     <h3>Limits and honesty rules</h3>
     <ul>
       <li>The service cannot transcribe a remote video on your behalf, except public Instagram links through <code>/api/extract</code>.</li>
-      <li>Benchmark rows are single measurements on one machine (WASM build, no WebGPU). They are a shape, not a promise.</li>
+      <li>The benchmark API/MCP rows measure only the historical whisper-tiny.en model, not today's language-detection plus transcription workflow. They are single WASM observations, not predictions. Current measurements use separate data.</li>
       <li>Authentication is not available. Advertised OAuth endpoints are a planned contract and answer HTTP 503.</li>
     </ul>
 
     <h3>Provenance</h3>
-    <p>Pages: the published HTML of this site. Benchmark: <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/whisper-tiny-en-browser-benchmark.csv">whisper-tiny-en-browser-benchmark.csv</a> with method notes in the <a href="https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md">benchmark README</a>.</p>
+    <p>Pages: the published HTML of this site. Benchmark: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical single-model CSV</a> and <a href="/benchmark/current-english-browser-20261014.csv">current two-model CSV (2026-10-14)</a>, with method notes in the <a href="/benchmark/README.md">benchmark README</a>. A resource cache hit does not mean a model instance is still in memory.</p>
   </main>
 
   <footer class="footer" data-site-footer>

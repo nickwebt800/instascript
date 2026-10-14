@@ -31,6 +31,14 @@ const BENCH_FALLBACK = [
 ];
 
 const BENCH_SOURCE = "https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv";
+const BENCH_NOTE = "Historical single-model measurements from 2026-09-14 (whisper-tiny.en only). One WASM machine, single runs, not averages or current two-model end-to-end predictions. The closest row is an observation, not interpolation.";
+const BENCH_PROVENANCE = {
+  measurement_date: "2026-09-14",
+  pipeline: "historical-whisper-tiny-en-only",
+  current_pipeline: "whisper-tiny language detection then whisper-tiny.en transcription",
+  current_source_url: ORIGIN + "/benchmark/current-english-browser-20261014.csv",
+  method_url: ORIGIN + "/benchmark/README.md",
+};
 const SITEMAP_URL = ORIGIN + "/sitemap.xml";
 
 const CONSTRUCTION = {
@@ -298,7 +306,7 @@ const TOOLS = [
   },
   {
     name: "get_benchmark",
-    description: "Measured in-browser transcription times. Pass length_seconds to get the closest measured row. Single runs on one machine, not averages.",
+    description: "Historical 2026-09-14 whisper-tiny.en-only timings, not current two-model predictions. Pass length_seconds for the closest observed row, not interpolation. Current measurements are linked separately.",
     inputSchema: {
       type: "object",
       properties: { length_seconds: { type: "number", description: "Audio length in seconds." } },
@@ -326,7 +334,8 @@ async function mcpCall(name, args, env) {
       ).slice(0, 1);
     }
     return {
-      note: "Single measurements, one machine, WASM build without WebGPU. Not averages.",
+      note: BENCH_NOTE,
+      ...BENCH_PROVENANCE,
       source_url: BENCH_SOURCE,
       rows: out,
     };
@@ -404,6 +413,7 @@ const KNOWN_FILES = new Set([
   "/app.js",
   "/benchmark/README.md",
   "/benchmark/whisper-tiny-en-browser-benchmark.csv",
+  "/benchmark/current-english-browser-20261014.csv",
   "/data/README.md",
   "/data/browser-whisper-tools-comparison.csv",
   "/footer.js",
@@ -643,7 +653,7 @@ export async function onRequest(ctx) {
           }
           out = rows.slice().sort((a, b) => Math.abs(a.audio_seconds - target) - Math.abs(b.audio_seconds - target)).slice(0, 1);
         }
-        return json({ note: "Single measurements, one machine, WASM build without WebGPU. Not averages.", source_url: BENCH_SOURCE, rows: out });
+        return json({ note: BENCH_NOTE, ...BENCH_PROVENANCE, source_url: BENCH_SOURCE, rows: out });
       }
       default:
         break;

@@ -30,11 +30,11 @@ HTML pages provide a Markdown representation through content negotiation with `A
 ## Public read-only API
 
 - `GET /api/pages?q=WORDS` finds public pages matching a task. An empty query lists all pages.
-- `GET /api/benchmark?length_seconds=30` returns measured in-browser transcription times.
+- `GET /api/benchmark?length_seconds=30` returns historical 2026-09-14 single-model timings. Without a parameter it returns all historical rows; with a length it returns the closest observed row, not interpolation. Current two-model measurements are linked separately.
 - `POST /api/extract` resolves a public Instagram URL to a media URL and caption. Other hosts are rejected.
 
 These endpoints need no key and return public data only. Authentication is not available; the advertised OAuth endpoints answer HTTP 503.
 
 ## Limits and provenance
 
-The service does not transcribe a remote video on behalf of a caller, except for fetching public Instagram media through `/api/extract`. Benchmark rows are single measurements from one WASM build on one machine, not averages or guarantees. Page facts come from the published HTML; benchmark facts come from the [raw benchmark CSV](https://github.com/nickwebt800/instascript/blob/main/benchmark/whisper-tiny-en-browser-benchmark.csv) and its [method notes](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
+The service does not transcribe a remote video on behalf of a caller, except for fetching public Instagram media through `/api/extract`. Benchmark API/MCP rows measure only the historical whisper-tiny.en model, not today's language-detection plus transcription workflow. They are single WASM observations, not averages, predictions or guarantees. Page facts come from the published HTML; benchmark facts come from the [historical single-model CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv), [current two-model CSV (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) and [method notes](https://instascript.app/benchmark/README.md). A resource cache hit does not mean a model instance is still in memory.

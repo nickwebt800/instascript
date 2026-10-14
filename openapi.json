@@ -12,7 +12,7 @@
   "security": [],
   "tags": [
     { "name": "pages", "description": "Public page catalog" },
-    { "name": "benchmark", "description": "Measured in-browser transcription times" },
+    { "name": "benchmark", "description": "Historical single-model timings with provenance and a link to current two-model measurements" },
     { "name": "media", "description": "Public Instagram media resolution" }
   ],
   "paths": {
@@ -37,16 +37,16 @@
     "/api/benchmark": {
       "get": {
         "tags": ["benchmark"],
-        "summary": "Measured in-browser transcription times",
+        "summary": "Historical 2026-09-14 single-model transcription times",
         "operationId": "getBenchmark",
         "parameters": [
           { "name": "length_seconds", "in": "query", "required": false,
             "schema": { "type": "number", "exclusiveMinimum": 0 },
-            "description": "Return the measured row whose audio length is closest to this value. Omit to return all rows." }
+            "description": "Return the closest observed historical whisper-tiny.en-only row, not interpolation or a current end-to-end prediction. Omit to return all historical rows." }
         ],
         "responses": {
           "200": {
-            "description": "Measured rows. Each row is a single run, not an average.",
+            "description": "Historical single-model rows retain the existing schema. Provenance identifies the date and pipeline; current_source_url links separate current two-model observations. Each historical row is a single run, not an average.",
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BenchmarkResult" } } }
           },
           "400": { "description": "length_seconds is not a positive number." }
@@ -105,6 +105,11 @@
         "properties": {
           "note": { "type": "string" },
           "source_url": { "type": "string", "format": "uri" },
+          "measurement_date": { "type": "string", "format": "date" },
+          "pipeline": { "type": "string", "description": "Historical pipeline measured by rows." },
+          "current_pipeline": { "type": "string", "description": "Current workflow; not measured by the historical rows." },
+          "current_source_url": { "type": "string", "format": "uri", "description": "Separate current two-model measurements." },
+          "method_url": { "type": "string", "format": "uri" },
           "rows": {
             "type": "array",
             "items": {

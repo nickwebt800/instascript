@@ -54,9 +54,22 @@
 [00:15] I will send the action list after this call</pre>
       <p>TXT is easy to search and share. SRT keeps numbered cues and time ranges. The export does not identify speakers unless someone says their name.</p>
       <h2>Measured browser timings</h2>
-      <p>These single runs come from the site's WASM browser benchmark. They are observations from one laptop, not a promise for every meeting length, browser or phone.</p>
-      <table class="bench-table"><thead><tr><th>Audio length</th><th>Elapsed time</th><th>Model download</th></tr></thead><tbody><tr><td>11 s</td><td>16.89 s</td><td>yes, first run</td></tr><tr><td>11 s</td><td>6.49 s</td><td>no, cached</td></tr><tr><td>30 s</td><td>8.98 s</td><td>no</td></tr><tr><td>60 s</td><td>16.06 s</td><td>no</td></tr><tr><td>120 s</td><td>28.58 s</td><td>no</td></tr></tbody></table>
-      <p class="bench-note"><a href="https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv">Raw benchmark CSV</a> contains the measured rows and method notes. A long meeting, silence and device load can change elapsed time.</p>
+      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
+      <table class="bench-table">
+        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
+        </tbody>
+      </table>
+      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
+      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
+      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
+
+
       <h2>Privacy and review limits</h2>
       <p>The selected recording is decoded and transcribed in your browser. There is no account, transcript history or server upload in this local-file workflow. Save the result before closing the tab.</p>
       <p>The model is intended for English speech. Crosstalk, room echo, muted sections, names, acronyms and overlapping voices can change words or cue boundaries. It does not translate, label speakers or read slides and chat text.</p>

@@ -10,21 +10,21 @@ Paste a public Instagram Reel or video post URL
 
 ## How long does a transcript take?
 
-For a Reel the short rows are the useful ones: 30 seconds of speech came out at 8.98 s, and 120 seconds at 28.58 s, once the transcription model was already in the page. The first run on a fresh page is the slow one, because it has to fetch the language detection and transcription models before it can start. The rows below were measured with audio files of known length; a Reel goes through the same audio path, so one with the same spoken length should land in the same range — **that step is inference**, the rows themselves are measured.
+These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
 
-| Audio length | Time to transcribe | Model download included |
+| Audio length | Historical wall-clock time | Historical model load |
 | --- | --- | --- |
-| 11 s | 16.89 s | yes — first run on a fresh page |
-| 11 s | 6.49 s | no |
-| 30 s | 8.98 s | no |
-| 60 s | 16.06 s | no |
-| 120 s | 28.58 s | no |
+| 11 s | 16.89 s | included |
+| 11 s | 6.49 s | already in memory |
+| 30 s | 8.98 s | already in memory |
+| 60 s | 16.06 s | already in memory |
+| 120 s | 28.58 s | already in memory |
 
-**How to read these rows:** the first run has to fetch the model before it can do anything, so it is the slowest one on the list. The runs after it reuse the model already loaded in the page, and those came out at roughly a quarter of the recording's length — take any row and divide the second number by the first. That "about a quarter" is arithmetic on the rows above, not a separate measurement.
+In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
 
-These are my measurements on my own machine: one laptop, one browser, the WASM build without WebGPU, one run per length and no repeats. Your device will land somewhere else — quicker on a newer CPU, slower on an older phone — so read the rows as a shape, not a promise.
+One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
-Raw data: [download the CSV](https://raw.githubusercontent.com/nickwebt800/instascript/main/benchmark/whisper-tiny-en-browser-benchmark.csv) · method and environment: [benchmark README on GitHub](https://github.com/nickwebt800/instascript/blob/main/benchmark/README.md).
+Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
 ## How an Instagram transcript generator works
 
