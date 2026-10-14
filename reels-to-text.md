@@ -6,7 +6,7 @@ Canonical: <https://instascript.app/reels-to-text>
 
 ## The direct answer
 
-To turn an Instagram Reel into text, open the [Instagram Transcript](https://instascript.app/) tool and paste a public Reel URL, or upload a saved MP4, MOV or WebM file. InstaScript recognizes the spoken audio in your browser, then lets you copy the timestamped result or download TXT and SRT.
+To turn an Instagram Reel into text, open the [Instagram Transcript](https://instascript.app/) tool and paste a public Reel URL, or upload a saved MP4, MOV or WebM file. InstaScript recognizes the spoken audio in your browser, then lets you copy the timestamped result or download TXT, SRT and VTT.
 
 This is a speech transcript. It does not read the post caption, comments, hashtags, or words drawn on the video frames.
 
@@ -60,7 +60,7 @@ No. Save a copy you have permission to process and upload the local file instead
 
 No. It recognizes spoken audio. Use a separate OCR workflow for text printed in the frames.
 
-### Should I download TXT or SRT?
+### Should I download TXT, SRT or VTT?
 
 TXT is the simple reading and editing format. SRT is the timestamped subtitle format for compatible editors and players.
 
@@ -71,7 +71,11 @@ No. InstaScript is an independent project and is not affiliated with Instagram o
 ## More transcription tools
 
 - [Instagram Transcript](https://instascript.app/) — paste a public Instagram URL or upload a media file.
-- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — another Reel-focused transcript workflow with TXT and SRT output.
+- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — another Reel-focused transcript workflow with TXT, SRT and VTT output.
 - [Instagram Video to Text](https://instascript.app/instagram-video-to-text) — convert a public Instagram video or saved file.
 - [Video to Text](https://instascript.app/video-to-text) — transcribe an MP4, MOV or WebM file.
 
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

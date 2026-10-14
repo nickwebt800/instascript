@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Turn a Vimeo recording you are allowed to use into a timestamped transcript. Download the file, upload it to InstaScript, and export TXT or SRT in your browser.">
+  <meta name="description" content="Turn a Vimeo recording you are allowed to use into a timestamped transcript. Download the file, upload it to InstaScript, and export TXT, SRT or VTT in your browser.">
   <meta name="theme-color" content="#f8f9fa">
   <title>Vimeo Transcript: Turn a Video File into Text | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/vimeo-transcript">
@@ -14,8 +14,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://instascript.app/vimeo-transcript">
   <meta property="og:title" content="Vimeo Transcript | InstaScript">
-  <meta property="og:description" content="Download a permitted Vimeo recording, upload it locally, and export timestamped TXT or SRT.">
-  <link rel="stylesheet" href="/style.css?v=p2-20261013">
+  <meta property="og:description" content="Download a permitted Vimeo recording, upload it locally, and export timestamped TXT, SRT or VTT.">
+  <link rel="stylesheet" href="/style.css?v=p0-export-20261014">
 </head>
 <body>
   <div class="container">
@@ -53,7 +53,7 @@
       <p><strong>The Vimeo page is only the source of a file. InstaScript does not log in to Vimeo, bypass privacy controls, or fetch a private link.</strong> Once you select a permitted local file, speech recognition runs on your device. Nothing is uploaded for transcription and no transcript is stored by this site.</p>
       <ul class="steps">
         <li>Works with browser-readable MP4, MOV and WebM files up to the tool's 100 MB upload limit.</li>
-        <li>Returns spoken English with segment timestamps, plus TXT and SRT export.</li>
+        <li>Returns spoken English with segment timestamps, plus TXT, SRT and VTT export.</li>
         <li>Does not transcribe music, comments, descriptions, speaker labels or text shown only in the picture.</li>
         <li>Noise, room echo, overlapping speakers and strong accents need a manual review.</li>
       </ul>
@@ -75,7 +75,8 @@
     </section>
 
     <nav class="related-links" aria-label="Related transcript tools">Related tools: <a href="/video-to-text">Video to Text</a> · <a href="/audio-to-text">Audio to Text</a> · <a href="/mp4-to-text">MP4 to Text</a> · <a href="/podcast-transcript">Podcast Transcript</a></nav>
-    <footer class="footer" data-site-footer></footer>
+    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+<footer class="footer" data-site-footer></footer>
   </div>
   <script src="/footer.js?v=p2-20261013" defer></script>
   <script src="/js/webmcp.js" defer></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Convert a permitted WhatsApp voice message file into timestamped English text, TXT or SRT in your browser.">
+  <meta name="description" content="Convert a permitted WhatsApp voice message file into timestamped English text, TXT, SRT or VTT in your browser.">
   <meta name="theme-color" content="#f8f9fa">
   <title>WhatsApp Voice to Text: TXT and SRT | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/whatsapp-voice-to-text">
@@ -18,8 +18,8 @@
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="WhatsApp Voice to Text | InstaScript">
-  <meta name="twitter:description" content="Convert a saved voice message into reviewable TXT or SRT locally.">
-  <link rel="stylesheet" href="/style.css?v=p2-20261013">
+  <meta name="twitter:description" content="Convert a saved voice message into reviewable TXT, SRT or VTT locally.">
+  <link rel="stylesheet" href="/style.css?v=p0-export-20261014">
 </head>
 <body class="upload-only">
   <div class="container">
@@ -32,8 +32,8 @@
 
     <main class="content-card answer-first">
       <h2>The direct answer</h2>
-      <p>To convert a WhatsApp voice message to text, save or export the audio file you are allowed to use, then open the <a href="/">InstaScript</a> tool and choose it. The browser recognizes supported English speech and gives you timestamped text with TXT and SRT downloads.</p>
-      <ol class="steps"><li>Export the voice message to your device with the sender's permission.</li><li>Select the local audio file in InstaScript and let the browser process it.</li><li>Replay important segments, correct names and numbers, then copy the transcript or download TXT/SRT.</li></ol>
+      <p>To convert a WhatsApp voice message to text, save or export the audio file you are allowed to use, then open the <a href="/">InstaScript</a> tool and choose it. The browser recognizes supported English speech and gives you timestamped text with TXT, SRT and VTT downloads.</p>
+      <ol class="steps"><li>Export the voice message to your device with the sender's permission.</li><li>Select the local audio file in InstaScript and let the browser process it.</li><li>Replay important segments, correct names and numbers, then copy the transcript or download TXT/SRT/VTT.</li></ol>
       <p class="bench-note"><strong>Link boundary:</strong> a private WhatsApp chat or message URL is not fetched. InstaScript works from a permitted local file, and it transcribes speech rather than message text, stickers, images or speaker identity.</p>
     </main>
 
@@ -61,7 +61,8 @@
       <h3>Can I create subtitles from the result?</h3><p>Yes. Download SRT, review its cues, and edit it in the <a href="/subtitle-editor">Subtitle Editor</a> if needed.</p>
     </section>
     <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/voice-memo-to-text">Voice Memo to Text</a> &middot; <a href="/audio-to-text">Audio to Text</a> &middot; <a href="/privacy">Privacy Policy</a></nav>
-    <footer class="footer" data-site-footer><nav class="footer-nav">
+    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+<footer class="footer" data-site-footer><nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -105,7 +106,7 @@
 <a href="/contact">Contact</a></div>
 </nav><p>Runs in your browser &mdash; no signup.</p></footer>
   </div>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to convert a WhatsApp voice message to text","description":"Convert a permitted local voice message file into timestamped English text and export TXT or SRT.","step":[{"@type":"HowToStep","name":"Export a permitted file","text":"Save or export the voice message to your device with permission."},{"@type":"HowToStep","name":"Transcribe locally","text":"Choose the audio file in InstaScript and let the browser create timestamps."},{"@type":"HowToStep","name":"Review and export","text":"Check important words and download TXT or SRT."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to convert a WhatsApp voice message to text","description":"Convert a permitted local voice message file into timestamped English text and export TXT, SRT or VTT.","step":[{"@type":"HowToStep","name":"Export a permitted file","text":"Save or export the voice message to your device with permission."},{"@type":"HowToStep","name":"Transcribe locally","text":"Choose the audio file in InstaScript and let the browser create timestamps."},{"@type":"HowToStep","name":"Review and export","text":"Check important words and download TXT, SRT or VTT."}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I paste a WhatsApp message link?","acceptedAnswer":{"@type":"Answer","text":"No. Use a permitted local audio file exported from the message."}},{"@type":"Question","name":"Does it transcribe the chat text?","acceptedAnswer":{"@type":"Answer","text":"No. It recognizes spoken audio only."}},{"@type":"Question","name":"Is the voice message uploaded?","acceptedAnswer":{"@type":"Answer","text":"Local files are decoded and transcribed in your browser."}}]}</script>
   <script src="/footer.js?v=p2-20261013" defer></script>
 </body>

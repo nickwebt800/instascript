@@ -1,6 +1,6 @@
 # MP3 to Text: Transcribe an MP3 File in Your Browser | InstaScript
 
-> Turn an MP3 into searchable spoken text in your browser. Export timestamped TXT or SRT while the file stays on your device.
+> Turn an MP3 into searchable spoken text in your browser. Export timestamped TXT, SRT or VTT while the file stays on your device.
 
 Canonical: <https://instascript.app/mp3-to-text>
 
@@ -20,7 +20,7 @@ Choose one MP3, press **Transcribe this file**, and the spoken words appear with
 
 1. Choose one MP3 file up to 100 MB.
 2. Let the browser load the speech model; the first run includes that download.
-3. Review names, numbers and short words, then copy the transcript or download TXT/SRT.
+3. Review names, numbers and short words, then copy the transcript or download TXT/SRT/VTT.
 
 ## What the MP3 transcript looks like
 
@@ -57,7 +57,7 @@ Music, clipping, heavy noise and overlapping voices can hide words. The tool doe
 - Replay the audio where a name, number or date matters.
 - Listen for music, room echo and crosstalk.
 - Compare the first and last seconds after abrupt cuts.
-- Keep the original MP3 beside the TXT or SRT for traceability.
+- Keep the original MP3 beside the TXT, SRT or VTT for traceability.
 
 ## FAQ
 
@@ -91,4 +91,8 @@ Model loading and speech recognition do not have a fixed timeout.
 
 ## Review and edit your transcript
 
-After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT and SRT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
+After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT, SRT and VTT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

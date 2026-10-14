@@ -1,6 +1,6 @@
 # Vimeo Transcript | InstaScript
 
-> Download a Vimeo recording you are allowed to use, upload the saved video to InstaScript, and export timestamped TXT or SRT. Vimeo URLs are not fetched directly.
+> Download a Vimeo recording you are allowed to use, upload the saved video to InstaScript, and export timestamped TXT, SRT or VTT. Vimeo URLs are not fetched directly.
 
 Canonical: <https://instascript.app/vimeo-transcript>
 
@@ -10,14 +10,14 @@ Canonical: <https://instascript.app/vimeo-transcript>
 
 Download a permitted Vimeo video, then turn the file into timestamped text
 
-Open [Video to Text](https://instascript.app/video-to-text), select the saved MP4, MOV or WebM file, and export TXT or SRT. The speech model runs in your browser.
+Open [Video to Text](https://instascript.app/video-to-text), select the saved MP4, MOV or WebM file, and export TXT, SRT or VTT. The speech model runs in your browser.
 
 ## How to get a Vimeo transcript
 
 1. Open the recording and use Vimeo's download control when the owner has enabled one.
 2. Save the file on your device and confirm you have permission to process it.
 3. Select it in [Video to Text](https://instascript.app/video-to-text).
-4. Copy the timestamped result or download TXT/SRT.
+4. Copy the timestamped result or download TXT/SRT/VTT.
 
 ## Boundaries
 
@@ -40,3 +40,7 @@ Yes. The result has segment timestamps and an SRT download. Review cues before p
 ### Which languages work?
 
 The included model is English-focused; other languages may be incomplete or incorrect.
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

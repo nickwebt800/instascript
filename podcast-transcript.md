@@ -12,7 +12,7 @@ Choose an audio file from a podcast episode, let the browser transcribe the spok
 
 ## Podcast transcript: the direct answer
 
-A **podcast transcript** is the spoken audio written as searchable text. This page accepts one local audio file at a time, processes it in your browser, and produces timestamped text that you can copy or download as TXT or SRT. It does not create a transcript from an episode title or show notes.
+A **podcast transcript** is the spoken audio written as searchable text. This page accepts one local audio file at a time, processes it in your browser, and produces timestamped text that you can copy or download as TXT, SRT or VTT. It does not create a transcript from an episode title or show notes.
 
 ## How to transcribe an episode
 
@@ -97,4 +97,8 @@ Model loading and speech recognition do not have a fixed timeout.
 
 ## Review and edit your transcript
 
-After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT and SRT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
+After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT, SRT and VTT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

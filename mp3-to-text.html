@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MP3 to text in your browser: drop in an MP3 and get spoken words with timestamps, TXT and SRT downloads. Your file stays on this device.">
+  <meta name="description" content="MP3 to text in your browser: drop in an MP3 and get spoken words with timestamps, TXT, SRT and VTT downloads. Your file stays on this device.">
   <meta name="theme-color" content="#f8f9fa">
   <title>MP3 to Text: Transcribe an MP3 File in Your Browser | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/mp3-to-text">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://instascript.app/mp3-to-text">
   <meta property="og:title" content="MP3 to Text | InstaScript">
-  <meta property="og:description" content="Turn an MP3 into timestamped text, TXT or SRT in your browser.">
+  <meta property="og:description" content="Turn an MP3 into timestamped text, TXT, SRT or VTT in your browser.">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Transcribe Audio to Text | InstaScript">
   <meta name="twitter:description" content="Turn MP3, WAV and voice memos into timestamped text in your browser.">
-  <link rel="stylesheet" href="/style.css?v=p2-20261013">
+  <link rel="stylesheet" href="/style.css?v=p0-export-20261014">
 </head>
 <body class="upload-only">
   <div class="container">
@@ -40,7 +40,7 @@
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">MP3 to text</h2>
-          <p>Local MP3 transcription with timed TXT and SRT output</p>
+          <p>Local MP3 transcription with timed TXT, SRT and VTT output</p>
         </div>
         <span class="local-badge">Runs in your browser</span>
       </div>
@@ -92,7 +92,7 @@
             Copy
           </button>
           <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
-          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button><button id="downloadVttBtn" class="btn-ghost" type="button">VTT</button>
         </div>
       </div>
       <div id="transcriptOutput" class="transcript-output"></div>
@@ -107,7 +107,7 @@
       <ol class="steps">
         <li><strong>Choose one MP3.</strong> Files can be up to 100 MB. A clear voice recording gives the model the best starting signal.</li>
         <li><strong>Wait for the local model.</strong> The first run downloads the speech model into the browser cache; later runs on the same device can skip that download.</li>
-        <li><strong>Review and export.</strong> Check names, numbers and short words, then copy the text or download TXT/SRT.</li>
+        <li><strong>Review and export.</strong> Check names, numbers and short words, then copy the text or download TXT/SRT/VTT.</li>
       </ol>
 
       <h2>What the MP3 transcript looks like</h2>
@@ -140,7 +140,7 @@
         <li>Replay the audio at each timestamp where a name, number or date matters.</li>
         <li>Listen for music beds, room echo and crosstalk; these can hide short words.</li>
         <li>Compare the first and last seconds because abrupt cuts can shift a cue boundary.</li>
-        <li>Keep the original MP3 beside the TXT or SRT so edits remain traceable.</li>
+        <li>Keep the original MP3 beside the TXT, SRT or VTT so edits remain traceable.</li>
       </ul>
 
       <h2>FAQ</h2>
@@ -174,7 +174,8 @@
     </nav>
 
     <section class="content-card"><h2>Cancel and retry</h2><p>Only one transcription task can run at a time. Cancel processing discards its result; a model download or local audio/model operation already in progress may need to finish first. After a failure or cancellation, Try the same input again reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded. Model loading and speech recognition do not have a fixed timeout.</p></section>
-<section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT and SRT use your edits. Choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
+<section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
+<section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -224,7 +225,7 @@
     </footer>
   </div>
 
-  <script type="module" src="app.js?v=p2-20261013"></script>
+  <script type="module" src="app.js?v=p0-export-20261014"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

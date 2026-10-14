@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate a timed English subtitle draft from a public Instagram video or local media, then review and export TXT or SRT in your browser.">
+  <meta name="description" content="Generate a timed English subtitle draft from a public Instagram video or local media, then review and export TXT, SRT or VTT in your browser.">
   <meta name="theme-color" content="#f8f9fa">
   <title>Subtitle Generator: Timed TXT and SRT Drafts | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/subtitle-generator">
@@ -14,12 +14,12 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://instascript.app/subtitle-generator">
   <meta property="og:title" content="Subtitle Generator | InstaScript">
-  <meta property="og:description" content="Generate a timed English speech subtitle draft from local media or a public Instagram video, then review TXT or SRT.">
+  <meta property="og:description" content="Generate a timed English speech subtitle draft from local media or a public Instagram video, then review TXT, SRT or VTT.">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Subtitle Generator | InstaScript">
   <meta name="twitter:description" content="Create a timed English speech subtitle draft in your browser.">
-  <link rel="stylesheet" href="/style.css?v=p2-20261013">
+  <link rel="stylesheet" href="/style.css?v=p0-export-20261014">
 </head>
 <body class="upload-only">
   <div class="container">
@@ -60,13 +60,14 @@ Correct names before export</pre>
       <ul><li>Replay words covered by music, effects, echo, clipping, or crosstalk.</li><li>Check accents, names, numbers, product terms, and URLs against the recording.</li><li>Split long cues and remove overlaps when viewers need more reading time.</li><li>Text printed in frames needs visual inspection or OCR; speech recognition cannot see it.</li><li>The current browser model is English-focused, so non-English speech needs full manual review.</li></ul>
 
       <h2>FAQ</h2>
-      <h3>Does this burn subtitles into my video?</h3><p>No. It creates editable TXT and SRT files. A video editor can style or burn them later.</p>
+      <h3>Does this burn subtitles into my video?</h3><p>No. It creates editable TXT, SRT and VTT files. A video editor can style or burn them later.</p>
       <h3>Does it copy the post's written caption?</h3><p>No. It transcribes spoken audio. The written post description is a separate piece of content.</p>
       <h3>Is an uploaded recording stored?</h3><p>Uploaded media is decoded and transcribed in your browser. A public URL needs a temporary media fetch before local processing; the transcript is not saved as an account record.</p>
       <h3>Is InstaScript affiliated with Instagram?</h3><p>No. InstaScript is independent of Instagram and Meta.</p>
     </section>
     <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/caption-generator">Caption Generator</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a> &middot; <a href="/privacy">Privacy Policy</a></nav>
-    <footer class="footer" data-site-footer><nav class="footer-nav">
+    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+<footer class="footer" data-site-footer><nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -110,8 +111,8 @@ Correct names before export</pre>
 <a href="/contact">Contact</a></div>
 </nav><p>Runs in your browser &mdash; no signup.</p></footer>
   </div>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to generate subtitles","description":"Create a timed English speech subtitle draft and export TXT or SRT.","step":[{"@type":"HowToStep","name":"Choose media","text":"Paste a public Instagram URL or upload a saved audio/video file."},{"@type":"HowToStep","name":"Generate cues","text":"Let the browser recognize English speech and create timestamped segments."},{"@type":"HowToStep","name":"Review and export","text":"Check important timestamps, edit cues, and download TXT or SRT."}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this burn subtitles into my video?","acceptedAnswer":{"@type":"Answer","text":"No. It creates editable TXT and SRT files."}},{"@type":"Question","name":"Does it copy the post's written caption?","acceptedAnswer":{"@type":"Answer","text":"No. It transcribes spoken audio, not the written post description."}},{"@type":"Question","name":"Is an uploaded recording stored?","acceptedAnswer":{"@type":"Answer","text":"Uploaded media is decoded and transcribed in your browser."}},{"@type":"Question","name":"Is InstaScript affiliated with Instagram?","acceptedAnswer":{"@type":"Answer","text":"No. InstaScript is independent of Instagram and Meta."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to generate subtitles","description":"Create a timed English speech subtitle draft and export TXT, SRT or VTT.","step":[{"@type":"HowToStep","name":"Choose media","text":"Paste a public Instagram URL or upload a saved audio/video file."},{"@type":"HowToStep","name":"Generate cues","text":"Let the browser recognize English speech and create timestamped segments."},{"@type":"HowToStep","name":"Review and export","text":"Check important timestamps, edit cues, and download TXT, SRT or VTT."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this burn subtitles into my video?","acceptedAnswer":{"@type":"Answer","text":"No. It creates editable TXT, SRT and VTT files."}},{"@type":"Question","name":"Does it copy the post's written caption?","acceptedAnswer":{"@type":"Answer","text":"No. It transcribes spoken audio, not the written post description."}},{"@type":"Question","name":"Is an uploaded recording stored?","acceptedAnswer":{"@type":"Answer","text":"Uploaded media is decoded and transcribed in your browser."}},{"@type":"Question","name":"Is InstaScript affiliated with Instagram?","acceptedAnswer":{"@type":"Answer","text":"No. InstaScript is independent of Instagram and Meta."}}]}</script>
   <script src="/footer.js?v=p2-20261013" defer></script>
 </body>
 </html>

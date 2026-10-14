@@ -9,9 +9,9 @@ Live at **[instascript.app](https://instascript.app)**.
 1. Upload an audio/video file, or paste a public Instagram Reel/video URL.
 2. InstaScript extracts the audio client-side using the Web Audio API.
 3. The audio is checked with a language detection model and then passed through `whisper-tiny.en` via `@huggingface/transformers.js`.
-4. The transcript is displayed with timestamps. Copy to clipboard or download as TXT/SRT.
+4. The transcript is displayed with timestamps. Copy to clipboard or download as TXT/SRT/VTT.
 
-The current speech pipeline supports English audio. Detected non-English speech, uncertain language and technical detection failures have separate errors; none produces a transcript. The selected input is retained for retry. Written Instagram post descriptions are never used as speech transcripts. SRT export requires timestamped speech segments. The first run downloads both the language detection and transcription models to the browser cache; later runs are faster on the same device.
+The current speech pipeline supports English audio. Detected non-English speech, uncertain language and technical detection failures have separate errors; none produces a transcript. The selected input is retained for retry. Written Instagram post descriptions are never used as speech transcripts. SRT/VTT export and editor transfer require non-empty cue text and complete valid start/end times; missing end times are never estimated. The first run downloads both the language detection and transcription models to the browser cache; later runs are faster on the same device.
 
 When using the URL input, a Cloudflare Pages Function fetches the Instagram page server-side to extract the video URL (browsers can't do this directly due to CORS). The video is then proxied to the browser, where all transcription happens locally.
 
@@ -38,7 +38,7 @@ Instagram lookup has a 60-second timeout and media download has a 120-second tim
 - Local recording playback, timestamp seeking, editable transcript cues and direct transfer to Subtitle Editor
 - Timestamped output with start/end times per segment
 - One-click copy to clipboard
-- Download as plain text (.txt) or subtitle format (.srt)
+- Download as plain text (.txt) or subtitle formats (.srt and .vtt)
 - Mobile-friendly responsive design
 - No account or application analytics; local files stay on-device. Public link lookup uses servers and third-party services, described in the privacy policy
 
@@ -113,3 +113,9 @@ Local files and subtitle edits are processed in the browser and are not uploaded
 Upstream fetches validate each redirect host, bound response bytes and apply server-side deadlines. The media proxy streams at most 100 MB, rejects non-media responses, and aborts transfers that exceed the limit. Costly API requests are limited to 20 per client per minute. Cloudflare browser lookup reserves a conservative 50 seconds per attempt against an 8 minute UTC daily budget with a 12 second minimum spacing. Missing usage headers retain the reservation.
 
 Without a `REQUEST_GUARD` binding, counters are local to each runtime isolate and cannot enforce a global account budget. To enable shared limits, deploy the private worker using `guards/wrangler.toml`, then configure the Pages Durable Object binding shown in `guards/pages-binding.example.toml` for production and preview. A configured guard failure rejects expensive requests. This separate service is not created by deploying Pages alone. Keep guard configuration and maintenance scripts out of the static deployment package.
+
+## Transcript exports
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+
+Run `node scripts/test-transcript-result.mjs` to check edited-text consistency and subtitle timing boundaries without downloading a speech model. These checks do not measure recognition quality.

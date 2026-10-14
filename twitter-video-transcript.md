@@ -1,12 +1,12 @@
 # Twitter Video Transcript: TXT and SRT Workflow
 
-> Turn a permitted saved X video into spoken text with timestamps, TXT and SRT export in your browser.
+> Turn a permitted saved X video into spoken text with timestamps, TXT, SRT and VTT export in your browser.
 
 Canonical: <https://instascript.app/twitter-video-transcript>
 
 ## The direct answer
 
-Open [Video to Text](https://instascript.app/video-to-text), choose an MP4, MOV or WebM file saved from a post you are allowed to process, and wait for the browser transcription. InstaScript shows timed spoken text and provides copy, TXT and SRT output. An `x.com` or `twitter.com` post URL alone is not a direct transcript input here.
+Open [Video to Text](https://instascript.app/video-to-text), choose an MP4, MOV or WebM file saved from a post you are allowed to process, and wait for the browser transcription. InstaScript shows timed spoken text and provides copy, TXT, SRT and VTT output. An `x.com` or `twitter.com` post URL alone is not a direct transcript input here.
 
 ## Why a Twitter or X link can fail
 
@@ -44,3 +44,7 @@ No. It transcribes spoken audio only. Post text, replies and words burned into f
 Music, accents, crosstalk and jump cuts can reduce accuracy. Replay timed cues and edit the exported SRT or TXT before publishing.
 
 InstaScript is independent and is not affiliated with X Corp. or Twitter.
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

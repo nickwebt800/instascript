@@ -1,12 +1,12 @@
 # Caption Generator: Timed TXT and SRT Drafts
 
-> Generate a timed English speech caption draft from a public Instagram video or local media, then review and export TXT or SRT.
+> Generate a timed English speech caption draft from a public Instagram video or local media, then review and export TXT, SRT or VTT.
 
 Canonical: <https://instascript.app/caption-generator>
 
 ## The direct answer
 
-Open the [Instagram Transcript](https://instascript.app/) tool. Paste a public Instagram Reel or video URL, or upload a saved MP4, MOV, WebM, MP3, WAV, M4A, or OGG file. InstaScript recognizes English speech in your browser and provides timestamped text plus TXT and SRT downloads.
+Open the [Instagram Transcript](https://instascript.app/) tool. Paste a public Instagram Reel or video URL, or upload a saved MP4, MOV, WebM, MP3, WAV, M4A, or OGG file. InstaScript recognizes English speech in your browser and provides timestamped text plus TXT, SRT and VTT downloads.
 
 Choose a URL that works without a login, or a file you may process. Wait for the speech segments, replay important timestamps, edit the cues, and export SRT for a player or TXT for notes.
 
@@ -56,7 +56,7 @@ These are single WASM observations on one laptop; URL fetch time is not included
 
 ### Does it create burned-in captions?
 
-No. It creates TXT and SRT files for later styling in a video editor.
+No. It creates TXT, SRT and VTT files for later styling in a video editor.
 
 ### Does it copy the written Instagram post caption?
 
@@ -76,3 +76,7 @@ No. InstaScript is independent of Instagram and Meta.
 - [Video to Text](https://instascript.app/video-to-text)
 - [Subtitle Editor](https://instascript.app/subtitle-editor)
 - [Privacy Policy](https://instascript.app/privacy)
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

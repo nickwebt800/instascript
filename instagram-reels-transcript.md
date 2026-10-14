@@ -6,7 +6,7 @@ Canonical: <https://instascript.app/instagram-reels-transcript>
 
 ## The short answer
 
-Open the [Instagram Transcript](https://instascript.app/) tool, paste a public Reel URL, or upload a saved Reel video. The browser returns spoken words with timestamps that you can copy or download as TXT or SRT.
+Open the [Instagram Transcript](https://instascript.app/) tool, paste a public Reel URL, or upload a saved Reel video. The browser returns spoken words with timestamps that you can copy or download as TXT, SRT or VTT.
 
 1. Use a public Reel URL that opens without a login, or choose a saved video file.
 2. Let the page fetch or decode the media and run the English speech model locally.
@@ -59,3 +59,7 @@ No. InstaScript is independent of Instagram and Meta.
 ## Language checks
 
 Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

@@ -371,6 +371,8 @@ body {
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid var(--border);
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .transcript-header h2 {
@@ -381,7 +383,18 @@ body {
 .actions {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
+
+.transcript-header .actions .btn-ghost { white-space: nowrap; }
+.transcript-header .actions .btn-ghost:hover,
+.transcript-header .actions .btn-ghost:focus-visible { color: var(--primary-hover); border-color: var(--primary-hover); }
+.transcript-export-options { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+.transcript-timestamp-option { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: .9rem; cursor: pointer; }
+.transcript-timestamp-option input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--primary); }
+.transcript-timestamp-option input:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.transcript-export-status { color: var(--text-muted); font-size: .85rem; line-height: 1.6; }
+.transcript-header button:disabled, .transcript-review button:disabled { opacity: .55; cursor: not-allowed; }
 
 .transcript-output {
   padding: 20px;
@@ -433,7 +446,7 @@ body {
 .review-player { display: block; width: 100%; max-height: 360px; margin: 0 0 12px; }
 .review-hint { margin: 0 0 12px; color: var(--text-muted); font-size: .85rem; }
 .transcript-cue { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 12px; margin-bottom: 12px; align-items: start; }
-.transcript-cue .timestamp { padding: 8px 2px; border: 0; background: transparent; cursor: pointer; }
+.transcript-cue .timestamp { padding: 8px 2px; border: 0; background: transparent; color: var(--primary-hover); cursor: pointer; }
 .transcript-cue .timestamp:disabled { opacity: .55; cursor: default; }
 .transcript-cue-text { box-sizing: border-box; width: 100%; resize: vertical; padding: 8px; border: 1px solid var(--border); border-radius: 6px; font: inherit; color: inherit; background: #fff; }
 .editor-media { margin-top: 14px; }

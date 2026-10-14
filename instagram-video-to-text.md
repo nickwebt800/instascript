@@ -6,7 +6,7 @@ Canonical: <https://instascript.app/instagram-video-to-text>
 
 ## The short answer
 
-To convert an Instagram video to text, open the [Instagram Transcript](https://instascript.app/) tool and paste a public Instagram URL, or upload a saved video file. InstaScript transcribes spoken audio in the browser and lets you copy the result or download TXT or SRT.
+To convert an Instagram video to text, open the [Instagram Transcript](https://instascript.app/) tool and paste a public Instagram URL, or upload a saved video file. InstaScript transcribes spoken audio in the browser and lets you copy the result or download TXT, SRT or VTT.
 
 This converts spoken audio. It does not extract the written Instagram caption, comments, or text burned into the video.
 
@@ -16,7 +16,7 @@ Use a public URL when the post opens without a login and its media can be reache
 
 A link can fail when a session is required, a media address has expired, or the response has no audio track. A saved file bypasses that URL-specific failure, but a silent video has no spoken words to transcribe.
 
-## TXT and SRT output
+## TXT, SRT and VTT output
 
 The transcript is divided into timestamped speech segments:
 
@@ -70,3 +70,7 @@ Choose TXT for plain text and SRT for timestamped subtitles.
 - [Instagram Transcript Generator](https://instascript.app/instagram-transcript-generator)
 - [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript)
 - [Video to Text](https://instascript.app/video-to-text)
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

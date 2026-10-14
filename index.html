@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT and SRT export.">
+  <meta name="description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT, SRT and VTT export.">
   <meta name="theme-color" content="#f6f7f8">
   <meta name="saashub-verification" content="t8k05b7qh311" />
   <title>InstaScript — Free Instagram Reel Transcript Generator</title>
@@ -14,13 +14,13 @@
   <meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="InstaScript — Free Instagram Reel Transcript Generator">
-  <meta property="og:description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT and SRT export.">
+  <meta property="og:description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT, SRT and VTT export.">
   <meta property="og:url" content="https://instascript.app/">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="InstaScript — Free Instagram Reel Transcript Generator">
-  <meta name="twitter:description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT and SRT export.">
-  <link rel="stylesheet" href="/style.css?v=p2-20261013">
+  <meta name="twitter:description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT, SRT and VTT export.">
+  <link rel="stylesheet" href="/style.css?v=p0-export-20261014">
 </head>
 <body class="home-page">
   <div class="container">
@@ -35,8 +35,8 @@
           <a href="/contact">Contact</a>
         </nav>
         <p class="eyebrow">Instagram Reel transcript</p>
-        <h1 id="home-title" class="hero-title">Turn any Instagram Reel into text</h1>
-        <p class="tagline">Paste a public Reel link or upload a video. Get an English transcript with timestamps in seconds — no account required.</p>
+        <h1 id="home-title" class="hero-title">Turn an Instagram Reel into text</h1>
+        <p class="tagline">Paste a public Reel link or upload a video. Get an English transcript you can review and export — no account required.</p>
         <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> Files are processed in your browser.</p>
       </header>
 
@@ -90,7 +90,7 @@
       </div>
       <div class="trust-item">
         <strong>Timestamps included</strong>
-        <span>Copy or export TXT/SRT.</span>
+        <span>Copy or export TXT/SRT/VTT.</span>
       </div>
       <div class="trust-item">
         <strong>Browser processing</strong>
@@ -107,7 +107,7 @@
         <p><span class="timestamp">[00:00]</span>Welcome back to the channel.</p>
         <p><span class="timestamp">[00:04]</span>Today we are looking at three simple ideas.</p>
       </div>
-      <p class="sample-note">Every transcript includes timestamps and can be downloaded as TXT or SRT.</p>
+      <p class="sample-note">Copy your transcript or download TXT. SRT and VTT require complete valid cue timing.</p>
     </section>
 
     <!-- Processing -->
@@ -133,7 +133,7 @@
             Copy
           </button>
           <button id="downloadTxtBtn" class="btn-ghost">TXT</button>
-          <button id="downloadSrtBtn" class="btn-ghost">SRT</button>
+          <button id="downloadSrtBtn" class="btn-ghost">SRT</button><button id="downloadVttBtn" class="btn-ghost" type="button">VTT</button>
         </div>
       </div>
       <div id="transcriptOutput" class="transcript-output"></div>
@@ -169,8 +169,8 @@
 
     <section class="content-card">
       <h2>How an Instagram transcript generator works</h2>
-      <p>A written post description is not a speech transcript. If playable video cannot be fetched, no transcript is created; upload a saved video or try another public Reel. SRT export is available only when the speech result has timestamped segments.</p>
-      <p><strong>Instagram to text</strong> means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT or SRT.</p>
+      <p>A written post description is not a speech transcript. If playable video cannot be fetched, no transcript is created; upload a saved video or try another public Reel. SRT and VTT export require non-empty speech cues with complete valid start and end times.</p>
+      <p><strong>Instagram to text</strong> means turning the spoken words in a public Reel or an uploaded recording into readable text with timestamps. Paste a public Instagram URL, or upload a file from your device, then copy the result or download it as TXT, SRT or VTT.</p>
       <p>For a public Reel workflow, use the <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> guide. For a saved video, use <a href="/instagram-video-to-text">Instagram Video to Text</a>. You can also start with the <a href="/instagram-transcript-generator">Instagram Transcript Generator</a> or the <a href="/reels-to-text">Reels to Text</a> tool.</p>
       <h2>Cancel and retry</h2>
       <p>Only one transcription task can run at a time. While processing, input controls are locked. <strong>Cancel processing</strong> aborts the active link lookup or media download. A model download or local audio/model operation already in progress may need to finish first; its result is discarded before another task can start.</p>
@@ -182,34 +182,34 @@
       <h3>Does InstaScript support non-English audio?</h3>
       <p>Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.</p>
       <h3>Do I need an account?</h3>
-      <p>No. You can start without registration, and results can be copied or downloaded as TXT or SRT.</p>
+      <p>No. You can start without registration, and results can be copied or downloaded as TXT, SRT or VTT.</p>
     </section>
 
     <section class="tool-index" aria-labelledby="tool-index-title">
 <h2 id="tool-index-title">Tools by task</h2><div class="tool-groups">
 <section class="tool-group"><h3>Transcript tools</h3><ul>
-<li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a> &mdash; Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.</li>
-<li><a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &mdash; Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.</li>
-<li><a href="/instagram-video-to-text">Instagram Video to Text</a> &mdash; Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.</li>
-<li><a href="/reels-to-text">Reels to Text</a> &mdash; Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.</li>
+<li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a> &mdash; Get timestamped text from a public Instagram Reel or a saved video, with TXT, SRT and VTT downloads.</li>
+<li><a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &mdash; Turn a public Instagram Reel or saved video into timestamped transcript text, TXT, SRT or VTT.</li>
+<li><a href="/instagram-video-to-text">Instagram Video to Text</a> &mdash; Convert a public Instagram video or saved file into timestamped spoken text, TXT, SRT or VTT.</li>
+<li><a href="/reels-to-text">Reels to Text</a> &mdash; Turn a public Instagram Reel or saved file into timestamped spoken text, TXT, SRT or VTT.</li>
 <li><a href="/instagram-caption-extractor">Instagram Caption Extractor</a> &mdash; Separate written Instagram post captions from spoken transcript text and verify the result before export.</li>
-<li><a href="/caption-generator">Caption Generator</a> &mdash; Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT and SRT export.</li>
-<li><a href="/subtitle-generator">Subtitle Generator</a> &mdash; Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.</li>
-<li><a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a> &mdash; Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.</li>
+<li><a href="/caption-generator">Caption Generator</a> &mdash; Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT, SRT and VTT export.</li>
+<li><a href="/subtitle-generator">Subtitle Generator</a> &mdash; Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT, SRT and VTT export.</li>
+<li><a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a> &mdash; Turn a permitted local WhatsApp voice message into timestamped English text, TXT, SRT or VTT in the browser.</li>
 <li><a href="/video-to-text">Video to Text</a> &mdash; Turn an MP4, MOV or WebM video file into a timestamped transcript.</li>
 <li><a href="/audio-to-text">Audio to Text</a> &mdash; Transcribe an MP3, WAV or voice memo into written text.</li>
-<li><a href="/mp3-to-text">MP3 to Text</a> &mdash; Transcribe a local MP3 into timestamped text, then download TXT or SRT.</li>
-<li><a href="/m4a-to-text">M4A to Text</a> &mdash; Transcribe one local M4A recording into timestamped text, then download TXT or SRT.</li>
-<li><a href="/wav-to-text">WAV to Text</a> &mdash; Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.</li>
-<li><a href="/voice-memo-to-text">Voice Memo to Text</a> &mdash; Turn one local voice memo into timestamped text, TXT or SRT in the browser.</li>
-<li><a href="/voicemail-transcription">Voicemail Transcription</a> &mdash; Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.</li>
-<li><a href="/podcast-transcript">Podcast Transcript</a> &mdash; Turn a local podcast episode into timestamped text, TXT or SRT in the browser.</li>
-<li><a href="/mp4-to-text">MP4 to Text</a> &mdash; Transcribe the spoken audio in one local MP4 and export timestamped TXT or SRT in the browser.</li>
-<li><a href="/zoom-transcript">Zoom Transcript</a> &mdash; Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.</li>
-<li><a href="/vimeo-transcript">Vimeo Transcript</a> &mdash; Turn a permitted local Vimeo recording into timestamped spoken text, TXT or SRT in the browser.</li>
+<li><a href="/mp3-to-text">MP3 to Text</a> &mdash; Transcribe a local MP3 into timestamped text, then download TXT, SRT or VTT.</li>
+<li><a href="/m4a-to-text">M4A to Text</a> &mdash; Transcribe one local M4A recording into timestamped text, then download TXT, SRT or VTT.</li>
+<li><a href="/wav-to-text">WAV to Text</a> &mdash; Transcribe one local WAV recording into timestamped text, TXT, SRT or VTT in the browser.</li>
+<li><a href="/voice-memo-to-text">Voice Memo to Text</a> &mdash; Turn one local voice memo into timestamped text, TXT, SRT or VTT in the browser.</li>
+<li><a href="/voicemail-transcription">Voicemail Transcription</a> &mdash; Turn one permitted local voicemail recording into timestamped English text, TXT, SRT or VTT in the browser.</li>
+<li><a href="/podcast-transcript">Podcast Transcript</a> &mdash; Turn a local podcast episode into timestamped text, TXT, SRT or VTT in the browser.</li>
+<li><a href="/mp4-to-text">MP4 to Text</a> &mdash; Transcribe the spoken audio in one local MP4 and export timestamped TXT, SRT or VTT in the browser.</li>
+<li><a href="/zoom-transcript">Zoom Transcript</a> &mdash; Turn a permitted local Zoom recording into timestamped spoken text, TXT, SRT or VTT in the browser.</li>
+<li><a href="/vimeo-transcript">Vimeo Transcript</a> &mdash; Turn a permitted local Vimeo recording into timestamped spoken text, TXT, SRT or VTT in the browser.</li>
 <li><a href="/tiktok-transcript">TikTok Transcript</a> &mdash; Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.</li>
 <li><a href="/facebook-video-transcript">Facebook Video Transcript</a> &mdash; Get the spoken words out of a Facebook video by uploading the saved file.</li>
-<li><a href="/twitter-video-transcript">Twitter Video Transcript</a> &mdash; Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.</li>
+<li><a href="/twitter-video-transcript">Twitter Video Transcript</a> &mdash; Turn a permitted saved X video into spoken transcript text with timestamps, TXT, SRT and VTT export in the browser.</li>
 </ul></section>
 <section class="tool-group"><h3>YouTube tools</h3><ul>
 <li><a href="/youtube-transcript">YouTube Transcript</a> &mdash; Read existing caption tracks from a public YouTube link and export TXT or SRT.</li>
@@ -234,7 +234,8 @@
       <p>This homepage includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.</p>
     </section>
 
-    <section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT and SRT use your edits. Choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
+    <section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
+<section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -295,7 +296,7 @@
     "@type": "WebApplication",
     "name": "InstaScript",
     "url": "https://instascript.app/",
-    "description": "Free browser-based tool that converts public Instagram Reels and video files into timestamped English text with TXT and SRT export.",
+    "description": "Free browser-based tool that converts public Instagram Reels and video files into timestamped English text with TXT, SRT and VTT export.",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -319,12 +320,12 @@
       {
         "@type": "Question",
         "name": "Do I need an account to transcribe a Reel?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. You can start without registration, and results can be copied or downloaded as TXT or SRT." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. You can start without registration, and results can be copied or downloaded as TXT, SRT or VTT." }
       }
     ]
   }
   </script>
-  <script type="module" src="app.js?v=p2-20261013"></script>
+  <script type="module" src="app.js?v=p0-export-20261014"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=p2-20261013" defer></script>
 </body>

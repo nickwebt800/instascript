@@ -1,6 +1,6 @@
 # Subtitle Generator: Timed TXT and SRT Drafts
 
-> Generate a timed English speech subtitle draft from a public Instagram video or local media, then review and export TXT or SRT.
+> Generate a timed English speech subtitle draft from a public Instagram video or local media, then review and export TXT, SRT or VTT.
 
 Canonical: <https://instascript.app/subtitle-generator>
 
@@ -60,7 +60,7 @@ These are single WASM observations on one laptop; URL fetch time is excluded. Se
 
 ### Does this burn subtitles into my video?
 
-No. It creates editable TXT and SRT files for later styling in a video editor.
+No. It creates editable TXT, SRT and VTT files for later styling in a video editor.
 
 ### Does it copy the post's written caption?
 
@@ -80,3 +80,7 @@ No. InstaScript is independent of Instagram and Meta.
 - [Caption Generator](https://instascript.app/caption-generator)
 - [Subtitle Editor](https://instascript.app/subtitle-editor)
 - [Privacy Policy](https://instascript.app/privacy)
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

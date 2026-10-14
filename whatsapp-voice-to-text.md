@@ -1,12 +1,12 @@
 # WhatsApp Voice to Text: TXT and SRT
 
-> Convert a permitted WhatsApp voice message file into timestamped English text, TXT or SRT in your browser.
+> Convert a permitted WhatsApp voice message file into timestamped English text, TXT, SRT or VTT in your browser.
 
 Canonical: <https://instascript.app/whatsapp-voice-to-text>
 
 ## The direct answer
 
-Save or export the WhatsApp voice message you are allowed to use, then open the [InstaScript](https://instascript.app/) tool and choose the local audio file. The browser recognizes supported English speech and returns timestamped text with TXT and SRT downloads.
+Save or export the WhatsApp voice message you are allowed to use, then open the [InstaScript](https://instascript.app/) tool and choose the local audio file. The browser recognizes supported English speech and returns timestamped text with TXT, SRT and VTT downloads.
 
 Export the message, select the file, let the browser process it, then replay important segments and correct names or numbers before sharing the result.
 
@@ -75,3 +75,7 @@ Yes. Download SRT, review its cues, and edit it in the [Subtitle Editor](https:/
 - [Voice Memo to Text](https://instascript.app/voice-memo-to-text)
 - [Audio to Text](https://instascript.app/audio-to-text)
 - [Privacy Policy](https://instascript.app/privacy)
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

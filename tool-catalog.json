@@ -36,7 +36,8 @@
       "limits": [
         "English only",
         "up to 100 MB",
-        "audio processed in ~30 second chunks"
+        "audio processed in ~30 second chunks",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "instagram",
@@ -55,7 +56,7 @@
       "home": false,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "weekly",
         "priority": "1.0"
       }
@@ -63,7 +64,7 @@
     {
       "title": "Instagram Transcript Generator",
       "url": "https://instascript.app/instagram-transcript-generator",
-      "summary": "Get timestamped text from a public Instagram Reel or a saved video, with TXT and SRT downloads.",
+      "summary": "Get timestamped text from a public Instagram Reel or a saved video, with TXT, SRT and VTT downloads.",
       "accepts": [
         "public Instagram Reel URLs",
         "MP4",
@@ -73,7 +74,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "private or login-only URLs need a saved file"
+        "private or login-only URLs need a saved file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "instagram transcript generator",
@@ -90,7 +92,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-30",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -98,7 +100,7 @@
     {
       "title": "Instagram Reels Transcript",
       "url": "https://instascript.app/instagram-reels-transcript",
-      "summary": "Turn a public Instagram Reel or saved video into timestamped transcript text, TXT or SRT.",
+      "summary": "Turn a public Instagram Reel or saved video into timestamped transcript text, TXT, SRT or VTT.",
       "accepts": [
         "public Instagram Reel URLs",
         "MP4",
@@ -108,7 +110,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "private or login-only URLs need a saved file"
+        "private or login-only URLs need a saved file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "instagram reels transcript",
@@ -125,7 +128,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-30",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -133,7 +136,7 @@
     {
       "title": "Instagram Video to Text",
       "url": "https://instascript.app/instagram-video-to-text",
-      "summary": "Convert a public Instagram video or saved file into timestamped spoken text, TXT or SRT.",
+      "summary": "Convert a public Instagram video or saved file into timestamped spoken text, TXT, SRT or VTT.",
       "accepts": [
         "public Instagram video URLs",
         "MP4",
@@ -143,7 +146,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "private or login-only URLs need a saved file"
+        "private or login-only URLs need a saved file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "instagram video to text",
@@ -160,7 +164,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-30",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -168,7 +172,7 @@
     {
       "title": "Reels to Text",
       "url": "https://instascript.app/reels-to-text",
-      "summary": "Turn a public Instagram Reel or saved file into timestamped spoken text, TXT or SRT.",
+      "summary": "Turn a public Instagram Reel or saved file into timestamped spoken text, TXT, SRT or VTT.",
       "accepts": [
         "public Instagram Reel URLs",
         "MP4",
@@ -178,7 +182,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "private or login-only URLs need a saved file"
+        "private or login-only URLs need a saved file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "reels to text",
@@ -195,7 +200,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-30",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -238,7 +243,7 @@
     {
       "title": "Caption Generator",
       "url": "https://instascript.app/caption-generator",
-      "summary": "Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
+      "summary": "Generate a timed English speech caption draft from public Instagram media or a local audio/video file, with TXT, SRT and VTT export.",
       "accepts": [
         "public Instagram video URLs",
         "MP4",
@@ -252,7 +257,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "speech only - no OCR, translation, styling or speaker labels"
+        "speech only - no OCR, translation, styling or speaker labels",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "caption generator",
@@ -270,7 +276,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-09",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -278,7 +284,7 @@
     {
       "title": "Subtitle Generator",
       "url": "https://instascript.app/subtitle-generator",
-      "summary": "Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT and SRT export.",
+      "summary": "Generate a timed English speech subtitle draft from public Instagram media or a local audio/video file, with TXT, SRT and VTT export.",
       "accepts": [
         "public Instagram video URLs",
         "MP4",
@@ -292,7 +298,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB for uploads",
-        "speech only - no OCR, translation, styling or speaker labels"
+        "speech only - no OCR, translation, styling or speaker labels",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "subtitle generator",
@@ -310,7 +317,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-10",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -318,7 +325,7 @@
     {
       "title": "WhatsApp Voice to Text",
       "url": "https://instascript.app/whatsapp-voice-to-text",
-      "summary": "Turn a permitted local WhatsApp voice message into timestamped English text, TXT or SRT in the browser.",
+      "summary": "Turn a permitted local WhatsApp voice message into timestamped English text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "permitted local audio files",
         "M4A",
@@ -330,7 +337,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "WhatsApp chat links are not fetched",
-        "speech only"
+        "speech only",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "whatsapp voice to text",
@@ -349,7 +357,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-11",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -588,7 +596,8 @@
       "limits": [
         "English only",
         "up to 100 MB",
-        "no video links - upload the file"
+        "no video links - upload the file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "video transcript",
@@ -609,7 +618,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.8"
       }
@@ -626,7 +635,8 @@
       ],
       "limits": [
         "English only",
-        "up to 100 MB"
+        "up to 100 MB",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "audio transcription",
@@ -651,7 +661,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.8"
       }
@@ -659,7 +669,7 @@
     {
       "title": "MP3 to Text",
       "url": "https://instascript.app/mp3-to-text",
-      "summary": "Transcribe a local MP3 into timestamped text, then download TXT or SRT.",
+      "summary": "Transcribe a local MP3 into timestamped text, then download TXT, SRT or VTT.",
       "accepts": [
         "MP3"
       ],
@@ -667,7 +677,8 @@
         "English only",
         "up to 100 MB",
         "one local file at a time",
-        "no upload or account"
+        "no upload or account",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "mp3 to text",
@@ -686,7 +697,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -694,7 +705,7 @@
     {
       "title": "M4A to Text",
       "url": "https://instascript.app/m4a-to-text",
-      "summary": "Transcribe one local M4A recording into timestamped text, then download TXT or SRT.",
+      "summary": "Transcribe one local M4A recording into timestamped text, then download TXT, SRT or VTT.",
       "accepts": [
         "M4A"
       ],
@@ -702,7 +713,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "browser-supported codecs only"
+        "browser-supported codecs only",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "m4a to text",
@@ -721,7 +733,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -729,7 +741,7 @@
     {
       "title": "WAV to Text",
       "url": "https://instascript.app/wav-to-text",
-      "summary": "Transcribe one local WAV recording into timestamped text, TXT or SRT in the browser.",
+      "summary": "Transcribe one local WAV recording into timestamped text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "WAV",
         "MP3",
@@ -740,7 +752,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "browser-readable sample formats only"
+        "browser-readable sample formats only",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "wav to text",
@@ -759,7 +772,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -767,7 +780,7 @@
     {
       "title": "Voice Memo to Text",
       "url": "https://instascript.app/voice-memo-to-text",
-      "summary": "Turn one local voice memo into timestamped text, TXT or SRT in the browser.",
+      "summary": "Turn one local voice memo into timestamped text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "M4A",
         "MP3",
@@ -778,7 +791,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "private cloud links are not fetched"
+        "private cloud links are not fetched",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "voice memo to text",
@@ -797,7 +811,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -805,7 +819,7 @@
     {
       "title": "Voicemail Transcription",
       "url": "https://instascript.app/voicemail-transcription",
-      "summary": "Turn one permitted local voicemail recording into timestamped English text, TXT or SRT in the browser.",
+      "summary": "Turn one permitted local voicemail recording into timestamped English text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "permitted local voicemail files",
         "M4A",
@@ -817,7 +831,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "carrier and private voicemail links are not fetched",
-        "speech only"
+        "speech only",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "voicemail transcription",
@@ -836,7 +851,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -844,7 +859,7 @@
     {
       "title": "Podcast Transcript",
       "url": "https://instascript.app/podcast-transcript",
-      "summary": "Turn a local podcast episode into timestamped text, TXT or SRT in the browser.",
+      "summary": "Turn a local podcast episode into timestamped text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "MP3",
         "WAV",
@@ -855,7 +870,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "Spotify and Riverside links are not fetched"
+        "Spotify and Riverside links are not fetched",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "podcast transcript",
@@ -874,7 +890,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -882,7 +898,7 @@
     {
       "title": "MP4 to Text",
       "url": "https://instascript.app/mp4-to-text",
-      "summary": "Transcribe the spoken audio in one local MP4 and export timestamped TXT or SRT in the browser.",
+      "summary": "Transcribe the spoken audio in one local MP4 and export timestamped TXT, SRT or VTT in the browser.",
       "accepts": [
         "MP4",
         "MOV",
@@ -892,7 +908,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "video links are not fetched"
+        "video links are not fetched",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "mp4 to text",
@@ -911,7 +928,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -919,7 +936,7 @@
     {
       "title": "Zoom Transcript",
       "url": "https://instascript.app/zoom-transcript",
-      "summary": "Turn a permitted local Zoom recording into timestamped spoken text, TXT or SRT in the browser.",
+      "summary": "Turn a permitted local Zoom recording into timestamped spoken text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "MP4",
         "MOV",
@@ -932,7 +949,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "one local file at a time",
-        "private Zoom links are not fetched"
+        "private Zoom links are not fetched",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "zoom transcript",
@@ -951,7 +969,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -959,7 +977,7 @@
     {
       "title": "Vimeo Transcript",
       "url": "https://instascript.app/vimeo-transcript",
-      "summary": "Turn a permitted local Vimeo recording into timestamped spoken text, TXT or SRT in the browser.",
+      "summary": "Turn a permitted local Vimeo recording into timestamped spoken text, TXT, SRT or VTT in the browser.",
       "accepts": [
         "MP4",
         "MOV",
@@ -970,7 +988,8 @@
         "English-focused browser model",
         "up to 100 MB",
         "Vimeo URLs are not fetched directly",
-        "download permission is required"
+        "download permission is required",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "vimeo transcript",
@@ -989,7 +1008,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-08",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -1004,7 +1023,8 @@
       "limits": [
         "English only",
         "up to 100 MB",
-        "TikTok URLs are not supported - upload the file"
+        "TikTok URLs are not supported - upload the file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "tiktok",
@@ -1019,7 +1039,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.8"
       }
@@ -1034,7 +1054,8 @@
       "limits": [
         "English only",
         "up to 100 MB",
-        "Facebook URLs are not supported - upload the file"
+        "Facebook URLs are not supported - upload the file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "facebook",
@@ -1050,7 +1071,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-13",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.8"
       }
@@ -1124,7 +1145,7 @@
     {
       "title": "Twitter Video Transcript",
       "url": "https://instascript.app/twitter-video-transcript",
-      "summary": "Turn a permitted saved X video into spoken transcript text with timestamps, TXT and SRT export in the browser.",
+      "summary": "Turn a permitted saved X video into spoken transcript text with timestamps, TXT, SRT and VTT export in the browser.",
       "accepts": [
         "MP4",
         "MOV",
@@ -1134,7 +1155,8 @@
       "limits": [
         "English-focused browser model",
         "up to 100 MB",
-        "post URLs are not fetched directly; protected or removed posts need a permitted saved file"
+        "post URLs are not fetched directly; protected or removed posts need a permitted saved file",
+        "SRT/VTT and editor transfer require complete valid cue timing"
       ],
       "keywords": [
         "twitter video transcript",
@@ -1152,7 +1174,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-30",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
       }
@@ -1290,7 +1312,7 @@
       "home": false,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-09-12",
+        "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.6"
       }

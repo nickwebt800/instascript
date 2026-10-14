@@ -10,7 +10,7 @@ Turn video and audio into text — free, in your browser
 
 ## About InstaScript
 
-InstaScript is a free browser-based transcription tool. It turns video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into timestamped text, with .txt and .srt downloads. The speech-transcription link input accepts public Instagram URLs. Separate YouTube tools read existing caption tracks from public YouTube links.
+InstaScript is a free browser-based transcription tool. It turns video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into timestamped text, with .txt, .srt and .vtt downloads. The speech-transcription link input accepts public Instagram URLs. Separate YouTube tools read existing caption tracks from public YouTube links.
 
 File processing runs in your browser; public-link tools also use server lookups. No app to install, no account to create, and no payment required.
 
@@ -26,7 +26,7 @@ This means your files never leave your device when using the upload feature. The
 - Paste a public Instagram URL and let the site fetch the video for you — this speech-transcription input supports Instagram links; separate YouTube tools read existing captions. For TikTok or Facebook, save the file and upload it
 - Timestamped output with start and end times for each segment
 - Copy transcript to clipboard with one click
-- Download as plain text (.txt) or subtitle format (.srt)
+- Download as plain text (.txt) or subtitle formats (.srt and .vtt)
 - Works on desktop and mobile browsers
 - Limits: English audio only, and long recordings are processed in chunks of about 30 seconds
 
@@ -50,3 +50,7 @@ Local media files and subtitle edits stay in your browser. Public Instagram link
 ### Listing & Verification
 
 [](https://dang.ai)
+
+## Export your edited transcript
+
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
