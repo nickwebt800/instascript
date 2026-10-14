@@ -1430,7 +1430,7 @@ body.home-page .sample-output {
 body.home-page .content-card p { max-width: 76ch; }
 
 @media (max-width: 900px) {
-  body.home-page .hero-row { gap: 40px; padding-top: 34px; }
+  body.home-page .hero-row { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 34px; }
   body.home-page .hero-row .home-nav { margin-top: 18px; }
   body.home-page .hero-row .eyebrow { margin-top: 52px; }
   body.home-page .tool-card { margin-top: 0; }
