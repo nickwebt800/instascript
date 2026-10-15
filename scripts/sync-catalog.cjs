@@ -17,7 +17,8 @@ const nav = '<nav class="footer-nav">\n' + catalog.groups.map(group => {
 }).join('\n') + '\n</nav>';
 for (const page of catalog.pages) {
   const source = fs.readFileSync(path.join(root, page.html), "utf8");
-  write(page.html, source.replace(/(<footer\b[^>]*data-site-footer[^>]*>[\s\S]*?)<nav class="footer-nav">[\s\S]*?<\/nav>/, '$1' + nav));
+  const withNav = source.replace(/(<footer\b[^>]*data-site-footer[^>]*>)\s*(<\/footer>)/, '$1' + nav + '$2');
+  write(page.html, withNav.replace(/(<footer\b[^>]*data-site-footer[^>]*>[\s\S]*?)<nav class="footer-nav">[\s\S]*?<\/nav>/, '$1' + nav));
 }
 const groups = catalog.groups.filter(group => group.id !== "site");
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");

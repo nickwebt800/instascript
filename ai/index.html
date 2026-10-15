@@ -40,7 +40,7 @@
     <ul>
       <li><a href="/openapi.json">OpenAPI description</a> of the public read-only API.</li>
       <li><a href="/.well-known/api-catalog">API catalog</a> (RFC 9727, application/linkset+json).</li>
-      <li><a href="/mcp">MCP endpoint</a> (Streamable HTTP, JSON-RPC 2.0) with tools: <code>find_page</code>, <code>get_benchmark</code>, <code>site_info</code>.</li>
+      <li>MCP endpoint: <code>POST https://instascript.app/mcp</code> (Streamable HTTP, JSON-RPC 2.0) with tools: <code>find_page</code>, <code>get_benchmark</code>, <code>site_info</code>. Clients send JSON-RPC requests by POST. A browser GET returns HTTP 405; OPTIONS is supported.</li>
       <li><a href="/.well-known/mcp/server-card.json">MCP server card</a>.</li>
       <li><a href="/ai/skills/site-lookup/SKILL.md">Agent Skill artifact</a> and the <a href="/.well-known/agent-skills/index.json">skills discovery index</a>.</li>
       <li><a href="/.well-known/ai-catalog.json">ARD capability manifest</a>.</li>
@@ -108,6 +108,7 @@
 <a href="/subtitle-translator">Subtitle Translator</a>
 <a href="/srt-to-vtt">SRT to VTT</a></div>
 <div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
 <a href="/privacy">Privacy Policy</a>
 <a href="/about">About</a>
 <a href="/contact">Contact</a></div>

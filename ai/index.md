@@ -19,7 +19,7 @@ InstaScript turns public Instagram Reels, video files, and audio files into text
 
 - [OpenAPI description](https://instascript.app/openapi.json) for the public read-only API.
 - [API catalog](https://instascript.app/.well-known/api-catalog).
-- `POST https://instascript.app/mcp` for the Streamable HTTP MCP endpoint. Available tools are `find_page`, `get_benchmark`, and `site_info`.
+- `POST https://instascript.app/mcp` for the Streamable HTTP MCP endpoint. Available tools are `find_page`, `get_benchmark`, and `site_info`. Clients send JSON-RPC requests by POST. A browser GET returns HTTP 405; OPTIONS is supported.
 - [MCP server card](https://instascript.app/.well-known/mcp/server-card.json).
 - [Agent Skill artifact](https://instascript.app/ai/skills/site-lookup/SKILL.md) and [skill discovery index](https://instascript.app/.well-known/agent-skills/index.json).
 - [ARD capability manifest](https://instascript.app/.well-known/ai-catalog.json).
