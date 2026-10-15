@@ -20,6 +20,12 @@ The file is read and converted locally. Text is not sent to a server, and there 
 
 The first cue uses the selected start time. Duration uses the default duration and reading-speed limit, bounded by the shortest and longest settings. The next cue starts after the previous cue plus the entry gap.
 
+## Text to SRT: review the timing draft before export
+
+For a **text to SRT** workflow, paste your words, select **Plain text timing**, and choose **Generate timeline**. Review the cue text, start and end times, then use **Download SRT** or **Copy SRT**. This is the existing TXT converter, with no separate page or upload.
+
+The generated timing is an estimated draft based on your settings and text length. It does not listen to audio or align words to a recording. For an accompanying video, compare the cues against playback and adjust their timing manually before using the SRT.
+
 ## FAQ
 
 ### Can I convert a TXT file to SRT without uploading it?

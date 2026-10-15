@@ -76,6 +76,9 @@
       <p>This SRT to text converter reads one <strong>SRT</strong> or <strong>VTT</strong> source at a time. It also handles a local <strong>SRT to TXT</strong> or <strong>convert SRT to TXT</strong> workflow: paste subtitle text or open one local file, then get the cue text without sequence numbers or timecodes. The result remains editable and can be copied or downloaded as a TXT file.</p>
       <p>This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server. It handles one local subtitle file at a time.</p>
 
+      <h2>SRT to TXT: keep the words, remove subtitle timing</h2>
+      <p>For an <strong>SRT to TXT</strong> file, choose <strong>Convert to plain text</strong>, review the editable result, then select <strong>Download TXT</strong>. This uses the same converter above; it does not need a separate upload or account.</p>
+      <p>The TXT output keeps cue text and line breaks in source order. It removes cue numbers, time ranges and subtitle markup; it does not summarize, translate, label speakers or preserve timing for a video player. Keep the original SRT if you may need timed subtitles later.</p>
       <h2>How conversion works</h2>
       <p>The browser finds each subtitle cue, removes its sequence number and start/end time, and keeps the spoken text and line breaks. Cue text is joined in reading order. Common VTT markup tags are removed from the plain-text result.</p>
       <p>If the pasted content has no usable SRT or VTT cues, the page reports that it could not find subtitle text so you can correct the source.</p>

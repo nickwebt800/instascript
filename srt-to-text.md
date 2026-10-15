@@ -10,6 +10,12 @@ Open the [SRT to Text Converter](https://instascript.app/srt-to-text), paste SRT
 
 The browser performs the conversion locally. This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server.
 
+## SRT to TXT: keep the words, remove subtitle timing
+
+For an **SRT to TXT** file, choose **Convert to plain text**, review the editable result, then select **Download TXT**. This uses the same converter; it does not need a separate upload or account.
+
+The TXT output keeps cue text and line breaks in source order. It removes cue numbers, time ranges and subtitle markup; it does not summarize, translate, label speakers or preserve timing for a video player. Keep the original SRT if you may need timed subtitles later.
+
 ## How conversion works
 
 The converter finds each subtitle cue, removes its sequence number and start/end time, and keeps the spoken text and line breaks. Common VTT markup tags are removed. If no usable SRT or VTT cues are found, the page reports an error so the source can be corrected.
