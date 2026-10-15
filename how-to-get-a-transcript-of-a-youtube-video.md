@@ -79,3 +79,7 @@ The language name in the footer carries a dropdown chevron, but it did not open 
 ---
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.
+
+## Search captions in InstaScript
+
+Use [YouTube Transcript](/youtube-transcript) or [YouTube Transcript Download](/youtube-transcript-download) to search a loaded caption track, move between matches, and locate its caption line. Source time links open YouTube in a new tab. Search is read-only and does not change TXT/SRT exports. This guide does not run a separate caption engine.

@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="YouTube Transcript Download | InstaScript">
   <meta name="twitter:description" content="Download a video's existing YouTube captions as TXT or SRT files.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/youtube-transcript.css?v=youtube-search-20261015a">
 </head>
 <body>
   <div class="container">
@@ -52,7 +53,8 @@
       <p class="panel-hint">Public videos that already have captions. youtube.com, youtu.be and /shorts/ links all work. You get a .txt and a .srt file, both built in your own browser.</p>
       <div id="trackRow" class="track-row hidden">
         <label for="langSelect">Caption language</label>
-        <select id="langSelect" class="lang-select"></select>
+        <select id="langSelect" class="lang-select" aria-describedby="trackHint"></select>
+        <p id="trackHint" class="panel-hint">After changing language, submit the link again. The previous result and search are cleared.</p>
       </div>
     </main>
 
@@ -83,6 +85,13 @@
         </div>
       </div>
       <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>Search the current caption track</h2>
+      <p>Use <strong>Find in this transcript</strong> to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.</p>
+      <p><strong>Locate caption</strong> reveals the matching line, switching to Timestamps if needed. A timestamp or <strong>Open YouTube</strong> link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.</p>
+      <p>Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.</p>
     </section>
 
     <section class="content-card">
@@ -154,7 +163,7 @@
       <h3>Can I download a YouTube transcript on my phone?</h3>
       <p>Yes. Paste the link in your mobile browser and both download buttons work. On Android the file lands in your Downloads folder; on iPhone it goes to Files, and Safari will offer to open it or save it. The page is laid out for a phone screen first, so the buttons sit under the text rather than off to the side.</p>
       <h3>Is the transcript uploaded anywhere?</h3>
-      <p>No. The file is built in your browser from the caption text your browser fetched from YouTube, and it is saved straight to your device. This site handles the link you paste and nothing else &mdash; see the <a href="/privacy">privacy policy</a>.</p>
+      <p>The exported file is built in your browser and saved to your device without being uploaded. The lookup server may fetch existing caption text and cache a successful response for one hour; your browser fetches selected tracks directly when needed. See the <a href="/privacy">privacy policy</a>.</p>
       <h3>Which caption language do I get?</h3>
       <p>Whatever the video has. If there is more than one track, a dropdown appears above the transcript and you pick before you press the button; change it and press again to rebuild the file in that language. If there is one track, that is the one you get. I am not going to quote a count of supported languages &mdash; it is a property of the video, not of this page.</p>
       <h3>Why is the SRT bigger than the TXT?</h3>
@@ -232,7 +241,7 @@
     </footer>
   </div>
 
-  <script src="/js/youtube-transcript-download.js?v=language-fix-20261013" defer></script>
+  <script type="module" src="/js/youtube-transcript-download.js?v=youtube-search-20261015a"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -246,7 +255,7 @@
       {
         "@type": "Question",
         "name": "Is the transcript uploaded anywhere?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. The file is built in your browser from the caption text your browser fetched from YouTube, and it is saved straight to your device." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The exported file is built in your browser and saved without being uploaded. The lookup server may fetch caption text and cache a successful response for one hour; the browser fetches selected tracks directly when needed." }
       },
       {
         "@type": "Question",

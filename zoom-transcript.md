@@ -105,5 +105,4 @@ moves back, and Escape in the search box clears the query.
 
 Search is literal, ignores ASCII letter case, and stays inside each cue in
 your current tab. Queries are not uploaded or saved. Search does not change
-cue timing or exports. The separate YouTube caption tools do not have this
-search control.
+cue timing or exports.

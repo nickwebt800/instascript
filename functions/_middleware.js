@@ -427,6 +427,8 @@ const KNOWN_FILES = new Set([
   "/js/webmcp.js",
   "/js/youtube-transcript-download.js",
   "/js/youtube-transcript.js",
+  "/js/youtube-transcript-view.js",
+  "/youtube-transcript.css",
   "/js/yt-pot.js",
   "/openapi.json",
   "/robots.txt",

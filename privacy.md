@@ -65,3 +65,5 @@ host only after you choose **Try a sample**. It does not run speech recognition
 or request a speech model. Sample edits, exports and searches within your
 current transcript run in your browser tab. The application does not send
 these edits or search queries to a server or save them in persistent storage.
+
+YouTube caption searches also stay in the current tab. A source time link opens YouTube in a new tab and sends only the video ID and whole-second start time in that link, without the search query. No YouTube player is embedded in the result. Existing caption lookup and cache behavior are unchanged.

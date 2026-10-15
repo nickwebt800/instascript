@@ -20,6 +20,7 @@
   <meta name="twitter:title" content="YouTube Transcript Generator | InstaScript">
   <meta name="twitter:description" content="Read a video's existing YouTube captions with timestamps, copy and TXT/SRT export.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/youtube-transcript.css?v=youtube-search-20261015a">
 </head>
 <body>
   <div class="container">
@@ -52,7 +53,8 @@
       <p class="panel-hint">Public videos that already have captions. youtube.com, youtu.be and /shorts/ links all work.</p>
       <div id="trackRow" class="track-row hidden">
         <label for="langSelect">Caption language</label>
-        <select id="langSelect" class="lang-select"></select>
+        <select id="langSelect" class="lang-select" aria-describedby="trackHint"></select>
+        <p id="trackHint" class="panel-hint">After changing language, submit the link again. The previous result and search are cleared.</p>
       </div>
     </main>
 
@@ -82,6 +84,13 @@
         </div>
       </div>
       <div id="transcriptOutput" class="transcript-output"></div>
+    </section>
+
+    <section class="content-card">
+      <h2>Search the current caption track</h2>
+      <p>Use <strong>Find in this transcript</strong> to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.</p>
+      <p><strong>Locate caption</strong> reveals the matching line, switching to Timestamps if needed. A timestamp or <strong>Open YouTube</strong> link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.</p>
+      <p>Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.</p>
     </section>
 
     <section class="content-card">
@@ -225,7 +234,7 @@
     </footer>
   </div>
 
-  <script src="/js/youtube-transcript.js?v=2" defer></script>
+  <script type="module" src="/js/youtube-transcript.js?v=youtube-search-20261015a"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

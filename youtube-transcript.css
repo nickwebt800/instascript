@@ -1,0 +1,9 @@
+/* Read-only caption search uses the shared search controls. */
+.youtube-search [hidden] { display: none; }
+.youtube-search .actions a { text-decoration: none; white-space: normal; overflow-wrap: anywhere; }
+.youtube-search a:focus-visible,
+.youtube-caption:focus-visible,
+.youtube-caption .timestamp:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.transcript-output .youtube-caption { padding: 8px; border-radius: var(--radius-sm); overflow-wrap: anywhere; }
+.transcript-output .youtube-caption-active { background: var(--primary-light); box-shadow: inset 3px 0 var(--primary-hover); }
+.youtube-caption .timestamp { display: inline; text-decoration: underline; text-underline-offset: 3px; }

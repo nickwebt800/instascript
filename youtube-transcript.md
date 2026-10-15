@@ -14,6 +14,14 @@ Other transcript tools: [Instagram Transcript](https://instascript.app/) · [Tik
 
 Paste a YouTube link above and press **Get Transcript**. Public videos that already have captions work; youtube.com, youtu.be and /shorts/ links are all accepted. If a video has more than one caption track, a language dropdown appears.
 
+## Search the current caption track
+
+Use **Find in this transcript** to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.
+
+**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
+
+Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.
+
 ## How this YouTube transcript generator works
 
 **It reads the caption track the video already has on YouTube — it does not listen to the audio and does not re-write it from scratch.** That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.

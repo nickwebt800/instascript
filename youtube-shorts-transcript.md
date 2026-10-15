@@ -48,3 +48,7 @@ The track may be unavailable, still generating, restricted, or blocked by a brow
 No. It is caption text for speech. Words rendered inside the video frames require visual inspection or OCR.
 
 InstaScript is independent and is not affiliated with YouTube or Google.
+
+## Search captions in InstaScript
+
+Use [YouTube Transcript](/youtube-transcript) or [YouTube Transcript Download](/youtube-transcript-download) to search a loaded caption track, move between matches, and locate its caption line. Source time links open YouTube in a new tab. Search is read-only and does not change TXT/SRT exports. This guide does not run a separate caption engine.

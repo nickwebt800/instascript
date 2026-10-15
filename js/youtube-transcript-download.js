@@ -1,3 +1,5 @@
+import { createYouTubeTranscriptView } from "./youtube-transcript-view.js?v=youtube-search-20261015a";
+
 // youtube-transcript-download page logic
 // 1. ask this site's own endpoint which caption tracks YouTube issued for the video
 // 2. YouTube only hands the caption text to a browser that can produce a
@@ -38,6 +40,33 @@ let state = {
   mode: "timestamps",
 };
 
+let busy = false;
+const captionView = createYouTubeTranscriptView(els.section, els.output, setTimestampMode);
+
+function setBusy(value) {
+  busy = value;
+  els.button.disabled = value;
+  els.input.disabled = value;
+  const select = $("langSelect");
+  if (select) select.disabled = value;
+}
+
+function clearResult() {
+  state.segments = [];
+  captionView.reset();
+  hide(els.section);
+  hide(els.meta);
+  if (els.fileInfo) hide(els.fileInfo);
+  els.copy.disabled = els.txt.disabled = els.srt.disabled = true;
+}
+
+function setTimestampMode() {
+  state.mode = "timestamps";
+  els.tsToggle.classList.add("active");
+  els.plainToggle.classList.remove("active");
+  render();
+}
+
 function show(el) {
   el.classList.remove("hidden");
 }
@@ -69,22 +98,8 @@ function kb(bytes) {
 
 function render() {
   if (!state.segments.length) return;
-  els.output.innerHTML = "";
-  if (state.mode === "timestamps") {
-    for (const seg of state.segments) {
-      const p = document.createElement("p");
-      const stamp = document.createElement("span");
-      stamp.className = "timestamp";
-      stamp.textContent = `[${formatTime(seg.start)}] `;
-      p.appendChild(stamp);
-      p.appendChild(document.createTextNode(seg.text));
-      els.output.appendChild(p);
-    }
-  } else {
-    const p = document.createElement("p");
-    p.textContent = state.segments.map((s) => s.text).join(" ");
-    els.output.appendChild(p);
-  }
+  captionView.render(state.segments, state.videoId, state.mode);
+  els.copy.disabled = els.txt.disabled = els.srt.disabled = false;
   show(els.section);
   updateFileInfo();
 }
@@ -304,12 +319,13 @@ function pickTrack(tracks) {
 
 async function run(event) {
   event.preventDefault();
+  if (busy) return;
+  clearResult();
   hide(els.error);
-  hide(els.section);
-  els.button.disabled = true;
+  setBusy(true);
   const url = els.input.value.trim();
   if (!url) {
-    els.button.disabled = false;
+    setBusy(false);
     fail("Paste a YouTube link first.");
     return;
   }
@@ -320,12 +336,12 @@ async function run(event) {
     const response = await fetch(API + "?v=" + encodeURIComponent(url));
     meta = await response.json();
   } catch (err) {
-    els.button.disabled = false;
+    setBusy(false);
     fail("Could not reach this site's caption service. Check your connection and try again.");
     return;
   }
   if (!meta.ok) {
-    els.button.disabled = false;
+    setBusy(false);
     fail(meta.message || "This lookup came back with no caption track. Try it once more.");
     return;
   }
@@ -338,12 +354,12 @@ async function run(event) {
     // Keep the language the visitor already picked: rebuilding the list wipes
     // the current value, which used to send the second lookup back to English.
     const previous = select.value;
-    select.innerHTML = meta.tracks
-      .map(
-        (t) =>
-          `<option value="${t.languageCode}">${t.languageName}${t.isGenerated ? " (auto)" : ""}</option>`
-      )
-      .join("");
+    select.replaceChildren(...meta.tracks.map(track => {
+      const option = document.createElement("option");
+      option.value = track.languageCode;
+      option.textContent = track.languageName + (track.isGenerated ? " (auto)" : "");
+      return option;
+    }));
     if (previous && Array.from(select.options).some((o) => o.value === previous)) {
       select.value = previous;
     }
@@ -362,7 +378,7 @@ async function run(event) {
 
   const track = pickTrack(meta.tracks);
   if (!track) {
-    els.button.disabled = false;
+    setBusy(false);
     fail("This lookup came back with no caption track. Try it once more.");
     return;
   }
@@ -372,7 +388,7 @@ async function run(event) {
   try {
     pot = await withTimeout(mintPot(meta.videoId), 20000, "the browser check took too long");
   } catch (err) {
-    els.button.disabled = false;
+    setBusy(false);
     fail(
       "YouTube asked this browser for a proof-of-origin token and it could not be produced (" +
         err.message +
@@ -388,7 +404,7 @@ async function run(event) {
     const response = await fetch(target);
     raw = await response.text();
   } catch (err) {
-    els.button.disabled = false;
+    setBusy(false);
     fail("YouTube refused the caption request from this page. Try again in a moment.");
     return;
   }
@@ -400,7 +416,7 @@ async function run(event) {
     segments = [];
   }
   if (!segments.length) {
-    els.button.disabled = false;
+    setBusy(false);
     fail(
       "This video has a caption track, but YouTube sent back nothing for it. That happens when the captions were switched off after publishing, when auto captions have not been generated yet, or when the track is empty."
     );
@@ -411,7 +427,7 @@ async function run(event) {
 }
 
 function finish(meta, track) {
-  els.button.disabled = false;
+  setBusy(false);
   hide(els.status);
   const bits = [];
   if (meta.title) bits.push(meta.title);
@@ -425,13 +441,14 @@ function finish(meta, track) {
 }
 
 els.form.addEventListener("submit", run);
-
-els.tsToggle.addEventListener("click", () => {
-  state.mode = "timestamps";
-  els.tsToggle.classList.add("active");
-  els.plainToggle.classList.remove("active");
-  render();
+$("langSelect")?.addEventListener("change", () => {
+  if (busy) return;
+  clearResult();
+  hide(els.status);
+  hide(els.error);
 });
+
+els.tsToggle.addEventListener("click", setTimestampMode);
 els.plainToggle.addEventListener("click", () => {
   state.mode = "plain";
   els.plainToggle.classList.add("active");

@@ -14,6 +14,14 @@ Other transcript tools: [Instagram Transcript](https://instascript.app/) · [You
 
 Paste a public YouTube link above and press **Download Transcript**. youtube.com, youtu.be and /shorts/ links all work. You get a .txt and a .srt file, both built in your own browser and saved to your device.
 
+## Search the current caption track
+
+Use **Find in this transcript** to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.
+
+**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
+
+Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.
+
 ## How this download works
 
 **It reads the caption track the video already has and writes it to a file — it never listens to the audio and never re-writes the words from scratch.** Nothing has to play through, which is why the file is ready in seconds.
@@ -73,7 +81,7 @@ The time column is the whole trip from pressing the button to the transcript app
 
 **Can I download a YouTube transcript on my phone?** Yes. Both download buttons work in a mobile browser. On Android the file lands in Downloads; on iPhone it goes to Files.
 
-**Is the transcript uploaded anywhere?** No. The file is built in your browser and saved to your device. See the [privacy policy](https://instascript.app/privacy).
+**Is the transcript uploaded anywhere?** The exported file is built in your browser and saved to your device without being uploaded. The lookup server may fetch existing caption text and cache a successful response for one hour; your browser fetches selected tracks directly when needed. See the [privacy policy](https://instascript.app/privacy).
 
 **Which caption language do I get?** Whatever the video has. With more than one track a dropdown appears; pick, then press the button again to rebuild the file in that language.
 

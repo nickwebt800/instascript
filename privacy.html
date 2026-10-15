@@ -75,6 +75,8 @@
 
     <section class="content-card"><h2>Local review and abuse protection</h2><p>Local recording playback and subtitle edits remain in the browser. Opening Subtitle Editor passes the transcript and recording directly between same-origin tabs without uploading or saving a project. Abuse protection uses short-lived request counters keyed by a daily rotating IP digest, and browser lookup quota counters; it does not store raw IP addresses, submitted URLs, media or transcript text in these counters. Shared counters, when configured, expire after inactivity or at the end of the UTC day.</p></section>
     <section class="content-card"><h2>Prepared sample and transcript search</h2><p>The homepage sample requests public audio and prepared text from this site's host only after you choose <strong>Try a sample</strong>. It does not run speech recognition or request a speech model. Sample edits, exports and searches within your current transcript run in your browser tab. The application does not send these edits or search queries to a server or save them in persistent storage.</p></section>
+    <section class="content-card"><h2>YouTube caption search and source links</h2><p>YouTube caption searches also stay in the current tab. A source time link opens YouTube in a new tab and sends only the video ID and whole-second start time in that link, without the search query. No YouTube player is embedded in the result. Existing caption lookup and cache behavior are unchanged.</p></section>
+
 <footer class="footer" data-site-footer>
       <nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>

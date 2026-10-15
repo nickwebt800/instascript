@@ -135,9 +135,16 @@ match, select it for editing, or play its cue when a recording and start time
 are available. Search is literal, ASCII case-insensitive, and local to the
 current result; it does not span cue boundaries. Enter/Shift+Enter navigate,
 and Escape in the search box clears the query. Search does not change exports
-or persist queries. The separate YouTube caption tools do not have this search
-control. The speech library now loads only when real transcription starts.
+or persist queries. The speech library now loads only when real transcription starts.
 
 Run `node scripts/test-transcript-search.mjs` for matching and export-isolation
 boundaries. Browser verification is also required for focus, media playback,
 downloads, task isolation, and the actual recognition flow.
+
+## Search existing YouTube captions
+
+The two interactive pages, `/youtube-transcript` and `/youtube-transcript-download`, now search the current caption track with literal, ASCII case-insensitive matching inside each cue. Navigate occurrences, preview one safe highlighted match, or locate its read-only caption line. Query state survives Timestamps/Plain text changes and clears on a new lookup or caption-language change. Choose the form button again after selecting another language.
+
+Source time links open YouTube in a new tab at a whole-second start. They contain only the video ID and start time; no player is embedded and no search query is sent or saved. Search does not alter caption text, timing, Copy, TXT or SRT. Existing caption lookup and optional browser bot checks remain separate; no audio speech recognition is added.
+
+Run `node scripts/test-youtube-search.mjs` for source-link validation and raw-caption/export isolation, alongside the existing search/result checks. Browser regression must cover both pages, language changes, mode changes, lookup failures, navigation, keyboard operation and actual file downloads.
