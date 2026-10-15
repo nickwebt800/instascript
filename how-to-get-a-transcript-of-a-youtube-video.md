@@ -83,3 +83,7 @@ InstaScript is an independent personal project. It is not affiliated with, endor
 ## Search captions in InstaScript
 
 Use [YouTube Transcript](/youtube-transcript) or [YouTube Transcript Download](/youtube-transcript-download) to search a loaded caption track, move between matches, and locate its caption line. Source time links open YouTube in a new tab. Search is read-only and does not change TXT/SRT exports. This guide does not run a separate caption engine.
+
+## Save a Markdown note
+
+The linked YouTube transcript tools also offer local Markdown (.md) notes with a video title and source link. Use Timestamps for linked start times or Plain text to omit times. They export existing caption words, not an AI summary; this guide does not run a separate transcription engine.

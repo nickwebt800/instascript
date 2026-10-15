@@ -94,7 +94,7 @@ After transcription, replay the original recording and click a timestamp to seek
 
 ## Export your edited transcript
 
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
 
 ## Search your current transcript
 
@@ -107,3 +107,7 @@ moves back, and Escape in the search box clears the query.
 Search is literal, ignores ASCII letter case, and stays inside each cue in
 your current tab. Queries are not uploaded or saved. Search does not change
 cue timing or exports.
+
+## Export Markdown notes
+
+Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.

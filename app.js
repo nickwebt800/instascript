@@ -1,7 +1,8 @@
+import { transcriptMarkdown } from "./js/transcript-markdown.js?v=markdown-20261015a";
 import { createMediaReview } from "./js/media-review.js?v=p2-20261013";
 import { sendTranscriptToEditor } from "./js/transcript-transfer.js?v=p2-20261013";
 import { createTranscriptResult, hasTranscriptStartTimes, transcriptText, transcriptSubtitleError, transcriptSubtitles } from "./js/transcript-result.js?v=p0-export-20261014";
-import { createTranscriptDemo } from "./js/transcript-demo.js?v=demo-search-20261015b";
+import { createTranscriptDemo } from "./js/transcript-demo.js?v=markdown-20261015a";
 import { renderTranscriptCues, copyTranscriptText, downloadTranscriptFile } from "./js/transcript-view.js?v=demo-search-20261015b";
 import { createTranscriptSearch } from "./js/transcript-search.js?v=demo-search-20261015b";
 
@@ -56,6 +57,12 @@ const transcriptSection = $("transcriptSection");
 const transcriptOutput = $("transcriptOutput");
 const copyBtn = $("copyBtn");
 const downloadTxtBtn = $("downloadTxtBtn");
+const downloadMdBtn = document.createElement("button");
+downloadMdBtn.type = "button";
+downloadMdBtn.id = "downloadMdBtn";
+downloadMdBtn.className = "btn-ghost";
+downloadMdBtn.textContent = "Markdown";
+downloadTxtBtn?.after(downloadMdBtn);
 const downloadSrtBtn = $("downloadSrtBtn");
 const downloadVttBtn = $("downloadVttBtn");
 const transcribeAnotherBtn = $("transcribeAnotherBtn");
@@ -78,7 +85,7 @@ const timestampsToggle = document.createElement("input");
 timestampsToggle.type = "checkbox";
 timestampsToggle.id = "includeTextTimestamps";
 timestampsToggle.disabled = true;
-timestampLabel.append(timestampsToggle, "Include timestamps in TXT and Copy");
+timestampLabel.append(timestampsToggle, "Include timestamps in TXT, Markdown and Copy");
 const exportStatus = document.createElement("p");
 exportStatus.className = "transcript-export-status";
 exportStatus.id = "exportStatus";
@@ -640,7 +647,7 @@ function displayTranscript(result) {
 
 function updateExportState() {
   const text = transcriptText(transcript);
-  for (const button of [copyBtn, downloadTxtBtn]) if (button) button.disabled = !text;
+  for (const button of [copyBtn, downloadTxtBtn, downloadMdBtn]) if (button) button.disabled = !text;
   timestampsToggle.disabled = !text || !hasTranscriptStartTimes(transcript);
   if (timestampsToggle.disabled) timestampsToggle.checked = false;
   const error = transcriptSubtitleError(transcript);
@@ -651,8 +658,8 @@ function updateExportState() {
     button.setAttribute("aria-describedby", "exportStatus");
   }
   const message = error
-    ? "SRT, VTT and Subtitle Editor are unavailable: " + error + (text ? " Copy or download TXT instead; missing times are not estimated." : " Add transcript text to export.")
-    : "Copy, TXT, SRT, VTT and Subtitle Editor use your edits. The checkbox affects TXT and Copy only.";
+    ? "SRT, VTT and Subtitle Editor are unavailable: " + error + (text ? " Copy or download TXT / Markdown instead; missing times are not estimated." : " Add transcript text to export.")
+    : "Copy, TXT, Markdown, SRT, VTT and Subtitle Editor use your edits. The checkbox affects TXT, Markdown and Copy.";
   if (exportStatus.textContent !== message) exportStatus.textContent = message;
 }
 
@@ -680,6 +687,11 @@ copyBtn?.addEventListener("click", async () => {
 downloadTxtBtn?.addEventListener("click", () => {
   const text = transcriptText(transcript, timestampsToggle.checked);
   if (text) downloadTranscriptFile(text + "\n", "transcript.txt", "text/plain;charset=utf-8");
+});
+
+downloadMdBtn.addEventListener("click", () => {
+  const text = transcriptMarkdown(transcript, { timestamps: timestampsToggle.checked });
+  if (text) downloadTranscriptFile(text, "transcript.md", "text/markdown;charset=utf-8");
 });
 
 for (const [button, format] of [[downloadSrtBtn, "srt"], [downloadVttBtn, "vtt"]]) {

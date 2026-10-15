@@ -1,3 +1,4 @@
+import { youtubeTranscriptMarkdown } from "./transcript-markdown.js?v=markdown-20261015a";
 import { createYouTubeTranscriptView } from "./youtube-transcript-view.js?v=youtube-search-20261015a";
 
 // youtube-transcript-download page logic
@@ -28,6 +29,7 @@ const els = {
   trackRow: $("trackRow"),
   copy: $("copyBtn"),
   txt: $("downloadTxtBtn"),
+  md: $("downloadMdBtn"),
   srt: $("downloadSrtBtn"),
   tsToggle: $("tsToggle"),
   plainToggle: $("plainToggle"),
@@ -57,7 +59,7 @@ function clearResult() {
   hide(els.section);
   hide(els.meta);
   if (els.fileInfo) hide(els.fileInfo);
-  els.copy.disabled = els.txt.disabled = els.srt.disabled = true;
+  els.copy.disabled = els.txt.disabled = els.md.disabled = els.srt.disabled = true;
 }
 
 function setTimestampMode() {
@@ -99,7 +101,7 @@ function kb(bytes) {
 function render() {
   if (!state.segments.length) return;
   captionView.render(state.segments, state.videoId, state.mode);
-  els.copy.disabled = els.txt.disabled = els.srt.disabled = false;
+  els.copy.disabled = els.txt.disabled = els.md.disabled = els.srt.disabled = false;
   show(els.section);
   updateFileInfo();
 }
@@ -146,8 +148,8 @@ function updateFileInfo() {
   show(els.fileInfo);
 }
 
-function download(filename, content) {
-  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+function download(filename, content, mime = "text/plain;charset=utf-8") {
+  const blob = new Blob([content], { type: mime });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -472,6 +474,15 @@ els.copy.addEventListener("click", async () => {
 
 els.txt.addEventListener("click", () => {
   download(baseName() + ".txt", currentText());
+});
+
+els.md.addEventListener("click", () => {
+  const select = $("langSelect");
+  const text = youtubeTranscriptMarkdown(state.segments, {
+    title: state.title || "YouTube transcript", videoId: state.videoId,
+    timestamps: state.mode === "timestamps", language: select?.selectedOptions[0]?.textContent || "",
+  });
+  if (text) download(baseName() + ".md", text, "text/markdown;charset=utf-8");
 });
 
 els.srt.addEventListener("click", () => {

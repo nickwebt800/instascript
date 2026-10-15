@@ -20,7 +20,7 @@ We do not require an account or ask for your name, email address or phone number
 
 **Instagram:** the public post URL is sent to our extraction endpoint. It fetches the page and resolves playable media, using the fallbacks in section 3 when needed. The media proxy streams the file to your browser with a 100 MB transfer limit. Oversized transfers are rejected or interrupted. Its responses use `Cache-Control: no-store`; the application does not save the media to persistent storage. Audio decoding and speech recognition then happen in your browser. A written post description is not a speech transcript.
 
-**YouTube:** the link is sent to our caption lookup endpoint. The server queries YouTube, may use Cloudflare Browser Rendering, and may fetch existing caption text. Successful lookup responses, including caption URLs and any caption text returned by YouTube, may be cached by Cloudflare for up to one hour. When the browser fetches a selected caption track directly from YouTube, it may also contact Google services for a browser bot check. TXT and SRT exports are created locally. This workflow reads existing captions; it does not upload or transcribe video audio, and it does not create an account history.
+**YouTube:** the link is sent to our caption lookup endpoint. The server queries YouTube, may use Cloudflare Browser Rendering, and may fetch existing caption text. Successful lookup responses, including caption URLs and any caption text returned by YouTube, may be cached by Cloudflare for up to one hour. When the browser fetches a selected caption track directly from YouTube, it may also contact Google services for a browser bot check. TXT, Markdown and SRT exports are created locally. This workflow reads existing captions; it does not upload or transcribe video audio, and it does not create an account history.
 
 ### 3. Third-Party Services
 
@@ -67,3 +67,7 @@ current transcript run in your browser tab. The application does not send
 these edits or search queries to a server or save them in persistent storage.
 
 YouTube caption searches also stay in the current tab. A source time link opens YouTube in a new tab and sends only the video ID and whole-second start time in that link, without the search query. No YouTube player is embedded in the result. Existing caption lookup and cache behavior are unchanged.
+
+## Markdown note downloads
+
+Markdown notes are generated in the current browser tab and saved only when you choose the download. We do not send the note or its text to a server or save it as an account history. YouTube notes include a canonical source link and may include linked timestamps; following those links contacts YouTube. Local-recording notes use a generic title and do not include the original filename or submitted Instagram URL.

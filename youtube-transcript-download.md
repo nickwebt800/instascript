@@ -18,7 +18,7 @@ Paste a public YouTube link above and press **Download Transcript**. youtube.com
 
 Use **Find in this transcript** to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.
 
-**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
+**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, Markdown, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
 
 Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.
 
@@ -26,7 +26,7 @@ Search runs in your current tab without sending or saving the query. Opening a s
 
 **It reads the caption track the video already has and writes it to a file — it never listens to the audio and never re-writes the words from scratch.** Nothing has to play through, which is why the file is ready in seconds.
 
-This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.
+This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT, Markdown and SRT exports are created in your browser.
 
 YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result. An extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists.
 
@@ -47,7 +47,7 @@ One gap this page fills: if a line arrives with no duration, the file gives it t
 
 ## One caption line, one line in the file
 
-**The files are line-by-line, not grouped into paragraphs.** Each caption line becomes one line in the TXT and one cue in the SRT. Nothing is merged, no sentence is split across cues. The 21:03 talk came back as 428 lines, and the SRT grew to 1,712 lines because every cue carries a number and a time line as well as the words.
+**TXT and SRT are line-by-line, not grouped into paragraphs.** Each caption line becomes one line in the TXT and one cue in the SRT. Nothing is merged, no sentence is split across cues. The 21:03 talk came back as 428 lines, and the SRT grew to 1,712 lines because every cue carries a number and a time line as well as the words.
 
 ## What a long video's file looks like
 
@@ -79,7 +79,7 @@ The time column is the whole trip from pressing the button to the transcript app
 
 ## FAQ
 
-**Can I download a YouTube transcript on my phone?** Yes. Both download buttons work in a mobile browser. On Android the file lands in Downloads; on iPhone it goes to Files.
+**Can I download a YouTube transcript on my phone?** Yes. The download buttons work in a mobile browser. On Android the file lands in Downloads; on iPhone it goes to Files.
 
 **Is the transcript uploaded anywhere?** The exported file is built in your browser and saved to your device without being uploaded. The lookup server may fetch existing caption text and cache a successful response for one hour; your browser fetches selected tracks directly when needed. See the [privacy policy](https://instascript.app/privacy).
 
@@ -96,3 +96,7 @@ The time column is the whole trip from pressing the button to the transcript app
 ---
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.
+
+## Export Markdown notes
+
+Choose Markdown to save the current caption track as a .md note with the video title, canonical YouTube source link, caption language and one paragraph per caption line. Timestamps includes available start times linked to whole-second YouTube positions; Plain text omits those times while keeping the title and source. Search queries and highlight markup are not added to the note. The file is created locally; no audio transcription or AI summary is generated. Opening a source link contacts YouTube.

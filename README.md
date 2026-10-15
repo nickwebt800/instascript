@@ -116,7 +116,7 @@ Without a `REQUEST_GUARD` binding, counters are local to each runtime isolate an
 
 ## Transcript exports
 
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
 
 Run `node scripts/test-transcript-result.mjs` to check edited-text consistency and subtitle timing boundaries without downloading a speech model. These checks do not measure recognition quality.
 
@@ -148,3 +148,9 @@ The two interactive pages, `/youtube-transcript` and `/youtube-transcript-downlo
 Source time links open YouTube in a new tab at a whole-second start. They contain only the video ID and start time; no player is embedded and no search query is sent or saved. Search does not alter caption text, timing, Copy, TXT or SRT. Existing caption lookup and optional browser bot checks remain separate; no audio speech recognition is added.
 
 Run `node scripts/test-youtube-search.mjs` for source-link validation and raw-caption/export isolation, alongside the existing search/result checks. Browser regression must cover both pages, language changes, mode changes, lookup failures, navigation, keyboard operation and actual file downloads.
+
+## Markdown notes
+
+The shared transcript result, homepage prepared sample, and both interactive YouTube caption pages offer Markdown (.md) downloads. The serializer uses edited cue text (or untimed fallback), escapes Markdown punctuation and HTML-like text, skips empty cues, and adds only valid available start times. Shared results and the prepared sample use the timestamp checkbox. YouTube exports follow Timestamps / Plain text mode and include the video title, validated canonical source URL and selected caption language; timed links use whole seconds. Local-recording notes use a generic title without filenames or submitted URLs. Exporting sends no request and creates no history or AI summary. TXT/SRT/VTT rules remain unchanged.
+
+Run `node scripts/test-transcript-markdown.mjs` with the existing result and search checks, then verify browser downloads and edited-text, display-mode, language-reset and mobile behavior.

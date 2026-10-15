@@ -1,3 +1,4 @@
+import { transcriptMarkdown } from "./transcript-markdown.js?v=markdown-20261015a";
 import { createMediaReview } from "./media-review.js?v=p2-20261013";
 import { createTranscriptResult, transcriptText, transcriptSubtitleError, transcriptSubtitles } from "./transcript-result.js?v=p0-export-20261014";
 import { renderTranscriptCues, copyTranscriptText, downloadTranscriptFile } from "./transcript-view.js?v=demo-search-20261015b";
@@ -7,18 +8,18 @@ export function createTranscriptDemo(root) {
   const get = name => root.querySelector('[data-demo="' + name + '"]');
   const open = get("open"), panel = get("panel"), output = get("output"), status = get("status");
   const timestamps = get("timestamps"), reset = get("reset"), retryAudio = get("audio-retry");
-  const buttons = ["copy", "txt", "srt", "vtt"].map(get);
+  const buttons = ["copy", "txt", "md", "srt", "vtt"].map(get);
   const media = createMediaReview(get("player"), message => { status.textContent = message; });
   let source = null, result = null, audio = null, loading = false, busy = false;
   let controller = null, generation = 0;
 
   function update() {
     const text = transcriptText(result), error = transcriptSubtitleError(result);
-    buttons.forEach((button, index) => { button.disabled = index < 2 ? !text : Boolean(error); });
+    buttons.forEach((button, index) => { button.disabled = index < 3 ? !text : Boolean(error); });
     timestamps.disabled = !text;
     get("export-status").textContent = result ? (error
       ? "Subtitle export unavailable: " + error + " You can still copy or download non-empty text."
-      : "Copy and downloads use your edits. Timestamps are optional for TXT and Copy.") : "";
+      : "Copy and downloads use your edits. Timestamps are optional for TXT, Markdown and Copy.") : "";
     open.disabled = loading || busy;
     open.hidden = !panel.hidden;
     open.textContent = loading ? "Loading sample..." : source ? "Show sample" : "Try a sample";
@@ -123,12 +124,13 @@ export function createTranscriptDemo(root) {
     catch { status.textContent = "Could not copy. Download TXT instead."; }
   });
   buttons.slice(1).forEach((button, index) => button.addEventListener("click", () => {
-    const format = ["txt", "srt", "vtt"][index];
-    if (format !== "txt" && transcriptSubtitleError(result)) { update(); return; }
-    const text = format === "txt" ? transcriptText(result, timestamps.checked) : transcriptSubtitles(result, format);
+    const format = ["txt", "md", "srt", "vtt"][index];
+    if (!["txt", "md"].includes(format) && transcriptSubtitleError(result)) { update(); return; }
+    const text = format === "md" ? transcriptMarkdown(result, { title: "Prepared transcript sample", timestamps: timestamps.checked })
+      : format === "txt" ? transcriptText(result, timestamps.checked) : transcriptSubtitles(result, format);
     if (!text) return;
     downloadTranscriptFile(text + (format === "txt" ? "\n" : ""), "instascript-sample." + format,
-      format === "vtt" ? "text/vtt;charset=utf-8" : "text/plain;charset=utf-8");
+      format === "md" ? "text/markdown;charset=utf-8" : format === "vtt" ? "text/vtt;charset=utf-8" : "text/plain;charset=utf-8");
     status.textContent = "Sample " + format.toUpperCase() + " download started.";
   }));
   window.addEventListener("pagehide", () => { ++generation; controller?.abort(); loading = false; update(); });

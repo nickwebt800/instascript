@@ -437,6 +437,7 @@ const KNOWN_FILES = new Set([
   "/tool-catalog.json",
   "/js/subtitles.js",
   "/js/transcript-result.js",
+  "/js/transcript-markdown.js",
   "/js/media-review.js",
   "/js/transcript-transfer.js",
   "/js/transcript-view.js",

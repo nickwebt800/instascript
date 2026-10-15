@@ -18,7 +18,7 @@ Paste a YouTube link above and press **Get Transcript**. Public videos that alre
 
 Use **Find in this transcript** to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.
 
-**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
+**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, Markdown, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
 
 Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.
 
@@ -26,7 +26,7 @@ Search runs in your current tab without sending or saving the query. Opening a s
 
 **It reads the caption track the video already has on YouTube — it does not listen to the audio and does not re-write it from scratch.** That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.
 
-This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser.
+This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT, Markdown and SRT exports are created in your browser.
 
 YouTube now asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. The practical consequence: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download. When that happens the page tells you instead of guessing.
 
@@ -102,3 +102,7 @@ Three reasons, in order of likelihood: an extension or strict privacy setting bl
 There is no account history. Successful caption lookup responses may be cached for one hour; exports are created in your browser. See the [privacy policy](https://instascript.app/privacy).
 
 InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.
+
+## Export Markdown notes
+
+Choose Markdown to save the current caption track as a .md note with the video title, canonical YouTube source link, caption language and one paragraph per caption line. Timestamps includes available start times linked to whole-second YouTube positions; Plain text omits those times while keeping the title and source. Search queries and highlight markup are not added to the note. The file is created locally; no audio transcription or AI summary is generated. Opening a source link contacts YouTube.
