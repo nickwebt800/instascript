@@ -517,6 +517,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/mp3-to-text">MP3 to Text</a></li>
   <li><a href="/m4a-to-text">M4A to Text</a></li>
   <li><a href="/wav-to-text">WAV to Text</a></li>
+  <li><a href="/voice-notes-to-text">Voice Notes to Text Review Guide</a></li>
   <li><a href="/voicemail-transcription">Voicemail Transcription</a></li>
   <li><a href="/zoom-transcript">Zoom Transcript</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>

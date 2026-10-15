@@ -56,7 +56,7 @@
       "home": false,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-14",
+        "lastmod": "2026-10-15",
         "changefreq": "weekly",
         "priority": "1.0"
       }
@@ -814,6 +814,35 @@
         "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
+      }
+    },
+    {
+      "title": "Voice Notes to Text",
+      "url": "https://instascript.app/voice-notes-to-text",
+      "summary": "A guide to checking spoken corrections, decisions and dependencies before manually organizing a voice note into tasks.",
+      "accepts": [],
+      "limits": [
+        "guide using the existing Voice Memo tool",
+        "English speech only in the linked transcription tool",
+        "no automatic summary, task extraction, recording or speaker labels"
+      ],
+      "keywords": [
+        "voice notes to text",
+        "voice note review",
+        "spoken decisions",
+        "manual task notes"
+      ],
+      "path": "/voice-notes-to-text",
+      "label": "Voice Notes to Text",
+      "html": "voice-notes-to-text.html",
+      "markdown": "voice-notes-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-15",
+        "changefreq": "monthly",
+        "priority": "0.8"
       }
     },
     {

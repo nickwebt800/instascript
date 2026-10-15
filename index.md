@@ -62,6 +62,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [M4A to Text](https://instascript.app/m4a-to-text) — Transcribe one local M4A recording into timestamped text, then download TXT, SRT or VTT.
 - [WAV to Text](https://instascript.app/wav-to-text) — Transcribe one local WAV recording into timestamped text, TXT, SRT or VTT in the browser.
 - [Voice Memo to Text](https://instascript.app/voice-memo-to-text) — Turn one local voice memo into timestamped text, TXT, SRT or VTT in the browser.
+- [Voice Notes to Text](https://instascript.app/voice-notes-to-text) — A guide to checking spoken corrections, decisions and dependencies before manually organizing a voice note into tasks.
 - [Voicemail Transcription](https://instascript.app/voicemail-transcription) — Turn one permitted local voicemail recording into timestamped English text, TXT, SRT or VTT in the browser.
 - [Podcast Transcript](https://instascript.app/podcast-transcript) — Turn a local podcast episode into timestamped text, TXT, SRT or VTT in the browser.
 - [MP4 to Text](https://instascript.app/mp4-to-text) — Transcribe the spoken audio in one local MP4 and export timestamped TXT, SRT or VTT in the browser.
