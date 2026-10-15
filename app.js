@@ -1,10 +1,19 @@
-import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
 import { createMediaReview } from "./js/media-review.js?v=p2-20261013";
 import { sendTranscriptToEditor } from "./js/transcript-transfer.js?v=p2-20261013";
 import { createTranscriptResult, hasTranscriptStartTimes, transcriptText, transcriptSubtitleError, transcriptSubtitles } from "./js/transcript-result.js?v=p0-export-20261014";
+import { createTranscriptDemo } from "./js/transcript-demo.js?v=demo-search-20261015b";
+import { renderTranscriptCues, copyTranscriptText, downloadTranscriptFile } from "./js/transcript-view.js?v=demo-search-20261015b";
+import { createTranscriptSearch } from "./js/transcript-search.js?v=demo-search-20261015b";
 
 // ── Config ──
-env.allowLocalModels = false;
+// The prepared sample and result controls do not depend on the remote ASR library.
+let speechLibrary = null;
+async function getSpeechPipeline() {
+  if (!speechLibrary) speechLibrary = import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0")
+    .then(library => { library.env.allowLocalModels = false; return library.pipeline; })
+    .catch(error => { speechLibrary = null; throw error; });
+  return speechLibrary;
+}
 const MODEL_ID = "onnx-community/whisper-tiny.en";
 // The multilingual checkpoint is used only to identify the language token.
 // English transcription continues to use the smaller English-only checkpoint above.
@@ -59,6 +68,7 @@ let transcript = null;
 let activeTask = null;
 let lastJob = null;
 let reviewMedia = null;
+const sampleDemo = createTranscriptDemo($("transcriptDemo"));
 
 const exportOptions = document.createElement("div");
 exportOptions.className = "transcript-export-options";
@@ -93,6 +103,7 @@ editorBtn.textContent = "Open in Subtitle Editor";
 reviewPanel.append(reviewPlayer, reviewHint, editorBtn, reviewStatus);
 transcriptSection.insertBefore(reviewPanel, transcriptOutput);
 const mediaReview = createMediaReview(reviewPlayer, message => { reviewStatus.textContent = message; });
+const resultSearch = createTranscriptSearch(transcriptSection, transcriptOutput, mediaReview);
 editorBtn.addEventListener("click", () => {
   if (transcriptSubtitleError(transcript)) return;
   sendTranscriptToEditor(transcript.cues, reviewMedia, message => { reviewStatus.textContent = message; });
@@ -117,6 +128,7 @@ retryBtn.addEventListener("click", () => {
 });
 
 function setTaskControls(busy) {
+  sampleDemo.setBusy(busy);
   [transcribeBtn, urlBtn, fileInput, urlInput, transcribeAnotherBtn, pasteAnotherBtn, ...tabs].forEach((control) => {
     if (control) control.disabled = busy;
   });
@@ -431,6 +443,8 @@ async function loadModel() {
   showProcessing("Loading AI model (first time only)...");
   progressBar.classList.remove("hidden");
   progressFill.style.width = "0%";
+  const pipeline = await getSpeechPipeline();
+  checkTask();
   transcriber = await pipeline("automatic-speech-recognition", MODEL_ID, {
     progress_callback: (data) => {
       if (activeTask?.cancelled) return;
@@ -514,6 +528,8 @@ async function loadLanguageDetector() {
   showProcessing("Loading language detector (first time only)...");
   progressBar.classList.remove("hidden");
   progressFill.style.width = "0%";
+  const pipeline = await getSpeechPipeline();
+  checkTask();
   languageDetector = await pipeline(
     "automatic-speech-recognition",
     LANGUAGE_MODEL_ID,
@@ -612,39 +628,11 @@ function displayTranscript(result) {
   reviewStatus.textContent = "";
   updateExportState();
 
-  if (transcript.cues.length) {
-    transcript.cues.forEach((cue) => {
-      const p = document.createElement("div");
-      p.className = "transcript-cue";
-      const ts = document.createElement("button");
-      ts.type = "button";
-      ts.className = "timestamp";
-      const hasStart = Number.isFinite(cue.start) && cue.start >= 0;
-      ts.textContent = hasStart ? formatTime(cue.start) : "Untimed";
-      ts.disabled = !mediaReview.player || !hasStart;
-      ts.setAttribute("aria-label", hasStart ? "Play recording from " + formatTime(cue.start) : "No start timestamp available");
-      ts.addEventListener("click", () => mediaReview.seek(cue.start));
-      p.appendChild(ts);
-      const text = document.createElement("textarea");
-      text.className = "transcript-cue-text";
-      text.rows = 2;
-      text.value = cue.text.trim();
-      text.setAttribute("aria-label", hasStart ? "Transcript text at " + formatTime(cue.start) : "Untimed transcript text");
-      text.addEventListener("input", () => {
-        cue.text = text.value;
-        updateExportState();
-      });
-      p.appendChild(text);
-      transcriptOutput.appendChild(p);
-    });
-  } else {
-    const p = document.createElement("textarea");
-    p.className = "transcript-cue-text";
-    p.value = transcript.text;
-    p.setAttribute("aria-label", "Transcript text");
-    p.addEventListener("input", () => { transcript.text = p.value; updateExportState(); });
-    transcriptOutput.appendChild(p);
-  }
+  const rows = renderTranscriptCues(transcriptOutput, transcript, mediaReview, event => {
+    updateExportState();
+    if (!event.isComposing) resultSearch.refresh();
+  });
+  resultSearch.set(transcript, rows);
 
   processing.classList.add("hidden");
   transcriptSection.classList.remove("hidden");
@@ -673,7 +661,7 @@ copyBtn?.addEventListener("click", async () => {
   const text = transcriptText(transcript, timestampsToggle.checked);
   if (!text) return;
   try {
-    await copyToClipboard(text);
+    await copyTranscriptText(text);
     copyBtn.classList.add("copied");
     copyBtn.querySelector("svg + *")?.remove();
     const old = copyBtn.innerHTML;
@@ -688,61 +676,18 @@ copyBtn?.addEventListener("click", async () => {
   }
 });
 
-async function copyToClipboard(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return;
-    } catch {
-      // Fall back for embedded or restricted browser contexts.
-    }
-  }
-
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "");
-  textarea.style.position = "fixed";
-  textarea.style.opacity = "0";
-  document.body.appendChild(textarea);
-  textarea.select();
-  const copied = document.execCommand("copy");
-  textarea.remove();
-  if (!copied) throw new Error("Clipboard unavailable");
-}
-
 // ── Download TXT ──
 downloadTxtBtn?.addEventListener("click", () => {
   const text = transcriptText(transcript, timestampsToggle.checked);
-  if (text) downloadFile(text + "\n", "transcript.txt", "text/plain;charset=utf-8");
+  if (text) downloadTranscriptFile(text + "\n", "transcript.txt", "text/plain;charset=utf-8");
 });
 
 for (const [button, format] of [[downloadSrtBtn, "srt"], [downloadVttBtn, "vtt"]]) {
   button?.addEventListener("click", () => {
     if (transcriptSubtitleError(transcript)) { updateExportState(); return; }
-    downloadFile(transcriptSubtitles(transcript, format), "transcript." + format,
+    downloadTranscriptFile(transcriptSubtitles(transcript, format), "transcript." + format,
       format === "vtt" ? "text/vtt;charset=utf-8" : "text/plain;charset=utf-8");
   });
-}
-
-function pad(n, len) {
-  return String(n).padStart(len, "0");
-}
-
-function formatTime(sec) {
-  if (sec == null) return "";
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60);
-  return `[${pad(m, 2)}:${pad(s, 2)}]`;
-}
-
-function downloadFile(content, filename, mime) {
-  const blob = new Blob([content], { type: mime });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(url);
 }
 
 // ── UI helpers ──
@@ -778,6 +723,7 @@ function hideError() {
 }
 
 function hideTranscript() {
+  resultSearch.set(null);
   mediaReview.clear();
   reviewMedia = null;
   transcript = null;

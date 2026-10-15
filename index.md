@@ -8,6 +8,20 @@ Turn Instagram Reels and any video or audio file into text
 
 Paste a public Instagram Reel or video post URL
 
+## Try a prepared sample
+
+Choose **Try a sample** on the [homepage](https://instascript.app/#transcriptDemo)
+to load an 11-second public-domain recording with prepared text and draft
+phrase timings. Replay a timestamp, edit the words, copy, or download TXT,
+SRT or VTT. Include timestamps in TXT and Copy if needed. **Reset sample**
+restores the original sample; **Close sample** discards its edits. Your own
+selected file, URL, real result and retry state stay separate.
+
+This demonstration does not run speech recognition or download a model, and
+does not demonstrate recognition accuracy or processing speed. The public
+sample files load from this site on request; edits and exports stay local.
+See [recording source and rights](https://instascript.app/assets/demo/SOURCE.md).
+
 ## How long does a transcript take?
 
 These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
@@ -110,3 +124,16 @@ After transcription, replay the original recording and click a timestamp to seek
 ## Export your edited transcript
 
 In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+
+## Search your current transcript
+
+After transcription, use **Find in this transcript** to search your latest
+edited words. Previous and Next navigate occurrences; a preview highlights
+one match. Choose **Edit this match** to select its text, or play its cue when
+a recording and start time are available. Enter moves forward, Shift+Enter
+moves back, and Escape in the search box clears the query.
+
+Search is literal, ignores ASCII letter case, and stays inside each cue in
+your current tab. Queries are not uploaded or saved. Search does not change
+cue timing or exports. The separate YouTube caption tools do not have this
+search control.

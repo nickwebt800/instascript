@@ -95,3 +95,16 @@ After transcription, replay the original recording and click a timestamp to seek
 ## Export your edited transcript
 
 In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+
+## Search your current transcript
+
+After transcription, use **Find in this transcript** to search your latest
+edited words. Previous and Next navigate occurrences; a preview highlights
+one match. Choose **Edit this match** to select its text, or play its cue when
+a recording and start time are available. Enter moves forward, Shift+Enter
+moves back, and Escape in the search box clears the query.
+
+Search is literal, ignores ASCII letter case, and stays inside each cue in
+your current tab. Queries are not uploaded or saved. Search does not change
+cue timing or exports. The separate YouTube caption tools do not have this
+search control.

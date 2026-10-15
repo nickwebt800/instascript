@@ -437,6 +437,12 @@ const KNOWN_FILES = new Set([
   "/js/transcript-result.js",
   "/js/media-review.js",
   "/js/transcript-transfer.js",
+  "/js/transcript-view.js",
+  "/js/transcript-demo.js",
+  "/js/transcript-search.js",
+  "/assets/demo/kennedy-1961.wav",
+  "/assets/demo/kennedy-1961.json",
+  "/assets/demo/SOURCE.md",
 ]);
 
 // Endpoints that are produced by Functions rather than by a file on disk.

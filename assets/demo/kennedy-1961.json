@@ -1,0 +1,8 @@
+{
+  "text": "And so, my fellow Americans: ask not what your country can do for you; ask what you can do for your country.",
+  "chunks": [
+    { "timestamp": [0, 3.6], "text": "And so, my fellow Americans:" },
+    { "timestamp": [3.6, 7.5], "text": "ask not what your country can do for you;" },
+    { "timestamp": [7.5, 11], "text": "ask what you can do for your country." }
+  ]
+}

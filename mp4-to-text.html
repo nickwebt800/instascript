@@ -19,7 +19,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="MP4 to Text | InstaScript">
   <meta name="twitter:description" content="Transcribe the spoken audio in an MP4 locally in your browser.">
-  <link rel="stylesheet" href="/style.css?v=css-fd142cf69415">
+  <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
 </head>
 <body class="upload-only">
   <div class="container">
@@ -83,6 +83,7 @@
     <section class="content-card"><h2>Cancel and retry</h2><p>Only one transcription task can run at a time. Cancel processing discards its result; a model download or local audio/model operation already in progress may need to finish first. After a failure or cancellation, Try the same input again reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded. Model loading and speech recognition do not have a fixed timeout.</p></section>
 <section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
 <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+    <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports. The separate YouTube caption tools do not have this search control.</p></section>
 <footer class="footer" data-site-footer><nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -129,7 +130,7 @@
 <a href="/contact">Contact</a></div>
 </nav><p>Runs locally in your browser for uploaded files &mdash; no signup.</p></footer>
   </div>
-  <script type="module" src="app.js?v=p0-export-20261014"></script>
+  <script type="module" src="app.js?v=app-964cc3cec8e2"></script>
   <script src="/js/webmcp.js" defer></script><script src="/footer.js?v=p2-20261013" defer></script>
 </body>
 </html>

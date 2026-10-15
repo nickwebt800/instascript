@@ -119,3 +119,25 @@ Without a `REQUEST_GUARD` binding, counters are local to each runtime isolate an
 In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
 
 Run `node scripts/test-transcript-result.mjs` to check edited-text consistency and subtitle timing boundaries without downloading a speech model. These checks do not measure recognition quality.
+
+## Try a prepared sample and search a result
+
+On the homepage, **Try a sample** loads an 11-second public-domain recording
+and prepared text with draft phrase timings. Replay, edit, reset, copy, or
+download TXT/SRT/VTT without an account or a speech-model download. Sample
+edits are separate from your selected input, real transcript, and retry state.
+See [recording provenance and rights](assets/demo/SOURCE.md). The sample is not
+a live recognition result, accuracy claim, or speed measurement.
+
+Pages using `app.js` offer **Find in this transcript** after transcription.
+Search the latest edited words, navigate occurrences, preview a highlighted
+match, select it for editing, or play its cue when a recording and start time
+are available. Search is literal, ASCII case-insensitive, and local to the
+current result; it does not span cue boundaries. Enter/Shift+Enter navigate,
+and Escape in the search box clears the query. Search does not change exports
+or persist queries. The separate YouTube caption tools do not have this search
+control. The speech library now loads only when real transcription starts.
+
+Run `node scripts/test-transcript-search.mjs` for matching and export-isolation
+boundaries. Browser verification is also required for focus, media playback,
+downloads, task isolation, and the actual recognition flow.

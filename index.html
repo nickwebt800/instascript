@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="InstaScript — Free Instagram Reel Transcript Generator">
   <meta name="twitter:description" content="Paste a public Instagram Reel or upload a video to get timestamped English text. Free, no account, TXT, SRT and VTT export.">
-  <link rel="stylesheet" href="/style.css?v=css-fd142cf69415">
+  <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
 </head>
 <body class="home-page">
   <div class="container">
@@ -98,16 +98,46 @@
       </div>
     </section>
 
-    <section class="sample-card" aria-labelledby="sample-title">
+    <section id="transcriptDemo" class="sample-card" aria-labelledby="sample-title">
       <div>
         <p class="sample-kicker">See the result before you start</p>
-        <h2 id="sample-title">Timestamped text you can copy or export</h2>
+        <h2 id="sample-title">Listen, edit, and take the text with you</h2>
       </div>
       <div class="sample-output" aria-label="Example transcript">
-        <p><span class="timestamp">[00:00]</span>Welcome back to the channel.</p>
-        <p><span class="timestamp">[00:04]</span>Today we are looking at three simple ideas.</p>
+        <p><span class="timestamp">[00:00]</span>And so, my fellow Americans:</p>
+        <p><span class="timestamp">[00:03]</span>ask not what your country can do for you;</p>
       </div>
-      <p class="sample-note">Copy your transcript or download TXT. SRT and VTT require complete valid cue timing.</p>
+      <p class="sample-note">Try an 11-second public-domain recording with prepared text and draft timings. The sample does not run speech recognition or download a model.</p>
+      <div class="sample-start">
+        <button type="button" class="btn-ghost" data-demo="open" aria-expanded="false" aria-controls="samplePanel">Try a sample</button>
+        <a href="#home-title" class="sample-own">Transcribe your own recording</a>
+      </div>
+      <p class="sample-note" data-demo="busy" role="status"></p>
+      <p class="sample-note" data-demo="status" role="status"></p>
+      <div id="samplePanel" class="sample-panel" data-demo="panel" hidden>
+        <div class="sample-toolbar">
+          <h3>Prepared sample</h3>
+          <div class="actions">
+            <button type="button" class="btn-ghost" data-demo="reset">Reset sample</button>
+            <button type="button" class="btn-ghost" data-demo="close">Close sample</button>
+          </div>
+        </div>
+        <p class="sample-disclosure">This text is prepared in advance. Edit it to try the controls; it is not a live recognition result. <a href="/assets/demo/SOURCE.md">Recording source and rights</a>.</p>
+        <div data-demo="player"></div>
+        <button type="button" class="btn-ghost" data-demo="audio-retry" hidden>Retry sample audio</button>
+        <div class="sample-toolbar">
+          <label class="transcript-timestamp-option"><input type="checkbox" data-demo="timestamps">Include timestamps in TXT and Copy</label>
+          <div class="actions">
+            <button type="button" class="btn-ghost" data-demo="copy">Copy sample</button>
+            <button type="button" class="btn-ghost" data-demo="txt">Sample TXT</button>
+            <button type="button" class="btn-ghost" data-demo="srt">Sample SRT</button>
+            <button type="button" class="btn-ghost" data-demo="vtt">Sample VTT</button>
+          </div>
+        </div>
+        <p class="transcript-export-status" data-demo="export-status" role="status"></p>
+        <div class="transcript-output" data-demo="output"></div>
+      </div>
+      <noscript><p class="sample-note">Enable JavaScript to edit and export the prepared sample.</p></noscript>
     </section>
 
     <!-- Processing -->
@@ -233,6 +263,7 @@
 
     <section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
 <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+    <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports. The separate YouTube caption tools do not have this search control.</p></section>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav">
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -324,7 +355,7 @@
     ]
   }
   </script>
-  <script type="module" src="app.js?v=p0-export-20261014"></script>
+  <script type="module" src="app.js?v=app-964cc3cec8e2"></script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=p2-20261013" defer></script>
 </body>

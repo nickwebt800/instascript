@@ -8,7 +8,7 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: October 13, 2026
+Last updated: October 15, 2026
 
 ### 1. Data We Collect
 
@@ -57,3 +57,11 @@ If you have questions about this Privacy Policy, or you want to ask what data we
 ## Local review and abuse protection
 
 Local recording playback and subtitle edits remain in the browser. Opening Subtitle Editor passes the transcript and recording directly between same-origin tabs without uploading or saving a project. Abuse protection uses short-lived request counters keyed by a daily rotating IP digest, and browser lookup quota counters; it does not store raw IP addresses, submitted URLs, media or transcript text in these counters. Shared counters, when configured, expire after inactivity or at the end of the UTC day.
+
+## Prepared sample and transcript search
+
+The homepage sample requests public audio and prepared text from this site's
+host only after you choose **Try a sample**. It does not run speech recognition
+or request a speech model. Sample edits, exports and searches within your
+current transcript run in your browser tab. The application does not send
+these edits or search queries to a server or save them in persistent storage.
