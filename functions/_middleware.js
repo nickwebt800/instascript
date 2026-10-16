@@ -518,6 +518,7 @@ const NOT_FOUND_HTML = `<!doctype html>
 <ul>
   <li><a href="/">Instagram Transcript</a></li>
   <li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li>
+  <li><a href="/subtitle-downloader">Subtitle Downloader Guide</a></li>
   <li><a href="/youtube-transcript">YouTube Transcript</a></li>
   <li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a></li>
   <li><a href="/twitter-video-transcript">Twitter Video Transcript</a></li>

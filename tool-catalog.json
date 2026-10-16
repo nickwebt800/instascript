@@ -56,7 +56,7 @@
       "home": false,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-10-15",
+        "lastmod": "2026-10-16",
         "changefreq": "weekly",
         "priority": "1.0"
       }
@@ -1401,6 +1401,37 @@
         "lastmod": "2026-10-14",
         "changefreq": "monthly",
         "priority": "0.9"
+      }
+    },
+    {
+      "title": "Subtitle Downloader",
+      "url": "https://instascript.app/subtitle-downloader",
+      "summary": "Choose an existing YouTube caption track, download SRT or TXT, and check the file before using it.",
+      "accepts": [],
+      "limits": [
+        "guide with links to existing tools",
+        "existing captions only; does not generate missing captions",
+        "no movie subtitle database or private streaming importer",
+        "SRT duration falls back to two seconds if absent in the source"
+      ],
+      "keywords": [
+        "subtitle downloader",
+        "subtitle track",
+        "download",
+        "SRT",
+        "TXT"
+      ],
+      "path": "/subtitle-downloader",
+      "label": "Subtitle Downloader",
+      "html": "subtitle-downloader.html",
+      "markdown": "subtitle-downloader.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-16",
+        "changefreq": "monthly",
+        "priority": "0.8"
       }
     }
   ]

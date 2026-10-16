@@ -102,6 +102,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [SRT to Text Converter](https://instascript.app/srt-to-text) — Remove SRT or VTT cue numbers and timecodes to get clean plain text in the browser.
 - [Subtitle Translator](https://instascript.app/subtitle-translator) — Edit translated SRT or VTT cue text locally while preserving the original timing and export an SRT.
 - [SRT to VTT](https://instascript.app/srt-to-vtt) — Validate numbered SRT cues locally, export plain-text WebVTT, and check the web-player handoff.
+- [Subtitle Downloader](https://instascript.app/subtitle-downloader) — Choose an existing YouTube caption track, download SRT or TXT, and check the file before using it.
 
 ## Recommended
 
