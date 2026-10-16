@@ -1433,6 +1433,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Subtitle Converter",
+      "url": "https://instascript.app/subtitle-converter",
+      "summary": "Choose a local format conversion and check which text, timing and styling survive.",
+      "accepts": [],
+      "limits": [
+        "guide linking to existing converters",
+        "SRT/VTT/SBV/ASS/SSA/TXT support varies by linked tool",
+        "TXT timing is an estimated draft; no audio alignment",
+        "no automatic translation or embedded/image subtitle extraction"
+      ],
+      "keywords": [
+        "subtitle converter",
+        "srt converter",
+        "subtitle formats"
+      ],
+      "path": "/subtitle-converter",
+      "label": "Subtitle Converter",
+      "html": "subtitle-converter.html",
+      "markdown": "subtitle-converter.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-17",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

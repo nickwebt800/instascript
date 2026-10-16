@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subtitle Converter: Choose What to Keep | InstaScript</title>
+<meta name="description" content="Choose a local subtitle converter for SRT, VTT, ASS or TXT. Check which timing, text and styling survive before importing the converted file.">
+<link rel="canonical" href="https://instascript.app/subtitle-converter">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png">
+<meta name="theme-color" content="#f8f9fa">
+<meta property="og:type" content="article"><meta property="og:url" content="https://instascript.app/subtitle-converter">
+<meta property="og:title" content="Subtitle Converter: Choose What to Keep | InstaScript"><meta property="og:description" content="Choose a local subtitle converter for SRT, VTT, ASS or TXT. Check which timing, text and styling survive before importing the converted file.">
+<meta property="og:site_name" content="InstaScript"><meta property="og:image" content="https://instascript.app/assets/logo-512.png"><meta property="og:image:alt" content="InstaScript logo">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Subtitle Converter: Choose What to Keep | InstaScript"><meta name="twitter:description" content="Choose a local subtitle converter for SRT, VTT, ASS or TXT. Check which timing, text and styling survive before importing the converted file."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="stylesheet" href="/style.css?v=css-5b3e5e3e1671">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Subtitle Converter: Choose What to Keep","description":"Choose a local subtitle converter for SRT, VTT, ASS or TXT. Check which timing, text and styling survive before importing the converted file.","url":"https://instascript.app/subtitle-converter","inLanguage":"en","datePublished":"2026-10-17","author":{"@type":"Organization","name":"InstaScript"},"mainEntityOfPage":"https://instascript.app/subtitle-converter"}</script>
+</head><body><div class="container"><header class="header"><p class="brand"><a href="/">InstaScript</a></p><h1 class="page-h1">Subtitle Converter: Choose What to Keep</h1><nav class="page-nav" aria-label="Site navigation"><a href="/subtitle-editor">Subtitle Editor</a><a href="/srt-to-vtt">SRT to VTT</a><a href="/privacy">Privacy</a></nav></header>
+<main class="content-card reading">
+<p>To convert subtitles, choose the output your destination accepts: <a href="/vtt-to-srt">VTT to SRT</a> for a SubRip track, <a href="/srt-to-vtt">SRT to VTT</a> for a web player, or <a href="/srt-to-text">SRT/VTT to TXT</a> for reading. Open or paste your file in the linked tool, convert, review, and download locally.</p>
+<p>This <strong>subtitle converter</strong> guide helps you choose among InstaScript's existing tools. Conversion changes a file's representation; it does not fix speech errors, translate words, or synchronize subtitles to a different video.</p>
+<p><a class="btn-primary" style="display:inline-block;text-decoration:none;color:#fff" href="#conversion-routes">Choose your conversion</a></p>
+<section id="conversion-routes"><h2>Choose by source and destination</h2><p>Start with both file types. An SRT converter is useful only if its supported input and output match your next step. Keep your original before changing anything.</p>
+<ul><li><strong>VTT or SBV to SRT:</strong> use <a href="/vtt-to-srt">VTT to SRT</a>. Select SRT as the output and inspect the returned cue text and times.</li>
+<li><strong>SRT to VTT:</strong> use <a href="/srt-to-vtt">SRT to VTT</a>. It checks every numbered cue, removes source tags, and warns about adjacent overlaps. Local SRT files must be under 8 MB.</li>
+<li><strong>ASS or SSA to SRT:</strong> use <a href="/ass-to-srt">ASS to SRT</a>. Dialogue text and usable times become plain SRT cues; positioning, fonts and animation do not carry over.</li>
+<li><strong>SRT or VTT to TXT:</strong> use <a href="/srt-to-text">SRT to Text</a>. Timing, cue numbers and markup are removed. TXT cannot function as a timed subtitle track.</li>
+<li><strong>Untimed TXT to SRT or VTT:</strong> use <a href="/txt-to-srt">TXT to SRT</a>. Its generated timeline is an estimated draft to edit manually, not alignment to a recording.</li></ul>
+<p>These routes process subtitle text, without a speech-language restriction. They do not extract embedded subtitles from a video container or read image-based subtitle tracks. If you only need to change words or cue times, open <a href="/subtitle-editor">Subtitle Editor</a> instead.</p></section>
+<section data-original-review="true"><h2>Make a preservation checklist before converting</h2><p>Write down the parts you need to keep: dialogue, cue boundaries, line breaks, speaker labels and visual placement. Then mark which are essential to your use. This small checklist makes a conversion decision inspectable instead of treating a successful download as proof that everything survived.</p>
+<p><strong>For reading notes,</strong> dialogue and cue order may be enough. Losing timing can be intentional. A speaker's name written in the dialogue can remain useful, while a speaker identified only by a color may become impossible to distinguish after styling is removed.</p>
+<p><strong>For a subtitle track,</strong> keep start times, end times and meaningful line breaks as well as the words. Two captions can contain identical text yet behave differently if one stays visible through a pause. Compare boundaries against the original file before comparing the picture.</p>
+<p><strong>For styled captions,</strong> decide whether position carries meaning. An upper-screen label may identify a different speaker from dialogue at the bottom. Flattening both to plain cues may lose that relationship. Keep the styled source and use a destination that supports it if plain subtitles cannot express the distinction.</p></section>
+<section data-original-review="true"><h2>Worked example: the same words can lose their timing</h2><p>This invented example illustrates conversion choices. It is not taken from a video, a channel, or a measured transcription result.</p>
+<pre class="example">1
+00:00:01,250 --&gt; 00:00:03,000
+Keep the blue folder.
+
+2
+00:00:04,500 --&gt; 00:00:06,000
+Archive the spare copy.</pre>
+<p>A timed SRT-to-VTT conversion should represent the first boundary as <code>00:00:01.250 --&gt; 00:00:03.000</code>, with a WEBVTT header in the file. The punctuation changes; the intended start and end do not. Check the second cue too, rather than judging only the header or extension.</p>
+<p>A TXT export contains the two instructions without those ranges. Converting that TXT back to timed subtitles cannot recover the original 1.500-second pause between cues. A draft generator may assign a different schedule because the missing timing is no longer present in its input.</p>
+<p>For that reason, use the timed original when you need a different timed format. Keep TXT as a reading copy. If you have already edited the TXT, compare those word changes against the original cues in the editor instead of assuming a new draft timeline reproduces the old one.</p></section>
+<section data-original-review="true"><h2>Check one cue, then the whole file</h2><p>Choose a cue containing a number, a line break or a literal speaker label. Compare its source and output side by side. Check that the number has not changed, the line break still makes sense and the start and end match when timing is meant to survive. Then repeat at the beginning, middle and end.</p>
+<p>Next compare the cue counts and the final timestamp. A lower count can mean an empty or invalid cue was skipped. Some existing conversion routes keep usable cues rather than rejecting every malformed block. Review omitted material before accepting the result; the presence of output is not a complete validation certificate.</p>
+<p>Finally import the result into the destination player or editor and turn on its subtitle track. Check the same passages against playback. If all are displaced equally, investigate an offset; if displacement grows, investigate a mismatched source edit. A format change alone does not repair either problem.</p>
+<p>Keep three separate files when you make corrections: the original, the immediate conversion, and the reviewed export. That lets you locate whether a problem came from the source, the conversion, or a later edit, without relying on a browser tab as your only copy.</p></section>
+<section><h2>When to stop and use another workflow</h2><p>If your input contains only prose, choose the TXT timing draft route. If it contains audio or video rather than subtitle text, the separate <a href="/video-to-text">Video to Text</a> workflow recognizes browser-decodable English speech from local media up to 100 MB. It requires model loading and language checks.</p>
+<p>If the file uses a format outside the routes above, do not simply rename its extension. These tools do not offer every subtitle format or create missing words from an image. For translation, <a href="/subtitle-translator">Subtitle Translator</a> is a manual target-text editor; it does not automatically translate the file.</p></section>
+<section><h2>Local files and privacy</h2><p>Files opened in these subtitle converters and edits made in Subtitle Editor stay in your browser. Copy and download produce local output without uploading the subtitle contents. There is no account history or saved cloud project; download your work before closing the tab.</p>
+<p>Public Instagram and YouTube lookup are separate server-assisted workflows. Following a source link contacts its destination. See the <a href="/privacy">privacy policy</a> for those service boundaries.</p></section>
+<section><h2>Begin with the format you need</h2><p>Use the <a href="#conversion-routes">conversion routes above</a> to open the matching tool. For common web-player delivery, start with <a href="/srt-to-vtt">SRT to VTT</a>; for a plain reading copy, use <a href="/srt-to-text">SRT to Text</a>. Review the downloaded file in its intended destination before replacing your original.</p></section>
+</main><footer class="footer" data-site-footer><nav class="footer-nav">
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=p2-20261013" defer></script></body></html>
