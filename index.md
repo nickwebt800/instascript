@@ -1,12 +1,20 @@
-# InstaScript - Instagram Transcript Tool
+# Turn an Instagram Reel into text
 
 > Free Instagram transcript tool: turn Reels, video and audio files (MP4, MOV, WebM, MP3, WAV, M4A, OGG) into text. Paste-a-link takes public Instagram URLs.
 
 Canonical: <https://instascript.app/>
 
-Turn Instagram Reels and any video or audio file into text
+Paste a public Reel link or upload a recording to get English text you can edit and export. No account required.
 
-Paste a public Instagram Reel or video post URL
+## Create a transcript
+
+The homepage opens with **Paste Reel URL** selected. Enter a public Instagram Reel or video post URL and choose **Get my Reel transcript**, or switch to **Upload video or audio**, choose a local file, and select **Transcribe this file**.
+
+Speech recognition supports English only. Local files can be up to 100 MB: MP4, MOV, WebM, MP3, WAV, M4A and OGG, depending on your browser's decoding support. Local files are processed in your browser and are not uploaded. Public Instagram links use a server fetch and media proxy; speech recognition then runs in your browser. See the [privacy policy](https://instascript.app/privacy) for the full service and fallback details.
+
+The first transcription downloads language detection and speech models and may take longer. Cached model resources still require initialization when an instance is not in memory; there is no fixed completion time.
+
+Progress, errors with retry options, and your real transcript appear directly below the input. Review and edit the result, then copy or export TXT, Markdown, SRT or VTT. Subtitle exports require valid complete timing and non-empty cue text. The prepared sample below the tool is separate from your real result.
 
 ## Try a prepared sample
 

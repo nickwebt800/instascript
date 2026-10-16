@@ -254,6 +254,26 @@ tabs.forEach((tab) => {
   });
 });
 
+// Homepage tabs use a single Tab stop and arrow-key navigation.
+if (document.body.classList.contains("home-page")) {
+  const homeTabs = [...tabs];
+  const updateTabStops = () => homeTabs.forEach(tab => {
+    tab.tabIndex = tab.getAttribute("aria-selected") === "true" ? 0 : -1;
+  });
+  homeTabs.forEach((tab, index) => {
+    tab.addEventListener("click", updateTabStops);
+    tab.addEventListener("keydown", event => {
+      if (activeTask || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === "Home" ? 0 : event.key === "End" ? homeTabs.length - 1
+        : (index + (event.key === "ArrowRight" ? 1 : -1) + homeTabs.length) % homeTabs.length;
+      homeTabs[next].click();
+      homeTabs[next].focus();
+    });
+  });
+  updateTabStops();
+}
+
 // ── File upload: drag & drop ──
 if (dropZone && fileInput) {
   dropZone.addEventListener("click", () => { if (!activeTask) fileInput.click(); });
@@ -338,6 +358,8 @@ urlInput?.addEventListener("input", () => {
   if (!activeTask) {
     lastJob = null;
     hideError();
+    // A changed homepage URL must not appear to own the previous result.
+    if (transcript && document.body.classList.contains("home-page")) hideTranscript();
   }
 });
 
