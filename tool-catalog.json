@@ -1462,6 +1462,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Google Meet Transcript",
+      "url": "https://instascript.app/google-meet-transcript",
+      "summary": "Find existing Meet text or use a permitted saved recording, then check coverage and corrections.",
+      "accepts": [],
+      "limits": [
+        "guide linking to native Google instructions and existing local transcription tools",
+        "no live meeting bot or private Meet/Drive link importer",
+        "saved-recording speech recognition is English only; up to 100 MB; browser decoding required",
+        "no automatic speaker identification or meeting summaries"
+      ],
+      "keywords": [
+        "google meet transcript",
+        "meeting transcript",
+        "lecture transcription"
+      ],
+      "path": "/google-meet-transcript",
+      "label": "Google Meet Transcript",
+      "html": "google-meet-transcript.html",
+      "markdown": "google-meet-transcript.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-18",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

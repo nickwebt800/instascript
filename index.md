@@ -93,6 +93,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [TikTok Transcript](https://instascript.app/tiktok-transcript) — Read what is said in a TikTok video. Save the video, then upload the file; TikTok links are not fetched.
 - [Facebook Video Transcript](https://instascript.app/facebook-video-transcript) — Get the spoken words out of a Facebook video by uploading the saved file.
 - [Twitter Video Transcript](https://instascript.app/twitter-video-transcript) — Turn a permitted saved X video into spoken transcript text with timestamps, TXT, SRT and VTT export in the browser.
+- [Google Meet Transcript](https://instascript.app/google-meet-transcript) — Find existing Meet text or use a permitted saved recording, then check coverage and corrections.
 
 ### YouTube tools
 
