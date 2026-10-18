@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translate SRT: Review Meaning Without Losing Timing | InstaScript</title>
+<meta name="description" content="Translate SRT wording manually while preserving cue times. Use a local editor, check meaning across cue boundaries, and inspect the exported subtitle file.">
+<link rel="canonical" href="https://instascript.app/translate-srt">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png">
+<meta name="theme-color" content="#f8f9fa">
+<meta property="og:type" content="article"><meta property="og:url" content="https://instascript.app/translate-srt">
+<meta property="og:title" content="Translate SRT: Review Meaning Without Losing Timing | InstaScript"><meta property="og:description" content="Translate SRT wording manually while preserving cue times. Use a local editor, check meaning across cue boundaries, and inspect the exported subtitle file.">
+<meta property="og:site_name" content="InstaScript"><meta property="og:image" content="https://instascript.app/assets/logo-512.png"><meta property="og:image:alt" content="InstaScript logo">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Translate SRT: Review Meaning Without Losing Timing | InstaScript"><meta name="twitter:description" content="Translate SRT wording manually while preserving cue times. Use a local editor, check meaning across cue boundaries, and inspect the exported subtitle file."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="stylesheet" href="/style.css?v=css-5b3e5e3e1671">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Translate SRT: Review Meaning Without Losing Timing","description":"Translate SRT wording manually while preserving cue times. Use a local editor, check meaning across cue boundaries, and inspect the exported subtitle file.","url":"https://instascript.app/translate-srt","inLanguage":"en","datePublished":"2026-10-19","author":{"@type":"Organization","name":"InstaScript"},"mainEntityOfPage":"https://instascript.app/translate-srt"}</script></head><body><div class="container"><header class="header"><p class="brand"><a href="/">InstaScript</a></p><h1 class="page-h1">Translate SRT: Review Meaning Without Losing Timing</h1><nav class="page-nav" aria-label="Site navigation"><a href="/subtitle-translator">Subtitle Translator</a><a href="/subtitle-editor">Subtitle Editor</a><a href="/privacy">Privacy</a></nav></header><main class="content-card reading"><p>To <strong>translate SRT</strong>, open a local subtitle file in the <a href="/subtitle-translator">Subtitle Translator</a>, replace the wording in each cue with your own translation, and download SRT with the original start and end times. This is a manual workflow: InstaScript does not generate translations automatically.</p><p><a class="btn-primary" style="display:inline-block;text-decoration:none;color:#fff" href="/subtitle-translator">Open the manual SRT editor</a></p><section><h2>Start with a timed source</h2><p>Keep an untouched copy of the source SRT. Open one SRT or VTT file in the <a href="/subtitle-translator">local translation editor</a>. Each row shows the source text, its timing and an editable Translation field. Replace the field with wording you have written or reviewed.</p>
+<p>Subtitle text is not subject to the English-only speech-recognition restriction. You supply the target-language text; the editor does not detect a language or assess translation quality. If you only have a recording, create and check its English transcript first using the <a href="/audio-to-text">audio workflow</a>. This guide begins with existing timed text.</p>
+<p>The editor accepts subtitle text under 2 million characters and up to 10,000 cues. Invalid source timing and empty source cues must be corrected before import. It cannot open a movie, extract image subtitles, or translate a private video link.</p></section>
+<section data-original-review="true"><h2>Review a meaning unit before editing a cue</h2><p>A subtitle cue is a display interval, not necessarily a complete sentence. Read the cue before and after the one you are translating. Resolve what a pronoun refers to, whether a statement is negated and whether a condition finishes later. Then decide how to distribute the target wording across the available intervals.</p>
+<p>Create a small review ledger beside your working copy. For each uncertain passage, note the cue number, the unresolved meaning and the evidence needed. Use a neutral label such as context needed, terminology check or playback check. The editor does not store this ledger; keep it in your own notes without adding reviewer comments to the subtitle text.</p>
+<p>Separate a linguistic question from a timing question. An unfamiliar technical term needs a verified translation. A correct sentence that cannot be read during its display interval needs shortening or a timing review. Changing timecodes cannot repair a wrong meaning, and a fluent translation does not prove that the original cue boundaries were suitable.</p>
+<p>Review repeated terms as a group. Choose one rendering for the same concept unless the context changes. Keep quantities, units, names and negative instructions consistent with the source. Do not normalize a questionable number merely because a different number sounds more plausible; flag it and consult the recording or an authorized reference.</p></section>
+<section data-original-review="true"><h2>Worked example: the condition lives in the next cue</h2><p>This English-only illustration is invented for this guide. It demonstrates a review problem, not an actual transcript, translation result or measured reading-speed standard.</p>
+<pre class="example">1
+00:00:02,000 --> 00:00:04,000
+Keep the spare valve closed
+
+2
+00:00:04,000 --> 00:00:06,500
+unless the pressure falls.</pre>
+<p>Read the two cues together: the instruction contains an exception. A version that drops “unless” changes the operational meaning even if each remaining sentence looks grammatical. Before writing the target text, put a note in the review ledger: preserve the closed state and its exception.</p>
+<p>A target language may place the exception earlier in the sentence. That creates a boundary decision: can the meaning remain understandable while each translated cue stays in its original interval? Replay both cues together, including the transition. Do not judge the first cue solely as a line of isolated text.</p>
+<p>If the wording cannot fit, shorten it without removing the condition, or use <a href="/subtitle-editor">Subtitle Editor</a> for a deliberate timing review. This translation editor preserves times; it does not redistribute words between cues automatically. Check any timing changes against the recording before publishing.</p>
+<p>Use the same test for a correction, a contrast or a delayed subject. Ask what a viewer would understand at the end of the first cue, then what changes when the second appears. A subtitle can preserve all the words yet mislead temporarily if a critical exception arrives too late.</p></section>
+<section><h2>Check every translation field before downloading</h2><p>Translation fields initially contain the source wording. An untouched field therefore remains in the source language. If you clear a field or leave only whitespace, export falls back to that cue’s source text. A successful download is not confirmation that every cue has been translated.</p>
+<p>Review the first cue, the last cue and every item in your ledger, then scan the entire file for unchanged source passages. Repeated words may legitimately remain the same, so inspect context rather than treating every exact match as a mistake. Keep private reviewer notes outside the export.</p>
+<p>Choose <strong>Download translated SRT</strong> and retain the source separately. The editor exports one SRT; it does not create a side-by-side bilingual subtitle track, translate a batch, or burn captions into a video.</p></section>
+<section data-original-review="true"><h2>Inspect the file in three passes</h2><p>First check structure: compare the number of cues and the first and last start/end times with the source. Unchanged timecodes verify timing preservation, not linguistic correctness. Renumbering a sequence is different from losing a cue; compare the text and intervals as well as the displayed numbers.</p>
+<p>Next check meaning: revisit every ledger item, all numbers and units, and each instruction containing a negative or condition. Read across adjacent cues. Ask a qualified target-language reviewer to resolve ambiguities you cannot verify rather than presenting an unchecked sentence as final.</p>
+<p>Finally load the exported SRT with the intended recording in your destination player. Check line wrapping, character display, punctuation and whether a viewer has time to read before the next cue. Player presentation can differ from the editor. Reopen the downloaded file for corrections instead of assuming an earlier tab contains your latest version.</p></section>
+<section><h2>VTT input and the privacy boundary</h2><p>To translate a VTT file with this workflow, open it in the same editor and supply the target wording. Output is SRT: timecodes use HH:MM:SS,mmm. VTT positioning settings, style blocks and cue tags are not retained. Valid overlapping cues keep their timing; review them in the destination player.</p>
+<p>Local subtitle parsing, edits and SRT generation happen in your browser. The subtitle content is not uploaded or sent to a translation service. Download your work before closing the tab; there is no account project or cloud translation history. See the <a href="/privacy">privacy policy</a>.</p>
+<p>When you are ready to translate an SRT file, <a href="/subtitle-translator">open the manual editor</a>, keep the original beside it, and check the exported file before sharing it.</p></section></main><footer class="footer" data-site-footer><nav class="footer-nav">
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a>
+<a href="/google-meet-transcript">Google Meet Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a>
+<a href="/translate-srt">Translate SRT Guide</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=p2-20261013" defer></script></body></html>

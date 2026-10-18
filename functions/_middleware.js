@@ -520,6 +520,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/youtube-transcript-download">YouTube Transcript Download</a></li>
   <li><a href="/subtitle-downloader">Subtitle Downloader Guide</a></li>
   <li><a href="/subtitle-converter">Subtitle Converter Guide</a></li>
+  <li><a href="/translate-srt">Translate SRT Guide</a></li>
   <li><a href="/google-meet-transcript">Google Meet Transcript Guide</a></li>
   <li><a href="/youtube-transcript">YouTube Transcript</a></li>
   <li><a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a></li>

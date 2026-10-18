@@ -1491,6 +1491,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Translate SRT",
+      "url": "https://instascript.app/translate-srt",
+      "summary": "Manually translate timed text and check meaning across cues before exporting SRT.",
+      "accepts": [],
+      "limits": [
+        "guide to existing local manual translation editor",
+        "no automatic translation or audio transcription on this page",
+        "linked editor imports SRT/VTT and exports SRT",
+        "blank translation fields fall back to source text"
+      ],
+      "keywords": [
+        "translate srt",
+        "translate srt file",
+        "translate subtitles srt"
+      ],
+      "path": "/translate-srt",
+      "label": "Translate SRT Guide",
+      "html": "translate-srt.html",
+      "markdown": "translate-srt.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-19",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
