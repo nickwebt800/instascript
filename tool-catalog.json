@@ -1520,6 +1520,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "How to Add Captions on TikTok",
+      "url": "https://instascript.app/how-to-add-captions-on-tiktok",
+      "summary": "Creator guide to adding spoken captions, checking corrections and reviewing the final video.",
+      "accepts": [],
+      "limits": [
+        "guide with a handoff to existing tools",
+        "no TikTok URL fetch, video rendering or publishing",
+        "linked speech recognition is English only; up to 100 MB; browser decoding required",
+        "SRT/VTT exports need complete valid timing"
+      ],
+      "keywords": [
+        "how to add captions on tiktok",
+        "creator captions",
+        "caption review"
+      ],
+      "path": "/how-to-add-captions-on-tiktok",
+      "label": "How to Add Captions on TikTok",
+      "html": "how-to-add-captions-on-tiktok.html",
+      "markdown": "how-to-add-captions-on-tiktok.md",
+      "group": "subtitle",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-20",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

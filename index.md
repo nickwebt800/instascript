@@ -114,6 +114,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Subtitle Downloader](https://instascript.app/subtitle-downloader) — Choose an existing YouTube caption track, download SRT or TXT, and check the file before using it.
 - [Subtitle Converter](https://instascript.app/subtitle-converter) — Choose a local format conversion and check which text, timing and styling survive.
 - [Translate SRT Guide](https://instascript.app/translate-srt) — Manually translate timed text and check meaning across cues before exporting SRT.
+- [How to Add Captions on TikTok](https://instascript.app/how-to-add-captions-on-tiktok) — Creator guide to adding spoken captions, checking corrections and reviewing the final video.
 
 ## Recommended
 

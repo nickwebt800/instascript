@@ -534,6 +534,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <li><a href="/voicemail-transcription">Voicemail Transcription</a></li>
   <li><a href="/zoom-transcript">Zoom Transcript</a></li>
   <li><a href="/tiktok-transcript">TikTok Transcript</a></li>
+  <li><a href="/how-to-add-captions-on-tiktok">How to Add Captions on TikTok</a></li>
   <li><a href="/facebook-video-transcript">Facebook Video Transcript</a></li>
   <li><a href="/instagram-transcript-generator">Instagram Transcript Generator</a></li>
   <li><a href="/caption-generator">Caption Generator</a></li>
