@@ -1549,6 +1549,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "OGG to Text",
+      "url": "https://instascript.app/ogg-to-text",
+      "summary": "Prepare an OGG recording, distinguish decoding failures and review an English transcript in the local audio tool.",
+      "accepts": [],
+      "limits": [
+        "guide linking to existing local audio tool",
+        "linked recognition is English only; up to 100 MB; actual browser decoding required",
+        "no universal Ogg codec guarantee",
+        "SRT/VTT require complete valid timing"
+      ],
+      "keywords": [
+        "ogg to text",
+        "OGG recording",
+        "decode audio"
+      ],
+      "path": "/ogg-to-text",
+      "label": "OGG to Text",
+      "html": "ogg-to-text.html",
+      "markdown": "ogg-to-text.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-21",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
