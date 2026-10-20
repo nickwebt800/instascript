@@ -8,13 +8,13 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: October 15, 2026
+Last updated: October 20, 2026
 
 ### 1. Data We Collect
 
 When you open a local audio, video or subtitle file, processing happens in your browser. **Your local files and the text you edit or generate from them are not uploaded to our servers.** Public Instagram and YouTube links involve server requests, as described below.
 
-We do not require an account or ask for your name, email address or phone number to use the tools. Locally generated speech transcripts and subtitle edits stay in your browser tab unless you copy or download them. YouTube caption lookup responses may be cached as described in section 2. **InstaScript does not run its own analytics, tracking or session-recording scripts.** Basic traffic measurement, if any, comes from our host and is described in section 3.
+We do not require an account or ask for your name, email address or phone number to use the tools. Locally generated speech transcripts and subtitle edits stay in your browser tab unless you copy or download them. YouTube caption lookup responses may be cached as described in section 2. **InstaScript uses Ahrefs Web Analytics for public-page visit counts, without session recordings or tool-interaction tracking.** Our analytics and hosting providers are described in section 3.
 
 ### 2. URL-Based Transcription
 
@@ -29,6 +29,12 @@ We do not require an account or ask for your name, email address or phone number
 - **Cloudflare** — hosts the website and Functions, provides CDN caching, and may fetch public Instagram or YouTube pages through Browser Rendering. It may measure aggregate traffic and set cookies needed for security and bot protection.
 - **Jina AI Reader** — may receive the public Instagram embed URL as a fallback when the site's normal and Cloudflare fetches cannot resolve it. It returns page content to the extraction function; uploaded files and transcripts are not sent there.
 - **YouTube and Google** — receive video and caption requests and, when needed, browser bot-check requests. These requests are subject to their own privacy policies; your local media files and subtitle edits are not sent to them.
+
+### Public-page analytics
+
+The tracker runs in an isolated sandbox that cannot read the tool page, local files, form inputs, transcripts, subtitle edits or generated download and source links. We send only the catalog page URL and title, without the actual page query string or fragment. The referring domain (without its path or query) is sent as the custom source_domain property; unavailable and internal referrers are grouped as direct. This property, rather than the default referral report, is used to review incoming directory traffic. No click or form events from the tools are collected. Tracking is disabled on previews, local development, unlisted routes and when the browser sends Do Not Track or Global Privacy Control.
+
+Ahrefs receives ordinary connection and device information, including IP address, browser, language and screen dimensions. Ahrefs states that its analytics uses no cookies, discards raw IP addresses and uses daily identifiers rather than tracking visitors across days. Aggregate data may be used by Ahrefs to improve its services. See [Ahrefs data collection details](https://help.ahrefs.com/en/articles/10247870-about-ahrefs-web-analytics).
 
 ### 4. Advertising
 

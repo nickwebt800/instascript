@@ -40,7 +40,7 @@ Instagram lookup has a 60-second timeout and media download has a 120-second tim
 - One-click copy to clipboard
 - Download as plain text (.txt) or subtitle formats (.srt and .vtt)
 - Mobile-friendly responsive design
-- No account or application analytics; local files stay on-device. Public link lookup uses servers and third-party services, described in the privacy policy
+- No account; sandboxed public-page analytics cannot access tool inputs or results. Local files stay on-device. Public link lookup uses servers and third-party services, described in the privacy policy
 
 ## Project Structure
 
@@ -154,3 +154,11 @@ Run `node scripts/test-youtube-search.mjs` for source-link validation and raw-ca
 The shared transcript result, homepage prepared sample, and both interactive YouTube caption pages offer Markdown (.md) downloads. The serializer uses edited cue text (or untimed fallback), escapes Markdown punctuation and HTML-like text, skips empty cues, and adds only valid available start times. Shared results and the prepared sample use the timestamp checkbox. YouTube exports follow Timestamps / Plain text mode and include the video title, validated canonical source URL and selected caption language; timed links use whole seconds. Local-recording notes use a generic title without filenames or submitted URLs. Exporting sends no request and creates no history or AI summary. TXT/SRT/VTT rules remain unchanged.
 
 Run `node scripts/test-transcript-markdown.mjs` with the existing result and search checks, then verify browser downloads and edited-text, display-mode, language-reset and mobile behavior.
+
+## Public-page analytics
+
+Ahrefs Web Analytics runs only inside an opaque-origin sandboxed iframe on catalog-listed production pages. `footer.js` supplies a canonical catalog path and referrer hostname only; `/analytics-frame` validates these against the catalog and serves a no-store, noindex document with a restrictive CSP. The tracker has no access to the parent DOM, files or result links. Preview/local requests and browser DNT/GPC opt-outs do not load it. No GA4 or custom tool events are installed.
+
+The public data-key comes from the InstaScript Ahrefs project. `data-page-location` is supported by the reviewed upstream tracker; verify canonical page attribution again after publishing. Incoming domains are available through the `source_domain` event property (configure an event-properties report in Ahrefs); the standard referrer report is intentionally empty/direct because the frame receives no referrer. Missing and internal referrers use `direct`. Query/UTM parameters and fragments are not sent. This trades campaign/session attribution for strict separation from user content.
+
+Run `node scripts/test-analytics.mjs`. Local checks do not establish production ingestion; after an authorized deployment, verify both the production script and actual Ahrefs reports.

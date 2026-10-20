@@ -1,5 +1,6 @@
 import catalog from "../tool-catalog.json";
 import { checkRequestLimit } from "./_lib/guards.js";
+import { analyticsFrame } from "./_lib/analytics.js";
 
 // Cloudflare Pages middleware for InstaScript.
 // Serves agent-discovery documents, Markdown negotiation, the public read API
@@ -450,6 +451,7 @@ const KNOWN_FILES = new Set([
 
 // Endpoints that are produced by Functions rather than by a file on disk.
 const KNOWN_ROUTES = new Set([
+  "/analytics-frame",
   "/api/extract",
   "/api/proxy",
   "/api/youtube-transcript",
@@ -614,6 +616,8 @@ export async function onRequest(ctx) {
 
   try {
     switch (p) {
+      case "/analytics-frame":
+        return analyticsFrame(request, catalog);
       case "/.well-known/api-catalog":
         return json(apiCatalog(), { headers: { "Content-Type": "application/linkset+json; charset=utf-8" } });
       case "/.well-known/mcp/server-card.json":
