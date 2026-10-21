@@ -92,7 +92,8 @@
 
     <article class="content-card reading editor-guide" aria-labelledby="guide-title">
       <div class="guide-intro"><h2 id="guide-title">Edit subtitles, one step at a time</h2>
-      <p>Open a subtitle file, correct its words and timing, replay your recording, then save SRT or VTT. Follow the questions below in order, or jump to the step you need.</p>
+      <p>Fix wrong words, subtitles that appear too early or late, or a line that disappears too soon. Open your subtitle file, review it against the recording, and save a corrected SRT or VTT.</p>
+      <p><a href="#common-problems">Find a fix for your subtitle problem</a>, or follow the six illustrated steps below.</p>
       <nav class="guide-contents" aria-label="Subtitle editing guide"><ol><li><a href="#open-subtitles">Open a file</a></li><li><a href="#edit-cues">Edit words and times</a></li><li><a href="#shift-times">Shift all times</a></li><li><a href="#review-recording">Replay a recording</a></li><li><a href="#fix-export">Fix disabled exports</a></li><li><a href="#save-subtitles">Save and check</a></li></ol></nav>
       <aside class="guide-practice" aria-label="Practice files"><p><strong>Follow along:</strong> save the <a href="/assets/tutorials/subtitle-editor/practice.srt" download>practice SRT</a> and <a href="/assets/demo/kennedy-1961.wav" download>11-second practice recording</a>, then open them in the editor above. The public-domain JFK recording uses prepared phrase timings. It is an editing demonstration, not a live transcription or accuracy measurement. <a href="/assets/demo/SOURCE.md">Recording source and rights</a>.</p>
       </aside>
@@ -138,6 +139,45 @@
       <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/06-save-narrow.svg" width="352" height="576"><img src="/assets/tutorials/subtitle-editor/06-save-wide.svg" width="720" height="315" loading="lazy" decoding="async" alt="Download SRT or VTT, then inspect the actual SRT download showing the edited first cue and its start and end times."></picture><figcaption>The file excerpt comes from an actual download after the punctuation edit. Keep your original separately.</figcaption></figure>
       <p class="guide-check"><strong>Check:</strong> Confirm that the exported file contains your latest changes.</p>
       <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+      <section class="guide-more guide-problems" aria-labelledby="common-problems">
+        <h2 id="common-problems" tabindex="-1">What is wrong with your subtitles?</h2>
+        <p>Choose the issue that matches your file. Each answer links to the relevant illustrated step or the next tool you need.</p>
+        <nav class="guide-contents" aria-label="Common subtitle problems"><ol>
+          <li><a href="#fix-wrong-words">How do I fix wrong names or words in automatic subtitles?</a></li>
+          <li><a href="#subtitles-too-late">My subtitles appear after the speech. How do I make them earlier?</a></li>
+          <li><a href="#subtitles-too-early">My subtitles appear before the speech. How do I delay them?</a></li>
+          <li><a href="#one-subtitle-timing">How do I fix one subtitle that disappears too quickly?</a></li>
+          <li><a href="#subtitle-timing-drift">Why do my subtitles get further out of sync as the video plays?</a></li>
+          <li><a href="#missing-duplicate-subtitles">How do I remove duplicate subtitles or add a missing line?</a></li>
+          <li><a href="#edit-youtube-subtitles">Can I correct subtitles downloaded from a YouTube video?</a></li>
+          <li><a href="#add-subtitles-to-video">Does downloading SRT add the subtitles to my MP4 video?</a></li>
+        </ol></nav>
+        <h3 id="fix-wrong-words" tabindex="-1">How do I fix wrong names or words in automatic subtitles?</h3>
+        <p>Open the SRT or VTT file, click <strong>Load into editor</strong>, and correct the affected <strong>Caption</strong> field. Check names, numbers and technical terms against the recording. If the words already appear at the right moment, leave Start and End unchanged.</p>
+        <p>Review other occurrences of the same name manually; there is no bulk find-and-replace in this editor. Download the corrected file when you finish. <a href="#edit-cues">See the illustrated text-editing step</a>.</p>
+        <h3 id="subtitles-too-late" tabindex="-1">My subtitles appear after the speech. How do I make them earlier?</h3>
+        <p>For a consistent delay, enter a negative value in <strong>Shift all times (seconds)</strong>. If every line appears half a second late, use <code>-0.5</code> and click <strong>Apply shift</strong> once. Replay a line near the beginning and another near the end to check the result.</p>
+        <p>This is an example offset, not an automatic measurement. Use the amount your recording needs. If only one line is late, edit that cue instead. <a href="#shift-times">See how shifting works</a>.</p>
+        <h3 id="subtitles-too-early" tabindex="-1">My subtitles appear before the speech. How do I delay them?</h3>
+        <p>For a consistent early offset, enter a positive value in <strong>Shift all times (seconds)</strong>. For example, use <code>0.5</code> to move all cues half a second later, then click <strong>Apply shift</strong> once. Both the start and end of each cue move by that amount.</p>
+        <p>Check the recording before shifting again: each click applies another offset. If your video has a different cut or introduction, confirm that the subtitle file matches that version first. <a href="#shift-times">View the before-and-after timing example</a>.</p>
+        <h3 id="one-subtitle-timing" tabindex="-1">How do I fix one subtitle that disappears too quickly?</h3>
+        <p>Edit that row’s <strong>End</strong> time rather than shifting the whole file. Replay the phrase and choose an end that keeps the words visible for the intended speech. Check the next cue as well, so an extended line does not remain on screen over unrelated words.</p>
+        <p>If the line starts at the wrong moment, adjust its Start too. There is no automatic reading-speed or alignment adjustment. <a href="#review-recording">Use the recording review step</a>, then check the exported subtitles in your destination player.</p>
+        <h3 id="subtitle-timing-drift" tabindex="-1">Why do my subtitles get further out of sync as the video plays?</h3>
+        <p>A single offset moves every cue by the same amount. It cannot repair a mismatch that grows or changes after an edit. First check that the subtitle file belongs to the same version of the recording, including any cuts, added introduction or speed changes.</p>
+        <p>Compare cues near the beginning, middle and end. If a matching subtitle file is unavailable, review affected cue times individually or use a tool that supports timeline scaling or automatic alignment. This editor has neither feature. <a href="#edit-cues">See the fields you can adjust manually</a>.</p>
+        <h3 id="missing-duplicate-subtitles" tabindex="-1">How do I remove duplicate subtitles or add a missing line?</h3>
+        <p>For a duplicate, compare both rows with the recording, then use <strong>Remove</strong> on the unwanted row. Keep repeated words when the speaker actually repeats them.</p>
+        <p><strong>Add entry</strong> appends a blank cue after the last row. Supply its words and correct Start and End times. It does not insert a row in the middle or sort rows when you change their times.</p>
+        <p>For a missing line in the middle, save your current edits as SRT first. In a text editor, insert the missing cue in that saved file at the correct position, with its wording and valid timing. Reload the file here, review the cue order, and export again. The saved copy keeps your earlier edits. <a href="#save-subtitles">See how to save and reopen an edited file</a>.</p>
+        <h3 id="edit-youtube-subtitles" tabindex="-1">Can I correct subtitles downloaded from a YouTube video?</h3>
+        <p>Yes, if you have an SRT or VTT file you are allowed to use. Load it here, review the text against your permitted local recording, and save the corrections. A YouTube URL alone is not a subtitle file for this editor.</p>
+        <p>To obtain an existing caption track first, use <a href="/youtube-transcript-download">YouTube Transcript Download</a> and select the intended caption language before saving SRT. That tool cannot create a missing caption track. Editing a downloaded file here does not update the captions on YouTube. <a href="#open-subtitles">Start with the import step</a>.</p>
+        <h3 id="add-subtitles-to-video" tabindex="-1">Does downloading SRT add the subtitles to my MP4 video?</h3>
+        <p>No. The download is a separate subtitle file; your video is unchanged. Load the SRT or VTT alongside the video in a player or video editor that supports that format, and check the result there.</p>
+        <p>If you need a new video with captions permanently visible, use a video editor that can render or burn them into the picture. InstaScript’s Subtitle Editor does not render videos, extract text from burned-in captions or generate subtitles from an MP4. For English speech without a subtitle file, start with <a href="/video-to-text">Video to Text</a>, then review the transcript and its timing.</p>
+      </section>
       <section class="guide-more" aria-labelledby="more-questions"><h2 id="more-questions">More questions</h2>
       <h3>Which subtitle formats can I edit?</h3>
       <p>Open one SRT, VTT or SBV file, or paste its text. Export SRT or VTT. SRT uses comma-separated milliseconds; WebVTT uses a <code>WEBVTT</code> header and period-separated milliseconds. SBV input uses comma-separated time ranges.</p>

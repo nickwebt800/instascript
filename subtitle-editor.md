@@ -8,7 +8,9 @@ Canonical: <https://instascript.app/subtitle-editor>
 
 ## Edit subtitles, one step at a time
 
-Open a subtitle file, correct its words and timing, replay your recording, then save SRT or VTT. Follow the questions below in order, or jump to the step you need.
+Fix wrong words, subtitles that appear too early or late, or a line that disappears too soon. Open your subtitle file, review it against the recording, and save a corrected SRT or VTT.
+
+[Find a fix for your subtitle problem](https://instascript.app/subtitle-editor#common-problems), or follow the six illustrated steps below.
 
 1. [How do I open a subtitle file?](https://instascript.app/subtitle-editor#open-subtitles)
 2. [How do I change subtitle text and timing?](https://instascript.app/subtitle-editor#edit-cues)
@@ -112,6 +114,69 @@ The file excerpt comes from an actual download after the punctuation edit. Keep 
 **Check:** Confirm that the exported file contains your latest changes.
 
 [Back to the editor](https://instascript.app/subtitle-editor#subtitle-tool)
+
+## What is wrong with your subtitles?
+
+Choose the issue that matches your file. Each answer links to the relevant illustrated step or the next tool you need.
+
+1. [How do I fix wrong names or words in automatic subtitles?](https://instascript.app/subtitle-editor#fix-wrong-words)
+2. [My subtitles appear after the speech. How do I make them earlier?](https://instascript.app/subtitle-editor#subtitles-too-late)
+3. [My subtitles appear before the speech. How do I delay them?](https://instascript.app/subtitle-editor#subtitles-too-early)
+4. [How do I fix one subtitle that disappears too quickly?](https://instascript.app/subtitle-editor#one-subtitle-timing)
+5. [Why do my subtitles get further out of sync as the video plays?](https://instascript.app/subtitle-editor#subtitle-timing-drift)
+6. [How do I remove duplicate subtitles or add a missing line?](https://instascript.app/subtitle-editor#missing-duplicate-subtitles)
+7. [Can I correct subtitles downloaded from a YouTube video?](https://instascript.app/subtitle-editor#edit-youtube-subtitles)
+8. [Does downloading SRT add the subtitles to my MP4 video?](https://instascript.app/subtitle-editor#add-subtitles-to-video)
+
+### How do I fix wrong names or words in automatic subtitles?
+
+Open the SRT or VTT file, click **Load into editor**, and correct the affected **Caption** field. Check names, numbers and technical terms against the recording. If the words already appear at the right moment, leave Start and End unchanged.
+
+Review other occurrences of the same name manually; there is no bulk find-and-replace in this editor. Download the corrected file when you finish. [See the illustrated text-editing step](https://instascript.app/subtitle-editor#edit-cues).
+
+### My subtitles appear after the speech. How do I make them earlier?
+
+For a consistent delay, enter a negative value in **Shift all times (seconds)**. If every line appears half a second late, use `-0.5` and click **Apply shift** once. Replay a line near the beginning and another near the end to check the result.
+
+This is an example offset, not an automatic measurement. Use the amount your recording needs. If only one line is late, edit that cue instead. [See how shifting works](https://instascript.app/subtitle-editor#shift-times).
+
+### My subtitles appear before the speech. How do I delay them?
+
+For a consistent early offset, enter a positive value in **Shift all times (seconds)**. For example, use `0.5` to move all cues half a second later, then click **Apply shift** once. Both the start and end of each cue move by that amount.
+
+Check the recording before shifting again: each click applies another offset. If your video has a different cut or introduction, confirm that the subtitle file matches that version first. [View the before-and-after timing example](https://instascript.app/subtitle-editor#shift-times).
+
+### How do I fix one subtitle that disappears too quickly?
+
+Edit that row’s **End** time rather than shifting the whole file. Replay the phrase and choose an end that keeps the words visible for the intended speech. Check the next cue as well, so an extended line does not remain on screen over unrelated words.
+
+If the line starts at the wrong moment, adjust its Start too. There is no automatic reading-speed or alignment adjustment. [Use the recording review step](https://instascript.app/subtitle-editor#review-recording), then check the exported subtitles in your destination player.
+
+### Why do my subtitles get further out of sync as the video plays?
+
+A single offset moves every cue by the same amount. It cannot repair a mismatch that grows or changes after an edit. First check that the subtitle file belongs to the same version of the recording, including any cuts, added introduction or speed changes.
+
+Compare cues near the beginning, middle and end. If a matching subtitle file is unavailable, review affected cue times individually or use a tool that supports timeline scaling or automatic alignment. This editor has neither feature. [See the fields you can adjust manually](https://instascript.app/subtitle-editor#edit-cues).
+
+### How do I remove duplicate subtitles or add a missing line?
+
+For a duplicate, compare both rows with the recording, then use **Remove** on the unwanted row. Keep repeated words when the speaker actually repeats them.
+
+**Add entry** appends a blank cue after the last row. Supply its words and correct Start and End times. It does not insert a row in the middle or sort rows when you change their times.
+
+For a missing line in the middle, save your current edits as SRT first. In a text editor, insert the missing cue in that saved file at the correct position, with its wording and valid timing. Reload the file here, review the cue order, and export again. The saved copy keeps your earlier edits. [See how to save and reopen an edited file](https://instascript.app/subtitle-editor#save-subtitles).
+
+### Can I correct subtitles downloaded from a YouTube video?
+
+Yes, if you have an SRT or VTT file you are allowed to use. Load it here, review the text against your permitted local recording, and save the corrections. A YouTube URL alone is not a subtitle file for this editor.
+
+To obtain an existing caption track first, use [YouTube Transcript Download](https://instascript.app/youtube-transcript-download) and select the intended caption language before saving SRT. That tool cannot create a missing caption track. Editing a downloaded file here does not update the captions on YouTube. [Start with the import step](https://instascript.app/subtitle-editor#open-subtitles).
+
+### Does downloading SRT add the subtitles to my MP4 video?
+
+No. The download is a separate subtitle file; your video is unchanged. Load the SRT or VTT alongside the video in a player or video editor that supports that format, and check the result there.
+
+If you need a new video with captions permanently visible, use a video editor that can render or burn them into the picture. InstaScript’s Subtitle Editor does not render videos, extract text from burned-in captions or generate subtitles from an MP4. For English speech without a subtitle file, start with [Video to Text](https://instascript.app/video-to-text), then review the transcript and its timing.
 
 ## More questions
 
