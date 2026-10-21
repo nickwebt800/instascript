@@ -110,6 +110,22 @@ Local files and subtitle edits are processed in the browser and are not uploaded
 
 `tool-catalog.json` is the source for the middleware service catalog, public page representations, homepage tool directory, footer navigation and sitemap. After adding or changing a tool, run `node scripts/sync-catalog.cjs` and review the generated HTML, Markdown and XML.
 
+### Shared page components
+
+`scripts/lib/site-components.cjs` owns the brand link, five-item top navigation and footer navigation markup. Edit its `BRAND` or `TOP_NAVIGATION` once, then run `node scripts/sync-catalog.cjs` to regenerate every catalog page. Footer destinations still come from `tool-catalog.json`. The sync preserves each page's heading, introduction, main content and footer disclosures; the homepage keeps its existing logo layout. The matching top-level destination receives `aria-current="page"`.
+
+For a new page, write its HTML and matching Markdown, then register them in `tool-catalog.json`. Its HTML needs one `<header class="header">` containing the page heading and one `<footer class="footer" data-site-footer></footer>`. The sync fills the brand, top navigation and footer navigation, adds the shared script if missing, and updates the homepage directory and sitemap. Do not hand-copy navigation links into new pages or edit generated `data-site-brand`, `data-site-nav` and `data-site-footer-nav` regions.
+
+Run these commands before committing:
+
+```bash
+node scripts/sync-catalog.cjs
+node scripts/sync-catalog.cjs --check
+node scripts/test-site-components.cjs
+```
+
+`--check` reports stale generated files without writing them. Invalid page entries or missing component slots stop the sync before any generated files are written. All navigation is present in the delivered HTML and works without JavaScript or a catalog fetch. `footer.js` only initializes the existing isolated analytics; its content hash automatically versions the generated script URL. Keep `scripts/` out of static deployment packages; deploy the generated HTML and existing public assets.
+
 Upstream fetches validate each redirect host, bound response bytes and apply server-side deadlines. The media proxy streams at most 100 MB, rejects non-media responses, and aborts transfers that exceed the limit. Costly API requests are limited to 20 per client per minute. Cloudflare browser lookup reserves a conservative 50 seconds per attempt against an 8 minute UTC daily budget with a 12 second minimum spacing. Missing usage headers retain the reservation.
 
 Without a `REQUEST_GUARD` binding, counters are local to each runtime isolate and cannot enforce a global account budget. To enable shared limits, deploy the private worker using `guards/wrangler.toml`, then configure the Pages Durable Object binding shown in `guards/pages-binding.example.toml` for production and preview. A configured guard failure rejects expensive requests. This separate service is not created by deploying Pages alone. Keep guard configuration and maintenance scripts out of the static deployment package.

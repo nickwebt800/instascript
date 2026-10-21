@@ -24,16 +24,16 @@
 <body class="upload-only">
   <div class="container">
     <header class="header">
-      <p class="brand"><a href="/">InstaScript</a></p>
+      <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
       <h1 class="page-h1">Video Transcript &mdash; MP4, MOV, WebM to Text</h1>
       <p class="tagline">Turn a video file into text &mdash; free, in your browser</p>
-    <nav class="page-nav" aria-label="Site navigation">
-      <a href="/">Instagram Transcript</a>
-      <a href="/video-to-text" aria-current="page">Video to Text</a>
-      <a href="/youtube-transcript">YouTube Transcript</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-    </nav>
+    <nav class="page-nav" aria-label="Site navigation" data-site-nav>
+<a href="/">Instagram Transcript</a>
+<a href="/video-to-text" aria-current="page">Video to Text</a>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+</nav>
     </header>
 
     <main class="tool-card" aria-labelledby="tool-heading">
@@ -170,7 +170,7 @@
     <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports.</p></section>
 <section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.</p></section>
 <footer class="footer" data-site-footer>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -284,6 +284,6 @@
   }
   </script>
 <script src="/js/webmcp.js" defer></script>
-  <script src="/footer.js?v=ahrefs-20261020" defer></script>
+  <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
 </body>
 </html>
