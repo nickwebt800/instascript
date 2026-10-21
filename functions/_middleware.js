@@ -447,6 +447,20 @@ const KNOWN_FILES = new Set([
   "/assets/demo/kennedy-1961.wav",
   "/assets/demo/kennedy-1961.json",
   "/assets/demo/SOURCE.md",
+  "/subtitle-editor-guide.css",
+  "/assets/tutorials/subtitle-editor/01-open-wide.svg",
+  "/assets/tutorials/subtitle-editor/01-open-narrow.svg",
+  "/assets/tutorials/subtitle-editor/02-edit-wide.svg",
+  "/assets/tutorials/subtitle-editor/02-edit-narrow.svg",
+  "/assets/tutorials/subtitle-editor/03-shift-wide.svg",
+  "/assets/tutorials/subtitle-editor/03-shift-narrow.svg",
+  "/assets/tutorials/subtitle-editor/04-review-wide.svg",
+  "/assets/tutorials/subtitle-editor/04-review-narrow.svg",
+  "/assets/tutorials/subtitle-editor/05-fix-wide.svg",
+  "/assets/tutorials/subtitle-editor/05-fix-narrow.svg",
+  "/assets/tutorials/subtitle-editor/06-save-wide.svg",
+  "/assets/tutorials/subtitle-editor/06-save-narrow.svg",
+  "/assets/tutorials/subtitle-editor/practice.srt",
 ]);
 
 // Endpoints that are produced by Functions rather than by a file on disk.

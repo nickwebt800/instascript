@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Edit SRT, VTT and SBV subtitles locally in your browser.">
   <title>Subtitle Editor | Edit SRT and VTT in Your Browser | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="tool-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="subtitle-tool" class="subtitle-tool" aria-labelledby="tool-title" tabindex="-1">
       <div class="tool-intro-row">
         <div>
           <h2 id="tool-title">Open or paste a subtitle file</h2>
@@ -88,39 +90,66 @@
       </section>
     </main>
 
-    <section class="content-card reading">
-      <h2>What this subtitle editor does</h2>
-      <p>A subtitle editor lets you open an existing subtitle file, change the text and timing of each cue, add or remove entries, and export the result. This page reads one <strong>SRT</strong>, <strong>VTT</strong> or <strong>SBV</strong> file at a time, parses it into individual cues, and shows them in an editable table where you can fix start times, end times and caption text before exporting.</p>
-      <p>Each cue becomes one row. Change the start or end time and the new value takes effect immediately. Edit the caption text to fix typos, rephrase, or trim a line. Add a new entry with the <strong>Add entry</strong> button, or remove one with its <strong>Remove</strong> button. The <strong>Shift all times</strong> field adds or subtracts a number of seconds from every timecode at once, which is the fastest way to fix a subtitle file that is uniformly early or late.</p>
-      <p>Everything runs in your browser. No subtitle text or review recording is uploaded and no account is required. A transcript can be sent directly from another InstaScript tab through same-origin browser messaging; it is not placed in the URL or persistent browser storage.</p>
-
-      <h2>Supported formats</h2>
-      <p>This subtitle editor reads <strong>SRT</strong> (numbered cues with comma-separated milliseconds), <strong>WebVTT</strong> (WEBVTT header with period-separated milliseconds), and <strong>SBV</strong> (comma-separated time ranges). Output is standard <strong>SRT</strong> or <strong>WebVTT</strong>. Cue order, time ranges, line breaks and subtitle text are preserved during editing.</p>
-      <p>The editor handles one local file at a time. It does not transcribe audio, merge multiple files, store projects, require a login, or send subtitle text to a server.</p>
-
-      <h2>How editing works</h2>
-      <p>When you load a subtitle file, each cue is split into a start time, an end time and its caption text. These appear as editable fields in the table. Timecodes use the <code>HH:MM:SS,mmm</code> format for SRT and <code>HH:MM:SS.mmm</code> for VTT. You can type times in any common shorthand such as <code>1:23.4</code> or <code>00:01:23,400</code> and the editor reads the numbers.</p>
-      <p>Shifting all timecodes is arithmetic: the editor adds your shift value (in seconds) to every start and end time. Negative values move subtitles earlier. Times below zero are clamped to zero so the cue does not get a negative start.</p>
-      <p>Invalid source timecodes are rejected. During editing, blank cue text or an end time at or before its start disables export until corrected. Valid overlapping cues keep their original timing.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I edit SRT files without uploading them?</h3>
-      <p>Yes. Open one local SRT file or paste its text. Parsing and editing happen in this browser only.</p>
-      <h3>Can I edit VTT files here too?</h3>
-      <p>Yes. Paste or open a VTT file. The WEBVTT header and period-separated milliseconds are handled automatically.</p>
-      <h3>Does this subtitle editor support SBV?</h3>
-      <p>Yes. SBV input with comma-separated time ranges is accepted. Export as SRT or VTT.</p>
-      <h3>Can I shift all subtitle times at once?</h3>
-      <p>Yes. Enter a number of seconds in the <strong>Shift all times</strong> field and click <strong>Apply shift</strong>. Use a negative number to move subtitles earlier.</p>
-      <h3>Can I edit several subtitle files at once?</h3>
-      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
-      <h3>Does this editor show a video preview?</h3>
- <p>Yes. Open a local audio or video recording with Open recording for review, then click a cue number to seek to its start. Playback depends on browser codec support. No audio waveform is shown and the recording is not uploaded.</p>
-      <h3>How do I get subtitles to edit?</h3>
-      <p>If you have a video or audio file and need text first, use the <a href="/">Instagram Transcript</a> tool or <a href="/video-to-text">Video to Text</a> to get an SRT. Then open that SRT here to edit timing and captions. If you have plain text and want to build subtitles from scratch, use the <a href="/txt-to-srt">TXT to SRT Converter</a>.</p>
-    </section>
-
-    <section class="content-card"><p>Use subtitle text under 2 million characters and up to 10,000 cues. Every cue needs text and a valid end after its start before export.</p></section>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title">
+      <div class="guide-intro"><h2 id="guide-title">Edit subtitles, one step at a time</h2>
+      <p>Open a subtitle file, correct its words and timing, replay your recording, then save SRT or VTT. Follow the questions below in order, or jump to the step you need.</p>
+      <nav class="guide-contents" aria-label="Subtitle editing guide"><ol><li><a href="#open-subtitles">Open a file</a></li><li><a href="#edit-cues">Edit words and times</a></li><li><a href="#shift-times">Shift all times</a></li><li><a href="#review-recording">Replay a recording</a></li><li><a href="#fix-export">Fix disabled exports</a></li><li><a href="#save-subtitles">Save and check</a></li></ol></nav>
+      <aside class="guide-practice" aria-label="Practice files"><p><strong>Follow along:</strong> save the <a href="/assets/tutorials/subtitle-editor/practice.srt" download>practice SRT</a> and <a href="/assets/demo/kennedy-1961.wav" download>11-second practice recording</a>, then open them in the editor above. The public-domain JFK recording uses prepared phrase timings. It is an editing demonstration, not a live transcription or accuracy measurement. <a href="/assets/demo/SOURCE.md">Recording source and rights</a>.</p>
+      </aside>
+      </div>
+      <section class="guide-step" aria-labelledby="open-subtitles"><h3 id="open-subtitles" tabindex="-1">1. How do I open a subtitle file?</h3>
+      <p>Choose <strong>Open SRT / VTT / SBV</strong> and select one subtitle file, then click <strong>Load into editor</strong>. You can also paste subtitle text into the box before loading it. Each cue becomes a row with a start time, end time and caption text.</p>
+<p>Selecting a file fills the text box; it does not load the editable rows yet. Check that the text appears, then load it. If the file cannot be read, save a UTF-8 copy and try again. Invalid timing or empty source cues must be fixed before import.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/01-open-narrow.svg" width="352" height="627"><img src="/assets/tutorials/subtitle-editor/01-open-wide.svg" width="720" height="366" loading="lazy" decoding="async" alt="Choose Open SRT / VTT / SBV, then click Load into editor to turn the practice file into three editable rows."></picture><figcaption>Choose the file first, then load the rows. Pasted subtitle text follows the same loading step.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> You should see three editable rows when using the practice file.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+<section class="guide-step" aria-labelledby="edit-cues"><h3 id="edit-cues" tabindex="-1">2. How do I change subtitle text and timing?</h3>
+      <p>Edit the <strong>Caption</strong> field to change the words. Edit <strong>Start</strong> and <strong>End</strong> to change when that cue appears and disappears. Your changes apply immediately to the editor; save a download to keep them after closing the tab.</p>
+<p>Use times such as <code>00:00:03,600</code> or shorthand such as <code>3.6</code>. End must be later than Start. The picture changes punctuation only to make an edit visible; use your recording to decide the correct wording.</p>
+<p><strong>Add entry</strong> creates a blank cue after the last entry. Give it text and valid times before exporting. <strong>Remove</strong> deletes that row. Keep an untouched source file so you can start again if needed.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/02-edit-narrow.svg" width="352" height="655"><img src="/assets/tutorials/subtitle-editor/02-edit-wide.svg" width="720" height="374" loading="lazy" decoding="async" alt="Close-ups of the Start and End fields and the Caption field before and after a punctuation edit."></picture><figcaption>Edit one row at a time. Text changes do not automatically adjust the timing.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> Read the edited words, then verify that Start is earlier than End.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+<section class="guide-step" aria-labelledby="shift-times"><h3 id="shift-times" tabindex="-1">3. How do I move all subtitles earlier or later?</h3>
+      <p>Use <strong>Shift all times (seconds)</strong> when the whole subtitle track is consistently early or late. Enter an offset and click <strong>Apply shift</strong> once. A positive value moves every cue later; a negative value moves every cue earlier.</p>
+<p>In this example, <code>0.5</code> moves cue 2 from <code>00:00:03,600 → 00:00:07,500</code> to <code>00:00:04,100 → 00:00:08,000</code>. These are the practice file’s actual before-and-after times.</p>
+<p>Each click applies the offset again. Check the result before clicking twice. Times below zero are clamped to zero; a large negative shift can make a cue end at its start and block export. Repair that cue or reload your original file. If timing drifts unevenly, review individual cues instead of applying one offset to everything.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/03-shift-narrow.svg" width="352" height="641"><img src="/assets/tutorials/subtitle-editor/03-shift-wide.svg" width="720" height="380" loading="lazy" decoding="async" alt="Enter 0.5 in Shift all times and apply it once; cue 2 changes from 3.600–7.500 seconds to 4.100–8.000 seconds."></picture><figcaption>A positive half-second shift moves both boundaries later. It changes every cue in the file.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> Replay the beginning and end of the recording after an overall shift.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+<section class="guide-step" aria-labelledby="review-recording"><h3 id="review-recording" tabindex="-1">4. How do I check subtitles against my recording?</h3>
+      <p>Choose <strong>Open recording for review</strong> and select a local audio or video file. Click a cue’s number in the first column to start playback from that cue’s start time. If playback does not begin, press Play in the media controls.</p>
+<p>Listen for names, numbers, missing words and the start of each phrase. The player lets you hear the recording; it does not automatically align captions, display an audio waveform or overlay the subtitle track. Check the exported file with your video in its destination player too.</p>
+<p>Playback depends on the browser’s codec support. If the recording cannot play, you can still edit and export subtitles. The recording stays in this tab and is released when you clear the editor.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/04-review-narrow.svg" width="352" height="585"><img src="/assets/tutorials/subtitle-editor/04-review-wide.svg" width="720" height="324" loading="lazy" decoding="async" alt="Open a local recording, then click the number 2 beside a cue to replay it from 3.600 seconds."></picture><figcaption>The practice recording is played locally. Its player shows whole seconds, while cues keep millisecond timing.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> Start from a cue number and confirm that you hear the expected phrase.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+<section class="guide-step" aria-labelledby="fix-export"><h3 id="fix-export" tabindex="-1">5. Why are the export buttons disabled?</h3>
+      <p>Every cue needs text and valid times with End later than Start. If a cue fails that check, <strong>Copy SRT</strong> and both download buttons are disabled. Read the status message above the recording controls to find the cue that needs attention.</p>
+<p>The example deliberately sets cue 1’s Start and End to zero. Restore its End to <code>00:00:03,600</code> to repair this practice cue. For your own file, use the correct time from the recording. If the message says a cue needs subtitle text, fill its Caption field or remove the unwanted row.</p>
+<p>Check the message again after each repair: another invalid cue may still need attention. Valid overlapping cues keep their timing; overlap alone is not an export error.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/05-fix-narrow.svg" width="352" height="652"><img src="/assets/tutorials/subtitle-editor/05-fix-wide.svg" width="720" height="378" loading="lazy" decoding="async" alt="A zero-duration cue triggers the real invalid-time message and disables Download SRT; valid times and non-empty text restore export."></picture><figcaption>This invalid time was introduced for the demonstration. Fix the reported cue before downloading.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> The status should say “Subtitles are ready for export.” and the download buttons should be enabled.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+<section class="guide-step" aria-labelledby="save-subtitles"><h3 id="save-subtitles" tabindex="-1">6. How do I save the edited subtitles?</h3>
+      <p>Choose <strong>Download SRT</strong> or <strong>Download VTT</strong>, using the format your destination player or editor accepts. Both include your edited words and times. <strong>Copy SRT</strong> copies the subtitle syntax, including timecodes, rather than plain transcript text.</p>
+<p>Reopen the downloaded file and check the first and last cues, the lines you edited and any shifted times. Then test it with the recording in the destination player. A successful download confirms that a file was created, not that the wording or synchronization is correct.</p>
+<p>Download before closing or reloading the tab. There is no account project history or automatic cloud save. To remove timecodes instead, use <a href="/srt-to-text">SRT to Text</a>.</p>
+      <figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-editor/06-save-narrow.svg" width="352" height="576"><img src="/assets/tutorials/subtitle-editor/06-save-wide.svg" width="720" height="315" loading="lazy" decoding="async" alt="Download SRT or VTT, then inspect the actual SRT download showing the edited first cue and its start and end times."></picture><figcaption>The file excerpt comes from an actual download after the punctuation edit. Keep your original separately.</figcaption></figure>
+      <p class="guide-check"><strong>Check:</strong> Confirm that the exported file contains your latest changes.</p>
+      <a class="guide-back" href="#subtitle-tool">Back to the editor</a></section>
+      <section class="guide-more" aria-labelledby="more-questions"><h2 id="more-questions">More questions</h2>
+      <h3>Which subtitle formats can I edit?</h3>
+      <p>Open one SRT, VTT or SBV file, or paste its text. Export SRT or VTT. SRT uses comma-separated milliseconds; WebVTT uses a <code>WEBVTT</code> header and period-separated milliseconds. SBV input uses comma-separated time ranges.</p>
+      <p>The editor works with cue text and timing. VTT style blocks, positioning settings and inline formatting tags are not retained. Use subtitles under 2 million characters and up to 10,000 cues. It does not merge or batch-edit files.</p>
+<h3>Are my subtitles or recording uploaded?</h3>
+      <p>No. Local subtitle parsing, edits, playback and downloads happen in your browser. No account is needed. Another InstaScript transcription tab can send cues and a recording directly to this same-origin editor tab; that transfer is not placed in the URL or saved as a cloud project. See the <a href="/privacy">privacy policy</a>.</p>
+<h3>Can I edit subtitles in another language?</h3>
+      <p>Yes. You supply the subtitle text; this editor does not run speech recognition or translate it. The English-only limit belongs to the separate speech transcription tools. If you want to enter a translation while keeping source timing, use the <a href="/subtitle-translator">manual Subtitle Translator</a>.</p>
+<h3>What if I only have a recording or plain text?</h3>
+      <p>For an English recording, use <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a> first, review the transcript, and send valid timed cues to this editor or export SRT. If you only have plain text, <a href="/txt-to-srt">TXT to SRT</a> creates an estimated timing draft for manual review. This editor does not transcribe audio or perform automatic alignment.</p>
+      </section>
+    </article>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -173,7 +202,7 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a></div>
 </nav>
-      <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
+      <p>Runs entirely in your browser. No upload to any server, no signup.</p>
     </footer>
   </div>
   <script type="module" src="/subtitle-editor.js?v=p2-20261013"></script>
