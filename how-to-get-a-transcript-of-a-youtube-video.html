@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How to get a transcript of a YouTube video: open the video, expand the description, press Show transcript, copy. What the panel contains, what a copy produces measured in characters, and where the popular instructions break.">
+  <meta name="description" content="How to get a transcript of a YouTube video: find Show transcript, copy text, choose a caption language, search a quote and save TXT, Markdown or SRT. Troubleshoot missing controls and failed lookups.">
   <meta name="theme-color" content="#f8f9fa">
   <title>How to Get a Transcript of a YouTube Video | InstaScript</title>
   <link rel="canonical" href="https://instascript.app/how-to-get-a-transcript-of-a-youtube-video">
@@ -14,19 +14,21 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://instascript.app/how-to-get-a-transcript-of-a-youtube-video">
   <meta property="og:title" content="How to Get a Transcript of a YouTube Video | InstaScript">
-  <meta property="og:description" content="A measured guide to finding, copying and downloading a YouTube video transcript.">
+  <meta property="og:description" content="Find, copy, search and save existing YouTube captions, with practical troubleshooting.">
   <meta property="og:site_name" content="InstaScript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="How to Get a Transcript of a YouTube Video | InstaScript">
-  <meta name="twitter:description" content="A measured guide to finding, copying and downloading a YouTube video transcript.">
+  <meta name="twitter:description" content="Find, copy, search and save existing YouTube captions, with practical troubleshooting.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css">
+  <link rel="stylesheet" href="/youtube-transcript-guide.css">
 </head>
-<body>
+<body class="youtube-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
       <h1 class="page-h1">How to Get a Transcript of a YouTube Video</h1>
-      <p class="tagline">Four steps on YouTube itself &mdash; then the parts nobody measures</p>
+      <p class="tagline">Find the words, check the source, and save the format you need</p>
       <nav class="page-nav" aria-label="Site navigation" data-site-nav>
 <a href="/">Instagram Transcript</a>
 <a href="/video-to-text">Video to Text</a>
@@ -36,80 +38,123 @@
 </nav>
     </header>
 
-    <section class="answer-box">
-      <p><strong>Open the video.</strong> <strong>Expand the description</strong> &mdash; the <code>&hellip;more</code> link under the title. At the foot of the expanded text there is a control labelled <strong>Show transcript</strong>. Press it and the transcript opens beside the player, already cut into timestamped lines. <strong>Select, copy, paste.</strong> That is the whole job, and the rest of this page is about the parts of it that almost nobody measures: what the panel actually contains, what a copy produces byte by byte, and the two places where the popular instructions quietly break.</p>
-    </section>
 
-    <section class="content-card reading">
-      <h2>Where the control is &mdash; and where it isn't</h2>
-      <p>Most guides still send you to the three-dots menu next to Save, under the player. On the page I checked, that menu held a single item: <strong>Report</strong>. No transcript entry, nothing folded away below it.</p>
-      <p>The real control lives in the description, and it has an odd property worth knowing. Before you expand the description, the button exists in the page at zero width and zero height &mdash; present in the markup, invisible on screen. Expand the description and it becomes a normal clickable rectangle. So if you scan a collapsed page for the words &ldquo;Show transcript&rdquo; and conclude the video has no captions, you may simply be looking at an unexpanded description.</p>
-      <p>One more thing about that button: it is not the only wording you will meet. Older write-ups say &ldquo;Open transcript&rdquo;. Same control, older label.</p>
-      <p>If the words are what you want rather than a file, copying them out of that panel is the whole job. If you want them as a file instead &mdash; a TXT you can paste into a document or an SRT you can drop next to the video &mdash; the <a href="/youtube-transcript-download">YouTube transcript download</a> page builds both from the same caption track.</p>
-
-      <h2>What the panel contains</h2>
-      <p>Three things, and the third one is the step that decides whether your copy is usable.</p>
-      <p>At the top sits a search field whose placeholder reads <strong>Search in video</strong>. It belongs to the panel, not to the browser. Pages that tell you to press Ctrl+F and hunt through the panel with the browser's find are describing a workaround for a field they did not notice was there.</p>
-      <p>At the bottom, a footer line names the language and appends <strong>(auto-generated)</strong> when the text was produced by speech recognition &mdash; <code>English (auto-generated)</code> on a machine-made track, plain <code>English</code> when a human wrote the captions. You do not need to open any settings menu to see which kind you are reading.</p>
-      <p>And in the panel's header there is a three-dots menu. Open it and you will find exactly one item: <strong>Toggle timestamps</strong>. Nothing else. It is the only setting YouTube gives you in there.</p>
-
-      <h2>What a copy produces, measured</h2>
-      <p>Selecting the whole list and reading the selection back gives very different results depending on that one toggle. On a 21:03 talk:</p>
-      <ul class="steps disc">
-        <li>Timestamps on: <strong>22,478 characters</strong>, shaped as a timestamp line, then a text line, then another timestamp &mdash; <code>0:15</code>, a sentence fragment, <code>0:21</code>, the next fragment.</li>
-        <li>Timestamps off: <strong>20,100 characters</strong> of continuous text. The stamps cost about 2,400 characters, roughly a tenth of the file.</li>
-      </ul>
-      <p>Two things survive the toggle. Line breaks still follow caption cues rather than sentences, so &ldquo;clean&rdquo; text is a stack of short lines, not paragraphs. And the bracketed stage directions YouTube writes into captions &mdash; <code>[Music]</code>, <code>[Applause]</code> &mdash; plus credit lines at the top of professionally captioned videos come along regardless. Deleting lines that contain nothing but <code>\d{1,2}:\d{2}(:\d{2})?</code> is a five-second job in any editor with regular-expression replace; the brackets and the line breaks are the part that needs a human.</p>
-      <p>There is a subtler trap. The same video did not serve me the same text twice. On one visit the panel opened on the machine-made track; on another, the human-written one, with punctuation and full sentences where the first visit had none. Which track you land on is not something the panel asks you about first. Check the footer before you judge the quality of what you copied &mdash; you may be comparing two different documents.</p>
-
-      <h2>On a phone</h2>
-      <p>&ldquo;Mobile&rdquo; is two different websites wearing one name. On <code>m.youtube.com</code> I found no transcript control anywhere. Point the same phone browser at <code>www.youtube.com</code> and the request is redirected to a URL carrying <code>app=desktop</code> &mdash; and there the control is present, in the description, exactly as on a laptop.</p>
-      <p>So the honest version of the mobile answer is: use the browser, not the short domain, and expect to land on a desktop-shaped page. I did not test the native app and I am not going to guess about it.</p>
-
-      <h2>When there is nothing to get</h2>
-      <p>A transcript on YouTube is not a transcription service. It is a view onto a caption track that already exists &mdash; uploaded by the publisher or generated from the audio by YouTube. No track, no control, no transcript; the button is absent because there is nothing for it to open.</p>
-      <p>Getting text out of a captionless video means transcribing the audio, which is a different machine doing a different job. Its output is an approximation: names spelled phonetically, numbers off by a digit, speakers run together, no punctuation. Any promise of a &ldquo;transcript&rdquo; for a video without captions is selling you that approximation under a more confident name. Know which one you are buying before you quote it.</p>
-      <p>That is a different job with different tools. If you have the video as a file and there is no caption track to read, <a href="/video-to-text">Video to Text</a> runs a speech model in your browser and does not need one.</p>
-
-      <h2>The short checklist</h2>
-      <ol class="steps">
-        <li>Expand the description. The control is at its foot, not in the three-dots menu.</li>
-        <li>Read the footer. <code>auto-generated</code> means expect phonetic errors.</li>
-        <li>Use the panel's own search field, not the browser's find.</li>
-        <li>Toggle the timestamps off <strong>before</strong> copying; afterwards is a worse cleanup job.</li>
-        <li>Strip the leftover brackets and cue breaks yourself.</li>
-        <li>No control at all? There is no caption track. Reading is finished here.</li>
-      </ol>
-
-      <h2>FAQ</h2>
-      <h3>How to get transcript from YouTube video without any software?</h3>
-      <p>On YouTube's own page, with nothing installed: expand the description, press Show transcript, and copy out of the panel that opens beside the player. There is no download button in there, which is why copying is the last step rather than saving.</p>
-      <h3>How to get script from YouTube video when what I want is the script, not subtitles?</h3>
-      <p>Same control, and the footer tells you which kind of script you are reading &mdash; a human-written track reads in full sentences, a machine-made one comes out unpunctuated. Toggle the timestamps off before you copy and you get the words as one block instead of alternating time and text lines.</p>
-      <h3>How to get a YouTube transcript when the video has no captions?</h3>
-      <p>You cannot get one from YouTube, because there is no track for the control to open &mdash; the button simply is not there. The options at that point are a publisher who adds captions later, or transcribing the audio yourself.</p>
-
-      <h2>What I could not verify</h2>
-      <p>The language name in the footer carries a dropdown chevron, but it did not open in an automated run, so I cannot say what it lists or how many languages a given video offers. One of the four videos I opened during testing never rendered the panel at all. Everything above was measured on desktop Chrome, English/US, signed out, 17 September 2026, on three videos of 1:59, 2:53 and 21:03. YouTube rearranges this surface without announcing it &mdash; re-check rather than trust the date.</p>
-
-      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
-    </section>
-
-    <section class="content-card"><h2>Search captions in InstaScript</h2><p>Use <a href="/youtube-transcript">YouTube Transcript</a> or <a href="/youtube-transcript-download">YouTube Transcript Download</a> to search a loaded caption track, move between matches, and locate its caption line. Source time links open YouTube in a new tab. Search is read-only and does not change TXT/SRT exports. This guide does not run a separate caption engine.</p></section>
-
-    <nav class="related-links" aria-label="Related transcript tools">
-      Other transcript tools:
-      <a href="/">Instagram Transcript</a> &middot;
-      <a href="/youtube-transcript">YouTube Transcript</a> &middot;
-      <a href="/youtube-transcript-download">YouTube Transcript Download</a> &middot;
-      <a href="/video-to-text">Video to Text</a> &middot;
-      <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> &middot;
-      <a href="/tiktok-transcript">TikTok Transcript</a> &middot;
-      <a href="/facebook-video-transcript">Facebook Video Transcript</a>
-    </nav>
-
-    <section class="content-card"><h2>Save a Markdown note</h2><p>The linked YouTube transcript tools also offer local Markdown (.md) notes with a video title and source link. Use Timestamps for linked start times or Plain text to omit times. They export existing caption words, not an AI summary; this guide does not run a separate transcription engine.</p></section>
+<main class="editor-guide" id="guide-title">
+<section class="guide-intro">
+<h2>Get a YouTube transcript for notes, quotes or subtitles
+</h2>
+<p>Read existing captions on YouTube, or use the linked tool to search and export them. Neither route creates a missing caption track. A failed request is not evidence that a video has no captions.
+</p>
+<p class="guide-cta"><a class="btn-primary" href="/youtube-transcript">Open YouTube Transcript</a>
+</p>
+<nav class="guide-contents" aria-label="Tutorial questions"><ol><li><a href="#native-transcript">Where is Show transcript on YouTube?</a></li><li><a href="#copy-words">How do I copy a YouTube transcript without timestamps?</a></li><li><a href="#read-link">How do I get a transcript from a YouTube link?</a></li><li><a href="#language-search">How do I choose a language and find a quote?</a></li><li><a href="#save-file">Should I save TXT, Markdown or SRT?</a></li><li><a href="#lookup-fails">What should I do when the transcript will not load?</a></li></ol>
+</nav>
+</section>
+<section class="guide-step">
+<h3 id="native-transcript" tabindex="-1">Where is Show transcript on YouTube?
+</h3>
+<p>Open the video’s watch page and expand its description if necessary. Choose <strong>Show transcript</strong> when available. Select a caption line to jump to that part of the video. This follows <a href="https://support.google.com/youtube/answer/15930243?hl=en">YouTube’s transcript instructions</a>; the position and wording can vary by device and interface language.
+</p>
+<figure class="tutorial-figure">
+<picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-guide/01-native-narrow.svg"><img src="/assets/tutorials/youtube-transcript-guide/01-native-wide.svg" alt="Open the native transcript" loading="lazy" decoding="async">
+</picture><figcaption>Flow diagram based on YouTube Help, not a screenshot of a successful native lookup.</figcaption>
+</figure><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-step">
+<h3 id="copy-words" tabindex="-1">How do I copy a YouTube transcript without timestamps?
+</h3>
+<p>Select and copy the caption text in YouTube’s transcript panel. If its menu offers <strong>Toggle timestamps</strong>, hide the times first; that control is not guaranteed in every layout. Paste into a document and check line breaks, names, numbers and caption annotations. A transcript reflects captions and may differ from the speaker’s original script. In InstaScript, a successfully loaded track can be switched to <strong>Plain text</strong> before Copy or TXT export.
+</p><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-step">
+<h3 id="read-link" tabindex="-1">How do I get a transcript from a YouTube link?
+</h3>
+<p>Open <a href="/youtube-transcript">YouTube Transcript</a>, paste a public watch, youtu.be or Shorts link, and press <strong>Get Transcript</strong>. It reads existing captions; it does not listen to the video or generate missing subtitles. This guide links to that shared tool and has no separate caption engine. A link being accepted does not guarantee that YouTube will return its captions.
+</p>
+<figure class="tutorial-figure">
+<picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-guide/02-link-narrow.svg"><img src="/assets/tutorials/youtube-transcript-guide/02-link-wide.svg" alt="Read an existing caption track" loading="lazy" decoding="async">
+</picture><figcaption>Actual InstaScript input and button, captured in Chrome at a 375 px viewport.</figcaption>
+</figure><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-step">
+<h3 id="language-search" tabindex="-1">How do I choose a language and find a quote?
+</h3>
+<p>If InstaScript returns several tracks, choose one in the language selector and submit the link again. Available languages depend on the video’s tracks; the selector does not generate translations. Search <strong>Find in this transcript</strong>, then use Previous or Next. <strong>Locate caption</strong> reveals the line; a source time link opens YouTube in a new tab at a whole-second position. Search is literal, does not span caption lines, and does not edit the captions. Recheck the quote against the source before using it.
+</p><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-step">
+<h3 id="save-file" tabindex="-1">Should I save TXT, Markdown or SRT?
+</h3>
+<p>After a successful lookup, choose <strong>TXT</strong> for plain notes, <strong>Markdown</strong> for a note with source links, or <strong>SRT</strong> for timed subtitles. Timestamps and Plain text control the text-note presentation; SRT retains cue timing. Markdown exports caption words, not an AI summary. Open the saved file to check its language and timing. These are browser-created downloads, with no account history.
+</p>
+<figure class="tutorial-figure">
+<picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-guide/03-formats-narrow.svg"><img src="/assets/tutorials/youtube-transcript-guide/03-formats-wide.svg" alt="Choose the file for your next task" loading="lazy" decoding="async">
+</picture><figcaption>Format decision diagram. No fabricated caption result or download is shown.</figcaption>
+</figure><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-step">
+<h3 id="lookup-fails" tabindex="-1">What should I do when the transcript will not load?
+</h3>
+<p>Read the message before deciding what is missing. YouTube can return an access challenge, a failed request, or no readable caption track. Try the video on YouTube, check the caption controls there, and retry later if appropriate. A failed lookup alone does not prove that captions do not exist. If you have a permitted local copy with English speech, <a href="/video-to-text">Video to Text</a> is a separate browser recognition route; it is not a YouTube URL downloader.
+</p>
+<figure class="tutorial-figure">
+<picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-guide/04-failure-narrow.svg"><img src="/assets/tutorials/youtube-transcript-guide/04-failure-wide.svg" alt="A failed lookup needs checking" loading="lazy" decoding="async">
+</picture><figcaption>Actual failed lookup from this test. It is evidence of an unavailable result, not proof that the video has no captions.</figcaption>
+</figure><a class="guide-back" href="#guide-title">Back to the questions ↑</a>
+</section>
+<section class="guide-more" id="common-problems">
+<h2>Questions that come up while using a YouTube transcript
+</h2>
+<h3 id="no-button" tabindex="-1">Why can’t I find Show transcript?
+</h3>
+<p>Expand the description, allow the page to finish loading and check the video’s caption controls. Try another supported browser or layout when appropriate. Missing controls may reflect caption availability or the current interface/access state. Do not conclude that no captions exist solely from a missing button.
+</p>
+<h3 id="phone" tabindex="-1">Can I get the transcript on my phone?
+</h3>
+<p>Start in the video description and look for Show transcript if it is offered. App and browser layouts can differ. Alternatively, copy the Share link into InstaScript in your browser. A desktop-site request is an option to try, not a guarantee that a transcript control will appear. Native mobile-app operation was not verified in this update.
+</p>
+<h3 id="no-captions" tabindex="-1">Can I transcribe a YouTube video that has no captions?
+</h3>
+<p>The YouTube caption reader cannot create a missing track. Ask the publisher for captions, or use an authorized local audio/video copy with the separate English-only Video to Text workflow. Its language detection, model loading and browser decoding limits apply; YouTube caption languages do not extend speech recognition language support.
+</p>
+<h3 id="wrong-language" tabindex="-1">Why is the transcript in the wrong language?
+</h3>
+<p>Check which caption track was returned. If several are listed in InstaScript, change the language and submit the link again. A single-track result has no language choice. An auto-generated label identifies an automatic track; punctuation alone does not establish who wrote it.
+</p>
+<h3 id="find-word" tabindex="-1">Can I search for one word in a long YouTube video?
+</h3>
+<p>Some native transcript panels offer a search field. In InstaScript, Find in this transcript searches the loaded track, with Enter for next, Shift+Enter for previous and Escape to clear. Plain text view does not make cross-caption phrases searchable. A new lookup or language change clears the search.
+</p>
+<h3 id="blocked" tabindex="-1">Why does a video with visible captions still fail here?
+</h3>
+<p>The lookup service, a direct caption request or Google’s browser check may fail independently of caption availability. Read the specific error. Connection restrictions and blocked Google scripts can affect the browser route. This update encountered a YouTube sign-in challenge and no readable track from the site; it did not verify a successful caption retrieval.
+</p>
+<h3 id="edit-subtitles" tabindex="-1">How do I fix mistakes in a downloaded YouTube SRT?
+</h3>
+<p>The caption reader is read-only. Save SRT after a successful lookup and open Subtitle Editor to correct words or timing. Review changes against a recording you are allowed to use. The editor does not automatically translate or align the captions to audio.
+</p>
+<h3 id="summary" tabindex="-1">Can I turn a lecture transcript into notes or a summary?
+</h3>
+<p>Save the captions as TXT or Markdown, then write and verify your own notes with links to the relevant video times. InstaScript does not automatically summarize, fact-check or recover the presenter’s original script. Check names, numbers and quotations against the recording.
+</p>
+<h3 id="privacy" tabindex="-1">Is the whole video uploaded, and are my searches saved?
+</h3>
+<p>The caption route sends the video link to the server, which queries YouTube and may cache successful lookup responses including captions for up to one hour. Selected tracks may be fetched directly by the browser, including a Google bot check. It does not upload or transcribe video audio. Caption search and file export run locally; opening source links contacts YouTube. There is no account transcript history.
+</p>
+<h3 id="permission" tabindex="-1">Can I republish the transcript as an article?
+</h3>
+<p>Obtaining captions does not transfer rights to the video or its words. Use material you have permission to reuse, attribute sources where appropriate and write your own analysis. Do not treat a downloadable transcript as authorization to publish the full text.
+</p>
+<p>Next: <a href="/youtube-transcript-download">download existing captions</a>, <a href="/subtitle-editor#guide-title">edit an SRT</a>, or read the <a href="/privacy">privacy policy</a>.
+</p>
+</section>
+<aside class="guide-practice">
+<p><strong>Verification note — October 22, 2026.</strong> This update checked the current source code and the <a href="https://support.google.com/youtube/answer/15930243?hl=en">official transcript instructions</a>. Chrome encountered a sign-in challenge on YouTube, and our sample link lookup returned no readable track. The figures distinguish actual input/error screenshots from explanatory diagrams. A successful native panel, language switch and caption export were not verified in this update; no result or performance number is invented.
+</p>
+</aside>
+<p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.
+</p>
+</main>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -166,29 +211,7 @@
     </footer>
   </div>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How to get transcript from YouTube video without any software?",
-        "acceptedAnswer": { "@type": "Answer", "text": "On YouTube's own page, with nothing installed: expand the description, press Show transcript, and copy out of the panel that opens beside the player." }
-      },
-      {
-        "@type": "Question",
-        "name": "How to get script from YouTube video when what I want is the script, not subtitles?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Same control, and the footer tells you which kind of script you are reading. Toggle the timestamps off before you copy and you get the words as one block." }
-      },
-      {
-        "@type": "Question",
-        "name": "How to get a YouTube transcript when the video has no captions?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You cannot get one from YouTube, because there is no track for the control to open. The button simply is not there." }
-      }
-    ]
-  }
-  </script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why can’t I find Show transcript?","acceptedAnswer":{"@type":"Answer","text":"Expand the description, allow the page to finish loading and check the video’s caption controls. Try another supported browser or layout when appropriate. Missing controls may reflect caption availability or the current interface/access state. Do not conclude that no captions exist solely from a missing button."}},{"@type":"Question","name":"Can I get the transcript on my phone?","acceptedAnswer":{"@type":"Answer","text":"Start in the video description and look for Show transcript if it is offered. App and browser layouts can differ. Alternatively, copy the Share link into InstaScript in your browser. A desktop-site request is an option to try, not a guarantee that a transcript control will appear. Native mobile-app operation was not verified in this update."}},{"@type":"Question","name":"Can I transcribe a YouTube video that has no captions?","acceptedAnswer":{"@type":"Answer","text":"The YouTube caption reader cannot create a missing track. Ask the publisher for captions, or use an authorized local audio/video copy with the separate English-only Video to Text workflow. Its language detection, model loading and browser decoding limits apply; YouTube caption languages do not extend speech recognition language support."}},{"@type":"Question","name":"Why is the transcript in the wrong language?","acceptedAnswer":{"@type":"Answer","text":"Check which caption track was returned. If several are listed in InstaScript, change the language and submit the link again. A single-track result has no language choice. An auto-generated label identifies an automatic track; punctuation alone does not establish who wrote it."}},{"@type":"Question","name":"Can I search for one word in a long YouTube video?","acceptedAnswer":{"@type":"Answer","text":"Some native transcript panels offer a search field. In InstaScript, Find in this transcript searches the loaded track, with Enter for next, Shift+Enter for previous and Escape to clear. Plain text view does not make cross-caption phrases searchable. A new lookup or language change clears the search."}},{"@type":"Question","name":"Why does a video with visible captions still fail here?","acceptedAnswer":{"@type":"Answer","text":"The lookup service, a direct caption request or Google’s browser check may fail independently of caption availability. Read the specific error. Connection restrictions and blocked Google scripts can affect the browser route. This update encountered a YouTube sign-in challenge and no readable track from the site; it did not verify a successful caption retrieval."}},{"@type":"Question","name":"How do I fix mistakes in a downloaded YouTube SRT?","acceptedAnswer":{"@type":"Answer","text":"The caption reader is read-only. Save SRT after a successful lookup and open Subtitle Editor to correct words or timing. Review changes against a recording you are allowed to use. The editor does not automatically translate or align the captions to audio."}},{"@type":"Question","name":"Can I turn a lecture transcript into notes or a summary?","acceptedAnswer":{"@type":"Answer","text":"Save the captions as TXT or Markdown, then write and verify your own notes with links to the relevant video times. InstaScript does not automatically summarize, fact-check or recover the presenter’s original script. Check names, numbers and quotations against the recording."}},{"@type":"Question","name":"Is the whole video uploaded, and are my searches saved?","acceptedAnswer":{"@type":"Answer","text":"The caption route sends the video link to the server, which queries YouTube and may cache successful lookup responses including captions for up to one hour. Selected tracks may be fetched directly by the browser, including a Google bot check. It does not upload or transcribe video audio. Caption search and file export run locally; opening source links contacts YouTube. There is no account transcript history."}},{"@type":"Question","name":"Can I republish the transcript as an article?","acceptedAnswer":{"@type":"Answer","text":"Obtaining captions does not transfer rights to the video or its words. Use material you have permission to reuse, attribute sources where appropriate and write your own analysis. Do not treat a downloadable transcript as authorization to publish the full text."}}]}</script>
 </body>
 </html>

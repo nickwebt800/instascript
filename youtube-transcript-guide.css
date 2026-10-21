@@ -1,0 +1,4 @@
+/* Editorial guide; no caption engine changes. */
+.youtube-guide-page .container { max-width: 920px; }
+.youtube-guide-page .guide-cta { margin: 18px 0 26px; }
+.youtube-guide-page .guide-cta a { display: inline-block; text-decoration: none; color: #fff; background: var(--accent-deep); }
