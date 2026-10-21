@@ -1,0 +1,4 @@
+/* Recording guide layout; shared tool behavior is unchanged. */
+.recording-guide-page .container { max-width: 920px; }
+.recording-guide-page .editor-guide > section { margin-top: 36px; }
+.recording-guide-page .editor-guide [id] { scroll-margin-top: 24px; }
