@@ -95,6 +95,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Twitter Video Transcript](https://instascript.app/twitter-video-transcript) — Turn a permitted saved X video into spoken transcript text with timestamps, TXT, SRT and VTT export in the browser.
 - [Google Meet Transcript](https://instascript.app/google-meet-transcript) — Find existing Meet text or use a permitted saved recording, then check coverage and corrections.
 - [OGG to Text](https://instascript.app/ogg-to-text) — Prepare an OGG recording, distinguish decoding failures and review an English transcript in the local audio tool.
+- [Recording Format Guide](https://instascript.app/recording-format-guide) — Check unusual recording formats, missing voices and changed timestamps before local English transcription.
 
 ### YouTube tools
 

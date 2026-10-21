@@ -1578,6 +1578,41 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Transcribe Saved Recordings: Check Formats and Keep Timing",
+      "label": "Recording Format Guide",
+      "url": "https://instascript.app/recording-format-guide",
+      "summary": "Check unusual recording formats, missing voices and changed timestamps before local English transcription.",
+      "accepts": [],
+      "limits": [
+        "guide linking to existing local video tool",
+        "actual browser audio decoding required; no universal format support",
+        "English recognition only; local files up to 100 MB",
+        "no track selection, conversion, automatic translation or subtitle burn-in",
+        "SRT/VTT require complete valid timing"
+      ],
+      "keywords": [
+        "mov to text",
+        "flac to text",
+        "amr to text",
+        "aac to text",
+        "webm to text",
+        "mkv to text",
+        "wma to text",
+        "3gp to text"
+      ],
+      "path": "/recording-format-guide",
+      "html": "recording-format-guide.html",
+      "markdown": "recording-format-guide.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-22",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
