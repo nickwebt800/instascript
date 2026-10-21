@@ -1,0 +1,29 @@
+/* Shared translation tutorial accents and readable source/translation fields. */
+.translate-srt-guide-page .container { max-width: 920px; }
+.translate-srt-guide-page .guide-cta { margin: 18px 0 26px; }
+.translate-srt-guide-page .guide-cta a { display: inline-block; text-decoration: none; color: #fff; background: var(--accent-deep); }
+.subtitle-translator-page .translation-guide-link { margin: 12px 0 18px; font-size: .88rem; }
+.subtitle-translator-page .translation-guide-link a { color: var(--accent-deep); }
+.subtitle-translator-page .privacy-line { display: block; }
+.subtitle-translator-page #exportBtn:not(:disabled) { background: var(--accent-deep); }
+.subtitle-translator-page .file-button:focus-within { outline: 2px solid var(--accent-deep); outline-offset: 3px; }
+.subtitle-translator-page .cue-table { margin-top: 18px; }
+.subtitle-translator-page .cue-row {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px; padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.subtitle-translator-page .cue-meta { grid-column: 1 / -1; font: .84rem/1.6 var(--mono); overflow-wrap: anywhere; color: #475467; }
+.subtitle-translator-page .cue-source { font-size: .95rem; line-height: 1.65; overflow-wrap: anywhere; white-space: pre-wrap; }
+.subtitle-translator-page .cue-source::before { content: "Source"; display: block; margin-bottom: 7px; font-size: .82rem; font-weight: 700; color: #475467; }
+.subtitle-translator-page .cue-translation { display: flex; flex-direction: column; gap: 7px; font-size: .82rem; font-weight: 700; color: #475467; }
+.subtitle-translator-page .cue-translation textarea {
+  display: block; width: 100%; min-height: 100px; padding: 10px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  font: .95rem/1.65 var(--font); font-weight: 400; color: var(--ink);
+  background: var(--surface); resize: vertical;
+}
+.subtitle-translator-page .cue-translation textarea:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .subtitle-translator-page .cue-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .subtitle-translator-page .cue-translation textarea { min-height: 110px; }
+}

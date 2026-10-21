@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Edit translated SRT cues locally while preserving the original subtitle timing.">
   <title>Subtitle Translator: Edit SRT Cues Locally | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/translate-srt-guide.css?v=e2b81ab291c7">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-translator-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -39,9 +40,10 @@
     <main class="subtitle-tool" aria-labelledby="translator-title">
       <div class="tool-intro-row">
         <div><h2 id="translator-title">Open a subtitle file, then replace each cue</h2><p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p></div>
-        <label class="file-button" for="subtitleFile">Open SRT / VTT<input id="subtitleFile" type="file" accept=".srt,.vtt,text/plain,text/vtt,application/x-subrip" hidden></label>
+        <label class="file-button" for="subtitleFile">Open SRT / VTT<input id="subtitleFile" type="file" accept=".srt,.vtt,text/plain,text/vtt,application/x-subrip" class="sr-only"></label>
       </div>
       <p class="input-hint">This is a local translation editor. It preserves timing; it does not call an automatic translation service.</p>
+      <p class="translation-guide-link">Need help with unchanged words or subtitle timing? Follow the <a href="/translate-srt">illustrated SRT translation guide</a>.</p>
       <div id="cueEditor" class="cue-editor hidden" aria-live="polite"></div>
       <div class="converter-controls"><button id="exportBtn" class="btn-primary" type="button" disabled>Download translated SRT</button><button id="clearBtn" class="btn-ghost" type="button">Clear</button></div>
       <p id="translatorStatus" class="tool-status" role="status" aria-live="polite">Open one SRT or VTT file to begin.</p>

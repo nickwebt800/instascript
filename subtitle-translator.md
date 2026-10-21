@@ -10,6 +10,8 @@ Open the [Subtitle Translator](https://instascript.app/subtitle-translator), cho
 
 This is a local translation editor. It does not call an automatic translation service, transcribe audio, or upload subtitle text.
 
+Need help with unchanged words or subtitle timing? Follow the [illustrated SRT translation guide](https://instascript.app/translate-srt).
+
 ## What stays the same
 
 The cue timecodes stay attached to their original text. Only the editable wording changes. The exported file is an SRT that you can check in a subtitle player or the [Subtitle Editor](https://instascript.app/subtitle-editor).
