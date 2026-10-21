@@ -19,8 +19,10 @@
   <meta name="twitter:description" content="Get timestamped spoken text from an Instagram Reel with TXT, SRT and VTT downloads.">
   <title>Instagram Transcript Generator: Timestamped Text, TXT and SRT | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
+  <link rel="stylesheet" href="/instagram-transcript-guide.css?v=c011e866ada6">
 </head>
-<body class="upload-only">
+<body class="upload-only instagram-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -35,70 +37,81 @@
 </nav>
     </header>
 
-    <section class="content-card answer-first">
-      <h2>The short answer</h2>
-<p>Use the InstaScript tool on the <a href="/">Instagram Transcript</a> page. Paste a public Reel URL, or upload the video file, then press <strong>Get my Reel transcript</strong>. The result is a searchable transcript with timestamps that you can copy or download as <strong>.txt</strong> or <strong>.srt</strong>.</p>
-      <ol class="steps">
-<li>Open the tool and choose <strong>Paste Reel URL</strong> for a public Reel, or <strong>Upload video or audio</strong> for a saved video.</li>
-        <li>Wait for the browser to extract the audio and run Whisper speech recognition.</li>
-        <li>Copy the text, or download SRT when you need subtitles aligned to the clip.</li>
-      </ol>
-      <p class="bench-note"><strong>Privacy detail:</strong> uploaded files are processed in your browser. The URL option needs a server-side fetch only to obtain the public media file; the speech model still runs locally in the page.</p>
-    </section>
-
-    <section class="content-card">
-      <h2>What this Instagram transcript generator returns</h2>
-      <p>An Instagram transcript is the spoken audio written out in reading order. InstaScript keeps each segment connected to a start time, which makes it useful for checking a quote, searching a Reel, preparing captions, or handing a clip to an editor.</p>
-      <pre class="example">[00:00] The first setting controls the audio track
-[00:05] then export the transcript as a subtitle file
-[00:11] so the words stay attached to the Reel</pre>
-      <p>The plain-text download is convenient for notes and research. The SRT download is a standard subtitle file: it contains numbered cues, start and end times, and the words for each cue.</p>
-
-      <h2>URL versus saved video</h2>
-      <p>A public URL is quickest when the Reel is available without a login. Private posts, removed posts, login-gated pages, and some region-restricted media cannot be fetched by a public web tool. In those cases, save a copy that you are allowed to use and choose the upload option instead.</p>
-      <p>Uploading also gives you a predictable file boundary: the page accepts common MP4, MOV and WebM video files up to 100 MB. The browser needs an audio track it can decode; a silent clip cannot produce spoken words.</p>
-
-      <h2>Why the first run is slower</h2>
-      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
-      <table class="bench-table">
-        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
-        <tbody>
-          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
-          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
-          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
-          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
-          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
-        </tbody>
-      </table>
-      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
-      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
-      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
-
-
-
-      <h2>Common questions</h2>
-      <h3>Can it transcribe every Instagram Reel?</h3>
-      <p>No. The URL path needs a public page and a media URL that Instagram exposes to an unauthenticated request. Use a local copy for a private, expired, or login-only post.</p>
-      <h3>Does it create captions from the text?</h3>
-      <p>It creates a timestamped transcript and an SRT file. You can import the SRT into a video editor or player that supports external subtitles.</p>
-      <h3>Is the transcript accurate for music?</h3>
-      <p>Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy, so review quotes before publishing them.</p>
-      <h3>Which language does this page support?</h3>
-      <p>Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.</p>
-      <p class="disclaimer">InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related pages">
-      More: <a href="/">Instagram Transcript</a> &middot;
-      <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &middot;
-      <a href="/instagram-video-to-text">Instagram Video to Text</a> &middot;
-      <a href="/reels-to-text">Reels to Text</a> &middot;
-      <a href="/video-to-text">Video to Text</a> &middot;
-      <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a>
-    </nav>
-
-    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
+<main class="content-card reading editor-guide" aria-labelledby="guide-title"><p>Use the <a href="/">Instagram Transcript</a> tool to turn spoken English from a public Reel or a saved recording into editable text. Choose a public URL or a permitted local file, review the words, then save notes or timed subtitles.</p>
+<p class="guide-cta"><a class="btn-primary" href="/">Open Instagram Transcript</a></p>
+<p>Local file processing stays in the browser. Public Instagram links use server-side lookup and a media proxy before browser recognition. English speech only; files up to 100 MB and browser decoding support apply.</p>
+<h2 id="guide-title" tabindex="-1">Get text you can review and use</h2>
+<nav class="guide-contents" aria-label="Instagram transcription steps"><ol><li><a href="#choose-reel-input">Should I paste a Reel URL or open a saved video?</a></li><li><a href="#try-prepared-sample">Can I try the controls before using my own Reel?</a></li><li><a href="#run-english-transcription">How do I start transcription and know what it is doing?</a></li><li><a href="#review-reel-transcript">How do I fix a wrong name, word or punctuation in the transcript?</a></li><li><a href="#find-transcript-quote">How do I find a quote inside a longer transcript?</a></li><li><a href="#export-reel-transcript">Should I download TXT, Markdown, SRT or VTT?</a></li></ol></nav>
+<p><a href="#reel-problems">Jump to a failed-link, language or export question</a>.</p>
+<aside class="guide-practice" aria-label="Example sources"><p><strong>About the examples:</strong> the upload screenshots use this site’s <a href="/assets/demo/kennedy-1961.wav" download>11-second public-domain practice recording</a>. The guide labels prepared sample mode separately from the actual two-model recognition and downloads. See the <a href="/assets/demo/SOURCE.md">recording source and rights</a>. These examples are not accuracy or speed measurements.</p>
+</aside>
+<section class="guide-step" aria-labelledby="choose-reel-input"><h3 id="choose-reel-input" tabindex="-1">1. Should I paste a Reel URL or open a saved video?</h3>
+<p>Open <a href="/">Instagram Transcript</a>. Choose <strong>Paste Reel URL</strong> for a public Instagram Reel or video post, paste its link, and press <strong>Get my Reel transcript</strong>. This guide uses that shared tool; it does not run a separate transcription engine.</p>
+<p>If you already have a recording you are allowed to use, choose <strong>Upload video or audio</strong>, select it and press <strong>Transcribe this file</strong>. The browser accepts decodable MP4, MOV, WebM, MP3, WAV, M4A and OGG files up to 100 MB. The example uses a public-domain WAV recording, not an Instagram post.</p>
+<p>URL access can fail for private, deleted, login-gated or restricted posts, and public links can fail too. Use a permitted local copy when available. A failed link lookup does not establish that the video has no speech.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/01-input-narrow.svg" width="352" height="636"><img src="/assets/tutorials/instagram-transcript-generator/01-input-wide.svg" width="720" height="363" loading="lazy" decoding="async" alt="The shared tool offers Paste Reel URL for public Instagram links and Upload video or audio for permitted local recordings; the file example is a public-domain WAV."></picture><figcaption>Use the public URL route or a saved file. A filename in this example identifies public practice audio, not a private recording.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Confirm that you selected the intended input and that it contains English speech.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-step" aria-labelledby="try-prepared-sample"><h3 id="try-prepared-sample" tabindex="-1">2. Can I try the controls before using my own Reel?</h3>
+<p>Choose <strong>Try a sample</strong> on the shared tool’s homepage. It opens prepared text and an 11-second public-domain recording. Replay, edit, reset or download the example to learn the controls without running speech recognition or downloading speech models.</p>
+<p>The prepared sample is not a live recognition result, accuracy test or speed measurement. Its buttons say <strong>Copy sample</strong>, <strong>Sample TXT</strong>, <strong>Sample SRT</strong> and <strong>Sample VTT</strong>. Sample edits are separate from your real transcript.</p>
+<p>Choose <strong>Close sample</strong> when you want to return to your own recording. Keep track of whether you are exporting the sample or your own result.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/02-sample-narrow.svg" width="352" height="546"><img src="/assets/tutorials/instagram-transcript-generator/02-sample-wide.svg" width="720" height="300" loading="lazy" decoding="async" alt="Try a sample opens explicitly labeled prepared text and audio; it does not run speech recognition."></picture><figcaption>Prepared sample mode lets you explore editing and exports. It is separate from the real recognition shown later.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Read the Prepared sample label before editing or downloading the example.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-step" aria-labelledby="run-english-transcription"><h3 id="run-english-transcription" tabindex="-1">3. How do I start transcription and know what it is doing?</h3>
+<p>Start with <strong>Get my Reel transcript</strong> for a public URL, or <strong>Transcribe this file</strong> for a selected recording. Watch the status as the browser checks the language and runs English speech recognition. The first transcription may download both language-detection and speech models.</p>
+<p>English speech is required. Detected non-English speech, an uncertain language decision and a technical language-check failure have different errors. The latter two do not prove the audio is non-English; they stop the job without producing a transcript.</p>
+<p>Keep the tab open until a result or error appears. Cached model resources can reduce retrieval work on later runs, but models may still need initialization. There is no fixed completion-time promise for your device or recording.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/03-process-narrow.svg" width="352" height="721"><img src="/assets/tutorials/instagram-transcript-generator/03-process-wide.svg" width="720" height="475" loading="lazy" decoding="async" alt="Start the selected file with Transcribe this file and read the real language-detector loading status while the browser prepares transcription."></picture><figcaption>The loading screen comes from the actual two-model run used for these screenshots.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Wait for a real transcript or read the specific error; a written post description is not a speech result.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-step" aria-labelledby="review-reel-transcript"><h3 id="review-reel-transcript" tabindex="-1">4. How do I fix a wrong name, word or punctuation in the transcript?</h3>
+<p>Click a timestamp to replay its cue when the recording is available, then edit that cue’s text field. Check names, numbers, negatives and quotations against the audio. Copy and downloads use the latest edited words.</p>
+<p>The pictures show actual recognition of the public practice recording, followed by a manual punctuation edit. The example preserves the spoken words; it is not an accuracy score or a promise that another recording will produce the same result.</p>
+<p>Editing words does not automatically retime the subtitles. If cue timing also needs work, use <strong>Open in Subtitle Editor</strong> when valid timed cues are available, or export SRT and open it in <a href="/subtitle-editor">Subtitle Editor</a> for a separate review.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/04-review-narrow.svg" width="352" height="650"><img src="/assets/tutorials/instagram-transcript-generator/04-review-wide.svg" width="720" height="352" loading="lazy" decoding="async" alt="Actual recognized words from the public recording are reviewed and manually punctuated in the editable result field without removing the remaining words."></picture><figcaption>These are real recognition and edit states. Review what you intend to quote, including the words around it.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Replay the edited phrase and confirm that its wording still matches the recording.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-step" aria-labelledby="find-transcript-quote"><h3 id="find-transcript-quote" tabindex="-1">5. How do I find a quote inside a longer transcript?</h3>
+<p>Use <strong>Find in this transcript</strong> after transcription. Enter a literal word or phrase, then use <strong>Previous</strong> and <strong>Next</strong> to move between matches. <strong>Edit this match</strong> selects the matched words for editing. A <strong>Play at</strong> button can replay a timed match when a recording is available.</p>
+<p>Enter moves to the next match, Shift+Enter moves to the previous one, and Escape in the search field clears the query. Search uses your current edited words and runs locally.</p>
+<p>It searches the current result only, not other Reels or saved projects. Matching is literal, folds ASCII letter case, and does not span cue boundaries. If a phrase crosses two cues, search for a shorter part and read its neighboring cue too.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/05-search-narrow.svg" width="352" height="546"><img src="/assets/tutorials/instagram-transcript-generator/05-search-wide.svg" width="720" height="300" loading="lazy" decoding="async" alt="Searching Americans finds the current edited transcript text; a cue timestamp provides a way back to the recording."></picture><figcaption>Use a search match to locate a passage, then listen before quoting it.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Read the matched words in context rather than copying an isolated fragment.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-step" aria-labelledby="export-reel-transcript"><h3 id="export-reel-transcript" tabindex="-1">6. Should I download TXT, Markdown, SRT or VTT?</h3>
+<p>Use <strong>Copy</strong> or <strong>TXT</strong> for words you want to paste into notes. They are plain text by default. Enable <strong>Include timestamps in TXT, Markdown and Copy</strong> when you want available start times included. <strong>Markdown</strong> provides a formatted text note; it does not create an AI summary.</p>
+<p>Choose <strong>SRT</strong> or <strong>VTT</strong> for timed subtitles in a compatible video editor or player. These exports and the editor transfer require non-empty cue text with complete valid start and end times. If timing is incomplete, keep the recording and save TXT instead; missing end times are not guessed.</p>
+<p>Reopen the saved file and check the edited words and timings. A subtitle download is separate from the video; it does not add visible captions to a new MP4 or publish anything to Instagram.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/instagram-transcript-generator/06-export-narrow.svg" width="352" height="609"><img src="/assets/tutorials/instagram-transcript-generator/06-export-wide.svg" width="720" height="349" loading="lazy" decoding="async" alt="TXT is for text notes; SRT and VTT are for complete timed cues. The displayed SRT excerpt comes from the actual edited download."></picture><figcaption>This saved SRT reflects the manual edit shown above. Export success does not replace wording and timing checks.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Save your work before closing the tab and test subtitle files in their destination player.</p>
+<a class="guide-back" href="/">Open the shared transcript tool</a></section>
+<section class="guide-more" aria-labelledby="reel-problems"><h2 id="reel-problems" tabindex="-1">Common Reel transcription problems</h2>
+<nav class="guide-contents" aria-label="Reel transcription questions"><ol><li><a href="#reel-link-failed">Why does my public Instagram Reel link fail?</a></li><li><a href="#english-language-check">Why does the language check stop without a transcript?</a></li><li><a href="#first-run-models">Why is the first transcription taking longer?</a></li><li><a href="#post-caption-versus-speech">Can I extract the written post caption, comments or text on screen?</a></li><li><a href="#speech-errors">Why are words wrong when the Reel has music or several speakers?</a></li><li><a href="#file-wont-decode">Why will my MP4 or audio file not transcribe?</a></li><li><a href="#cancel-retry">Can I cancel and retry the same file or URL?</a></li><li><a href="#reel-data-privacy">Are my Reel, local files and transcript uploaded?</a></li><li><a href="#add-subtitles-to-reel">How do I put the downloaded subtitles on my Reel?</a></li><li><a href="#save-transcript-history">Can I come back to this transcript after closing the tab?</a></li></ol></nav>
+<h3 id="reel-link-failed" tabindex="-1">Why does my public Instagram Reel link fail?</h3>
+<p>A public page may still hide its playable media from the server request or apply regional or access restrictions. Read the error, retry later if appropriate, or open a permitted saved copy with Upload video or audio. Private or login-only posts are not supported by the public lookup. A post description returned without playable media is not a transcript.</p>
+<h3 id="english-language-check" tabindex="-1">Why does the language check stop without a transcript?</h3>
+<p>Speech recognition supports English only. A detected non-English result is different from uncertain detection or a technical failure. Read the specific message. For a technical failure, check the connection and try the same input again; for uncertain language, use a recording with clear English speech if available. Do not interpret every failure as a confirmed non-English recording.</p>
+<h3 id="first-run-models" tabindex="-1">Why is the first transcription taking longer?</h3>
+<p>The initial job may retrieve and initialize the language-detection and English-recognition models, as well as decode your recording. An Instagram link adds lookup and media-download work. Cached resources are not the same as an already initialized model. For measured examples and their limits, see the <a href="/benchmark/current-english-browser-20261014.csv">current two-model data</a> and <a href="/benchmark/README.md">benchmark method</a>. Older <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">single-model measurements</a> do not describe today’s full workflow or predict your waiting time.</p>
+<h3 id="post-caption-versus-speech" tabindex="-1">Can I extract the written post caption, comments or text on screen?</h3>
+<p>This workflow transcribes spoken English audio. Written post descriptions, comments and text embedded in video frames are different inputs. It does not promise comment scraping or image OCR, and does not substitute a post description when speech recognition fails. See the <a href="/instagram-caption-extractor">Instagram text distinctions guide</a> for those differences.</p>
+<h3 id="speech-errors" tabindex="-1">Why are words wrong when the Reel has music or several speakers?</h3>
+<p>Background music, overlapping voices, accents and unclear short words can make recognition less reliable. Replay and correct the result before using names, numbers or quotations. This tool does not provide an accuracy guarantee or automatic speaker labels. Keep uncertain wording out of a published quote until you can verify it.</p>
+<h3 id="file-wont-decode" tabindex="-1">Why will my MP4 or audio file not transcribe?</h3>
+<p>Check the 100 MB limit and whether the file has an audio track your browser can decode. A filename extension alone does not establish codec support. If needed, export a compatible copy from your existing media editor and try again. A silent clip cannot produce spoken words. Read the actual error instead of assuming an unsupported file contains no English speech.</p>
+<h3 id="cancel-retry" tabindex="-1">Can I cancel and retry the same file or URL?</h3>
+<p>Choose Cancel processing to abort the active lookup or media download. A model download or local operation already underway may need to finish before a new task can start; its cancelled result is discarded. After a failure or cancellation, Try the same input again reuses this tab’s retained input. Selecting another input changes that retry target.</p>
+<h3 id="reel-data-privacy" tabindex="-1">Are my Reel, local files and transcript uploaded?</h3>
+<p>Local files are decoded and transcribed in your browser; those files and edits are not uploaded. The Instagram URL route sends the public link to server-side lookup and proxies media to your browser, with optional third-party fallbacks. That route is not entirely device-local. The media response uses no-store and is not saved to persistent application storage. See the <a href="/privacy">privacy policy</a> for service boundaries.</p>
+<h3 id="add-subtitles-to-reel" tabindex="-1">How do I put the downloaded subtitles on my Reel?</h3>
+<p>Import the reviewed SRT or VTT into a video editor that supports it, check text and timing with your clip, and export or publish through the tools you use for that purpose. InstaScript does not burn captions into a video, style them or publish to Instagram. If subtitles are early or late, use <a href="/subtitle-editor#common-problems">Subtitle Editor’s timing fixes</a> before the final export.</p>
+<h3 id="save-transcript-history" tabindex="-1">Can I come back to this transcript after closing the tab?</h3>
+<p>Save or copy the result before closing or reloading. There is no account transcript history or cloud project to reopen. The prepared homepage sample is reusable, but it is not a saved copy of your work.</p>
+</section>
+<p class="disclaimer">InstaScript is an independent project and is not affiliated with Instagram or Meta.</p>
+</main>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -154,32 +167,10 @@
       <p>Runs in your browser &mdash; no signup.</p>
     </footer>
   </div>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to use an Instagram Transcript Generator",
-    "description": "Generate timestamped spoken text from a public Instagram Reel or a saved video.",
-    "totalTime": "PT2M",
-    "step": [
-      { "@type": "HowToStep", "name": "Open the transcript generator", "text": "Choose Paste Reel URL for a public Reel, or Upload video or audio for a saved video." },
-      { "@type": "HowToStep", "name": "Run browser speech recognition", "text": "Wait while the browser extracts audio and runs Whisper speech recognition." },
-      { "@type": "HowToStep", "name": "Copy or download the transcript", "text": "Copy the timestamped text, or download TXT, SRT or VTT when you need a file." }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "Can it transcribe every Instagram Reel?", "acceptedAnswer": { "@type": "Answer", "text": "No. The URL path needs a public page and a media URL exposed to an unauthenticated request. Use a local copy for a private, expired, or login-only post." } },
-      { "@type": "Question", "name": "Does it create captions from the text?", "acceptedAnswer": { "@type": "Answer", "text": "It creates a timestamped transcript and an SRT file that can be imported into a compatible video editor or player." } },
-      { "@type": "Question", "name": "Is the transcript accurate for music?", "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition is designed for spoken audio. Loud music, overlapping speakers, accents, and very short words can reduce accuracy." } },
-      { "@type": "Question", "name": "Which language does this page support?", "acceptedAnswer": { "@type": "Answer", "text": "Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript." } }
-    ]
-  }
-  </script>
+
+
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to get an Instagram transcript","description":"Use the shared English transcription tool, review the result and export text or valid timed subtitles.","step":[{"@type":"HowToStep","position":1,"name":"Should I paste a Reel URL or open a saved video?","text":"Open Instagram Transcript. Choose Paste Reel URL for a public Instagram Reel or video post, paste its link, and press Get my Reel transcript. This guide uses that shared tool; it does not run a separate transcription engine."},{"@type":"HowToStep","position":2,"name":"Can I try the controls before using my own Reel?","text":"Choose Try a sample on the shared tool’s homepage. It opens prepared text and an 11-second public-domain recording. Replay, edit, reset or download the example to learn the controls without running speech recognition or downloading speech models."},{"@type":"HowToStep","position":3,"name":"How do I start transcription and know what it is doing?","text":"Start with Get my Reel transcript for a public URL, or Transcribe this file for a selected recording. Watch the status as the browser checks the language and runs English speech recognition. The first transcription may download both language-detection and speech models."},{"@type":"HowToStep","position":4,"name":"How do I fix a wrong name, word or punctuation in the transcript?","text":"Click a timestamp to replay its cue when the recording is available, then edit that cue’s text field. Check names, numbers, negatives and quotations against the audio. Copy and downloads use the latest edited words."},{"@type":"HowToStep","position":5,"name":"How do I find a quote inside a longer transcript?","text":"Use Find in this transcript after transcription. Enter a literal word or phrase, then use Previous and Next to move between matches. Edit this match selects the matched words for editing. A Play at button can replay a timed match when a recording is available."},{"@type":"HowToStep","position":6,"name":"Should I download TXT, Markdown, SRT or VTT?","text":"Use Copy or TXT for words you want to paste into notes. They are plain text by default. Enable Include timestamps in TXT, Markdown and Copy when you want available start times included. Markdown provides a formatted text note; it does not create an AI summary."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my public Instagram Reel link fail?","acceptedAnswer":{"@type":"Answer","text":"A public page may still hide its playable media from the server request or apply regional or access restrictions. Read the error, retry later if appropriate, or open a permitted saved copy with Upload video or audio. Private or login-only posts are not supported by the public lookup. A post description returned without playable media is not a transcript."}},{"@type":"Question","name":"Why does the language check stop without a transcript?","acceptedAnswer":{"@type":"Answer","text":"Speech recognition supports English only. A detected non-English result is different from uncertain detection or a technical failure. Read the specific message. For a technical failure, check the connection and try the same input again; for uncertain language, use a recording with clear English speech if available. Do not interpret every failure as a confirmed non-English recording."}},{"@type":"Question","name":"Why is the first transcription taking longer?","acceptedAnswer":{"@type":"Answer","text":"The initial job may retrieve and initialize the language-detection and English-recognition models, as well as decode your recording. An Instagram link adds lookup and media-download work. Cached resources are not the same as an already initialized model. For measured examples and their limits, see the current two-model data and benchmark method. Older single-model measurements do not describe today’s full workflow or predict your waiting time."}},{"@type":"Question","name":"Can I extract the written post caption, comments or text on screen?","acceptedAnswer":{"@type":"Answer","text":"This workflow transcribes spoken English audio. Written post descriptions, comments and text embedded in video frames are different inputs. It does not promise comment scraping or image OCR, and does not substitute a post description when speech recognition fails. See the Instagram text distinctions guide for those differences."}},{"@type":"Question","name":"Why are words wrong when the Reel has music or several speakers?","acceptedAnswer":{"@type":"Answer","text":"Background music, overlapping voices, accents and unclear short words can make recognition less reliable. Replay and correct the result before using names, numbers or quotations. This tool does not provide an accuracy guarantee or automatic speaker labels. Keep uncertain wording out of a published quote until you can verify it."}},{"@type":"Question","name":"Why will my MP4 or audio file not transcribe?","acceptedAnswer":{"@type":"Answer","text":"Check the 100 MB limit and whether the file has an audio track your browser can decode. A filename extension alone does not establish codec support. If needed, export a compatible copy from your existing media editor and try again. A silent clip cannot produce spoken words. Read the actual error instead of assuming an unsupported file contains no English speech."}},{"@type":"Question","name":"Can I cancel and retry the same file or URL?","acceptedAnswer":{"@type":"Answer","text":"Choose Cancel processing to abort the active lookup or media download. A model download or local operation already underway may need to finish before a new task can start; its cancelled result is discarded. After a failure or cancellation, Try the same input again reuses this tab’s retained input. Selecting another input changes that retry target."}},{"@type":"Question","name":"Are my Reel, local files and transcript uploaded?","acceptedAnswer":{"@type":"Answer","text":"Local files are decoded and transcribed in your browser; those files and edits are not uploaded. The Instagram URL route sends the public link to server-side lookup and proxies media to your browser, with optional third-party fallbacks. That route is not entirely device-local. The media response uses no-store and is not saved to persistent application storage. See the privacy policy for service boundaries."}},{"@type":"Question","name":"How do I put the downloaded subtitles on my Reel?","acceptedAnswer":{"@type":"Answer","text":"Import the reviewed SRT or VTT into a video editor that supports it, check text and timing with your clip, and export or publish through the tools you use for that purpose. InstaScript does not burn captions into a video, style them or publish to Instagram. If subtitles are early or late, use Subtitle Editor’s timing fixes before the final export."}},{"@type":"Question","name":"Can I come back to this transcript after closing the tab?","acceptedAnswer":{"@type":"Answer","text":"Save or copy the result before closing or reloading. There is no account transcript history or cloud project to reopen. The prepared homepage sample is reusable, but it is not a saved copy of your work."}}]}</script>
 </body>
 </html>

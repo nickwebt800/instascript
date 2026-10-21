@@ -1,0 +1,4 @@
+/* Illustrated shared-tool guide. No transcription UI or model behavior changes. */
+.instagram-guide-page .container { max-width: 920px; }
+.instagram-guide-page .guide-cta { margin: 18px 0 26px; }
+.instagram-guide-page .guide-cta a { display: inline-block; text-decoration: none; color: #fff; background: var(--accent-deep); }
