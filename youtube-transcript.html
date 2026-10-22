@@ -21,8 +21,9 @@
   <meta name="twitter:description" content="Read a video's existing YouTube captions with timestamps, copy and TXT/SRT export.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
   <link rel="stylesheet" href="/youtube-transcript.css?v=youtube-search-20261015a">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body>
+<body class="subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -35,9 +36,9 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
+    </header><p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
 
-    <main class="tool-card" aria-labelledby="tool-heading">
+    <main id="walkthrough-tool" tabindex="-1" class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">YouTube transcript</h2>
@@ -87,106 +88,42 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
-    <section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save the current caption track as a .md note with the video title, canonical YouTube source link, caption language and one paragraph per caption line. Timestamps includes available start times linked to whole-second YouTube positions; Plain text omits those times while keeping the title and source. Search queries and highlight markup are not added to the note. The file is created locally; no audio transcription or AI summary is generated. Opening a source link contacts YouTube.</p></section>
-
-    <section class="content-card">
-      <h2>Search the current caption track</h2>
-      <p>Use <strong>Find in this transcript</strong> to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.</p>
-      <p><strong>Locate caption</strong> reveals the matching line, switching to Timestamps if needed. A timestamp or <strong>Open YouTube</strong> link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, Markdown, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.</p>
-      <p>Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.</p>
-    </section>
-
-    <section class="content-card">
-      <h2>How this YouTube transcript generator works</h2>
-      <p><strong>It reads the caption track the video already has on YouTube &mdash; it does not listen to the audio and does not re-write it from scratch.</strong> That is the whole reason it is quick: nothing has to play through, so a result lands in seconds instead of making you wait for a recording to finish.</p>
-      <p>This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT, Markdown and SRT exports are created in your browser.</p>
-      <p>YouTube now asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. The practical consequence: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download. When that happens the page tells you instead of guessing.</p>
-
-      <h2>What you get back</h2>
-      <ul class="steps">
-        <li><strong>Timestamped transcript</strong> &mdash; each line starts with the time it was spoken, so you can jump back to that moment.</li>
-        <li><strong>Plain text</strong> &mdash; the same words with the timestamps taken out, one button away.</li>
-        <li><strong>Copy</strong> for pasting into notes or a document.</li>
-        <li><strong>.txt</strong> for plain notes and <strong>.srt</strong> for subtitles you can drop into an editor.</li>
-      </ul>
-
-      <h2>When there is nothing to get</h2>
-      <p>This page reads captions; it cannot create them. These cases come back with a message instead of a transcript:</p>
-      <ul class="steps">
-        <li><strong>The video has no captions at all.</strong> Plenty of uploads never got any.</li>
-        <li><strong>Auto captions have not been generated yet</strong> on a fresh upload.</li>
-        <li><strong>Music-only videos</strong> &mdash; there is no speech to write down.</li>
-        <li><strong>Live streams and live replays.</strong> I tried one (a 24/7 live music stream) and it reported no caption track, exactly as it should.</li>
-        <li><strong>Private, members-only, age-restricted or deleted videos.</strong> YouTube does not hand those out.</li>
-      </ul>
-      <p>If you have the video as a file instead of a link, use <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> &mdash; those run a speech model in your browser and do not need a caption track.</p>
-
-      <h2>What I measured on this page</h2>
-      <p>Every row below is one run on the live page, on my own laptop and my own connection, on 17 September 2026. Time to result is the whole trip: looking the video up, the browser check, and the caption download.</p>
-      <div class="table-scroll">
-      <table class="bench-table">
-        <thead>
-          <tr>
-            <th>Video</th>
-            <th>Length</th>
-            <th>Track</th>
-            <th>Lines</th>
-            <th>Characters</th>
-            <th>Time to result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Me at the zoo</td><td>0:19</td><td>English</td><td>6</td><td>212</td><td>18.8 s</td></tr>
-          <tr><td>Despacito</td><td>4:42</td><td>English</td><td>90</td><td>2,901</td><td>1.5 s</td></tr>
-          <tr><td>Despacito</td><td>4:42</td><td>Spanish</td><td>91</td><td>2,908</td><td>8.4 s</td></tr>
-          <tr><td>Your Body Language May Shape Who You Are (TED)</td><td>21:03</td><td>English</td><td>428</td><td>19,673</td><td>10.3 s</td></tr>
-          <tr><td>24/7 live music stream</td><td>live</td><td>none found</td><td>&mdash;</td><td>&mdash;</td><td>&ldquo;no caption track&rdquo;</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p><strong>How to read the time column:</strong> the 1.5 s row is a video I had already looked up, so the answer was still cached; the others include a fresh lookup. The same video came out at 1.5 s cached and 13.8 s cold, which is the size of that difference.</p>
-      <p><strong>Where my testing stops:</strong> the longest video I tried is 21:03. I am not going to print a length limit, a free-use limit or an accuracy figure, because I have not measured one &mdash; the rows above are what I actually ran.</p>
-
-      <h2>What is a YouTube transcript?</h2>
-      <p>A <strong>YouTube transcript</strong> is the spoken content of a video written out as text, usually with the time each line starts. People use them to pull quotes, turn a talk into notes or a blog post, find the exact minute something was said, read a video in a second language, and make a video searchable. When a page says &ldquo;YouTube transcript&rdquo; it normally means the caption text that already sits on the video, not a fresh transcription of the audio.</p>
-
-      <h2>How to turn YouTube to transcript text</h2>
-      <ol class="steps">
-        <li><strong>Copy the video link</strong> from the address bar, the Share button, or a youtu.be short link.</li>
-        <li><strong>Paste it in the box above</strong> and press Get Transcript.</li>
-        <li><strong>Read, copy or download.</strong> Pick another language from the dropdown if the video has more than one caption track.</li>
-      </ol>
-
-      <h2>FAQ</h2>
-      <h3>Can I turn a YouTube video to transcript text on my phone?</h3>
-      <p>Yes. The page is built for a phone screen: paste the link in the YouTube app's Share sheet copy, or open this page in your mobile browser and paste there. Copy and download both work on mobile.</p>
-      <h3>Is my video uploaded anywhere?</h3>
-      <p>No video file is uploaded. Your link goes to this site's lookup endpoint, which may fetch caption text from YouTube and cache the response for one hour. The browser fetches caption tracks directly when required and creates exports locally. There is no account history.</p>
-      <h3>Which languages are supported?</h3>
-      <p>Whatever caption tracks the video has. If a video has more than one, the page lists them and you pick; if it has one, you get that one. I am not going to quote a number of supported languages &mdash; it is a property of the video, not of this page.</p>
-      <h3>How long can the video be?</h3>
-      <p>I have not found a ceiling, so I will not print one. The longest video I ran through this page is 21:03 and it came back as 428 lines. Longer videos mean more text in the browser, which is a limit of your device, not of the page.</p>
-      <h3>Why did it fail on a video that clearly has captions?</h3>
-      <p>Three reasons, in order of likelihood: an extension or strict privacy setting blocked the browser check YouTube asks for; the captions are switched off for embedding; or YouTube throttled the request &mdash; wait a minute and try again.</p>
-      <h3>Do you store the transcript?</h3>
-      <p>There is no account history. Successful caption lookup responses may be cached for one hour; exports are created in your browser. See the <a href="/privacy">privacy policy</a>.</p>
-
-      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related transcript tools">
-      Other transcript tools:
-      <a href="/">Instagram Transcript</a> &middot;
-      <a href="/youtube-transcript-download">YouTube Transcript Download</a> &middot;
-      <a href="/tiktok-transcript">TikTok Transcript</a> &middot;
-      <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
-      <a href="/video-to-text">Video to Text</a> &middot;
-      <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a>
-    </nav>
-
-    <footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Read a caption track and keep a verifiable quotation</h2>
+<p>Paste a public YouTube video or Shorts link above to read an existing caption track. This tool does not recognize the audio, create missing captions or translate a track. Search and source links help you check a quotation.</p>
+</div>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#source">How do I choose a caption language?</a></li><li><a href="#find">How do I find and verify a sentence?</a></li><li><a href="#save">How do I save a reading copy with its source?</a></li><li><a href="#recover">What if the query returns no usable text?</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Teaching sample"><p>Success-state illustrations below use prepared fictional captions (“Keep the blue folder”). They demonstrate the real controls with controlled teaching data, not a successful live YouTube lookup. A live query on October 23, 2026 returned a track with empty content; service success remains unverified.</p>
+</aside>
+<section class="guide-step" aria-labelledby="source"><h3 id="source" tabindex="-1">1. How do I choose a caption language?</h3>
+<p>Submit a supported public video URL. If multiple languages are listed, choose a track and submit again: changing language clears the previous transcript and search. A listed language is an existing YouTube track, not a language newly recognized by this site. Check the source title before quoting.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript/01-source-narrow.svg" width="352" height="378"><img src="/assets/tutorials/youtube-transcript/01-source-wide.svg" width="720" height="226" alt="How do I choose a caption language? Prepared fictional captions shown in the real controls; not a successful live YouTube lookup." loading="lazy" decoding="async"></picture><figcaption>Prepared fictional captions shown in the real controls; not a successful live YouTube lookup.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The source video and selected track match the text you intend to read.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="find"><h3 id="find" tabindex="-1">2. How do I find and verify a sentence?</h3>
+<p>Find in this transcript searches literal words within each segment, ignoring ASCII letter case. Previous/Next and Enter/Shift+Enter navigate matches; Escape clears the query. A timestamp link opens YouTube in another tab at a whole-second start, rather than playing an embedded video here. Replay the surrounding phrase before treating a match as a quotation. Caption text here is read-only.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript/02-find-narrow.svg" width="352" height="581"><img src="/assets/tutorials/youtube-transcript/02-find-wide.svg" width="720" height="483" alt="How do I find and verify a sentence? Prepared fictional captions shown in the real controls; not a successful live YouTube lookup." loading="lazy" decoding="async"></picture><figcaption>Prepared fictional captions shown in the real controls; not a successful live YouTube lookup.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The passage is supported by the source audio and surrounding context.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save"><h3 id="save" tabindex="-1">3. How do I save a reading copy with its source?</h3>
+<p>Use TXT for reading, or Markdown for a transcript note with the source title, URL and language information. Timestamps and Plain Text change the view used for text output; neither setting edits the underlying caption words. SRT is useful for a timed draft. Current SRT export uses a two-second fallback for missing or zero duration, so inspect cue ends before subtitle delivery. The <a href="/youtube-transcript-download">Download walkthrough</a> covers artifact delivery in detail.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript/03-save-narrow.svg" width="352" height="435"><img src="/assets/tutorials/youtube-transcript/03-save-wide.svg" width="720" height="290" alt="How do I save a reading copy with its source? Prepared fictional captions shown in the real controls; not a successful live YouTube lookup." loading="lazy" decoding="async"></picture><figcaption>Prepared fictional captions shown in the real controls; not a successful live YouTube lookup.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The actual downloaded note contains the intended track and source information; editorial notes are clearly your own.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="recover"><h3 id="recover" tabindex="-1">4. What if the query returns no usable text?</h3>
+<p>An unavailable service, rejected source validation and empty caption content are different from confirmed absence of captions. Check the URL and source access, then retry later or use the source platform if available. The error below is from the real live query; the prepared success screens do not establish that this query succeeded.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript/04-recover-narrow.svg" width="352" height="426"><img src="/assets/tutorials/youtube-transcript/04-recover-wide.svg" width="720" height="243" alt="What if the query returns no usable text? Actual live-query error on October 23, 2026; no usable caption text was returned." loading="lazy" decoding="async"></picture><figcaption>Actual live-query error on October 23, 2026; no usable caption text was returned.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Report the observed failure without inferring that every video or language has no captions.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>Does the video get transcribed by a speech model?</h3>
+<p>No. This separate workflow reads existing YouTube captions. Other-language tracks do not change the English-only recognition used by local-file tools.</p>
+<h3>Where does the lookup happen?</h3>
+<p>The site endpoint discovers tracks and may return caption content; successful responses may cache for one hour. Your browser may contact Google for source validation and to fetch a selected track. Search and downloads run in the tab without account transcript history. Opening a source link contacts YouTube. See the <a href="/privacy">privacy policy</a>.</p>
+<h3>Can I edit the retrieved caption words here?</h3>
+<p>The caption display is read-only. Keep editorial corrections in your own notes, or download SRT and open <a href="/subtitle-editor">Subtitle Editor</a> for local subtitle edits. The original source track is unchanged.</p>
+</section>
+<p class="disclaimer">InstaScript is independent and is not affiliated with or endorsed by the source platforms mentioned here.</p>
+</article><footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -245,40 +182,9 @@
   </div>
 
   <script type="module" src="/js/youtube-transcript.js?v=markdown-20261015a"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can I turn a YouTube video to transcript text on my phone?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The page is built for a phone screen: paste the link in the YouTube app's Share sheet copy, or open this page in your mobile browser and paste there. Copy and download both work on mobile." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is my video uploaded anywhere?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No video file is uploaded. Your link goes to this site's lookup endpoint, which may fetch caption text from YouTube and cache the response for one hour. The browser fetches caption tracks directly when required and creates exports locally. There is no account history." }
-      },
-      {
-        "@type": "Question",
-        "name": "Which languages are supported?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Whatever caption tracks the video has. If a video has more than one, the page lists them and you pick; if it has one, you get that one." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long can the video be?",
-        "acceptedAnswer": { "@type": "Answer", "text": "I have not found a ceiling, so I will not print one. The longest video I ran through this page is 21:03 and it came back as 428 lines." }
-      },
-      {
-        "@type": "Question",
-        "name": "Why did it fail on a video that clearly has captions?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Three reasons, in order of likelihood: an extension or strict privacy setting blocked the browser check YouTube asks for; the captions are switched off for embedding; or YouTube throttled the request." }
-      }
-    ]
-  }
-  </script>
+
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the video get transcribed by a speech model?","acceptedAnswer":{"@type":"Answer","text":"No. This separate workflow reads existing YouTube captions. Other-language tracks do not change the English-only recognition used by local-file tools."}},{"@type":"Question","name":"Where does the lookup happen?","acceptedAnswer":{"@type":"Answer","text":"The site endpoint discovers tracks and may return caption content; successful responses may cache for one hour. Your browser may contact Google for source validation and to fetch a selected track. Search and downloads run in the tab without account transcript history. Opening a source link contacts YouTube. See the privacy policy."}},{"@type":"Question","name":"Can I edit the retrieved caption words here?","acceptedAnswer":{"@type":"Answer","text":"The caption display is read-only. Keep editorial corrections in your own notes, or download SRT and open Subtitle Editor for local subtitle edits. The original source track is unchanged."}}]}</script>
 </body>
 </html>

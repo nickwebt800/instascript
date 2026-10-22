@@ -404,6 +404,18 @@ async function handleMcp(request, env) {
 // Cloudflare Pages currently answers an unmatched path with the home page and
 // HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
 const KNOWN_FILES = new Set([
+  "/assets/tutorials/youtube-transcript/01-source-wide.svg",
+  "/assets/tutorials/youtube-transcript/01-source-narrow.svg",
+  "/assets/tutorials/youtube-transcript/02-find-wide.svg",
+  "/assets/tutorials/youtube-transcript/02-find-narrow.svg",
+  "/assets/tutorials/youtube-transcript/03-save-wide.svg",
+  "/assets/tutorials/youtube-transcript/03-save-narrow.svg",
+  "/assets/tutorials/youtube-transcript/04-recover-wide.svg",
+  "/assets/tutorials/youtube-transcript/04-recover-narrow.svg",
+  "/assets/tutorials/subtitle-downloader/source-choices-wide.svg",
+  "/assets/tutorials/subtitle-downloader/source-choices-narrow.svg",
+  "/assets/tutorials/youtube-shorts-transcript/source-choices-wide.svg",
+  "/assets/tutorials/youtube-shorts-transcript/source-choices-narrow.svg",
   "/assets/tutorials/instagram-caption-extractor/source-choices-wide.svg",
   "/assets/tutorials/instagram-caption-extractor/source-choices-narrow.svg",
   "/assets/tutorials/voice-notes-to-text/source-choices-wide.svg",

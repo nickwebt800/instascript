@@ -1,58 +1,45 @@
-# YouTube Shorts Transcript: Read, Copy and Download Captions
+# YouTube Shorts Transcript
 
-> Turn a public YouTube Shorts link into a readable transcript when the Short already exposes a caption track. Copy the timed text or download TXT/SRT in your browser.
+> YouTube Shorts transcript: paste a public Shorts link, read its existing captions, and copy or download TXT and SRT in your browser.
 
 Canonical: <https://instascript.app/youtube-shorts-transcript>
 
-## The direct answer
+[Open the matching tool](https://instascript.app/youtube-transcript)
 
-Open [YouTube Shorts Transcript](https://instascript.app/youtube-shorts-transcript), paste a URL shaped like `youtube.com/shorts/VIDEO_ID` or a regular YouTube link, and press **Get Shorts Transcript**. The page reads the Short's existing caption track, shows timestamps, and lets you copy or download TXT and SRT. It does not invent captions when the Short has no track.
+## Check a Short against its caption track
 
-## Why a Shorts link can fail
+Open a public Shorts URL in [YouTube Transcript](https://instascript.app/youtube-transcript) to read an existing track. This guide has no separate lookup form and cannot create captions when a track is missing.
 
-`/shorts/VIDEO_ID` is a URL format, not a promise that captions exist. A Short can return no usable transcript when captions are disabled, auto-captions are still being generated, the video is private, age-restricted or removed, or YouTube asks the browser to complete a bot check that a strict extension blocks. A single empty response is not proof that the audio has no speech; retry once, then use a saved file with [Video to Text](https://instascript.app/video-to-text) if you have permission to process it.
 
-## What the result contains
 
-- **Timed view:** each caption line keeps its source start time so you can replay the exact moment.
-- **Plain text:** the same words without time markers for notes and search.
-- **TXT:** UTF-8 text for documents, quotes and review notes.
-- **SRT:** numbered cues with start and end times for subtitle editors and players.
+![From a Short to a verifiable quotation. Existing track. Read in YouTube Transcript. Language choice then resubmit. Source timestamp. Opens YouTube externally. Replay around the cut. Quote / subtitle. Keep source / inspect cue ends. No OCR or new captions](https://instascript.app/assets/tutorials/youtube-shorts-transcript/source-choices-wide.svg)
 
-The timestamps come from YouTube's caption data. They are not estimated from the Short's duration. Review names, numbers, music-over-speech and fast cuts before publishing a quote; this page does not identify speakers or read text printed in a frame.
+Decision diagram, not a platform screenshot. Existing track: Read in YouTube Transcript: Language choice then resubmit; Source timestamp: Opens YouTube externally: Replay around the cut; Quote / subtitle: Keep source / inspect cue ends: No OCR or new captions.
 
-## A Shorts-specific review pass
+## 1. Separate captions from words in the picture
 
-Shorts often cut between speakers or overlay music under a sentence. Replay every important cue, check the first and last words after a jump cut, and compare proper nouns against the audio. If the Short switches languages, select the available track and verify the translation separately. Keep the original URL next to the exported file so a correction can be traced to the source.
+A Short can show an edited label while its spoken caption track says something else. InstaScript reads existing YouTube captions, not on-screen text or a newly recognized audio transcript. If the service is unavailable or returns empty content, do not infer that the video certainly has no captions.
 
-## Privacy and processing boundary
+**Check:** The text source is an existing caption track.
 
-This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT and SRT exports are created in your browser. If you switch to a saved video in [Video to Text](https://instascript.app/video-to-text), decoding and speech recognition happen on your device; no arbitrary video URL is transcribed server-side.
+## 2. Verify both sides of a quick cut
 
-## FAQ
+Search a distinctive word in the tool, then use its timestamp source link. The link opens YouTube in another tab; there is no embedded YouTube player here. Listen around the cut and check short qualifiers, negations and speaker changes before quoting.
 
-### Does this transcribe every Short from its audio?
+**Check:** The phrase has enough surrounding context and corresponds to the selected track.
 
-No. It reads an existing caption track. For a saved Short without captions, use the local file workflow in [Video to Text](https://instascript.app/video-to-text).
+## 3. Keep the source with the quotation
 
-### Can I paste a normal watch URL?
+Markdown provides a transcript note with source information; it does not create an editorial summary. Source links use whole-second starts. Current SRT serialization falls back to two seconds for a missing or zero segment duration, so inspect any file you plan to use as subtitles.
 
-Yes. Shorts paths, `watch?v=...` links and `youtu.be/...` links are accepted by the underlying YouTube transcript tool.
+**Check:** Your saved quotation identifies its source and does not imply exact original end boundaries.
 
-### Why is my Short's transcript empty?
+## More questions and limits
 
-The track may be unavailable, still generating, restricted, or blocked by a browser bot check. Retry once without an aggressive script blocker; if it remains empty, treat it as unavailable instead of guessing.
+### What processing and privacy boundaries apply?
 
-### Is the output a copy of on-screen text?
+YouTube lookup is server-assisted and successful query responses may cache for one hour. Your browser may contact Google to validate and fetch a selected track. Search and downloads do not create an account history. Following timestamp links contacts YouTube.
 
-No. It is caption text for speech. Words rendered inside the video frames require visual inspection or OCR.
+### Where should I continue?
 
-InstaScript is independent and is not affiliated with YouTube or Google.
-
-## Search captions in InstaScript
-
-Use [YouTube Transcript](/youtube-transcript) or [YouTube Transcript Download](/youtube-transcript-download) to search a loaded caption track, move between matches, and locate its caption line. Source time links open YouTube in a new tab. Search is read-only and does not change TXT/SRT exports. This guide does not run a separate caption engine.
-
-## Save a Markdown note
-
-The linked YouTube transcript tools also offer local Markdown (.md) notes with a video title and source link. Use Timestamps for linked start times or Plain text to omit times. They export existing caption words, not an AI summary; this guide does not run a separate transcription engine.
+[Open the matching tool](https://instascript.app/youtube-transcript) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
