@@ -4,63 +4,104 @@
 
 Canonical: <https://instascript.app/youtube-transcript-download>
 
-[InstaScript](https://instascript.app/)
+[Open the tool](https://instascript.app/youtube-transcript-download)
 
-# YouTube Transcript Download
+## Download a caption track you can check
 
-Paste a YouTube link, take the words away as a file — TXT or SRT, no signup
+Use this YouTube transcript download tool to retrieve an existing caption track, choose its language, and save the format you need. It does not generate missing captions or translate a track.
 
-Other transcript tools: [Instagram Transcript](https://instascript.app/) · [YouTube Transcript](https://instascript.app/youtube-transcript) · [TikTok Transcript](https://instascript.app/tiktok-transcript) · [Facebook Video Transcript](https://instascript.app/facebook-video-transcript) · [Video to Text](https://instascript.app/video-to-text) · [Audio to Text](https://instascript.app/audio-to-text)
+Language and export illustrations use prepared practice captions to show the controls; they are not captions retrieved from the linked video. You can inspect the [practice SRT](https://instascript.app/assets/tutorials/youtube-transcript-download/practice.srt) separately. The lookup-error illustration comes from an actual query. A prepared example does not show that a live query will succeed.
 
-Paste a public YouTube link above and press **Download Transcript**. youtube.com, youtu.be and /shorts/ links all work. You get a .txt and a .srt file, both built in your own browser and saved to your device.
+## 1. How do I start a YouTube transcript download?
 
-## Search the current caption track
+Paste a public `youtube.com`, `youtu.be` or YouTube Shorts link into **YouTube video URL**, then choose **Download Transcript**. That button starts the lookup; when captions arrive, choose a separate download button in the result. It does not automatically save every file.
 
-Use **Find in this transcript** to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.
 
-**Locate caption** reveals the matching line, switching to Timestamps if needed. A timestamp or **Open YouTube** link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, Markdown, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.
+The site asks for existing caption tracks. The browser may also need to contact YouTube and Google for a bot check and fetch the selected track. Allow time for the status to change. This process does not upload or transcribe video audio, and there is no guarantee that a public video’s captions can be retrieved.
 
-Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.
+![The YouTube URL form and actual Paste a YouTube link first validation message.](https://instascript.app/assets/tutorials/youtube-transcript-download/01-lookup-wide.svg)
 
-## How this download works
+Download Transcript requests captions. Saving TXT, Markdown or SRT is a separate step.
 
-**It reads the caption track the video already has and writes it to a file — it never listens to the audio and never re-writes the words from scratch.** Nothing has to play through, which is why the file is ready in seconds.
+**Check:** Wait for a readable transcript or a specific error before choosing a file format.
 
-This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT, Markdown and SRT exports are created in your browser.
+## 2. How do I choose a different subtitle language?
 
-YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result. An extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists.
+When several tracks are available, use **Caption language**. Selecting another language clears the previous result and search. Choose **Download Transcript** again to request that selected track; wait for the new result before saving. With one available track, the selector is hidden.
 
-## YouTube subtitles download: TXT or SRT
 
-- **TXT** is the one for reading and writing. Plain text, opens in any editor, pastes into a document, works with translation and search tools. Default view has `[mm:ss]` at the start of each line; switch to *Plain text* before downloading and the times are removed.
-- **SRT** is the one for playing and editing. Standard subtitle file: a number, a start and end time, then the text, separated by blank lines. Media players load it next to the video, subtitle editors open it as a track, video editors import it as a subtitle track.
+The options belong to that video. An auto-generated label describes the source track; it is not a quality rating. The tool cannot add an unavailable language or automatically translate a caption track. Check a few lines in the returned language before exporting.
 
-Both files are UTF-8 with Unix line endings, named after the video title — *Me at the zoo* saves as `Me-at-the-zoo.txt` and `Me-at-the-zoo.srt`.
+![Prepared example showing Caption language before and after selecting Spanish, with the instruction to submit again.](https://instascript.app/assets/tutorials/youtube-transcript-download/02-language-wide.svg)
 
-## YouTube SRT download: where the timestamps come from
+Prepared practice captions illustrate the real selection controls. This is not a successful live video lookup.
 
-**The times are not calculated here — they come with the caption track.** YouTube sends every caption line with the millisecond it starts at and how long it lasts. The SRT copies those two numbers: the start on the left, and the end is that start plus the duration that came with the line. Milliseconds are kept.
+**Check:** The result has reloaded after your language choice; do not reuse the old file.
 
-In the file from *Me at the zoo*, the first cue reads `00:00:01,200 --> 00:00:03,360`: the line arrived with a start of 1,200 ms and a duration of 2,160 ms, and 1,200 + 2,160 = 3,360. Nothing was estimated.
+## 3. Should I download TXT, Markdown or SRT?
 
-One gap this page fills: if a line arrives with no duration, the file gives it two seconds. Across the three videos measured, cues that came out at exactly 2.000 seconds: 1 of 6 on the 0:19 video, 4 of 428 on the 21:03 video, 1 of 90 on the 4:42 video. Some may genuinely be two-second lines in the original track — once the file is written the two cases cannot be told apart.
+**Download TXT** saves readable text. In **Timestamps** mode each caption line has its start time; **Plain text** joins the words into one block without times. **Copy** follows the same view mode. Choose the mode before saving.
 
-## One caption line, one line in the file
 
-**TXT and SRT are line-by-line, not grouped into paragraphs.** Each caption line becomes one line in the TXT and one cue in the SRT. Nothing is merged, no sentence is split across cues. The 21:03 talk came back as 428 lines, and the SRT grew to 1,712 lines because every cue carries a number and a time line as well as the words.
+**Markdown** adds a title, canonical YouTube source link and the selected caption language when available. Timestamps mode adds available start links to whole-second YouTube positions; Plain text omits those time links. It creates transcript notes, not an AI summary. **Download SRT** saves timed cues for a subtitle editor or player, independently of the text-view toggle.
 
-## What a long video's file looks like
+![Prepared example of timestamp/plain-text and download controls, with actual practice TXT exports with and without timestamps.](https://instascript.app/assets/tutorials/youtube-transcript-download/03-formats-wide.svg)
 
-The longest video run through this page is a 21:03 TED talk: 428 lines, a **23.0 KB TXT (23,528 bytes)** and a **34.2 KB SRT (34,976 bytes)**. The SRT is about 1.5× the TXT — the cost of the timing lines. The same ratio held on the other videos: 0:19 gave 265 B and 415 B; 4:42 gave 4,087 B and 6,418 B. The longest single cue in the long file lasted 7.2 seconds and the shortest 1.0 second.
+Both TXT excerpts were downloaded from the prepared practice example, not a live caption track.
 
-## When the download fails, this is what you see
+**Check:** Use SRT for a timed subtitle track; choose text-view mode for TXT and Markdown.
 
-- **No caption track came back:** "This lookup came back with no caption track. Either this video has none, or YouTube did not hand one over this time. Try it once more: if it comes back empty again, the video most likely has no captions, and captions cannot be made here — this page only reads the ones that already exist." Triggered on purpose twice while testing.
-- **Temporarily unavailable:** "The caption lookup is unavailable right now. There is nothing wrong with your link — try it again later." Hit once during testing.
-- **The bot check could not be completed:** the page explains that YouTube asked for a proof-of-origin token the browser could not produce, and points at strict privacy settings or script blockers. Not triggered during testing — quoted, not observed.
-- **A track exists but came back empty:** YouTube sent nothing for it; usual causes are captions switched off after publishing, auto captions not generated yet, or an empty track.
+## 4. How do I check the downloaded SRT before using it?
 
-Not in that list: a length limit, a quota, a daily allowance or a waiting room. There is no account here.
+Open the SRT in a text editor or [Subtitle Editor](https://instascript.app/subtitle-editor). Check the language and words near the beginning and end, then compare several time ranges against the video you are permitted to use. Each caption segment becomes one SRT cue; exporting does not correct wording or timing drift.
+
+
+Start times and durations normally come from the track. The current exporter substitutes a **two-second duration** when a segment has a missing or zero duration; it is not an audio-alignment measurement. Do not assume every end time was supplied by YouTube. The TXT joins lines in Plain text mode; the SRT keeps separate cues. Saving SRT creates a separate file and does not burn captions into a video or change captions on YouTube.
+
+![Prepared caption Open the garden gate and its exported SRT time range from zero to three seconds.](https://instascript.app/assets/tutorials/youtube-transcript-download/04-check-wide.svg)
+
+This example has an explicit three-second duration. Missing or zero durations use the exporter’s two-second fallback.
+
+**Check:** Inspect words and synchronization in the destination player, not just the file extension.
+
+## 5. What should I do when no caption file comes back?
+
+Read the error before retrying. An empty lookup or an empty track response does not prove that a video has no captions. Check captions on YouTube and retry later if the service is unavailable or rate limited. Repeated retries are not a way to create a missing track.
+
+
+A browser-check error can involve blocked Google scripts, network restrictions or upstream refusal. If appropriate, test another browser or review site-specific blocking settings. Success is not guaranteed. If you have a permitted local recording with English speech, [Video to Text](https://instascript.app/video-to-text) is a separate recognition workflow. It cannot fetch an arbitrary YouTube URL.
+
+![Actual query error reporting that a caption track exists but returned no text, with recovery choices.](https://instascript.app/assets/tutorials/youtube-transcript-download/05-error-wide.svg)
+
+Observed on October 22, 2026. The query did not produce a downloadable transcript.
+
+**Check:** Separate an unavailable query from confirmed absence of a caption track.
+
+## More questions and common problems
+
+### Can I correct the transcript on this page?
+
+The returned captions are read-only. Download SRT and use [Subtitle Editor](https://instascript.app/subtitle-editor) to edit a local copy. This does not update YouTube.
+
+### How do I find a phrase before downloading?
+
+Use Find in this transcript. Previous/Next and Enter/Shift+Enter navigate literal matches within a cue, ignoring ASCII letter case; Escape clears. Locate caption reveals the line and switches to Timestamps if needed. Changing view preserves the search; changing the track clears it. Search and highlighting do not enter exports.
+
+### Does clicking a timestamp play the video here?
+
+A timestamp or Open YouTube link opens YouTube in a new tab at a whole-second start. No player is embedded. The link contains the video ID and time, without your search query. Opening it contacts YouTube.
+
+### Are captions or downloads stored on a server?
+
+Lookup sends the video link to the server, which may fetch existing captions. Successful responses, including caption text, may be cached for one hour. Selected tracks and bot checks may contact YouTube/Google from the browser. Files are built locally; there is no account history. See the [privacy policy](https://instascript.app/privacy).
+
+### Can I download on a phone?
+
+Use a mobile browser and its download controls. Where the file is saved or opened depends on your browser and device settings. Check the browser’s downloads or share/save menu.
+
+## Historical measurement notes
+
+Previously published observations; not new measurements for this walkthrough.
 
 ## What I measured on this page
 
@@ -77,26 +118,5 @@ The time column is the whole trip from pressing the button to the transcript app
 
 **Where my testing stops:** the longest video run is 21:03. No length ceiling, file size ceiling, accuracy figure or language count has been measured, so none is stated.
 
-## FAQ
 
-**Can I download a YouTube transcript on my phone?** Yes. The download buttons work in a mobile browser. On Android the file lands in Downloads; on iPhone it goes to Files.
-
-**Is the transcript uploaded anywhere?** The exported file is built in your browser and saved to your device without being uploaded. The lookup server may fetch existing caption text and cache a successful response for one hour; your browser fetches selected tracks directly when needed. See the [privacy policy](https://instascript.app/privacy).
-
-**Which caption language do I get?** Whatever the video has. With more than one track a dropdown appears; pick, then press the button again to rebuild the file in that language.
-
-**Why is the SRT bigger than the TXT?** The timing lines. Every cue carries a number and a start/end line, plus blank separators: 23,528 bytes became 34,976 bytes on the 21:03 video.
-
-**Do the SRT times match the video exactly?** They match the caption track, which is what YouTube shows as subtitles. If the uploader's captions drift, the file drifts with them.
-
-**Can I get captions for a video that has none?** Not from this page — it only reads captions that already exist. [Video to Text](https://instascript.app/video-to-text) or [Audio to Text](https://instascript.app/audio-to-text) run a speech model in your browser instead.
-
-**Do you keep a copy of the file?** The exported file is created locally and is not uploaded. Successful lookup responses, including available caption text, may be cached for one hour. There is no account history.
-
----
-
-InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.
-
-## Export Markdown notes
-
-Choose Markdown to save the current caption track as a .md note with the video title, canonical YouTube source link, caption language and one paragraph per caption line. Timestamps includes available start times linked to whole-second YouTube positions; Plain text omits those times while keeping the title and source. Search queries and highlight markup are not added to the note. The file is created locally; no audio transcription or AI summary is generated. Opening a source link contacts YouTube.
+InstaScript is an independent project and is not affiliated with the platforms or model providers mentioned.

@@ -4,41 +4,113 @@
 
 Canonical: <https://instascript.app/video-to-text>
 
-[InstaScript](https://instascript.app/)
+[Open the tool](https://instascript.app/video-to-text)
 
-# Video Transcript — MP4, MOV, WebM to Text
+## Turn a recording into text you have checked
 
-Turn a video file into text — free, in your browser
+A video transcript is the spoken words from a recording, with available cue times for review. This video to text tool processes local files in the browser, supports English speech, and accepts files up to 100 MB when the browser can decode their audio.
 
-Any video file on your device works — screen recordings included.
+For a short practice run, download the [11-second public-domain JFK recording](https://instascript.app/assets/demo/kennedy-1961.wav) and select it above. This page also accepts audio files; the illustrated run uses that WAV, not a video codec test. Recognition requires model downloads. The screenshots show an actual recognition run; the added “[reviewed]” marker is a deliberate editing demonstration, not part of the recording. [Source and rights](https://instascript.app/assets/demo/SOURCE.md).
 
-Paste a public Instagram Reel or video post URL
+## 1. Which video file should I open first?
 
-## What does a video transcript mean?
+Choose a local MP4, MOV or WebM file with clear English speech and a size below 100 MB. Drop it on the upload area or choose **browse**. Check the selected file, then choose **Transcribe this file**. This page accepts local audio too; the public practice WAV lets you try the workflow without a private recording.
 
-**Video to text** means taking the speech inside a video file and writing it out as readable text. The video itself is not changed — you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.
 
-The same job goes by a few names: a **video transcript generator**, a **video to text converter**, or just video to text. Whichever you call it, the work is identical — the file stays on your device and the spoken words come back as text you can copy, search or download.
+The container extension does not guarantee that the browser can decode its audio. A screen recording must actually contain the voices you need. This page has no video-link field, audio-track selector or format converter. For unusual containers, consult the [Recording Format Guide](https://instascript.app/recording-format-guide).
 
-It is used for meeting and lecture recordings, interviews, screen recordings, vlogs and demos: anything where the useful part is what someone said and you would rather read, search or quote it than scrub through the timeline.
+![Local file upload area and selected public JFK WAV with the Transcribe this file button.](https://instascript.app/assets/tutorials/video-to-text/01-file-wide.svg)
 
-## How to use a video transcript generator in 3 steps
+The practice uses an audio file accepted by this page. MP4, MOV and WebM decoding still depends on the browser.
 
-1. **Have the video file ready.** MP4, MOV and WebM all work, including screen recordings and phone camera clips, up to 100 MB.
-2. **Drop the file into the box above** — or tap it to pick a video from your phone.
-3. **Press Transcribe.** The video transcript appears with timestamps. Copy it, or download .txt for notes and .srt for subtitles.
+**Check:** The intended local file is selected and its audio includes the speech you need.
 
-## What the video transcript looks like
+## 2. Why does the first transcription take longer?
 
-Each line carries the time it was spoken, so the text stays linked to the video:
+The workflow decodes audio, checks its language, loads the English recognition model and transcribes speech. The first use downloads both the language detector and English model, so keep a working connection and allow the stage messages to change. Model loading and recognition have no fixed completion time.
 
-```
-[00:00] Today we are going to look at three settings
-[00:05] the first one controls how much is cached
-[00:11] and the second one is the one people miss
-```
 
-The same text downloads as **.txt** (plain text) or **.srt** (a subtitle file most editors can open).
+Cached model resources can help later runs, but the English instance is released before a new language check. A cache hit does not mean all initialization disappears. The language check samples the beginning of the recording. Clearly detected non-English speech, uncertain language and technical detection failure have separate notices and stop without producing a transcript.
+
+![Actual processing status and cancel control, alongside the decode, language-check and transcription stages.](https://instascript.app/assets/tutorials/video-to-text/02-process-wide.svg)
+
+Captured during a real two-model run. This is not a timing estimate or performance benchmark.
+
+**Check:** Read the current stage; a failed language check is not evidence that the speech is non-English.
+
+## 3. How do I check and correct the transcript?
+
+After transcription, use the local recording player and click a cue timestamp to replay from its start. Listen for names, numbers and missing words, then edit the corresponding text field. Copy and downloads use the latest wording. The “[reviewed]” marker in the illustration was added solely to demonstrate that an edit reaches the saved file.
+
+
+The recognition result is a draft, especially with music, overlapping voices or unclear speech. Playback depends on browser codec support. Wording changes do not retime cues. When the cues have complete valid timing, **Open in Subtitle Editor** sends the transcript and recording directly to another same-origin tab for timing edits. If the tab is blocked or transfer fails, download SRT and open it there manually.
+
+![Local recording player and an actual recognized cue edited with a deliberate reviewed marker.](https://instascript.app/assets/tutorials/video-to-text/03-review-wide.svg)
+
+The WAV was actually recognized and replayed locally. The marker demonstrates editing and should be removed from a finished transcript.
+
+**Check:** Compare the actual words with the recording, then verify the edited text.
+
+## 4. How do I find a word in a long transcript?
+
+Use **Find in this transcript** after recognition. Previous and Next move through matches in the latest edited words. Choose **Edit this match** to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.
+
+
+Matching is literal, ignores ASCII letter case and stays within one cue. A phrase split between cues will not match across that boundary. Search does not alter words, timing or exports, and the query is not uploaded or saved.
+
+![Search controls showing the deliberate reviewed marker found in the edited transcript.](https://instascript.app/assets/tutorials/video-to-text/04-search-wide.svg)
+
+This match is in the edited result. It does not measure recognition accuracy.
+
+**Check:** Search a distinctive word within a cue and review the match in context.
+
+## 5. Should I save TXT, Markdown, SRT or VTT?
+
+**Copy** and **TXT** use edited words, with no times by default. Enable **Include timestamps in TXT, Markdown and Copy** to add available start times. **Markdown** saves a generic title and one paragraph per cue, escaping Markdown punctuation and HTML-like words. It contains transcript text, not an AI summary, and omits your original filename.
+
+
+**SRT**, **VTT** and editor transfer require non-empty text and complete valid start/end times. Missing ends are not estimated. If those controls are unavailable, read the export message and save TXT or Markdown instead. Download before closing the tab; there is no automatic cloud save or transcript history. A subtitle file does not burn captions into your video.
+
+![TXT, Markdown, SRT and VTT controls, the text timestamp checkbox, and an actual edited SRT download.](https://instascript.app/assets/tutorials/video-to-text/05-export-wide.svg)
+
+The excerpt comes from the real recognition run after the deliberate “[reviewed]” edit. It is not a prepared recognition result.
+
+**Check:** Reopen the download and confirm your latest wording, format and desired timestamps.
+
+## 6. How do I recover from an error or cancel a run?
+
+For a decode error, check that the recording has a supported audio codec; try a compatible export such as MP4 with AAC, or a playable WAV/MP3. Renaming a file extension does not convert it. The error illustration was produced using an intentionally invalid audio file. A technical language-check failure instead calls for checking the connection and retrying, not assuming the audio is non-English.
+
+
+**Cancel processing** discards the task’s result. A model download or local audio/model operation already in progress may need to finish before another task can start. After failure or cancellation, **Try the same input again** reuses the selected file in this tab. Selecting a different input replaces that retry target; only one task runs at a time.
+
+![Real decode error with the Try the same input again control, produced by an intentionally invalid teaching file.](https://instascript.app/assets/tutorials/video-to-text/06-retry-wide.svg)
+
+This failure was deliberately triggered for the tutorial. It is separate from language rejection and model-loading errors.
+
+**Check:** Wait until controls unlock, then retry the retained file or select a compatible recording.
+
+## More questions and common problems
+
+### Can this transcribe speech in another language?
+
+Speech recognition is English only. Non-English, uncertain language and detection failure stop separately. Editing subtitle text in [Subtitle Editor](https://instascript.app/subtitle-editor) has no English-only restriction because you supply the words.
+
+### Can I paste a YouTube or Instagram URL here?
+
+This page uses local files. For public Instagram media use the [Instagram Transcript](https://instascript.app/) tool; its URL lookup involves servers. For existing YouTube captions use [YouTube Transcript Download](https://instascript.app/youtube-transcript-download). A caption lookup is different from speech recognition.
+
+### Does my recording or transcript leave this browser?
+
+Local file decoding, recognition, edits, playback and exports happen here. Model files are downloaded from delivery services; your local recording is not uploaded. Editor transfer uses same-origin browser messaging and does not put transcript text in the URL or save a cloud project. See the [privacy policy](https://instascript.app/privacy).
+
+### Can I use this on a phone?
+
+You can select files in a mobile browser, but decoding support, available memory and processing time vary. A small clear recording is a useful first check.
+
+## Historical measurement notes
+
+Previously published observations; not new measurements for this walkthrough.
 
 ## How long does a video take to transcribe?
 
@@ -58,68 +130,9 @@ One machine, one WASM browser, one run per historical data point. Audio clips we
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
-## FAQ
-
-### Which video formats can I convert to text?
-
-MP4, MOV and WebM, plus anything else your browser can decode. That covers common **MOV to text** and **WebM to text** requests. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.
-
-### How long does a video take?
-
-Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser.
-
-### Is the video uploaded to a server?
-
-No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue.
-
-### Can I use this video to text converter on my phone?
-
-Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it.
-
-### Which languages work?
-
-English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English.
-
-### Can I get subtitles from the result?
-
-Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles.
-
-This video transcription page is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.
 
 ## Recommended
 
-[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio that can turn a finished video transcript into narration. A free tier is available to try.
+[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) — an AI voice generator and text-to-speech studio for turning a finished transcript into narration. A qualifying signup may earn us a commission at no extra cost to you.
 
-This video page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
-
-## Cancel and retry
-
-Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
-
-If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
-
-Model loading and speech recognition do not have a fixed timeout.
-
-## Review and edit your transcript
-
-After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT, SRT and VTT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
-
-## Search your current transcript
-
-After transcription, use **Find in this transcript** to search your latest
-edited words. Previous and Next navigate occurrences; a preview highlights
-one match. Choose **Edit this match** to select its text, or play its cue when
-a recording and start time are available. Enter moves forward, Shift+Enter
-moves back, and Escape in the search box clears the query.
-
-Search is literal, ignores ASCII letter case, and stays inside each cue in
-your current tab. Queries are not uploaded or saved. Search does not change
-cue timing or exports.
-
-## Export Markdown notes
-
-Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.
+InstaScript is an independent project and is not affiliated with the platforms or model providers mentioned.

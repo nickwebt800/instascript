@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="Transcribe Video to Text | InstaScript">
   <meta name="twitter:description" content="Turn an MP4, MOV or WebM video into timestamped text in your browser.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="upload-only">
+<body class="upload-only subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="tool-card" aria-labelledby="tool-heading">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">Video to text</h2>
@@ -61,7 +63,7 @@
           </div>
 <button id="transcribeBtn" class="btn-primary">Transcribe this file</button>
         </div>
-        <p class="panel-hint">Any video file on your device works &mdash; screen recordings included.</p>
+        <p class="panel-hint">Use a local recording with browser-decodable English audio, up to 100 MB. Screen recordings must include the voices you need.</p>
       </div>
     </main>
 
@@ -93,27 +95,32 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
-    <section class="content-card">
-      <h2>What does a video transcript mean?</h2>
-      <p><strong>Video to text</strong> means taking the speech inside a video file and writing it out as readable text. The video itself is not changed &mdash; you get the words that were spoken, usually with the time each line starts, so you can jump back to that moment in the clip.</p>
-      <p>The same job goes by a few names: a <strong>video transcript generator</strong>, a <strong>video to text converter</strong>, or just video to text. Whichever you call it, the work is identical &mdash; the file stays on your device and the spoken words come back as text you can copy, search or download.</p>
-      <p>It is used for meeting and lecture recordings, interviews, screen recordings, vlogs and demos: anything where the useful part is what someone said and you would rather read, search or quote it than scrub through the timeline.</p>
-
-      <h2>How to use a video transcript generator in 3 steps</h2>
-      <ol class="steps">
-        <li><strong>Have the video file ready.</strong> MP4, MOV and WebM all work, including screen recordings and phone camera clips, up to 100 MB.</li>
-        <li><strong>Drop the file into the box above</strong> &mdash; or tap it to pick a video from your phone.</li>
-        <li><strong>Press Transcribe.</strong> The video transcript appears with timestamps. Copy it, or download .txt for notes and .srt for subtitles.</li>
-      </ol>
-
-      <h2>What the video transcript looks like</h2>
-      <p>Each line carries the time it was spoken, so the text stays linked to the video:</p>
-      <pre class="example">[00:00] Today we are going to look at three settings
-[00:05] the first one controls how much is cached
-[00:11] and the second one is the one people miss</pre>
-      <p>The same text downloads as <strong>.txt</strong> (plain text) or <strong>.srt</strong> (a subtitle file most editors can open).</p>
-
-      <h2>How long does a video take to transcribe?</h2>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Turn a recording into text you have checked</h2><p>A video transcript is the spoken words from a recording, with available cue times for review. This video to text tool processes local files in the browser, supports English speech, and accepts files up to 100 MB when the browser can decode their audio.</p></div>
+<nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#choose-recording">Choose a local file</a></li><li><a href="#wait-models">Understand the processing stages</a></li><li><a href="#review-transcript">Replay and correct words</a></li><li><a href="#find-phrase">Find a phrase</a></li><li><a href="#export-transcript">Choose an export format</a></li><li><a href="#retry-recording">Recover and retry</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Practice material"><p>For a short practice run, download the <a href="/assets/demo/kennedy-1961.wav" download>11-second public-domain JFK recording</a> and select it above. This page also accepts audio files; the illustrated run uses that WAV, not a video codec test. Recognition requires model downloads. The screenshots show an actual recognition run; the added “[reviewed]” marker is a deliberate editing demonstration, not part of the recording. <a href="/assets/demo/SOURCE.md">Source and rights</a>.</p></aside>
+<section class="guide-step" aria-labelledby="choose-recording"><h3 id="choose-recording" tabindex="-1">1. Which video file should I open first?</h3><p>Choose a local MP4, MOV or WebM file with clear English speech and a size below 100 MB. Drop it on the upload area or choose <strong>browse</strong>. Check the selected file, then choose <strong>Transcribe this file</strong>. This page accepts local audio too; the public practice WAV lets you try the workflow without a private recording.</p>
+<p>The container extension does not guarantee that the browser can decode its audio. A screen recording must actually contain the voices you need. This page has no video-link field, audio-track selector or format converter. For unusual containers, consult the <a href="/recording-format-guide">Recording Format Guide</a>.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/01-file-narrow.svg" width="352" height="586"><img src="/assets/tutorials/video-to-text/01-file-wide.svg" width="720" height="351" loading="lazy" decoding="async" alt="Local file upload area and selected public JFK WAV with the Transcribe this file button."></picture><figcaption>The practice uses an audio file accepted by this page. MP4, MOV and WebM decoding still depends on the browser.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The intended local file is selected and its audio includes the speech you need.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="wait-models"><h3 id="wait-models" tabindex="-1">2. Why does the first transcription take longer?</h3><p>The workflow decodes audio, checks its language, loads the English recognition model and transcribes speech. The first use downloads both the language detector and English model, so keep a working connection and allow the stage messages to change. Model loading and recognition have no fixed completion time.</p>
+<p>Cached model resources can help later runs, but the English instance is released before a new language check. A cache hit does not mean all initialization disappears. The language check samples the beginning of the recording. Clearly detected non-English speech, uncertain language and technical detection failure have separate notices and stop without producing a transcript.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/02-process-narrow.svg" width="352" height="599"><img src="/assets/tutorials/video-to-text/02-process-wide.svg" width="720" height="373" loading="lazy" decoding="async" alt="Actual processing status and cancel control, alongside the decode, language-check and transcription stages."></picture><figcaption>Captured during a real two-model run. This is not a timing estimate or performance benchmark.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Read the current stage; a failed language check is not evidence that the speech is non-English.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="review-transcript"><h3 id="review-transcript" tabindex="-1">3. How do I check and correct the transcript?</h3><p>After transcription, use the local recording player and click a cue timestamp to replay from its start. Listen for names, numbers and missing words, then edit the corresponding text field. Copy and downloads use the latest wording. The “[reviewed]” marker in the illustration was added solely to demonstrate that an edit reaches the saved file.</p>
+<p>The recognition result is a draft, especially with music, overlapping voices or unclear speech. Playback depends on browser codec support. Wording changes do not retime cues. When the cues have complete valid timing, <strong>Open in Subtitle Editor</strong> sends the transcript and recording directly to another same-origin tab for timing edits. If the tab is blocked or transfer fails, download SRT and open it there manually.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/03-review-narrow.svg" width="352" height="580"><img src="/assets/tutorials/video-to-text/03-review-wide.svg" width="720" height="354" loading="lazy" decoding="async" alt="Local recording player and an actual recognized cue edited with a deliberate reviewed marker."></picture><figcaption>The WAV was actually recognized and replayed locally. The marker demonstrates editing and should be removed from a finished transcript.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Compare the actual words with the recording, then verify the edited text.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="find-phrase"><h3 id="find-phrase" tabindex="-1">4. How do I find a word in a long transcript?</h3><p>Use <strong>Find in this transcript</strong> after recognition. Previous and Next move through matches in the latest edited words. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p>
+<p>Matching is literal, ignores ASCII letter case and stays within one cue. A phrase split between cues will not match across that boundary. Search does not alter words, timing or exports, and the query is not uploaded or saved.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/04-search-narrow.svg" width="352" height="664"><img src="/assets/tutorials/video-to-text/04-search-wide.svg" width="720" height="438" loading="lazy" decoding="async" alt="Search controls showing the deliberate reviewed marker found in the edited transcript."></picture><figcaption>This match is in the edited result. It does not measure recognition accuracy.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Search a distinctive word within a cue and review the match in context.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="export-transcript"><h3 id="export-transcript" tabindex="-1">5. Should I save TXT, Markdown, SRT or VTT?</h3><p><strong>Copy</strong> and <strong>TXT</strong> use edited words, with no times by default. Enable <strong>Include timestamps in TXT, Markdown and Copy</strong> to add available start times. <strong>Markdown</strong> saves a generic title and one paragraph per cue, escaping Markdown punctuation and HTML-like words. It contains transcript text, not an AI summary, and omits your original filename.</p>
+<p><strong>SRT</strong>, <strong>VTT</strong> and editor transfer require non-empty text and complete valid start/end times. Missing ends are not estimated. If those controls are unavailable, read the export message and save TXT or Markdown instead. Download before closing the tab; there is no automatic cloud save or transcript history. A subtitle file does not burn captions into your video.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/05-export-narrow.svg" width="352" height="549"><img src="/assets/tutorials/video-to-text/05-export-wide.svg" width="720" height="302" loading="lazy" decoding="async" alt="TXT, Markdown, SRT and VTT controls, the text timestamp checkbox, and an actual edited SRT download."></picture><figcaption>The excerpt comes from the real recognition run after the deliberate “[reviewed]” edit. It is not a prepared recognition result.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Reopen the download and confirm your latest wording, format and desired timestamps.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="retry-recording"><h3 id="retry-recording" tabindex="-1">6. How do I recover from an error or cancel a run?</h3><p>For a decode error, check that the recording has a supported audio codec; try a compatible export such as MP4 with AAC, or a playable WAV/MP3. Renaming a file extension does not convert it. The error illustration was produced using an intentionally invalid audio file. A technical language-check failure instead calls for checking the connection and retrying, not assuming the audio is non-English.</p>
+<p><strong>Cancel processing</strong> discards the task’s result. A model download or local audio/model operation already in progress may need to finish before another task can start. After failure or cancellation, <strong>Try the same input again</strong> reuses the selected file in this tab. Selecting a different input replaces that retry target; only one task runs at a time.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/video-to-text/06-retry-narrow.svg" width="352" height="505"><img src="/assets/tutorials/video-to-text/06-retry-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Real decode error with the Try the same input again control, produced by an intentionally invalid teaching file."></picture><figcaption>This failure was deliberately triggered for the tutorial. It is separate from language rejection and model-loading errors.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Wait until controls unlock, then retry the retained file or select a compatible recording.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Can this transcribe speech in another language?</h3><p>Speech recognition is English only. Non-English, uncertain language and detection failure stop separately. Editing subtitle text in <a href="/subtitle-editor">Subtitle Editor</a> has no English-only restriction because you supply the words.</p>
+<h3>Can I paste a YouTube or Instagram URL here?</h3><p>This page uses local files. For public Instagram media use the <a href="/">Instagram Transcript</a> tool; its URL lookup involves servers. For existing YouTube captions use <a href="/youtube-transcript-download">YouTube Transcript Download</a>. A caption lookup is different from speech recognition.</p>
+<h3>Does my recording or transcript leave this browser?</h3><p>Local file decoding, recognition, edits, playback and exports happen here. Model files are downloaded from delivery services; your local recording is not uploaded. Editor transfer uses same-origin browser messaging and does not put transcript text in the URL or save a cloud project. See the <a href="/privacy">privacy policy</a>.</p>
+<h3>Can I use this on a phone?</h3><p>You can select files in a mobile browser, but decoding support, available memory and processing time vary. A small clear recording is a useful first check.</p></section>
+<section class="guide-more"><h2>Historical measurement notes</h2><p>These are previously published observations, not new measurements for this walkthrough or a prediction for your next run.</p><details><summary>Read the historical method, results and limitations</summary>
       <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
       <table class="bench-table">
         <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
@@ -127,33 +134,13 @@
       </table>
       <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
       <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
-      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
-
-
-
-      <h2>FAQ</h2>
-      <h3>Which video formats can I convert to text?</h3>
-      <p>MP4, MOV and WebM, plus anything else your browser can decode. That covers common <strong>MOV to text</strong> and <strong>WebM to text</strong> requests. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB.</p>
-      <h3>How long does a video take?</h3>
-      <p>Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser.</p>
-      <h3>Is the video uploaded to a server?</h3>
-      <p>No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue.</p>
-      <h3>Can I use this video to text converter on my phone?</h3>
-      <p>Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it.</p>
-      <h3>Which languages work?</h3>
-      <p>English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English.</p>
-      <h3>Can I get subtitles from the result?</h3>
-      <p>Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles.</p>
-
-      <p class="disclaimer">This video transcription page is an independent personal project. It is not affiliated with, endorsed by, or sponsored by any platform or by OpenAI.</p>
-    </section>
-
+      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p></details></section>
+</article>
     <section class="content-card">
       <h2>Recommended</h2>
       <p><a href="https://try.elevenlabs.io/4cwahrcf3vyn" target="_blank" rel="noopener sponsored">ElevenLabs</a> &mdash; an AI voice generator and text-to-speech studio that can turn a finished video transcript into narration. A free tier is available to try.</p>
       <p>This video page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.</p>
     </section>
-
     <nav class="related-links" aria-label="Related transcript tools">
       Other transcript tools:
       <a href="/">Instagram Transcript</a> &middot;
@@ -163,12 +150,6 @@
       <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
       <a href="/youtube-transcript">YouTube Transcript</a>
     </nav>
-
-    <section class="content-card"><h2>Cancel and retry</h2><p>Only one transcription task can run at a time. Cancel processing discards its result; a model download or local audio/model operation already in progress may need to finish first. After a failure or cancellation, Try the same input again reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded. Model loading and speech recognition do not have a fixed timeout.</p></section>
-<section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
-<section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-    <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports.</p></section>
-<section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.</p></section>
 <footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
@@ -228,63 +209,47 @@
   </div>
 
   <script type="module" src="app.js?v=app-f33348b14bd1"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Which video formats can I convert to text?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MP4, MOV and WebM, plus anything else the browser can decode. What matters is the audio track: if the browser can play the sound, it can be transcribed. Files up to 100 MB."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does a video take?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Audio is processed in 30-second passes, so a 10-minute recording takes longer than a 30-second clip. The first run also downloads the speech model to your browser."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the video uploaded to a server?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The speech model runs inside your own browser and the file stays on your device. No account, no upload, no queue."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use this video to text converter on my phone?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, in a mobile browser. Pick the video from your camera roll in the upload box above; the page works on a phone screen and the transcript can be copied straight from it."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which languages work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "English. The tool identifies the spoken language first and shows a short notice instead of a guess when the audio is not English."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I get subtitles from the result?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Download the .srt file and drop it into a video editor or a player that loads external subtitles."
-        }
-      }
-    ]
-  }
-  </script>
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can this transcribe speech in another language?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Speech recognition is English only. Non-English, uncertain language and detection failure stop separately. Editing subtitle text in Subtitle Editor has no English-only restriction because you supply the words."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I paste a YouTube or Instagram URL here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This page uses local files. For public Instagram media use the Instagram Transcript tool; its URL lookup involves servers. For existing YouTube captions use YouTube Transcript Download. A caption lookup is different from speech recognition."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my recording or transcript leave this browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Local file decoding, recognition, edits, playback and exports happen here. Model files are downloaded from delivery services; your local recording is not uploaded. Editor transfer uses same-origin browser messaging and does not put transcript text in the URL or save a cloud project. See the privacy policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this on a phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can select files in a mobile browser, but decoding support, available memory and processing time vary. A small clear recording is a useful first check."
+      }
+    }
+  ]
+}
+  </script>
 </body>
 </html>

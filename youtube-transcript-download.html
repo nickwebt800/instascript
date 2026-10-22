@@ -21,8 +21,9 @@
   <meta name="twitter:description" content="Download a video's existing YouTube captions as TXT or SRT files.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
   <link rel="stylesheet" href="/youtube-transcript.css?v=youtube-search-20261015a">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body>
+<body class="subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -37,7 +38,8 @@
 </nav>
     </header>
 
-    <main class="tool-card" aria-labelledby="tool-heading">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">Download YouTube transcript</h2>
@@ -50,7 +52,7 @@
         <input type="url" id="urlInput" class="url-input" placeholder="https://www.youtube.com/watch?v=..." aria-label="YouTube video URL" autocomplete="off" spellcheck="false">
         <button type="submit" id="getBtn" class="btn-primary">Download Transcript</button>
       </form>
-      <p class="panel-hint">Public videos that already have captions. youtube.com, youtu.be and /shorts/ links all work. You get a .txt and a .srt file, both built in your own browser.</p>
+      <p class="panel-hint">Reads existing captions from public youtube.com, youtu.be and /shorts/ links. After a successful lookup, choose TXT, Markdown or SRT to save a file in your browser.</p>
       <div id="trackRow" class="track-row hidden">
         <label for="langSelect">Caption language</label>
         <select id="langSelect" class="lang-select" aria-describedby="trackHint"></select>
@@ -88,54 +90,30 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
-    <section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save the current caption track as a .md note with the video title, canonical YouTube source link, caption language and one paragraph per caption line. Timestamps includes available start times linked to whole-second YouTube positions; Plain text omits those times while keeping the title and source. Search queries and highlight markup are not added to the note. The file is created locally; no audio transcription or AI summary is generated. Opening a source link contacts YouTube.</p></section>
-
-    <section class="content-card">
-      <h2>Search the current caption track</h2>
-      <p>Use <strong>Find in this transcript</strong> to find words in the caption track you just loaded. Previous and Next move between occurrences; Enter moves forward, Shift+Enter moves back, and Escape clears the query. The preview highlights one match. Search is literal, ignores ASCII letter case, and does not match across caption lines, even in Plain text view.</p>
-      <p><strong>Locate caption</strong> reveals the matching line, switching to Timestamps if needed. A timestamp or <strong>Open YouTube</strong> link opens the source in a new tab at its whole-second start time. No video player loads here. These captions are read-only; search does not change Copy, TXT, Markdown, SRT, caption text or timing. Switching display mode keeps the query; a new lookup or caption-language change clears it. After changing language, submit the link again.</p>
-      <p>Search runs in your current tab without sending or saving the query. Opening a source link sends the video ID and timestamp to YouTube, with no search words in the link. Caption lookup and its possible one-hour server cache remain separate.</p>
-    </section>
-
-    <section class="content-card">
-      <h2>How this download works</h2>
-      <p><strong>It reads the caption track the video already has and writes it to a file &mdash; it never listens to the audio and never re-writes the words from scratch.</strong> Nothing has to play through, which is why the file is ready in seconds rather than after a recording finishes.</p>
-      <p>This site asks YouTube which caption tracks the video has and may fetch the default track on the server. Successful lookup responses, including available caption text, may be cached for one hour. When a selected track needs a browser request, your browser downloads it directly from YouTube and may perform a Google bot check. No video audio is uploaded or transcribed. TXT, Markdown and SRT exports are created in your browser.</p>
-      <p>YouTube asks the browser that requests captions to pass a bot check first. Your browser does that check itself; this site never sees the result of it. One consequence worth knowing: an extension that blocks Google scripts, or a privacy browser in its strictest mode, can stop the download before a file exists. When that happens you get a message that says so.</p>
-
-      <h2>YouTube subtitles download: TXT or SRT</h2>
-      <p>TXT and SRT give you the same words in two different shapes, and the shape decides what you can do with the file.</p>
-      <ul class="steps">
-        <li><strong>TXT</strong> is the one for reading and writing. It is a plain text file: open it in any text editor, paste it into a document, run it through a translation tool, search it, or feed it to anything that takes text. In the default view every line starts with <code>[mm:ss]</code>; switch to <em>Plain text</em> before downloading and you get the words as one continuous block with no times in it.</li>
-        <li><strong>SRT</strong> is the one for playing and editing. It is the standard subtitle file: a number, a line with a start and end time, then the text, repeated for every line and separated by blank lines. Media players load it automatically if it sits next to the video with a matching name, subtitle editors open it as a track, and video editors import it as a subtitle or caption track. If your goal is subtitles on a screen rather than words in a document, this is the file you want.</li>
-      </ul>
-      <p>Both files are UTF-8 text with Unix line endings. Both are named after the video &mdash; the title, cleaned up, so <em>Me at the zoo</em> saves as <code>Me-at-the-zoo.txt</code> and <code>Me-at-the-zoo.srt</code>.</p>
-
-      <h2>YouTube SRT download: where the timestamps come from</h2>
-      <p><strong>The times are not calculated here &mdash; they come with the caption track.</strong> YouTube sends every caption line with the millisecond it starts at and how long it lasts. The SRT file copies those two numbers: the start time goes on the left, and the end time is that start plus the duration that came with the line. Milliseconds are kept, so you see <code>00:00:01,200 --&gt; 00:00:03,360</code> rather than times rounded to whole seconds.</p>
-      <p>In the file I downloaded from <em>Me at the zoo</em>, the first cue reads <code>00:00:01,200 --&gt; 00:00:03,360</code>. The caption line arrived with a start of 1,200&nbsp;ms and a duration of 2,160&nbsp;ms; 1,200 + 2,160 is 3,360, which is the end time you see. Nothing in between was estimated.</p>
-      <p>The one place this page fills a gap: if a line arrives with no duration, the file gives it two seconds so the cue is still visible on screen. Across the three videos I measured, cues that came out at exactly 2.000 seconds: 1 of 6 on the 0:19 video, 4 of 428 on the 21:03 video, 1 of 90 on the 4:42 video. Some of those may genuinely be two-second lines in the original track &mdash; once the file is written you cannot tell the two apart, so I am not going to claim a number I cannot separate out.</p>
-
-      <h2>One caption line, one line in the file</h2>
-      <p><strong>TXT and SRT are line-by-line, not grouped into paragraphs.</strong> YouTube stores captions as a stream of short timed lines, and that is what you get &mdash; each caption line becomes one line in the TXT and one cue in the SRT. Nothing is merged, and no sentence is split across two cues.</p>
-      <p>That is worth knowing before you open a long file: it reads like subtitles, not like an article. The 21:03 talk I measured came back as 428 separate lines. If you want flowing prose instead, switch to <em>Plain text</em> and download the TXT &mdash; that joins the lines into a single block with the times removed.</p>
-      <p>The SRT is consequently taller than the TXT: 428 lines of text became 1,712 lines of SRT, because every cue carries a number and a time line as well as the words.</p>
-
-      <h2>What a long video's file looks like</h2>
-      <p>The longest video I put through this page is a 21:03 TED talk. Its caption track came back as 428 lines, which produced a <strong>23.0&nbsp;KB TXT file (23,528 bytes)</strong> and a <strong>34.2&nbsp;KB SRT file (34,976 bytes)</strong>. The SRT is about 1.5&times; the TXT &mdash; that ratio is the cost of the timing lines, and it held across the other videos too (0:19 gave 265&nbsp;B and 415&nbsp;B; 4:42 gave 4,087&nbsp;B and 6,418&nbsp;B).</p>
-      <p>In practice that means even a talk of this length lands as a file you can email, drop into a document or open on a phone without thinking about it. The longest single cue in it lasted 7.2 seconds and the shortest 1.0 second, which is what natural speech looks like when it is cut into subtitle lines.</p>
-
-      <h2>When the download fails, this is what you see</h2>
-      <p>Nothing here invents a caption track, so sometimes there is no file. These are the messages, quoted exactly as the page shows them:</p>
-      <ul class="steps">
-        <li><strong>No caption track came back</strong> &mdash; the page says: <em>&ldquo;This lookup came back with no caption track. Either this video has none, or YouTube did not hand one over this time. Try it once more: if it comes back empty again, the video most likely has no captions, and captions cannot be made here &mdash; this page only reads the ones that already exist.&rdquo;</em> I trigger this on purpose on two videos while testing and got this wording back both times. Note what it does <em>not</em> say: it never claims your video has no captions, because one empty lookup is not proof of that.</li>
-        <li><strong>Temporarily unavailable</strong> &mdash; the page says: <em>&ldquo;The caption lookup is unavailable right now. There is nothing wrong with your link &mdash; try it again later.&rdquo;</em> This is the one you get when the lookup side is busy or throttled rather than when anything is wrong with the video. I hit it once during testing.</li>
-        <li><strong>The bot check could not be completed</strong> &mdash; the page explains that YouTube asked for a proof-of-origin token that the browser could not produce, and points at strict privacy settings or script blockers. I have not been able to trigger this one myself, so I am quoting the message rather than claiming I saw it.</li>
-        <li><strong>A track exists but came back empty</strong> &mdash; the page says YouTube sent nothing for it, and lists the usual causes: captions switched off after publishing, auto captions not generated yet, or an empty track.</li>
-      </ul>
-      <p>What is <em>not</em> in that list: a length limit, a quota, a daily allowance or a waiting room. There is no account here, so there is nothing to run out of from your side.</p>
-
-      <h2>What I measured on this page</h2>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Download a caption track you can check</h2><p>Use this YouTube transcript download tool to retrieve an existing caption track, choose its language, and save the format you need. It does not generate missing captions or translate a track.</p></div>
+<nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#lookup-captions">Look up existing captions</a></li><li><a href="#choose-language">Choose the caption language</a></li><li><a href="#choose-export">Choose TXT, Markdown or SRT</a></li><li><a href="#check-download">Inspect the saved file</a></li><li><a href="#recover-lookup">Understand lookup failures</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Practice material"><p>Language and export illustrations use prepared practice captions to show the controls; they are not captions retrieved from the linked video. You can inspect the <a href="/assets/tutorials/youtube-transcript-download/practice.srt" download>practice SRT</a> separately. The lookup-error illustration comes from an actual query. A prepared example does not show that a live query will succeed.</p></aside>
+<section class="guide-step" aria-labelledby="lookup-captions"><h3 id="lookup-captions" tabindex="-1">1. How do I start a YouTube transcript download?</h3><p>Paste a public <code>youtube.com</code>, <code>youtu.be</code> or YouTube Shorts link into <strong>YouTube video URL</strong>, then choose <strong>Download Transcript</strong>. That button starts the lookup; when captions arrive, choose a separate download button in the result. It does not automatically save every file.</p>
+<p>The site asks for existing caption tracks. The browser may also need to contact YouTube and Google for a bot check and fetch the selected track. Allow time for the status to change. This process does not upload or transcribe video audio, and there is no guarantee that a public video’s captions can be retrieved.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-download/01-lookup-narrow.svg" width="352" height="505"><img src="/assets/tutorials/youtube-transcript-download/01-lookup-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="The YouTube URL form and actual Paste a YouTube link first validation message."></picture><figcaption>Download Transcript requests captions. Saving TXT, Markdown or SRT is a separate step.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Wait for a readable transcript or a specific error before choosing a file format.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="choose-language"><h3 id="choose-language" tabindex="-1">2. How do I choose a different subtitle language?</h3><p>When several tracks are available, use <strong>Caption language</strong>. Selecting another language clears the previous result and search. Choose <strong>Download Transcript</strong> again to request that selected track; wait for the new result before saving. With one available track, the selector is hidden.</p>
+<p>The options belong to that video. An auto-generated label describes the source track; it is not a quality rating. The tool cannot add an unavailable language or automatically translate a caption track. Check a few lines in the returned language before exporting.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-download/02-language-narrow.svg" width="352" height="553"><img src="/assets/tutorials/youtube-transcript-download/02-language-wide.svg" width="720" height="327" loading="lazy" decoding="async" alt="Prepared example showing Caption language before and after selecting Spanish, with the instruction to submit again."></picture><figcaption>Prepared practice captions illustrate the real selection controls. This is not a successful live video lookup.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The result has reloaded after your language choice; do not reuse the old file.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="choose-export"><h3 id="choose-export" tabindex="-1">3. Should I download TXT, Markdown or SRT?</h3><p><strong>Download TXT</strong> saves readable text. In <strong>Timestamps</strong> mode each caption line has its start time; <strong>Plain text</strong> joins the words into one block without times. <strong>Copy</strong> follows the same view mode. Choose the mode before saving.</p>
+<p><strong>Markdown</strong> adds a title, canonical YouTube source link and the selected caption language when available. Timestamps mode adds available start links to whole-second YouTube positions; Plain text omits those time links. It creates transcript notes, not an AI summary. <strong>Download SRT</strong> saves timed cues for a subtitle editor or player, independently of the text-view toggle.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-download/03-formats-narrow.svg" width="352" height="593"><img src="/assets/tutorials/youtube-transcript-download/03-formats-wide.svg" width="720" height="365" loading="lazy" decoding="async" alt="Prepared example of timestamp/plain-text and download controls, with actual practice TXT exports with and without timestamps."></picture><figcaption>Both TXT excerpts were downloaded from the prepared practice example, not a live caption track.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Use SRT for a timed subtitle track; choose text-view mode for TXT and Markdown.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="check-download"><h3 id="check-download" tabindex="-1">4. How do I check the downloaded SRT before using it?</h3><p>Open the SRT in a text editor or <a href="/subtitle-editor">Subtitle Editor</a>. Check the language and words near the beginning and end, then compare several time ranges against the video you are permitted to use. Each caption segment becomes one SRT cue; exporting does not correct wording or timing drift.</p>
+<p>Start times and durations normally come from the track. The current exporter substitutes a <strong>two-second duration</strong> when a segment has a missing or zero duration; it is not an audio-alignment measurement. Do not assume every end time was supplied by YouTube. The TXT joins lines in Plain text mode; the SRT keeps separate cues. Saving SRT creates a separate file and does not burn captions into a video or change captions on YouTube.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-download/04-check-narrow.svg" width="352" height="527"><img src="/assets/tutorials/youtube-transcript-download/04-check-wide.svg" width="720" height="301" loading="lazy" decoding="async" alt="Prepared caption Open the garden gate and its exported SRT time range from zero to three seconds."></picture><figcaption>This example has an explicit three-second duration. Missing or zero durations use the exporter’s two-second fallback.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Inspect words and synchronization in the destination player, not just the file extension.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="recover-lookup"><h3 id="recover-lookup" tabindex="-1">5. What should I do when no caption file comes back?</h3><p>Read the error before retrying. An empty lookup or an empty track response does not prove that a video has no captions. Check captions on YouTube and retry later if the service is unavailable or rate limited. Repeated retries are not a way to create a missing track.</p>
+<p>A browser-check error can involve blocked Google scripts, network restrictions or upstream refusal. If appropriate, test another browser or review site-specific blocking settings. Success is not guaranteed. If you have a permitted local recording with English speech, <a href="/video-to-text">Video to Text</a> is a separate recognition workflow. It cannot fetch an arbitrary YouTube URL.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/youtube-transcript-download/05-error-narrow.svg" width="352" height="531"><img src="/assets/tutorials/youtube-transcript-download/05-error-wide.svg" width="720" height="305" loading="lazy" decoding="async" alt="Actual query error reporting that a caption track exists but returned no text, with recovery choices."></picture><figcaption>Observed on October 22, 2026. The query did not produce a downloadable transcript.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Separate an unavailable query from confirmed absence of a caption track.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Can I correct the transcript on this page?</h3><p>The returned captions are read-only. Download SRT and use <a href="/subtitle-editor">Subtitle Editor</a> to edit a local copy. This does not update YouTube.</p>
+<h3>How do I find a phrase before downloading?</h3><p>Use Find in this transcript. Previous/Next and Enter/Shift+Enter navigate literal matches within a cue, ignoring ASCII letter case; Escape clears. Locate caption reveals the line and switches to Timestamps if needed. Changing view preserves the search; changing the track clears it. Search and highlighting do not enter exports.</p>
+<h3>Does clicking a timestamp play the video here?</h3><p>A timestamp or Open YouTube link opens YouTube in a new tab at a whole-second start. No player is embedded. The link contains the video ID and time, without your search query. Opening it contacts YouTube.</p>
+<h3>Are captions or downloads stored on a server?</h3><p>Lookup sends the video link to the server, which may fetch existing captions. Successful responses, including caption text, may be cached for one hour. Selected tracks and bot checks may contact YouTube/Google from the browser. Files are built locally; there is no account history. See the <a href="/privacy">privacy policy</a>.</p>
+<h3>Can I download on a phone?</h3><p>Use a mobile browser and its download controls. Where the file is saved or opened depends on your browser and device settings. Check the browser’s downloads or share/save menu.</p></section>
+<section class="guide-more"><h2>Historical measurement notes</h2><p>These are previously published observations, not new measurements for this walkthrough or a prediction for your next run.</p><details><summary>Read the historical method, results and limitations</summary>
       <p>Every row is one run on the live page, in a real browser, on my own connection, on 17 September 2026. The file sizes are read off the files that actually landed on disk &mdash; I clicked the button and opened what came out.</p>
       <div class="table-scroll">
       <table class="bench-table">
@@ -160,28 +138,8 @@
       </table>
       </div>
       <p><strong>How to read the time column:</strong> it is the whole trip from pressing the button to the transcript appearing. The two rows at about one second are videos I had already looked up recently, so the answer was still cached; the 12.3 s and 22.4 s rows were cold starts that included the full lookup.</p>
-      <p><strong>Where my testing stops:</strong> the longest video I ran is 21:03, so that is the only place I can tell you what a long file looks like. I have not measured a length ceiling, a file size ceiling, an accuracy figure or how many languages work &mdash; I have no number for any of those, so none of them appear on this page.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I download a YouTube transcript on my phone?</h3>
-      <p>Yes. Paste the link in your mobile browser and the download buttons work. On Android the file lands in your Downloads folder; on iPhone it goes to Files, and Safari will offer to open it or save it. The page is laid out for a phone screen first, so the buttons sit under the text rather than off to the side.</p>
-      <h3>Is the transcript uploaded anywhere?</h3>
-      <p>The exported file is built in your browser and saved to your device without being uploaded. The lookup server may fetch existing caption text and cache a successful response for one hour; your browser fetches selected tracks directly when needed. See the <a href="/privacy">privacy policy</a>.</p>
-      <h3>Which caption language do I get?</h3>
-      <p>Whatever the video has. If there is more than one track, a dropdown appears above the transcript and you pick before you press the button; change it and press again to rebuild the file in that language. If there is one track, that is the one you get. I am not going to quote a count of supported languages &mdash; it is a property of the video, not of this page.</p>
-      <h3>Why is the SRT bigger than the TXT?</h3>
-      <p>Because of the timing lines. Every cue carries a sequence number and a start/end line before the text, and the cues are separated by blank lines. On the 21:03 video that overhead took the file from 23,528 bytes to 34,976 &mdash; about 1.5&times;.</p>
-      <h3>Do the SRT times match the video exactly?</h3>
-      <p>They match the caption track, which is what YouTube itself shows as subtitles. If the uploader's captions drift or start late, the file drifts with them, because the file is a copy of that track rather than a fresh measurement of the audio.</p>
-      <h3>Can I get captions for a video that has none?</h3>
-      <p>Not from this page &mdash; it only reads captions that already exist. If you have the video as a file, <a href="/video-to-text">Video to Text</a> or <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> run a speech model in your browser and do not need a caption track.</p>
-      <h3>Do you keep a copy of the file?</h3>
-      <p>The exported file is created locally and is not uploaded. Successful lookup responses, including available caption text, may be cached for one hour. There is no account history.</p>
-
-      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by YouTube or Google.</p>
-    </section>
-
+      <p><strong>Where my testing stops:</strong> the longest video I ran is 21:03, so that is the only place I can tell you what a long file looks like. I have not measured a length ceiling, a file size ceiling, an accuracy figure or how many languages work &mdash; I have no number for any of those, so none of them appear on this page.</p></details></section>
+</article>
     <nav class="related-links" aria-label="Related transcript tools">
       Other transcript tools:
       <a href="/">Instagram Transcript</a> &middot;
@@ -192,8 +150,7 @@
       <a href="/audio-to-text">Audio to Text</a>
         <a href="/mp3-to-text">MP3 to Text</a>
     </nav>
-
-    <footer class="footer" data-site-footer>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -252,45 +209,55 @@
   </div>
 
   <script type="module" src="/js/youtube-transcript-download.js?v=markdown-20261015a"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can I download a YouTube transcript on my phone?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste the link in your mobile browser and the download buttons work. On Android the file lands in your Downloads folder; on iPhone it goes to Files." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the transcript uploaded anywhere?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The exported file is built in your browser and saved without being uploaded. The lookup server may fetch caption text and cache a successful response for one hour; the browser fetches selected tracks directly when needed." }
-      },
-      {
-        "@type": "Question",
-        "name": "Which caption language do I get?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Whatever the video has. If there is more than one track, a dropdown appears and you pick before you press the button. If there is one track, you get that one." }
-      },
-      {
-        "@type": "Question",
-        "name": "Why is the SRT bigger than the TXT?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Because of the timing lines. Every cue carries a sequence number and a start/end line before the text. On a 21:03 video that took the file from 23,528 bytes to 34,976 bytes." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do the SRT times match the video exactly?",
-        "acceptedAnswer": { "@type": "Answer", "text": "They match the caption track, which is what YouTube shows as subtitles. If the uploader's captions drift, the file drifts with them, because the file is a copy of that track." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I get captions for a video that has none?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Not from this page. It only reads captions that already exist. Video to Text and Audio to Text run a speech model in your browser instead." }
-      }
-    ]
-  }
-  </script>
-  <script src="/js/webmcp.js" defer></script>
+<script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I correct the transcript on this page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The returned captions are read-only. Download SRT and use Subtitle Editor to edit a local copy. This does not update YouTube."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find a phrase before downloading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use Find in this transcript. Previous/Next and Enter/Shift+Enter navigate literal matches within a cue, ignoring ASCII letter case; Escape clears. Locate caption reveals the line and switches to Timestamps if needed. Changing view preserves the search; changing the track clears it. Search and highlighting do not enter exports."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does clicking a timestamp play the video here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A timestamp or Open YouTube link opens YouTube in a new tab at a whole-second start. No player is embedded. The link contains the video ID and time, without your search query. Opening it contacts YouTube."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are captions or downloads stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lookup sends the video link to the server, which may fetch existing captions. Successful responses, including caption text, may be cached for one hour. Selected tracks and bot checks may contact YouTube/Google from the browser. Files are built locally; there is no account history. See the privacy policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download on a phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a mobile browser and its download controls. Where the file is saved or opened depends on your browser and device settings. Check the browser’s downloads or share/save menu."
+      }
+    }
+  ]
+}
+  </script>
 </body>
 </html>

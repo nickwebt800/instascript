@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Turn plain text into editable SRT or VTT subtitles in your browser.">
   <title>TXT to SRT Converter | Free Browser Subtitle Tool | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="txt-to-srt-page">
+<body class="txt-to-srt-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="tool-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="subtitle-tool" aria-labelledby="tool-title">
       <div class="tool-intro-row">
         <div>
           <h2 id="tool-title">Build your subtitle file</h2>
@@ -97,32 +99,31 @@
       </section>
     </main>
 
-    <section class="content-card reading">
-      <h2>What this TXT to SRT converter supports</h2>
-      <p>Paste plain text or open a local <strong>.txt</strong> file to create subtitle cues. You can also open an existing <strong>.srt</strong> or <strong>.vtt</strong> file, switch to existing timestamps mode, edit every cue, and export either format. Only one local text file is handled at a time.</p>
-      <p>This is also a local <strong>text to SRT</strong> and <strong>convert TXT to SRT</strong> workflow. Use it to create an SRT file from numbered text, then review each cue before downloading.</p>
-      <p>The converter does not send text to a server. It needs no account, login, history, project storage, paid API, or batch upload.</p>
-
-      <h2>Text to SRT: review the timing draft before export</h2>
-      <p>For a <strong>text to SRT</strong> workflow, paste your words, select <strong>Plain text timing</strong>, and choose <strong>Generate timeline</strong>. Review the cue text, start and end times, then use <strong>Download SRT</strong> or <strong>Copy SRT</strong>. This is the existing TXT converter, with no separate page or upload.</p>
-      <p>The generated timing is an estimated draft based on your settings and text length. It does not listen to audio or align words to a recording. For an accompanying video, compare the cues against playback and adjust their timing manually before using the SRT.</p>
-      <h2>How timing works</h2>
-      <p>In plain text mode, each line or sentence becomes a cue. The first cue starts at your chosen start time. Its duration uses the default duration and the reading-speed limit, then stays inside your shortest and longest duration settings. The next cue starts after the previous cue plus the entry gap.</p>
-      <p>Captions longer than the character limit are split at word boundaries. Existing SRT and VTT ranges are read as-is and rewritten with millisecond precision. If a source cue has no usable end time, the plain-text timing settings provide its fallback duration.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I convert a TXT file to SRT without uploading it?</h3>
-      <p>Yes. Choose <strong>Open TXT / SRT / VTT</strong>. The file is read locally by your browser and is not uploaded.</p>
-      <h3>Can I use this as a TXT to SRT converter for numbered text?</h3>
-      <p>Yes. Plain text mode removes common leading line numbers such as “1.” or “2)” before it creates cues.</p>
-      <h3>What is the difference between SRT and VTT?</h3>
-      <p>SRT uses comma-separated milliseconds and numbered cues. VTT starts with <strong>WEBVTT</strong> and uses a period before milliseconds. The editor can download both from the same entries.</p>
-      <h3>Does this make subtitles from audio?</h3>
-      <p>No. This page times text you provide. Use the <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> tool when you need a transcript first.</p>
-    </section>
-
-    <footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Build subtitles from text, one step at a time</h2><p>Use this TXT to SRT converter when you already have the words and need an editable subtitle draft. Keep the tool above open while you follow the steps. Text timing is estimated from your settings; it is not matched to speech.</p></div>
+<nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#choose-mode">Choose your input mode</a></li><li><a href="#set-timing">Set draft timing</a></li><li><a href="#generate-cues">Generate and inspect</a></li><li><a href="#edit-draft">Edit words and times</a></li><li><a href="#save-draft">Save and reopen</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Practice material"><p>Download the <a href="/assets/tutorials/txt-to-srt/practice.txt" download>three-line practice TXT</a>. It is original teaching text, not a transcript. With the default settings it creates three cues, starting at 0.000, 3.100 and 6.200 seconds. These times illustrate the calculation, not synchronization with a recording.</p></aside>
+<section class="guide-step" aria-labelledby="choose-mode"><h3 id="choose-mode" tabindex="-1">1. How do I choose between plain text and existing timestamps?</h3><p>Open one UTF-8 TXT, SRT or VTT file with <strong>Open TXT / SRT / VTT</strong>, or paste its text. Use <strong>Plain text timing</strong> for words without timecodes. Use <strong>Existing timestamps</strong> for SRT or VTT time ranges. Opening an SRT or VTT file selects that mode automatically; when pasting, choose it yourself.</p>
+<p>Plain text mode removes common leading numbers such as <code>1.</code> or <code>2)</code>. It does not recognize an audio track. Keep an original copy before editing an existing subtitle file.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/txt-to-srt/01-mode-narrow.svg" width="352" height="645"><img src="/assets/tutorials/txt-to-srt/01-mode-wide.svg" width="720" height="419" loading="lazy" decoding="async" alt="The two input modes above the practice text: use plain text timing for TXT, existing timestamps for SRT or VTT."></picture><figcaption>Opening a file fills the text box. Generate timeline is a separate action.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The text box contains your words and the intended mode is selected.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="set-timing"><h3 id="set-timing" tabindex="-1">2. Which timing settings should I change first?</h3><p>Start with <strong>Start time</strong>, <strong>Default duration (s)</strong> and <strong>Gap between entries (s)</strong>. With the practice text, the defaults place cue 1 at <code>00:00:00,000 → 00:00:03,000</code> and cue 2 at <code>00:00:03,100 → 00:00:06,100</code>. A gap adds silence between successive draft cues.</p>
+<p>The reading-speed setting can lengthen a cue, but duration is still bounded by <strong>Shortest duration</strong> and <strong>Longest duration</strong>. A maximum can cap a long cue before it reaches the requested reading time. <strong>Split mode</strong> chooses lines or sentences; <strong>Max characters per line</strong> splits longer text into separate cues, including long unbroken words. These are draft rules, not an accessibility or synchronization guarantee.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/txt-to-srt/02-timing-narrow.svg" width="352" height="538"><img src="/assets/tutorials/txt-to-srt/02-timing-wide.svg" width="720" height="312" loading="lazy" decoding="async" alt="Default duration is three seconds and the entry gap is 0.1 seconds; the first generated cue starts at zero and ends at three seconds."></picture><figcaption>The example times come from the practice text with default settings. They do not measure speech.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Use positive duration values and compare the resulting cues with the recording.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="generate-cues"><h3 id="generate-cues" tabindex="-1">3. How do I generate the timeline and check the result?</h3><p>Choose <strong>Generate timeline</strong>. The editor opens below the settings, with one row per generated cue. For the practice TXT at default settings, expect three rows. Check the words, cue count and first and last timecodes before making edits.</p>
+<p>Changing a setting alone does not rebuild the rows. Choosing Generate timeline again rebuilds them from the source box and replaces row edits. For example, changing the default duration from <code>3</code> to <code>4</code> makes the second practice cue start at <code>00:00:04,100</code> after regeneration. Save useful edits before rebuilding.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/txt-to-srt/03-generate-narrow.svg" width="352" height="505"><img src="/assets/tutorials/txt-to-srt/03-generate-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Generate timeline produces the status message 3 entries ready to edit."></picture><figcaption>The status confirms that rows were created. It does not confirm alignment or subtitle quality.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The expected rows appear; your changed settings affect a newly generated timeline.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="edit-draft"><h3 id="edit-draft" tabindex="-1">4. How do I fix words or timing before downloading?</h3><p>Edit a row’s <strong>Caption</strong>, <strong>Start</strong> or <strong>End</strong>. For this example, change “Open the garden gate.” to “Open the blue garden gate.” Text edits do not automatically lengthen that row. Set End later than Start and check whether the words fit.</p>
+<p><strong>Add entry</strong> appends a row; fill in its words and review its times. <strong>Remove</strong> deletes its row. This converter does not provide the stricter invalid-cue export blocking used by <a href="/subtitle-editor">Subtitle Editor</a>: malformed time input can become zero, and empty or reversed cues need manual checking. Download a draft and open it in Subtitle Editor for stricter validation and optional local recording playback.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/txt-to-srt/04-edit-narrow.svg" width="352" height="505"><img src="/assets/tutorials/txt-to-srt/04-edit-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="The caption is edited to Open the blue garden gate; start and end times must be checked separately."></picture><figcaption>This is a deliberate wording change in the practice draft, not a speech-recognition correction.</figcaption></figure><p class="guide-check"><strong>Check:</strong> No blank captions, reversed times or accidental zero-length cues remain.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save-draft"><h3 id="save-draft" tabindex="-1">5. How do I save SRT or VTT and check what was downloaded?</h3><p>Choose <strong>Download SRT</strong> or <strong>Download VTT</strong> for your destination player. <strong>Copy SRT</strong> copies subtitle syntax including timecodes. The downloads contain the current row edits. Reopen your saved file, use Existing timestamps, and generate its rows to verify the wording and boundaries.</p>
+<p>SRT numbers each cue and uses comma-separated milliseconds. VTT starts with <code>WEBVTT</code> and uses periods. This tool rewrites cue text and timing; it is not a lossless preservation tool for VTT styling or positioning. Keep a separate original. Download before closing the tab; there is no project history or cloud save.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/txt-to-srt/05-save-narrow.svg" width="352" height="552"><img src="/assets/tutorials/txt-to-srt/05-save-wide.svg" width="720" height="326" loading="lazy" decoding="async" alt="Copy SRT, Download SRT and Download VTT controls alongside the actual edited SRT excerpt."></picture><figcaption>This download was made after setting the duration to four seconds and editing the first caption.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Your downloaded file contains the latest edit and the expected timecodes.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Why do my subtitles not match the speech?</h3><p>TXT contains no speech timing. The generated timeline is an estimate. Open the SRT with your recording in <a href="/subtitle-editor">Subtitle Editor</a>, compare the beginning, middle and end, and adjust cues. This page does not listen or perform forced alignment.</p>
+<h3>Why did my edits disappear after changing settings?</h3><p>Generate timeline rebuilds rows from the source text. Save the current draft first; change the source box too if you want a wording correction to survive regeneration.</p>
+<h3>Why are there no rows after I paste an SRT?</h3><p>Select Existing timestamps and confirm that the source contains recognizable time ranges with <code>--&gt;</code> and caption text. A file extension alone does not make plain text into timed subtitles.</p>
+<h3>Does existing-timestamps mode preserve every time exactly?</h3><p>It reads usable SRT/VTT ranges, but invalid or non-positive end ranges can receive a default-duration fallback, and malformed times can become zero. Review imported times. Use <a href="/subtitle-editor">Subtitle Editor</a> if you need invalid source timings rejected before editing.</p>
+<h3>Are my files uploaded, and can I use another language?</h3><p>Parsing, editing and export stay in this browser, without an account or saved history. You supply the words; the converter does not translate or run language detection. For English speech without text, use <a href="/video-to-text">Video to Text</a> first.</p></section>
+</article>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -181,5 +182,53 @@
   <script src="/txt-to-srt.js" defer></script>
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do my subtitles not match the speech?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TXT contains no speech timing. The generated timeline is an estimate. Open the SRT with your recording in Subtitle Editor, compare the beginning, middle and end, and adjust cues. This page does not listen or perform forced alignment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did my edits disappear after changing settings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generate timeline rebuilds rows from the source text. Save the current draft first; change the source box too if you want a wording correction to survive regeneration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are there no rows after I paste an SRT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Select Existing timestamps and confirm that the source contains recognizable time ranges with --> and caption text. A file extension alone does not make plain text into timed subtitles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does existing-timestamps mode preserve every time exactly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It reads usable SRT/VTT ranges, but invalid or non-positive end ranges can receive a default-duration fallback, and malformed times can become zero. Review imported times. Use Subtitle Editor if you need invalid source timings rejected before editing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my files uploaded, and can I use another language?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parsing, editing and export stay in this browser, without an account or saved history. You supply the words; the converter does not translate or run language detection. For English speech without text, use Video to Text first."
+      }
+    }
+  ]
+}
+  </script>
 </body>
 </html>
