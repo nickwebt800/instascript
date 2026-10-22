@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="Twitter Video Transcript | InstaScript">
   <meta name="twitter:description" content="Use a permitted saved X video to make spoken transcript text with timestamps, TXT, SRT and VTT export in your browser.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body>
+<body class="subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -34,42 +35,31 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
-    <main class="content-card answer-first">
-      <h2>How to get a Twitter video transcript</h2>
-      <p>Save a video you are allowed to process from the post, then open <a href="/video-to-text">Video to Text</a> and choose the file. InstaScript decodes the audio in your browser and produces spoken words with timestamps plus TXT, SRT and VTT downloads. A post URL by itself is not a transcript input here.</p>
-      <ol class="steps">
-        <li>Keep the post URL beside the saved file so the result remains traceable.</li>
-        <li>Upload the local MP4, MOV or WebM file and wait for browser transcription.</li>
-        <li>Replay important cues, correct names or numbers, then copy text or download TXT/SRT/VTT.</li>
-      </ol>
-      <p class="bench-note"><strong>Scope:</strong> the transcript is spoken audio. It does not include the post text, replies, usernames, music metadata, or words printed inside video frames.</p>
-    </main>
-    <section class="content-card">
-      <h2>Why a Twitter or X link can fail</h2>
-      <p>Public visibility does not make a media URL a stable file endpoint. A post can be deleted, protected, age-gated, rate-limited, changed after reposting, or served through a login and bot check. X may also expose a page without exposing a downloadable video to a browser tool. Treat a failed URL lookup as an access boundary, not as evidence that the video has no speech. Use a saved file only when you have permission to do so.</p>
-      <h2>What the transcript contains</h2>
-      <ul class="steps">
-        <li><strong>Timed view:</strong> short segments retain start times for replay and fact-checking.</li>
-        <li><strong>Plain text:</strong> words without time markers for notes and search.</li>
-        <li><strong>TXT:</strong> a UTF-8 text document for quotes and editing notes.</li>
-        <li><strong>SRT:</strong> numbered cues for subtitle editors and compatible players.</li>
-      </ul>
-      <p>Timing follows the browser's speech segments; it is not a guess based on the post duration. The output has no reliable speaker labels and cannot recover words masked by loud music or clipped audio.</p>
-      <h2>Verification pass for short social clips</h2>
-      <p>Replay every quote at its timestamp. Check proper nouns, handles, numbers, profanity, rapid cuts and overlapping speakers against the audio. Mark uncertain words instead of silently filling them in. If the clip switches languages, verify the selected language separately. Compare any on-screen headline with the frame itself because it is outside the spoken transcript.</p>
-      <h2>Privacy and processing boundary</h2>
-      <p>After you choose a local file, decoding and speech recognition run in your browser. The transcript is assembled for the current page and is not an account record. InstaScript does not fetch arbitrary X URLs server-side or promise access to protected, private or removed posts.</p>
-      <h2>FAQ</h2>
-      <h3>Can I paste an x.com or twitter.com URL?</h3><p>Not for direct transcription. Save a permitted copy first, then use the local file workflow.</p>
-      <h3>Does this copy the post caption or replies?</h3><p>No. It transcribes spoken audio only. Post text, replies and text burned into frames need separate review.</p>
-      <h3>Why is the output imperfect?</h3><p>Short clips often contain music, accents, crosstalk and jump cuts. Replay the timed cues and edit the exported SRT or TXT before publishing.</p>
-      <p class="disclaimer">InstaScript is independent and is not affiliated with X Corp. or Twitter.</p>
-    </section>
-    <nav class="related-links" aria-label="Related pages">More: <a href="/video-to-text">Video to Text</a> &middot; <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a></nav>
-    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+    </header><main><article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Keep an X video quotation in context</h2>
+<p>Start with an existing permitted local video. This guide does not fetch X/Twitter URLs, post text or replies.</p>
+</div>
+<p><a class="btn-primary" href="/video-to-text">Open Video to Text</a></p>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#decision-1">Keep the source and its limits</a></li><li><a href="#decision-2">Transcribe speech, then replay the surrounding phrase</a></li><li><a href="#decision-3">Separate a quote from your paraphrase</a></li></ol></nav>
+<section class="guide-step" aria-labelledby="decision-1"><h3 id="decision-1" tabindex="-1">1. Keep the source and its limits</h3>
+<p>Use an actual local recording, not a bookmark or post URL. Note whether the clip starts midway through a longer exchange; the opening of your file is not necessarily the opening of the statement.</p>
+<p class="guide-check"><strong>Check:</strong> You know the coverage of the media you intend to quote.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-2"><h3 id="decision-2" tabindex="-1">2. Transcribe speech, then replay the surrounding phrase</h3>
+<p>Use <a href="/video-to-text">Video to Text</a> for one browser-decodable English recording up to 100 MB. Model loading and language checks apply. Check both sides of a cut, names and qualifiers. Words visible only in the video are not OCR input.</p>
+<p class="guide-check"><strong>Check:</strong> The wording is audible and its surrounding context supports the quote.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-3"><h3 id="decision-3" tabindex="-1">3. Separate a quote from your paraphrase</h3>
+<p>Keep the checked words in a transcript copy and your interpretation in a separate note with the source reference. TXT/Markdown use current edits; valid SRT/VTT can be reviewed as subtitles. Do not infer omitted speech from the post description.</p>
+<p class="guide-check"><strong>Check:</strong> A reader can identify which words are quoted and which are yours.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>What processing and privacy boundaries apply?</h3>
+<p>Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.</p>
+<h3>Where should I continue?</h3>
+<p><a href="/video-to-text">Open the matching tool</a> and follow its current input requirements. Keep the original, review your result and download it before closing the tab.</p>
+</section>
+<p class="disclaimer">InstaScript is independent and is not affiliated with or endorsed by the source platforms mentioned here.</p>
+</article></main><footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -123,5 +113,6 @@
 </nav><p>Runs in your browser &mdash; no signup.</p></footer>
   </div>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What processing and privacy boundaries apply?","acceptedAnswer":{"@type":"Answer","text":"Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries."}},{"@type":"Question","name":"Where should I continue?","acceptedAnswer":{"@type":"Answer","text":"Open the matching tool and follow its current input requirements. Keep the original, review your result and download it before closing the tab."}}]}</script>
 </body>
 </html>

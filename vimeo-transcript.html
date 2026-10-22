@@ -16,8 +16,9 @@
   <meta property="og:title" content="Vimeo Transcript | InstaScript">
   <meta property="og:description" content="Download a permitted Vimeo recording, upload it locally, and export timestamped TXT, SRT or VTT.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body>
+<body class="subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -30,53 +31,31 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
-
-    <main class="tool-card" aria-labelledby="tool-heading">
-      <div class="tool-heading"><div><h2 id="tool-heading">Use your Vimeo file</h2><p>Vimeo links are not fetched directly</p></div><span class="local-badge">No signup</span></div>
-      <p class="privacy-line"><span class="privacy-icon" aria-hidden="true">✓</span> The file is processed in your browser</p>
-      <p>Download the recording from Vimeo when you have permission, then open <a href="/video-to-text">Video to Text</a> and choose the saved MP4, MOV or WebM file.</p>
-      <p class="panel-hint">The model transcribes English speech. It does not read Vimeo comments, descriptions, slides or on-screen text.</p>
-      <a class="btn-primary" href="/video-to-text">Open Video to Text</a>
-    </main>
-
-    <section class="content-card">
-      <h2>How to get a Vimeo transcript</h2>
-      <ol class="steps">
-        <li>Open the Vimeo recording and use its download option, if the owner has enabled one.</li>
-        <li>Save the file on your device. Do not download or process a video you are not allowed to use.</li>
-        <li>Open <a href="/video-to-text">Video to Text</a>, select the file, and wait for the timestamped result.</li>
-        <li>Copy the text, or download <strong>.txt</strong> for notes and <strong>.srt</strong> for subtitle editors.</li>
-      </ol>
-
-      <h2>What this Vimeo transcript workflow can and cannot do</h2>
-      <p><strong>The Vimeo page is only the source of a file. InstaScript does not log in to Vimeo, bypass privacy controls, or fetch a private link.</strong> Once you select a permitted local file, speech recognition runs on your device. Nothing is uploaded for transcription and no transcript is stored by this site.</p>
-      <ul class="steps">
-        <li>Works with browser-readable MP4, MOV and WebM files up to the tool's 100 MB upload limit.</li>
-        <li>Returns spoken English with segment timestamps, plus TXT, SRT and VTT export.</li>
-        <li>Does not transcribe music, comments, descriptions, speaker labels or text shown only in the picture.</li>
-        <li>Noise, room echo, overlapping speakers and strong accents need a manual review.</li>
-      </ul>
-
-      <h2>Why a saved file is the reliable route</h2>
-      <p>A Vimeo URL can point to a private showcase, an embed, or a player that requires a session. Treating every link as downloadable would either fail unpredictably or encourage access outside the owner's settings. A saved file gives you a clear permission boundary and lets the browser decode the exact media you selected.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I paste a Vimeo URL here?</h3>
-      <p>No. This page does not fetch Vimeo URLs. Download a file using Vimeo's own controls when available, then use <a href="/video-to-text">Video to Text</a>.</p>
-      <h3>Is the video uploaded?</h3>
-      <p>No. The selected file stays in the browser while the speech model runs. See the <a href="/privacy">privacy policy</a> for the processing boundary.</p>
-      <h3>Can it make subtitles?</h3>
-      <p>Yes. The result includes segment timestamps and an SRT download. Review the cues before publishing, especially where speakers overlap or music covers speech.</p>
-      <h3>Does it support every language?</h3>
-      <p>Speech recognition supports English only. Detected non-English speech stops transcription. An uncertain language result or a failed language check stops with a separate error and creates no transcript.</p>
-
-      <p class="disclaimer">InstaScript is an independent project. It is not affiliated with or endorsed by Vimeo.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related transcript tools">Related tools: <a href="/video-to-text">Video to Text</a> · <a href="/audio-to-text">Audio to Text</a> · <a href="/mp4-to-text">MP4 to Text</a> · <a href="/podcast-transcript">Podcast Transcript</a></nav>
-    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+    </header><main><article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Begin with a permitted Vimeo recording file</h2>
+<p>This page guides a local-file workflow. It does not fetch Vimeo URLs, log in to Vimeo or bypass access restrictions.</p>
+</div>
+<p><a class="btn-primary" href="/video-to-text">Open Video to Text</a></p>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#decision-1">Identify the recording you can use</a></li><li><a href="#decision-2">Transcribe using the shared video tool</a></li><li><a href="#decision-3">Review and save the spoken content</a></li></ol></nav>
+<section class="guide-step" aria-labelledby="decision-1"><h3 id="decision-1" tabindex="-1">1. Identify the recording you can use</h3>
+<p>Start with a permitted saved video, not a private link or web page. Check that its audio and required passage are present. The availability of a download depends on the source; this page does not guarantee that every Vimeo video can be saved.</p>
+<p class="guide-check"><strong>Check:</strong> A complete local recording opens with audible speech.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-2"><h3 id="decision-2" tabindex="-1">2. Transcribe using the shared video tool</h3>
+<p>Open <a href="/video-to-text">Video to Text</a> and choose a browser-decodable file up to 100 MB. Recognition supports English only. Detected non-English speech stops transcription; uncertainty or a failed language check stops with a different error and creates no transcript. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.</p>
+<p class="guide-check"><strong>Check:</strong> Technical failure has not been labelled as non-English speech.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-3"><h3 id="decision-3" tabindex="-1">3. Review and save the spoken content</h3>
+<p>Replay key passages before editing and exporting. Comments, descriptions, slides and on-screen text are separate sources and are not transcribed. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.</p>
+<p class="guide-check"><strong>Check:</strong> A saved reading copy or timed file matches the recording you actually processed.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>What processing and privacy boundaries apply?</h3>
+<p>Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.</p>
+<h3>Where should I continue?</h3>
+<p><a href="/video-to-text">Open the matching tool</a> and follow its current input requirements. Keep the original, review your result and download it before closing the tab.</p>
+</section>
+<p class="disclaimer">InstaScript is independent and is not affiliated with or endorsed by the source platforms mentioned here.</p>
+</article></main><footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -131,5 +110,6 @@
   </div>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
   <script src="/js/webmcp.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What processing and privacy boundaries apply?","acceptedAnswer":{"@type":"Answer","text":"Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries."}},{"@type":"Question","name":"Where should I continue?","acceptedAnswer":{"@type":"Answer","text":"Open the matching tool and follow its current input requirements. Keep the original, review your result and download it before closing the tab."}}]}</script>
 </body>
 </html>

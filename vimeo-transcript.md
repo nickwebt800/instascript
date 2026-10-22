@@ -1,46 +1,41 @@
-# Vimeo Transcript | InstaScript
+# Vimeo Transcript
 
-> Download a Vimeo recording you are allowed to use, upload the saved video to InstaScript, and export timestamped TXT, SRT or VTT. Vimeo URLs are not fetched directly.
+> Turn a Vimeo recording you are allowed to use into a timestamped transcript. Download the file, upload it to InstaScript, and export TXT, SRT or VTT in your browser.
 
 Canonical: <https://instascript.app/vimeo-transcript>
 
-[InstaScript](https://instascript.app/)
+[Open the matching tool](https://instascript.app/video-to-text)
 
-# Vimeo Transcript
+## Begin with a permitted Vimeo recording file
 
-Download a permitted Vimeo video, then turn the file into timestamped text
+This page guides a local-file workflow. It does not fetch Vimeo URLs, log in to Vimeo or bypass access restrictions.
 
-Open [Video to Text](https://instascript.app/video-to-text), select the saved MP4, MOV or WebM file, and export TXT, SRT or VTT. The speech model runs in your browser.
 
-## How to get a Vimeo transcript
 
-1. Open the recording and use Vimeo's download control when the owner has enabled one.
-2. Save the file on your device and confirm you have permission to process it.
-3. Select it in [Video to Text](https://instascript.app/video-to-text).
-4. Copy the timestamped result or download TXT/SRT/VTT.
+## 1. Identify the recording you can use
 
-## Boundaries
+Start with a permitted saved video, not a private link or web page. Check that its audio and required passage are present. The availability of a download depends on the source; this page does not guarantee that every Vimeo video can be saved.
 
-This page does not fetch Vimeo URLs, log in to Vimeo, or bypass private links. The selected file stays in the browser while English speech is transcribed. Comments, descriptions, slides, music, and text visible only in the picture are not transcribed. Noise, echo, crosstalk, and accents need review.
+**Check:** A complete local recording opens with audible speech.
 
-## FAQ
+## 2. Transcribe using the shared video tool
 
-### Can I paste a Vimeo URL?
+Open [Video to Text](https://instascript.app/video-to-text) and choose a browser-decodable file up to 100 MB. Recognition supports English only. Detected non-English speech stops transcription; uncertainty or a failed language check stops with a different error and creates no transcript. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.
 
-No. Download a permitted file using Vimeo's own controls, then use [Video to Text](https://instascript.app/video-to-text).
+**Check:** Technical failure has not been labelled as non-English speech.
 
-### Is the video uploaded?
+## 3. Review and save the spoken content
 
-No. The file is processed in your browser. See the [privacy policy](https://instascript.app/privacy).
+Replay key passages before editing and exporting. Comments, descriptions, slides and on-screen text are separate sources and are not transcribed. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.
 
-### Can it create subtitles?
+**Check:** A saved reading copy or timed file matches the recording you actually processed.
 
-Yes. The result has segment timestamps and an SRT download. Review cues before publishing.
+## More questions and limits
 
-### Which languages work?
+### What processing and privacy boundaries apply?
 
-Speech recognition supports English only. Detected non-English speech stops transcription. An uncertain language result or a failed language check stops with a separate error and creates no transcript.
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
 
-## Export your edited transcript
+### Where should I continue?
 
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+[Open the matching tool](https://instascript.app/video-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.

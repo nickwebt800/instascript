@@ -1,50 +1,41 @@
-# Twitter Video Transcript: TXT and SRT Workflow
+# Twitter Video Transcript
 
-> Turn a permitted saved X video into spoken text with timestamps, TXT, SRT and VTT export in your browser.
+> Twitter video transcript workflow: turn a permitted saved X video into spoken text with timestamps, TXT, SRT and VTT in your browser.
 
 Canonical: <https://instascript.app/twitter-video-transcript>
 
-## The direct answer
+[Open the matching tool](https://instascript.app/video-to-text)
 
-Open [Video to Text](https://instascript.app/video-to-text), choose an MP4, MOV or WebM file saved from a post you are allowed to process, and wait for the browser transcription. InstaScript shows timed spoken text and provides copy, TXT, SRT and VTT output. An `x.com` or `twitter.com` post URL alone is not a direct transcript input here.
+## Keep an X video quotation in context
 
-## Why a Twitter or X link can fail
+Start with an existing permitted local video. This guide does not fetch X/Twitter URLs, post text or replies.
 
-Public visibility is not a stable media-file contract. A post can be protected, removed, age-gated, rate-limited, changed after reposting, or guarded by a login or bot check. The page may load while the video file remains unavailable to a browser tool. A failed URL lookup is an access boundary, not proof that the clip has no speech. Use a saved file only with permission.
 
-## What the result contains
 
-- **Timed view:** short segments keep start times for replay and fact-checking.
-- **Plain text:** words without time markers for notes and search.
-- **TXT:** UTF-8 text for quotes and editing notes.
-- **SRT:** numbered cues for subtitle editors and compatible players.
+## 1. Keep the source and its limits
 
-Timing follows the browser's speech segments rather than the post duration. The result does not reliably label speakers, separate music metadata, or read words printed inside video frames.
+Use an actual local recording, not a bookmark or post URL. Note whether the clip starts midway through a longer exchange; the opening of your file is not necessarily the opening of the statement.
 
-## Verification for short clips
+**Check:** You know the coverage of the media you intend to quote.
 
-Replay every important cue. Check names, handles, numbers, profanity, rapid cuts and overlapping voices against the audio. Mark uncertainty instead of guessing. If the clip switches languages, verify each language separately. Compare an on-screen headline with the frame itself because it is outside the spoken transcript. Keep the source post URL beside the exported file.
+## 2. Transcribe speech, then replay the surrounding phrase
 
-## Privacy and processing boundary
+Use [Video to Text](https://instascript.app/video-to-text) for one browser-decodable English recording up to 100 MB. Model loading and language checks apply. Check both sides of a cut, names and qualifiers. Words visible only in the video are not OCR input.
 
-Once a local file is selected, decoding and speech recognition happen in your browser. The transcript is assembled for the current page and is not an account record. InstaScript does not fetch arbitrary X URLs server-side or promise access to protected, private or removed posts.
+**Check:** The wording is audible and its surrounding context supports the quote.
 
-## FAQ
+## 3. Separate a quote from your paraphrase
 
-### Can I paste an x.com or twitter.com URL?
+Keep the checked words in a transcript copy and your interpretation in a separate note with the source reference. TXT/Markdown use current edits; valid SRT/VTT can be reviewed as subtitles. Do not infer omitted speech from the post description.
 
-Not for direct transcription. Save a permitted copy first, then use the local file workflow.
+**Check:** A reader can identify which words are quoted and which are yours.
 
-### Does this copy the post caption or replies?
+## More questions and limits
 
-No. It transcribes spoken audio only. Post text, replies and words burned into frames need separate review.
+### What processing and privacy boundaries apply?
 
-### Why is the output imperfect?
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
 
-Music, accents, crosstalk and jump cuts can reduce accuracy. Replay timed cues and edit the exported SRT or TXT before publishing.
+### Where should I continue?
 
-InstaScript is independent and is not affiliated with X Corp. or Twitter.
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
+[Open the matching tool](https://instascript.app/video-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
