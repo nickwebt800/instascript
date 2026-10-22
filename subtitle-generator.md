@@ -40,12 +40,20 @@ Local decoding, recognition, replay, edits and downloads run in your browser. Mo
 
 [Open the matching tool](https://instascript.app/video-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
 
-## Output and review
+## Measured browser timings
 
-| Output | Use it for | Review |
+These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
+
+| Audio length | Historical wall-clock time | Historical model load |
 | --- | --- | --- |
-| Timestamped cues | Checking each spoken segment | Names, numbers, URLs and line breaks |
-| SRT | Players and subtitle editors | Cue duration, overlap and reading speed |
-| TXT | Searchable notes or a script draft | Paragraph breaks and spelling |
+| 11 s | 16.89 s | included |
+| 11 s | 6.49 s | already in memory |
+| 30 s | 8.98 s | already in memory |
+| 60 s | 16.06 s | already in memory |
+| 120 s | 28.58 s | already in memory |
 
-Use the [Subtitle Editor](https://instascript.app/subtitle-editor) to change cue text or shift timings. Keep the source recording beside the export.
+In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
+
+One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
+
+Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).

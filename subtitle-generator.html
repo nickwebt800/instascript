@@ -58,10 +58,27 @@
 <h3>Where should I continue?</h3>
 <p><a href="/video-to-text">Open the matching tool</a> and follow its current input requirements. Keep the original, review your result and download it before closing the tab.</p>
 </section>
-<details class="guide-more"><summary>Historical measurements and method limits</summary><h2>What you get</h2>
+<details class="guide-more"><summary>Historical measurements and method limits</summary><h2>Measured browser timings</h2>
 
-      <table class="bench-table"><thead><tr><th>Output</th><th>Use it for</th><th>Review</th></tr></thead><tbody><tr><td>Timestamped cues</td><td>Checking each spoken segment</td><td>Names, numbers, URLs and line breaks</td></tr><tr><td>SRT</td><td>Players and subtitle editors</td><td>Cue duration, overlap and reading speed</td></tr><tr><td>TXT</td><td>Searchable notes or a script draft</td><td>Paragraph breaks and spelling</td></tr></tbody></table>
-      <p>Use the <a href="/subtitle-editor">Subtitle Editor</a> to change cue text or shift timings before publishing. Keep the source recording beside the export so corrections can be checked against the audio.</p>
+      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
+
+      <table class="bench-table">
+        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
+        <tbody>
+          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
+          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
+          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
+          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
+          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
+        </tbody>
+      </table>
+      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
+
+      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
+
+      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
+
+
 
 
       </details></article></main><footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
