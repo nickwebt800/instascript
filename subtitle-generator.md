@@ -14,7 +14,7 @@ This guide focuses on timed cues. For general word corrections see [Caption Gene
 
 ## 1. Recognize the speech in the actual recording
 
-Use the linked tool for one browser-decodable local English recording up to 100 MB. Model loading and a language check come first. Existing text can instead go to [TXT to SRT](https://instascript.app/txt-to-srt), whose estimated timeline is a manual draft, not audio alignment.
+Use the linked tool for one browser-decodable local English recording up to 100 MB. Model loading and a language check come first. For a supported public Instagram URL, use [Instagram Transcript Generator](https://instascript.app/instagram-transcript-generator): server media retrieval precedes browser recognition, and restricted or unavailable media may fail to fetch. Existing text can instead go to [TXT to SRT](https://instascript.app/txt-to-srt), whose estimated timeline is a manual draft, not audio alignment.
 
 **Check:** The source of the words and the source of the timing are known.
 

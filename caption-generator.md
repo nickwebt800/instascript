@@ -14,7 +14,7 @@ Here, caption means text representing speech. This workflow does not create mark
 
 ## 1. Start with audible English speech
 
-Open [Video to Text](https://instascript.app/video-to-text) for a local video or [Audio to Text](https://instascript.app/audio-to-text) for an audio recording. One browser-decodable file up to 100 MB is processed at a time; model downloads and language checks apply.
+Open [Video to Text](https://instascript.app/video-to-text) for a local video or [Audio to Text](https://instascript.app/audio-to-text) for an audio recording. One browser-decodable file up to 100 MB is processed at a time; model downloads and language checks apply. For a supported public Instagram URL, use [Instagram Transcript Generator](https://instascript.app/instagram-transcript-generator): server media retrieval precedes browser recognition, and restricted or unavailable media may fail to fetch.
 
 **Check:** The source is speech, rather than a prompt for creative writing.
 
