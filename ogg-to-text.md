@@ -1,68 +1,45 @@
-# OGG to Text: Decode, Transcribe and Check the Recording | InstaScript
+# OGG to Text: Decode, Transcribe and Check the Recording
 
 > Turn OGG to text with a local English transcription workflow. Check decoding failures, preserve spoken corrections, and review TXT, SRT and VTT exports.
 
 Canonical: <https://instascript.app/ogg-to-text>
 
+[Open the matching tool](https://instascript.app/audio-to-text)
 
-To turn OGG to text, open the local audio tool, choose your saved recording, and start transcription. InstaScript can produce an English speech draft when your browser can decode the file. Replay and correct the words before copying or downloading them. The recording stays in your browser; an OGG extension alone does not guarantee compatibility.
+## Check an Ogg file before retrying recognition
 
-[Open the local audio tool](/audio-to-text)
+Ogg is a container. A valid extension is not a guarantee that the codec inside can be decoded by your browser. This guide sends you to the existing audio tool.
 
-## Start with a complete recording
+Try the [public practice OGG file](https://instascript.app/assets/tutorials/ogg-to-text/kennedy-practice.ogg). Eleven-second public-domain excerpt from John F. Kennedy’s January 20, 1961 inaugural address. See the [recording provenance](https://instascript.app/assets/demo/SOURCE.md). The sample demonstrates this codec in the tested browser, not every file configuration, recording length or multi-speaker podcast. Screenshots show actual recognition and explicit teaching edits; they are not speed or accuracy measurements.
 
-Save a recording you own or have permission to process. Choose the actual audio file, not a message link, a cloud sharing page or a partially downloaded attachment. The linked tool accepts local files up to 100 MB. It does not sign in to a messaging service or retrieve private recordings from a URL.
+## 1. Begin with a complete local Ogg recording
 
-Select the file in the audio tool and press **Transcribe this file**. Decoding happens before the language check and English recognition. The first transcription needs model downloads and initialization. Later resource-cache hits can save downloading, but do not guarantee an already initialized model or a fixed completion time.
+Choose a recording you may process, up to 100 MB, and check the opening and closing seconds in a player. The public practice file uses Opus inside Ogg; it is a real encoded sample, not a renamed WAV. One sample does not verify all Ogg codecs.
 
-This page is a preparation and review guide. Its button opens the existing audio tool; it does not upload a recording here or start a separate OGG conversion engine. Keep the original recording until you have checked the exported text against it.
+**Check:** You have the actual recording rather than a messaging-app link or partial download.
 
-## An OGG extension is only the starting clue
+## 2. Locate the failure stage
 
-[Xiph describes Ogg as a container](https://www.xiph.org/ogg/): it packages encoded media rather than specifying one universal audio decoder. Different contents can therefore require different decoding support. This is why a filename alone cannot establish whether a browser will open a particular recording.
+Open [Audio to Text](https://instascript.app/audio-to-text) and select the Ogg file. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time. An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. [Recording Format Guide](https://instascript.app/recording-format-guide) explains these boundaries.
 
-InstaScript's local audio tool reads the complete file through the browser's audio decoder. A successful playback test is useful, but the transcription tool must also decode that same file successfully. This guide does not promise compatibility for every Ogg codec, operating system or browser version. A decoding error is a file-processing result, not proof that the speech is non-English.
+![Locate the failure stage Actual Opus/Ogg sample selection and recognition in the linked Audio to Text tool; this guide has no separate recognition engine.](https://instascript.app/assets/tutorials/ogg-to-text/02-decision-2-wide.svg)
 
-## Build a three-part file check
+Actual Opus/Ogg sample selection and recognition in the linked Audio to Text tool; this guide has no separate recognition engine.
 
-Before retrying a failed recording, write down three observations in your own notes: whether the download is complete, whether the recording plays from beginning to end, and the stage where the tool stopped. Do not put private names, links or speech into a support request merely to describe a codec problem. Stage and browser information are often enough to begin investigating.
+**Check:** A decoder failure, uncertain language result and model/network failure are not treated as the same outcome.
 
-For completeness, compare the saved attachment with what the source application offers. Check that the file is not empty and that its ending is present. A file that begins correctly but cuts off before the final sentence should not be treated as a complete source. Obtain a fresh permitted copy before spending time correcting a transcript that cannot contain the missing section.
+## 3. Review words and save the output
 
-For playback, listen near the beginning, middle and end. Record whether speech is audible, whether the speed sounds normal, and whether one voice disappears. Passing these checks does not establish recognition accuracy; it establishes what you can reasonably review afterward. A clear waveform or familiar extension is less useful than actually hearing the sentence you need.
+Replay the recognized speech before using it. The accompanying illustration comes from the real Opus/Ogg practice run in Audio to Text, not from a separate Ogg engine. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.
 
-For the stopping stage, distinguish **could not decode**, **language check could not run**, **could not determine the language**, and a detected non-English notice. They call for different next steps. Repeatedly renaming the file does not repair its encoded audio. A technical failure should stay recorded as a failure, rather than becoming a guessed language label or an empty transcript presented as success.
+**Check:** The saved file contains your edits and any timed output has valid cue ranges.
 
-## Retry without losing the evidence
+## More questions and limits
 
-If decoding fails, keep the original and try a fresh complete download first. When you have a trusted local audio editor, you can export a separate WAV or MP3 copy and test that copy in the tool. Changing the extension in a file manager is not conversion. Exporting a copy also does not restore clipped words or missing audio.
+### What processing and privacy boundaries apply?
 
-Check the new file's duration and replay its opening and ending before recognition. Give it a different local name so you can tell the two versions apart in your own workspace. If you trimmed silence or removed an introduction, note the change: transcript timestamps now refer to the new recording, not automatically to the original attachment.
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
 
-If the language check cannot run, review the connection and retry with the same selected file when available. If the opening speech is unclear and the language is uncertain, choose a clearer permitted recording rather than assuming the tool has identified another language. Detected non-English speech is outside the linked recognizer's current scope. Do not translate the words in your head and present them as its output.
+### Where should I continue?
 
-If processing succeeds but a passage is unintelligible, return to the recording. Do not fill a gap with a plausible sentence. Keep an unresolved passage in separate review notes until someone can verify it. Re-encoding can help a decoder accept a file; it cannot guarantee that recognition will recover masked speech.
-
-## Worked example: preserve a spoken correction
-
-This invented example is a review exercise, not a recognition result or a quotation from a recording. Imagine a short saved note that says, “Bring twelve labels.” A moment later the speaker adds, “Correction: twenty labels, and leave the spare roll unopened.”
-
-A draft containing only the first sentence would be readable and wrong for the task. Search for both quantities in the transcript, replay the correction and inspect the nearby cues. Confirm the final quantity and the instruction about the spare roll. Do not silently replace the entire passage with a task summary when you intend to keep a speech transcript.
-
-Now imagine you exported a shorter copy that removed two seconds of opening silence. The correction will appear earlier on the new recording's clock. Use the retained copy to check its timestamps, and keep the original if you need to trace the edit. A timestamp copied into notes should identify which recording it refers to; matching words alone do not prove matching timing.
-
-Finish by comparing the edited words with the downloaded text. The quantity, correction and condition should survive together. This check catches a different class of error from file decoding: a perfectly playable file can still produce an incomplete or mistaken draft. The example is a manual acceptance checklist, not an accuracy score.
-
-## Choose the artifact you actually need
-
-Use **Copy** or **TXT** for readable words. The shared tool uses your edits and defaults to plain text. Enable **Include timestamps in TXT, Markdown and Copy** when you want available cue start times. Markdown exports a transcript note; it does not create an AI summary or task list.
-
-Choose **SRT** or **VTT** for timed subtitle cues only when every cue has non-empty text and complete valid start and end times. Missing end times are not estimated. If timing is incomplete, keep TXT and the recording for review. With complete timing, **Open in Subtitle Editor** can transfer the result and recording between same-origin tabs for local timing edits.
-
-This workflow does not generate speaker identities, recover unheard dialogue, translate speech or burn subtitles into a video. Verify names, numbers, negatives and overlapping voices yourself. Music and background noise can make a draft unreliable even when the file decodes correctly.
-
-## Privacy and the next step
-
-Local recordings, transcript edits and exports are processed in your browser and are not uploaded by the tool. Model resources are downloaded; this is not an offline-from-first-use promise. No account or cloud transcription history is created. The site's separate public-page analytics receives limited page information, not your recording or transcript; see the [privacy policy](/privacy).
-
-Open the [local audio tool](/audio-to-text) when your file is ready. If you already have timed subtitles rather than audio, use the [Subtitle Editor](/subtitle-editor). These are different inputs: an OGG recording needs speech recognition, while a subtitle file already contains text and cue times.
+[Open the matching tool](https://instascript.app/audio-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
