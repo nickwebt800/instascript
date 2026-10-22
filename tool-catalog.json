@@ -108,7 +108,7 @@
         "WebM"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB for uploads",
         "private or login-only URLs need a saved file",
         "SRT/VTT and editor transfer require complete valid cue timing"
@@ -144,7 +144,7 @@
         "WebM"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB for uploads",
         "private or login-only URLs need a saved file",
         "SRT/VTT and editor transfer require complete valid cue timing"
@@ -180,7 +180,7 @@
         "WebM"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB for uploads",
         "private or login-only URLs need a saved file",
         "SRT/VTT and editor transfer require complete valid cue timing"
@@ -217,7 +217,7 @@
       ],
       "limits": [
         "spoken audio only",
-        "English-focused browser model",
+        "English-only speech recognition",
         "written captions and on-screen text need separate checks"
       ],
       "keywords": [
@@ -255,7 +255,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB for uploads",
         "speech only - no OCR, translation, styling or speaker labels",
         "SRT/VTT and editor transfer require complete valid cue timing"
@@ -296,7 +296,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB for uploads",
         "speech only - no OCR, translation, styling or speaker labels",
         "SRT/VTT and editor transfer require complete valid cue timing"
@@ -334,7 +334,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "WhatsApp chat links are not fetched",
         "speech only",
@@ -710,7 +710,7 @@
         "M4A"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "browser-supported codecs only",
@@ -749,7 +749,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "browser-readable sample formats only",
@@ -788,7 +788,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "private cloud links are not fetched",
@@ -857,7 +857,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "carrier and private voicemail links are not fetched",
         "speech only",
@@ -896,7 +896,7 @@
         "OGG"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "Spotify and Riverside links are not fetched",
@@ -934,7 +934,7 @@
         "WebM"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "video links are not fetched",
@@ -975,7 +975,7 @@
         "M4A"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "one local file at a time",
         "private Zoom links are not fetched",
@@ -1014,7 +1014,7 @@
         "saved Vimeo videos"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "Vimeo URLs are not fetched directly",
         "download permission is required",
@@ -1182,7 +1182,7 @@
         "saved X videos"
       ],
       "limits": [
-        "English-focused browser model",
+        "English-only speech recognition",
         "up to 100 MB",
         "post URLs are not fetched directly; protected or removed posts need a permitted saved file",
         "SRT/VTT and editor transfer require complete valid cue timing"

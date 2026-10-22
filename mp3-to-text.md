@@ -85,3 +85,10 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
+
+## Recommended
+
+[ElevenLabs](https://try.elevenlabs.io/4cwahrcf3vyn) &mdash; an AI voice generator and text-to-speech studio for turning spoken notes into polished audio. A free tier is available to try.
+
+
+      This audio page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
