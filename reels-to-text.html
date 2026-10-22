@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="Reels to Text | InstaScript">
   <meta name="twitter:description" content="Turn a public Instagram Reel or saved file into timestamped spoken text.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="upload-only">
+<body class="upload-only subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -34,34 +35,33 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
+    </header><main><article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Choose a source for Reel speech</h2>
+<p>To turn a Reel into text, start with the actual spoken recording. The full <a href="/instagram-transcript-generator">Instagram Transcript Generator guide</a> covers the public URL and review workflow.</p>
+</div>
+<p><a class="btn-primary" href="/instagram-transcript-generator">Open Instagram Transcript tool</a></p>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#decision-1">Choose a public Reel or an existing local file</a></li><li><a href="#decision-2">Check whether you need spoken or written words</a></li><li><a href="#decision-3">Use the existing review and output tools</a></li></ol></nav>
+<section class="guide-step" aria-labelledby="decision-1"><h3 id="decision-1" tabindex="-1">1. Choose a public Reel or an existing local file</h3>
+<p>Use a supported public Instagram URL in the linked tool, or a permitted saved media file in <a href="/video-to-text">Video to Text</a>. This page is a guide, without a separate engine or upload form. Local files are limited to 100 MB and actual browser decoding.</p>
+<p class="guide-check"><strong>Check:</strong> Your input is a supported public source or a real local recording.</p>
+<a class="guide-back" href="/instagram-transcript-generator">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-2"><h3 id="decision-2" tabindex="-1">2. Check whether you need spoken or written words</h3>
+<p>Speech recognition is English only and performs a language check first. It does not retrieve comments or descriptions or perform OCR. <a href="/instagram-caption-extractor">Compare caption sources</a> before transcribing if the words are visible rather than spoken.</p>
+<p class="guide-check"><strong>Check:</strong> The requested words belong to the audio.</p>
+<a class="guide-back" href="/instagram-transcript-generator">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-3"><h3 id="decision-3" tabindex="-1">3. Use the existing review and output tools</h3>
+<p>Follow the main walkthrough to replay, edit and save the transcript. TXT/Markdown is useful for reading; SRT/VTT requires complete valid times. Keep uncertainty visible and check the downloaded artifact before using it.</p>
+<p class="guide-check"><strong>Check:</strong> The saved words have been compared with the source recording.</p>
+<a class="guide-back" href="/instagram-transcript-generator">Continue in the matching tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>What processing and privacy boundaries apply?</h3>
+<p>Local-file recognition and editing stay in the browser. Public Instagram URL retrieval uses the server and may use a fallback retrieval service before browser recognition. There is no saved transcript account history.</p>
+<h3>Where should I continue?</h3>
+<p><a href="/instagram-transcript-generator">Open the matching tool</a> and follow its current input requirements. Keep the original, review your result and download it before closing the tab.</p>
+</section>
+<details class="guide-more"><summary>Historical measurements and method limits</summary><h2>Measured browser timings</h2>
 
-    <main class="content-card answer-first">
-      <h2>The direct answer</h2>
-<p>To turn a Reel into text, open the <a href="/">Instagram Transcript</a> tool and paste a public Reel URL, or upload a saved MP4, MOV or WebM file. Click <strong>Get my Reel transcript</strong> to recognize spoken audio in your browser and provide timestamped text plus TXT, SRT and VTT downloads.</p>
-      <ol class="steps">
-<li>Choose <strong>Paste Reel URL</strong> for a public Reel, or <strong>Upload video or audio</strong> for a saved copy.</li>
-        <li>Let the media load and the browser speech model finish.</li>
-        <li>Check the timestamps, then copy the text or download TXT/SRT/VTT.</li>
-      </ol>
-      <p class="bench-note"><strong>Scope:</strong> this is a speech transcript. It does not extract captions, comments, hashtags, or words printed inside the video frames.</p>
-    </main>
-
-    <section class="content-card">
-      <h2>Public Reel URL or saved file?</h2>
-      <p>Use a public URL when it opens without a login and its media is reachable. Use a saved file for private, deleted, region-limited, or login-gated Reels. A link can still fail if its media address expired or the video has no audio; a silent file has no speech to recognize.</p>
-
-      <h2>Timestamped output</h2>
-      <pre class="example">[00:00] Open the Reel transcript tool
-[00:04] paste a public link or select the saved file
-[00:10] review the words before you publish them</pre>
-      <p><strong>TXT</strong> is useful for searching and editing. <strong>SRT</strong> adds numbered start/end cues for subtitle editors and players. It is generated from recognized speech, not Instagram's original caption track.</p>
-
-      <h2>Processing boundary</h2>
-      <p>Uploaded media is decoded and transcribed on your device. A public URL is fetched first, then the browser handles speech recognition. The first run can be slower while the model downloads; later runs may use its cache.</p>
-
-      <h2>Measured browser timings</h2>
       <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
+
       <table class="bench-table">
         <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
         <tbody>
@@ -73,24 +73,15 @@
         </tbody>
       </table>
       <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
+
       <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
+
       <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
 
 
 
-      <h2>Review before publishing</h2>
-      <p>Music, effects, accents, names, numbers, fast speech, and overlapping speakers can change the result. Replay important timestamps. Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.</p>
 
-      <h2>FAQ</h2>
-      <h3>Can I use a private Reel URL?</h3><p>No. Upload a saved copy you have permission to process.</p>
-      <h3>Does it read words shown on screen?</h3><p>No. It recognizes spoken audio; use OCR for text in the frames.</p>
-      <h3>Which download should I choose?</h3><p>Choose TXT for plain text and SRT for timestamped subtitles.</p>
-      <h3>Is InstaScript affiliated with Instagram?</h3><p>No. InstaScript is independent of Instagram and Meta.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/instagram-reels-transcript">Instagram Reels Transcript</a> &middot; <a href="/instagram-video-to-text">Instagram Video to Text</a> &middot; <a href="/video-to-text">Video to Text</a></nav>
-    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+      </details></article></main><footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -143,32 +134,9 @@
 <a href="/contact">Contact</a></div>
 </nav><p>Runs in your browser &mdash; no signup.</p></footer>
   </div>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to turn an Instagram Reel into text",
-    "description": "Turn a public Instagram Reel or a saved file into timestamped spoken text.",
-    "totalTime": "PT2M",
-    "step": [
-      { "@type": "HowToStep", "name": "Choose a public Reel or saved file", "text": "Choose Paste Reel URL for a public Reel, or Upload video or audio for a saved copy." },
-      { "@type": "HowToStep", "name": "Let the browser process the audio", "text": "Let the media load and the browser speech model finish." },
-      { "@type": "HowToStep", "name": "Review and export the transcript", "text": "Check the timestamps, then copy the text or download TXT, SRT or VTT." }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "Can I use a private Reel URL?", "acceptedAnswer": { "@type": "Answer", "text": "No. Upload a saved copy you have permission to process." } },
-      { "@type": "Question", "name": "Does it read words shown on screen?", "acceptedAnswer": { "@type": "Answer", "text": "No. It recognizes spoken audio; text in the frames needs a separate OCR workflow." } },
-      { "@type": "Question", "name": "Which download should I choose?", "acceptedAnswer": { "@type": "Answer", "text": "Choose TXT for plain text and SRT for timestamped subtitles." } },
-      { "@type": "Question", "name": "Is InstaScript affiliated with Instagram?", "acceptedAnswer": { "@type": "Answer", "text": "No. InstaScript is independent of Instagram and Meta." } }
-    ]
-  }
-  </script>
+
+
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What processing and privacy boundaries apply?","acceptedAnswer":{"@type":"Answer","text":"Local-file recognition and editing stay in the browser. Public Instagram URL retrieval uses the server and may use a fallback retrieval service before browser recognition. There is no saved transcript account history."}},{"@type":"Question","name":"Where should I continue?","acceptedAnswer":{"@type":"Answer","text":"Open the matching tool and follow its current input requirements. Keep the original, review your result and download it before closing the tab."}}]}</script>
 </body>
 </html>

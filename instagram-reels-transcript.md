@@ -1,26 +1,44 @@
-# Instagram Reels Transcript: URL, TXT and SRT
+# Instagram Reels Transcript
 
-> Turn a public Instagram Reel URL or a saved Reel file into timestamped spoken text in your browser.
+> Instagram Reels transcript tool for public Reel links and saved video files. Get timestamped text, TXT, SRT and VTT downloads in your browser.
 
 Canonical: <https://instascript.app/instagram-reels-transcript>
 
-## The short answer
+[Open the matching tool](https://instascript.app/instagram-transcript-generator)
 
-Open the [Instagram Transcript](https://instascript.app/) tool, paste a public Reel URL, or upload a saved Reel video. The browser returns spoken words with timestamps that you can copy or download as TXT, SRT or VTT.
+## Choose the right route for a Reel
 
-1. Use a public Reel URL that opens without a login, or choose a saved video file.
-2. Let the page fetch or decode the media and run the English speech model locally.
-3. Check timestamps against the audio before quoting or publishing the result.
+For spoken English in a Reel, use the existing [Instagram Transcript Generator walkthrough](https://instascript.app/instagram-transcript-generator). This page helps choose an input rather than repeat that full tutorial.
 
-Uploaded files stay on the device. A public URL requires a temporary media fetch before local speech recognition.
 
-## Public URL or saved file
 
-The URL path works when a public Reel media URL is available without an Instagram login. Use a saved MP4, MOV, or WebM file for private, deleted, login-only, region-restricted, or expired posts. Uploads are limited to 100 MB. A Reel without a usable audio track cannot produce a useful speech transcript.
+## 1. Use a public URL when its media is accessible
 
-## Output
+Submit a supported public Instagram post or Reel URL in the linked tool. Server retrieval comes before browser recognition, and restrictions or unavailable media can prevent it. A failed lookup does not establish that no speech exists.
 
-TXT is useful for searching and editing. SRT contains numbered cues with start and end times for subtitle players and editors. The SRT is generated from recognized speech segments; it is not Instagram's written caption.
+**Check:** The URL is an accessible public source rather than a private session link.
+
+## 2. Use a permitted local copy when you already have one
+
+An existing local video can go through [Video to Text](https://instascript.app/video-to-text). Files must be browser-decodable, up to 100 MB, with English speech; model loading and language checks apply. Do not assume a bookmark is a media file.
+
+**Check:** The file contains the needed audio and complete passage.
+
+## 3. Follow the shared review workflow
+
+Replay important words and inspect valid timed exports before use. A post description and text visible in a Reel are separate from speech; neither comments nor OCR are provided. See [the caption-source comparison](https://instascript.app/instagram-caption-extractor) if that is the text you need.
+
+**Check:** The selected source and requested text type match.
+
+## More questions and limits
+
+### What processing and privacy boundaries apply?
+
+Local-file recognition and editing stay in the browser. Public Instagram URL retrieval uses the server and may use a fallback retrieval service before browser recognition. There is no saved transcript account history.
+
+### Where should I continue?
+
+[Open the matching tool](https://instascript.app/instagram-transcript-generator) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
 
 ## Measured browser timings
 
@@ -39,31 +57,3 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Accuracy and FAQ
-
-Music, effects, accents, names, numbers, and overlapping voices can change a segment. The current browser model is English-focused, so replay important timestamps.
-
-### Can I transcribe a private Instagram Reel?
-
-Not through the public URL path. Save a copy you are allowed to use and upload the local file.
-
-### Does this extract Instagram's written caption?
-
-No. It transcribes spoken audio, not post text or words shown in the video frames.
-
-### Can I download subtitles?
-
-Yes. Download SRT for a subtitle track or TXT for plain text, then review the result.
-
-### Is InstaScript affiliated with Instagram?
-
-No. InstaScript is independent of Instagram and Meta.
-
-## Language checks
-
-Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

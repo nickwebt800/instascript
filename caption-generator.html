@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="Caption Generator | InstaScript">
   <meta name="twitter:description" content="Generate a timed English caption draft from local media or a public Instagram video.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="upload-only">
+<body class="upload-only subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -34,21 +35,31 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
+    </header><main><article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Make spoken caption drafts, then check the words</h2>
+<p>Here, caption means text representing speech. This workflow does not create marketing descriptions, social post ideas or creative copy.</p>
+</div>
+<p><a class="btn-primary" href="/video-to-text">Open Video to Text</a></p>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#decision-1">Start with audible English speech</a></li><li><a href="#decision-2">Preserve meaning before adjusting appearance</a></li><li><a href="#decision-3">Deliver a reviewed file to a real caption destination</a></li></ol></nav>
+<section class="guide-step" aria-labelledby="decision-1"><h3 id="decision-1" tabindex="-1">1. Start with audible English speech</h3>
+<p>Open <a href="/video-to-text">Video to Text</a> for a local video or <a href="/audio-to-text">Audio to Text</a> for an audio recording. One browser-decodable file up to 100 MB is processed at a time; model downloads and language checks apply.</p>
+<p class="guide-check"><strong>Check:</strong> The source is speech, rather than a prompt for creative writing.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-2"><h3 id="decision-2" tabindex="-1">2. Preserve meaning before adjusting appearance</h3>
+<p>Replay names, numbers, negatives and qualifications. Editing a cue changes its words but does not move its timing. For a fictional phrase such as “Do not send it until Friday,” dropping not or until changes the instruction.</p>
+<p class="guide-check"><strong>Check:</strong> The wording preserves what the speaker said.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-step" aria-labelledby="decision-3"><h3 id="decision-3" tabindex="-1">3. Deliver a reviewed file to a real caption destination</h3>
+<p>Use TXT/Markdown for reading, or valid SRT/VTT for a timed draft. <a href="/subtitle-editor">Subtitle Editor</a> lets you correct cue times. The page does not burn text into video; verify final appearance in your chosen editor or platform.</p>
+<p class="guide-check"><strong>Check:</strong> The destination accepts your output and the final captions have been previewed.</p>
+<a class="guide-back" href="/video-to-text">Continue in the matching tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>What processing and privacy boundaries apply?</h3>
+<p>Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.</p>
+<h3>Where should I continue?</h3>
+<p><a href="/video-to-text">Open the matching tool</a> and follow its current input requirements. Keep the original, review your result and download it before closing the tab.</p>
+</section>
+<details class="guide-more"><summary>Historical measurements and method limits</summary><h2>What the generator produces</h2>
 
-    <main class="content-card answer-first">
-      <h2>The direct answer</h2>
-      <p>To generate captions, open the <a href="/">Instagram Transcript</a> tool, paste a public Instagram Reel or video URL, or upload a saved MP4, MOV, WebM, MP3, WAV, M4A, or OGG file. InstaScript recognizes English speech in your browser and gives you timestamped text plus TXT, SRT and VTT downloads.</p>
-      <ol class="steps">
-        <li>Choose a public URL that works without a login, or select a file you have permission to process.</li>
-        <li>Wait for the browser model to create speech segments.</li>
-        <li>Replay important timestamps, edit wording in your subtitle editor, then export SRT for a player or TXT for notes.</li>
-      </ol>
-      <p class="bench-note"><strong>Scope:</strong> this generates a speech-based caption draft. It does not add animated styling, read text printed in frames, translate speech, or identify speakers.</p>
-    </main>
-
-    <section class="content-card">
-      <h2>What the generator produces</h2>
       <table class="bench-table">
         <thead><tr><th>Output</th><th>Best use</th><th>What to check</th></tr></thead>
         <tbody>
@@ -59,53 +70,8 @@
       </table>
       <p>An SRT file is a timed text draft, not a finished visual design. Use the <a href="/subtitle-editor">Subtitle Editor</a> to adjust cue timing and wording before publishing. Keep the original media beside the export so every correction can be checked against the audio.</p>
 
-      <h2>URL or local file</h2>
-      <p>A public Instagram URL is useful when its media can be fetched without a login. Private, removed, region-limited, expired, or protected links can fail; save a copy you are allowed to use and upload it instead. Uploads are limited to 100 MB and are processed on your device.</p>
-      <pre class="example">[00:00] Choose the input that you can review
-[00:04] Generate a timed speech draft
-[00:09] Correct names before publishing</pre>
 
-      <h2>Measured browser timings</h2>
-      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
-      <table class="bench-table">
-        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
-        <tbody>
-          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
-          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
-          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
-          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
-          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
-        </tbody>
-      </table>
-      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
-      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
-      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
-
-
-
-      <h2>Review before export</h2>
-      <ul>
-        <li>Replay words covered by music, effects, echo, clipping, or crosstalk.</li>
-        <li>Check accents, names, numbers, product terms, and URLs against the recording.</li>
-        <li>Split long cues and remove overlaps in an editor when a viewer needs more time to read.</li>
-        <li>Text shown on screen needs visual inspection or OCR; speech recognition cannot see video frames.</li>
-        <li>The current browser model is English-focused, so non-English output needs full manual review.</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <h3>Does it create burned-in captions?</h3>
-      <p>No. It creates TXT, SRT and VTT files. A video editor can style or burn those captions into a video later.</p>
-      <h3>Does it copy the written Instagram post caption?</h3>
-      <p>No. It transcribes spoken audio. Copy the written post description separately when you have access and permission.</p>
-      <h3>Is my uploaded video stored?</h3>
-      <p>Uploaded media is decoded and transcribed in your browser. A public URL needs a temporary media fetch before local processing; the transcript is not saved as an account record.</p>
-      <h3>Is InstaScript affiliated with Instagram?</h3>
-      <p>No. InstaScript is independent of Instagram and Meta.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related pages">More: <a href="/">Instagram Transcript</a> &middot; <a href="/video-to-text">Video to Text</a> &middot; <a href="/subtitle-editor">Subtitle Editor</a> &middot; <a href="/privacy">Privacy Policy</a></nav>
-    <section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+      </details></article></main><footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
 <a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
@@ -158,12 +124,9 @@
 <a href="/contact">Contact</a></div>
 </nav><p>Runs in your browser &mdash; no signup.</p></footer>
   </div>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"HowTo","name":"How to generate timed captions","description":"Create a timed English speech caption draft and export TXT, SRT or VTT.","step":[{"@type":"HowToStep","name":"Choose media","text":"Paste a public Instagram URL or upload a saved audio/video file."},{"@type":"HowToStep","name":"Generate a draft","text":"Let the browser recognize the English speech and create timestamped segments."},{"@type":"HowToStep","name":"Review and export","text":"Check important timestamps, edit cues, and download TXT, SRT or VTT."}]}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it create burned-in captions?","acceptedAnswer":{"@type":"Answer","text":"No. It creates TXT, SRT and VTT files that can be styled in a video editor."}},{"@type":"Question","name":"Does it copy the written Instagram post caption?","acceptedAnswer":{"@type":"Answer","text":"No. It transcribes spoken audio, not the post description."}},{"@type":"Question","name":"Is my uploaded video stored?","acceptedAnswer":{"@type":"Answer","text":"Uploaded media is decoded and transcribed in the browser."}}]}
-  </script>
+
+
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What processing and privacy boundaries apply?","acceptedAnswer":{"@type":"Answer","text":"Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries."}},{"@type":"Question","name":"Where should I continue?","acceptedAnswer":{"@type":"Answer","text":"Open the matching tool and follow its current input requirements. Keep the original, review your result and download it before closing the tab."}}]}</script>
 </body>
 </html>

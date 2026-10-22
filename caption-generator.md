@@ -1,16 +1,44 @@
-# Caption Generator: Timed TXT and SRT Drafts
+# Caption Generator
 
-> Generate a timed English speech caption draft from a public Instagram video or local media, then review and export TXT, SRT or VTT.
+> Generate a timed English caption draft from a public Instagram video or local audio/video, then review and download TXT, SRT or VTT in your browser.
 
 Canonical: <https://instascript.app/caption-generator>
 
-## The direct answer
+[Open the matching tool](https://instascript.app/video-to-text)
 
-Open the [Instagram Transcript](https://instascript.app/) tool. Paste a public Instagram Reel or video URL, or upload a saved MP4, MOV, WebM, MP3, WAV, M4A, or OGG file. InstaScript recognizes English speech in your browser and provides timestamped text plus TXT, SRT and VTT downloads.
+## Make spoken caption drafts, then check the words
 
-Choose a URL that works without a login, or a file you may process. Wait for the speech segments, replay important timestamps, edit the cues, and export SRT for a player or TXT for notes.
+Here, caption means text representing speech. This workflow does not create marketing descriptions, social post ideas or creative copy.
 
-This is a speech-based caption draft. It does not add animated styling, read text in video frames, translate speech, or identify speakers.
+
+
+## 1. Start with audible English speech
+
+Open [Video to Text](https://instascript.app/video-to-text) for a local video or [Audio to Text](https://instascript.app/audio-to-text) for an audio recording. One browser-decodable file up to 100 MB is processed at a time; model downloads and language checks apply.
+
+**Check:** The source is speech, rather than a prompt for creative writing.
+
+## 2. Preserve meaning before adjusting appearance
+
+Replay names, numbers, negatives and qualifications. Editing a cue changes its words but does not move its timing. For a fictional phrase such as “Do not send it until Friday,” dropping not or until changes the instruction.
+
+**Check:** The wording preserves what the speaker said.
+
+## 3. Deliver a reviewed file to a real caption destination
+
+Use TXT/Markdown for reading, or valid SRT/VTT for a timed draft. [Subtitle Editor](https://instascript.app/subtitle-editor) lets you correct cue times. The page does not burn text into video; verify final appearance in your chosen editor or platform.
+
+**Check:** The destination accepts your output and the final captions have been previewed.
+
+## More questions and limits
+
+### What processing and privacy boundaries apply?
+
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
+
+### Where should I continue?
+
+[Open the matching tool](https://instascript.app/video-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
 
 ## Output and review
 
@@ -21,68 +49,3 @@ This is a speech-based caption draft. It does not add animated styling, read tex
 | SRT | Subtitle players and editors | Cue length, overlap and reading speed |
 
 SRT is timed text, not a finished visual design. Use the [Subtitle Editor](https://instascript.app/subtitle-editor) to adjust wording and timing. Keep the source media beside the export.
-
-## URL or local file
-
-A public URL can fail when media is private, removed, region-limited, expired, or protected. Save a copy you are allowed to use and upload it instead. Uploads are limited to 100 MB and are processed on your device.
-
-```text
-[00:00] Choose the input that you can review
-[00:04] Generate a timed speech draft
-[00:09] Correct names before publishing
-```
-
-## Measured browser timings
-
-These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.
-
-| Audio length | Historical wall-clock time | Historical model load |
-| --- | --- | --- |
-| 11 s | 16.89 s | included |
-| 11 s | 6.49 s | already in memory |
-| 30 s | 8.98 s | already in memory |
-| 60 s | 16.06 s | already in memory |
-| 120 s | 28.58 s | already in memory |
-
-In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.
-
-One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
-
-Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Review before export
-
-- Replay words covered by music, effects, echo, clipping, or crosstalk.
-- Check accents, names, numbers, product terms, and URLs against the recording.
-- Split long cues and remove overlaps in an editor.
-- Text shown on screen needs visual inspection or OCR.
-- The current model is English-focused; non-English output needs full manual review.
-
-## FAQ
-
-### Does it create burned-in captions?
-
-No. It creates TXT, SRT and VTT files for later styling in a video editor.
-
-### Does it copy the written Instagram post caption?
-
-No. It transcribes spoken audio, not the post description.
-
-### Is my uploaded video stored?
-
-Uploaded media is decoded and transcribed in your browser. A public URL needs a temporary media fetch before local processing.
-
-### Is InstaScript affiliated with Instagram?
-
-No. InstaScript is independent of Instagram and Meta.
-
-## More tools
-
-- [Instagram Transcript](https://instascript.app/)
-- [Video to Text](https://instascript.app/video-to-text)
-- [Subtitle Editor](https://instascript.app/subtitle-editor)
-- [Privacy Policy](https://instascript.app/privacy)
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.

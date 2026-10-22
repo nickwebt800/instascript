@@ -1,36 +1,44 @@
-# Reels to Text: Spoken Transcript, TXT and SRT
+# Reels to Text
 
-> Turn a public Instagram Reel URL or a saved Reel file into timestamped spoken text in your browser.
+> Turn a public Instagram Reel URL or saved file into timestamped spoken text with TXT, SRT and VTT downloads in your browser.
 
 Canonical: <https://instascript.app/reels-to-text>
 
-## The direct answer
+[Open the matching tool](https://instascript.app/instagram-transcript-generator)
 
-To turn an Instagram Reel into text, open the [Instagram Transcript](https://instascript.app/) tool and paste a public Reel URL, or upload a saved MP4, MOV or WebM file. InstaScript recognizes the spoken audio in your browser, then lets you copy the timestamped result or download TXT, SRT and VTT.
+## Choose a source for Reel speech
 
-This is a speech transcript. It does not read the post caption, comments, hashtags, or words drawn on the video frames.
+To turn a Reel into text, start with the actual spoken recording. The full [Instagram Transcript Generator guide](https://instascript.app/instagram-transcript-generator) covers the public URL and review workflow.
 
-## Choose the input that will work
 
-Use a public URL when the Reel opens without an Instagram login and its media is available to the fetch path. Use a saved file when the Reel is private, deleted, region-limited, login-gated, or the URL returns a page without playable media. Uploads are limited to 100 MB.
 
-A public link can fail even when it looks correct: the session may be required, the media address may have expired, or the video may contain no audio track. Saving a copy you are allowed to use moves the problem from URL access to a local upload. A silent Reel still has no speech to recognize.
+## 1. Choose a public Reel or an existing local file
 
-## What you receive
+Use a supported public Instagram URL in the linked tool, or a permitted saved media file in [Video to Text](https://instascript.app/video-to-text). This page is a guide, without a separate engine or upload form. Local files are limited to 100 MB and actual browser decoding.
 
-Each recognized segment is tied to its start time, so you can jump back to the exact moment that needs checking:
+**Check:** Your input is a supported public source or a real local recording.
 
-```text
-[00:00] Open the Reel transcript tool
-[00:04] paste a public link or select the saved file
-[00:10] review the words before you publish them
-```
+## 2. Check whether you need spoken or written words
 
-Choose TXT for searchable notes, quotes, or editing. Choose SRT when a subtitle editor or player needs numbered cues with start and end times. The SRT is generated from the recognized speech; it is not Instagram's original caption file.
+Speech recognition is English only and performs a language check first. It does not retrieve comments or descriptions or perform OCR. [Compare caption sources](https://instascript.app/instagram-caption-extractor) before transcribing if the words are visible rather than spoken.
 
-## Where the work happens
+**Check:** The requested words belong to the audio.
 
-For a file, decoding and speech recognition run on your device. A public URL needs a network fetch to obtain the media first; after that, the browser model handles the audio. The model download makes the first run slower, while later runs may use the cached model. No account transcript is created by the tool.
+## 3. Use the existing review and output tools
+
+Follow the main walkthrough to replay, edit and save the transcript. TXT/Markdown is useful for reading; SRT/VTT requires complete valid times. Keep uncertainty visible and check the downloaded artifact before using it.
+
+**Check:** The saved words have been compared with the source recording.
+
+## More questions and limits
+
+### What processing and privacy boundaries apply?
+
+Local-file recognition and editing stay in the browser. Public Instagram URL retrieval uses the server and may use a fallback retrieval service before browser recognition. There is no saved transcript account history.
+
+### Where should I continue?
+
+[Open the matching tool](https://instascript.app/instagram-transcript-generator) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
 
 ## Measured browser timings
 
@@ -49,37 +57,3 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Review before relying on it
-
-Music, effects, quick speech, accents, names, numbers, and people talking over one another can change a segment. Replay the timestamp before using a line as a quote or record. Speech recognition supports English only. Detected non-English speech is rejected; an uncertain or failed language check stops processing with a separate error and creates no transcript.
-
-## FAQ
-
-### Can I use a private Reel URL?
-
-No. Save a copy you have permission to process and upload the local file instead.
-
-### Will this extract the words shown on screen?
-
-No. It recognizes spoken audio. Use a separate OCR workflow for text printed in the frames.
-
-### Should I download TXT, SRT or VTT?
-
-TXT is the simple reading and editing format. SRT is the timestamped subtitle format for compatible editors and players.
-
-### Is InstaScript an Instagram product?
-
-No. InstaScript is an independent project and is not affiliated with Instagram or Meta.
-
-## More transcription tools
-
-- [Instagram Transcript](https://instascript.app/) — paste a public Instagram URL or upload a media file.
-- [Instagram Reels Transcript](https://instascript.app/instagram-reels-transcript) — another Reel-focused transcript workflow with TXT, SRT and VTT output.
-- [Instagram Video to Text](https://instascript.app/instagram-video-to-text) — convert a public Instagram video or saved file.
-- [Video to Text](https://instascript.app/video-to-text) — transcribe an MP4, MOV or WebM file.
-
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
