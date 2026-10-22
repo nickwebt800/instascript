@@ -96,6 +96,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Google Meet Transcript](https://instascript.app/google-meet-transcript) — Find existing Meet text or use a permitted saved recording, then check coverage and corrections.
 - [OGG to Text](https://instascript.app/ogg-to-text) — Prepare an OGG recording, distinguish decoding failures and review an English transcript in the local audio tool.
 - [Recording Format Guide](https://instascript.app/recording-format-guide) — Check unusual recording formats, missing voices and changed timestamps before local English transcription.
+- [Phone Call Transcription](https://instascript.app/phone-call-transcription) — Record a supported iPhone call, find its transcript in Notes, and check captured boundaries, version differences and recognized words against playback.
 
 ### YouTube tools
 
