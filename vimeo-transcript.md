@@ -39,7 +39,7 @@ Yes. The result has segment timestamps and an SRT download. Review cues before p
 
 ### Which languages work?
 
-The included model is English-focused; other languages may be incomplete or incorrect.
+Speech recognition supports English only. Detected non-English speech stops transcription. An uncertain language result or a failed language check stops with a separate error and creates no transcript.
 
 ## Export your edited transcript
 
