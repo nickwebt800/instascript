@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="Transcribe Audio to Text | InstaScript">
   <meta name="twitter:description" content="Turn MP3, WAV and voice memos into timestamped text in your browser.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="upload-only">
+<body class="upload-only subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -34,13 +35,13 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
+    </header><p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
 
-    <main class="tool-card" aria-labelledby="tool-heading">
+    <main id="walkthrough-tool" tabindex="-1" class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">MP3 to text</h2>
-          <p>Local MP3 transcription with timed TXT, SRT and VTT output</p>
+          <p>Local MP3 transcription with text and timed subtitle exports</p>
         </div>
         <span class="local-badge">Runs in your browser</span>
       </div>
@@ -68,7 +69,8 @@
         </div>
         <p class="panel-hint">MP3 files up to 100 MB work here; the speech model runs on this device.</p>
       </div>
-    </main>
+    <p class="panel-hint">English speech only. Browser decoding is required. First use may download language-detection and English-recognition models.</p>
+</main>
 
     <!-- Processing -->
     <div id="processing" class="processing hidden">
@@ -98,27 +100,44 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
-    <section class="content-card">
-      <h2>MP3 to text: the direct answer</h2>
-      <p><strong>MP3 to text</strong> means turning the spoken audio in an MP3 file into searchable words. Drop the file above, press <strong>Transcribe this file</strong>, and the result appears with time markers. Copy the plain transcript, download <strong>.txt</strong> for notes, or download <strong>.srt</strong> when another editor needs timed captions.</p>
-      <p>This MP3 to text converter works on a file you already have. It does not fetch a streaming page, read music metadata as speech, or create a transcript from a title alone. Only the decoded audio is sent to the browser model.</p>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Turn an MP3 speech recording into a checked reading copy</h2>
+<p>Choose a local MP3 up to 100 MB above. Clear English speech is the useful input; a music file, album cover or ID3 description does not supply a transcript.</p>
+</div>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#choose">Is this MP3 useful for speech recognition?</a></li><li><a href="#review">What should I check around music and short words?</a></li><li><a href="#save">Should I export a reading copy or timed subtitles?</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Teaching sample"><p>Try the <a href="/assets/tutorials/mp3-to-text/kennedy-practice.mp3" download>public practice MP3 file</a>. Eleven-second public-domain excerpt from John F. Kennedy’s January 20, 1961 inaugural address. See the <a href="/assets/demo/SOURCE.md">recording provenance</a>. The sample demonstrates this codec in the tested browser, not every file configuration, recording length or multi-speaker podcast. Screenshots show actual recognition and explicit teaching edits; they are not speed or accuracy measurements.</p>
+</aside>
+<section class="guide-step" aria-labelledby="choose"><h3 id="choose" tabindex="-1">1. Is this MP3 useful for speech recognition?</h3>
+<p>Play a section with speech and check whether music or compression hides consonants. The public practice file is a genuine encoded MP3; it tests this sample in this browser, not every MP3 encoder or mixed music track. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/mp3-to-text/01-choose-narrow.svg" width="352" height="434"><img src="/assets/tutorials/mp3-to-text/01-choose-wide.svg" width="720" height="243" alt="Is this MP3 useful for speech recognition? Actual file selection in this tool. The public teaching sample is not a personal recording." loading="lazy" decoding="async"></picture><figcaption>Actual file selection in this tool. The public teaching sample is not a personal recording.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> You selected the intended speech recording, rather than a link or an unrelated music file.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="review"><h3 id="review" tabindex="-1">2. What should I check around music and short words?</h3>
+<p>Listen just before and after each uncertain phrase. A plausible sentence may still omit a negation under a music bed; mark what cannot be confirmed. Click a transcript timestamp to seek in the local recording player. Replay the surrounding phrase before editing its cue. Text edits do not move cue boundaries. Use Find in this transcript to locate an exact word in the latest edits; Previous and Next navigate matches, Enter moves forward, Shift+Enter moves back, and Escape clears the search.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/mp3-to-text/02-review-narrow.svg" width="352" height="479"><img src="/assets/tutorials/mp3-to-text/02-review-wide.svg" width="720" height="308" alt="What should I check around music and short words? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech." loading="lazy" decoding="async"></picture><figcaption>Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The quotation is supported by audible words, with uncertain gaps identified.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save"><h3 id="save" tabindex="-1">3. Should I export a reading copy or timed subtitles?</h3>
+<p>Do not use a reading export as a replacement for the original MP3. To deliver captions, also check the cue timing in the destination player. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/mp3-to-text/03-save-narrow.svg" width="352" height="395"><img src="/assets/tutorials/mp3-to-text/03-save-wide.svg" width="720" height="225" alt="Should I export a reading copy or timed subtitles? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech." loading="lazy" decoding="async"></picture><figcaption>Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.</figcaption></figure>
+<p>First cue from the actual teaching export (including the deliberate [reviewed] edit):</p>
+<pre class="example">1
+00:00:00,000 --&gt; 00:00:07,740
+And so my fellow Americans ask not what your country can do for you [reviewed]</pre><p class="guide-check"><strong>Check:</strong> The chosen output contains the corrections and has been opened after download.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>Does my recording leave this device?</h3>
+<p>Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.</p>
+<h3>What if decoding or the language check fails?</h3>
+<p>An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. <a href="/recording-format-guide">Recording Format Guide</a> explains these boundaries.</p>
+<h3>Can I cancel and try again?</h3>
+<p>Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence.</p>
+<h3>Where is the complete audio workflow?</h3>
+<p><a href="/audio-to-text">Audio to Text</a> explains search, text corrections and output choices. For timing changes, use <a href="/subtitle-editor">Subtitle Editor</a>.</p>
+</section>
+<details class="guide-more"><summary>Historical measurements and method limits</summary><h2>Measured browser timings</h2>
 
-      <h2>Three steps from MP3 to a transcript</h2>
-      <ol class="steps">
-        <li><strong>Choose one MP3.</strong> Files can be up to 100 MB. A clear voice recording gives the model the best starting signal.</li>
-        <li><strong>Wait for the local model.</strong> The first run downloads the speech model into the browser cache; later runs on the same device can skip that download.</li>
-        <li><strong>Review and export.</strong> Check names, numbers and short words, then copy the text or download TXT/SRT/VTT.</li>
-      </ol>
-
-      <h2>What the MP3 transcript looks like</h2>
-      <p>Each line keeps its starting time so you can jump back to the source recording:</p>
-      <pre class="example">[00:00] Thanks for joining the project update
-[00:07] I will send the revised figures this afternoon
-[00:14] please flag anything that needs a second look</pre>
-      <p>TXT is the simplest reading and search format. SRT keeps numbered cues and time ranges for caption tools. Neither export contains speaker identity unless the speaker says it.</p>
-
-      <h2>Measured browser timings</h2>
       <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
+
       <table class="bench-table">
         <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
         <tbody>
@@ -130,59 +149,15 @@
         </tbody>
       </table>
       <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
+
       <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
+
       <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
 
 
 
-      <h2>Privacy and file boundaries</h2>
-      <p>The MP3 is decoded and transcribed in your browser. There is no account, transcript history or server upload in this workflow. Once you close the page, the output is yours to save; the site does not keep a copy.</p>
-      <p>The page accepts one local file at a time and supports English speech. It does not separate speakers automatically, translate speech, or reliably recover words covered by music, clipping, heavy noise or overlapping voices.</p>
 
-      <h2>How to check the result</h2>
-      <ul>
-        <li>Replay the audio at each timestamp where a name, number or date matters.</li>
-        <li>Listen for music beds, room echo and crosstalk; these can hide short words.</li>
-        <li>Compare the first and last seconds because abrupt cuts can shift a cue boundary.</li>
-        <li>Keep the original MP3 beside the TXT, SRT or VTT so edits remain traceable.</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <h3>What is the difference between MP3 transcription and MP3 to text?</h3>
-      <p>They describe the same conversion: spoken audio in an MP3 becomes written text. “MP3 to text converter” usually emphasizes the file workflow; “MP3 transcription” emphasizes the speech result.</p>
-      <h3>Does the MP3 leave my device?</h3>
-      <p>No. The model runs in the browser and the file is processed locally. Do not close the tab until you have downloaded the output.</p>
-      <h3>Can it transcribe music or non-speech?</h3>
-      <p>It is intended for English speech. Instrumental sections, lyrics, sound effects and overlapping voices can produce omissions or incorrect words, so review the transcript against the audio.</p>
-      <h3>Why is the first MP3 slower?</h3>
-      <p>The first run includes downloading and starting the speech model. A later file can use the cached model, which is why the benchmark has separate first-run and cached rows.</p>
-      <h3>Can I make captions from the result?</h3>
-      <p>Yes. Download SRT for timed cues, then inspect the cue breaks in your caption editor. The export contains speech timing, not styling or a video preview.</p>
-
-      <p class="disclaimer">This MP3 transcription page is an independent personal project. It does not store uploaded files or claim affiliation with any audio platform.</p>
-    </section>
-
-    <section class="content-card">
-      <h2>Recommended</h2>
-      <p><a href="https://try.elevenlabs.io/4cwahrcf3vyn" target="_blank" rel="noopener sponsored">ElevenLabs</a> &mdash; an AI voice generator and text-to-speech studio for turning spoken notes into polished audio. A free tier is available to try.</p>
-      <p>This audio page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related transcript tools">
-      Other transcript tools:
-      <a href="/">Instagram Transcript</a> &middot;
-      <a href="/video-to-text">Video to Text</a> &middot;
-      <a href="/tiktok-transcript">TikTok Transcript</a> &middot;
-      <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
-      <a href="/youtube-transcript">YouTube Transcript</a>
-    </nav>
-
-    <section class="content-card"><h2>Cancel and retry</h2><p>Only one transcription task can run at a time. Cancel processing discards its result; a model download or local audio/model operation already in progress may need to finish first. After a failure or cancellation, Try the same input again reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded. Model loading and speech recognition do not have a fixed timeout.</p></section>
-<section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
-<section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-    <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports.</p></section>
-<section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.</p></section>
-<footer class="footer" data-site-footer>
+      </details></article><footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -241,63 +216,9 @@
   </div>
 
   <script type="module" src="app.js?v=app-f33348b14bd1"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Which audio formats can I transcribe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "MP3, WAV, M4A and OGG, and other formats your browser can decode. If it plays in the browser, the speech in it can be transcribed. Files up to 100 MB."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is voice transcription a different job?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It is the same job described two ways: spoken voice in, written text out. A voice memo recorded on a phone is just an audio file, so it goes through the same box above."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the audio leave my device?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The model runs in your browser and the file is not uploaded anywhere. There is no account to create and nothing is stored on a server."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long a recording can I transcribe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Up to 100 MB per file. The audio is handled in 30-second passes, so an hour-long recording takes noticeably longer than a short memo and uses more memory in the browser."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use this audio to text converter on my phone?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Open this page in a mobile browser and pick the recording from your phone. The first run downloads the speech model, so allow a little extra time on mobile data."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which languages are supported?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "English. The spoken language is identified first, and non-English audio returns a notice instead of a guess."
-        }
-      }
-    ]
-  }
-  </script>
+
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my recording leave this device?","acceptedAnswer":{"@type":"Answer","text":"Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries."}},{"@type":"Question","name":"What if decoding or the language check fails?","acceptedAnswer":{"@type":"Answer","text":"An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. Recording Format Guide explains these boundaries."}},{"@type":"Question","name":"Can I cancel and try again?","acceptedAnswer":{"@type":"Answer","text":"Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence."}},{"@type":"Question","name":"Where is the complete audio workflow?","acceptedAnswer":{"@type":"Answer","text":"Audio to Text explains search, text corrections and output choices. For timing changes, use Subtitle Editor."}}]}</script>
 </body>
 </html>

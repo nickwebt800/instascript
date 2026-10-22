@@ -1,32 +1,72 @@
-# WAV to Text: Transcribe a WAV File in Your Browser | InstaScript
+# WAV to Text: Transcribe a WAV File in Your Browser
 
-> Turn one local WAV recording into searchable spoken text in your browser. Review timestamps, then copy TXT or download SRT.
+> WAV to text in your browser: transcribe one local WAV recording and export timestamped TXT, SRT or VTT while the file stays on your device.
 
 Canonical: <https://instascript.app/wav-to-text>
 
-[InstaScript](https://instascript.app/)
+[Open the tool](https://instascript.app/wav-to-text)
 
-# WAV to Text: Transcribe a WAV File in Your Browser
+## Check WAV size, recording coverage and spoken words
 
-Choose a WAV recording you are allowed to use, run the browser model, and review the timestamped transcript before saving TXT, SRT or VTT.
+WAV is a container, often larger than a compressed recording. Choose one local file up to 100 MB above; actual decoding and English speech determine whether it can be transcribed.
 
-## WAV to text: the direct answer
+Try the [public practice WAV file](https://instascript.app/assets/tutorials/wav-to-text/kennedy-practice.wav). Eleven-second public-domain excerpt from John F. Kennedy’s January 20, 1961 inaugural address. See the [recording provenance](https://instascript.app/assets/demo/SOURCE.md). The sample demonstrates this codec in the tested browser, not every file configuration, recording length or multi-speaker podcast. Screenshots show actual recognition and explicit teaching edits; they are not speed or accuracy measurements.
 
-**WAV to text** means turning speech in a local WAV recording into searchable words. The page processes one file in the browser and keeps timestamps for notes or subtitle cues. WAV often contains uncompressed PCM, but its header and sample format still have to be browser-readable.
+## 1. Which WAV should I choose?
 
-## How to transcribe a WAV recording
+Check file size before starting and listen to the opening and closing seconds. Multiple channels, an unusual codec or a damaged header can affect decoding. The practice file is stereo PCM16 at 44,100 Hz; that observation does not validate every WAV configuration. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.
 
-1. Choose one WAV file up to 100 MB.
-2. Press **Transcribe this file**. The first run downloads the speech model into the browser cache.
-3. Check names, numbers and dates, then copy TXT or download SRT.
+![Which WAV should I choose? Actual file selection in this tool. The public teaching sample is not a personal recording.](https://instascript.app/assets/tutorials/wav-to-text/01-choose-wide.svg)
 
-The model is intended for English speech and handles one local file per run.
+Actual file selection in this tool. The public teaching sample is not a personal recording.
 
-## Example output
+**Check:** The file is below the limit and contains the whole passage you need.
 
-`[00:00] The interview starts after the tone` · `[00:08] Please read the reference number back` · `[00:16] We will send the notes this afternoon`
+## 2. How do I check that both ends of the recording were covered?
 
-TXT is easy to search. SRT keeps numbered cues and time ranges. Neither export adds speaker labels or caption styling.
+Compare the first and final audible phrases with the transcript. If voices overlap across channels, review the source rather than assuming speaker separation. This tool does not automatically identify speakers. Click a transcript timestamp to seek in the local recording player. Replay the surrounding phrase before editing its cue. Text edits do not move cue boundaries. Use Find in this transcript to locate an exact word in the latest edits; Previous and Next navigate matches, Enter moves forward, Shift+Enter moves back, and Escape clears the search.
+
+![How do I check that both ends of the recording were covered? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.](https://instascript.app/assets/tutorials/wav-to-text/02-review-wide.svg)
+
+Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.
+
+**Check:** The first and final spoken phrases are accounted for, and overlapping speech is reviewed.
+
+## 3. How do I keep the original and reviewed copy?
+
+Keep the WAV as evidence of what was audible. A TXT copy is convenient for searching; SRT/VTT adds timing only when the returned cues validate. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.
+
+![How do I keep the original and reviewed copy? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.](https://instascript.app/assets/tutorials/wav-to-text/03-save-wide.svg)
+
+Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.
+
+First cue from the actual teaching export (including the deliberate [reviewed] edit):
+
+```srt
+1
+00:00:00,000 --> 00:00:07,740
+And so my fellow Americans ask not what your country can do for you [reviewed]
+```
+
+**Check:** The saved output and source remain separately available.
+
+## More questions and limits
+
+### Does my recording leave this device?
+
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
+
+### What if decoding or the language check fails?
+
+An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. [Recording Format Guide](https://instascript.app/recording-format-guide) explains these boundaries.
+
+### Can I cancel and try again?
+
+Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence.
+
+### Where is the complete audio workflow?
+
+[Audio to Text](https://instascript.app/audio-to-text) explains search, text corrections and output choices. For timing changes, use [Subtitle Editor](https://instascript.app/subtitle-editor).
 
 ## Measured browser timings
 
@@ -45,64 +85,3 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Privacy and review limits
-
-The selected WAV is decoded and transcribed in your browser. There is no account, transcript history or server upload for this local-file workflow. A damaged header, unusual sample encoding, clipping, music, echo or overlapping voices can cause an error or incorrect words. It does not translate or label speakers.
-
-## FAQ
-
-### Can I paste a WAV link?
-
-No. Save a recording you are permitted to use and choose the local file. Private cloud links are not fetched.
-
-### Does the WAV leave my device?
-
-No for this local workflow. The speech model runs in the browser and the page does not keep a server copy.
-
-### What if the WAV will not decode?
-
-Try a standard PCM WAV or export an MP3. A `.wav` suffix alone does not identify a browser-readable sample format.
-
-### Can I make subtitles from the result?
-
-Yes. Download SRT, then inspect cue breaks in a subtitle editor. The export contains speech timing, not styling or a video preview.
-
-## Related tools
-
-- [Audio to Text](https://instascript.app/audio-to-text) — transcribe local audio files.
-- [MP3 to Text](https://instascript.app/mp3-to-text) — focus on MP3 recordings and timed exports.
-- [M4A to Text](https://instascript.app/m4a-to-text) — focus on M4A recordings and timed exports.
-- [Subtitle Editor](https://instascript.app/subtitle-editor) — edit SRT, VTT or SBV timing and text.
-
-## Cancel and retry
-
-Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
-
-If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
-
-Model loading and speech recognition do not have a fixed timeout.
-
-## Review and edit your transcript
-
-After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT, SRT and VTT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
-
-## Search your current transcript
-
-After transcription, use **Find in this transcript** to search your latest
-edited words. Previous and Next navigate occurrences; a preview highlights
-one match. Choose **Edit this match** to select its text, or play its cue when
-a recording and start time are available. Enter moves forward, Shift+Enter
-moves back, and Escape in the search box clears the query.
-
-Search is literal, ignores ASCII letter case, and stays inside each cue in
-your current tab. Queries are not uploaded or saved. Search does not change
-cue timing or exports.
-
-## Export Markdown notes
-
-Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.

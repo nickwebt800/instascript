@@ -404,6 +404,22 @@ async function handleMcp(request, env) {
 // Cloudflare Pages currently answers an unmatched path with the home page and
 // HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
 const KNOWN_FILES = new Set([
+  "/assets/tutorials/mp3-to-text/kennedy-practice.mp3",
+  "/assets/tutorials/mp3-to-text/SOURCE.md",
+  "/assets/tutorials/mp3-to-text/01-choose-wide.svg",
+  "/assets/tutorials/mp3-to-text/01-choose-narrow.svg",
+  "/assets/tutorials/mp3-to-text/02-review-wide.svg",
+  "/assets/tutorials/mp3-to-text/02-review-narrow.svg",
+  "/assets/tutorials/mp3-to-text/03-save-wide.svg",
+  "/assets/tutorials/mp3-to-text/03-save-narrow.svg",
+  "/assets/tutorials/wav-to-text/kennedy-practice.wav",
+  "/assets/tutorials/wav-to-text/SOURCE.md",
+  "/assets/tutorials/wav-to-text/01-choose-wide.svg",
+  "/assets/tutorials/wav-to-text/01-choose-narrow.svg",
+  "/assets/tutorials/wav-to-text/02-review-wide.svg",
+  "/assets/tutorials/wav-to-text/02-review-narrow.svg",
+  "/assets/tutorials/wav-to-text/03-save-wide.svg",
+  "/assets/tutorials/wav-to-text/03-save-narrow.svg",
   "/assets/tutorials/voice-memo-to-text/kennedy-practice.m4a",
   "/assets/tutorials/voice-memo-to-text/SOURCE.md",
   "/assets/tutorials/voice-memo-to-text/01-choose-wide.svg",

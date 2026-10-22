@@ -1,36 +1,72 @@
-# MP3 to Text: Transcribe an MP3 File in Your Browser | InstaScript
+# MP3 to Text: Transcribe an MP3 File in Your Browser
 
-> Turn an MP3 into searchable spoken text in your browser. Export timestamped TXT, SRT or VTT while the file stays on your device.
+> MP3 to text in your browser: drop in an MP3 and get spoken words with timestamps, TXT, SRT and VTT downloads. Your file stays on this device.
 
 Canonical: <https://instascript.app/mp3-to-text>
 
-[InstaScript](https://instascript.app/)
+[Open the tool](https://instascript.app/mp3-to-text)
 
-# MP3 to Text: Transcribe an MP3 File in Your Browser
+## Turn an MP3 speech recording into a checked reading copy
 
-Turn an MP3 into readable text — free, locally in your browser.
+Choose a local MP3 up to 100 MB above. Clear English speech is the useful input; a music file, album cover or ID3 description does not supply a transcript.
 
-Choose one MP3, press **Transcribe this file**, and the spoken words appear with timestamps. Download **TXT** for notes or **SRT** for timed captions.
+Try the [public practice MP3 file](https://instascript.app/assets/tutorials/mp3-to-text/kennedy-practice.mp3). Eleven-second public-domain excerpt from John F. Kennedy’s January 20, 1961 inaugural address. See the [recording provenance](https://instascript.app/assets/demo/SOURCE.md). The sample demonstrates this codec in the tested browser, not every file configuration, recording length or multi-speaker podcast. Screenshots show actual recognition and explicit teaching edits; they are not speed or accuracy measurements.
 
-## MP3 to text: the direct answer
+## 1. Is this MP3 useful for speech recognition?
 
-**MP3 to text** means turning the spoken audio in an MP3 file into searchable words. This converter works on a file you already have and processes it in the browser. It does not fetch a streaming page or infer speech from a title.
+Play a section with speech and check whether music or compression hides consonants. The public practice file is a genuine encoded MP3; it tests this sample in this browser, not every MP3 encoder or mixed music track. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.
 
-## Three steps from MP3 to a transcript
+![Is this MP3 useful for speech recognition? Actual file selection in this tool. The public teaching sample is not a personal recording.](https://instascript.app/assets/tutorials/mp3-to-text/01-choose-wide.svg)
 
-1. Choose one MP3 file up to 100 MB.
-2. Let the browser load the speech model; the first run includes that download.
-3. Review names, numbers and short words, then copy the transcript or download TXT/SRT/VTT.
+Actual file selection in this tool. The public teaching sample is not a personal recording.
 
-## What the MP3 transcript looks like
+**Check:** You selected the intended speech recording, rather than a link or an unrelated music file.
 
-Each line keeps its starting time:
+## 2. What should I check around music and short words?
 
-    [00:00] Thanks for joining the project update
-    [00:07] I will send the revised figures this afternoon
-    [00:14] please flag anything that needs a second look
+Listen just before and after each uncertain phrase. A plausible sentence may still omit a negation under a music bed; mark what cannot be confirmed. Click a transcript timestamp to seek in the local recording player. Replay the surrounding phrase before editing its cue. Text edits do not move cue boundaries. Use Find in this transcript to locate an exact word in the latest edits; Previous and Next navigate matches, Enter moves forward, Shift+Enter moves back, and Escape clears the search.
 
-TXT is easiest to search. SRT keeps numbered cues and time ranges for caption tools.
+![What should I check around music and short words? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.](https://instascript.app/assets/tutorials/mp3-to-text/02-review-wide.svg)
+
+Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.
+
+**Check:** The quotation is supported by audible words, with uncertain gaps identified.
+
+## 3. Should I export a reading copy or timed subtitles?
+
+Do not use a reading export as a replacement for the original MP3. To deliver captions, also check the cue timing in the destination player. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.
+
+![Should I export a reading copy or timed subtitles? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.](https://instascript.app/assets/tutorials/mp3-to-text/03-save-wide.svg)
+
+Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.
+
+First cue from the actual teaching export (including the deliberate [reviewed] edit):
+
+```srt
+1
+00:00:00,000 --> 00:00:07,740
+And so my fellow Americans ask not what your country can do for you [reviewed]
+```
+
+**Check:** The chosen output contains the corrections and has been opened after download.
+
+## More questions and limits
+
+### Does my recording leave this device?
+
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
+
+### What if decoding or the language check fails?
+
+An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. [Recording Format Guide](https://instascript.app/recording-format-guide) explains these boundaries.
+
+### Can I cancel and try again?
+
+Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence.
+
+### Where is the complete audio workflow?
+
+[Audio to Text](https://instascript.app/audio-to-text) explains search, text corrections and output choices. For timing changes, use [Subtitle Editor](https://instascript.app/subtitle-editor).
 
 ## Measured browser timings
 
@@ -49,70 +85,3 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Privacy and file boundaries
-
-The MP3 is decoded and transcribed in your browser. There is no account, transcript history or server upload in this workflow. The page accepts one local file at a time and supports English speech.
-
-Music, clipping, heavy noise and overlapping voices can hide words. The tool does not identify speakers, translate speech or add caption styling.
-
-## How to check the result
-
-- Replay the audio where a name, number or date matters.
-- Listen for music, room echo and crosstalk.
-- Compare the first and last seconds after abrupt cuts.
-- Keep the original MP3 beside the TXT, SRT or VTT for traceability.
-
-## FAQ
-
-### What is the difference between MP3 transcription and MP3 to text?
-
-They describe the same conversion: spoken audio in an MP3 becomes written text. “MP3 to text converter” emphasizes the file workflow; “MP3 transcription” emphasizes the speech result.
-
-### Does the MP3 leave my device?
-
-No. The model runs in the browser and the file is processed locally. Download the output before closing the tab.
-
-### Can it transcribe music or non-speech?
-
-It is intended for English speech. Instrumental sections, lyrics, sound effects and overlapping voices can produce omissions or incorrect words.
-
-### Why is the first MP3 slower?
-
-The first run includes downloading and starting the speech model. A later file can use the cached model.
-
-### Can I make captions from the result?
-
-Yes. Download SRT for timed cues, then inspect cue breaks in your caption editor. The export contains speech timing, not styling or a video preview.
-
-## Cancel and retry
-
-Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** discards its result. A model download or local audio/model operation already in progress may need to finish first; another task can start after it ends.
-
-If a task fails or is cancelled, **Try the same input again** reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded.
-
-Model loading and speech recognition do not have a fixed timeout.
-
-## Review and edit your transcript
-
-After transcription, replay the original recording and click a timestamp to seek to a cue. Edit cue text; Copy, TXT, SRT and VTT use your edits. **Open in Subtitle Editor** opens a local timing editor in another tab. Playback depends on browser codec support. The transcript and recording pass directly between same-origin tabs; no project is saved.
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
-
-## Search your current transcript
-
-After transcription, use **Find in this transcript** to search your latest
-edited words. Previous and Next navigate occurrences; a preview highlights
-one match. Choose **Edit this match** to select its text, or play its cue when
-a recording and start time are available. Enter moves forward, Shift+Enter
-moves back, and Escape in the search box clears the query.
-
-Search is literal, ignores ASCII letter case, and stays inside each cue in
-your current tab. Queries are not uploaded or saved. Search does not change
-cue timing or exports.
-
-## Export Markdown notes
-
-Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.
