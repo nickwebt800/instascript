@@ -15,8 +15,9 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="/assets/logo-256.png" type="image/png">
 <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-editor-guide-page">
 <div class="container">
 <header class="header tool-header">
 <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -29,8 +30,8 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-</header>
-<main>
+</header><p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+<main id="walkthrough-tool" tabindex="-1">
 <section class="subtitle-tool" aria-labelledby="converter-title">
 <div class="tool-intro-row"><div><h2 id="converter-title">Validate and convert one SRT file</h2><p class="privacy-line">Local processing. Timing retained. Source styling removed.</p></div>
 <label class="file-button" for="subtitleFile">Open SRT<input id="subtitleFile" type="file" accept=".srt,application/x-subrip,text/plain" hidden></label></div>
@@ -44,58 +45,38 @@
 <label for="resultText">Validated WebVTT text (read-only)</label><textarea id="resultText" class="result-text" rows="10" readonly spellcheck="false"></textarea>
 </section>
 </section>
-<article class="content-card reading" id="conversion-guide">
-<h2>A complete conversion, not a renamed extension</h2>
-<p>The <a href="https://instascript.app/srt-to-vtt">SRT to VTT converter</a> requires numbered SRT blocks with <code>HH:MM:SS,mmm --&gt; HH:MM:SS,mmm</code> timing, a blank line between blocks, and nonempty text. It checks every block before producing output. A malformed block, empty cue, invalid minute/second field or end at or before the start blocks the entire conversion; it does not silently export only the valid cues.</p>
-<p>Input is one UTF-8 SRT file under 8 MB and 2 million characters, or pasted SRT under 2 million characters; output supports 1–10,000 cues. Editing the source hides the previous result until you convert again. WebVTT output is read-only so copied text and the downloaded file remain identical.</p>
-<h2>Inspect the artifact</h2>
-<p>Original example SRT:</p>
-<pre style="overflow-x:auto"><code>
-1
-00:00:01,250 --&gt; 00:00:03,500
-Check the first cue.
-Keep this line break.
-
-2
-00:00:04,000 --&gt; 00:00:05,750
-Check the final cue.
-</code></pre>
-<p>Converted WebVTT:</p>
-<pre style="overflow-x:auto"><code>
-WEBVTT
-
-00:00:01.250 --&gt; 00:00:03.500
-Check the first cue.
-Keep this line break.
-
-00:00:04.000 --&gt; 00:00:05.750
-Check the final cue.
-</code></pre>
-<p>SRT to WebVTT conversion adds the <code>WEBVTT</code> header, removes numeric cue identifiers and changes timestamp commas to periods. It keeps cue order, millisecond timing and text line breaks. Leading/trailing text whitespace is normalized; source markup is removed. Literal ampersands and angle brackets are escaped for WebVTT. Source entities are treated as literal text. Font, color, positioning and other styling are not transferred.</p>
-<h2>A web-player handoff checklist</h2>
-<p>After you convert SRT to VTT, check the cue count against the source, then inspect the first and final time ranges. This catches an incomplete source before you attach it to a longer recording. Overlapping adjacent cues produce a review warning and keep their original times. Out-of-order start times block conversion until you correct the source. Conversion does not repair synchronization.</p>
-<p>For a video you host, a track can point to the downloaded file:</p>
-<pre style="overflow-x:auto"><code>
-&lt;video controls src=&quot;recording.mp4&quot;&gt;
-  &lt;track kind=&quot;subtitles&quot; src=&quot;converted-subtitles.vtt&quot;
-    srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
-&lt;/video&gt;
-</code></pre>
-<p>Use the language code and label that match your actual subtitles. Serve the file as UTF-8 with <code>Content-Type: text/vtt</code>. Begin with video and subtitles on the same origin; cross-origin tracks need an appropriate CORS configuration. A file that downloads successfully can still fail to load in a player when its URL, content type or access policy is wrong. Enable the player&#39;s subtitle track and check a cue near the beginning, middle and end against the recording. See the <a href="https://www.w3.org/TR/webvtt1/">WebVTT specification</a> for the file format and browser track behavior.</p>
-<h2>Choose the right next step</h2>
-<p>If the subtitles drift progressively, use <a href="https://instascript.app/subtitle-editor">Subtitle Editor</a> to correct timing. If you need the reverse format change or SBV input, use <a href="https://instascript.app/vtt-to-srt">VTT to SRT</a>. To write target-language cue text while keeping the source times, use the manual <a href="https://instascript.app/subtitle-translator">Subtitle Translator</a>.</p>
-<h2>Privacy and limits</h2>
-<p>Reading, validation and export run locally in this tab. Subtitle text and filenames are not uploaded or saved as a server project. The page itself and its static assets are requested from the host; copying or sharing your export is your choice. See the <a href="https://instascript.app/privacy">privacy policy</a>.</p>
-<p>No speech model is downloaded. This is format conversion, with no audio transcription, automatic translation, timing generation, video rendering or burned-in captions. Existing subtitle text can be in any language; that does not change the English-only speech recognition on the separate transcription tools. Conversion speed has not been benchmarked and the historical speech-model timings do not measure this converter.</p>
-<h2>FAQ</h2>
-<h3>Is changing .srt to .vtt enough?</h3>
-<p>No. WebVTT needs its header and timestamp syntax. Use the converter and review the artifact.</p>
-<h3>Will this synchronize late subtitles?</h3>
-<p>No. Cue times are retained. Correct offsets in Subtitle Editor, then convert the corrected SRT.</p>
-<h3>Can I upload VTT or SBV here?</h3>
-<p>This page accepts numbered SRT only. The general VTT to SRT tool accepts VTT, SRT and SBV.</p>
-</article>
-</main>
+<article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Validate the whole SRT before converting</h2>
+<p>Open one UTF-8 SRT file under 8 MB and 2 million characters, or paste under 2 million characters. The converter validates 1–10,000 numbered cues, then produces a read-only WebVTT result locally.</p>
+</div>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#source">What must each SRT block contain?</a></li><li><a href="#fix">How do I fix an error without exporting stale text?</a></li><li><a href="#save">What should I check in the downloaded VTT?</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Teaching sample"><p>Use the <a href="/assets/tutorials/srt-to-vtt/practice.srt">invented practice SRT</a>. Its text is fictional and the illustrated WebVTT was downloaded from this converter.</p>
+</aside>
+<section class="guide-step" aria-labelledby="source"><h3 id="source" tabindex="-1">1. What must each SRT block contain?</h3>
+<p>Each block needs a numeric identifier, a range in HH:MM:SS,mmm --> HH:MM:SS,mmm form, and nonempty text. Separate blocks with a blank line. The end must be after the start and cue starts must be chronological. Multiline text is allowed. An invalid block stops the whole conversion; it does not silently discard a bad cue.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-vtt/01-source-narrow.svg" width="352" height="516"><img src="/assets/tutorials/srt-to-vtt/01-source-wide.svg" width="720" height="320" alt="What must each SRT block contain? Actual converter interface using the invented practice SRT; source changes require conversion again." loading="lazy" decoding="async"></picture><figcaption>Actual converter interface using the invented practice SRT; source changes require conversion again.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> Every source block is complete, including the last one.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="fix"><h3 id="fix" tabindex="-1">2. How do I fix an error without exporting stale text?</h3>
+<p>Read the error, correct the SRT source and press Convert to WebVTT again. Source changes hide and clear the previous result. Adjacent overlaps produce a review warning and retain their times; out-of-order starts, empty text and zero-length ranges block conversion. Use <a href="/subtitle-editor">Subtitle Editor</a> if the original needs timing changes.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-vtt/02-fix-narrow.svg" width="352" height="369"><img src="/assets/tutorials/srt-to-vtt/02-fix-wide.svg" width="720" height="243" alt="How do I fix an error without exporting stale text? Actual converter interface using the invented practice SRT; source changes require conversion again." loading="lazy" decoding="async"></picture><figcaption>Actual converter interface using the invented practice SRT; source changes require conversion again.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The current source validates as a whole; overlap warnings have been reviewed.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save"><h3 id="save" tabindex="-1">3. What should I check in the downloaded VTT?</h3>
+<p>The result is read-only. Copy WebVTT and Download VTT use that result. Conversion adds WEBVTT, removes numeric cue identifiers and replaces timestamp commas with periods. It retains valid ranges, order and text line breaks, normalizes outer whitespace and removes source tags. Ampersands and angle brackets are escaped; source entities are treated as literal text. Font, color, position and animation are not transferred.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-vtt/03-save-narrow.svg" width="352" height="496"><img src="/assets/tutorials/srt-to-vtt/03-save-wide.svg" width="720" height="320" alt="What should I check in the downloaded VTT? Actual converter interface using the invented practice SRT; source changes require conversion again." loading="lazy" decoding="async"></picture><figcaption>Actual converter interface using the invented practice SRT; source changes require conversion again.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> The downloaded file has the header, expected cue count, matching ranges and intended words.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>Will conversion synchronize a different video?</h3>
+<p>No. The original times are retained. Preview beginning, middle and final cues with the exact destination recording. Offsets and progressive drift need review, not just another extension.</p>
+<h3>How do I use WebVTT in a web player?</h3>
+<p>For a video you host, point a subtitle track at the actual VTT URL, use a matching language label, and serve UTF-8 with Content-Type: text/vtt. Start on the same origin; cross-origin tracks need an appropriate CORS configuration. Enable the subtitle track and test playback. See the <a href="https://www.w3.org/TR/webvtt1/">WebVTT specification</a>.</p>
+<h3>Is this speech recognition or automatic translation?</h3>
+<p>No. This page converts existing subtitle text in any language without loading a speech model. It does not generate timing, translate words or render burned-in captions. For VTT/SRT/SBV input and SRT output, use <a href="/vtt-to-srt">VTT to SRT</a>.</p>
+<h3>What leaves this tab?</h3>
+<p>Subtitle contents, file reading, conversion and downloads stay local. The page and static resources are requested from the host. There is no account history or saved cloud project; download your work before closing the tab.</p>
+</section>
+</article></main>
 <footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -151,5 +132,6 @@ Check the final cue.
 </div>
 <script type="module" src="/srt-to-vtt.js"></script>
 <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will conversion synchronize a different video?","acceptedAnswer":{"@type":"Answer","text":"No. The original times are retained. Preview beginning, middle and final cues with the exact destination recording. Offsets and progressive drift need review, not just another extension."}},{"@type":"Question","name":"How do I use WebVTT in a web player?","acceptedAnswer":{"@type":"Answer","text":"For a video you host, point a subtitle track at the actual VTT URL, use a matching language label, and serve UTF-8 with Content-Type: text/vtt. Start on the same origin; cross-origin tracks need an appropriate CORS configuration. Enable the subtitle track and test playback. See the WebVTT specification."}},{"@type":"Question","name":"Is this speech recognition or automatic translation?","acceptedAnswer":{"@type":"Answer","text":"No. This page converts existing subtitle text in any language without loading a speech model. It does not generate timing, translate words or render burned-in captions. For VTT/SRT/SBV input and SRT output, use VTT to SRT."}},{"@type":"Question","name":"What leaves this tab?","acceptedAnswer":{"@type":"Answer","text":"Subtitle contents, file reading, conversion and downloads stay local. The page and static resources are requested from the host. There is no account history or saved cloud project; download your work before closing the tab."}}]}</script>
 </body>
 </html>
