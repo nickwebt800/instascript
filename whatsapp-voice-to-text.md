@@ -1,35 +1,48 @@
-# WhatsApp Voice to Text: TXT and SRT
+# WhatsApp Voice to Text
 
 > Convert a permitted WhatsApp voice message file into timestamped English text, TXT, SRT or VTT in your browser.
 
 Canonical: <https://instascript.app/whatsapp-voice-to-text>
 
-## The direct answer
+[Open the matching tool](https://instascript.app/audio-to-text)
 
-Save or export the WhatsApp voice message you are allowed to use, then open the [InstaScript](https://instascript.app/) tool and choose the local audio file. The browser recognizes supported English speech and returns timestamped text with TXT, SRT and VTT downloads.
+## Review a voice message from a saved local file
 
-Export the message, select the file, let the browser process it, then replay important segments and correct names or numbers before sharing the result.
+This workflow begins with a voice message you are permitted to save on this device. It does not access WhatsApp chats, backups, accounts or private sharing links.
 
-A private WhatsApp chat or message URL is not fetched. This workflow uses a permitted local file and transcribes speech, not message text, stickers, images or speaker identity.
 
-## Output and review
 
-| Output | Useful for | Check |
-| --- | --- | --- |
-| Timestamped transcript | Finding a moment | Names, numbers and URLs |
-| TXT | Searchable notes or a reply draft | Paragraph breaks and spelling |
-| SRT | Subtitle players and editors | Cue timing and line length |
+![Saved message → audio tool → checked reply information. Permitted saved message. Actual local media file. No chat or backup importer. Audio to Text. English speech / browser decoding. Up to 100 MB. Manual review. Names / numbers / conditions. Save checked text](https://instascript.app/assets/tutorials/whatsapp-voice-to-text/source-choices-wide.svg)
 
-For an iPhone voice memo or another local recording, the [voice memo workflow](https://instascript.app/voice-memo-to-text) applies too.
+Decision diagram, not a platform screenshot. Permitted saved message: Actual local media file: No chat or backup importer; Audio to Text: English speech / browser decoding: Up to 100 MB; Manual review: Names / numbers / conditions: Save checked text.
 
-## WhatsApp file or private link?
+## 1. Start after the recording is saved
 
-Use an audio file that you may process. A chat link, cloud backup, disappearing message, account-only media, or a file blocked by device permissions cannot be read here. If the saved file is not browser-readable, export a permitted compatible copy. Uploads are limited to 100 MB.
+Use an actual media file that opens in a local player. Export availability and controls differ by device and app version; this page does not show an unverified universal export button. Keep the original message context separately without uploading private chat details.
 
-```text
-[00:00:00] Can you send the revised quote?
-[00:00:04] I will review it this afternoon.
-```
+**Check:** You have a playable recording, not a backup archive or chat URL.
+
+## 2. Use the existing audio tool
+
+Open [Audio to Text](https://instascript.app/audio-to-text), choose one browser-decodable file up to 100 MB and transcribe English speech. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time. A non-English result, uncertainty and a failed check stop with separate messages.
+
+**Check:** The tool produces a reviewable transcript or a specific failure.
+
+## 3. Check what you need before replying
+
+Replay names, numbers, dates and conditions such as only if or do not. Copy the checked text or download TXT/Markdown; use complete valid timing for SRT/VTT. Keep your reply or action list separate from what the speaker actually said.
+
+**Check:** A reply is based on checked details rather than a guessed transcript.
+
+## More questions and limits
+
+### What processing and privacy boundaries apply?
+
+Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.
+
+### Where should I continue?
+
+[Open the matching tool](https://instascript.app/audio-to-text) and follow its current input requirements. Keep the original, review your result and download it before closing the tab.
 
 ## Measured browser timings
 
@@ -48,40 +61,3 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
-
-## Review a voice message transcript
-
-- Replay words covered by music, noise, clipping, echo or overlapping speakers.
-- Check names, phone numbers, prices, dates and links against the recording.
-- Expect weaker results for very short words, whispers, accents and non-English speech; the current model is English-focused.
-- Text visible in an image or video is not part of speech transcription.
-- Remove private details from copies shared beyond the people who authorized the recording.
-
-## FAQ
-
-### Can I paste a WhatsApp message link?
-
-No. Use a permitted local audio file exported from the message.
-
-### Does it transcribe the chat text?
-
-No. It recognizes spoken audio only. Written messages, reactions and attachments are separate content.
-
-### Is the voice message uploaded?
-
-Local files are decoded and transcribed in your browser. The transcript is not saved as an account record.
-
-### Can I create subtitles from the result?
-
-Yes. Download SRT, review its cues, and edit it in the [Subtitle Editor](https://instascript.app/subtitle-editor) if needed.
-
-## More tools
-
-- [Instagram Transcript](https://instascript.app/)
-- [Voice Memo to Text](https://instascript.app/voice-memo-to-text)
-- [Audio to Text](https://instascript.app/audio-to-text)
-- [Privacy Policy](https://instascript.app/privacy)
-
-## Export your edited transcript
-
-In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
