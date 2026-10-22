@@ -1,0 +1,8 @@
+1
+00:00:01,200 --> 00:00:03,400
+<i>Open the garden gate.</i>
+Walk along the path.
+
+2
+00:00:03,500 --> 00:00:06,000
+Stop beside the tree.

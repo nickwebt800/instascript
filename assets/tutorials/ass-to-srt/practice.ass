@@ -1,0 +1,4 @@
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.20,0:00:03.40,Default,,0,0,0,,{\an8}Open the gate.\NWalk along the path.
+Dialogue: 0,0:00:03.50,0:00:06.00,Default,,0,0,0,,Stop here, beside the tree.

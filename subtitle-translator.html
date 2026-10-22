@@ -21,8 +21,9 @@
   <title>Subtitle Translator: Edit SRT Cues Locally | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
   <link rel="stylesheet" href="/translate-srt-guide.css?v=e2b81ab291c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page subtitle-translator-page">
+<body class="subtitle-converter-page subtitle-translator-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -37,7 +38,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="translator-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="subtitle-tool" aria-labelledby="translator-title">
       <div class="tool-intro-row">
         <div><h2 id="translator-title">Open a subtitle file, then replace each cue</h2><p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p></div>
         <label class="file-button" for="subtitleFile">Open SRT / VTT<input id="subtitleFile" type="file" accept=".srt,.vtt,text/plain,text/vtt,application/x-subrip" class="sr-only"></label>
@@ -49,26 +51,17 @@
       <p id="translatorStatus" class="tool-status" role="status" aria-live="polite">Open one SRT or VTT file to begin.</p>
     </main>
 
-    <section class="content-card reading">
-      <h2>What a subtitle translator does here</h2>
-      <p>Open an existing SRT or VTT file, read each source cue, and type the translated wording beside it. The editor keeps the original start and end times, so the downloaded SRT stays aligned with the recording. This is useful when you already have a transcript and need a reviewable subtitle translation.</p>
-      <p>The page does not listen to audio, identify speech, or send text to a translation API. It also does not guarantee that a literal translation fits a viewer's reading speed. Review names, numbers, line breaks, punctuation, and cue length in the target language before publishing.</p>
-      <h2>Translation workflow</h2>
-      <ol class="steps"><li>Open one local SRT or VTT file.</li><li>Type the target-language text in each editable cue.</li><li>Download the translated SRT and check it against the video.</li></ol>
-      <pre class="example">1
-00:00:00,000 --> 00:00:03,000
-Translated cue text goes here
-
-2
-00:00:03,000 --> 00:00:06,000
-Keep each line easy to read</pre>
-      <h2>FAQ</h2>
-      <h3>Does it translate automatically?</h3><p>No. It is a local cue editor. You supply or paste the translation, which keeps the text private and makes each wording change reviewable.</p>
-      <h3>Can I translate an SRT to another language?</h3><p>Yes. Open the SRT, enter the target-language cue text, and download a new SRT with the original timing.</p>
-      <h3>Can I use a VTT file?</h3><p>Yes. VTT timing and cue text are read locally, then exported as SRT. VTT timecodes are converted to SRT HH:MM:SS,mmm format. VTT positioning settings, style blocks and cue tags are not retained. Invalid timecodes, end times at or before the start, and empty cues must be corrected before export. Valid overlapping cues keep their original timing.</p>
-      <h3>Does it translate the spoken audio?</h3><p>No. For speech recognition first, use the <a href="/">Instagram Transcript</a> tool, then review the generated subtitle cues here.</p>
-    </section>
-    <section class="content-card"><p>Use subtitle text under 2 million characters and up to 10,000 cues. Invalid timing and empty source cues must be corrected before opening the file.</p></section>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Use the manual subtitle translator</h2><p>Open a timed subtitle file, replace its wording with your own translation, and save an SRT with the original cue times. This short walkthrough covers the controls beside the tool. For meaning across cues, bilingual wording and longer review scenarios, use the illustrated SRT translation guide.</p></div><nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#open-translation">Open the subtitle file</a></li><li><a href="#replace-translation">Replace every required cue</a></li><li><a href="#save-translation">Save and check the SRT</a></li></ol></nav><aside class="guide-practice" aria-label="Practice material"><p>Try the <a href="/assets/tutorials/subtitle-translator/practice.srt" download>three-cue practice SRT</a>. The garden instructions and manually entered Spanish are fictional teaching examples. They do not demonstrate automatic translation or measure translation quality. For detailed translation review, follow the <a href="/translate-srt">Translate SRT guide</a>.</p></aside>
+<section class="guide-step" aria-labelledby="open-translation"><h3 id="open-translation" tabindex="-1">1. How do I open a file in this subtitle translator?</h3><p>Choose <strong>Open SRT / VTT</strong> and select one local file. Cues load immediately, without a separate Load button. Each row shows its source time range, source words and a <strong>Translation</strong> field. The practice SRT opens as three rows.</p>
+<p>Translation fields initially contain the original words. Opening a file has not translated it. Keep the untouched source separately. This editor accepts SRT or VTT, under 2 million characters and up to 10,000 cues. Invalid source times or empty source cues must be repaired before import.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-translator/01-open-narrow.svg" width="352" height="540"><img src="/assets/tutorials/subtitle-translator/01-open-wide.svg" width="720" height="314" loading="lazy" decoding="async" alt="Open SRT or VTT loads cues immediately; the first Translation field contains the original garden instruction."></picture><figcaption>These are actual interface crops after opening the three-cue practice SRT.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The expected rows appear, with the correct source words and time ranges.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="replace-translation"><h3 id="replace-translation" tabindex="-1">2. Where do I enter the translation, and what if I leave a field blank?</h3><p>Replace the text in each <strong>Translation</strong> field with wording you have written or reviewed. The source remains visible alongside it. There is no target-language selector or automatic translation button. The example enters <code>Abre la puerta del jardín.</code> for the first instruction.</p>
+<p>An untouched field exports the original wording. A blank or whitespace-only field also falls back to the source text; it does not delete the cue. Check every field before saving, including later rows. For a sentence split across cues or uncertain wording, use the <a href="/translate-srt#translate-across-cues">context-review steps</a> in the longer guide.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-translator/02-replace-narrow.svg" width="352" height="620"><img src="/assets/tutorials/subtitle-translator/02-replace-wide.svg" width="720" height="359" loading="lazy" decoding="async" alt="Manually entered Spanish in the first Translation field and a deliberately blank second field whose actual SRT export retains Walk along the path."></picture><figcaption>The partial download really retained the second cue’s English source. A blank field is not a removal command.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Each cue that needs translation contains your reviewed target-language wording.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save-translation"><h3 id="save-translation" tabindex="-1">3. How do I download the translated subtitles without changing timing?</h3><p>Choose <strong>Download translated SRT</strong>. It saves the current wording with the imported start and end times. The practice first cue remains <code>00:00:01,200 → 00:00:03,400</code> after the Spanish edit. Open the actual download in <a href="/subtitle-editor">Subtitle Editor</a> and compare the cue count, words and times with the original.</p>
+<p>VTT input is rewritten as SRT; positioning, style blocks and inline cue tags are not retained. Check the saved captions with the intended recording in your destination player, including line length and character display. Download before closing or reloading: there is no saved project or cloud translation history.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/subtitle-translator/03-save-narrow.svg" width="352" height="505"><img src="/assets/tutorials/subtitle-translator/03-save-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Download translated SRT control and the actual saved Spanish first cue with its unchanged 1.200 to 3.400 second time range."></picture><figcaption>The completed practice export was reopened in Subtitle Editor with all three original time ranges.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The downloaded SRT has your intended wording and the source time ranges.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Why will my subtitle file not open?</h3><p>Read the import message and repair a copy of the source. SRT/VTT needs non-empty cue text and valid time ranges with End after Start. A recording, image subtitle or URL is not a subtitle text file. The editor does not repair malformed source timing.</p>
+<h3>Can I change timing or listen to the video here?</h3><p>This translator edits wording while retaining imported times. Save SRT and use <a href="/subtitle-editor">Subtitle Editor</a> for cue timing and optional local recording playback. The translator has no audio player, waveform, automatic alignment or video rendering.</p>
+<h3>Can I translate another language or create bilingual captions?</h3><p>You supply the target-language text, including Unicode. The separate speech-recognition tools’ English-only limit does not apply to this manual editor. For bilingual lines and reading-space checks, use the <a href="/translate-srt#bilingual-subtitles">bilingual subtitle guidance</a>.</p>
+<h3>Are my subtitle files sent to a translation service?</h3><p>No. Reading, manual editing and downloads happen in this browser, without an account or translation API call. Clear removes the current editor contents. Keep separate originals and downloads; there is no project history. See the <a href="/privacy">privacy policy</a>.</p></section></article>
 <footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -123,5 +116,43 @@ Keep each line easy to read</pre>
 </nav><p>Runs entirely in your browser &mdash; no upload, no signup.</p></footer>
   </div>
   <script type="module" src="/subtitle-translator.js?v=p2-20261013"></script><script src="/js/webmcp.js" defer></script><script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why will my subtitle file not open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Read the import message and repair a copy of the source. SRT/VTT needs non-empty cue text and valid time ranges with End after Start. A recording, image subtitle or URL is not a subtitle text file. The editor does not repair malformed source timing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change timing or listen to the video here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This translator edits wording while retaining imported times. Save SRT and use Subtitle Editor for cue timing and optional local recording playback. The translator has no audio player, waveform, automatic alignment or video rendering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I translate another language or create bilingual captions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You supply the target-language text, including Unicode. The separate speech-recognition tools’ English-only limit does not apply to this manual editor. For bilingual lines and reading-space checks, use the bilingual subtitle guidance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my subtitle files sent to a translation service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Reading, manual editing and downloads happen in this browser, without an account or translation API call. Clear removes the current editor contents. Keep separate originals and downloads; there is no project history. See the privacy policy."
+      }
+    }
+  ]
+}</script>
 </body>
 </html>

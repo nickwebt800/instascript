@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Convert ASS or SSA subtitles to clean SRT files locally in your browser.">
   <title>ASS to SRT Converter | Convert ASS and SSA Subtitles | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="converter-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="subtitle-tool" aria-labelledby="converter-title">
       <div class="tool-intro-row">
         <div>
           <h2 id="converter-title">Convert one ASS or SSA file</h2>
@@ -62,19 +64,18 @@
       </section>
     </main>
 
-    <section class="content-card reading">
-      <h2>What ASS to SRT conversion keeps</h2>
-      <p>ASS and SSA files store timed dialogue inside an <code>[Events]</code> section. This converter reads each <strong>Dialogue:</strong> line, maps its start and end times to SRT's comma-millisecond format, and writes the dialogue text as a numbered SRT cue. It also turns ASS's <code>\N</code> line-break marker into a real line break.</p>
-      <p>ASS styling is presentation metadata, not spoken text. The conversion removes inline override tags such as <code>{\an8}</code> so the exported SRT contains readable captions. Cue timing, order, and text remain available for review in the result box.</p>
-      <h2>Private, local workflow</h2>
-      <p>Open one local file or paste its contents, then convert. Parsing happens in this browser; no subtitle text is uploaded, stored, or sent to a server. The page does not transcribe audio, render a video preview, merge files, or recreate ASS styling in SRT.</p>
-      <h2>FAQ</h2>
-      <h3>Does it support SSA files?</h3><p>Yes. SSA uses the same dialogue structure as ASS for the fields this converter needs. Open a <code>.ssa</code> file or paste its text.</p>
-      <h3>What if the file has a custom Events format?</h3><p>The parser reads the <code>Format:</code> line in <code>[Events]</code> and finds the Start, End and Text columns. If there is no usable dialogue format, it reports the problem instead of guessing.</p>
-      <h3>Are fonts, colors and positioning preserved?</h3><p>No. SRT has no equivalent for ASS styles and positioning. Inline style tags are stripped while the caption words and timing are retained.</p>
-      <h3>Can I edit the converted captions?</h3><p>Yes. Review or correct the SRT in the result box, then copy or download it. For cue-by-cue timing edits, open the result in the <a href="/subtitle-editor">Subtitle Editor</a>.</p>
-    </section>
-    <footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Convert ASS to SRT and inspect what survives</h2><p>Convert one ASS or SSA text file into SRT dialogue cues in the browser. Start with a copy: ASS fonts, placement, effects and other presentation features do not transfer through this converter.</p></div><nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#open-ass">Open ASS or SSA</a></li><li><a href="#check-ass-losses">Check words and format losses</a></li><li><a href="#save-ass-result">Edit and save the result</a></li></ol></nav><aside class="guide-practice" aria-label="Practice material"><p>Use the <a href="/assets/tutorials/ass-to-srt/practice.ass" download>two-cue practice ASS</a>. It contains original teaching text, an inline positioning override, a line-break marker and a comma in the second caption. The examples below show actual conversion and an edited download.</p></aside>
+<section class="guide-step" aria-labelledby="open-ass"><h3 id="open-ass" tabindex="-1">1. How do I start an ASS to SRT conversion?</h3><p>Choose <strong>Open ASS / SSA</strong> and select one local text file, or paste its contents. Choosing a file fills the source box. Then choose <strong>Convert to SRT</strong> to build the result. The practice file produces two cues.</p>
+<p>The parser reads Dialogue rows inside <code>[Events]</code>. A Format line identifies Start, End and Text columns; a missing Format line uses the default column positions. For custom layouts, inspect the declaration and keep Text as the final field. Preserve the full original so you can investigate any omitted lines.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/ass-to-srt/01-open-narrow.svg" width="352" height="505"><img src="/assets/tutorials/ass-to-srt/01-open-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Open ASS or SSA, Convert to SRT, and the actual 2 cues ready to review summary."></picture><figcaption>File selection and conversion are separate actions. Compare the cue count with usable dialogue in your source.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The selected source is readable, and conversion reports the expected cue count.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="check-ass-losses"><h3 id="check-ass-losses" tabindex="-1">2. What is preserved, and what disappears from ASS subtitles?</h3><p>The converter writes numbered SRT cues from usable dialogue, retaining source order and parsed time ranges. The practice interval <code>0:00:01.20 → 0:00:03.40</code> becomes <code>00:00:01,200 → 00:00:03,400</code>. ASS line-break markers become real line breaks, and the comma in the second caption remains part of its text.</p>
+<p>Inline brace override blocks are stripped. Fonts, colors, positioning and karaoke effects are not recreated. This parser is intended for dialogue text; inspect complex effects, vector drawing commands and unusual event layouts in an ASS-aware editor. A result alone does not confirm a faithful visual conversion. Invalid, empty or non-positive-duration dialogue can be skipped without a per-line warning.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/ass-to-srt/02-review-narrow.svg" width="352" height="572"><img src="/assets/tutorials/ass-to-srt/02-review-wide.svg" width="720" height="346" loading="lazy" decoding="async" alt="Actual SRT result containing numbered dialogue, millisecond timecodes and a line break, with notes on stripped ASS overrides."></picture><figcaption>The practice positioning override was removed; its dialogue and line break remain. Complex ASS drawing and effects need separate review.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Compare cue count, first and last times, line breaks and any effect-heavy lines.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save-ass-result"><h3 id="save-ass-result" tabindex="-1">3. How do I save a corrected SRT file?</h3><p>The SRT result box is editable. Correct words or syntax there, then choose <strong>Copy SRT</strong> or <strong>Download SRT</strong>. The example changes “Open the gate.” to “Open the blue gate.” and verifies that edit in the actual download. Converting again rebuilds the result from the source and replaces result-box edits.</p>
+<p>Result-box edits are not revalidated before export. Keep cue numbers, separators and valid time ranges intact. Reopen the download in <a href="/subtitle-editor">Subtitle Editor</a> for stricter cue checks and optional local recording review, then test the file in your destination player. Conversion does not burn captions into a video.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/ass-to-srt/03-save-narrow.svg" width="352" height="505"><img src="/assets/tutorials/ass-to-srt/03-save-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Copy SRT and Download SRT controls with the actual saved first cue edited to Open the blue gate."></picture><figcaption>The downloaded file and clipboard text were checked after the wording edit.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Open the saved file and confirm both your latest correction and intact subtitle structure.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Why does the converter find no usable Dialogue cues?</h3><p>Check for an Events section, recognizable Dialogue rows and usable Start/End/Text fields. If every row is unusable, the page hides the result and reports an error. It does not repair those rows. With a mixture of valid and invalid rows it can output only the valid ones, so compare the count even after success.</p>
+<h3>Does conversion support SSA and custom event layouts?</h3><p>SSA can use the same dialogue structure. A Format declaration can locate Start and End in a custom layout; Text should be the final field because text may contain commas. Without a Format declaration, default positions are used. A successful conversion is not proof that a custom layout was read correctly.</p>
+<h3>Should I keep ASS if styling matters?</h3><p>Keep the original ASS or SSA whenever you need its styles, layout or effects. This converter exports dialogue as SRT. Use an editor and destination player that support your original format when appearance must be retained.</p>
+<h3>Are these files uploaded or saved as projects?</h3><p>No. One local file or pasted source is processed in the browser. Copy and download use the current result box. There is no account history, batch conversion, audio transcription or video preview. See the <a href="/privacy">privacy policy</a>.</p></section></article>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -133,5 +134,43 @@
   <script src="/ass-to-srt.js" defer></script>
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the converter find no usable Dialogue cues?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check for an Events section, recognizable Dialogue rows and usable Start/End/Text fields. If every row is unusable, the page hides the result and reports an error. It does not repair those rows. With a mixture of valid and invalid rows it can output only the valid ones, so compare the count even after success."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does conversion support SSA and custom event layouts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SSA can use the same dialogue structure. A Format declaration can locate Start and End in a custom layout; Text should be the final field because text may contain commas. Without a Format declaration, default positions are used. A successful conversion is not proof that a custom layout was read correctly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I keep ASS if styling matters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep the original ASS or SSA whenever you need its styles, layout or effects. This converter exports dialogue as SRT. Use an editor and destination player that support your original format when appearance must be retained."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these files uploaded or saved as projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. One local file or pasted source is processed in the browser. Copy and download use the current result box. There is no account history, batch conversion, audio transcription or video preview. See the privacy policy."
+      }
+    }
+  ]
+}</script>
 </body>
 </html>

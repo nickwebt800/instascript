@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Convert VTT, SRT or SBV subtitle files locally in your browser.">
   <title>VTT to SRT Converter | SRT, VTT and SBV | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="converter-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="subtitle-tool" aria-labelledby="converter-title">
       <div class="tool-intro-row">
         <div>
           <h2 id="converter-title">Convert one subtitle file</h2>
@@ -77,28 +79,18 @@
       </section>
     </main>
 
-    <section class="content-card reading">
-      <h2>Supported subtitle formats</h2>
-      <p>This subtitle converter reads one <strong>VTT</strong>, <strong>SRT</strong> or <strong>SBV</strong> source at a time. It accepts local files and pasted text, then writes standard <strong>SRT</strong> or <strong>WebVTT</strong>. Cue order, time ranges, line breaks and subtitle text are kept while format-specific headers and separators are normalized.</p>
-      <p>Use it as an <strong>SRT to VTT</strong>, <strong>SRT to WebVTT</strong> or <strong>subtitle converter</strong> when you need a browser-local format change. It writes an SRT file generator result from the cues you review; it does not invent speech or timing.</p>
-      <p>SBV input uses the comma-separated time-range form commonly found in SubViewer files. This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server.</p>
-
-      <h2>How conversion works</h2>
-      <p>The browser reads each cue's start time, end time and text. SRT output receives numbered cues and comma milliseconds. VTT output receives a <strong>WEBVTT</strong> header and period milliseconds. Existing cue times are not recalculated or rounded beyond the format's three-digit millisecond field.</p>
-      <p>If a source has a cue that does not match the selected subtitle syntax, it is not silently invented. The page reports that it could not find usable cues so you can correct the pasted text.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I convert VTT to SRT without uploading the file?</h3>
-      <p>Yes. Paste the VTT text or open one local VTT file. Reading and conversion happen in this browser.</p>
-      <h3>Can I convert SRT to VTT on this page?</h3>
-      <p>Yes. Open or paste SRT, choose <strong>VTT</strong> under Output format, then copy or download the WebVTT result.</p>
-      <h3>Does it support SBV?</h3>
-      <p>Yes. SBV is accepted as an input format. Choose SRT or VTT for the output.</p>
-      <h3>Can I convert several files at once?</h3>
-      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
-    </section>
-
-    <footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Convert VTT to SRT in three checked steps</h2><p>Read one local VTT, SRT or SBV source and export SRT or WebVTT. Use this page for a format change; compare the actual converted cues before replacing an original subtitle file.</p></div><nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#choose-subtitle-format">Choose source and output</a></li><li><a href="#inspect-converted-cues">Compare the converted cues</a></li><li><a href="#save-converted-subtitles">Edit, then save</a></li></ol></nav><aside class="guide-practice" aria-label="Practice material"><p>Download the <a href="/assets/tutorials/vtt-to-srt/practice.vtt" download>two-cue practice VTT</a> or the <a href="/assets/tutorials/vtt-to-srt/practice.sbv" download>matching SBV</a>. Both contain original teaching text. The first cue runs from 1.200 to 3.400 seconds; conversion should retain that interval.</p></aside>
+<section class="guide-step" aria-labelledby="choose-subtitle-format"><h3 id="choose-subtitle-format" tabindex="-1">1. How do I convert VTT to SRT, or SRT to VTT?</h3><p>Choose <strong>Open VTT / SRT / SBV</strong>, or paste subtitle text. For VTT to SRT, select <strong>SRT</strong> under <strong>Output format</strong>, then choose <strong>Convert subtitle</strong>. For SRT to WebVTT, open SRT and select VTT. SBV can be used as the source for either output.</p>
+<p>The output selector chooses the destination format; it does not describe the source file. Selecting a source file fills the text box but does not convert it. Keep an untouched original, especially if it contains styling, positioning or other metadata.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/vtt-to-srt/01-format-narrow.svg" width="352" height="505"><img src="/assets/tutorials/vtt-to-srt/01-format-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Open VTT, SRT or SBV, Convert subtitle, and the Output format selector set to SRT."></picture><figcaption>Opening the practice VTT fills the source. The output is produced only when Convert subtitle is chosen.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Your source text is present and the desired destination format is selected.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="inspect-converted-cues"><h3 id="inspect-converted-cues" tabindex="-1">2. How do I check the SRT or WebVTT result?</h3><p>Compare the reported cue count, words, line breaks and time ranges. The practice VTT has two cues; its first SRT range is <code>00:00:01,200 → 00:00:03,400</code>. SRT has sequence numbers and comma milliseconds. WebVTT starts with <code>WEBVTT</code> and uses periods.</p>
+<p>This page changes subtitle syntax; it does not correct timing drift or measure speech. Cues with unusable times, an end at or before the start, or no text may be omitted. An error appears when no usable cues remain, but mixed input can still return a smaller successful result. Complex VTT metadata, styles and positioning are not guaranteed to survive; inspect them in a VTT-aware editor.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/vtt-to-srt/02-review-narrow.svg" width="352" height="505"><img src="/assets/tutorials/vtt-to-srt/02-review-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Actual two-cue conversion summary and downloaded SRT first cue showing the 1.200 to 3.400 second range."></picture><figcaption>This excerpt comes from an actual download. Compare additional cues in your own file; success does not guarantee none were omitted.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The converted count and cue boundaries match the source lines you intend to keep.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save-converted-subtitles"><h3 id="save-converted-subtitles" tabindex="-1">3. Can I edit the result before downloading?</h3><p>Yes. Edit the result text, then choose <strong>Copy result</strong> or <strong>Download result</strong>. Both use the current result box. Do not change Output format after editing unless you are ready to rebuild: changing the selector regenerates the result from parsed source cues and discards manual result edits. Choosing Convert subtitle again also rebuilds it.</p>
+<p>Manual result edits are not validated on download. Reopen the saved file in <a href="/subtitle-editor">Subtitle Editor</a> to check cue structure and timing, then test it with the intended player. For a strict SRT-input workflow, the separate <a href="/srt-to-vtt">SRT to VTT</a> page provides another route. Save before closing; there is no stored project.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/vtt-to-srt/03-save-narrow.svg" width="352" height="505"><img src="/assets/tutorials/vtt-to-srt/03-save-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Copy result and Download result controls, and Output format changed to VTT, which regenerates the output from parsed source cues."></picture><figcaption>In the actual test, a manual “blue garden gate” edit disappeared after selecting another output format.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Choose your final format before editing and confirm the saved file has your latest words.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Why did the cue count shrink?</h3><p>The converter can skip entries with unusable or non-positive time ranges or empty text. Compare the source and result, repair a copy and convert again. The converter does not supply missing speech or invent a missing valid range.</p>
+<h3>Why does conversion fail after I paste text?</h3><p>Plain prose without subtitle ranges is not timed subtitle input. Check the displayed error and provide VTT, SRT or SBV. If you only have words, <a href="/txt-to-srt">TXT to SRT</a> creates an estimated draft for manual timing review.</p>
+<h3>Will converting repair late subtitles or preserve every VTT feature?</h3><p>No timing alignment is performed, and this is not a lossless VTT metadata editor. Use <a href="/subtitle-editor">Subtitle Editor</a> to review cue text and timing, and keep the original for styles, regions and player-specific presentation.</p>
+<h3>Can I convert several files without an upload?</h3><p>Conversion is local, with one source at a time. The page does not batch or merge files, store projects, call a speech model or upload subtitle contents. See the <a href="/privacy">privacy policy</a>.</p></section></article>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -157,5 +149,43 @@
   <script src="/vtt-to-srt.js" defer></script>
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why did the cue count shrink?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The converter can skip entries with unusable or non-positive time ranges or empty text. Compare the source and result, repair a copy and convert again. The converter does not supply missing speech or invent a missing valid range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does conversion fail after I paste text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plain prose without subtitle ranges is not timed subtitle input. Check the displayed error and provide VTT, SRT or SBV. If you only have words, TXT to SRT creates an estimated draft for manual timing review."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will converting repair late subtitles or preserve every VTT feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No timing alignment is performed, and this is not a lossless VTT metadata editor. Use Subtitle Editor to review cue text and timing, and keep the original for styles, regions and player-specific presentation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert several files without an upload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Conversion is local, with one source at a time. The page does not batch or merge files, store projects, call a speech model or upload subtitle contents. See the privacy policy."
+      }
+    }
+  ]
+}</script>
 </body>
 </html>

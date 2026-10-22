@@ -20,8 +20,9 @@
   <meta name="twitter:description" content="Convert SRT or VTT subtitles to clean plain text locally in your browser.">
   <title>SRT to Text Converter | VTT to Text | InstaScript</title>
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+  <link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="subtitle-converter-page">
+<body class="subtitle-converter-page subtitle-editor-guide-page">
   <div class="container">
     <header class="header tool-header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -36,7 +37,8 @@
 </nav>
     </header>
 
-    <main class="subtitle-tool" aria-labelledby="converter-title">
+    <p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
+    <main id="walkthrough-tool" tabindex="-1" class="subtitle-tool" aria-labelledby="converter-title">
       <div class="tool-intro-row">
         <div>
           <h2 id="converter-title">Remove subtitle timecodes</h2>
@@ -71,30 +73,18 @@
       </section>
     </main>
 
-    <section class="content-card reading">
-      <h2>Supported subtitle formats</h2>
-      <p>This SRT to text converter reads one <strong>SRT</strong> or <strong>VTT</strong> source at a time. It also handles a local <strong>SRT to TXT</strong> or <strong>convert SRT to TXT</strong> workflow: paste subtitle text or open one local file, then get the cue text without sequence numbers or timecodes. The result remains editable and can be copied or downloaded as a TXT file.</p>
-      <p>This page does not transcribe audio, merge files, store projects, require a login, or send subtitle text to a server. It handles one local subtitle file at a time.</p>
-
-      <h2>SRT to TXT: keep the words, remove subtitle timing</h2>
-      <p>For an <strong>SRT to TXT</strong> file, choose <strong>Convert to plain text</strong>, review the editable result, then select <strong>Download TXT</strong>. This uses the same converter above; it does not need a separate upload or account.</p>
-      <p>The TXT output keeps cue text and line breaks in source order. It removes cue numbers, time ranges and subtitle markup; it does not summarize, translate, label speakers or preserve timing for a video player. Keep the original SRT if you may need timed subtitles later.</p>
-      <h2>How conversion works</h2>
-      <p>The browser finds each subtitle cue, removes its sequence number and start/end time, and keeps the spoken text and line breaks. Cue text is joined in reading order. Common VTT markup tags are removed from the plain-text result.</p>
-      <p>If the pasted content has no usable SRT or VTT cues, the page reports that it could not find subtitle text so you can correct the source.</p>
-
-      <h2>FAQ</h2>
-      <h3>Can I convert SRT to text without uploading the file?</h3>
-      <p>Yes. Paste the SRT text or open one local SRT file. Reading and conversion happen in this browser.</p>
-      <h3>Does this also work as a VTT to text converter?</h3>
-      <p>Yes. Paste or open a VTT file and choose <strong>Convert to plain text</strong>. WEBVTT headers, cue numbers, and timecodes are left out of the result.</p>
-      <h3>Can I edit the plain text before downloading?</h3>
-      <p>Yes. The result is editable. Make any changes, then copy the text or download it as a TXT file.</p>
-      <h3>Can I convert several subtitle files at once?</h3>
-      <p>No. This page intentionally handles one subtitle file at a time so the workflow stays local and easy to review.</p>
-    </section>
-
-    <footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Extract plain text from subtitles</h2><p>Use this SRT to text converter to remove subtitle timecodes and sequence numbers while keeping readable cue words. TXT is useful for reading, editing and quotation; keep the source subtitle file for timed playback.</p></div><nav class="guide-contents" aria-label="Walkthrough steps"><ol><li><a href="#open-text-source">Open the timed source</a></li><li><a href="#review-plain-text">Review what was removed</a></li><li><a href="#save-plain-text">Correct and save TXT</a></li></ol></nav><aside class="guide-practice" aria-label="Practice material"><p>Try the <a href="/assets/tutorials/srt-to-text/practice.srt" download>two-cue practice SRT</a>. Its original teaching text includes a simple italic tag and a line break. It should produce three text lines without cue numbers or time ranges.</p></aside>
+<section class="guide-step" aria-labelledby="open-text-source"><h3 id="open-text-source" tabindex="-1">1. How do I turn an SRT or VTT file into TXT?</h3><p>Choose <strong>Open SRT / VTT</strong> and select one local subtitle file, or paste its contents. Then choose <strong>Convert to plain text</strong>. Opening the file alone fills the source box; conversion creates the editable result below.</p>
+<p>Use a subtitle text file, not an MP4 or an image of captions. This page reads existing caption words and does not transcribe speech. If you have only a permitted English recording, start with <a href="/video-to-text">Video to Text</a> instead.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-text/01-open-narrow.svg" width="352" height="505"><img src="/assets/tutorials/srt-to-text/01-open-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Open SRT or VTT, Convert to plain text, and the actual 2 cues converted to plain text summary."></picture><figcaption>Two cues can produce more than two text lines when a cue contains an internal line break.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The source contains subtitle ranges and the converted text appears below.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="review-plain-text"><h3 id="review-plain-text" tabindex="-1">2. What happens to timecodes, markup and line breaks?</h3><p>The result removes cue numbers, time-range lines and common subtitle markup tags. It keeps cue text in source order, with internal line breaks and a newline between cue texts. The practice SRT becomes “Open the garden gate.”, “Walk along the path.” and “Stop beside the tree.” on three lines.</p>
+<p>This is text extraction, not a summary or paragraph rewrite. Repeated caption words remain repeated, and the tool does not add speaker labels or translate. A produced TXT also does not validate source timing; extraction can find words even when a time-range line is malformed. Keep the original if you need timecodes later.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-text/02-review-narrow.svg" width="352" height="580"><img src="/assets/tutorials/srt-to-text/02-review-wide.svg" width="720" height="327" loading="lazy" decoding="async" alt="Actual SRT source with timecodes and italic tags beside the plain-text result containing three garden instruction lines."></picture><figcaption>The practice italic tags and time ranges are removed. The two lines inside the first cue stay as separate text lines.</figcaption></figure><p class="guide-check"><strong>Check:</strong> Compare the first, last and any multiline captions; confirm the expected words remain.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save-plain-text"><h3 id="save-plain-text" tabindex="-1">3. How do I save the latest edited text?</h3><p>Edit the <strong>Plain text result</strong> box before choosing <strong>Copy text</strong> or <strong>Download TXT</strong>. Both use the current text. The example adds “blue” to the first sentence and verifies it in the actual TXT download and clipboard.</p>
+<p>Converting again replaces result edits with a fresh extraction from the source. Save the wording you need first. Reopen the TXT in a text editor and check character display and line breaks. TXT contains no cue timings, so it cannot replace an SRT/VTT subtitle track in a player. This page does not restore timecodes from the text.</p><figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/srt-to-text/03-save-narrow.svg" width="352" height="505"><img src="/assets/tutorials/srt-to-text/03-save-wide.svg" width="720" height="279" loading="lazy" decoding="async" alt="Copy text and Download TXT controls with the actual edited text download containing Open the blue garden gate."></picture><figcaption>The saved TXT and clipboard contents were compared after editing. No subtitle timecodes are retained.</figcaption></figure><p class="guide-check"><strong>Check:</strong> The actual downloaded TXT contains your last correction and no subtitle time ranges.</p><a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more" aria-labelledby="common-problems"><h2 id="common-problems" tabindex="-1">More questions and common problems</h2><h3>Why does the converter find no subtitle text?</h3><p>Check that you supplied readable SRT or VTT with caption text after its time-range lines. Plain prose alone is not a timed source. When no usable cues are found, the result is hidden and an error is shown so you can repair the input.</p>
+<h3>Can I use VTT with NOTE or STYLE metadata?</h3><p>The extractor skips recognized NOTE, STYLE and REGION metadata blocks and removes common text tags. It is not a full WebVTT presentation renderer or an entity/formatting repair tool. Compare the resulting words with the source before quoting or publishing them.</p>
+<h3>Can I get the original timestamps back from TXT?</h3><p>Keep your original SRT/VTT. The TXT export has removed its timing, and this page cannot recover it. <a href="/txt-to-srt">TXT to SRT</a> can create new estimated timings from words, but those are a draft rather than the original ranges.</p>
+<h3>Are my files uploaded or converted in a batch?</h3><p>No. The page handles one local file or pasted source at a time, in this browser. It does not upload subtitle text, merge files, create an account or save a cloud project. See the <a href="/privacy">privacy policy</a>.</p></section></article>
+<footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -153,5 +143,43 @@
   <script src="/srt-to-text.js" defer></script>
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the converter find no subtitle text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check that you supplied readable SRT or VTT with caption text after its time-range lines. Plain prose alone is not a timed source. When no usable cues are found, the result is hidden and an error is shown so you can repair the input."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use VTT with NOTE or STYLE metadata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The extractor skips recognized NOTE, STYLE and REGION metadata blocks and removes common text tags. It is not a full WebVTT presentation renderer or an entity/formatting repair tool. Compare the resulting words with the source before quoting or publishing them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get the original timestamps back from TXT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep your original SRT/VTT. The TXT export has removed its timing, and this page cannot recover it. TXT to SRT can create new estimated timings from words, but those are a draft rather than the original ranges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my files uploaded or converted in a batch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The page handles one local file or pasted source at a time, in this browser. It does not upload subtitle text, merge files, create an account or save a cloud project. See the privacy policy."
+      }
+    }
+  ]
+}</script>
 </body>
 </html>
