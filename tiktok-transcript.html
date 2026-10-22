@@ -20,8 +20,9 @@
   <meta name="twitter:title" content="TikTok Transcript Tool | InstaScript">
   <meta name="twitter:description" content="Turn a saved TikTok video into timestamped text in your browser.">
   <link rel="stylesheet" href="/style.css?v=css-4353bf6eb5c7">
+<link rel="stylesheet" href="/subtitle-editor-guide.css?v=597ddcdfb389">
 </head>
-<body class="upload-only">
+<body class="upload-only subtitle-editor-guide-page">
   <div class="container">
     <header class="header">
       <p class="brand" data-site-brand><a href="/">InstaScript</a></p>
@@ -34,9 +35,9 @@
 <a href="/about">About</a>
 <a href="/contact">Contact</a>
 </nav>
-    </header>
+    </header><p class="guide-jump"><a href="#guide-title">Need a walkthrough? Follow the illustrated guide.</a></p>
 
-    <main class="tool-card" aria-labelledby="tool-heading">
+    <main id="walkthrough-tool" tabindex="-1" class="tool-card" aria-labelledby="tool-heading">
       <div class="tool-heading">
         <div>
           <h2 id="tool-heading">TikTok transcript</h2>
@@ -63,7 +64,8 @@
         </div>
         <p class="panel-hint">Save the TikTok to your phone or computer first, then drop the file here.</p>
       </div>
-    </main>
+    <p class="panel-hint">English speech only. Browser decoding is required. First use may download language-detection and English-recognition models.</p>
+</main>
 
     <!-- Processing -->
     <div id="processing" class="processing hidden">
@@ -93,74 +95,42 @@
       <div id="transcriptOutput" class="transcript-output"></div>
     </section>
 
-    <section class="content-card">
-      <h2>What is a TikTok transcript?</h2>
-      <p>A <strong>TikTok transcript</strong> is the spoken content of a TikTok video written out as text. Instead of replaying a clip to catch what was said, you read (or search) the words. A TikTok video transcription usually includes <strong>timestamps</strong> &mdash; the start time of each line &mdash; so you can jump back to the exact moment in the video.</p>
-      <p>People use TikTok transcripts to turn a video into a blog post or newsletter, pull quotes, write captions and subtitles, keep notes from tutorials and talks, and make videos searchable.</p>
-
-      <h2>How to transcribe a TikTok video in 3 steps</h2>
-      <ol class="steps">
-        <li><strong>Save the video to your device.</strong> In the TikTok app use Share &rarr; Save video. On desktop, download the clip or record your screen while it plays. Any MP4, WebM, MP3 or WAV file up to 100 MB works.</li>
-        <li><strong>Drop the file into the box above</strong> (or tap to browse from your phone).</li>
-        <li><strong>Press Transcribe.</strong> The text appears with timestamps. Copy it, or download it as .txt or .srt.</li>
-      </ol>
-
-      <h2>What the result looks like</h2>
-      <p>Each line of the TikTok transcription starts with the time it was spoken, so the text stays tied to the video:</p>
-      <pre class="example">[00:00] So I tried this editing trick for a week
-[00:04] and here is what actually changed
-[00:09] first, the export time dropped in half</pre>
-      <p>The same text is available in two downloads: <strong>.txt</strong> for plain notes and <strong>.srt</strong> for subtitles you can drop into an editor.</p>
-
-      <h2>How long does a TikTok take to transcribe?</h2>
-      <p>These are historical measurements from 2026-09-14 using only whisper-tiny.en. They do not measure the current language-detection plus English-transcription workflow, and exclude Instagram lookup and media download.</p>
-      <table class="bench-table">
-        <thead><tr><th>Audio length</th><th>Historical wall-clock time</th><th>Historical model load</th></tr></thead>
-        <tbody>
-          <tr><td>11 s</td><td>16.89 s</td><td>included</td></tr>
-          <tr><td>11 s</td><td>6.49 s</td><td>already in memory</td></tr>
-          <tr><td>30 s</td><td>8.98 s</td><td>already in memory</td></tr>
-          <tr><td>60 s</td><td>16.06 s</td><td>already in memory</td></tr>
-          <tr><td>120 s</td><td>28.58 s</td><td>already in memory</td></tr>
-        </tbody>
-      </table>
-      <p>In the historical test, the first run included model loading; subsequent runs retained the English model in memory. Current jobs release that instance before language detection, so a resource cache hit still requires initialization. Wall-clock time is not CPU time, and subtracting two runs does not isolate download or initialization time.</p>
-      <p class="bench-note">One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.</p>
-      <p class="bench-note">Sources: <a href="/benchmark/whisper-tiny-en-browser-benchmark.csv">historical raw CSV</a> &middot; <a href="/benchmark/current-english-browser-20261014.csv">current two-model measurements (2026-10-14)</a> &middot; <a href="/benchmark/README.md">method, environment and limitations</a>.</p>
-
-
-
-      <h2>FAQ</h2>
-      <h3>Can I paste a TikTok link instead of uploading?</h3>
-      <p>Not on this page. The link option on this site currently works with public Instagram URLs, so for a TikTok you save the video to your device and upload the file. The transcription itself is the same either way.</p>
-      <h3>Does it work on my phone?</h3>
-      <p>Yes. The page works in a mobile browser: save the TikTok, then use the upload box above. The first run downloads the speech model to your browser, so a longer video takes longer on mobile data.</p>
-      <h3>Is the video uploaded anywhere?</h3>
-      <p>No. Transcription runs inside your browser with a local speech model. The file is not uploaded to a server, and no account is needed.</p>
-      <h3>Which languages are supported?</h3>
-      <p>English. The tool checks the audio language first and returns a message instead of a guess when the audio is not English.</p>
-      <h3>How long can the video be?</h3>
-      <p>Files up to 100 MB. Long clips are processed in 30-second chunks, so a long video takes proportionally longer and uses more memory on your device.</p>
-
-      <p class="disclaimer">InstaScript is an independent personal project. It is not affiliated with, endorsed by, or sponsored by TikTok, ByteDance, or OpenAI.</p>
-    </section>
-
-    <nav class="related-links" aria-label="Related transcript tools">
-      Other transcript tools:
-      <a href="/">Instagram Transcript</a> &middot;
-      <a href="/video-to-text">Video to Text</a> &middot;
-      <a href="/audio-to-text">Audio to Text</a>
-        <a href="/mp3-to-text">MP3 to Text</a> &middot;
-      <a href="/facebook-video-transcript">Facebook Video Transcript</a> &middot;
-      <a href="/youtube-transcript">YouTube Transcript</a>
-    </nav>
-
-    <section class="content-card"><h2>Cancel and retry</h2><p>Only one transcription task can run at a time. Cancel processing discards its result; a model download or local audio/model operation already in progress may need to finish first. After a failure or cancellation, Try the same input again reuses the selected file in this tab. Selecting a different input clears that retry target. Local file contents are not uploaded. Model loading and speech recognition do not have a fixed timeout.</p></section>
-<section class="content-card"><h2>Review and edit your transcript</h2><p>After transcription, replay the original recording with the player and click a timestamp to seek to a cue. Edit the words in each cue; Copy, TXT, SRT and VTT use your edits. When every cue has complete valid timing, choose <strong>Open in Subtitle Editor</strong> to change timing in another tab. Recording playback depends on your browser codec support. Subtitle Editor receives your transcript and recording locally between same-origin tabs; no project is saved.</p></section>
-<section class="content-card"><h2>Export your edited transcript</h2><p>In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.</p></section>
-    <section class="content-card"><h2>Search your current transcript</h2><p>After transcription, use <strong>Find in this transcript</strong> to search your latest edited words. Previous and Next move between occurrences; the preview highlights one match. Choose <strong>Edit this match</strong> to select its text, or play its cue when a recording and start time are available. Enter moves forward, Shift+Enter moves back, and Escape in the search box clears the query.</p><p>Search is literal, ignores ASCII letter case, and stays inside each cue in your current tab. It does not upload or save your query, change subtitle timing, or alter exports.</p></section>
-<section class="content-card"><h2>Export Markdown notes</h2><p>Choose Markdown to save a .md note with a title and your latest edited words, one paragraph per speech cue (or the available untimed text). Include timestamps in TXT, Markdown and Copy adds only available start times; missing times are not estimated. Markdown punctuation and HTML-like words are escaped as text. The note is built in your browser without uploading content or adding it to a history. This exports a transcript, not an AI summary.</p></section>
-<footer class="footer" data-site-footer>
+    <article class="content-card reading editor-guide" aria-labelledby="guide-title"><div class="guide-intro"><h2 id="guide-title" tabindex="-1">Check spoken words across short-video cuts</h2>
+<p>Use a permitted video file already saved on this device, up to 100 MB. This page does not fetch TikTok URLs or turn a saved bookmark into a media file.</p>
+</div>
+<nav class="guide-contents" aria-label="Guide sections"><ol><li><a href="#choose">What file can I select here?</a></li><li><a href="#review">How do I check speech at a fast cut?</a></li><li><a href="#save">How do I use the reviewed captions?</a></li></ol></nav>
+<aside class="guide-practice" aria-label="Teaching sample"><p>Try the <a href="/assets/tutorials/tiktok-transcript/kennedy-practice.mp4" download>public practice MP4 file</a>. Eleven-second public-domain excerpt from John F. Kennedy’s January 20, 1961 inaugural address. See the <a href="/assets/demo/SOURCE.md">recording provenance</a>. The MP4 uses a neutral picture; it is not a platform export or meeting. The sample demonstrates this codec in the tested browser, not every file configuration, recording length or multi-speaker podcast. Screenshots show actual recognition and explicit teaching edits; they are not speed or accuracy measurements.</p>
+</aside>
+<section class="guide-step" aria-labelledby="choose"><h3 id="choose" tabindex="-1">1. What file can I select here?</h3>
+<p>Choose an actual local video that plays with sound. Source access and download availability vary; this tutorial starts after obtaining a file you are allowed to use. The practice MP4 is a historical audio excerpt with a neutral picture, not a TikTok download. The browser first decodes the recording, checks its language with a multilingual checkpoint, then recognizes English with a separate English checkpoint. First use may download both models. Cached resource files can avoid another download, but they do not guarantee an initialized model: the English instance is released before the next language check. There is no fixed completion time.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/tiktok-transcript/01-choose-narrow.svg" width="352" height="409"><img src="/assets/tutorials/tiktok-transcript/01-choose-wide.svg" width="720" height="243" alt="What file can I select here? Actual file selection in this tool. The public teaching sample is not a personal recording." loading="lazy" decoding="async"></picture><figcaption>Actual file selection in this tool. The public teaching sample is not a personal recording.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> You have a playable media file, rather than a post URL or bookmark.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="review"><h3 id="review" tabindex="-1">2. How do I check speech at a fast cut?</h3>
+<p>Replay both sides of a cut and listen for a clipped first or final word. Visible captions can be edited differently from speech; compare them separately. This tool does not read text from the picture. Click a transcript timestamp to seek in the local recording player. Replay the surrounding phrase before editing its cue. Text edits do not move cue boundaries. Use Find in this transcript to locate an exact word in the latest edits; Previous and Next navigate matches, Enter moves forward, Shift+Enter moves back, and Escape clears the search.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/tiktok-transcript/02-review-narrow.svg" width="352" height="557"><img src="/assets/tutorials/tiktok-transcript/02-review-wide.svg" width="720" height="411" alt="How do I check speech at a fast cut? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech." loading="lazy" decoding="async"></picture><figcaption>Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.</figcaption></figure>
+<p class="guide-check"><strong>Check:</strong> A cut has not removed a negation, changed a number or joined unrelated phrases.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-step" aria-labelledby="save"><h3 id="save" tabindex="-1">3. How do I use the reviewed captions?</h3>
+<p>Keep text notes or take a valid timed file to <a href="/subtitle-editor">Subtitle Editor</a>. This page does not burn captions into video or promise a direct SRT upload in a mobile publishing screen. Copy, TXT and Markdown use your edited words and are untimed by default. Enable Include timestamps in TXT, Markdown and Copy to include available start times. Markdown escapes markup and exports transcript paragraphs, without creating a summary. SRT, VTT and Open in Subtitle Editor require nonempty text and complete valid start/end times; missing ends are not estimated. If timing is incomplete, save TXT or Markdown and keep the recording.</p>
+<figure class="tutorial-figure"><picture><source media="(max-width: 600px)" srcset="/assets/tutorials/tiktok-transcript/03-save-narrow.svg" width="352" height="370"><img src="/assets/tutorials/tiktok-transcript/03-save-wide.svg" width="720" height="225" alt="How do I use the reviewed captions? Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech." loading="lazy" decoding="async"></picture><figcaption>Actual local sample workflow. Any [reviewed] suffix is a deliberate teaching edit, not recognized speech.</figcaption></figure>
+<p>First cue from the actual teaching export (including the deliberate [reviewed] edit):</p>
+<pre class="example">1
+00:00:00,000 --&gt; 00:00:07,740
+And so my fellow Americans ask not what your country can do for you [reviewed]</pre><p class="guide-check"><strong>Check:</strong> The final caption presentation is previewed in the app or editor where it will actually appear.</p>
+<a class="guide-back" href="#walkthrough-tool">Back to the tool</a></section>
+<section class="guide-more"><h2>More questions and limits</h2>
+<h3>Does my recording leave this device?</h3>
+<p>Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries.</p>
+<h3>What if decoding or the language check fails?</h3>
+<p>An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. <a href="/recording-format-guide">Recording Format Guide</a> explains these boundaries.</p>
+<h3>Can I cancel and try again?</h3>
+<p>Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence.</p>
+<h3>Where is the complete audio workflow?</h3>
+<p><a href="/audio-to-text">Audio to Text</a> explains search, text corrections and output choices. For timing changes, use <a href="/subtitle-editor">Subtitle Editor</a>.</p>
+</section>
+<p class="disclaimer">InstaScript is independent and is not affiliated with or endorsed by the source platforms mentioned here.</p>
+</article><footer class="footer" data-site-footer>
       <nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
 <div class="footer-group"><span class="footer-group-title">Transcript tools</span>
 <a href="/">Instagram Transcript</a>
@@ -219,55 +189,9 @@
   </div>
 
   <script type="module" src="app.js?v=app-f33348b14bd1"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can I paste a TikTok link instead of uploading?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not on this page. The link option on this site currently works with public Instagram URLs, so for a TikTok you save the video to your device and upload the file. The transcription itself is the same either way."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it work on my phone?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The page works in a mobile browser: save the TikTok, then use the upload box above. The first run downloads the speech model to your browser, so a longer video takes longer on mobile data."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the video uploaded anywhere?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Transcription runs inside your browser with a local speech model. The file is not uploaded to a server, and no account is needed."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which languages are supported?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "English. The tool checks the audio language first and returns a message instead of a guess when the audio is not English."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long can the video be?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Files up to 100 MB. Long clips are processed in 30-second chunks, so a long video takes proportionally longer and uses more memory on your device."
-        }
-      }
-    ]
-  }
-  </script>
+
 <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does my recording leave this device?","acceptedAnswer":{"@type":"Answer","text":"Local decoding, recognition, replay, edits and downloads run in your browser. Model resources need network access, but the local recording and transcript are not uploaded. There is no account history or saved cloud project; download your work before closing the tab. Same-origin editor transfer keeps the cues and recording local between tabs. Instagram URL retrieval and YouTube caption lookup have separate server-assisted privacy boundaries."}},{"@type":"Question","name":"What if decoding or the language check fails?","acceptedAnswer":{"@type":"Answer","text":"An undecodable file is different from a language result. Detected non-English speech stops recognition; an uncertain result or a technical language-check failure stops with a separate message and creates no transcript. For a damaged or unsupported file, export a new playable audio copy from its source: renaming the extension does not convert it. Recording Format Guide explains these boundaries."}},{"@type":"Question","name":"Can I cancel and try again?","acceptedAnswer":{"@type":"Answer","text":"Only one transcription task runs at a time. Cancel processing discards its result; an in-progress model or audio operation may need to finish before controls unlock. Then use Try the same input again. Choosing another input clears the previous retry target. A cancellation is not a transcript of silence."}},{"@type":"Question","name":"Where is the complete audio workflow?","acceptedAnswer":{"@type":"Answer","text":"Audio to Text explains search, text corrections and output choices. For timing changes, use Subtitle Editor."}}]}</script>
 </body>
 </html>

@@ -404,6 +404,22 @@ async function handleMcp(request, env) {
 // Cloudflare Pages currently answers an unmatched path with the home page and
 // HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
 const KNOWN_FILES = new Set([
+  "/assets/tutorials/tiktok-transcript/kennedy-practice.mp4",
+  "/assets/tutorials/tiktok-transcript/SOURCE.md",
+  "/assets/tutorials/tiktok-transcript/01-choose-wide.svg",
+  "/assets/tutorials/tiktok-transcript/01-choose-narrow.svg",
+  "/assets/tutorials/tiktok-transcript/02-review-wide.svg",
+  "/assets/tutorials/tiktok-transcript/02-review-narrow.svg",
+  "/assets/tutorials/tiktok-transcript/03-save-wide.svg",
+  "/assets/tutorials/tiktok-transcript/03-save-narrow.svg",
+  "/assets/tutorials/facebook-video-transcript/kennedy-practice.mp4",
+  "/assets/tutorials/facebook-video-transcript/SOURCE.md",
+  "/assets/tutorials/facebook-video-transcript/01-choose-wide.svg",
+  "/assets/tutorials/facebook-video-transcript/01-choose-narrow.svg",
+  "/assets/tutorials/facebook-video-transcript/02-review-wide.svg",
+  "/assets/tutorials/facebook-video-transcript/02-review-narrow.svg",
+  "/assets/tutorials/facebook-video-transcript/03-save-wide.svg",
+  "/assets/tutorials/facebook-video-transcript/03-save-narrow.svg",
   "/assets/tutorials/mp4-to-text/kennedy-practice.mp4",
   "/assets/tutorials/mp4-to-text/SOURCE.md",
   "/assets/tutorials/mp4-to-text/01-choose-wide.svg",
