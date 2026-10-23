@@ -1641,6 +1641,35 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Interview Transcription: Make a Draft You Can Check",
+      "label": "Interview Transcription",
+      "url": "https://instascript.app/interview-transcription",
+      "summary": "Make a free English interview draft, replay the exchange and inspect corrected transcript exports.",
+      "accepts": [],
+      "limits": [
+        "guide handing off to the existing local transcription tool",
+        "English recognition only; local recordings up to 100 MB; browser decoding required",
+        "no automatic speaker labels, overlap separation, research coding or anonymization",
+        "SRT/VTT require complete valid cue timing; no established maximum duration in minutes"
+      ],
+      "keywords": [
+        "interview transcription",
+        "research interview transcription",
+        "focus group transcription"
+      ],
+      "path": "/interview-transcription",
+      "html": "interview-transcription.html",
+      "markdown": "interview-transcription.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-23",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

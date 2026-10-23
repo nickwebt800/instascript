@@ -1,0 +1,15 @@
+# Transcript
+
+Question\.
+
+Did you approve the Friday release?
+
+Answer\.
+
+No\. I approved the review\.
+
+Not the release\.
+
+It still needs approval\.
+
+Please keep the original recording so you can check this correction\.

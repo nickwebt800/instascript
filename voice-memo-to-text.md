@@ -95,3 +95,5 @@ In the historical test, the first run included model loading; subsequent runs re
 One machine, one WASM browser, one run per historical data point. Audio clips were constructed from a repeated public JFK recording. These rows do not predict today's end-to-end time, other devices or other recording content.
 
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
+
+If your memo is an interview, use the [interview transcription guide](/interview-transcription) to review the exchange before quoting it.

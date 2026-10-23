@@ -26,3 +26,5 @@ Speaker labels, search, and synchronized playback make a transcript easier to na
 ## Screening a caller answers a different question
 
 Call Screening is designed to help you decide whether to answer an unknown caller. In the iOS 26 workflow, Settings → Apps → Phone → Screen Unknown Callers → Ask Reason for Calling asks the caller for identifying information before the phone rings. You can read a live transcript and decide whether to join the conversation. That is different from deliberately recording a conversation and returning to its saved transcript afterward. Our interpretation: seeing words during screening is not evidence that the conversation after pickup has been saved as a complete call record. Choose the feature by the record you need at the end: a reason to answer, a captured passage to revisit, or a transcript you can search alongside its audio. [Apple Support](https://support.apple.com/en-euro/111106)
+
+For a saved interview recording, continue with the [interview transcription guide](/interview-transcription) for local transcription and export checks.

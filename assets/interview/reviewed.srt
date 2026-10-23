@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:01,880
+Question.
+
+2
+00:00:01,880 --> 00:00:04,680
+Did you approve the Friday release?
+
+3
+00:00:04,680 --> 00:00:06,280
+Answer.
+
+4
+00:00:06,280 --> 00:00:08,240
+No. I approved the review.
+
+5
+00:00:08,240 --> 00:00:10,080
+Not the release.
+
+6
+00:00:10,080 --> 00:00:12,320
+It still needs approval.
+
+7
+00:00:12,320 --> 00:00:15,920
+Please keep the original recording so you can check this correction.

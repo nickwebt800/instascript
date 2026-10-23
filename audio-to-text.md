@@ -108,3 +108,5 @@ Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-
 
 
       This audio page includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
+
+For an interview recording, follow the [interview transcription guide](/interview-transcription) to keep the question, reply and saved correction together.
