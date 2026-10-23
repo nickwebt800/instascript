@@ -1670,6 +1670,36 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Verbatim Transcription: Full, Clean and Intelligent",
+      "label": "Verbatim Transcription",
+      "url": "https://instascript.app/verbatim-transcription",
+      "summary": "Review full, clean and intelligent verbatim conventions with one synthetic recording and actual full/clean SRT downloads.",
+      "accepts": [],
+      "limits": [
+        "guide handing off to existing Audio to Text and Subtitle Editor",
+        "no automatic full/clean/intelligent recognition mode or certification",
+        "English recognition only; browser-decodable local recordings up to 100 MB",
+        "manual convention review; SRT/VTT require complete valid cue timing"
+      ],
+      "keywords": [
+        "verbatim transcription",
+        "full verbatim transcription",
+        "clean verbatim transcription",
+        "intelligent verbatim transcription"
+      ],
+      "path": "/verbatim-transcription",
+      "html": "verbatim-transcription.html",
+      "markdown": "verbatim-transcription.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-23",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

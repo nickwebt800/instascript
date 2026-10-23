@@ -98,6 +98,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Recording Format Guide](https://instascript.app/recording-format-guide) — Check unusual recording formats, missing voices and changed timestamps before local English transcription.
 - [Phone Call Transcription](https://instascript.app/phone-call-transcription) — Record a supported iPhone call, find its transcript in Notes, and check captured boundaries, version differences and recognized words against playback.
 - [Interview Transcription](https://instascript.app/interview-transcription) — Make a free English interview draft, replay the exchange and inspect corrected transcript exports.
+- [Verbatim Transcription](https://instascript.app/verbatim-transcription) — Review full, clean and intelligent verbatim conventions with one synthetic recording and actual full/clean SRT downloads.
 
 ### YouTube tools
 

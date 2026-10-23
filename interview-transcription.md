@@ -67,3 +67,5 @@ English speech recognition follows a separate language check. Detected non-Engli
 Use the free draft when you have a permitted English recording and can review it yourself. Consider a human transcription or review workflow when the required detail exceeds this tool's output: overlapping speech that must be attributed, specialist terms you cannot verify, a strict transcription convention, or a delivery requirement calling for an accountable human reviewer. This is a decision about the required record, not a guarantee that paying removes uncertainty. Agree what needs to be captured and how unresolved passages will be marked.
 
 When you are ready to make a draft you can inspect, [open Audio to Text](/audio-to-text#walkthrough-tool), retain the recording, and check your saved words before quoting them.
+
+Choose a review convention with the [verbatim transcription guide](/verbatim-transcription) and compare full and clean exports from the same recording.

@@ -97,3 +97,5 @@ One machine, one WASM browser, one run per historical data point. Audio clips we
 Sources: [historical raw CSV](https://instascript.app/benchmark/whisper-tiny-en-browser-benchmark.csv) · [current two-model measurements (2026-10-14)](https://instascript.app/benchmark/current-english-browser-20261014.csv) · [method, environment and limitations](https://instascript.app/benchmark/README.md).
 
 If your memo is an interview, use the [interview transcription guide](/interview-transcription) to review the exchange before quoting it.
+
+Before cleaning up a spoken note, compare the full and clean examples in the [verbatim transcription guide](/verbatim-transcription).
