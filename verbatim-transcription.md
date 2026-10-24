@@ -65,3 +65,5 @@ For a plain reading copy, use the [SRT to Text converter](/srt-to-text) on the c
 Arrange an accountable human reviewer when the recipient requires one, when a strict convention exceeds what you can verify yourself, or when unresolved speech, overlapping voices or specialist terminology affects the required record. Agree how uncertainty, interruptions and speaker labels will be handled. Payment alone does not settle an ambiguous passage. This page offers a free draft and manual review workflow, not an official transcription service or a promise of admissibility.
 
 The recognition input is English speech in browser-decodable local audio or video, with a **100 MB** file-size limit. A maximum supported duration in minutes has not been established. The editor imports SRT, VTT or SBV and exports SRT or VTT; it does not transcribe audio or align plain text automatically. Local files, transcript edits and exports stay in the browser. Model downloads and separate public-page analytics use the network; see the [privacy policy](/privacy).
+
+Apply the convention to the worked example in [qualitative coding: keep uncertain words out of your findings](/qualitative-coding).

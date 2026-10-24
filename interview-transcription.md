@@ -69,3 +69,5 @@ Use the free draft when you have a permitted English recording and can review it
 When you are ready to make a draft you can inspect, [open Audio to Text](/audio-to-text#walkthrough-tool), retain the recording, and check your saved words before quoting them.
 
 Choose a review convention with the [verbatim transcription guide](/verbatim-transcription) and compare full and clean exports from the same recording.
+
+Continue with [qualitative coding: keep uncertain words out of your findings](/qualitative-coding) for a separate worked guide.

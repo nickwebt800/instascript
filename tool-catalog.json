@@ -1700,6 +1700,32 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Qualitative Coding: Keep Uncertain Words Out of Your Findings",
+      "label": "Qualitative Coding",
+      "url": "https://instascript.app/qualitative-coding",
+      "summary": "Code a checked excerpt, retain transcript versions and inspect actual recognition disagreements before making a qualitative claim.",
+      "accepts": [],
+      "limits": [
+        "guide and manual worksheet; not an additional transcription engine",
+        "no automatic research coding, verified speaker identification or overlap separation",
+        "experimental recognition disagreements are not a human audio reference"
+      ],
+      "keywords": [
+        "qualitative coding"
+      ],
+      "path": "/qualitative-coding",
+      "html": "qualitative-coding.html",
+      "markdown": "qualitative-coding.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

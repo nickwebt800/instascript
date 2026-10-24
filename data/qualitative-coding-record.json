@@ -1,0 +1,70 @@
+{
+  "recordedDate": "2026-10-24",
+  "sourceIdentifier": "ncr002360",
+  "sourceAudio": "https://stream-media.loc.gov/afc/buckaroos/afc1991021_017.mp3",
+  "sourceAudioSha256": "06f7b88fb55fc1020a035a54856e6b10b66bf3c7f8dbf3902d3b3e40066c6c03",
+  "durationSeconds": 62.496,
+  "runtime": "faster-whisper 1.2.1",
+  "device": "cpu",
+  "computeType": "int8",
+  "settings": {
+    "language": "en",
+    "beam_size": 5,
+    "temperature": 0,
+    "word_timestamps": true,
+    "vad_filter": false,
+    "condition_on_previous_text": true
+  },
+  "referenceStatus": "Independent original-audio wording not established. These are model outputs, not human ground truth.",
+  "scope": "Individual oral-history interview; not a focus group, accuracy benchmark or website model comparison.",
+  "runs": [
+    {
+      "version": "A-tiny.en",
+      "model": "tiny.en",
+      "segments": [
+        {
+          "id": 5,
+          "start": 10.84,
+          "end": 15.02,
+          "text": "unless said we'd die like to cut hay and run the swathe there."
+        },
+        {
+          "id": 8,
+          "start": 20.4,
+          "end": 22.6,
+          "text": "And I don't want to commute into winter muckus,"
+        },
+        {
+          "id": 12,
+          "start": 31.56,
+          "end": 33.14,
+          "text": "So do you leave town and come to the valley?"
+        }
+      ]
+    },
+    {
+      "version": "B-small.en",
+      "model": "small.en",
+      "segments": [
+        {
+          "id": 6,
+          "start": 11,
+          "end": 14.66,
+          "text": "And Les said, would I like to cut hay and run the swather?"
+        },
+        {
+          "id": 9,
+          "start": 20.2,
+          "end": 22.28,
+          "text": "And I don't want to commute into Winnemucca."
+        },
+        {
+          "id": 13,
+          "start": 31.48,
+          "end": 33,
+          "text": "Why did you leave town and come to the valley?"
+        }
+      ]
+    }
+  ]
+}
