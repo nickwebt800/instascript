@@ -101,6 +101,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Verbatim Transcription](https://instascript.app/verbatim-transcription) — Review full, clean and intelligent verbatim conventions with one synthetic recording and actual full/clean SRT downloads.
 - [Qualitative Coding](https://instascript.app/qualitative-coding) — Code a checked excerpt, retain transcript versions and inspect actual recognition disagreements before making a qualitative claim.
 - [Focus Group Transcription](https://instascript.app/focus-group-transcription) — Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.
+- [Qualitative Research Transcription](https://instascript.app/qualitative-research-transcription) — Inspect twelve real transcription cue disagreements and preserve the evidence boundary before qualitative analysis.
 
 ### YouTube tools
 

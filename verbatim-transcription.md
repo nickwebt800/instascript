@@ -69,3 +69,5 @@ The recognition input is English speech in browser-decodable local audio or vide
 Apply the convention to the worked example in [qualitative coding: keep uncertain words out of your findings](/qualitative-coding).
 
 Apply the convention to the worked example in [focus group transcription: check turns before naming speakers](/focus-group-transcription).
+
+Apply the convention to the worked example in [qualitative research transcription: keep the evidence separate from the interpretation](/qualitative-research-transcription).

@@ -1,0 +1,196 @@
+{
+  "recordedDate": "2026-10-24",
+  "sourceIdentifier": "ncr002360",
+  "sourceAudio": "https://stream-media.loc.gov/afc/buckaroos/afc1991021_017.mp3",
+  "sourceAudioSha256": "06f7b88fb55fc1020a035a54856e6b10b66bf3c7f8dbf3902d3b3e40066c6c03",
+  "durationSeconds": 62.496,
+  "runtime": "faster-whisper 1.2.1",
+  "device": "cpu",
+  "computeType": "int8",
+  "settings": {
+    "language": "en",
+    "beam_size": 5,
+    "temperature": 0,
+    "word_timestamps": true,
+    "vad_filter": false,
+    "condition_on_previous_text": true
+  },
+  "referenceStatus": "Independent original-audio wording not established. These are model outputs, not human ground truth.",
+  "scope": "Individual oral-history interview; not a focus group, accuracy benchmark or website model comparison.",
+  "runs": [
+    {
+      "version": "A-tiny.en",
+      "model": "tiny.en",
+      "segments": [
+        {
+          "id": 1,
+          "start": 0,
+          "end": 2.74,
+          "text": "Here you are away from your home, so to speak."
+        },
+        {
+          "id": 3,
+          "start": 4.84,
+          "end": 5.92,
+          "text": "Oh no, not really."
+        },
+        {
+          "id": 4,
+          "start": 6.04,
+          "end": 10.84,
+          "text": "I just started working on the ranch cleaning up the old homestead"
+        },
+        {
+          "id": 5,
+          "start": 10.84,
+          "end": 15.02,
+          "text": "unless said we'd die like to cut hay and run the swathe there."
+        },
+        {
+          "id": 7,
+          "start": 17.86,
+          "end": 20.12,
+          "text": "I just needed a job really."
+        },
+        {
+          "id": 8,
+          "start": 20.4,
+          "end": 22.6,
+          "text": "And I don't want to commute into winter muckus,"
+        },
+        {
+          "id": 11,
+          "start": 29.04,
+          "end": 31.24,
+          "text": "or something of that kind."
+        },
+        {
+          "id": 12,
+          "start": 31.56,
+          "end": 33.14,
+          "text": "So do you leave town and come to the valley?"
+        },
+        {
+          "id": 13,
+          "start": 34.32,
+          "end": 38.2,
+          "text": "Well, I came from Tahoe, which was not really town,"
+        },
+        {
+          "id": 16,
+          "start": 43.52,
+          "end": 46.52,
+          "text": "So this is theres plenty of country for riding horses"
+        },
+        {
+          "id": 17,
+          "start": 46.52,
+          "end": 47.7,
+          "text": "around here."
+        },
+        {
+          "id": 18,
+          "start": 48.72,
+          "end": 52.88,
+          "text": "So I think really the swathe is just one of those things"
+        },
+        {
+          "id": 20,
+          "start": 54.84,
+          "end": 57.04,
+          "text": "And it's not that difficult a job,"
+        }
+      ]
+    },
+    {
+      "version": "B-small.en",
+      "model": "small.en",
+      "segments": [
+        {
+          "id": 1,
+          "start": 0,
+          "end": 2.64,
+          "text": "Here you are, away from your home, so to speak."
+        },
+        {
+          "id": 3,
+          "start": 4.78,
+          "end": 5.76,
+          "text": "Oh, no, not really."
+        },
+        {
+          "id": 4,
+          "start": 5.94,
+          "end": 8.66,
+          "text": "I just started working on the ranch,"
+        },
+        {
+          "id": 5,
+          "start": 8.9,
+          "end": 10.74,
+          "text": "cleaning up the old homestead."
+        },
+        {
+          "id": 6,
+          "start": 11,
+          "end": 14.66,
+          "text": "And Les said, would I like to cut hay and run the swather?"
+        },
+        {
+          "id": 8,
+          "start": 17.64,
+          "end": 19.76,
+          "text": "I just needed a job, really."
+        },
+        {
+          "id": 9,
+          "start": 20.2,
+          "end": 22.28,
+          "text": "And I don't want to commute into Winnemucca."
+        },
+        {
+          "id": 12,
+          "start": 28.88,
+          "end": 30.7,
+          "text": "or something of that kind."
+        },
+        {
+          "id": 13,
+          "start": 31.48,
+          "end": 33,
+          "text": "Why did you leave town and come to the valley?"
+        },
+        {
+          "id": 14,
+          "start": 34.3,
+          "end": 38.04,
+          "text": "Well, I came from Tahoe, which was not really town."
+        },
+        {
+          "id": 17,
+          "start": 43.16,
+          "end": 47,
+          "text": "So there's plenty of country for riding horses around here."
+        },
+        {
+          "id": 18,
+          "start": 48.52,
+          "end": 51.96,
+          "text": "So I think, really, the swather is just"
+        },
+        {
+          "id": 19,
+          "start": 51.96,
+          "end": 54.32,
+          "text": "one of those things that has to be done."
+        },
+        {
+          "id": 20,
+          "start": 54.8,
+          "end": 56.78,
+          "text": "And it's not that difficult a job."
+        }
+      ]
+    }
+  ]
+}

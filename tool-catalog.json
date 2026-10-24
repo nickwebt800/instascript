@@ -1752,6 +1752,32 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Qualitative Research Transcription: Keep the Evidence Separate from the Interpretation",
+      "label": "Qualitative Research Transcription",
+      "url": "https://instascript.app/qualitative-research-transcription",
+      "summary": "Inspect twelve real transcription cue disagreements and preserve the evidence boundary before qualitative analysis.",
+      "accepts": [],
+      "limits": [
+        "guide and manual worksheet; not an additional transcription engine",
+        "no automatic research coding, verified speaker identification or overlap separation",
+        "experimental recognition disagreements are not a human audio reference"
+      ],
+      "keywords": [
+        "qualitative research transcription"
+      ],
+      "path": "/qualitative-research-transcription",
+      "html": "qualitative-research-transcription.html",
+      "markdown": "qualitative-research-transcription.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
