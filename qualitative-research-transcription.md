@@ -72,3 +72,9 @@ InstaScript's English recognition workflow does not automatically identify speak
 If you commission **transcription services for qualitative research**, specify what is handed back when a word remains unresolved: the alternative readings, the source position, the convention used and the person responsible for resolving it. Ask that transcript amendments be distinguishable from analytical notes. These are proposed deliverable requirements, not findings from a service-provider comparison or evidence that any particular service meets them.
 
 The concrete outstanding deliverable in this example is an independently checked wording reference. Once it exists, each pending cell can be replaced with the checked passage, and each lexical disagreement can be assessed against the recording. Until then, the defensible endpoint is a preserved disagreement record. The next analytical decision belongs after that missing evidence, rather than being written into the transcript now.
+
+![Preserve both text versions, locate the quotation, then review its code.](/assets/research-corrections/01-preserve-wide.svg)
+
+A proposed review workflow. Text matching does not certify a correction.
+
+After a text revision, use the [transcript correction and coded-quote exercise](/qualitative-transcript-corrections) to check missing, shifted and repeated quotations.

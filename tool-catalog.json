@@ -1830,6 +1830,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Transcript Corrections: Keep Coded Quotes Traceable",
+      "label": "Transcript Corrections",
+      "url": "https://instascript.app/qualitative-transcript-corrections",
+      "summary": "Review changed, shifted and repeated coded quotations after a qualitative transcript correction using an original downloadable version-migration exercise.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional text exercise",
+        "does not transfer research codes, verify speech or create a project history"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcript corrections",
+        "coded quotations"
+      ],
+      "path": "/qualitative-transcript-corrections",
+      "html": "qualitative-transcript-corrections.html",
+      "markdown": "qualitative-transcript-corrections.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

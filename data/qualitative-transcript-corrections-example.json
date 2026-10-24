@@ -1,0 +1,55 @@
+{
+  "kind": "Authored fictional training text, not recorded speech, model output or research findings",
+  "date": "2026-10-24",
+  "offsetConvention": "Zero-based UTF-16 start, exclusive end; ASCII exercise so code units equal characters",
+  "version1": {
+    "id": "training-v1",
+    "text": "I take the bus unless the route is cancelled. The clinic opens at nine. I wait outside.",
+    "sha256": "30692980bef2738f8d7e6f77d2a1dd8beb4593173867051a6f0fdb9b9edb2d5b"
+  },
+  "version2": {
+    "id": "training-v2",
+    "text": "I take the bus only if the route is running. On weekdays: The clinic opens at nine. I wait outside. I wait outside.",
+    "sha256": "fc81ea0248ec5e3cc246485418c137468521d0a3640b24188db74fa5fc9f3962"
+  },
+  "quotations": [
+    {
+      "id": "Q1",
+      "text": "unless the route is cancelled",
+      "code": "exception condition",
+      "oldStart": 15,
+      "oldEnd": 44,
+      "newMatches": [],
+      "oldOffsetTextInV2": "only if the route is running.",
+      "status": "changed_or_missing",
+      "decision": "Human review pending; no code automatically transferred"
+    },
+    {
+      "id": "Q2",
+      "text": "The clinic opens at nine.",
+      "code": "opening time",
+      "oldStart": 46,
+      "oldEnd": 71,
+      "newMatches": [
+        58
+      ],
+      "oldOffsetTextInV2": "n weekdays: The clinic op",
+      "status": "relocated_needs_review",
+      "decision": "Human review pending; no code automatically transferred"
+    },
+    {
+      "id": "Q3",
+      "text": "I wait outside.",
+      "code": "waiting location",
+      "oldStart": 72,
+      "oldEnd": 87,
+      "newMatches": [
+        84,
+        100
+      ],
+      "oldOffsetTextInV2": "ns at nine. I w",
+      "status": "ambiguous",
+      "decision": "Human review pending; no code automatically transferred"
+    }
+  ]
+}
