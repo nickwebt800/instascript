@@ -1804,6 +1804,32 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Thematic Coding: Build a Claim from Passages, Not Cue Counts",
+      "label": "Thematic Coding",
+      "url": "https://instascript.app/thematic-coding",
+      "summary": "Review a candidate theme against versioned passages, negation and complicating evidence, using an original same-recording coding ledger.",
+      "accepts": [],
+      "limits": [
+        "guide and manual worksheet; not an additional transcription engine",
+        "no automatic research coding, verified speaker identification or overlap separation",
+        "experimental recognition disagreements are not a human audio reference"
+      ],
+      "keywords": [
+        "thematic coding"
+      ],
+      "path": "/thematic-coding",
+      "html": "thematic-coding.html",
+      "markdown": "thematic-coding.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

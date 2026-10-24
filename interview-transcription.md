@@ -77,3 +77,5 @@ Continue with [focus group transcription: check turns before naming speakers](/f
 Continue with [qualitative research transcription: keep the evidence separate from the interpretation](/qualitative-research-transcription) for a separate worked guide.
 
 Continue with [focus group transcription services: specify the review you need](/focus-group-transcription-services) for a separate worked guide.
+
+Continue with [thematic coding: build a claim from passages, not cue counts](/thematic-coding) for a separate worked guide.

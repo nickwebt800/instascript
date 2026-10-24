@@ -103,6 +103,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Focus Group Transcription](https://instascript.app/focus-group-transcription) — Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.
 - [Qualitative Research Transcription](https://instascript.app/qualitative-research-transcription) — Inspect twelve real transcription cue disagreements and preserve the evidence boundary before qualitative analysis.
 - [Focus Group Transcription Services](https://instascript.app/focus-group-transcription-services) — Specify a focus-group transcription review and inspect original timing, grouping and punctuation acceptance cases before accepting a delivery.
+- [Thematic Coding](https://instascript.app/thematic-coding) — Review a candidate theme against versioned passages, negation and complicating evidence, using an original same-recording coding ledger.
 
 ### YouTube tools
 

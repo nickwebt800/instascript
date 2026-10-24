@@ -73,3 +73,5 @@ Apply the convention to the worked example in [focus group transcription: check 
 Apply the convention to the worked example in [qualitative research transcription: keep the evidence separate from the interpretation](/qualitative-research-transcription).
 
 Apply the convention to the worked example in [focus group transcription services: specify the review you need](/focus-group-transcription-services).
+
+Apply the convention to the worked example in [thematic coding: build a claim from passages, not cue counts](/thematic-coding).
