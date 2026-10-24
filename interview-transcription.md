@@ -71,3 +71,5 @@ When you are ready to make a draft you can inspect, [open Audio to Text](/audio-
 Choose a review convention with the [verbatim transcription guide](/verbatim-transcription) and compare full and clean exports from the same recording.
 
 Continue with [qualitative coding: keep uncertain words out of your findings](/qualitative-coding) for a separate worked guide.
+
+Continue with [focus group transcription: check turns before naming speakers](/focus-group-transcription) for a separate worked guide.

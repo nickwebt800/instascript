@@ -1726,6 +1726,32 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Focus Group Transcription: Check Turns Before Naming Speakers",
+      "label": "Focus Group Transcription",
+      "url": "https://instascript.app/focus-group-transcription",
+      "summary": "Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.",
+      "accepts": [],
+      "limits": [
+        "guide and manual worksheet; not an additional transcription engine",
+        "no automatic research coding, verified speaker identification or overlap separation",
+        "experimental recognition disagreements are not a human audio reference"
+      ],
+      "keywords": [
+        "focus group transcription"
+      ],
+      "path": "/focus-group-transcription",
+      "html": "focus-group-transcription.html",
+      "markdown": "focus-group-transcription.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

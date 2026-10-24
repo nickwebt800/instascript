@@ -67,3 +67,5 @@ Arrange an accountable human reviewer when the recipient requires one, when a st
 The recognition input is English speech in browser-decodable local audio or video, with a **100 MB** file-size limit. A maximum supported duration in minutes has not been established. The editor imports SRT, VTT or SBV and exports SRT or VTT; it does not transcribe audio or align plain text automatically. Local files, transcript edits and exports stay in the browser. Model downloads and separate public-page analytics use the network; see the [privacy policy](/privacy).
 
 Apply the convention to the worked example in [qualitative coding: keep uncertain words out of your findings](/qualitative-coding).
+
+Apply the convention to the worked example in [focus group transcription: check turns before naming speakers](/focus-group-transcription).

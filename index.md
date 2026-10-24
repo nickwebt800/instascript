@@ -100,6 +100,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Interview Transcription](https://instascript.app/interview-transcription) — Make a free English interview draft, replay the exchange and inspect corrected transcript exports.
 - [Verbatim Transcription](https://instascript.app/verbatim-transcription) — Review full, clean and intelligent verbatim conventions with one synthetic recording and actual full/clean SRT downloads.
 - [Qualitative Coding](https://instascript.app/qualitative-coding) — Code a checked excerpt, retain transcript versions and inspect actual recognition disagreements before making a qualitative claim.
+- [Focus Group Transcription](https://instascript.app/focus-group-transcription) — Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.
 
 ### YouTube tools
 

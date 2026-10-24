@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focus Group Transcription: Check Turns Before Naming Speakers | InstaScript</title><meta name="description" content="Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.">
+<link rel="canonical" href="https://instascript.app/focus-group-transcription"><link rel="alternate" type="text/markdown" href="/focus-group-transcription.md">
+<meta property="og:type" content="article"><meta property="og:title" content="Focus Group Transcription: Check Turns Before Naming Speakers | InstaScript"><meta property="og:description" content="Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet."><meta property="og:url" content="https://instascript.app/focus-group-transcription"><meta property="og:image" content="https://instascript.app/assets/logo-512.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Focus Group Transcription: Check Turns Before Naming Speakers | InstaScript"><meta name="twitter:description" content="Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png"><link rel="stylesheet" href="/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Focus Group Transcription: Check Turns Before Naming Speakers","description":"Review speaker turns separately from machine cue boundaries, with actual segmentation records and a manual attribution worksheet.","url":"https://instascript.app/focus-group-transcription","inLanguage":"en","datePublished":"2026-10-24","author":{"@type":"Organization","name":"InstaScript"},"mainEntityOfPage":"https://instascript.app/focus-group-transcription"}</script></head>
+<body><div class="container"><header class="header"><p class="brand" data-site-brand><a href="/">InstaScript</a></p><h1 class="page-h1">Focus Group Transcription: Check Turns Before Naming Speakers</h1><nav class="page-nav" aria-label="Site navigation" data-site-nav>
+<a href="/">Instagram Transcript</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+</nav></header>
+<main id="focus-group-transcription-guide"><section class="tool-card" aria-label="Quick answer"><p>Transcribe the recording into an editable draft, check each speaker change against the sound, mark unresolved overlap, and retain the moderator's question beside the answer; never turn an automatic subtitle boundary into a verified speaker change.</p></section>
+<p>Use the <a href="/interview-transcription">interview transcription guide</a> to make and replay an English draft, then choose a retention convention with the <a href="/verbatim-transcription">verbatim transcription guide</a>. This page concentrates on the manual turn record that a group discussion needs. InstaScript does not automatically identify speakers or separate overlapping voices.</p>
+<section class="content-card" aria-labelledby="set-the-turn-convention-before-editing"><h2 id="set-the-turn-convention-before-editing">Set the turn convention before editing</h2>
+<p>Decide what identifies a speaker in your working transcript and what you will write when identity is uncertain. Keep those labels consistent without publishing an identity key in a shared transcript. Mark an unresolved passage for replay rather than guessing which participant would have said it. A readable paragraph is not evidence that the speaker label is right.</p>
+<p>If you later import a checked transcript into research software, consult that product's actual format requirements. The <a href="https://www.maxqda.com/help/import/importing-focus-group-transcripts">MAXQDA focus-group import manual</a> describes how supplied speaker labels structure an import. That formatting step uses the text you supply; it does not independently verify an attribution from this website's recording.</p>
+</section>
+<section class="content-card" aria-labelledby="our-boundary-check-one-cue-becomes-separate-cues"><h2 id="our-boundary-check-one-cue-becomes-separate-cues">Our boundary check: one cue becomes separate cues</h2>
+<p>The following is a real segmentation comparison on a public oral-history interview, archive identifier ncr002360, from the <a href="https://stream-media.loc.gov/afc/buckaroos/afc1991021_017.mp3">Library of Congress audio</a>. It is an individual interview. It is used here to inspect machine boundaries, not to measure focus-group speaker identification, group agreement or overlapping speech. The <a href="/data/focus-group-transcription-record.json">selected output records</a> preserve the exact versions and times.</p>
+<p>The tiny.en run put the ranch and homestead phrases together in cue 4 at 6.040–10.840 seconds. The small.en run divided them between cue 4 at 5.940–8.660 seconds and cue 5 at 8.900–10.740 seconds. This is a directly observed change of machine grouping. Neither run returned a verified speaker label at the split. The additional cue cannot, on this evidence, be treated as an additional conversational turn.</p>
+<p>For our manual review record, we therefore give this span a <strong>speaker-change status: not established</strong>, with separate locators for both outputs. We do not write a new participant name at the small.en split. We also keep the full span available for playback rather than presenting the shorter cue as a self-contained answer. That is an editorial response to this boundary example, not a claim that we listened and resolved the identity.</p>
+<p>The distinction matters when carrying a draft into a group transcript: a new row may exist because the recognizer split a sentence, not because a new person spoke. Verify the actual source before importing a row-based speaker assignment. The present recording cannot tell us how well either model would handle a room of participants, and we have not run such a test.</p>
+</section>
+<section class="content-card" aria-labelledby="a-shifted-phrase-should-retain-its-source-locator"><h2 id="a-shifted-phrase-should-retain-its-source-locator">A shifted phrase should retain its source locator</h2>
+<p>At another position, tiny.en cue 16 ends at 46.520 seconds before the words <strong>around here</strong>, which occur in its next cue. small.en cue 17 contains that phrase within its 43.160–47.000-second span. The data record includes the following tiny.en cue so the comparison can be inspected rather than inferred from an omitted fragment.</p>
+<p>Our proposed turn worksheet records a span to review instead of matching the same integer cue number between the outputs. Its fields are source version, time window, machine cue references, proposed turn label, identity evidence and unresolved point. For this example, identity evidence is unfilled. Moving the phrase back into its surrounding statement is a proposed editorial grouping; it must be checked before replacing either draft.</p>
+<p>Do not count a person twice because their words are split across machine rows. Conversely, do not merge nearby rows into one attributed turn merely because their sentences read smoothly together. Both decisions require information the unlabelled machine output does not supply. If a later listener identifies a change, add the evidence and preserve the earlier unresolved state in the revision history.</p>
+<p>The <a href="/data/focus-group-turn-worksheet.md">turn-review worksheet</a> contains these actual boundary observations and deliberately empty identity fields. It is a manual template, not an automatically generated participant roster. Its useful output is an explicit unresolved attribution, with enough location information for someone to finish checking it.</p>
+</section>
+<section class="content-card" aria-labelledby="preserve-the-exchange-around-overlap"><h2 id="preserve-the-exchange-around-overlap">Preserve the exchange around overlap</h2>
+<p>For your own group recording, retain the question, the audible response and any interruption needed to interpret it. Describe overlap only when you can hear it. If you cannot distinguish words or identity, record that uncertainty at the source position; do not manufacture parallel lines of dialogue to make the transcript look complete.</p>
+<p>Choose a consistent notation and explain it to the recipient. A bracketed uncertainty is a review instruction, not a verbatim spoken phrase. If the recording includes video, use any permitted visual evidence as a separate basis for checking identity; do not claim an audio-only recognizer read facial expressions. This page's experiment contains no video or overlap verification.</p>
+</section>
+<section class="content-card" aria-labelledby="what-was-run-and-what-remains-yours-to-check"><h2 id="what-was-run-and-what-remains-yours-to-check">What was run, and what remains yours to check</h2>
+<p>The retained experiment used the same untrimmed 62.496-second recording on 24 October 2026 with faster-whisper 1.2.1, tiny.en and small.en. Both ran on CPU int8 with English selected, beam size 5, temperature 0, word timestamps on, voice-activity filtering off and previous-text conditioning on. The downloadable record gives the saved configuration and selected segments. These local experimental models do not add a speaker-identification feature to InstaScript.</p>
+<p>An independent reference for the original spoken wording was not established; the archive viewer's own transcript is machine generated. The example supports a boundary-disagreement observation, not accuracy, diarization performance or an attribution verdict. For your focus group, complete the identity and overlap checks against that group's recording before sharing a named transcript. When you need someone else to complete that work, specify the unresolved spans and the required review deliverable rather than handing over a confident-looking draft with unexplained labels.</p>
+</section></main>
+<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a>
+<a href="/google-meet-transcript">Google Meet Transcript</a>
+<a href="/ogg-to-text">OGG to Text</a>
+<a href="/recording-format-guide">Recording Format Guide</a>
+<a href="/phone-call-transcription">Phone Call Transcription</a>
+<a href="/interview-transcription">Interview Transcription</a>
+<a href="/verbatim-transcription">Verbatim Transcription</a>
+<a href="/qualitative-coding">Qualitative Coding</a>
+<a href="/focus-group-transcription">Focus Group Transcription</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a>
+<a href="/translate-srt">Translate SRT Guide</a>
+<a href="/how-to-add-captions-on-tiktok">How to Add Captions on TikTok</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=footer-4e4d548fbd4f" defer></script></body></html>
