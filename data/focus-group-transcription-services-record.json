@@ -1,0 +1,76 @@
+{
+  "recordedDate": "2026-10-24",
+  "sourceIdentifier": "ncr002360",
+  "sourceAudio": "https://stream-media.loc.gov/afc/buckaroos/afc1991021_017.mp3",
+  "sourceAudioSha256": "06f7b88fb55fc1020a035a54856e6b10b66bf3c7f8dbf3902d3b3e40066c6c03",
+  "durationSeconds": 62.496,
+  "runtime": "faster-whisper 1.2.1",
+  "device": "cpu",
+  "computeType": "int8",
+  "settings": {
+    "language": "en",
+    "beam_size": 5,
+    "temperature": 0,
+    "word_timestamps": true,
+    "vad_filter": false,
+    "condition_on_previous_text": true
+  },
+  "referenceStatus": "Independent original-audio wording not established. These are model outputs, not human ground truth.",
+  "scope": "Individual oral-history interview; not a focus group, accuracy benchmark or website model comparison.",
+  "runs": [
+    {
+      "version": "A-tiny.en",
+      "model": "tiny.en",
+      "segments": [
+        {
+          "id": 11,
+          "start": 29.04,
+          "end": 31.24,
+          "text": "or something of that kind."
+        },
+        {
+          "id": 13,
+          "start": 34.32,
+          "end": 38.2,
+          "text": "Well, I came from Tahoe, which was not really town,"
+        },
+        {
+          "id": 18,
+          "start": 48.72,
+          "end": 52.88,
+          "text": "So I think really the swathe is just one of those things"
+        }
+      ]
+    },
+    {
+      "version": "B-small.en",
+      "model": "small.en",
+      "segments": [
+        {
+          "id": 12,
+          "start": 28.88,
+          "end": 30.7,
+          "text": "or something of that kind."
+        },
+        {
+          "id": 14,
+          "start": 34.3,
+          "end": 38.04,
+          "text": "Well, I came from Tahoe, which was not really town."
+        },
+        {
+          "id": 18,
+          "start": 48.52,
+          "end": 51.96,
+          "text": "So I think, really, the swather is just"
+        },
+        {
+          "id": 19,
+          "start": 51.96,
+          "end": 54.32,
+          "text": "one of those things that has to be done."
+        }
+      ]
+    }
+  ]
+}

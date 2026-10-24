@@ -1778,6 +1778,32 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Focus Group Transcription Services: Specify the Review You Need",
+      "label": "Focus Group Transcription Services",
+      "url": "https://instascript.app/focus-group-transcription-services",
+      "summary": "Specify a focus-group transcription review and inspect original timing, grouping and punctuation acceptance cases before accepting a delivery.",
+      "accepts": [],
+      "limits": [
+        "guide and manual worksheet; not an additional transcription engine",
+        "no automatic research coding, verified speaker identification or overlap separation",
+        "experimental recognition disagreements are not a human audio reference"
+      ],
+      "keywords": [
+        "focus group transcription services"
+      ],
+      "path": "/focus-group-transcription-services",
+      "html": "focus-group-transcription-services.html",
+      "markdown": "focus-group-transcription-services.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-24",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
