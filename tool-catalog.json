@@ -1857,6 +1857,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Participant Clarifications: Keep Later Feedback Separate",
+      "label": "Participant Clarifications",
+      "url": "https://instascript.app/qualitative-participant-clarifications",
+      "summary": "Keep later participant feedback distinct from recorded interview wording using an original fictional two-source ledger, blank worksheet and reproducible attribution check.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional source-attribution exercise",
+        "does not verify participant feedback, manage review permissions or create a project history"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "participant transcript review",
+        "participant clarification"
+      ],
+      "path": "/qualitative-participant-clarifications",
+      "html": "qualitative-participant-clarifications.html",
+      "markdown": "qualitative-participant-clarifications.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-25",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

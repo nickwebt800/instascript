@@ -105,6 +105,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Focus Group Transcription Services](https://instascript.app/focus-group-transcription-services) — Specify a focus-group transcription review and inspect original timing, grouping and punctuation acceptance cases before accepting a delivery.
 - [Thematic Coding](https://instascript.app/thematic-coding) — Review a candidate theme against versioned passages, negation and complicating evidence, using an original same-recording coding ledger.
 - [Transcript Corrections](https://instascript.app/qualitative-transcript-corrections) — Review changed, shifted and repeated coded quotations after a qualitative transcript correction using an original downloadable version-migration exercise.
+- [Participant Clarifications](https://instascript.app/qualitative-participant-clarifications) — Keep later participant feedback distinct from recorded interview wording using an original fictional two-source ledger, blank worksheet and reproducible attribution check.
 
 ### YouTube tools
 

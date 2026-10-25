@@ -79,3 +79,9 @@ Continue with [qualitative research transcription: keep the evidence separate fr
 Continue with [focus group transcription services: specify the review you need](/focus-group-transcription-services) for a separate worked guide.
 
 Continue with [thematic coding: build a claim from passages, not cue counts](/thematic-coding) for a separate worked guide.
+
+![Transcript, later written clarification and analyst memo have distinct origins.](/assets/research-clarifications/01-separate-wide.svg)
+
+Fictional exercise: a source relation does not make two records the same source.
+
+When feedback arrives after an interview, use the [participant clarification worksheet](/qualitative-participant-clarifications) to distinguish recorded wording, later explanation and an analyst memo.
