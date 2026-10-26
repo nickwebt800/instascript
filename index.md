@@ -151,6 +151,12 @@ After transcription, replay the original recording and click a timestamp to seek
 
 In the shared transcription tool, Copy and TXT use your edited words. They are plain text by default; enable Include timestamps in TXT, Markdown and Copy to add available start times. This option does not run speech recognition again. SRT, VTT and Open in Subtitle Editor require non-empty cue text and complete valid start/end times. Missing end times are not estimated. If timing is incomplete, keep the recording for review and copy or download TXT instead.
 
+### Optional video editing after SRT export
+
+After you start a valid SRT download from your real homepage transcript, an optional **Continue video editing with VideoStudio** recommendation appears below the transcript. It does not appear for the prepared sample or for TXT, Markdown or VTT downloads alone. Editing the transcript or clearing the result hides it until another valid SRT export.
+
+[Explore VideoStudio Ultimate](https://www.anrdoezrs.net/click-101904878-11316412) opens an external site in a new tab through CJ affiliate tracking. Affiliate link: We may earn a commission if you buy through this link. Your recording and subtitles are not sent with the link; it does not automatically import your SRT. The destination has its own privacy policy.
+
 ## Search your current transcript
 
 After transcription, use **Find in this transcript** to search your latest

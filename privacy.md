@@ -8,7 +8,7 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: October 20, 2026
+Last updated: October 27, 2026
 
 ### 1. Data We Collect
 
@@ -43,6 +43,8 @@ This website may display advertisements from third-party advertising networks (f
 We do not sell, rent, or trade your personal information, and we do not pass any file you upload or any transcript you generate to an advertising partner. Use of advertising technologies is governed by the respective ad network's privacy policy.
 
 **Affiliate links.** Some pages may link to third-party products such as ElevenLabs using affiliate links. If you sign up through one of these links, InstaScript may earn a commission at no extra cost to you. The linked service handles your information under its own privacy policy.
+
+The homepage also offers an optional VideoStudio recommendation after a valid SRT download starts from a real transcript. Following its link contacts CJ affiliate tracking and the destination site, which may use cookies or similar technologies to attribute a purchase. This recommendation loads no third-party scripts, images or tracking pixels. It sends no recording, filename, submitted URL, transcript or subtitle content with the link and suppresses the referring page. It does not automatically upload or import your SRT. The external services handle the visit under their own privacy policies.
 
 ### 5. Cookies
 

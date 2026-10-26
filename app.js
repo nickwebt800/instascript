@@ -65,6 +65,8 @@ downloadMdBtn.textContent = "Markdown";
 downloadTxtBtn?.after(downloadMdBtn);
 const downloadSrtBtn = $("downloadSrtBtn");
 const downloadVttBtn = $("downloadVttBtn");
+// This optional slot exists only on the homepage, not on shared tool pages.
+const videoEditingRecommendation = $("videoEditingRecommendation");
 const transcribeAnotherBtn = $("transcribeAnotherBtn");
 const pasteAnotherBtn = $("pasteAnotherBtn");
 
@@ -658,6 +660,7 @@ function displayTranscript(result) {
   updateExportState();
 
   const rows = renderTranscriptCues(transcriptOutput, transcript, mediaReview, event => {
+    if (videoEditingRecommendation) videoEditingRecommendation.hidden = true;
     updateExportState();
     if (!event.isComposing) resultSearch.refresh();
   });
@@ -721,6 +724,12 @@ for (const [button, format] of [[downloadSrtBtn, "srt"], [downloadVttBtn, "vtt"]
     if (transcriptSubtitleError(transcript)) { updateExportState(); return; }
     downloadTranscriptFile(transcriptSubtitles(transcript, format), "transcript." + format,
       format === "vtt" ? "text/vtt;charset=utf-8" : "text/plain;charset=utf-8");
+    // Reveal only after a valid real SRT download is initiated. No content is
+    // transferred and no affiliate request is made until the visitor follows it.
+    if (format === "srt" && videoEditingRecommendation) {
+      videoEditingRecommendation.hidden = false;
+      exportStatus.textContent = "SRT download started. An optional video editing recommendation is below your transcript.";
+    }
   });
 }
 
@@ -757,6 +766,7 @@ function hideError() {
 }
 
 function hideTranscript() {
+  if (videoEditingRecommendation) videoEditingRecommendation.hidden = true;
   resultSearch.set(null);
   mediaReview.clear();
   reviewMedia = null;

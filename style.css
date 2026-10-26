@@ -1349,6 +1349,15 @@ body.home-page .sample-note { color: var(--muted); }
 body.home-page .content-card p { max-width: 76ch; }
 
 /* Prepared sample and current-result search share the existing controls. */
+body.home-page .subtitle-recommendation { padding: 20px; border-top: 1px solid var(--line); }
+body.home-page .subtitle-recommendation[hidden] { display: none; }
+body.home-page .subtitle-recommendation h3 { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.4; }
+body.home-page .subtitle-recommendation p { margin: 0 0 12px; font-size: .875rem; line-height: 1.6; }
+body.home-page .subtitle-recommendation a { flex-wrap: wrap; text-decoration: none; }
+body.home-page .subtitle-recommendation a span { font-size: .75rem; font-weight: 400; }
+body.home-page .subtitle-recommendation a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+body.home-page .subtitle-recommendation .recommendation-note { margin: 10px 0 0; color: var(--muted); font-size: .8125rem; }
+
 .sample-start, .sample-toolbar, .sample-toolbar .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .sample-start, .sample-panel { grid-column: 1 / -1; min-width: 0; }
 .sample-own { color: var(--primary-hover); font-size: .88rem; padding: 10px 0; }
