@@ -1884,6 +1884,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Quote Across Transcript Cues: Keep Each Source Span",
+      "label": "Cross-Cue Research Quotes",
+      "url": "https://instascript.app/qualitative-cross-cue-quotes",
+      "summary": "Map one qualitative quotation across two transcript cues with exact text spans, a broad replay locator, a blank worksheet and an original reproducible fictional example.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional passage mapping exercise",
+        "no word alignment, speaker verification, automatic research coding or project history"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "quote across transcript cues",
+        "research quotation locator"
+      ],
+      "path": "/qualitative-cross-cue-quotes",
+      "html": "qualitative-cross-cue-quotes.html",
+      "markdown": "qualitative-cross-cue-quotes.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-26",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

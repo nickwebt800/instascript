@@ -73,3 +73,9 @@ Fictional exercise: a surviving sentence can have a different text position.
 ![Absent, unique and repeated matches require different manual review decisions.](/assets/research-corrections/03-decide-wide.svg)
 
 All code transfers in this exercise remain pending.
+
+![Keep replay separate from selection](/assets/research-cross-cue/02-locate-wide.svg)
+
+Invented cue bounds yield a broad 10-to-17-second envelope; the 0.4-second gap is unresolved. Fictional exercise; no recording.
+
+A quotation spanning more than one cue needs a text-selection map as well as a replay locator. Try the [cross-cue passage worksheet](/qualitative-cross-cue-quotes).

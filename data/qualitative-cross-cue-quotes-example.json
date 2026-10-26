@@ -1,0 +1,88 @@
+{
+  "source": {
+    "document": "FICT-T03",
+    "version": "v1",
+    "fictional": true,
+    "cues": [
+      {
+        "id": "C01",
+        "start": 10,
+        "end": 13,
+        "text": "At first I waited. The bus"
+      },
+      {
+        "id": "C02",
+        "start": 13.4,
+        "end": 17,
+        "text": "arrived late, so I walked home."
+      },
+      {
+        "id": "C03",
+        "start": 18,
+        "end": 21,
+        "text": "The next morning I tried again."
+      }
+    ]
+  },
+  "selection": {
+    "document": "FICT-T03",
+    "version": "v1",
+    "passage": "Q01",
+    "join": " ",
+    "spans": [
+      {
+        "cue": "C01",
+        "from": 19,
+        "to": 26
+      },
+      {
+        "cue": "C02",
+        "from": 0,
+        "to": 31
+      }
+    ]
+  },
+  "result": {
+    "text": "The bus arrived late, so I walked home.",
+    "parts": [
+      {
+        "cue": "C01",
+        "range": [
+          19,
+          26
+        ],
+        "selected": "The bus",
+        "start": 10,
+        "end": 13
+      },
+      {
+        "cue": "C02",
+        "range": [
+          0,
+          31
+        ],
+        "selected": "arrived late, so I walked home.",
+        "start": 13.4,
+        "end": 17
+      }
+    ],
+    "replayEnvelope": [
+      10,
+      17
+    ],
+    "interCueIntervals": [
+      0.4
+    ],
+    "contextReview": "pending; no recording exists for this fictional fixture",
+    "wordAlignment": false
+  },
+  "checks": {
+    "wrongVersion": "source_version_mismatch",
+    "skippedCue": "nonadjacent_cues_require_separate_excerpt_review",
+    "invalidSpan": "rejected",
+    "missingEnd": {
+      "text": "The bus arrived late, so I walked home.",
+      "replayEnvelope": null
+    }
+  }
+}

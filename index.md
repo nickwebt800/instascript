@@ -106,6 +106,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Thematic Coding](https://instascript.app/thematic-coding) — Review a candidate theme against versioned passages, negation and complicating evidence, using an original same-recording coding ledger.
 - [Transcript Corrections](https://instascript.app/qualitative-transcript-corrections) — Review changed, shifted and repeated coded quotations after a qualitative transcript correction using an original downloadable version-migration exercise.
 - [Participant Clarifications](https://instascript.app/qualitative-participant-clarifications) — Keep later participant feedback distinct from recorded interview wording using an original fictional two-source ledger, blank worksheet and reproducible attribution check.
+- [Cross-Cue Research Quotes](https://instascript.app/qualitative-cross-cue-quotes) — Map one qualitative quotation across two transcript cues with exact text spans, a broad replay locator, a blank worksheet and an original reproducible fictional example.
 
 ### YouTube tools
 
