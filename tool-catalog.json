@@ -1911,6 +1911,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Uncertain Transcript Terms: Keep Candidates Separate",
+      "label": "Uncertain Transcript Terms",
+      "url": "https://instascript.app/qualitative-uncertain-terms",
+      "summary": "Keep uncertain transcript terms separate from candidate spellings with an original fictional occurrence ledger, reproducible replacement check and blank review worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional terminology occurrence exercise",
+        "no glossary training, automatic replacement, verified speakers or saved project history"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "uncertain transcript terms",
+        "terminology review worksheet"
+      ],
+      "path": "/qualitative-uncertain-terms",
+      "html": "qualitative-uncertain-terms.html",
+      "markdown": "qualitative-uncertain-terms.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-27",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

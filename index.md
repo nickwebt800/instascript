@@ -107,6 +107,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Transcript Corrections](https://instascript.app/qualitative-transcript-corrections) — Review changed, shifted and repeated coded quotations after a qualitative transcript correction using an original downloadable version-migration exercise.
 - [Participant Clarifications](https://instascript.app/qualitative-participant-clarifications) — Keep later participant feedback distinct from recorded interview wording using an original fictional two-source ledger, blank worksheet and reproducible attribution check.
 - [Cross-Cue Research Quotes](https://instascript.app/qualitative-cross-cue-quotes) — Map one qualitative quotation across two transcript cues with exact text spans, a broad replay locator, a blank worksheet and an original reproducible fictional example.
+- [Uncertain Transcript Terms](https://instascript.app/qualitative-uncertain-terms) — Keep uncertain transcript terms separate from candidate spellings with an original fictional occurrence ledger, reproducible replacement check and blank review worksheet.
 
 ### YouTube tools
 

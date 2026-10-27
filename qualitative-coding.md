@@ -43,3 +43,9 @@ Download the [decision worksheet](/data/qualitative-coding-worksheet.md) to reta
 The saved comparison ran on 24 October 2026 with faster-whisper 1.2.1, tiny.en and small.en, CPU int8, English selected, beam size 5, temperature 0, word timestamps enabled, voice-activity filtering disabled and previous-text conditioning enabled. Both used the same untrimmed recording, decoded as 62.496 seconds. These are local experimental runs; small.en is not an extra model selectable on this website. The [data and method](/data/qualitative-coding-record.json) retain the configuration and selected output records. No accuracy measurement or judgment of the original words follows from their disagreement.
 
 For the recording-to-draft steps, use the [interview transcription guide](/interview-transcription). For decisions about retaining repetitions and corrections, read the [verbatim transcription guide](/verbatim-transcription). InstaScript's existing English file tool produces a draft for manual checking; it does not assign research codes, identify speakers or validate themes. Your next action here is to resolve the flagged wording before promoting the affected code into a finding.
+
+![A candidate is not a decision](/assets/research-terms/02-locate-wide.svg)
+
+Mirro from fictional LEX-01 is a candidate only for U01. Fictional exercise; no recording.
+
+An uncertain project term needs its own occurrence decision before it enters a transcript revision. Try the [terminology review worksheet](/qualitative-uncertain-terms).

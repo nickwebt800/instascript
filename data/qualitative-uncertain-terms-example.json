@@ -1,0 +1,98 @@
+{
+  "disclosure": "Entirely fictional text exercise; no audio or human verification",
+  "source": {
+    "id": "FICT-T04",
+    "version": "v1",
+    "fictional": true,
+    "audioAvailable": false,
+    "cues": [
+      {
+        "id": "C01",
+        "start": 12,
+        "end": 16,
+        "text": "We used mirror at the workshop."
+      },
+      {
+        "id": "C02",
+        "start": 27,
+        "end": 31,
+        "text": "A mirror hung beside the door."
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "id": "U01",
+      "documentId": "FICT-T04",
+      "version": "v1",
+      "cueId": "C01",
+      "start": 8,
+      "end": 14,
+      "draftToken": "mirror",
+      "candidates": [
+        {
+          "text": "Mirro",
+          "source": "LEX-01",
+          "sourceType": "fictional project sheet; not audio evidence"
+        }
+      ],
+      "reviewStatus": "pending",
+      "audioChecked": false
+    },
+    {
+      "id": "U02",
+      "documentId": "FICT-T04",
+      "version": "v1",
+      "cueId": "C02",
+      "start": 2,
+      "end": 8,
+      "draftToken": "mirror",
+      "candidates": [],
+      "reviewStatus": "pending",
+      "audioChecked": false
+    }
+  ],
+  "result": [
+    {
+      "reviewId": "U01",
+      "selected": "mirror",
+      "replay": [
+        12,
+        16
+      ],
+      "status": "pending"
+    },
+    {
+      "reviewId": "U02",
+      "selected": "mirror",
+      "replay": [
+        27,
+        31
+      ],
+      "status": "pending"
+    }
+  ],
+  "unsafeGlobalReplacement": [
+    {
+      "cueId": "C01",
+      "text": "We used Mirro at the workshop.",
+      "approved": false
+    },
+    {
+      "cueId": "C02",
+      "text": "A Mirro hung beside the door.",
+      "approved": false
+    }
+  ],
+  "summary": {
+    "exactOccurrences": 2,
+    "pendingDecisions": 2,
+    "approvedReplacements": 0,
+    "sourceUnchanged": true
+  },
+  "checks": {
+    "wrongVersionRejected": true,
+    "wrongTokenRejected": true,
+    "unsupportedAudioClaimRejected": true
+  }
+}
