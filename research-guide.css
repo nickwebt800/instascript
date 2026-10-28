@@ -14,3 +14,7 @@
 
 /* The legacy coding article keeps its layout; only its new figure is styled. */
 .research-terms-legacy{margin:28px 0}.research-terms-legacy picture,.research-terms-legacy img{display:block;width:100%;height:auto}.research-terms-legacy figcaption{max-width:70ch;margin-top:10px;font-size:.9rem;line-height:1.6;color:#475467}
+
+.locators-guide .bench-table{min-width:620px}.locators-guide .bench-table td{overflow-wrap:anywhere}.locators-guide .editor-scroll:focus-visible{outline:3px solid #b94332;outline-offset:4px}
+
+.research-locators-legacy{margin:26px 0}.research-locators-legacy img{display:block;width:100%;max-width:100%;height:auto}.research-locators-legacy figcaption{font-size:.875rem;line-height:1.65;margin-top:10px;color:#526174}

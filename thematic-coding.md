@@ -49,3 +49,9 @@ The saved runs used faster-whisper 1.2.1 with tiny.en and small.en on CPU int8 o
 The observation is that actual output wording, punctuation and grouping can affect the passage an analyst selects. Our recommended handling is to preserve the versioned excerpt and inspect what a proposed interpretation depends on. This short individual recording cannot establish a pattern across a study population, thematic saturation or a validated explanation of anyone's experience.
 
 For preparing and replaying a draft, use the [interview transcription guide](/interview-transcription). The [verbatim transcription guide](/verbatim-transcription) helps you specify what wording a derivative may remove. InstaScript does not automatically code research data or develop themes. Finish this exercise by revisiting the proposed claim alongside all its candidate passages, including the one that makes the simple story less convincing.
+
+![Keep the source mapping separate](/assets/research-locators/01-separate-wide.svg?v=20261028)
+
+Fictional exercise. No participant or recording.
+
+Keep a working excerpt connected to its source only through the project's permitted review process. Try the [restricted source-locator exercise](/qualitative-source-locators).

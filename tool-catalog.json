@@ -1938,6 +1938,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Deidentified Transcripts: Keep a Restricted Source Locator",
+      "label": "Restricted Source Locators",
+      "url": "https://instascript.app/qualitative-source-locators",
+      "summary": "Keep a deidentified transcript working copy separate from its restricted source locator, with a fictional version-matching exercise, reproducible check and blank worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional source-locator exercise",
+        "does not enforce access control, anonymize files or store source keys"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "deidentified transcripts",
+        "restricted source locator"
+      ],
+      "path": "/qualitative-source-locators",
+      "html": "qualitative-source-locators.html",
+      "markdown": "qualitative-source-locators.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-28",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

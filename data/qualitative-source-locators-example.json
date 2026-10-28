@@ -1,0 +1,32 @@
+{
+  "notice": "Entirely fictional; no recording or access control",
+  "working": {
+    "caseRef": "CASE-X7",
+    "version": "V1",
+    "excerpt": "I waited at [place removed] before the appointment.",
+    "review": "pending"
+  },
+  "restricted": [
+    {
+      "caseRef": "CASE-X7",
+      "version": "V1",
+      "sourceRef": "SOURCE-R2",
+      "start": 42,
+      "end": 50
+    }
+  ],
+  "result": {
+    "status": "matched",
+    "sourceRef": "SOURCE-R2",
+    "start": 42,
+    "end": 50
+  },
+  "checks": {
+    "exactMatch": true,
+    "missingMapping": true,
+    "wrongVersion": true,
+    "duplicateMapping": true,
+    "invalidRange": true,
+    "copyHasNoSourceFields": true
+  }
+}
