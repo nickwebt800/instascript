@@ -44,7 +44,7 @@ The saved comparison ran on 24 October 2026 with faster-whisper 1.2.1, tiny.en a
 
 For the recording-to-draft steps, use the [interview transcription guide](/interview-transcription). For decisions about retaining repetitions and corrections, read the [verbatim transcription guide](/verbatim-transcription). InstaScript's existing English file tool produces a draft for manual checking; it does not assign research codes, identify speakers or validate themes. Your next action here is to resolve the flagged wording before promoting the affected code into a finding.
 
-![A candidate is not a decision](/assets/research-terms/02-locate-wide.svg)
+![A candidate is not a decision](/assets/research-terms/02-candidate-wide.svg)
 
 Mirro from fictional LEX-01 is a candidate only for U01. Fictional exercise; no recording.
 
