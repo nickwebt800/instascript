@@ -77,6 +77,16 @@ Click a timestamp to replay its cue when the recording is available, then edit t
 
 The pictures show actual recognition of the public practice recording, followed by a manual punctuation edit. The example preserves the spoken words; it is not an accuracy score or a promise that another recording will produce the same result.
 
+#### One real result: punctuation, playback and export
+
+In a recorded browser run on 21 October 2026, Chrome 155 processed our [11-second public-domain English practice recording](https://instascript.app/assets/demo/kennedy-1961.wav) using the language detector and English speech model. This local file is not an Instagram Reel. [See the recording source and rights](https://instascript.app/assets/demo/SOURCE.md).
+
+**Original recognition, 00:00–00:07.740:** And so my fellow Americans ask not what your country can do for you
+
+**After listening and editing punctuation:** And so, my fellow Americans: ask not what your country can do for you
+
+The words were retained; the comma and colon were added by hand. The actual TXT download contained the edited words, and the SRT download used the same words in a cue from 00:00:00,000 to 00:00:07,740. These timestamps are the recorded result, not a promise of precise alignment. This single example measures neither accuracy nor speed; the prepared sample is separate and does not run recognition.
+
 Editing words does not automatically retime the subtitles. If cue timing also needs work, use **Open in Subtitle Editor** when valid timed cues are available, or export SRT and open it in [Subtitle Editor](https://instascript.app/subtitle-editor) for a separate review.
 
 ![Actual recognized words from the public recording are reviewed and manually punctuated in the editable result field without removing the remaining words.](https://instascript.app/assets/tutorials/instagram-transcript-generator/04-review-narrow.svg)

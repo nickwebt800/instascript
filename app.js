@@ -144,6 +144,7 @@ function setTaskControls(busy) {
   dropZone?.setAttribute("aria-disabled", String(busy));
   cancelBtn.disabled = !busy;
   retryBtn.disabled = busy;
+  errorBox?.querySelectorAll("button:not(.task-retry.hidden)").forEach(button => { button.disabled = busy; });
 }
 
 function cancelledError() {
@@ -181,7 +182,7 @@ async function runTask(job, operation) {
     checkTask(task);
   } catch (error) {
     hideTranscript();
-    showError(task.cancelled ? cancelledError().message : error?.message || "Processing failed. Try the same input again or choose another recording.");
+    showError(task.cancelled ? cancelledError().message : error?.message || "Processing failed. Try the same input again or choose another recording.", true, task.cancelled ? "cancel" : error?.helpCategory);
   } finally {
     processing?.classList.add("hidden");
     progressBar?.classList.add("hidden");
@@ -209,9 +210,11 @@ async function requestWithTimeout(url, options, readBody, timeoutMs, label, task
     return { response, body };
   } catch {
     checkTask(task);
-    throw new Error(timedOut
+    const error = new Error(timedOut
       ? label + " timed out. Retry the same input, or upload a saved file instead."
       : label + " could not be completed. Check your connection and retry the same input.");
+    error.helpCategory = "link";
+    throw error;
   } finally {
     clearTimeout(timer);
     task.controller.signal.removeEventListener("abort", abort);
@@ -308,7 +311,7 @@ function handleFile(file) {
   if (file.size > MAX_FILE_SIZE) {
     selectedFile = null;
     fileInfo?.classList.add("hidden");
-    showError("File too large. Maximum size is 100 MB.");
+    showError("File too large. Maximum size is 100 MB.", false, "file");
     return;
   }
   selectedFile = file;
@@ -369,13 +372,15 @@ function handleUrl() {
   if (activeTask) return;
   const url = urlInput.value.trim();
   if (!url) {
-    showError("Paste a public Instagram Reel or video post URL first.");
+    showError("Paste a public Instagram Reel or video post URL first.", false, "link");
+    urlInput.focus();
     return;
   }
   let parsed;
   try { parsed = new URL(url); } catch { /* Invalid input below. */ }
   if (!parsed || !["http:", "https:"].includes(parsed.protocol) || !/(^|\.)instagram\.com$/i.test(parsed.hostname)) {
-    showError("Please use a public Instagram Reel or video post URL.");
+    showError("Please use a public Instagram Reel or video post URL.", false, "link");
+    urlInput.focus();
     return;
   }
   urlNote?.classList.add("hidden");
@@ -396,33 +401,33 @@ async function runUrlTranscription(instagramUrl) {
 
     if (extractRes.status === 404) {
       if (data?.error) {
-        showError(data.error);
+        showError(data.error, true, "link");
         return;
       }
       // A non-JSON 404 means the Pages Function route is not deployed.
-      showError("The Instagram lookup service is unavailable on this deployment. Upload a saved file instead, or retry later.");
+      showError("The Instagram lookup service is unavailable on this deployment. Upload a saved file instead, or retry later.", true, "link");
       return;
     }
 
     if (!extractRes.ok) {
-      showError(data?.error || `Instagram lookup returned ${extractRes.status}. Retry later or upload a saved file.`);
+      showError(data?.error || `Instagram lookup returned ${extractRes.status}. Retry later or upload a saved file.`, true, "link");
       return;
     }
 
     if (!data || typeof data !== "object") {
-      showError("The Instagram lookup returned an unreadable response. Retry or upload a saved file.");
+      showError("The Instagram lookup returned an unreadable response. Retry or upload a saved file.", true, "link");
       return;
     }
 
     // Older deployments may return post metadata without playable media.
     // A written description is not speech and must never become a transcript.
     if (data.type === "text" && data.caption) {
-      showError("Only a written post description was found, not playable video. No speech transcript was created. Upload a saved video or try another public Reel.");
+      showError("Only a written post description was found, not playable video. No speech transcript was created. Upload a saved video or try another public Reel.", true, "link");
       return;
     }
 
     if (!data.videoUrl) {
-      showError("No video was found in this post. Try a public Reel or upload the downloaded file instead.");
+      showError("No video was found in this post. Try a public Reel or upload the downloaded file instead.", true, "link");
       return;
     }
 
@@ -435,7 +440,7 @@ async function runUrlTranscription(instagramUrl) {
 
     if (!videoRes.ok) {
       showError(videoRes.status === 413 ? "This media exceeds the 100 MB limit. Choose a smaller saved file."
-        : "Could not download this video. The post may be private or expired; retry a public Reel or upload a saved file instead.");
+        : "Could not download this video. Retry a public Reel or upload a saved file instead.", true, "link");
       return;
     }
 
@@ -550,7 +555,7 @@ function handleLanguageCheck(result) {
     uncertain: "Could not determine the audio language. Try a recording with clear English speech near the beginning. No transcript was created.",
     failed: "The language check could not run. Check your connection and retry using the same file or URL. No transcript was created.",
   };
-  showError(messages[result.status] || messages.uncertain);
+  showError(messages[result.status] || messages.uncertain, true, "language");
   return false;
 }
 
@@ -591,7 +596,9 @@ async function extractAudio(file) {
     try {
       audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
     } catch {
-      throw new Error("Could not decode this file format. Try MP3, WAV, or MP4 with AAC audio.");
+      const error = new Error("Could not decode this file format. Try MP3, WAV, or MP4 with AAC audio.");
+      error.helpCategory = "file";
+      throw error;
     }
     checkTask();
 
@@ -752,12 +759,38 @@ function showProcessing(text) {
   }
 }
 
-function showError(msg, canRetry = Boolean(activeTask)) {
+function showError(msg, canRetry = Boolean(activeTask), helpCategory = null) {
   if (!errorBox) return;
   errorBox.textContent = msg;
   retryBtn.classList.toggle("hidden", !lastJob || !canRetry);
   retryBtn.disabled = Boolean(activeTask);
   errorBox.appendChild(retryBtn);
+  const helpTargets = {
+    link: ["/instagram-transcript-generator#reel-link-failed", "Help with Instagram links"],
+    language: ["/instagram-transcript-generator#english-language-check", "Help with the language check"],
+    file: ["/instagram-transcript-generator#file-wont-decode", "Help with file size and formats"],
+    cancel: ["/instagram-transcript-generator#cancel-retry", "Help with cancel and retry"],
+  };
+  if (helpTargets[helpCategory]) {
+    const link = document.createElement("a");
+    link.href = helpTargets[helpCategory][0];
+    link.textContent = helpTargets[helpCategory][1];
+    link.className = "task-retry";
+    errorBox.appendChild(link);
+  }
+  if (helpCategory === "link" && document.querySelector('.tab[data-tab="upload"]')) {
+    const upload = document.createElement("button");
+    upload.type = "button";
+    upload.className = "btn-ghost task-retry";
+    upload.textContent = "Choose a saved file instead";
+    upload.disabled = Boolean(activeTask);
+    upload.addEventListener("click", () => {
+      if (activeTask) return;
+      activateTab("upload");
+      dropZone?.focus();
+    });
+    errorBox.appendChild(upload);
+  }
   errorBox.classList.remove("hidden");
 }
 

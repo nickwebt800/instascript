@@ -138,6 +138,8 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 
 This homepage includes an affiliate link; a qualifying ElevenLabs signup may earn us a commission at no extra cost to you.
 
+Error messages for Instagram links, language checks, file formats and cancellation include a link to relevant help. When available, choose a saved file from an Instagram link error to switch to the local upload panel.
+
 ## Cancel and retry
 
 Only one transcription task can run at a time. While processing, input controls are locked. **Cancel processing** aborts the active link lookup or media download. A model download or local audio/model operation already in progress may need to finish first; its result is discarded before another task can start.
