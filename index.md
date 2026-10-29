@@ -66,6 +66,12 @@ SRT and VTT export require non-empty speech cues with complete valid start and e
 
 Yes. Paste a public Instagram Reel or video post URL above. The page fetches the media link, while the speech recognition runs in your browser and returns the transcript when the audio is supported.
 
+## Find your next step
+
+- [Instagram link not working?](https://instascript.app/instagram-transcript-generator#reel-link-failed) Check common lookup problems and when to use a permitted saved file.
+- [Need to check the words?](https://instascript.app/instagram-transcript-generator#review-reel-transcript) Replay the recording and correct the transcript before using it.
+- [Need a subtitle file?](https://instascript.app/instagram-transcript-generator#export-reel-transcript) Choose TXT, SRT or VTT and check the timing requirements.
+
 ## More transcription tools
 
 ### Transcript tools
