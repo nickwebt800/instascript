@@ -75,3 +75,9 @@ Apply the convention to the worked example in [qualitative research transcriptio
 Apply the convention to the worked example in [focus group transcription services: specify the review you need](/focus-group-transcription-services).
 
 Apply the convention to the worked example in [thematic coding: build a claim from passages, not cue counts](/thematic-coding).
+
+![Name the missing text](/assets/research-omissions/01-distinguish-wide.svg)
+
+Invented text; no participant or recording.
+
+Before shortening a research extract, distinguish unresolved source text from a deliberate cut. Use the [transcript gaps and shortened quotes exercise](/qualitative-quote-omissions).

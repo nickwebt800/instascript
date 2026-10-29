@@ -18,3 +18,6 @@
 .locators-guide .bench-table{min-width:620px}.locators-guide .bench-table td{overflow-wrap:anywhere}.locators-guide .editor-scroll:focus-visible{outline:3px solid #b94332;outline-offset:4px}
 
 .research-locators-legacy{margin:26px 0}.research-locators-legacy img{display:block;width:100%;max-width:100%;height:auto}.research-locators-legacy figcaption{font-size:.875rem;line-height:1.65;margin-top:10px;color:#526174}
+
+/* E06: expose all navigation destinations on narrow research screens. */
+.omissions-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.omissions-guide .bench-table{min-width:680px}.omissions-guide .bench-table td{overflow-wrap:anywhere}.research-omissions-legacy{margin:28px 0}.research-omissions-legacy img{display:block;width:100%;height:auto}.research-omissions-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}

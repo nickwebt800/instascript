@@ -1965,6 +1965,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Transcript Gaps and Shortened Quotes: Mark the Difference",
+      "label": "Transcript Gaps & Quote Cuts",
+      "url": "https://instascript.app/qualitative-quote-omissions",
+      "summary": "Distinguish unresolved transcript gaps from deliberate quotation cuts with a fictional paired-excerpt exercise, reproducible ledger and blank review worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional quotation consistency exercise",
+        "does not detect meaning changes or approve research quotations"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcript omissions",
+        "shortened research quotations"
+      ],
+      "path": "/qualitative-quote-omissions",
+      "html": "qualitative-quote-omissions.html",
+      "markdown": "qualitative-quote-omissions.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-29",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

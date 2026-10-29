@@ -109,6 +109,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Cross-Cue Research Quotes](https://instascript.app/qualitative-cross-cue-quotes) — Map one qualitative quotation across two transcript cues with exact text spans, a broad replay locator, a blank worksheet and an original reproducible fictional example.
 - [Uncertain Transcript Terms](https://instascript.app/qualitative-uncertain-terms) — Keep uncertain transcript terms separate from candidate spellings with an original fictional occurrence ledger, reproducible replacement check and blank review worksheet.
 - [Restricted Source Locators](https://instascript.app/qualitative-source-locators) — Keep a deidentified transcript working copy separate from its restricted source locator, with a fictional version-matching exercise, reproducible check and blank worksheet.
+- [Transcript Gaps & Quote Cuts](https://instascript.app/qualitative-quote-omissions) — Distinguish unresolved transcript gaps from deliberate quotation cuts with a fictional paired-excerpt exercise, reproducible ledger and blank review worksheet.
 
 ### YouTube tools
 

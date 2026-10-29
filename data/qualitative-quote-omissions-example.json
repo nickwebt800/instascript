@@ -1,0 +1,95 @@
+{
+  "fictional": true,
+  "sources": [
+    {
+      "ref": "EXCERPT-A",
+      "version": "V1",
+      "text": "I kept the paper card because the screen was hard to read, but I still used the screen at home."
+    },
+    {
+      "ref": "EXCERPT-B",
+      "version": "V1",
+      "text": "I kept the [inaudible] card for later."
+    },
+    {
+      "ref": "COUNTEREXAMPLE-C",
+      "version": "V1",
+      "text": "I did not prefer the screen."
+    }
+  ],
+  "records": [
+    {
+      "ref": "EXCERPT-A",
+      "version": "V1",
+      "spans": [
+        [
+          0,
+          21
+        ],
+        [
+          59,
+          95
+        ]
+      ],
+      "cuts": [
+        {
+          "start": 21,
+          "end": 59,
+          "text": " because the screen was hard to read, "
+        }
+      ],
+      "rendered": "I kept the paper card […] but I still used the screen at home."
+    },
+    {
+      "ref": "EXCERPT-B",
+      "version": "V1",
+      "spans": [
+        [
+          0,
+          38
+        ]
+      ],
+      "cuts": [],
+      "rendered": "I kept the [inaudible] card for later."
+    },
+    {
+      "ref": "COUNTEREXAMPLE-C",
+      "version": "V1",
+      "spans": [
+        [
+          0,
+          5
+        ],
+        [
+          10,
+          28
+        ]
+      ],
+      "cuts": [
+        {
+          "start": 5,
+          "end": 10,
+          "text": " not "
+        }
+      ],
+      "rendered": "I did […] prefer the screen."
+    }
+  ],
+  "counterexample": {
+    "mechanical": true,
+    "editorialDecision": "reject: deleting the negation reverses meaning; this label is authored, not inferred by the checker"
+  },
+  "checks": {
+    "A reconstructs with declared cut": true,
+    "B preserves unknown marker": true,
+    "wrong version rejected": true,
+    "missing cut record rejected": true,
+    "altered cut text rejected": true,
+    "reversed spans rejected": true,
+    "overlapping spans rejected": true,
+    "out of bounds rejected": true,
+    "silent omission rejected": true,
+    "hidden unknown marker rejected": true,
+    "meaning reversal can pass mechanical check": true
+  }
+}
