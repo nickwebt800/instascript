@@ -8,13 +8,13 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: October 27, 2026
+Last updated: October 29, 2026
 
 ### 1. Data We Collect
 
 When you open a local audio, video or subtitle file, processing happens in your browser. **Your local files and the text you edit or generate from them are not uploaded to our servers.** Public Instagram and YouTube links involve server requests, as described below.
 
-We do not require an account or ask for your name, email address or phone number to use the tools. Locally generated speech transcripts and subtitle edits stay in your browser tab unless you copy or download them. YouTube caption lookup responses may be cached as described in section 2. **InstaScript uses Ahrefs Web Analytics for public-page visit counts, without session recordings or tool-interaction tracking.** Our analytics and hosting providers are described in section 3.
+We do not require an account or ask for your name, email address or phone number to use the tools. Locally generated speech transcripts and subtitle edits stay in your browser tab unless you copy or download them. YouTube caption lookup responses may be cached as described in section 2. **InstaScript uses Ahrefs Web Analytics and Google Analytics 4 for public-page visit counts, without session recordings or tool-interaction tracking.** Our analytics and hosting providers are described in section 3.
 
 ### 2. URL-Based Transcription
 
@@ -32,9 +32,11 @@ We do not require an account or ask for your name, email address or phone number
 
 ### Public-page analytics
 
-The tracker runs in an isolated sandbox that cannot read the tool page, local files, form inputs, transcripts, subtitle edits or generated download and source links. We send only the catalog page URL and title, without the actual page query string or fragment. The referring domain (without its path or query) is sent as the custom source_domain property; unavailable and internal referrers are grouped as direct. This property, rather than the default referral report, is used to review incoming directory traffic. No click or form events from the tools are collected. Tracking is disabled on previews, local development, unlisted routes and when the browser sends Do Not Track or Global Privacy Control.
+The trackers run in an isolated sandbox that cannot read the tool page, local files, form inputs, transcripts, subtitle edits or generated download and source links. We send only the catalog page URL and title, without the actual page query string or fragment. For Ahrefs, the referring domain (without its path or query) is sent as the custom source_domain property; unavailable and internal referrers are grouped as direct. This property, rather than the default referral report, is used to review incoming directory traffic. No click or form events from the tools are collected. Tracking is disabled on previews, local development, unlisted routes and when the browser sends Do Not Track or Global Privacy Control.
 
 Ahrefs receives ordinary connection and device information, including IP address, browser, language and screen dimensions. Ahrefs states that its analytics uses no cookies, discards raw IP addresses and uses daily identifiers rather than tracking visitors across days. Aggregate data may be used by Ahrefs to improve its services. See [Ahrefs data collection details](https://help.ahrefs.com/en/articles/10247870-about-ahrefs-web-analytics).
+
+Google Analytics 4 receives the catalog page URL and title and ordinary connection and device data. Its standard page-view measurement runs in the same sandbox; its page referrer is blank and enhanced measurement and advertising signals are disabled. Google may use identifiers or cookies where the browser permits them. See [how Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites).
 
 ### 4. Advertising
 
@@ -48,7 +50,7 @@ The homepage also offers an optional VideoStudio recommendation after a valid SR
 
 ### 5. Cookies
 
-InstaScript does not set cookies of its own. Our host, Cloudflare, may set cookies required for security and bot protection, and third-party advertising partners may set cookies to deliver and measure ads. You can control cookies through your browser settings.
+Google Analytics may use cookies or identifiers where the browser permits them. Our host, Cloudflare, may set cookies required for security and bot protection, and third-party advertising partners may set cookies to deliver and measure ads. You can control cookies through your browser settings.
 
 ### 6. Children's Privacy
 

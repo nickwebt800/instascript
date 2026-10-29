@@ -173,8 +173,10 @@ Run `node scripts/test-transcript-markdown.mjs` with the existing result and sea
 
 ## Public-page analytics
 
-Ahrefs Web Analytics runs only inside an opaque-origin sandboxed iframe on catalog-listed production pages. `footer.js` supplies a canonical catalog path and referrer hostname only; `/analytics-frame` validates these against the catalog and serves a no-store, noindex document with a restrictive CSP. The tracker has no access to the parent DOM, files or result links. Preview/local requests and browser DNT/GPC opt-outs do not load it. No GA4 or custom tool events are installed.
+Ahrefs Web Analytics and Google Analytics 4 run inside an opaque-origin sandboxed iframe on catalog-listed production pages. `footer.js` supplies a canonical catalog path and referrer hostname only; `/analytics-frame` validates these against the catalog and serves a no-store, noindex document with a restrictive CSP. The tracker has no access to the parent DOM, files or result links. Preview/local requests and browser DNT/GPC opt-outs do not load it. GA4 enhanced measurement and advertising signals are disabled; no custom tool events are installed.
 
 The public data-key comes from the InstaScript Ahrefs project. `data-page-location` is supported by the reviewed upstream tracker; verify canonical page attribution again after publishing. Incoming domains are available through the `source_domain` event property (configure an event-properties report in Ahrefs); the standard referrer report is intentionally empty/direct because the frame receives no referrer. Missing and internal referrers use `direct`. Query/UTM parameters and fragments are not sent. This trades campaign/session attribution for strict separation from user content.
 
 Run `node scripts/test-analytics.mjs`. Local checks do not establish production ingestion; after an authorized deployment, verify both the production script and actual Ahrefs reports.
+
+Google Analytics 4 receives the canonical catalog URL and page title inside the isolated frame, with an empty page referrer. The frame has no access to tool inputs or results. Browser restrictions on third-party storage may affect analytics identifiers and session continuity. Verify actual requests and Realtime reporting after deployment; local checks do not prove ingestion.
