@@ -1,6 +1,7 @@
 import { createMediaReview } from "./js/media-review.js?v=p2-20261013";
 import { receiveTranscriptFromOpener } from "./js/transcript-transfer.js?v=p2-20261013";
 import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCues, validateSubtitleCues } from "./js/subtitles.js?v=p2-20261013";
+import { createSubtitleQualityReview } from "./js/subtitle-quality-view.js?v=quality-20261030";
 
 (function () {
   "use strict";
@@ -12,12 +13,27 @@ import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCu
   var editorSection = $("editorSection");
   var subtitleRows = $("subtitleRows");
   var entries = [];
+  var sourceVersion = 0;
+  var quality = createSubtitleQualityReview($("subtitleQuality"), function () { return entries; }, function (index, field) {
+    var row = subtitleRows.children[index];
+    var target = row && row.querySelector('[data-field="' + field + '"]');
+    if (target) {
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: "center", inline: "nearest" });
+    }
+  });
+  input.addEventListener("input", function () {
+    sourceVersion++;
+    quality.reset("Source changed. Load into editor before checking again.", false);
+  });
   var mediaReview = createMediaReview($("editorMedia"), function (message) { setStatus(message); });
   $("reviewMediaFile").addEventListener("change", function () {
     var file = this.files && this.files[0];
     if (file) { mediaReview.set(file); setStatus("Recording opened locally. Click a cue number to replay its start."); }
   });
   receiveTranscriptFromOpener(function (cues, media) {
+    sourceVersion++;
+    quality.reset();
     entries = cues;
     input.value = serializeSubtitleCues(cues);
     renderRows();
@@ -29,15 +45,22 @@ import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCu
   fileInput.addEventListener("change", async function () {
     var file = fileInput.files && fileInput.files[0];
     if (!file) return;
+    var version = ++sourceVersion;
+    quality.reset("New source selected. Load into editor before checking again.", false);
     try {
-      input.value = await file.text();
+      var text = await file.text();
+      if (version !== sourceVersion) return;
+      input.value = text;
       setStatus(file.name + " opened locally. Click Load into editor.");
     } catch (error) {
+      if (version !== sourceVersion) return;
       setStatus("Could not read that file. Try a UTF-8 subtitle file.", true);
     }
   });
 
   $("loadBtn").addEventListener("click", function () {
+    sourceVersion++;
+    quality.reset();
     try {
       if (!input.value.trim()) throw new Error("Paste or open a subtitle file first.");
       entries = parseSubtitle(input.value);
@@ -47,12 +70,15 @@ import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCu
       editorSection.scrollIntoView({ behavior: "smooth", block: "start" });
       setStatus(entries.length + " entries loaded and ready to edit.");
     } catch (error) {
+      quality.reset("Fix the source and load it into the editor before checking.", false);
       editorSection.classList.add("hidden");
       setStatus(error.message, true);
     }
   });
 
   $("clearBtn").addEventListener("click", function () {
+    sourceVersion++;
+    quality.reset("Load subtitles before checking.", false);
     input.value = "";
     entries = [];
     subtitleRows.innerHTML = "";
@@ -114,6 +140,7 @@ import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCu
   }
 
   function renderRows() {
+    quality.invalidate();
     subtitleRows.innerHTML = "";
     entries.forEach(function (entry, index) {
       var row = document.createElement("tr");
@@ -140,6 +167,7 @@ import { parseSubtitleCues, parseSubtitleTime, subtitleTime, serializeSubtitleCu
       });
       row.querySelectorAll("[data-field]").forEach(function (el) {
         el.addEventListener("input", function () {
+          quality.invalidate();
           var field = el.dataset.field;
           entries[index][field] = field === "text" ? el.value : parseTime(el.value);
           updateExportState();

@@ -171,6 +171,14 @@ The shared transcript result, homepage prepared sample, and both interactive You
 
 Run `node scripts/test-transcript-markdown.mjs` with the existing result and search checks, then verify browser downloads and edited-text, display-mode, language-reset and mobile behavior.
 
+## Subtitle readability review
+
+The existing Subtitle Editor offers an explicit **Check subtitles** action with adjustable reading-speed, line-length, minimum-duration and line-count thresholds. Overlap checks include nested and out-of-order cues without sorting the file. Hints do not change captions or block valid exports; invalid times and empty text retain their existing export restrictions. Text, timing, row or threshold changes invalidate the report, and another import clears it. Reports paginate 50 affected cues at a time and locate the relevant editor field without playing media.
+
+Counting follows the editor's exported text and rounded millisecond times. Unicode graphemes are preferred, with an explicit code-point fallback. Remaining typed markup and entities count literally. Checks, thresholds and reports remain in the current tab; no content analytics or persistent history is added. See the matching HTML and Markdown editor guide for the rules and limits.
+
+Run `node scripts/test-subtitle-quality.mjs` for threshold boundaries, Unicode fallback, nested overlaps, bounded large-input checks and export isolation. Browser checks must also cover stale reports, focus, filters, pagination, local recording review, imports and actual downloads.
+
 ## Public-page analytics
 
 Ahrefs Web Analytics and Google Analytics 4 run inside an opaque-origin sandboxed iframe on catalog-listed production pages. `footer.js` supplies a canonical catalog path and referrer hostname only; `/analytics-frame` validates these against the catalog and serves a no-store, noindex document with a restrictive CSP. The tracker has no access to the parent DOM, files or result links. Preview/local requests and browser DNT/GPC opt-outs do not load it. GA4 enhanced measurement and advertising signals are disabled; no custom tool events are installed.

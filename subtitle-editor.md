@@ -6,6 +6,20 @@ Canonical: <https://instascript.app/subtitle-editor>
 
 [Open the editor](https://instascript.app/subtitle-editor#subtitle-tool)
 
+## Review readability before downloading
+
+After loading subtitles, choose **Check subtitles**. The report counts each affected cue once, even when it has several issues. Filter by issue and choose **Edit cue** to focus its text or invalid start time; this does not start playback. Results show up to 50 affected cues at a time, with Previous and Next controls.
+
+Adjust the default maximum **17 characters per second**, **42 characters per line**, minimum **0.83 seconds** and maximum **two lines** to suit your audience. These are review starting points, not universal standards. Settings last only in this tab; **Restore defaults** restores these four values. A value exactly at a threshold is not flagged.
+
+Checks use the text and rounded millisecond times that this editor exports. Spaces and punctuation count; line breaks do not. Outer whitespace and blank lines are omitted as in export. Import removes formatting tags; any tags or entities still typed in the editor are counted literally, not rendered. CPS is characters divided by cue duration. Unicode graphemes count together when supported; the fallback counts Unicode code points and may count emoji sequences or combining marks separately. The report states which method is used. Check the result in your destination player.
+
+Overlap flags both affected cues, including nested or out-of-order cues, without sorting your file. Touching boundaries are not overlaps. The report gives one example partner per overlapping cue, not every pair.
+
+Text, timing, row or threshold changes invalidate the report: choose **Recheck subtitles**. Selecting another source, loading again, clearing or receiving a new transcript clears the old report. Hints alone do not block export; invalid timing and empty text still do. A clear report does not verify wording, alignment or compliance. These checks and settings stay in this tab without uploads, saved history or analytics of your content.
+
+[Go to the check panel after loading subtitles](https://instascript.app/subtitle-editor#subtitleQuality).
+
 ## Edit subtitles, one step at a time
 
 Fix wrong words, subtitles that appear too early or late, or a line that disappears too soon. Open your subtitle file, review it against the recording, and save a corrected SRT or VTT.

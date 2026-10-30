@@ -744,6 +744,8 @@ const KNOWN_FILES = new Set([
   "/style.css",
   "/tool-catalog.json",
   "/js/subtitles.js",
+  "/js/subtitle-quality.js",
+  "/js/subtitle-quality-view.js",
   "/js/transcript-result.js",
   "/js/transcript-markdown.js",
   "/js/media-review.js",

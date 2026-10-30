@@ -1,4 +1,44 @@
-/* Illustrated editor walkthrough. Scoped to the guide; tool controls use style.css. */
+/* Editor readability checks and illustrated walkthrough; base controls use style.css. */
+.subtitle-quality { border: 1px solid var(--line); border-radius: 8px; padding: 18px; margin: 20px 0; background: #fafbfc; }
+.subtitle-quality h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.subtitle-quality p { font-size: .86rem; line-height: 1.6; margin: 8px 0; overflow-wrap: anywhere; }
+.subtitle-quality [hidden] { display: none; }
+.quality-settings { margin: 12px 0; }
+.quality-settings summary { cursor: pointer; padding: 8px 0; font-size: .88rem; font-weight: 600; }
+.quality-thresholds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 12px 0; }
+.quality-thresholds label, .quality-filter { display: flex; flex-direction: column; gap: 6px; font-size: .82rem; }
+.quality-thresholds input, .quality-filter select { width: 100%; min-width: 0; min-height: 44px; padding: 8px; font: inherit; color: var(--text); background: #fff; border: 1px solid var(--border); border-radius: 6px; }
+.quality-filter { max-width: 300px; margin: 14px 0 8px; }
+.quality-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.subtitle-quality .btn-ghost { min-height: 44px; }
+.subtitle-quality button:disabled { cursor: not-allowed; opacity: .55; }
+.quality-status { color: #475467; }
+.quality-summary { font-weight: 650; }
+.quality-counts { color: #475467; }
+.quality-issues { list-style: none; padding: 0 6px; margin: 12px 0; max-height: 360px; overflow-y: auto; }
+.quality-issues li { border-top: 1px solid var(--line); padding: 12px 0; }
+.quality-issues p { margin-bottom: 0; }
+.subtitle-editor-guide-page .subtitle-table tr:focus-within { background: var(--accent-soft); }
+.subtitle-quality summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (max-width: 480px) {
+  .subtitle-quality { padding: 14px; }
+  .quality-thresholds { grid-template-columns: 1fr; }
+  .quality-actions .btn-ghost { flex: 1 1 auto; justify-content: center; }
+  .subtitle-editor-guide-page .subtitle-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .subtitle-editor-guide-page .subtitle-table, .subtitle-editor-guide-page .subtitle-table tbody { display: block; }
+  .subtitle-editor-guide-page .subtitle-table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; border-bottom: 1px solid var(--line); padding: 12px 0; }
+  .subtitle-editor-guide-page .subtitle-table td { display: block; width: auto; min-width: 0; padding: 0 !important; border: 0; }
+  .subtitle-editor-guide-page .subtitle-table td:first-child { grid-column: 1; grid-row: 1; }
+  .subtitle-editor-guide-page .subtitle-table td:last-child { grid-column: 2; grid-row: 1; justify-self: end; }
+  .subtitle-editor-guide-page .subtitle-table td:nth-child(4) { grid-column: 1 / -1; }
+  .subtitle-editor-guide-page .subtitle-table td:nth-child(2)::before { content: "Start"; }
+  .subtitle-editor-guide-page .subtitle-table td:nth-child(3)::before { content: "End"; }
+  .subtitle-editor-guide-page .subtitle-table td:nth-child(4)::before { content: "Caption"; }
+  .subtitle-editor-guide-page .subtitle-table input, .subtitle-editor-guide-page .subtitle-table textarea { font-size: .9rem; padding: 8px; min-height: 44px; }
+  .subtitle-editor-guide-page .subtitle-table textarea { min-height: 76px; }
+  .subtitle-editor-guide-page .subtitle-table .remove-row { width: auto; min-height: 44px; font-size: .82rem; }
+  .subtitle-editor-guide-page .subtitle-table .remove-row::after { content: none; }
+}
 .subtitle-editor-guide-page .guide-jump { margin: 4px 0 20px; font-size: .9rem; }
 .subtitle-editor-guide-page .guide-jump a,
 .editor-guide a { color: var(--accent-deep); }
