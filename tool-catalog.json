@@ -1992,6 +1992,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Plain Text Transcript Export: Keep a Review Record",
+      "label": "Plain Text Export Review",
+      "url": "https://instascript.app/qualitative-plain-text-handoff",
+      "summary": "Inspect actual plain and timestamped TXT exports with an original fictional handoff record, reproducible information-loss examples and blank review worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional export consistency exercise",
+        "does not authenticate review history or approve research data"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "plain text transcript export",
+        "transcript handoff"
+      ],
+      "path": "/qualitative-plain-text-handoff",
+      "html": "qualitative-plain-text-handoff.html",
+      "markdown": "qualitative-plain-text-handoff.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-30",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

@@ -85,3 +85,9 @@ Continue with [thematic coding: build a claim from passages, not cue counts](/th
 Fictional exercise: a source relation does not make two records the same source.
 
 When feedback arrives after an interview, use the [participant clarification worksheet](/qualitative-participant-clarifications) to distinguish recorded wording, later explanation and an analyst memo.
+
+![Read the exported file](/assets/research-export/01-files-wide.svg)
+
+Fictional replacements; no recording was checked.
+
+Before handing off a text download, inspect the fields it actually retains. Use the [plain-text export review exercise](/qualitative-plain-text-handoff).

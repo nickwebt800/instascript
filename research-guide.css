@@ -21,3 +21,6 @@
 
 /* E06: expose all navigation destinations on narrow research screens. */
 .omissions-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.omissions-guide .bench-table{min-width:680px}.omissions-guide .bench-table td{overflow-wrap:anywhere}.research-omissions-legacy{margin:28px 0}.research-omissions-legacy img{display:block;width:100%;height:auto}.research-omissions-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}
+
+/* E07: wrap navigation and make export comparison headings legible on mobile. */
+.export-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.export-guide .bench-table{min-width:680px}.export-guide .bench-table td{overflow-wrap:anywhere}.research-export-legacy{margin:28px 0}.research-export-legacy img{display:block;width:100%;height:auto}.research-export-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}

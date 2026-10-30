@@ -1,0 +1,66 @@
+{
+  "disclosure": "Invented words in prepared-sample editor. Reused times are test values, not alignment to these words. Matching bytes does not authenticate a reference or establish review.",
+  "files": {
+    "plain": "I kept the paper map. The route was [unclear]. I did not use the shortcut.\n",
+    "timed": "[00:00:00.000] I kept the paper map.\n[00:00:03.600] The route was [unclear].\n[00:00:07.500] I did not use the shortcut.\n",
+    "srt": "1\n00:00:00,000 --> 00:00:03,600\nI kept the paper map.\n\n2\n00:00:03,600 --> 00:00:07,500\nThe route was [unclear].\n\n3\n00:00:07,500 --> 00:00:11,000\nI did not use the shortcut.\n"
+  },
+  "record": {
+    "reference": "EXPORT-R7",
+    "version": "V1",
+    "audioReview": "fictional text only; no recording review",
+    "unresolved": "[unclear]",
+    "files": {
+      "plain": {
+        "mode": "plain",
+        "sha256": "a0d4c85716da10955e911585cdf12a0ceb0cea785925d89673090a48025f7d92"
+      },
+      "timed": {
+        "mode": "timed",
+        "sha256": "a6b93929151087f9b41c31d1134fafac60218929a5eddb605a12d086c73502d4"
+      },
+      "srt": {
+        "mode": "srt",
+        "sha256": "3bd33a0e2be10867c18561c902a18a56cf8aea5de59a63967e0d2aa5b10d1e0d"
+      }
+    }
+  },
+  "counterexamples": {
+    "regrouped": [
+      {
+        "start": 0,
+        "end": 11,
+        "text": "I kept the paper map. The route was [unclear]. I did not use the shortcut."
+      }
+    ],
+    "differentEnd": [
+      {
+        "start": 0,
+        "end": 3.6,
+        "text": "I kept the paper map."
+      },
+      {
+        "start": 3.6,
+        "end": 7.5,
+        "text": "The route was [unclear]."
+      },
+      {
+        "start": 7.5,
+        "end": 12,
+        "text": "I did not use the shortcut."
+      }
+    ]
+  },
+  "checks": {
+    "plainMatchesReference": true,
+    "timedMatchesReference": true,
+    "srtMatchesReference": true,
+    "wrongVersionRejected": true,
+    "wrongModeRejected": true,
+    "changedWordsRejected": true,
+    "missingFingerprintRejected": true,
+    "unsupportedAudioClaimRejected": true,
+    "differentGroupsSamePlain": true,
+    "differentEndsSameTimedText": true
+  }
+}
