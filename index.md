@@ -117,6 +117,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Restricted Source Locators](https://instascript.app/qualitative-source-locators) — Keep a deidentified transcript working copy separate from its restricted source locator, with a fictional version-matching exercise, reproducible check and blank worksheet.
 - [Transcript Gaps & Quote Cuts](https://instascript.app/qualitative-quote-omissions) — Distinguish unresolved transcript gaps from deliberate quotation cuts with a fictional paired-excerpt exercise, reproducible ledger and blank review worksheet.
 - [Plain Text Export Review](https://instascript.app/qualitative-plain-text-handoff) — Inspect actual plain and timestamped TXT exports with an original fictional handoff record, reproducible information-loss examples and blank review worksheet.
+- [Reviewer Decision Handoff](https://instascript.app/qualitative-reviewer-handoff) — Hand off unresolved transcript decisions with a fictional two-reviewer ledger, reproducible refusal checks and a blank decision worksheet.
 
 ### YouTube tools
 

@@ -49,3 +49,9 @@ For the recording-to-draft steps, use the [interview transcription guide](/inter
 Mirro from fictional LEX-01 is a candidate only for U01. Fictional exercise; no recording.
 
 An uncertain project term needs its own occurrence decision before it enters a transcript revision. Try the [terminology review worksheet](/qualitative-uncertain-terms).
+
+![Receipt is not resolution](/assets/research-handoff/01-receipt-wide.svg)
+
+Fictional practice; no recording or human listening.
+
+When wording is still disputed, distinguish receipt from resolution. Use the [reviewer decision handoff exercise](/qualitative-reviewer-handoff).

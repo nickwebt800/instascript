@@ -2019,6 +2019,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Two Transcript Reviewers: Hand Off the Unresolved Decision",
+      "label": "Reviewer Decision Handoff",
+      "url": "https://instascript.app/qualitative-reviewer-handoff",
+      "summary": "Hand off unresolved transcript decisions with a fictional two-reviewer ledger, reproducible refusal checks and a blank decision worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional reviewer decision exercise",
+        "does not authenticate reviewers or calculate agreement"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "unresolved transcript decisions",
+        "reviewer handoff"
+      ],
+      "path": "/qualitative-reviewer-handoff",
+      "html": "qualitative-reviewer-handoff.html",
+      "markdown": "qualitative-reviewer-handoff.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-10-31",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

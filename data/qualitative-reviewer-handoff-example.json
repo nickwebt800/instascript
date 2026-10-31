@@ -1,0 +1,43 @@
+{
+  "fictional": true,
+  "audioReview": false,
+  "agreementScore": null,
+  "source": {
+    "reference": "HANDOFF-R8",
+    "version": "V1",
+    "cue": "C02",
+    "text": "We used the [unclear] board."
+  },
+  "received": {
+    "id": "D01",
+    "reference": "HANDOFF-R8",
+    "version": "V1",
+    "cue": "C02",
+    "text": "We used the [unclear] board.",
+    "candidates": [
+      "notice",
+      "message"
+    ],
+    "state": "open",
+    "receipt": "acknowledged",
+    "owner": "B",
+    "next": "Inspect authorized source; no recording exists in this fictional exercise",
+    "review": "none; fictional text only",
+    "rationale": ""
+  },
+  "passed": 11,
+  "checks": [
+    "original open ledger accepted",
+    "receipt preserves open state",
+    "both candidates retained",
+    "administrative closure rejected",
+    "rationale without review rejected",
+    "wrong version rejected",
+    "changed passage rejected",
+    "missing owner rejected",
+    "duplicate ID rejected",
+    "silent candidate removal rejected",
+    "working text unchanged"
+  ],
+  "limitation": "Schema checks do not authenticate reviewers or establish wording accuracy."
+}
