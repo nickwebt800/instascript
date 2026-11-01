@@ -1,0 +1,30 @@
+{
+  "fictional": true,
+  "recordingExists": false,
+  "reference": "SCOPE-R9",
+  "version": "V1",
+  "duration": 120,
+  "checked": [
+    [
+      0,
+      20
+    ],
+    [
+      35,
+      50
+    ]
+  ],
+  "unchecked": [
+    [
+      20,
+      35
+    ],
+    [
+      50,
+      120
+    ]
+  ],
+  "uniqueCheckedSeconds": 35,
+  "passed": 13,
+  "limitation": "Arithmetic validates declarations only; no listening or accuracy evidence."
+}

@@ -67,3 +67,9 @@ No. There is no independent coding sample, scoring protocol or observed reviewer
 No. This is a manual companion exercise. InstaScript does not provide accounts, cloud research history, authenticated reviewer assignments or automatic decision reconciliation. Its shared speech workflow drafts English text in the browser, subject to browser decoding and the 100 MB limit. First use downloads language-detection and English-recognition models. Review the actual output yourself.
 
 Local files and same-origin editor transfers stay in the browser. Public Instagram fetching uses servers; YouTube tools retrieve existing captions. The worksheet does not change those [privacy boundaries](/privacy). Store any real ledger only through your project's permitted process, and share only what the recipient is authorized to receive.
+
+![Name the review boundary](/assets/research-scope/01-boundary-wide.svg)
+
+Fictional timeline; no recording or listening.
+
+To distinguish checked passages from unreviewed recording intervals, use the [review scope exercise](/qualitative-review-scope).

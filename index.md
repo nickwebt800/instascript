@@ -118,6 +118,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Transcript Gaps & Quote Cuts](https://instascript.app/qualitative-quote-omissions) — Distinguish unresolved transcript gaps from deliberate quotation cuts with a fictional paired-excerpt exercise, reproducible ledger and blank review worksheet.
 - [Plain Text Export Review](https://instascript.app/qualitative-plain-text-handoff) — Inspect actual plain and timestamped TXT exports with an original fictional handoff record, reproducible information-loss examples and blank review worksheet.
 - [Reviewer Decision Handoff](https://instascript.app/qualitative-reviewer-handoff) — Hand off unresolved transcript decisions with a fictional two-reviewer ledger, reproducible refusal checks and a blank decision worksheet.
+- [Partial Review Scope](https://instascript.app/qualitative-review-scope) — Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet.
 
 ### YouTube tools
 

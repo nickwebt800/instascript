@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partial Transcript Review: Name the Unchecked Intervals | InstaScript</title><meta name="description" content="Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet.">
+<link rel="canonical" href="https://instascript.app/qualitative-review-scope"><link rel="alternate" type="text/markdown" href="/qualitative-review-scope.md">
+<meta property="og:type" content="article"><meta property="og:title" content="Partial Transcript Review: Name the Unchecked Intervals | InstaScript"><meta property="og:description" content="Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet."><meta property="og:url" content="https://instascript.app/qualitative-review-scope"><meta property="og:image" content="https://instascript.app/assets/logo-512.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Partial Transcript Review: Name the Unchecked Intervals | InstaScript"><meta name="twitter:description" content="Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/research-guide.css?v=scope-20261101"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Partial Transcript Review: Name the Unchecked Intervals","description":"Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet.","url":"https://instascript.app/qualitative-review-scope","inLanguage":"en","datePublished":"2026-11-01","author":{"@type":"Organization","name":"InstaScript"},"mainEntityOfPage":"https://instascript.app/qualitative-review-scope"}</script></head>
+<body class="research-guide scope-guide"><a class="research-skip" href="#research-main">Skip to article</a><div class="container"><header class="header"><p class="brand" data-site-brand><a href="/">InstaScript</a></p><h1 class="page-h1">Partial Transcript Review: Name the Unchecked Intervals</h1><nav class="page-nav" aria-label="Site navigation" data-site-nav>
+<a href="/">Instagram Transcript</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+</nav></header>
+<main id="research-main"><section class="tool-card" aria-label="Quick answer"><p>For qualitative research transcription, record the exact intervals checked against the recording, the transcript version and the review purpose. List the remaining intervals as unreviewed. A checked excerpt does not establish that the whole recording was verified, and an unresolved word inside a checked interval must stay unresolved.</p><p><a class="btn-primary research-download" href="/data/qualitative-review-scope-worksheet.md" download>Download the review-scope worksheet</a></p></section>
+<section class="content-card" aria-labelledby="what-this-record-can-establish"><h2 id="what-this-record-can-establish">What this record can establish</h2>
+<p>A review-scope record answers where a check took place. A correction ledger answers what changed. Keep these records linked but separate: a reviewer can listen to a passage without resolving every word, and can correct one word without reviewing the surrounding interview. This guide offers a manual practice worksheet, not an automatic listening audit or a recommendation to replace a study's required review procedure with sampling.</p>
+<p>The worked example below is entirely fictional. Its times describe an invented recording of 120 seconds; no recording exists and no person listened to it. The script checks interval bookkeeping only. It cannot establish accuracy, methodological adequacy, consent, speaker identity or the trustworthiness of a real review claim.</p>
+</section>
+<section class="content-card" aria-labelledby="our-fictional-scope-map"><h2 id="our-fictional-scope-map">Our fictional scope map</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-scope/01-boundary-narrow.svg"><img src="/assets/research-scope/01-boundary-wide.svg" alt="Name the review boundary" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>Fictional timeline; no recording or listening.</figcaption></figure><p>Imagine a working transcript called SCOPE-R9, version V1. The exercise declares a timeline from 0 through 120 seconds. Use half-open intervals: the start belongs to an interval and its end belongs to the next interval. Thus [0,20) and [20,35) meet without overlapping or leaving a gap. The recording endpoint is 120; it does not create an extra second of content.</p>
+<div class="editor-scroll" tabindex="0" role="region" aria-label="Fictional review intervals: scroll horizontally"><table class="bench-table"><thead><tr><th scope="col">Interval in seconds</th><th scope="col">Declared action</th><th scope="col">What remains outside that claim</th></tr></thead><tbody><tr><td>[0,20)</td><td>Fictional check for wording</td><td>One candidate word remains unresolved</td></tr><tr><td>[20,35)</td><td>Not reviewed</td><td>No wording claim</td></tr><tr><td>[35,50)</td><td>Fictional check for wording</td><td>Speaker identity not assessed</td></tr><tr><td>[50,120)</td><td>Not reviewed</td><td>No wording claim</td></tr></tbody></table></div><p>The two checked intervals total 35 seconds. The complement totals 85 seconds. These are exact arithmetic results for this invented timeline, not measured listening time, a quality percentage or evidence that 35 seconds would be an adequate sample. A reviewer may replay the same interval repeatedly; replay duration and unique timeline coverage answer different questions.</p>
+<p>A tempting but invalid summary is: recording reviewed, transcript approved. A narrower exercise summary is: V1 has declared wording checks at [0,20) and [35,50); the remainder is unreviewed; one word remains unresolved. The second sentence preserves both the spatial boundary of the review and the outstanding decision. It still remains a fictional declaration rather than evidence of listening.</p>
+</section>
+<section class="content-card" aria-labelledby="our-reproducible-refusal-checks"><h2 id="our-reproducible-refusal-checks">Our reproducible refusal checks</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-scope/02-union-narrow.svg"><img src="/assets/research-scope/02-union-wide.svg" alt="Count unique intervals" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>Arithmetic checks declarations, not accuracy.</figcaption></figure><p>Download the <a href="/data/qualitative-review-scope-reproduce.cjs">interval exercise script</a> and run it locally with Node. The <a href="/data/qualitative-review-scope-example.json">example output</a> contains the derived unchecked intervals and the actual number of assertions. No package installation, network request, audio or transcript is needed. Read the code before applying any adapted rule to project records.</p>
+<p>The script sorts valid intervals, merges overlapping or touching checked spans, then derives the complement inside the declared duration. It refuses negative starts, zero-length spans, reversed intervals, non-finite values and endpoints beyond the recording. A changed version fails a version match. These refusals catch bookkeeping errors; they do not authenticate declarations.</p>
+<p>Try the overlap counterexample: [0,20) plus [10,30) covers 30 unique seconds, not 40. Try the adjacent case: [0,20) plus [20,35) leaves no unchecked interval between them. An empty list means the full [0,120) remains unreviewed. A full [0,120) declaration has an empty complement, but even that mathematical result does not prove that anybody listened or approved the wording.</p>
+<p>Now change V1 to V2 after inserting a passage or replacing the source recording. Do not silently carry forward the old scope map. Establish that the source and timeline are still the same, identify affected text and record the decision about which checks require repetition. The fixture deliberately rejects a mismatched version; it cannot determine whether a real edit invalidates an earlier check.</p>
+</section>
+<section class="content-card" aria-labelledby="our-worksheet-and-handoff"><h2 id="our-worksheet-and-handoff">Our worksheet and handoff</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-scope/03-version-narrow.svg"><img src="/assets/research-scope/03-version-wide.svg" alt="Tie scope to a version" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>Retain uncertainty and the permitted next action.</figcaption></figure><p>Use the downloadable blank worksheet to record a project-safe source reference, transcript version, duration provenance, time convention, review purpose and actual checked intervals. Add the reviewer reference and review date only when a review actually occurs. Keep sensitive recording locations in approved restricted storage. Do not put participant names or private file paths into a broadly shared worksheet.</p>
+<p>List unreviewed intervals explicitly. Give a reason when useful, such as pending access or outside the present task, without treating that reason as approval. Keep unresolved wording issues in a separate decision list with a locator and permitted next action. A recipient should be able to distinguish not listened to, listened to but unresolved, and a documented wording decision.</p>
+<p>Before handoff, compare the checked union and its complement against the declared timeline. Ask whether any interval is missing, double-counted or tied to an old version. Then write one sentence stating exactly what the record supports. If the duration or recording mapping is unknown, retain that limitation and do not manufacture a complete interval map. A mathematically complete map is still not a quality certificate.</p>
+</section>
+<section class="content-card" aria-labelledby="sources-and-next-steps"><h2 id="sources-and-next-steps">Sources and next steps</h2>
+<p><a href="https://guides.library.harvard.edu/c.php?g=796889&amp;p=10476360">Harvard Library's recording and transcription guide</a> connects transcription decisions to study methodology and notes the need for manual revision of automatic output. <a href="https://atlasti.com/guides/interview-analysis-guide/annotated-interview-transcripts">ATLAS.ti's annotation guide</a> discusses adding observations and interpretation to interview text. These general principles do not validate the invented interval exercise or prescribe its sampling policy.</p>
+<p>For an English draft, the <a href="/">shared transcription tool</a> processes browser-decodable local media up to 100 MB. English speech recognition runs in the browser; first use loads language-check and recognition resources. Recognition can fail or leave uncertain wording. Local file processing does not upload content; Instagram URL fetching involves a server and possible fallback service. This guide stores no review history and does not add an automated verification feature. See the <a href="/privacy">privacy explanation</a>.</p>
+<p>Use the <a href="/qualitative-reviewer-handoff">reviewer handoff exercise</a> for an unresolved wording decision, and the <a href="/qualitative-source-locators">source locator exercise</a> when a working copy needs a separately protected recording reference. This page concerns the boundary of review, rather than resolving words or approving an entire research transcript.</p>
+</section></main>
+<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a>
+<a href="/google-meet-transcript">Google Meet Transcript</a>
+<a href="/ogg-to-text">OGG to Text</a>
+<a href="/recording-format-guide">Recording Format Guide</a>
+<a href="/phone-call-transcription">Phone Call Transcription</a>
+<a href="/interview-transcription">Interview Transcription</a>
+<a href="/verbatim-transcription">Verbatim Transcription</a>
+<a href="/qualitative-coding">Qualitative Coding</a>
+<a href="/focus-group-transcription">Focus Group Transcription</a>
+<a href="/qualitative-research-transcription">Qualitative Research Transcription</a>
+<a href="/focus-group-transcription-services">Focus Group Transcription Services</a>
+<a href="/thematic-coding">Thematic Coding</a>
+<a href="/qualitative-transcript-corrections">Transcript Corrections</a>
+<a href="/qualitative-participant-clarifications">Participant Clarifications</a>
+<a href="/qualitative-cross-cue-quotes">Cross-Cue Research Quotes</a>
+<a href="/qualitative-uncertain-terms">Uncertain Transcript Terms</a>
+<a href="/qualitative-source-locators">Restricted Source Locators</a>
+<a href="/qualitative-quote-omissions">Transcript Gaps &amp; Quote Cuts</a>
+<a href="/qualitative-plain-text-handoff">Plain Text Export Review</a>
+<a href="/qualitative-reviewer-handoff">Reviewer Decision Handoff</a>
+<a href="/qualitative-review-scope">Partial Review Scope</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a>
+<a href="/translate-srt">Translate SRT Guide</a>
+<a href="/how-to-add-captions-on-tiktok">How to Add Captions on TikTok</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=footer-4e4d548fbd4f" defer></script></body></html>

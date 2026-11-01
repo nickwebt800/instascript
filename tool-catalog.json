@@ -2046,6 +2046,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Partial Transcript Review: Name the Unchecked Intervals",
+      "label": "Partial Review Scope",
+      "url": "https://instascript.app/qualitative-review-scope",
+      "summary": "Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional interval exercise",
+        "does not verify listening or calculate accuracy"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "unreviewed transcript intervals",
+        "partial review scope"
+      ],
+      "path": "/qualitative-review-scope",
+      "html": "qualitative-review-scope.html",
+      "markdown": "qualitative-review-scope.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-01",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }
