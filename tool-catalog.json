@@ -2073,6 +2073,33 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "Transcript Wording and Speaker Labels: Keep Two Review Decisions",
+      "label": "Wording and Speaker Review",
+      "url": "https://instascript.app/qualitative-review-purposes",
+      "summary": "Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional purpose-mismatch exercise",
+        "does not verify listening or identify speakers"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "wording and speaker review",
+        "purpose-specific transcript review"
+      ],
+      "path": "/qualitative-review-purposes",
+      "html": "qualitative-review-purposes.html",
+      "markdown": "qualitative-review-purposes.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-02",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      }
     }
   ]
 }

@@ -30,3 +30,6 @@
 
 /* E08: wrap navigation, show clear open status, and keep the comparison table keyboard accessible. */
 .scope-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.scope-guide .bench-table{min-width:620px}.scope-guide .tool-card p{max-width:62ch}.scope-guide .bench-table td:nth-child(2){font-weight:600;color:#843329}.scope-guide .bench-table td{overflow-wrap:anywhere}.research-scope-legacy{margin:28px 0}.research-scope-legacy img{display:block;width:100%;height:auto}.research-scope-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}
+
+/* E10: wrap navigation, show clear open status, and keep the comparison table keyboard accessible. */
+.purposes-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.purposes-guide .bench-table{min-width:620px}.purposes-guide .tool-card p{max-width:62ch}.purposes-guide .bench-table td:nth-child(2){font-weight:600;color:#843329}.purposes-guide .bench-table td{overflow-wrap:anywhere}.research-purposes-legacy{margin:28px 0}.research-purposes-legacy img{display:block;width:100%;height:auto}.research-purposes-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}

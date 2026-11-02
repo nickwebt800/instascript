@@ -64,3 +64,9 @@ Before handoff, compare the checked union and its complement against the declare
 For an English draft, the [shared transcription tool](/) processes browser-decodable local media up to 100 MB. English speech recognition runs in the browser; first use loads language-check and recognition resources. Recognition can fail or leave uncertain wording. Local file processing does not upload content; Instagram URL fetching involves a server and possible fallback service. This guide stores no review history and does not add an automated verification feature. See the [privacy explanation](/privacy).
 
 Use the [reviewer handoff exercise](/qualitative-reviewer-handoff) for an unresolved wording decision, and the [source locator exercise](/qualitative-source-locators) when a working copy needs a separately protected recording reference. This page concerns the boundary of review, rather than resolving words or approving an entire research transcript.
+
+![One passage, two questions](/assets/research-purposes/01-purposes-wide.svg)
+
+Fictional practice; no recording or identity evidence.
+
+To separate wording decisions from speaker-attribution decisions, use the [two-purpose review exercise](/qualitative-review-purposes).

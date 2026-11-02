@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transcript Wording and Speaker Labels: Keep Two Review Decisions | InstaScript</title><meta name="description" content="Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet.">
+<link rel="canonical" href="https://instascript.app/qualitative-review-purposes"><link rel="alternate" type="text/markdown" href="/qualitative-review-purposes.md">
+<meta property="og:type" content="article"><meta property="og:title" content="Transcript Wording and Speaker Labels: Keep Two Review Decisions | InstaScript"><meta property="og:description" content="Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet."><meta property="og:url" content="https://instascript.app/qualitative-review-purposes"><meta property="og:image" content="https://instascript.app/assets/logo-512.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Transcript Wording and Speaker Labels: Keep Two Review Decisions | InstaScript"><meta name="twitter:description" content="Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/research-guide.css?v=purposes-20261102"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Transcript Wording and Speaker Labels: Keep Two Review Decisions","description":"Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet.","url":"https://instascript.app/qualitative-review-purposes","inLanguage":"en","datePublished":"2026-11-02","author":{"@type":"Organization","name":"InstaScript"},"mainEntityOfPage":"https://instascript.app/qualitative-review-purposes"}</script></head>
+<body class="research-guide purposes-guide"><a class="research-skip" href="#research-main">Skip to article</a><div class="container"><header class="header"><p class="brand" data-site-brand><a href="/">InstaScript</a></p><h1 class="page-h1">Transcript Wording and Speaker Labels: Keep Two Review Decisions</h1><nav class="page-nav" aria-label="Site navigation" data-site-nav>
+<a href="/">Instagram Transcript</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+</nav></header>
+<main id="research-main"><section class="tool-card" aria-label="Quick answer"><p>For qualitative research transcription, review the words and the speaker label as separate decisions. A passage can have settled wording while its speaker remains unresolved. Record a purpose, a transcript version, a passage reference and a rationale for each decision; do not copy a wording result into a speaker-attribution field.</p><p><a class="btn-primary research-download" href="/data/qualitative-review-purposes-worksheet.md" download>Download the two-purpose worksheet</a></p></section>
+<section class="content-card" aria-labelledby="what-needs-a-separate-decision"><h2 id="what-needs-a-separate-decision">What needs a separate decision?</h2>
+<p>Wording asks which words belong in a passage under the project's transcription convention. Speaker attribution asks which speaker label belongs to that passage. A label can be uncertain even when the sentence is legible. Conversely, a stable label does not settle an unclear noun. Neither result alone approves an interpretation or establishes permission to quote.</p>
+<p>This is a manual companion exercise. InstaScript does not identify research participants, automatically assign speaker identities or keep authenticated team review records. The distinction here is a recordkeeping rule for practice, not a validated research method. Use the actual study protocol to decide what evidence and review are required.</p>
+</section>
+<section class="content-card" aria-labelledby="our-fictional-two-purpose-case"><h2 id="our-fictional-two-purpose-case">Our fictional two-purpose case</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-purposes/01-purposes-narrow.svg"><img src="/assets/research-purposes/01-purposes-wide.svg" alt="One passage, two questions" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>Fictional practice; no recording or identity evidence.</figcaption></figure><p>The invented working document is PURPOSE-R10, version V1, passage P03. Its text is: We moved the meeting outside. Its draft speaker field is unresolved. There is no recording, participant or listening session. The exercise supplies no true speaker and does not ask you to guess one from the sentence.</p>
+<p>Create decision W03 for wording and decision S03 for speaker attribution. Both point to P03 and V1, but they have different purposes and independent states. The demonstration starts with both pending. It then applies an explicitly fictional wording decision while leaving S03 pending. That state is the worked example's intended result, not evidence that the sentence was heard correctly.</p>
+<div class="editor-scroll" tabindex="0" role="region" aria-label="Fictional two-purpose decisions: scroll horizontally"><table class="bench-table"><thead><tr><th scope="col">Fictional event</th><th scope="col">Wording W03</th><th scope="col">Speaker S03</th><th scope="col">Supported administrative statement</th></tr></thead><tbody><tr><td>Create two tasks</td><td>pending</td><td>pending</td><td>Both questions remain open</td></tr><tr><td>Declare a wording decision in the exercise</td><td>decided</td><td>pending</td><td>A wording record exists; no speaker decision</td></tr><tr><td>Add a speaker candidate</td><td>decided</td><td>pending</td><td>A proposal exists, not a decided attribution</td></tr><tr><td>Attempt to reuse W03 for speaker attribution</td><td>decided; unchanged</td><td>pending; unchanged</td><td>Request refused; neither record is rewritten</td></tr></tbody></table></div><p>The deliberately unsafe alternative uses one flag called reviewed for the entire passage. Once that flag becomes true, a recipient cannot tell whether somebody inspected words, a speaker label, timing, or all three. Our example replaces that flag with two named records. It does not claim that adding fields proves the records are truthful.</p>
+</section>
+<section class="content-card" aria-labelledby="our-reproducible-purpose-check"><h2 id="our-reproducible-purpose-check">Our reproducible purpose check</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-purposes/02-candidate-narrow.svg"><img src="/assets/research-purposes/02-candidate-wide.svg" alt="A candidate stays pending" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>No speaker is inferred from the invented sentence.</figcaption></figure><p>The <a href="/data/qualitative-review-purposes-reproduce.cjs">companion Node script</a> runs on embedded fictional records with no network, audio or private text. Run it with Node and compare the <a href="/data/qualitative-review-purposes-example.json">example output</a>. It tests a narrow invariant: a decision must match the requested purpose, version and passage. Applying a wording decision to a speaker task throws a purpose-mismatch error. Applying a speaker decision to wording is refused in the other direction as well.</p>
+<p>A pending record cannot satisfy a request for a decided result. A decided record requires a nonempty rationale, but a rationale is only a declared explanation. Someone could invent an explanation that passes a form check. This script therefore cannot authenticate reviewers, prove listening, verify identity or assess whether a source is sufficient for a real research decision.</p>
+<p>Try the candidate counterexample. Add the fictional candidate Speaker B to S03 without changing its pending state. The checker still refuses a decided-speaker request. The candidate may be stored for later consideration, but the code does not promote it to a speaker label. No demographic, role or identity inference is made from the wording.</p>
+<p>Try a changed-reference counterexample. Request PURPOSE-R10/V2 or passage P04 using the V1/P03 record. Both requests fail. A real project may have an explicit mapping between versions, but this tiny exercise has none. When a source changes, document the mapping and assess the affected decisions rather than assuming that the passage name is permanently stable.</p>
+</section>
+<section class="content-card" aria-labelledby="our-worksheet-and-handoff"><h2 id="our-worksheet-and-handoff">Our worksheet and handoff</h2>
+<figure class="research-figure"><picture><source media="(max-width:600px)" srcset="/assets/research-purposes/03-match-narrow.svg"><img src="/assets/research-purposes/03-match-wide.svg" alt="Match the decision purpose" width="1200" height="680" loading="lazy" decoding="async"></picture><figcaption>Consistency checks do not prove listening or accuracy.</figcaption></figure><p>Start with a project-safe document reference and version. Give each passage a locator that the recipient can actually use. Add separate rows for wording and speaker attribution, with independent status, candidate, permitted next action and rationale fields. Record who performed a real check and when only after that work has occurred. Keep restricted recording locations and identity keys in approved storage outside a broadly shared worksheet.</p>
+<p>For an unresolved label, write what remains unresolved and what may be inspected next. Do not infer the speaker from a job title, a plausible opinion or the order of names in a participant list. If a real project has a permitted recording or corroborating record, document the actual basis and its limits. This exercise provides no such material and consequently leaves speaker attribution pending.</p>
+<p>At handoff, ask the recipient to read both purpose rows. A concise statement might say: the exercise contains a declared wording decision for V1/P03; speaker attribution remains pending. Do not shorten that to transcript verified. If the recipient needs review coverage, attach a separate interval record; if a wording dispute needs another owner, attach a decision handoff. Those tasks answer different questions.</p>
+</section>
+<section class="content-card" aria-labelledby="sources-and-tool-boundaries"><h2 id="sources-and-tool-boundaries">Sources and tool boundaries</h2>
+<p><a href="https://atlasti.com/guides/interview-analysis-guide/transcription-formatting">ATLAS.ti's formatting guide</a> discusses speaker labels and turn divisions as transcript structure. <a href="https://guides.library.harvard.edu/c.php?g=796889&amp;p=10476360">Harvard Library's recording guidance</a> relates transcription choices to methodology and notes manual revision of automatic output. Neither source validates our fictional checker. Speaker labels and transcript review are established topics; the contribution here is the explicit purpose-mismatch counterexample and practice worksheet.</p>
+<p>The shared <a href="/">English transcription tool</a> accepts browser-decodable local media up to 100 MB. Local file speech processing stays in the browser and first use loads model resources. Instagram URL fetching involves a server and possible fallback service. YouTube tools retrieve existing captions. No workflow here adds speaker recognition, participant identity verification or cloud review history. Read the <a href="/privacy">privacy explanation</a>.</p>
+<p>Use the <a href="/qualitative-review-scope">review-scope guide</a> to list unchecked intervals and the <a href="/qualitative-reviewer-handoff">reviewer-handoff guide</a> to carry an unresolved wording question between reviewers. This practice separates decision purposes within a passage; it does not replace either workflow.</p>
+</section></main>
+<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a>
+<a href="/google-meet-transcript">Google Meet Transcript</a>
+<a href="/ogg-to-text">OGG to Text</a>
+<a href="/recording-format-guide">Recording Format Guide</a>
+<a href="/phone-call-transcription">Phone Call Transcription</a>
+<a href="/interview-transcription">Interview Transcription</a>
+<a href="/verbatim-transcription">Verbatim Transcription</a>
+<a href="/qualitative-coding">Qualitative Coding</a>
+<a href="/focus-group-transcription">Focus Group Transcription</a>
+<a href="/qualitative-research-transcription">Qualitative Research Transcription</a>
+<a href="/focus-group-transcription-services">Focus Group Transcription Services</a>
+<a href="/thematic-coding">Thematic Coding</a>
+<a href="/qualitative-transcript-corrections">Transcript Corrections</a>
+<a href="/qualitative-participant-clarifications">Participant Clarifications</a>
+<a href="/qualitative-cross-cue-quotes">Cross-Cue Research Quotes</a>
+<a href="/qualitative-uncertain-terms">Uncertain Transcript Terms</a>
+<a href="/qualitative-source-locators">Restricted Source Locators</a>
+<a href="/qualitative-quote-omissions">Transcript Gaps &amp; Quote Cuts</a>
+<a href="/qualitative-plain-text-handoff">Plain Text Export Review</a>
+<a href="/qualitative-reviewer-handoff">Reviewer Decision Handoff</a>
+<a href="/qualitative-review-scope">Partial Review Scope</a>
+<a href="/qualitative-review-purposes">Wording and Speaker Review</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a>
+<a href="/translate-srt">Translate SRT Guide</a>
+<a href="/how-to-add-captions-on-tiktok">How to Add Captions on TikTok</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=footer-4e4d548fbd4f" defer></script></body></html>

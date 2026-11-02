@@ -1,0 +1,25 @@
+{
+  "fictional": true,
+  "recordingExists": false,
+  "passed": 12,
+  "wording": {
+    "id": "W03",
+    "document": "PURPOSE-R10",
+    "version": "V1",
+    "passage": "P03",
+    "purpose": "wording",
+    "state": "decided",
+    "rationale": "Authored fictional declaration; no recording exists."
+  },
+  "speaker": {
+    "id": "S03",
+    "document": "PURPOSE-R10",
+    "version": "V1",
+    "passage": "P03",
+    "purpose": "speaker attribution",
+    "state": "pending",
+    "candidate": "Speaker B",
+    "rationale": ""
+  },
+  "limitations": "Record consistency only; no listening, identity, accuracy or permission verification."
+}
