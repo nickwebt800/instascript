@@ -34,11 +34,12 @@
 <main id="walkthrough-tool" tabindex="-1">
 <section class="subtitle-tool" aria-labelledby="converter-title">
 <div class="tool-intro-row"><div><h2 id="converter-title">Validate and convert one SRT file</h2><p class="privacy-line">Local processing. Timing retained. Source styling removed.</p></div>
-<label class="file-button" for="subtitleFile">Open SRT<input id="subtitleFile" type="file" accept=".srt,application/x-subrip,text/plain" hidden></label></div>
+<button id="openFileBtn" class="file-button" type="button">Open SRT</button><input id="subtitleFile" type="file" accept=".srt,application/x-subrip,text/plain" hidden></div>
 <label for="subtitleText">Numbered SRT cues</label>
 <textarea id="subtitleText" class="source-text converter-source" rows="8" spellcheck="false" placeholder="1&#10;00:00:01,250 --&gt; 00:00:03,500&#10;Check the first cue."></textarea>
 <p class="input-hint">One UTF-8 SRT file under 8 MB and 2 million characters; 1–10,000 cues. Paste SRT under 2 million characters. Separate blocks with blank lines.</p>
 <div class="converter-controls"><button id="convertBtn" class="btn-primary" type="button">Convert to WebVTT</button><button id="clearBtn" class="btn-ghost" type="button">Clear</button></div>
+<p class="input-hint">Open the file picker with Tab and Enter or Space. While a new file is being read, the previous source and result are cleared and Convert is disabled. Editing the source or clearing the tool cancels the pending read; a failed read cannot restore an older file.</p>
 <p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
 <section id="resultSection" class="converter-result hidden" aria-labelledby="result-title">
 <div class="editor-header"><div><h2 id="result-title">WebVTT result</h2><p id="resultSummary"></p></div><div class="export-actions"><button id="copyResultBtn" class="btn-primary" type="button">Copy WebVTT</button><button id="downloadResultBtn" class="btn-ghost" type="button">Download VTT</button></div></div>
@@ -148,7 +149,7 @@
 <a href="/contact">Contact</a></div>
 </nav><p>Subtitle conversion runs locally in your browser.</p></footer>
 </div>
-<script type="module" src="/srt-to-vtt.js?v=b1-20261102"></script>
+<script type="module" src="/srt-to-vtt.js?v=b1-complete-20261102"></script>
 <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will conversion synchronize a different video?","acceptedAnswer":{"@type":"Answer","text":"No. The original times are retained. Preview beginning, middle and final cues with the exact destination recording. Offsets and progressive drift need review, not just another extension."}},{"@type":"Question","name":"How do I use WebVTT in a web player?","acceptedAnswer":{"@type":"Answer","text":"For a video you host, point a subtitle track at the actual VTT URL, use a matching language label, and serve UTF-8 with Content-Type: text/vtt. Start on the same origin; cross-origin tracks need an appropriate CORS configuration. Enable the subtitle track and test playback. See the WebVTT specification."}},{"@type":"Question","name":"Is this speech recognition or automatic translation?","acceptedAnswer":{"@type":"Answer","text":"No. This page converts existing subtitle text in any language without loading a speech model. It does not generate timing, translate words or render burned-in captions. For VTT/SRT/SBV input and SRT output, use VTT to SRT."}},{"@type":"Question","name":"What leaves this tab?","acceptedAnswer":{"@type":"Answer","text":"Subtitle contents, file reading, conversion and downloads stay local. The page and static resources are requested from the host. There is no account history or saved cloud project; download your work before closing the tab."}}]}</script>
 </body>

@@ -62,3 +62,6 @@ Subtitle contents, file reading, conversion and downloads stay local. The page a
 
 
 On success the initial-source summary reports candidates, converted cues and zero skipped or unrecognized blocks. Invalid input still stops the entire conversion.
+
+
+Open the file picker with Tab and Enter or Space. While a new file is being read, the previous source and result are cleared and Convert is disabled. Editing the source or clearing the tool cancels the pending read; a failed read cannot restore an older file.

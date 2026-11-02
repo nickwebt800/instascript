@@ -5,7 +5,9 @@ export function mountConverter(kind) {
   const source = $('subtitleText'), file = $('subtitleFile'), result = $('resultText'), section = $('resultSection');
   const selector = $('outputFormat'), copy = $('copyResultBtn'), save = $('downloadResultBtn');
   const summary = $('resultSummary'), details = $('conversionIssues'), ack = $('acceptPartial'), edit = $('outputStatus');
-  let readId = 0, active = false, dirty = false, partial = false, format = selector?.value || 'srt';
+  let readId = 0, reading = false, active = false, dirty = false, partial = false, format = selector?.value || 'srt';
+  const setReading = value => { reading = value; $('convertBtn').disabled = value; };
+  $('openFileBtn').addEventListener('click', () => file.click());
   const status = (message, error = false) => { $('converterStatus').textContent = message; $('converterStatus').classList.toggle('is-error', error); };
   function update() {
     let error = '', count = 0;
@@ -14,31 +16,59 @@ export function mountConverter(kind) {
     edit.textContent = active ? (dirty ? 'Result manually edited. ' : '') + (error || count + ' current output cues validated. Text is checked as subtitle syntax, not player appearance.') : '';
     return !copy.disabled;
   }
+  const confirmation = document.createElement('div');
+  confirmation.className = 'tool-status hidden';
+  confirmation.setAttribute('role', 'group');
+  confirmation.setAttribute('aria-label', 'Replace manual result edits');
+  const prompt = document.createElement('p');
+  prompt.textContent = 'This will replace your manual result edits. Save them first if needed.';
+  const keep = document.createElement('button'), discard = document.createElement('button');
+  keep.type = discard.type = 'button'; keep.className = discard.className = 'btn-ghost';
+  keep.textContent = 'Keep edits'; discard.textContent = 'Discard edits and continue';
+  confirmation.append(prompt, keep, discard); $('converterStatus').after(confirmation);
+  let pendingReplacement = null, replacementTrigger = null;
+  function closeConfirmation() { pendingReplacement = null; confirmation.classList.add('hidden'); }
+  function requestReplacement(run, trigger) {
+    if (!dirty) return run();
+    pendingReplacement = run; replacementTrigger = trigger;
+    confirmation.classList.remove('hidden'); keep.focus();
+  }
+  keep.addEventListener('click', () => { closeConfirmation(); file.value = ''; replacementTrigger?.focus(); });
+  discard.addEventListener('click', () => {
+    const run = pendingReplacement; closeConfirmation(); run?.(); replacementTrigger?.focus();
+  });
   function invalidate() {
+    closeConfirmation();
     active = false; dirty = false; result.value = ''; section.classList.add('hidden'); ack.checked = false; update();
   }
-  function replaceAllowed() { return !dirty || window.confirm('Rebuild or clear the result and replace your manual edits? Save your edits first if needed.'); }
-  source.addEventListener('input', () => { readId++; invalidate(); status('Source changed. Convert again before exporting.'); });
-  result.addEventListener('input', () => { dirty = true; update(); });
+  source.addEventListener('input', () => { readId++; setReading(false); invalidate(); status('Source changed. Convert again before exporting.'); });
+  result.addEventListener('input', () => { closeConfirmation(); dirty = true; update(); });
   ack.addEventListener('change', update);
-  file.addEventListener('change', async () => {
-    const selected = file.files?.[0], id = ++readId;
-    if (!replaceAllowed()) { file.value = ''; return; }
+  async function readSelectedFile(selected) {
+    const id = ++readId;
     invalidate();
-    if (!selected) return;
+    if (!selected) { setReading(false); return; }
+    source.value = ''; setReading(true); status('Reading the selected file locally…');
     try {
       if (selected.size > 8_000_000) throw new Error('Open one UTF-8 subtitle file under 8 MB.');
       const text = await selected.text();
       if (id !== readId) return;
       source.value = text; status('File opened locally. Convert to inspect source records.');
     } catch (error) { if (id === readId) status(error.message, true); }
+    finally { if (id === readId) setReading(false); }
+  }
+  file.addEventListener('change', () => {
+    const selected = file.files?.[0];
+    if (selected) return requestReplacement(() => readSelectedFile(selected), $('openFileBtn'));
   });
   selector?.addEventListener('change', () => {
-    if (!replaceAllowed()) { selector.value = format; return; }
-    readId++; format = selector.value; invalidate(); status('Output format changed. Convert again.');
+    const nextFormat = selector.value; selector.value = format;
+    requestReplacement(() => {
+      readId++; setReading(false); format = nextFormat; selector.value = format; invalidate(); status('Output format changed. Convert again.');
+    }, selector);
   });
-  $('convertBtn').addEventListener('click', () => {
-    if (!replaceAllowed()) return;
+  function convert() {
+    if (reading) return;
     readId++; invalidate(); details.replaceChildren();
     try {
       const r = kind === 'ass' ? diagnoseAss(source.value) : diagnoseSubtitles(source.value);
@@ -64,8 +94,9 @@ export function mountConverter(kind) {
       result.value = convertDiagnosed(r, format); active = true; update();
       status(partial ? 'Partial result. Review the source notices and acknowledge omissions before export.' : 'Converted. Review text, timing and format losses.');
     } catch (error) { status(error.message, true); update(); }
-  });
-  $('clearBtn').addEventListener('click', () => { if (!replaceAllowed()) return; readId++; source.value = ''; file.value = ''; invalidate(); status('Cleared.'); });
+  }
+  $('convertBtn').addEventListener('click', () => requestReplacement(convert, $('convertBtn')));
+  $('clearBtn').addEventListener('click', () => requestReplacement(() => { readId++; setReading(false); source.value = ''; file.value = ''; invalidate(); status('Cleared.'); }, $('clearBtn')));
   copy.addEventListener('click', async () => {
     if (!update()) return;
     try { await navigator.clipboard.writeText(result.value); status('Current validated result copied.'); }

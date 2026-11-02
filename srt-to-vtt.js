@@ -26,14 +26,17 @@ if (typeof document !== 'undefined') {
   const $ = id => document.getElementById(id);
   const source = $('subtitleText'), result = $('resultText'), section = $('resultSection');
   const status = (message, error = false) => { $('converterStatus').textContent = message; $('converterStatus').classList.toggle('is-error', error); };
-  let readId = 0;
+  let readId = 0, reading = false;
+  const setReading = value => { reading = value; $('convertBtn').disabled = value; };
+  $('openFileBtn').addEventListener('click', () => $('subtitleFile').click());
   const invalidate = () => { result.value = ''; section.classList.add('hidden'); };
-  source.addEventListener('input', () => { readId++; invalidate(); status('Source changed. Convert again before exporting.'); });
+  source.addEventListener('input', () => { readId++; setReading(false); invalidate(); status('Source changed. Convert again before exporting.'); });
   $('subtitleFile').addEventListener('change', async () => {
     const file = $('subtitleFile').files?.[0];
     const current = ++readId;
     invalidate();
-    if (!file) return;
+    if (!file) { setReading(false); return; }
+    source.value = ''; setReading(true); status('Reading the selected SRT locally…');
     try {
       if (file.size > 8_000_000) throw new Error('Open an SRT file under 8 MB.');
       const text = await file.text();
@@ -41,9 +44,11 @@ if (typeof document !== 'undefined') {
       source.value = text;
       status('SRT opened locally. Convert to validate every cue.');
     } catch (error) { if (current === readId) status(error.message, true); }
+    finally { if (current === readId) setReading(false); }
   });
   $('convertBtn').addEventListener('click', () => {
-    invalidate();
+    if (reading) return;
+    readId++; invalidate();
     try {
       const converted = convertSrtToVtt(source.value);
       result.value = converted.output;
@@ -52,7 +57,7 @@ if (typeof document !== 'undefined') {
       status(converted.warnings.length ? 'Converted. Review: ' + converted.warnings.join(' ') : 'Converted to WebVTT. Review in your target player.');
     } catch (error) { status(error.message, true); }
   });
-  $('clearBtn').addEventListener('click', () => { readId++; source.value = ''; $('subtitleFile').value = ''; invalidate(); status('Cleared.'); });
+  $('clearBtn').addEventListener('click', () => { readId++; setReading(false); source.value = ''; $('subtitleFile').value = ''; invalidate(); status('Cleared.'); });
   $('copyResultBtn').addEventListener('click', async () => {
     if (!result.value) return;
     try { await navigator.clipboard.writeText(result.value); status('WebVTT copied.'); }

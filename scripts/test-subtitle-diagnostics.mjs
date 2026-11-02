@@ -41,11 +41,11 @@ function element() {
  return {value:'',checked:false,disabled:false,files:[],textContent:'',children:[],
  classList:{add:x=>classes.add(x),remove:x=>classes.delete(x),toggle:(x,on)=>on?classes.add(x):classes.delete(x),contains:x=>classes.has(x)},
  addEventListener:(name,run)=>listeners[name]=run,fire:name=>listeners[name]?.(),
- append(...items){this.children.push(...items);},replaceChildren(){this.children=[];},focus(){},setSelectionRange(){},click(){}};
+ append(...items){this.children.push(...items);},after(...items){this.afterItems=items;},setAttribute(){},replaceChildren(){this.children=[];},focus(){},setSelectionRange(){},click(){}};
 }
-for (const id of ['subtitleText','subtitleFile','resultText','resultSection','outputFormat','copyResultBtn','downloadResultBtn','resultSummary','conversionIssues','acceptPartial','outputStatus','converterStatus','partialNotice','convertBtn','clearBtn']) elements.set(id,element());
+for (const id of ['subtitleText','subtitleFile','resultText','resultSection','outputFormat','copyResultBtn','downloadResultBtn','resultSummary','conversionIssues','acceptPartial','outputStatus','converterStatus','partialNotice','convertBtn','clearBtn','openFileBtn']) elements.set(id,element());
 globalThis.document={getElementById:id=>elements.get(id),createElement:element};
-let allowed=false; globalThis.window={confirm:()=>allowed};
+globalThis.window={confirm:()=>{throw new Error('Native confirmation must not be used');}};
 const view=(await readFile(new URL('../js/subtitle-converter-view.js',import.meta.url),'utf8')).replace('./subtitle-diagnostics.js?v=b1-20261102',url(src));
 const {mountConverter}=await import(url(view));
 const el=id=>elements.get(id);
@@ -53,12 +53,15 @@ el('outputFormat').value='srt'; mountConverter('subtitle');
 let resolveOld;
 el('subtitleFile').files=[{size:10,text:()=>new Promise(resolve=>resolveOld=resolve)}];
 const oldRead=el('subtitleFile').fire('change');
+assert.equal(el('subtitleText').value,''); assert.equal(el('convertBtn').disabled,true);
+el('convertBtn').fire('click'); assert.equal(el('downloadResultBtn').disabled,true);
 el('subtitleText').value=srt;el('subtitleText').fire('input');resolveOld('outdated');await oldRead;
-assert.equal(el('subtitleText').value,srt);
+assert.equal(el('subtitleText').value,srt); assert.equal(el('convertBtn').disabled,false);
 el('convertBtn').fire('click'); assert.equal(el('downloadResultBtn').disabled,false);
 el('resultText').value=srt.replace('123','Edited');el('resultText').fire('input');
 el('outputFormat').value='vtt';el('outputFormat').fire('change');assert.equal(el('outputFormat').value,'srt');assert.match(el('resultText').value,/Edited/);
-allowed=true;el('outputFormat').value='vtt';el('outputFormat').fire('change');assert.equal(el('resultText').value,'');assert.equal(el('downloadResultBtn').disabled,true);
+el('converterStatus').afterItems[0].children[1].fire('click'); assert.match(el('resultText').value,/Edited/);
+el('outputFormat').value='vtt';el('outputFormat').fire('change');el('converterStatus').afterItems[0].children[2].fire('click');assert.equal(el('resultText').value,'');assert.equal(el('downloadResultBtn').disabled,true);
 el('outputFormat').value='srt';el('outputFormat').fire('change');
 el('subtitleText').value=srt+'\n\n2\n00:00:02,000 --> 00:00:01,000\nBad';el('subtitleText').fire('input');el('convertBtn').fire('click');assert.equal(el('downloadResultBtn').disabled,true);
 el('acceptPartial').checked=true;el('acceptPartial').fire('change');assert.equal(el('downloadResultBtn').disabled,false);
@@ -69,3 +72,24 @@ el('subtitleFile').files=[{size:10,text:()=>new Promise(r=>firstResolve=r)}];con
 el('subtitleFile').files=[{size:10,text:()=>new Promise(r=>secondResolve=r)}];const second=el('subtitleFile').fire('change');
 secondResolve(srt);await second;firstResolve('stale');await first;assert.equal(el('subtitleText').value,srt);
 console.log('Controller boundaries passed: old file reads, two-file races, source/format invalidation, canceled overwrite, partial acknowledgment and edited-output export blocking.');
+
+el('subtitleFile').files=[{size:8000001,text:()=>Promise.resolve('must not read')}];await el('subtitleFile').fire('change');assert.equal(el('subtitleText').value,'');assert.equal(el('convertBtn').disabled,false);assert.equal(el('downloadResultBtn').disabled,true);
+el('subtitleText').value=srt;el('subtitleText').fire('input');el('subtitleFile').files=[{size:10,text:()=>Promise.reject(new Error('Unreadable fixture'))}];await el('subtitleFile').fire('change');assert.equal(el('subtitleText').value,'');assert.equal(el('downloadResultBtn').disabled,true);
+console.log('Read lifecycle checks passed: loading blocks conversion; failed/oversized reads clear stale source and keep export disabled.');
+// A confirmation belongs to the current edited result and selected file.
+el('subtitleText').value=srt;el('subtitleText').fire('input');el('convertBtn').fire('click');
+el('resultText').value=srt.replace('123','Edited');el('resultText').fire('input');el('clearBtn').fire('click');
+const confirmPanel=el('converterStatus').afterItems[0];assert.equal(confirmPanel.classList.contains('hidden'),false);
+el('resultText').value=srt.replace('123','Later edit');el('resultText').fire('input');assert.equal(confirmPanel.classList.contains('hidden'),true);confirmPanel.children[2].fire('click');assert.match(el('resultText').value,/Later edit/);
+el('subtitleFile').files=[{size:10,text:()=>Promise.resolve(srt.replace('123','New file'))}];el('subtitleFile').fire('change');confirmPanel.children[1].fire('click');assert.match(el('resultText').value,/Later edit/);
+el('subtitleFile').fire('change');confirmPanel.children[2].fire('click');await Promise.resolve();await Promise.resolve();assert.match(el('subtitleText').value,/New file/);assert.equal(el('resultText').value,'');
+console.log('Inline confirmation boundaries passed: Keep preserves edits; new edits cancel pending actions; confirmed file selection reads only the selected file.');
+
+// Exercise the strict converter UI with a fresh fake document as well.
+for (const id of elements.keys()) elements.set(id,element());
+await import(url(strictSrc+'\n// strict read lifecycle UI fixture'));
+el('subtitleText').value=srt;let strictResolve;
+el('subtitleFile').files=[{size:10,text:()=>new Promise(r=>strictResolve=r)}];const strictRead=el('subtitleFile').fire('change');assert.equal(el('subtitleText').value,'');assert.equal(el('convertBtn').disabled,true);
+el('clearBtn').fire('click');strictResolve(srt);await strictRead;assert.equal(el('subtitleText').value,'');assert.equal(el('convertBtn').disabled,false);
+el('subtitleText').value=srt;el('subtitleFile').files=[{size:8000001,text:()=>Promise.resolve(srt)}];await el('subtitleFile').fire('change');assert.equal(el('subtitleText').value,'');assert.equal(el('convertBtn').disabled,false);
+console.log('Strict converter read lifecycle passed: pending input cannot convert; clear and oversized-file failure cannot restore stale source.');

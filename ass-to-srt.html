@@ -44,7 +44,7 @@
           <h2 id="converter-title">Convert one ASS or SSA file</h2>
           <p class="privacy-line"><strong>No signup. No upload.</strong> The file stays in this browser.</p>
         </div>
-        <label class="file-button" for="subtitleFile">Open ASS / SSA<input id="subtitleFile" type="file" accept=".ass,.ssa,text/plain" hidden></label>
+        <button id="openFileBtn" class="file-button" type="button">Open ASS / SSA</button><input id="subtitleFile" type="file" accept=".ass,.ssa,text/plain" hidden>
       </div>
       <label class="sr-only" for="subtitleText">ASS or SSA subtitle text</label>
       <textarea id="subtitleText" class="source-text converter-source" rows="11" spellcheck="false" placeholder="Paste ASS or SSA subtitle text here..."></textarea>
@@ -54,7 +54,9 @@
         <button id="convertBtn" class="btn-primary" type="button">Convert to SRT</button>
         <button id="clearBtn" class="btn-ghost" type="button">Clear</button>
       </div>
-      <p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
+      <p class="input-hint">Open the file picker with Tab and Enter or Space. While a new file is being read, the previous source and result are cleared and Convert is disabled. Editing the source or clearing the tool cancels the pending read; a failed read cannot restore an older file.</p>
+<p class="input-hint">When a pending action would replace manual result edits, choose Keep edits or Discard edits and continue in the page confirmation. Editing the result again dismisses a pending confirmation.</p>
+<p id="converterStatus" class="tool-status" role="status" aria-live="polite"></p>
       <section id="resultSection" class="converter-result hidden" aria-labelledby="result-title">
         <div class="editor-header">
           <div><h2 id="result-title">SRT result</h2><p id="resultSummary">Review the converted cues before export.</p></div>
@@ -151,7 +153,7 @@
       <p>Runs entirely in your browser &mdash; no upload to any server, no signup.</p>
     </footer>
   </div>
-  <script type="module" src="/ass-to-srt.js?v=b1-20261102" defer></script>
+  <script type="module" src="/ass-to-srt.js?v=b1-complete-20261102" defer></script>
   <script src="/js/webmcp.js" defer></script>
   <script src="/footer.js?v=footer-4e4d548fbd4f" defer></script>
 <script type="application/ld+json">{

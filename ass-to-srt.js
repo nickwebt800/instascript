@@ -1,2 +1,2 @@
-import { mountConverter } from './js/subtitle-converter-view.js?v=b1-20261102';
+import { mountConverter } from './js/subtitle-converter-view.js?v=b1-complete-20261102';
 mountConverter('ass');

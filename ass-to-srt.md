@@ -73,3 +73,9 @@ No. One local file or pasted source is processed in the browser. Copy and downlo
 ## Conversion diagnostics and current exports
 
 The initial-source summary separates candidate cues, usable cues, skipped records, unrecognized content and omitted metadata. Unrecognized content means the complete source cue count is unknown. Source notices identify original lines without repeating caption text. Partial results require the omission acknowledgment before Copy or Download. Files must be UTF-8 under 8 MB; source text is limited to 2 million characters and 10,000 candidates. All subtitle languages are accepted; no recognition or translation runs. Copy and Download validate and use the same current result text. Manual edits are labeled separately from initial-source counts; invalid timing syntax, empty captions or invalid ranges block export. Rebuilding, clearing, opening another file or switching output format asks before replacing manual result edits. Source edits invalidate the old result immediately; format changes require conversion again. A newer file selection or source edit cancels an older file read.
+
+
+Open the file picker with Tab and Enter or Space. While a new file is being read, the previous source and result are cleared and Convert is disabled. Editing the source or clearing the tool cancels the pending read; a failed read cannot restore an older file.
+
+
+When a pending action would replace manual result edits, choose Keep edits or Discard edits and continue in the page confirmation. Editing the result again dismisses a pending confirmation.
