@@ -30,7 +30,7 @@ Opening the practice VTT fills the source. The output is produced only when Conv
 Compare the reported cue count, words, line breaks and time ranges. The practice VTT has two cues; its first SRT range is `00:00:01,200 → 00:00:03,400`. SRT has sequence numbers and comma milliseconds. WebVTT starts with `WEBVTT` and uses periods.
 
 
-This page changes subtitle syntax; it does not correct timing drift or measure speech. Cues with unusable times, an end at or before the start, or no text may be omitted. An error appears when no usable cues remain, but mixed input can still return a smaller successful result. Complex VTT metadata, styles and positioning are not guaranteed to survive; inspect them in a VTT-aware editor.
+This page changes subtitle syntax; it does not correct timing drift or measure speech. Unusable or empty cues are reported by source line. Mixed input is labeled as a partial result; if no usable cues remain, export stays disabled. VTT header metadata, NOTE/STYLE/REGION blocks, cue identifiers and positioning settings are omitted and counted. Caption markup and entities remain literal source text; rendering may differ across players. SRT numbering is regenerated. Keep the original and inspect it in a VTT-aware editor.
 
 ![Actual two-cue conversion summary and downloaded SRT first cue showing the 1.200 to 3.400 second range.](https://instascript.app/assets/tutorials/vtt-to-srt/02-review-wide.svg)
 
@@ -40,14 +40,14 @@ This excerpt comes from an actual download. Compare additional cues in your own 
 
 ## 3. Can I edit the result before downloading?
 
-Yes. Edit the result text, then choose **Copy result** or **Download result**. Both use the current result box. Do not change Output format after editing unless you are ready to rebuild: changing the selector regenerates the result from parsed source cues and discards manual result edits. Choosing Convert subtitle again also rebuilds it.
+Yes. Edit the result text, then choose **Copy result** or **Download result**. Both use the current result box. Copy and Download validate and use the same current result text. Manual edits are labeled separately from initial-source counts; invalid timing syntax, empty captions or invalid ranges block export. Rebuilding, clearing, opening another file or switching output format asks before replacing manual result edits. Source edits invalidate the old result immediately; format changes require conversion again. A newer file selection or source edit cancels an older file read.
 
 
-Manual result edits are not validated on download. Reopen the saved file in [Subtitle Editor](https://instascript.app/subtitle-editor) to check cue structure and timing, then test it with the intended player. For a strict SRT-input workflow, the separate [SRT to VTT](https://instascript.app/srt-to-vtt) page provides another route. Save before closing; there is no stored project.
+Manual result edits are validated before Copy and Download. Reopen the saved file in [Subtitle Editor](https://instascript.app/subtitle-editor) to check cue structure and timing, then test it with the intended player. For a strict SRT-input workflow, the separate [SRT to VTT](https://instascript.app/srt-to-vtt) page provides another route. Save before closing; there is no stored project.
 
 ![Copy result and Download result controls, and Output format changed to VTT, which regenerates the output from parsed source cues.](https://instascript.app/assets/tutorials/vtt-to-srt/03-save-wide.svg)
 
-In the actual test, a manual “blue garden gate” edit disappeared after selecting another output format.
+Earlier illustration: the current version asks before replacing manual edits when changing format, then requires conversion again.
 
 **Check:** Choose your final format before editing and confirm the saved file has your latest words.
 
@@ -68,3 +68,8 @@ No timing alignment is performed, and this is not a lossless VTT metadata editor
 ### Can I convert several files without an upload?
 
 Conversion is local, with one source at a time. The page does not batch or merge files, store projects, call a speech model or upload subtitle contents. See the [privacy policy](https://instascript.app/privacy).
+
+
+## Conversion diagnostics and current exports
+
+The initial-source summary separates candidate cues, usable cues, skipped records, unrecognized content and omitted metadata. Unrecognized content means the complete source cue count is unknown. Source notices identify original lines without repeating caption text. Partial results require the omission acknowledgment before Copy or Download. Files must be UTF-8 under 8 MB; source text is limited to 2 million characters and 10,000 candidates. All subtitle languages are accepted; no recognition or translation runs. Copy and Download validate and use the same current result text. Manual edits are labeled separately from initial-source counts; invalid timing syntax, empty captions or invalid ranges block export. Rebuilding, clearing, opening another file or switching output format asks before replacing manual result edits. Source edits invalidate the old result immediately; format changes require conversion again. A newer file selection or source edit cancels an older file read.

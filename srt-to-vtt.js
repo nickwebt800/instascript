@@ -47,7 +47,7 @@ if (typeof document !== 'undefined') {
     try {
       const converted = convertSrtToVtt(source.value);
       result.value = converted.output;
-      $('resultSummary').textContent = converted.count + ' cues converted. Timing and cue order retained; source styling removed.';
+      $('resultSummary').textContent = 'Initial source: ' + converted.count + ' candidates; ' + converted.count + ' converted; 0 skipped; 0 unrecognized. Strict whole-file validation passed. Timing and cue order retained; source styling removed.';
       section.classList.remove('hidden');
       status(converted.warnings.length ? 'Converted. Review: ' + converted.warnings.join(' ') : 'Converted to WebVTT. Review in your target player.');
     } catch (error) { status(error.message, true); }

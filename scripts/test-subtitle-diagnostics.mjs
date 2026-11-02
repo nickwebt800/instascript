@@ -1,0 +1,71 @@
+import { readFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const url = s => 'data:text/javascript;base64,' + Buffer.from(s).toString('base64');
+const sub = url(await readFile(new URL('../js/subtitles.js', import.meta.url), 'utf8'));
+const src = (await readFile(new URL('../js/subtitle-diagnostics.js', import.meta.url), 'utf8')).replace('./subtitles.js?v=p2-20261013', sub);
+const { diagnoseSubtitles: parse, diagnoseAss: ass, convertDiagnosed: convert, validateOutput: valid } = await import(url(src));
+const srt = '1\n00:00:01,000 --> 00:00:02,000\n123\nSecond line';
+let r = parse('\uFEFF' + srt.replaceAll('\n','\r\n'));
+assert.equal(r.cues[0].text, '123\nSecond line');
+assert.equal(r.candidates, 1);
+assert.equal(valid(convert(r,'srt'),'srt'),1);
+assert.equal(valid(convert(r,'vtt'),'vtt'),1);
+r = parse('WEBVTT\n\nNOTE hidden\n00:00:00.000 --> 00:00:10.000\nNot a cue\n\nSTYLE\n::cue { color: red; }\n\nREGION\nid:region\n\nlabel\n00:01.000 --> 00:02.000 align:start\n123');
+assert.equal(r.cues.length,1); assert.equal(r.cues[0].text,'123'); assert.equal(r.metadata,6);
+r = parse(srt+'\n\n2\n00:00:03,000 --> 00:00:02,000\nBad\n\nunknown');
+assert.equal(r.candidates,2); assert.equal(r.skipped,1); assert.equal(r.unknown,1); assert.equal(r.issues.find(x=>x.reason.includes('Invalid')).line,7);
+assert.equal(parse('0:00:01.000,0:00:02.000\nSBV').cues.length,1);
+assert.equal(parse('words only').cues.length,0);
+assert.equal(parse('00:00:01.000 --> 00:00:02.000').skipped,1);
+const head='[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n';
+r=ass(head+'Dialogue: 0,0:00:01.20,0:00:03.40,Default,,0,0,0,,{\\pos(1,2)}Hello, world\\N123');
+assert.equal(r.cues[0].text,'Hello, world\n123'); assert.equal(r.cues[0].start,1.2); assert.equal(r.cues[0].end,3.4);
+r=ass(head+'Comment: 0,0:00:01.20,0:00:03.40,Default,,0,0,0,,Ignore\nDialogue: bad\nDialogue: 0,0:99:01.20,0:00:03.40,Default,,0,0,0,,Invalid\nDialogue: 0,0:00:01.20,0:00:03.40,Default,,0,0,0,,{\\p1}m 0 0 l 10 10');
+assert.equal(r.candidates,3); assert.equal(r.skipped,3); assert.equal(r.cues.length,0);
+assert.equal(ass('[Events]\nFormat: Start, Text, End\nDialogue: 0:00:01.00,Hello,0:00:02.00').skipped,1);
+assert.throws(()=>valid(srt.replace('123\nSecond line',''),'srt'));
+assert.throws(()=>valid(srt.replace('00:00:02,000','00:00:00,000'),'srt'));
+assert.throws(()=>valid(srt+'\n\nstray','srt'));
+assert.throws(()=>valid('WEBVTT\n\n00:00:01.000 --> 00:00:02.000\na --> b','vtt'));
+assert.throws(()=>parse('x'.repeat(2000001)));
+assert.throws(()=>parse(Array.from({length:10001},()=>srt).join('\n\n')));
+const strictSrc=(await readFile(new URL('../srt-to-vtt.js',import.meta.url),'utf8')).replace('./js/subtitles.js?v=p2-20261013',sub);
+const {convertSrtToVtt}=await import(url(strictSrc));
+assert.equal(convertSrtToVtt(srt).count,1);
+assert.throws(()=>convertSrtToVtt(srt+'\n\n2\ninvalid'));
+console.log('Conversion diagnostics boundaries passed: numeric text, BOM/CRLF, VTT metadata, source lines, partial/all-invalid/unknown input, SBV, ASS columns/commas/escapes/drawings, edited output, limits and strict SRT.');
+// Controller checks exercise races and invalidation with synthetic local files.
+const elements = new Map();
+function element() {
+ const listeners = {}, classes = new Set();
+ return {value:'',checked:false,disabled:false,files:[],textContent:'',children:[],
+ classList:{add:x=>classes.add(x),remove:x=>classes.delete(x),toggle:(x,on)=>on?classes.add(x):classes.delete(x),contains:x=>classes.has(x)},
+ addEventListener:(name,run)=>listeners[name]=run,fire:name=>listeners[name]?.(),
+ append(...items){this.children.push(...items);},replaceChildren(){this.children=[];},focus(){},setSelectionRange(){},click(){}};
+}
+for (const id of ['subtitleText','subtitleFile','resultText','resultSection','outputFormat','copyResultBtn','downloadResultBtn','resultSummary','conversionIssues','acceptPartial','outputStatus','converterStatus','partialNotice','convertBtn','clearBtn']) elements.set(id,element());
+globalThis.document={getElementById:id=>elements.get(id),createElement:element};
+let allowed=false; globalThis.window={confirm:()=>allowed};
+const view=(await readFile(new URL('../js/subtitle-converter-view.js',import.meta.url),'utf8')).replace('./subtitle-diagnostics.js?v=b1-20261102',url(src));
+const {mountConverter}=await import(url(view));
+const el=id=>elements.get(id);
+el('outputFormat').value='srt'; mountConverter('subtitle');
+let resolveOld;
+el('subtitleFile').files=[{size:10,text:()=>new Promise(resolve=>resolveOld=resolve)}];
+const oldRead=el('subtitleFile').fire('change');
+el('subtitleText').value=srt;el('subtitleText').fire('input');resolveOld('outdated');await oldRead;
+assert.equal(el('subtitleText').value,srt);
+el('convertBtn').fire('click'); assert.equal(el('downloadResultBtn').disabled,false);
+el('resultText').value=srt.replace('123','Edited');el('resultText').fire('input');
+el('outputFormat').value='vtt';el('outputFormat').fire('change');assert.equal(el('outputFormat').value,'srt');assert.match(el('resultText').value,/Edited/);
+allowed=true;el('outputFormat').value='vtt';el('outputFormat').fire('change');assert.equal(el('resultText').value,'');assert.equal(el('downloadResultBtn').disabled,true);
+el('outputFormat').value='srt';el('outputFormat').fire('change');
+el('subtitleText').value=srt+'\n\n2\n00:00:02,000 --> 00:00:01,000\nBad';el('subtitleText').fire('input');el('convertBtn').fire('click');assert.equal(el('downloadResultBtn').disabled,true);
+el('acceptPartial').checked=true;el('acceptPartial').fire('change');assert.equal(el('downloadResultBtn').disabled,false);
+el('resultText').value='invalid output';el('resultText').fire('input');assert.equal(el('downloadResultBtn').disabled,true);
+el('subtitleText').fire('input');assert.equal(el('resultText').value,'');assert.equal(el('downloadResultBtn').disabled,true);
+let firstResolve,secondResolve;
+el('subtitleFile').files=[{size:10,text:()=>new Promise(r=>firstResolve=r)}];const first=el('subtitleFile').fire('change');
+el('subtitleFile').files=[{size:10,text:()=>new Promise(r=>secondResolve=r)}];const second=el('subtitleFile').fire('change');
+secondResolve(srt);await second;firstResolve('stale');await first;assert.equal(el('subtitleText').value,srt);
+console.log('Controller boundaries passed: old file reads, two-file races, source/format invalidation, canceled overwrite, partial acknowledgment and edited-output export blocking.');

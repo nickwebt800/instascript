@@ -30,7 +30,7 @@ File selection and conversion are separate actions. Compare the cue count with u
 The converter writes numbered SRT cues from usable dialogue, retaining source order and parsed time ranges. The practice interval `0:00:01.20 → 0:00:03.40` becomes `00:00:01,200 → 00:00:03,400`. ASS line-break markers become real line breaks, and the comma in the second caption remains part of its text.
 
 
-Inline brace override blocks are stripped. Fonts, colors, positioning and karaoke effects are not recreated. This parser is intended for dialogue text; inspect complex effects, vector drawing commands and unusual event layouts in an ASS-aware editor. A result alone does not confirm a faithful visual conversion. Invalid, empty or non-positive-duration dialogue can be skipped without a per-line warning.
+Inline brace override blocks are stripped. Fonts, colors, positioning and karaoke effects are not recreated. This parser is intended for dialogue text; inspect complex effects, vector drawing commands and unusual event layouts in an ASS-aware editor. A result alone does not confirm a faithful visual conversion. Invalid, empty or non-positive-duration Dialogue is reported by source line and skipped. Drawing-mode Dialogue and unsupported Format layouts are also reported and skipped.
 
 ![Actual SRT result containing numbered dialogue, millisecond timecodes and a line break, with notes on stripped ASS overrides.](https://instascript.app/assets/tutorials/ass-to-srt/02-review-wide.svg)
 
@@ -40,10 +40,10 @@ The practice positioning override was removed; its dialogue and line break remai
 
 ## 3. How do I save a corrected SRT file?
 
-The SRT result box is editable. Correct words or syntax there, then choose **Copy SRT** or **Download SRT**. The example changes “Open the gate.” to “Open the blue gate.” and verifies that edit in the actual download. Converting again rebuilds the result from the source and replaces result-box edits.
+The SRT result box is editable. Correct words or syntax there, then choose **Copy SRT** or **Download SRT**. The example changes “Open the gate.” to “Open the blue gate.” and verifies that edit in the actual download. Converting again asks before replacing manual result edits.
 
 
-Result-box edits are not revalidated before export. Keep cue numbers, separators and valid time ranges intact. Reopen the download in [Subtitle Editor](https://instascript.app/subtitle-editor) for stricter cue checks and optional local recording review, then test the file in your destination player. Conversion does not burn captions into a video.
+Result-box edits are revalidated before Copy and Download. Keep cue numbers, separators and valid time ranges intact. Reopen the download in [Subtitle Editor](https://instascript.app/subtitle-editor) for stricter cue checks and optional local recording review, then test the file in your destination player. Conversion does not burn captions into a video.
 
 ![Copy SRT and Download SRT controls with the actual saved first cue edited to Open the blue gate.](https://instascript.app/assets/tutorials/ass-to-srt/03-save-wide.svg)
 
@@ -55,11 +55,11 @@ The downloaded file and clipboard text were checked after the wording edit.
 
 ### Why does the converter find no usable Dialogue cues?
 
-Check for an Events section, recognizable Dialogue rows and usable Start/End/Text fields. If every row is unusable, the page hides the result and reports an error. It does not repair those rows. With a mixture of valid and invalid rows it can output only the valid ones, so compare the count even after success.
+Check for an Events section, recognizable Dialogue rows and usable Start/End/Text fields. If every row is unusable, the page keeps source notices visible and blocks export. It does not repair those rows. Mixed valid and invalid rows produce a labeled partial result requiring acknowledgment.
 
 ### Does conversion support SSA and custom event layouts?
 
-SSA can use the same dialogue structure. A Format declaration can locate Start and End in a custom layout; Text should be the final field because text may contain commas. Without a Format declaration, default positions are used. A successful conversion is not proof that a custom layout was read correctly.
+SSA can use the same dialogue structure. A Format declaration can locate Start and End in a custom layout; Text must be the final field because text may contain commas. Without a Format declaration, default positions are used. A successful conversion is not proof that a custom layout was read correctly.
 
 ### Should I keep ASS if styling matters?
 
@@ -68,3 +68,8 @@ Keep the original ASS or SSA whenever you need its styles, layout or effects. Th
 ### Are these files uploaded or saved as projects?
 
 No. One local file or pasted source is processed in the browser. Copy and download use the current result box. There is no account history, batch conversion, audio transcription or video preview. See the [privacy policy](https://instascript.app/privacy).
+
+
+## Conversion diagnostics and current exports
+
+The initial-source summary separates candidate cues, usable cues, skipped records, unrecognized content and omitted metadata. Unrecognized content means the complete source cue count is unknown. Source notices identify original lines without repeating caption text. Partial results require the omission acknowledgment before Copy or Download. Files must be UTF-8 under 8 MB; source text is limited to 2 million characters and 10,000 candidates. All subtitle languages are accepted; no recognition or translation runs. Copy and Download validate and use the same current result text. Manual edits are labeled separately from initial-source counts; invalid timing syntax, empty captions or invalid ranges block export. Rebuilding, clearing, opening another file or switching output format asks before replacing manual result edits. Source edits invalidate the old result immediately; format changes require conversion again. A newer file selection or source edit cancels an older file read.

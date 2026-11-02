@@ -59,3 +59,6 @@ No. This page converts existing subtitle text in any language without loading a 
 ### What leaves this tab?
 
 Subtitle contents, file reading, conversion and downloads stay local. The page and static resources are requested from the host. There is no account history or saved cloud project; download your work before closing the tab.
+
+
+On success the initial-source summary reports candidates, converted cues and zero skipped or unrecognized blocks. Invalid input still stops the entire conversion.

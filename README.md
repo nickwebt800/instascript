@@ -188,3 +188,7 @@ The public data-key comes from the InstaScript Ahrefs project. `data-page-locati
 Run `node scripts/test-analytics.mjs`. Local checks do not establish production ingestion; after an authorized deployment, verify both the production script and actual Ahrefs reports.
 
 Google Analytics 4 receives the canonical catalog URL and page title inside the isolated frame, with an empty page referrer. The frame has no access to tool inputs or results. Browser restrictions on third-party storage may affect analytics identifiers and session continuity. Verify actual requests and Realtime reporting after deployment; local checks do not prove ingestion.
+
+## Conversion completeness review
+
+VTT/SRT/SBV and ASS/SSA converters now distinguish initial source candidates, usable/skipped cues, unrecognized records and omitted metadata. Source-line notices and an acknowledgment gate protect partial exports. Edited output is revalidated before Copy/Download; source changes invalidate results and file reads use a generation guard. The dedicated SRT-to-VTT route remains strict and read-only. No subtitle content leaves the browser. Run `node scripts/test-subtitle-diagnostics.mjs` for format and output-validation boundaries.
