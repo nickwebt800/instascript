@@ -120,6 +120,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Reviewer Decision Handoff](https://instascript.app/qualitative-reviewer-handoff) — Hand off unresolved transcript decisions with a fictional two-reviewer ledger, reproducible refusal checks and a blank decision worksheet.
 - [Partial Review Scope](https://instascript.app/qualitative-review-scope) — Record checked and unreviewed transcript intervals with a fictional scope map, reproducible interval checks and a blank review worksheet.
 - [Wording and Speaker Review](https://instascript.app/qualitative-review-purposes) — Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet.
+- [Edited Recording Timestamps](https://instascript.app/qualitative-edited-recording-timestamps) — Map edited transcript timestamps back to the original interview with a fictional cut map and a replay worksheet.
 
 ### YouTube tools
 

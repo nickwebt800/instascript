@@ -2100,6 +2100,36 @@
         "changefreq": "monthly",
         "priority": "0.8"
       }
+    },
+    {
+      "title": "How to Cite an Interview Transcribed From an Edited Recording",
+      "label": "Edited Recording Timestamps",
+      "url": "https://instascript.app/qualitative-edited-recording-timestamps",
+      "summary": "Map edited transcript timestamps back to the original interview with a fictional cut map and a replay worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide with fictional examples",
+        "does not align recording versions"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "edited interview timestamps",
+        "source recording replay ranges"
+      ],
+      "path": "/qualitative-edited-recording-timestamps",
+      "html": "qualitative-edited-recording-timestamps.html",
+      "markdown": "qualitative-edited-recording-timestamps.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-03",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "replay worksheet"
+      ]
     }
   ]
 }
