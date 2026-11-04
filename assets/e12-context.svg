@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 224" role="img" aria-labelledby="title">
+<title id="title">Keep the interview question separate from the participant evidence</title>
+<rect width="360" height="224" rx="14" fill="#f2f6f5"/>
+<g font-family="sans-serif" fill="#163930" font-size="16">
+<text x="22" y="40" font-weight="bold">P1 · Interviewer context</text>
+<text x="22" y="66">Which shuttle and time period?</text>
+<path d="M22 92h316M22 161h316" stroke="#5d8578"/>
+<text x="22" y="119" font-weight="bold">P2 · Participant evidence</text>
+<text x="22" y="145">Tuesday yes, Friday exception</text>
+<text x="22" y="197">Claim: experience varied by day</text>
+</g>
+</svg>

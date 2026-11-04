@@ -2130,6 +2130,35 @@
       "outputs": [
         "replay worksheet"
       ]
+    },
+    {
+      "title": "How Much of an Interview Answer Should You Code?",
+      "label": "Interview Coding Evidence",
+      "url": "https://instascript.app/qualitative-coding-evidence",
+      "summary": "Separate participant evidence from interviewer context with a fictional qualitative coding exercise and a downloadable worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual coding guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "edited interview timestamps",
+        "source recording replay ranges"
+      ],
+      "path": "/qualitative-coding-evidence",
+      "html": "qualitative-coding-evidence.html",
+      "markdown": "qualitative-coding-evidence.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-04",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "coding worksheet"
+      ]
     }
   ]
 }

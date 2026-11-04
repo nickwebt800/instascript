@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 224" role="img" aria-labelledby="title">
+<title id="title">A short selection can hide a weekday exception</title>
+<rect width="360" height="224" rx="14" fill="#f2f6f5"/>
+<g font-family="sans-serif" fill="#163930" font-size="16">
+<text x="22" y="42" font-weight="bold">Short selection: “yes”</text>
+<text x="22" y="70">Which day? What about Friday?</text>
+<path d="M22 98h316" stroke="#5d8578"/>
+<text x="22" y="126" font-weight="bold">Full participant turn</text>
+<text x="22" y="154">Tuesday: reliable in this account</text>
+<text x="22" y="182">Friday: left before shift end</text>
+</g>
+</svg>
