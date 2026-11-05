@@ -2159,6 +2159,35 @@
       "outputs": [
         "coding worksheet"
       ]
+    },
+    {
+      "title": "Which Translated Interview Quotes Need Review After a Transcript Correction?",
+      "label": "Translated Quote Review",
+      "url": "https://instascript.app/qualitative-translation-review",
+      "summary": "Check which translated interview quotes need review after a source correction with a fictional example and a downloadable worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "translated interview quotes",
+        "translation review after transcript correction"
+      ],
+      "path": "/qualitative-translation-review",
+      "html": "qualitative-translation-review.html",
+      "markdown": "qualitative-translation-review.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-05",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "translation review worksheet"
+      ]
     }
   ]
 }

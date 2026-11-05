@@ -122,6 +122,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Wording and Speaker Review](https://instascript.app/qualitative-review-purposes) — Keep wording decisions separate from speaker attribution with an original fictional exercise, reproducible purpose checks and a blank worksheet.
 - [Edited Recording Timestamps](https://instascript.app/qualitative-edited-recording-timestamps) — Map edited transcript timestamps back to the original interview with a fictional cut map and a replay worksheet.
 - [Interview Coding Evidence](https://instascript.app/qualitative-coding-evidence) — Separate participant evidence from interviewer context with a fictional qualitative coding exercise and a downloadable worksheet.
+- [Translated Quote Review](https://instascript.app/qualitative-translation-review) — Check which translated interview quotes need review after a source correction with a fictional example and a downloadable worksheet.
 
 ### YouTube tools
 
