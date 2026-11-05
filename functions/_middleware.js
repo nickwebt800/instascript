@@ -973,7 +973,7 @@ function notFound(p) {
 
 /* --------------------------------------------------------------- markdown */
 
-const MD_MAP = Object.fromEntries(catalog.pages.flatMap(page => [[page.path, "/" + page.markdown], ["/" + page.html, "/" + page.markdown]]));
+const MD_MAP = Object.fromEntries(PAGES.flatMap(page => [[page.path, page], ["/" + page.html, page]]));
 
 function wantsMarkdown(request) {
   const ranges = (request.headers.get("Accept") || "").split(",").map(part => {
@@ -1100,15 +1100,16 @@ export async function onRequest(ctx) {
 
     // Markdown content negotiation
     if (wantsMarkdown(request)) {
-      const mdPath = MD_MAP[p];
-      if (mdPath) {
+      const page = MD_MAP[p];
+      if (page && Object.prototype.hasOwnProperty.call(MD_MAP, p)) {
         try {
-          const mdRes = await env.ASSETS.fetch(new Request(ORIGIN + mdPath));
+          const mdRes = await env.ASSETS.fetch(new Request(ORIGIN + "/" + page.markdown));
           if (mdRes && mdRes.ok) {
             const body = await mdRes.text();
             return text(body, "text/markdown; charset=utf-8", {
               headers: {
                 Vary: "Accept",
+                Link: `<${page.url}>; rel="canonical"`,
                 "x-markdown-tokens": estimateTokens(body),
                 "Cache-Control": "public, max-age=600",
               },
