@@ -33,3 +33,6 @@
 
 /* E10: wrap navigation, show clear open status, and keep the comparison table keyboard accessible. */
 .purposes-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.purposes-guide .bench-table{min-width:620px}.purposes-guide .tool-card p{max-width:62ch}.purposes-guide .bench-table td:nth-child(2){font-weight:600;color:#843329}.purposes-guide .bench-table td{overflow-wrap:anywhere}.research-purposes-legacy{margin:28px 0}.research-purposes-legacy img{display:block;width:100%;height:auto}.research-purposes-legacy figcaption{font-size:.9rem;line-height:1.65;color:#475467;margin-top:10px}
+
+/* E14: readable worksheet fields and wrapping navigation on narrow screens. */
+.gap-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.gap-guide .gap-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 20px}.gap-guide .gap-fields dt{font-weight:600}.gap-guide .gap-fields dd{margin:0;overflow-wrap:anywhere}.gap-guide .research-figure{max-width:520px}@media(max-width:600px){.gap-guide .gap-fields{grid-template-columns:1fr;gap:6px}.gap-guide .gap-fields dd{margin-bottom:16px}}

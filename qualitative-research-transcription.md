@@ -78,3 +78,9 @@ The concrete outstanding deliverable in this example is an independently checked
 A proposed review workflow. Text matching does not certify a correction.
 
 After a text revision, use the [transcript correction and coded-quote exercise](/qualitative-transcript-corrections) to check missing, shifted and repeated quotations.
+
+## Work a cue-boundary counterexample
+
+![Different cue gaps do not establish different acoustic pauses](/assets/e14-cue-gap.svg)
+
+This authored fictional exercise compares display intervals without measuring audio. [Inspect the example and review worksheet](/qualitative-transcript-pause-measurement).

@@ -2188,6 +2188,35 @@
       "outputs": [
         "translation review worksheet"
       ]
+    },
+    {
+      "title": "Can a Subtitle Gap Measure an Interview Pause?",
+      "label": "Transcript Pause Measurement",
+      "url": "https://instascript.app/qualitative-transcript-pause-measurement",
+      "summary": "Separate subtitle cue gaps from measured interview pauses with a fictional boundary-change exercise, reproducible checks and a review worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "subtitle cue gaps",
+        "interview pause measurement"
+      ],
+      "path": "/qualitative-transcript-pause-measurement",
+      "html": "qualitative-transcript-pause-measurement.html",
+      "markdown": "qualitative-transcript-pause-measurement.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-06",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "pause review worksheet"
+      ]
     }
   ]
 }
