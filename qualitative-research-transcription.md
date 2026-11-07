@@ -84,3 +84,9 @@ After a text revision, use the [transcript correction and coded-quote exercise](
 ![Different cue gaps do not establish different acoustic pauses](/assets/e14-cue-gap.svg)
 
 This authored fictional exercise compares display intervals without measuring audio. [Inspect the example and review worksheet](/qualitative-transcript-pause-measurement).
+
+## Separate software access from review
+
+![Access, route permission and review remain separate](/assets/e15-route.svg)
+
+A fictional worksheet keeps these three records distinct. [Inspect the NVivo route exercise](/qualitative-nvivo-transcription-route).

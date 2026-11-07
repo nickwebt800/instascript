@@ -1379,7 +1379,7 @@
         "pasted SRT"
       ],
       "limits": [
-        "1–10,000 cues",
+        "1\u201310,000 cues",
         "under 2 million characters",
         "local files under 8 MB",
         "source styling removed",
@@ -2216,6 +2216,35 @@
       },
       "outputs": [
         "pause review worksheet"
+      ]
+    },
+    {
+      "title": "Can NVivo Do Transcription? Check the Route Before Coding",
+      "label": "NVivo Transcription Route",
+      "url": "https://instascript.app/qualitative-nvivo-transcription-route",
+      "summary": "Separate NVivo transcription access, processing-route decisions and transcript review with a fictional planning exercise and worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "NVivo transcription",
+        "transcription planning"
+      ],
+      "path": "/qualitative-nvivo-transcription-route",
+      "html": "qualitative-nvivo-transcription-route.html",
+      "markdown": "qualitative-nvivo-transcription-route.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-07",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual route worksheet"
       ]
     }
   ]

@@ -124,6 +124,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Interview Coding Evidence](https://instascript.app/qualitative-coding-evidence) — Separate participant evidence from interviewer context with a fictional qualitative coding exercise and a downloadable worksheet.
 - [Translated Quote Review](https://instascript.app/qualitative-translation-review) — Check which translated interview quotes need review after a source correction with a fictional example and a downloadable worksheet.
 - [Transcript Pause Measurement](https://instascript.app/qualitative-transcript-pause-measurement) — Separate subtitle cue gaps from measured interview pauses with a fictional boundary-change exercise, reproducible checks and a review worksheet.
+- [NVivo Transcription Route](https://instascript.app/qualitative-nvivo-transcription-route) — Separate NVivo transcription access, processing-route decisions and transcript review with a fictional planning exercise and worksheet.
 
 ### YouTube tools
 

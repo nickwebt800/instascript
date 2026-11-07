@@ -36,3 +36,6 @@
 
 /* E14: readable worksheet fields and wrapping navigation on narrow screens. */
 .gap-guide .page-nav{flex-wrap:wrap;overflow:visible;white-space:normal}.gap-guide .gap-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 20px}.gap-guide .gap-fields dt{font-weight:600}.gap-guide .gap-fields dd{margin:0;overflow-wrap:anywhere}.gap-guide .research-figure{max-width:520px}@media(max-width:600px){.gap-guide .gap-fields{grid-template-columns:1fr;gap:6px}.gap-guide .gap-fields dd{margin-bottom:16px}}
+
+/* Route planning: preserve whitespace and separate unresolved worksheet values. */
+.route-guide .gap-fields dd{padding:8px 12px;border-left:3px solid #b94332;background:#fffaf8}.route-guide .gap-fields dt{align-self:center}
