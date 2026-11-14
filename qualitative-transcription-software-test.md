@@ -53,7 +53,7 @@ The TXT file appeared as one imported file. Opening it showed both invented sent
 
 The desktop result changes a selection decision that a serializer/parser roundtrip cannot settle: an internally valid SRT can still be refused by a specific destination's direct-file importer. A plain-text alternative can preserve readable syntax without meeting a requirement for usable timed media navigation. Neither result identifies a universal best tool. Retain the failed condition rather than allowing a convenience score or a successful text-only path to erase it.
 
-![Observe import and reopen independently](/assets/g03-reopen-wide.svg)
+![Observe import and reopen independently](/assets/g03-reopen-verified-wide.svg)
 
 QualCoder's documentation describes a separate media-associated transcript path and SRT used alongside a video. We did not execute that path. Do not infer from this direct-file rejection that the application cannot work with timecoded transcription at all. The requirement record must name both product version and actual route.
 

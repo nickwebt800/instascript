@@ -62,6 +62,6 @@ Use the [audio transcription tool](/audio-to-text) for a permitted English recor
 
 ## Test the destination separately
 
-![Import and project reopen are separate observations](/assets/g03-reopen-narrow.svg)
+![Import and project reopen are separate observations](/assets/g03-reopen-verified-narrow.svg)
 
 A file can preserve words without meeting a timed-import requirement. [Inspect the independent QualCoder workflow test](/qualitative-transcription-software-test).
