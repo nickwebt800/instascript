@@ -39,3 +39,6 @@
 
 /* Route planning: preserve whitespace and separate unresolved worksheet values. */
 .route-guide .gap-fields dd{padding:8px 12px;border-left:3px solid #b94332;background:#fffaf8}.route-guide .gap-fields dt{align-self:center}
+
+/* Workflow evidence: contain comparison scrolling and preserve readable narrow figures. */
+.selection-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.selection-guide .research-table-wrap{overflow-x:auto}.selection-guide .bench-table{min-width:620px}.selection-guide picture img{display:block;max-width:100%;height:auto}.selection-guide .content-card p{overflow-wrap:anywhere}.selection-guide .research-table-wrap:focus-visible{outline:3px solid #b94332;outline-offset:3px}

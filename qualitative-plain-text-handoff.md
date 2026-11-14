@@ -59,3 +59,9 @@ Finally, record what the recipient needs next. If replay intervals matter, a sta
 No. The shared English transcription tool exports edited words and available timing, with optional starts for TXT, Markdown and Copy. Complete valid timing is required for SRT/VTT; missing ends are not estimated. It does not automatically diarize speakers, produce coding decisions or attach this worksheet. Local files and same-origin editor transfers stay in the browser; public Instagram fetching uses servers, and YouTube tools read existing captions. See the [privacy policy](/privacy) for those distinct boundaries.
 
 Use the [audio transcription tool](/audio-to-text) for a permitted English recording, then inspect its result and downloads yourself. Browser decoding and the 100 MB limit still apply. First use downloads language-detection and English-recognition models. The public exercise here demonstrates export behavior, not recognition accuracy, research approval or automatic import compatibility with an analysis package.
+
+## Test the destination separately
+
+![Import and project reopen are separate observations](/assets/g03-reopen-narrow.svg)
+
+A file can preserve words without meeting a timed-import requirement. [Inspect the independent QualCoder workflow test](/qualitative-transcription-software-test).

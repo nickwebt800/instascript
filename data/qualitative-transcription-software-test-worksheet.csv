@@ -1,0 +1,11 @@
+requirement,expected,actual,evidence,destination_version,status
+text_on_import,"Two authored passages in order",,,,untested
+starts_on_import,"0 and 2.5 seconds",,,,untested
+ends_on_import,"2 and 5 seconds",,,,untested
+text_after_reopen,"Same two authored passages in order",,,,untested
+starts_after_reopen,"0 and 2.5 seconds",,,,untested
+ends_after_reopen,"2 and 5 seconds",,,,untested
+source_linked_playback,"Requires separate permitted recording; no recording in fixture",,,,untested
+speaker_attribution,"Requires separate speaker evidence; no speakers in fixture",,,,untested
+processing_approval,"Requires project-specific approval; technical import cannot establish it",,,,untested
+actual_browser_file,"Requires browser-created artifact and fingerprint; Node file insufficient",,,,untested

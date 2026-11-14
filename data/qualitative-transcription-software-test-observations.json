@@ -1,0 +1,30 @@
+{
+  "product": "QualCoder4.0 Windows portable",
+  "fixture": "Fictional workshop text; no recording",
+  "bytes": 126,
+  "sha256": "0d37291844c7cf85d1338a3b90afb0bb66579eeb4b518a6de326926344566043",
+  "observations": [
+    {
+      "date": "2026-11-14",
+      "condition": "Direct SRT file import",
+      "result": "refused: unsupported file type"
+    },
+    {
+      "date": "2026-11-14",
+      "condition": "Same bytes as TXT; literal text import and project close/reopen",
+      "result": "both sentences and literal timecode strings retained; no semantic media-link test"
+    },
+    {
+      "date": "2026-11-15",
+      "condition": "Operator-supplied actual browser download; byte check; direct file import",
+      "result": "byte-identical; direct import refused again"
+    }
+  ],
+  "limitations": [
+    "No recognition/accuracy/speed measurement",
+    "No speaker identity or recording tested",
+    "TXT pass does not establish timed navigation",
+    "Does not assess all QualCoder routes",
+    "Original automated browser download event timed out; actual artifact supplied by operator"
+  ]
+}

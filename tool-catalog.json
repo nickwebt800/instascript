@@ -2246,6 +2246,35 @@
       "outputs": [
         "manual route worksheet"
       ]
+    },
+    {
+      "title": "Choosing Transcription Software: Test Required Evidence Before Scoring Features",
+      "label": "Transcription Workflow Test",
+      "url": "https://instascript.app/qualitative-transcription-software-test",
+      "summary": "Test qualitative research transcription workflows with a fictional sample, a real QualCoder import observation and a requirement-first worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual research guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcription software selection",
+        "QualCoder import"
+      ],
+      "path": "/qualitative-transcription-software-test",
+      "html": "qualitative-transcription-software-test.html",
+      "markdown": "qualitative-transcription-software-test.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-15",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual destination worksheet"
+      ]
     }
   ]
 }
