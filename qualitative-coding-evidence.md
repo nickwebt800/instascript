@@ -46,3 +46,9 @@ This is a manual research workflow. InstaScript can prepare an editable draft fr
 - [Coding interview transcripts](/qualitative-coding)
 - [Privacy](/privacy)
 - [Download the Node exercise](/data/qualitative-coding-evidence-reproduce.cjs)
+
+## Keep counting separate from selecting
+
+![More display rows leave the source people unchanged](/assets/e17-layout-v1.svg)
+
+Selecting a passage and counting its appearances are separate decisions. Try the [fictional counting-unit exercise](/qualitative-transcript-counting-units).

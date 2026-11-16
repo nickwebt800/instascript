@@ -2275,6 +2275,35 @@
       "outputs": [
         "manual destination worksheet"
       ]
+    },
+    {
+      "title": "Do Transcript Bullets Count as More Research Evidence?",
+      "label": "Transcript Counting Units",
+      "url": "https://instascript.app/qualitative-transcript-counting-units",
+      "summary": "Separate display rows, source people and copied fragments with an original qualitative research transcription counting exercise.",
+      "accepts": [],
+      "limits": [
+        "manual coding guide with fictional text"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcript counting units"
+      ],
+      "path": "/qualitative-transcript-counting-units",
+      "html": "qualitative-transcript-counting-units.html",
+      "markdown": "qualitative-transcript-counting-units.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-16",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual worksheet",
+        "fictional counting exercise"
+      ]
     }
   ]
 }

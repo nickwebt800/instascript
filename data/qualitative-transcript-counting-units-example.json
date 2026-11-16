@@ -1,0 +1,52 @@
+{
+  "uniqueText": 2,
+  "signsPeople": 2,
+  "uniqueFragments": 3,
+  "fixture": "Fictional STEPS-R17; no recording or participants",
+  "layoutA": [
+    {
+      "person": "F01",
+      "turn": "T01",
+      "text": "The stairs were steep. The signs were small."
+    },
+    {
+      "person": "F02",
+      "turn": "T02",
+      "text": "The signs were small."
+    }
+  ],
+  "layoutB": [
+    {
+      "person": "F01",
+      "turn": "T01",
+      "text": "The stairs were steep."
+    },
+    {
+      "person": "F01",
+      "turn": "T01",
+      "text": "The signs were small."
+    },
+    {
+      "person": "F02",
+      "turn": "T02",
+      "text": "The signs were small."
+    }
+  ],
+  "countsA": {
+    "rows": 2,
+    "people": 2,
+    "turns": 2
+  },
+  "countsB": {
+    "rows": 3,
+    "people": 2,
+    "turns": 2
+  },
+  "duplicateCounts": {
+    "rows": 4,
+    "people": 2,
+    "turns": 2
+  },
+  "assertions": 12,
+  "limits": "Mechanical count and exact reconstruction only. No semantic validation, prevalence estimate or real software import."
+}

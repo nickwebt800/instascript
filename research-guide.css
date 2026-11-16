@@ -42,3 +42,6 @@
 
 /* Workflow evidence: contain comparison scrolling and preserve readable narrow figures. */
 .selection-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.selection-guide .research-table-wrap{overflow-x:auto}.selection-guide .bench-table{min-width:620px}.selection-guide picture img{display:block;max-width:100%;height:auto}.selection-guide .content-card p{overflow-wrap:anywhere}.selection-guide .research-table-wrap:focus-visible{outline:3px solid #b94332;outline-offset:3px}
+
+/* Counting exercise: readable diagrams and complete narrow navigation. */
+.counting-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.counting-guide .research-figure{max-width:480px}.counting-guide .content-card p{overflow-wrap:anywhere}
