@@ -30,11 +30,13 @@ async function load({ origin = catalog.origin, pathname = '/', referrer = '', dn
 }
 
 const [frame] = await load({ referrer: 'https://directory.example/private-file?transcript=PRIVATE_TEXT#secret' });
-assert.equal(frame.sandbox, 'allow-scripts');
+assert.equal(frame.sandbox, 'allow-scripts allow-same-origin');
 assert.equal(frame.referrerPolicy, 'no-referrer');
 assert.equal(frame.hidden, true);
 assert.equal(frame.tabIndex, -1);
 const params = new URL(frame.src, catalog.origin).searchParams;
+assert.equal(new URL(frame.src).origin, 'https://instascript.pages.dev');
+assert.notEqual(new URL(frame.src).origin, catalog.origin, 'Tracker must not share the tool origin');
 assert.deepEqual([...params], [['page', '/'], ['source', 'directory.example']]);
 assert.doesNotMatch(frame.src, /PRIVATE|private-file|transcript|secret/);
 for (const options of [{ origin: 'https://preview.pages.dev' }, { origin: 'http://localhost:8788' },
@@ -52,23 +54,40 @@ for (const referrer of ['', 'not a URL', 'javascript:alert(1)', catalog.origin +
   assert.equal(new URL((await load({ referrer }))[0].src, catalog.origin).searchParams.get('source'), 'direct');
 }
 
-const response = analyticsFrame(new Request(catalog.origin + frame.src), catalog);
+const response = analyticsFrame(new Request(frame.src), catalog);
 assert.equal(response.status, 200);
 const html = await response.text();
 assert.match(html, /data-page-location="https:\/\/instascript\.app\/"/);
 assert.match(html, /data-prop-source_domain="directory.example"/);
 assert.match(html, /data-key="P8P2TNXrUzXIF8k0onqBdg"/);
 assert.match(html, /<body><\/body>/);
-assert.doesNotMatch(html, /PRIVATE|<form|<a\s|allow-same-origin/);
+assert.doesNotMatch(html, /PRIVATE|<form|<a\s/);
 assert.ok(html.includes('https://www.googletagmanager.com/gtag/js?id='), 'Google tag loader present');
 assert.ok(html.includes("page_location:'https://instascript.app/'"), 'GA4 receives canonical URL');
 assert.ok(html.includes("page_referrer:''"), 'GA4 referrer is empty');
 assert.ok(html.includes('allow_google_signals:false') && html.includes('allow_ad_personalization_signals:false'));
+assert.ok(html.includes("cookie_flags:'SameSite=None;Secure'"));
 assert.match(response.headers.get('Content-Security-Policy'), /www\.googletagmanager\.com/);
 assert.equal(response.headers.get('Referrer-Policy'), 'no-referrer');
 assert.equal(response.headers.get('Cache-Control'), 'no-store');
 assert.equal(response.headers.get('X-Robots-Tag'), 'noindex, nofollow');
-assert.match(response.headers.get('Content-Security-Policy'), /sandbox allow-scripts/);
+assert.match(response.headers.get('Content-Security-Policy'), /sandbox allow-scripts allow-same-origin;/);
+assert.ok(response.headers.get('Content-Security-Policy').endsWith('frame-ancestors ' + catalog.origin));
+// Same-origin legacy URLs retain their opaque sandbox even if a parent adds tokens.
+const legacy = analyticsFrame(new Request(catalog.origin + '/analytics-frame?page=/'), catalog);
+assert.equal(legacy.status, 200);
+assert.match(legacy.headers.get('Content-Security-Policy'), /sandbox allow-scripts;/);
+assert.doesNotMatch(legacy.headers.get('Content-Security-Policy'), /allow-same-origin/);
+for (const origin of ['https://evil.instascript.pages.dev', 'https://instascript.pages.dev.evil.example', 'http://instascript.pages.dev']) {
+  assert.equal(analyticsFrame(new Request(origin + '/analytics-frame?page=/'), catalog).status, 404);
+}
+const sameOriginCatalog = { ...catalog, origin: 'https://instascript.pages.dev' };
+assert.doesNotMatch(analyticsFrame(new Request(frame.src), sameOriginCatalog).headers.get('Content-Security-Policy'), /allow-same-origin/);
+for (const query of ['?page=/result/private', '?page=/&url=PRIVATE', '?page=/&source=evil.example/path', '?page=/&page=/about']) {
+  const rejected = analyticsFrame(new Request('https://instascript.pages.dev/analytics-frame' + query), catalog);
+  assert.equal(rejected.status, 404);
+  assert.doesNotMatch(await rejected.text(), /gtag|analytics\.ahrefs|PRIVATE/);
+}
 for (const path of ['?page=/result/private', '?page=/api/proxy', '?page=//evil.example',
   '?page=/', '?page=/&source=directory.example/path', '?page=/&source=%22%3E%3Cscript%3E',
   '?page=/&url=PRIVATE', '?page=/&page=/about', '?page=/&source=a.example&source=b.example']) {

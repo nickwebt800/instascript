@@ -8,7 +8,7 @@ Canonical: <https://instascript.app/privacy>
 
 Turn video and audio into text — free, in your browser
 
-Last updated: October 29, 2026
+Last updated: November 17, 2026
 
 ### 1. Data We Collect
 
@@ -36,7 +36,7 @@ The trackers run in an isolated sandbox that cannot read the tool page, local fi
 
 Ahrefs receives ordinary connection and device information, including IP address, browser, language and screen dimensions. Ahrefs states that its analytics uses no cookies, discards raw IP addresses and uses daily identifiers rather than tracking visitors across days. Aggregate data may be used by Ahrefs to improve its services. See [Ahrefs data collection details](https://help.ahrefs.com/en/articles/10247870-about-ahrefs-web-analytics).
 
-Google Analytics 4 receives the catalog page URL and title and ordinary connection and device data. Its standard page-view measurement runs in the same sandbox; its page referrer is blank and enhanced measurement and advertising signals are disabled. Google may use identifiers or cookies where the browser permits them. See [how Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites).
+Google Analytics 4 receives the catalog page URL and title and ordinary connection and device data. Its standard page-view measurement runs in a sandbox on the separate instascript.pages.dev origin. Browser origin isolation prevents it from reading the tool page or local content. Its page referrer is blank and enhanced measurement and advertising signals are disabled. Google uses identifiers and, where your browser permits them, cookies on that separate analytics origin. Blocking third-party storage may affect user counts and session continuity. See [how Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites).
 
 ### 4. Advertising
 

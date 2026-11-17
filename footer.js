@@ -19,13 +19,14 @@
     } catch (_) { /* Missing referrers are direct visits. */ }
     var frame = document.createElement("iframe");
     frame.id = "site-analytics-frame";
-    frame.title = "Anonymous page analytics";
+    frame.title = "Isolated page analytics";
     frame.hidden = true;
     frame.tabIndex = -1;
     frame.setAttribute("aria-hidden", "true");
-    frame.setAttribute("sandbox", "allow-scripts");
+    // This must stay cross-origin. Never allow same-origin scripts in a tool-page frame.
+    frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
     frame.referrerPolicy = "no-referrer";
-    frame.src = "/analytics-frame?" + new URLSearchParams({ page: page.path, source: source });
+    frame.src = "https://instascript.pages.dev/analytics-frame?" + new URLSearchParams({ page: page.path, source: source });
     document.body.appendChild(frame);
   }
   // Shared navigation is generated into HTML by scripts/sync-catalog.cjs.
