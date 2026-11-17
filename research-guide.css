@@ -45,3 +45,6 @@
 
 /* Counting exercise: readable diagrams and complete narrow navigation. */
 .counting-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.counting-guide .research-figure{max-width:480px}.counting-guide .content-card p{overflow-wrap:anywhere}
+
+/* Topic views: keep source references readable on narrow screens. */
+.topic-order-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.topic-order-guide .research-figure{max-width:440px}.topic-order-guide .content-card p{overflow-wrap:anywhere}.research-topic-order-legacy img{display:block;width:100%;max-width:440px;height:auto}

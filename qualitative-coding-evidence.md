@@ -52,3 +52,9 @@ This is a manual research workflow. InstaScript can prepare an editable draft fr
 ![More display rows leave the source people unchanged](/assets/e17-layout-v1.svg)
 
 Selecting a passage and counting its appearances are separate decisions. Try the [fictional counting-unit exercise](/qualitative-transcript-counting-units).
+
+## Keep topic views linked to the source order
+
+When organizing selected passages by topic, keep the chronological transcript separately. Try the [topic-view reference exercise](/qualitative-transcript-topic-order) before presenting a rearranged document as a question-and-answer record.
+
+![An analyst topic heading does not replace the preceding source turn](/assets/e19-context-view-v1.svg)

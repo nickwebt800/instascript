@@ -1,0 +1,104 @@
+{
+  "fixture": "Fictional ROOM-R19; no recording or participant",
+  "assertions": 14,
+  "source": {
+    "id": "ROOM-R19",
+    "version": 1,
+    "fictional": true,
+    "turns": [
+      {
+        "id": "T01",
+        "role": "I",
+        "text": "How did you find the room?"
+      },
+      {
+        "id": "T02",
+        "role": "P",
+        "text": "The blue arrows helped."
+      },
+      {
+        "id": "T03",
+        "role": "I",
+        "text": "Was the booking form clear?"
+      },
+      {
+        "id": "T04",
+        "role": "P",
+        "text": "That was confusing."
+      },
+      {
+        "id": "T05",
+        "role": "I",
+        "text": "Anything else about finding the room?"
+      },
+      {
+        "id": "T06",
+        "role": "P",
+        "text": "The arrows stopped at the lift."
+      }
+    ]
+  },
+  "topicView": [
+    {
+      "source": "ROOM-R19",
+      "version": 1,
+      "turn": "T06",
+      "preceding": "T05",
+      "topic": "Finding the room",
+      "text": "The arrows stopped at the lift.",
+      "sourceIndex": 5,
+      "interpretation": "not approved by mechanical checks"
+    },
+    {
+      "source": "ROOM-R19",
+      "version": 1,
+      "turn": "T02",
+      "preceding": "T01",
+      "topic": "Finding the room",
+      "text": "The blue arrows helped.",
+      "sourceIndex": 1,
+      "interpretation": "not approved by mechanical checks"
+    }
+  ],
+  "selectedTurnsInSourceOrder": [
+    {
+      "source": "ROOM-R19",
+      "version": 1,
+      "turn": "T02",
+      "preceding": "T01",
+      "topic": "Finding the room",
+      "text": "The blue arrows helped.",
+      "sourceIndex": 1,
+      "interpretation": "not approved by mechanical checks"
+    },
+    {
+      "source": "ROOM-R19",
+      "version": 1,
+      "turn": "T06",
+      "preceding": "T05",
+      "topic": "Finding the room",
+      "text": "The arrows stopped at the lift.",
+      "sourceIndex": 5,
+      "interpretation": "not approved by mechanical checks"
+    }
+  ],
+  "misleadingRowRejected": {
+    "source": "ROOM-R19",
+    "version": 1,
+    "turn": "T04",
+    "preceding": "T01",
+    "topic": "Finding the room",
+    "text": "That was confusing."
+  },
+  "traceableButNotInterpretivelyApproved": {
+    "source": "ROOM-R19",
+    "version": 1,
+    "turn": "T04",
+    "preceding": "T03",
+    "topic": "Finding the room",
+    "text": "That was confusing.",
+    "sourceIndex": 3,
+    "interpretation": "not approved by mechanical checks"
+  },
+  "limits": "Reference consistency only; preceding turn is not a verified question-answer or semantic relation. Selected subset is not a reconstruction of the complete source."
+}

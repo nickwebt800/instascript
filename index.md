@@ -127,6 +127,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [NVivo Transcription Route](https://instascript.app/qualitative-nvivo-transcription-route) — Separate NVivo transcription access, processing-route decisions and transcript review with a fictional planning exercise and worksheet.
 - [Transcription Workflow Test](https://instascript.app/qualitative-transcription-software-test) — Test qualitative research transcription workflows with a fictional sample, a real QualCoder import observation and a requirement-first worksheet.
 - [Transcript Counting Units](https://instascript.app/qualitative-transcript-counting-units) — Separate display rows, source people and copied fragments with an original qualitative research transcription counting exercise.
+- [Transcript Topic Order](https://instascript.app/qualitative-transcript-topic-order) — Keep chronological interview turns recoverable when organizing excerpts by topic. Original qualitative research transcription exercise and worksheet.
 
 ### YouTube tools
 

@@ -2304,6 +2304,37 @@
         "manual worksheet",
         "fictional counting exercise"
       ]
+    },
+    {
+      "title": "Organize Interview Answers by Topic Without Rewriting the Conversation",
+      "label": "Transcript Topic Order",
+      "url": "https://instascript.app/qualitative-transcript-topic-order",
+      "summary": "Keep chronological interview turns recoverable when organizing excerpts by topic. Original qualitative research transcription exercise and worksheet.",
+      "accepts": [],
+      "limits": [
+        "manual guide and fictional topic-view exercise",
+        "does not assign topics or validate question-answer relations"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "organize interview transcript by topic",
+        "interview source order"
+      ],
+      "path": "/qualitative-transcript-topic-order",
+      "html": "qualitative-transcript-topic-order.html",
+      "markdown": "qualitative-transcript-topic-order.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-17",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual topic-view worksheet",
+        "fictional reference exercise"
+      ]
     }
   ]
 }
