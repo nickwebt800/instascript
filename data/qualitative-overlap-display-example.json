@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": 12,
+  "fixture": "Fictional PANEL-R20. No recording, participant or listening check.",
+  "sequentialDisplayIntersection": 0,
+  "overlappingDisplayIntersection": 2,
+  "plainTextProjection": [
+    "A: The gate was open",
+    "B: Only after lunch"
+  ],
+  "recordedSpeechOverlap": null,
+  "limitation": "Arithmetic and lossy projection only; no audio or application test."
+}

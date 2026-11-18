@@ -53,6 +53,24 @@ The W3C WebVTT specification defines cue start and end offsets and allows cues t
 
 The UK Data Service example transcription instructions use ellipses for hesitation and pauses and also for unfinished statements. This is a project example, not a universal notation rule. Its relevance here is the need to retain the convention before treating a mark as a measurement.
 
+## Can adjacent rows establish recorded overlap?
+
+No. The order of exported text rows cannot establish whether the recorded voices overlapped. Keep a recorded-speech claim unresolved until an appropriate recording review supports it. A subtitle interval describes display timing; a role label does not certify speaker identity.
+
+Fictional PANEL-R20 has two authored roles. A says “The gate was open” and B says “Only after lunch”. There is no participant, recording, listening check or recognition run. In invented arrangement S, A occupies seconds 1–3 and B occupies 3–5. In arrangement O, A occupies 1–4 and B occupies 2–5. These are invented interval arrangements, not competing measurements.
+
+S has no positive-duration intersection; O has a two-second intersection. Export only the role labels and words, A on row one and B on row two, and both arrangements produce identical text. The exported rows cannot select which arrangement occurred in an absent recording. Nor does an intersection between subtitle display intervals certify simultaneous voices.
+
+![Identical exported rows can come from different fictional interval arrangements](/assets/e20-possibilities.svg)
+
+Keep evidence origin and recording-review status beside any timing calculation. For this practice sheet, origin is fictional and review is not applicable because no recording exists. Leave the recorded-speech claim unknown rather than entering “no overlap”. The calculation cannot establish interruption, agreement, dominance or intention.
+
+The [overlap practice worksheet](/data/qualitative-overlap-display-worksheet.md) separates source version, row, role, wording, display interval, evidence origin, review status and unresolved claim. The [standalone Node exercise](/data/qualitative-overlap-display-reproduce.cjs) demonstrates identical text projections and checks touching, disjoint, contained, missing and invalid intervals. Its [saved output](/data/qualitative-overlap-display-example.json) records twelve passing arithmetic and information-loss assertions; these are not audio, application-import or accuracy tests. Run the script with Node to reproduce the output beside it. No network request or research file is required.
+
+![Separate a display calculation from an acoustic claim and speaker identity](/assets/e20-evidence.svg)
+
+This applies the cue-boundary distinction already explained above. It is not a separate transcription method or a new measurement feature. Choose the detail and notation needed by the study before relying on a transcript representation.
+
 ## Related resources
 
 - [Qualitative research transcription](/qualitative-research-transcription)

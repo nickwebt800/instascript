@@ -48,3 +48,6 @@
 
 /* Topic views: keep source references readable on narrow screens. */
 .topic-order-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.topic-order-guide .research-figure{max-width:440px}.topic-order-guide .content-card p{overflow-wrap:anywhere}.research-topic-order-legacy img{display:block;width:100%;max-width:440px;height:auto}
+
+/* Keep the fictional overlap practice readable at narrow widths. */
+.gap-guide .overlap-practice .research-figure{max-width:430px}.gap-guide .overlap-practice p{overflow-wrap:anywhere}

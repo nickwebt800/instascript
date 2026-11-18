@@ -1,0 +1,7 @@
+const a=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');let checks=0;
+const eq=(x,y)=>{a.deepEqual(x,y);checks++},bad=f=>{a.throws(f);checks++};
+function intersection(x,y){for(const t of [x,y])if(!Array.isArray(t)||t.length!==2||!t.every(Number.isFinite)||t[0]<0||t[1]<=t[0])throw Error('invalid interval');return Math.max(0,Math.min(x[1],y[1])-Math.max(x[0],y[0]));}
+const strings=['A: The gate was open','B: Only after lunch'];const S={rows:strings,times:[[1,3],[3,5]]},O={rows:[...strings],times:[[1,4],[2,5]]};
+eq(S.rows.join('\n'),O.rows.join('\n'));eq(intersection(...S.times),0);eq(intersection(...O.times),2);eq(intersection([1,2],[3,4]),0);eq(intersection([1,5],[2,3]),1);eq(intersection([2,5],[1,4]),2);eq(intersection([1,4],[1,4]),3);
+bad(()=>intersection(null,[1,2]));bad(()=>intersection([3,1],[1,2]));bad(()=>intersection([1,1],[1,2]));bad(()=>intersection([-1,2],[1,2]));bad(()=>intersection([NaN,2],[1,2]));
+const result={status:'PASS',checks,fixture:'Fictional PANEL-R20. No recording, participant or listening check.',sequentialDisplayIntersection:0,overlappingDisplayIntersection:2,plainTextProjection:S.rows,recordedSpeechOverlap:null,limitation:'Arithmetic and lossy projection only; no audio or application test.'};fs.writeFileSync(path.join(__dirname,'qualitative-overlap-display-example.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
