@@ -1,0 +1,42 @@
+{
+  "fictional": true,
+  "recordingExists": false,
+  "checks": 12,
+  "observation": {
+    "card": "WINDOW-R21/C1",
+    "text": "I finally found the right room.",
+    "event": "[laughs]",
+    "origin": "fictional teaching card",
+    "review": "not applicable: no recording"
+  },
+  "alternatives": [
+    {
+      "card": "WINDOW-R21/C1",
+      "text": "I finally found the right room.",
+      "event": "[laughs]",
+      "origin": "fictional teaching card",
+      "review": "not applicable: no recording",
+      "memo": "relief after a difficult search",
+      "status": "hypothetical"
+    },
+    {
+      "card": "WINDOW-R21/C1",
+      "text": "I finally found the right room.",
+      "event": "[laughs]",
+      "origin": "fictional teaching card",
+      "review": "not applicable: no recording",
+      "memo": "embarrassment about arriving late",
+      "status": "hypothetical"
+    }
+  ],
+  "unreviewed": {
+    "modality": "audio",
+    "claim": "audibleEvent",
+    "review": "pending"
+  },
+  "blankAnnotationCounterexample": {
+    "omittedUnderConvention": "I finally found the right room.",
+    "noneListedUnderOtherConvention": "I finally found the right room."
+  },
+  "limits": "Illustrates authored information loss and policy distinctions. No audio recognition, listening, reviewer authentication or emotion validation."
+}

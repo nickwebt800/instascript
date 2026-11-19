@@ -81,3 +81,11 @@ Apply the convention to the worked example in [thematic coding: build a claim fr
 Invented text; no participant or recording.
 
 Before shortening a research extract, distinguish unresolved source text from a deliberate cut. Use the [transcript gaps and shortened quotes exercise](/qualitative-quote-omissions).
+
+## Keep nonverbal descriptions linked to their evidence
+
+A laughter label does not by itself establish happiness or agreement. Use the [nonverbal-event exercise and worksheet](/qualitative-nonverbal-events) to separate the proposed event, its evidence source and an analytical interpretation.
+
+![One fictional laughter label has two different hypothetical interpretations](/assets/research-nonverbal/01-narrow.svg)
+
+Fictional practice; no recording or verified event.

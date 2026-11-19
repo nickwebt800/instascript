@@ -2335,6 +2335,37 @@
         "manual topic-view worksheet",
         "fictional reference exercise"
       ]
+    },
+    {
+      "title": "How Should You Transcribe Laughter in Qualitative Research?",
+      "label": "Nonverbal Transcript Events",
+      "url": "https://instascript.app/qualitative-nonverbal-events",
+      "summary": "Keep nonverbal-event descriptions, source evidence and interpretation separate in qualitative research transcription. Fictional exercise, worksheet and reproducible checks.",
+      "accepts": [],
+      "limits": [
+        "manual research guide and fictional event-evidence exercise",
+        "does not detect nonverbal events or infer emotion"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcribing laughter",
+        "nonverbal transcript annotations"
+      ],
+      "path": "/qualitative-nonverbal-events",
+      "html": "qualitative-nonverbal-events.html",
+      "markdown": "qualitative-nonverbal-events.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-19",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "event-evidence worksheet",
+        "fictional reproducible exercise"
+      ]
     }
   ]
 }
