@@ -1,0 +1,36 @@
+{
+  "fixture": "HARBOR-R22",
+  "fictional": true,
+  "status": "PASS",
+  "checks": 14,
+  "records": [
+    {
+      "card": "A",
+      "version": "V1",
+      "turn": "T04",
+      "speaker": "Participant A",
+      "text": "My manager said, \"Use the side entrance.\"",
+      "reportedSource": "manager",
+      "relationship": "reported speech"
+    },
+    {
+      "card": "B",
+      "version": "V1",
+      "turn": "T05",
+      "speaker": "Participant A",
+      "text": "I imagined my manager saying, \"Use the side entrance.\"",
+      "reportedSource": "manager",
+      "relationship": "imagined speech"
+    },
+    {
+      "card": "C",
+      "version": "V1",
+      "turn": "T06",
+      "speaker": "Participant A",
+      "text": "The notice read, \"Use the side entrance.\"",
+      "reportedSource": "notice",
+      "relationship": "reported written text"
+    }
+  ],
+  "limits": "Explicit authored categories; no detection, identity or historical-event verification."
+}

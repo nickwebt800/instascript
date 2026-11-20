@@ -64,3 +64,11 @@ At handoff, ask the recipient to read both purpose rows. A concise statement mig
 The shared [English transcription tool](/) accepts browser-decodable local media up to 100 MB. Local file speech processing stays in the browser and first use loads model resources. Instagram URL fetching involves a server and possible fallback service. YouTube tools retrieve existing captions. No workflow here adds speaker recognition, participant identity verification or cloud review history. Read the [privacy explanation](/privacy).
 
 Use the [review-scope guide](/qualitative-review-scope) to list unchecked intervals and the [reviewer-handoff guide](/qualitative-reviewer-handoff) to carry an unresolved wording question between reviewers. This practice separates decision purposes within a passage; it does not replace either workflow.
+
+## Keep reported people separate from interview speakers
+
+A participant can recount someone else's words inside their own turn. Try the [reported-speech worksheet](/qualitative-reported-speech) before turning that account into an additional interview speaker.
+
+![The interview-turn speaker and reported role remain separate](/assets/research-reported/01-narrow.svg)
+
+Fictional HARBOR-R22; no recording or participant.

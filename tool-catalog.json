@@ -2366,6 +2366,36 @@
         "event-evidence worksheet",
         "fictional reproducible exercise"
       ]
+    },
+    {
+      "title": "How Do You Keep Reported Speech Separate from Interview Speakers?",
+      "label": "Reported Speech in Interviews",
+      "url": "https://instascript.app/qualitative-reported-speech",
+      "summary": "Keep reported words inside the interview speaker's turn. Original fictional source cards, a manual worksheet and reproducible checks for qualitative research transcription.",
+      "accepts": [],
+      "limits": [
+        "manual fictional exercise",
+        "does not identify speakers or verify reported speech"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "reported speech in interviews"
+      ],
+      "path": "/qualitative-reported-speech",
+      "html": "qualitative-reported-speech.html",
+      "markdown": "qualitative-reported-speech.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-20",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual worksheet",
+        "fictional source exercise"
+      ]
     }
   ]
 }

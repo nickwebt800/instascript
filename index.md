@@ -129,6 +129,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Transcript Counting Units](https://instascript.app/qualitative-transcript-counting-units) — Separate display rows, source people and copied fragments with an original qualitative research transcription counting exercise.
 - [Transcript Topic Order](https://instascript.app/qualitative-transcript-topic-order) — Keep chronological interview turns recoverable when organizing excerpts by topic. Original qualitative research transcription exercise and worksheet.
 - [Nonverbal Transcript Events](https://instascript.app/qualitative-nonverbal-events) — Keep nonverbal-event descriptions, source evidence and interpretation separate in qualitative research transcription. Fictional exercise, worksheet and reproducible checks.
+- [Reported Speech in Interviews](https://instascript.app/qualitative-reported-speech) — Keep reported words inside the interview speaker's turn. Original fictional source cards, a manual worksheet and reproducible checks for qualitative research transcription.
 
 ### YouTube tools
 

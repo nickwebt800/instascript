@@ -54,3 +54,6 @@
 
 /* Nonverbal-event guide: readable evidence records and complete narrow navigation. */
 .nonverbal-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.nonverbal-guide .content-card p{font-size:1.0625rem;line-height:1.75;overflow-wrap:anywhere}.nonverbal-guide .research-figure{max-width:600px}.research-nonverbal-legacy img{display:block;width:100%;max-width:480px;height:auto}@media(max-width:600px){.nonverbal-guide .page-h1{font-size:1.5rem}.nonverbal-guide .tool-card p{font-size:1rem;line-height:1.65}}
+
+/* Reported speech: readable source frames and strong worksheet contrast. */
+.reported-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.reported-guide .content-card p{font-size:1.0625rem;line-height:1.75;overflow-wrap:anywhere}.reported-guide .research-figure{max-width:580px}.reported-guide .research-download{background:#a93d2f;white-space:normal;line-height:1.5}.research-reported-legacy img{display:block;width:100%;max-width:480px;height:auto}.research-reported-legacy figcaption{font-size:.9rem;line-height:1.6;color:#475467}@media(max-width:600px){.reported-guide .page-h1{font-size:1.5rem}.reported-guide .tool-card p{font-size:1rem;line-height:1.65}}
