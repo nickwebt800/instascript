@@ -80,3 +80,56 @@ Sources: [Surrey selection guidance](https://www.surrey.ac.uk/computer-assisted-
 - [Observation record](/data/qualitative-transcription-software-test-observations.json)
 
 Related: [plain-text export review](/qualitative-plain-text-handoff), [privacy](/privacy).
+
+
+## Can I use ChatGPT for qualitative research transcription?
+
+Some ChatGPT routes can transcribe audio, but the product surface and available tools matter. Check the route you will actually use, retain a transcript rather than only a summary, and review it against permitted source audio. An attachment preview alone does not establish that transcription ran. This November 21, 2026 supplement is a documentation review and fictional planning exercise, not a ChatGPT transcription test.
+
+[Download the route worksheet](/data/qualitative-chatgpt-route-worksheet.csv). Keep this route check alongside the destination test above: receiving text and importing usable evidence are separate observations.
+
+### Which ChatGPT route does the documentation describe?
+
+[OpenAI's upload documentation](https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt) describes eligible paid Chat users using GPT-6 at Instant for attached-audio transcription, subject to availability. It explicitly separates attachment or preview success from transcription support, and says this uploaded-audio capability is unavailable in Work and Codex. Do not transfer a successful Chat observation to another surface. Model availability by itself is insufficient.
+
+[ChatGPT Record documentation](https://help.openai.com/en/articles/11487532-chatgpt-record) describes a recording workflow with transcripts and generated notes, currently identifying the macOS app as its surface. Its introductory availability statements differ in scope, so confirm the actual workspace and client before planning a session. We did not resolve that difference through an account test. Generated notes are a separate artifact from a transcript.
+
+[Voice Dictation documentation](https://help.openai.com/en/articles/12168547-voice-dictation-faq) describes recording a prompt, receiving editable text, and sending that text as a message. It also describes sending audio for transcription and retaining associated audio with chat history. This is a different workflow from testing an existing interview file or Record session. These documentation statements do not establish approval to process study data.
+
+The three descriptions answer different questions about input and output. Record the exact route instead of writing only a product name. We have not tested their accuracy, speaker attribution, export formats, retention in a particular account, or behavior on long interviews. Check current documentation and your actual account when using the worksheet. Limits and availability can change.
+
+![Name the route before observing an artifact](/assets/research-chatgpt-route/01-narrow.svg)
+
+### Our fictional route cards: one request, three different observations
+
+The authored fixture is BEACON-G05. There is no recording, participant, account session or model response behind these cards. The invented request is to retain an interview transcript for later review. All observations below are fictional teaching inputs. A card is a record supplied to the exercise, not evidence that a real product produced its contents.
+
+Card A names an attached-recording route in an invented Chat session. Its observation is a preview, with no transcript artifact retained. The exercise reports preview-only. That result leaves the transcript request unestablished. It does not mean the service rejected the file or can never transcribe it. A reviewer would next request the transcript on the eligible route and record the actual response; they would not promote the preview into a completed transcription.
+
+Card B names an invented Record session. A generated-notes artifact is retained, but no transcript artifact is retained in the card. The exercise reports notes-only. A concise note may be useful, but its presence does not answer whether the transcript is available. The next action is to locate and inspect the transcript separately. This card does not claim that actual Record omits transcripts; its supplied observation is deliberately incomplete.
+
+Card C names an invented attached-recording session in Chat and retains an artifact explicitly declared to be transcript text. The exercise reports transcript-present, with source review pending. The declaration says what the author recorded, not whether the words are accurate. We cannot check speech, speaker identities or missing passages without a source. A transcript artifact can be present while evidence review remains incomplete.
+
+Now copy Card C but change its requested surface to Work while keeping the observation's surface as Chat. The exercise refuses that association. An observation from one surface cannot settle another surface's capability. A second counterexample changes only the recorded session ID; it is also refused. These failures address evidence belonging to the wrong route or session, without pretending to detect whether a real transcript is correct.
+
+![Keep the observation and its limits together](/assets/research-chatgpt-route/02-narrow.svg)
+
+### Our reproducible checks and blank worksheet
+
+Download the [standalone Node exercise](/data/qualitative-chatgpt-route-reproduce.cjs) and [actual exercise output](/data/qualitative-chatgpt-route-example.json). The script uses embedded fictional records and sends no requests. It checks matching route fingerprints, observation categories, artifact references and the absence of a completed source-review claim. It deliberately does not infer an artifact's type from a filename, recognize speech, call ChatGPT or inspect any private file.
+
+The route fingerprint contains the surface, mode, client and session alias. Changing any of those fields requires its own observation. The script refuses mismatches and unknown artifact categories. An artifact category is a manually supplied label; a passing check cannot prove that someone inspected the artifact or that its label is correct. The exercise helps expose missing evidence rather than manufacture it.
+
+Use the blank worksheet to record the requested route, the observed route, observation date, permitted sample alias, requested output, observed artifact category, retained artifact reference, and source-review status. Keep documentation evidence and an executed test in separate fields. Write not tested when the route was not executed; do not record a product failure merely because the current device or account did not expose it.
+
+For a real workflow, retain the unmodified transcript output before making analysis notes. Review important passages against the recording, record unresolved wording and inspect the output in its actual destination. Keep a summary separately labelled even if it appears in the same conversation. If the required route cannot be accessed, leave that row untested and compare only the evidence actually collected.
+
+This addition does not change the QualCoder observations above or establish a software winner. InstaScript's browser speech workflow remains English-only, for browser-decodable local media up to 100 MB, with local files processed on-device. It does not operate ChatGPT, identify research participants or certify any external processing route. Our worksheet is a manual companion, with no upload form or account history.
+
+### Questions before using the worksheet
+
+**Does seeing the recording in an attachment prove transcription completed?** No. Retain the actual transcript response from the intended route; a preview is a separate observation.
+
+**Does a generated summary satisfy a transcript requirement?** Its presence alone does not. Inspect and retain the transcript artifact separately, then review it against the permitted source.
+
+**Was ChatGPT tested in this supplement?** No. Official documents were read on November 21, 2026. The three BEACON-G05 cards and their outputs are authored fiction; the Node checks test record consistency only.

@@ -57,3 +57,6 @@
 
 /* Reported speech: readable source frames and strong worksheet contrast. */
 .reported-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.reported-guide .content-card p{font-size:1.0625rem;line-height:1.75;overflow-wrap:anywhere}.reported-guide .research-figure{max-width:580px}.reported-guide .research-download{background:#a93d2f;white-space:normal;line-height:1.5}.research-reported-legacy img{display:block;width:100%;max-width:480px;height:auto}.research-reported-legacy figcaption{font-size:.9rem;line-height:1.6;color:#475467}@media(max-width:600px){.reported-guide .page-h1{font-size:1.5rem}.reported-guide .tool-card p{font-size:1rem;line-height:1.65}}
+
+/* Route supplement: readable paragraphs, visible jump link and keyboard target. */
+.selection-guide .route-supplement{scroll-margin-top:24px}.selection-guide .route-supplement p{font-size:1.0625rem;line-height:1.75;overflow-wrap:anywhere}.selection-guide .route-supplement .research-figure{max-width:580px}.selection-guide .research-route-jump a{display:inline-block;padding:8px 0;color:#843329;text-decoration:underline;line-height:1.6}.selection-guide .research-update{color:#475467;font-size:.9rem}.selection-guide .route-supplement h3{margin-top:28px;line-height:1.4}

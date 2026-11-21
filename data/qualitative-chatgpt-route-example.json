@@ -1,0 +1,87 @@
+{
+  "fixture": "BEACON-G05",
+  "provenance": "All cards authored fiction. No recording/account/model response.",
+  "cards": [
+    {
+      "id": "A",
+      "request": {
+        "surface": "Chat",
+        "mode": "attached-recording",
+        "client": "fictional-client",
+        "session": "BEACON-A"
+      },
+      "observation": {
+        "id": "A",
+        "route": {
+          "surface": "Chat",
+          "mode": "attached-recording",
+          "client": "fictional-client",
+          "session": "BEACON-A"
+        },
+        "kind": "preview",
+        "artifact": null,
+        "sourceReview": "pending"
+      },
+      "result": {
+        "state": "preview-only",
+        "sourceReview": "pending",
+        "capabilityTest": "not executed"
+      }
+    },
+    {
+      "id": "B",
+      "request": {
+        "surface": "Record",
+        "mode": "recording",
+        "client": "fictional-client",
+        "session": "BEACON-B"
+      },
+      "observation": {
+        "id": "B",
+        "route": {
+          "surface": "Record",
+          "mode": "recording",
+          "client": "fictional-client",
+          "session": "BEACON-B"
+        },
+        "kind": "notes",
+        "artifact": "fictional-notes-reference",
+        "sourceReview": "pending"
+      },
+      "result": {
+        "state": "notes-only",
+        "sourceReview": "pending",
+        "capabilityTest": "not executed"
+      }
+    },
+    {
+      "id": "C",
+      "request": {
+        "surface": "Chat",
+        "mode": "attached-recording",
+        "client": "fictional-client",
+        "session": "BEACON-C"
+      },
+      "observation": {
+        "id": "C",
+        "route": {
+          "surface": "Chat",
+          "mode": "attached-recording",
+          "client": "fictional-client",
+          "session": "BEACON-C"
+        },
+        "kind": "transcript",
+        "artifact": "fictional-transcript-reference",
+        "sourceReview": "pending"
+      },
+      "result": {
+        "state": "transcript-present",
+        "sourceReview": "pending",
+        "capabilityTest": "not executed"
+      }
+    }
+  ],
+  "checks": 14,
+  "status": "PASS",
+  "limits": "Manual labels and references are not independently validated; no product capability, accuracy, timing or speed test."
+}
