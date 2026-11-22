@@ -72,3 +72,11 @@ A participant can recount someone else's words inside their own turn. Try the [r
 ![The interview-turn speaker and reported role remain separate](/assets/research-reported/01-narrow.svg)
 
 Fictional HARBOR-R22; no recording or participant.
+
+## Keep local speaker labels scoped to their interview
+
+A local label alone does not establish a participant relationship across sessions. Try the [speaker-label linking exercise](/qualitative-speaker-label-scope) before combining passages from different interviews.
+
+![Matching local labels and declared participant references can group different fictional cards](/assets/research-speaker-labels/01-narrow.svg)
+
+Fictional BRIDGE-R23; no recording or identity verification.

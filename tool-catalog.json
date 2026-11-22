@@ -2396,6 +2396,36 @@
         "manual worksheet",
         "fictional source exercise"
       ]
+    },
+    {
+      "title": "Does Speaker 1 Mean the Same Person in Every Interview?",
+      "label": "Speaker Labels Across Interviews",
+      "url": "https://instascript.app/qualitative-speaker-label-scope",
+      "summary": "Keep interview-local speaker labels separate from participant references. Original fictional source cards, a linking worksheet and reproducible checks.",
+      "accepts": [],
+      "limits": [
+        "manual fictional exercise",
+        "does not identify speakers or verify participant identity"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "speaker labels across interviews"
+      ],
+      "path": "/qualitative-speaker-label-scope",
+      "html": "qualitative-speaker-label-scope.html",
+      "markdown": "qualitative-speaker-label-scope.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-22",
+        "changefreq": "monthly",
+        "priority": "0.8"
+      },
+      "outputs": [
+        "manual CSV worksheet",
+        "fictional source-link exercise"
+      ]
     }
   ]
 }

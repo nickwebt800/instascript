@@ -1,0 +1,191 @@
+{
+  "fixture": "BRIDGE-R23",
+  "notice": "All cards and relationships are fictional. PASS checks bookkeeping only, never identity, listening or permission.",
+  "cards": [
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IA",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "I used the side entrance."
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IB",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "I waited by the noticeboard."
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IC",
+      "version": "V1",
+      "label": "Speaker 2",
+      "passage": "T01",
+      "text": "I returned on Thursday."
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "ID",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "The corridor was quiet."
+    }
+  ],
+  "mappings": [
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IA",
+      "version": "V1",
+      "label": "Speaker 1",
+      "person": "PA",
+      "status": "decided",
+      "basis": "Author-declared fictional relationship; no identity evidence"
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IB",
+      "version": "V1",
+      "label": "Speaker 1",
+      "person": "PB",
+      "status": "decided",
+      "basis": "Author-declared fictional relationship; no identity evidence"
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IC",
+      "version": "V1",
+      "label": "Speaker 2",
+      "person": "PA",
+      "status": "decided",
+      "basis": "Author-declared fictional relationship; no identity evidence"
+    }
+  ],
+  "results": [
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IA",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "I used the side entrance.",
+      "link": {
+        "status": "declared fixture link",
+        "person": "PA"
+      }
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IB",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "I waited by the noticeboard.",
+      "link": {
+        "status": "declared fixture link",
+        "person": "PB"
+      }
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "IC",
+      "version": "V1",
+      "label": "Speaker 2",
+      "passage": "T01",
+      "text": "I returned on Thursday.",
+      "link": {
+        "status": "declared fixture link",
+        "person": "PA"
+      }
+    },
+    {
+      "project": "BRIDGE-R23",
+      "interview": "ID",
+      "version": "V1",
+      "label": "Speaker 1",
+      "passage": "T01",
+      "text": "The corridor was quiet.",
+      "link": {
+        "status": "unresolved",
+        "reason": "missing mapping"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "same local label, different declared people",
+      "result": "PASS"
+    },
+    {
+      "name": "different local labels, same declared person",
+      "result": "PASS"
+    },
+    {
+      "name": "two local label strings",
+      "result": "PASS"
+    },
+    {
+      "name": "three source tuples",
+      "result": "PASS"
+    },
+    {
+      "name": "two declared participants",
+      "result": "PASS"
+    },
+    {
+      "name": "equal group counts conceal different membership",
+      "result": "PASS"
+    },
+    {
+      "name": "missing mapping does not assign new participant",
+      "result": "PASS"
+    },
+    {
+      "name": "changed version has no implicit carryover",
+      "result": "PASS"
+    },
+    {
+      "name": "another project has no implicit match",
+      "result": "PASS"
+    },
+    {
+      "name": "conflicting mapping refused",
+      "result": "PASS"
+    },
+    {
+      "name": "identical duplicate refused",
+      "result": "PASS"
+    },
+    {
+      "name": "pending mapping does not resolve",
+      "result": "PASS"
+    },
+    {
+      "name": "blank basis does not resolve",
+      "result": "PASS"
+    },
+    {
+      "name": "blank participant does not resolve",
+      "result": "PASS"
+    },
+    {
+      "name": "label spelling not silently normalised",
+      "result": "PASS"
+    },
+    {
+      "name": "mapping order does not change unique result",
+      "result": "PASS"
+    },
+    {
+      "name": "separator joining can collide; structured tuple stays distinct",
+      "result": "PASS"
+    },
+    {
+      "name": "source fields and original wording preserved",
+      "result": "PASS"
+    }
+  ]
+}
