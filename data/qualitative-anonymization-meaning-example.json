@@ -1,0 +1,104 @@
+{
+  "fixture": "CONTRAST-R24",
+  "fictional": true,
+  "sourceVersion": "V1",
+  "source": "At Lumen Room I could ask privately. At Bracken Hall I had to speak in front of everyone. I went back to Lumen Room.",
+  "declaredPattern": [
+    "A",
+    "B",
+    "A"
+  ],
+  "drafts": [
+    {
+      "id": "A",
+      "labels": [
+        "[setting]",
+        "[setting]",
+        "[setting]"
+      ],
+      "text": "At [setting] I could ask privately. At [setting] I had to speak in front of everyone. I went back to [setting].",
+      "relationshipPreserved": false,
+      "disclosureReview": "pending"
+    },
+    {
+      "id": "B",
+      "labels": [
+        "[setting A]",
+        "[setting B]",
+        "[setting A]"
+      ],
+      "text": "At [setting A] I could ask privately. At [setting B] I had to speak in front of everyone. I went back to [setting A].",
+      "relationshipPreserved": true,
+      "disclosureReview": "pending"
+    },
+    {
+      "id": "C",
+      "labels": [
+        "[setting A]",
+        "[setting B]",
+        "[setting B]"
+      ],
+      "text": "At [setting A] I could ask privately. At [setting B] I had to speak in front of everyone. I went back to [setting B].",
+      "relationshipPreserved": false,
+      "disclosureReview": "pending"
+    }
+  ],
+  "counterexample": {
+    "text": "At [setting A] I could ask publicly. At [setting B] I had to speak in front of everyone. I went back to [setting A].",
+    "relationshipPreserved": true,
+    "wordingUnchanged": false,
+    "authorDecision": "Reject altered experience; authored decision, not semantic inference by code",
+    "disclosureReview": "pending"
+  },
+  "checks": [
+    {
+      "name": "collapsed distinction rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "A B A relationship preserved",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong return rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "missing occurrence rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "all distinct loses return",
+      "result": "PASS"
+    },
+    {
+      "name": "same pattern can use other tokens",
+      "result": "PASS"
+    },
+    {
+      "name": "extra occurrence rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "empty label rejected",
+      "result": "PASS"
+    },
+    {
+      "name": "wording counterexample still passes relationship check",
+      "result": "PASS"
+    },
+    {
+      "name": "separate exact text check detects changed wording",
+      "result": "PASS"
+    },
+    {
+      "name": "retained draft contains no fictional source names",
+      "result": "PASS"
+    },
+    {
+      "name": "no disclosure approval inherited from passing relation",
+      "result": "PASS"
+    }
+  ],
+  "limits": "No source file reads, network requests, place detection, semantic assessment or disclosure approval."
+}

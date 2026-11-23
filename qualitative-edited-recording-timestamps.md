@@ -36,3 +36,7 @@ The included Node exercise checks both offsets, both sides of the join, a crossi
 - [Source locators](/qualitative-source-locators)
 - [Privacy](/privacy)
 - [Download the Node exercise](/data/qualitative-edited-recording-timestamps-reproduce.cjs)
+
+## Narrow-screen diagram alternatives
+
+The same fictional edit map is available as [stacked retained sections](/assets/e11-1-narrow.svg) and [stacked source ranges](/assets/e11-2-narrow.svg). These diagrams preserve the intervals above; they do not establish an actual recording map.

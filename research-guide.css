@@ -63,3 +63,6 @@
 
 /* Cross-interview labels: wrap references and separate the authored source cards. */
 .labels-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.labels-guide .content-card p{font-size:1.125rem;line-height:1.65;overflow-wrap:anywhere}.labels-guide .label-practice-card{padding:16px;border-left:4px solid #a93d2f;background:#fffaf8}.labels-guide .research-download{background:#a93d2f;white-space:normal;line-height:1.5}.labels-guide .research-quick-link a{display:inline-block;padding:8px 0;color:#843329;text-decoration:underline}.labels-guide .research-figure{max-width:600px}.research-label-legacy img{display:block;max-width:480px;width:100%;height:auto}.research-label-legacy figcaption{font-size:.9rem;line-height:1.6;color:#475467}@media(max-width:600px){.labels-guide .page-h1{font-size:1.5rem}.labels-guide .tool-card p{font-size:1rem;line-height:1.65}}
+
+/* Keep every destination visible on the source-locator guide at phone widths. */
+.locators-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}

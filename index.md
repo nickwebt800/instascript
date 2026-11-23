@@ -131,6 +131,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Nonverbal Transcript Events](https://instascript.app/qualitative-nonverbal-events) — Keep nonverbal-event descriptions, source evidence and interpretation separate in qualitative research transcription. Fictional exercise, worksheet and reproducible checks.
 - [Reported Speech in Interviews](https://instascript.app/qualitative-reported-speech) — Keep reported words inside the interview speaker's turn. Original fictional source cards, a manual worksheet and reproducible checks for qualitative research transcription.
 - [Speaker Labels Across Interviews](https://instascript.app/qualitative-speaker-label-scope) — Keep interview-local speaker labels separate from participant references. Original fictional source cards, a linking worksheet and reproducible checks.
+- [Anonymization Meaning Review](https://instascript.app/qualitative-anonymization-meaning) — Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet.
 
 ### YouTube tools
 

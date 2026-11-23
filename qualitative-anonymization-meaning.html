@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can Anonymizing Place Names Erase an Interview Contrast? | InstaScript</title><meta name="description" content="Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet.">
+<link rel="canonical" href="https://instascript.app/qualitative-anonymization-meaning"><link rel="alternate" type="text/markdown" href="/qualitative-anonymization-meaning.md">
+<meta property="og:type" content="article"><meta property="og:title" content="Can Anonymizing Place Names Erase an Interview Contrast? | InstaScript"><meta property="og:description" content="Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet."><meta property="og:url" content="https://instascript.app/qualitative-anonymization-meaning"><meta property="og:image" content="https://instascript.app/assets/logo-512.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Can Anonymizing Place Names Erase an Interview Contrast? | InstaScript"><meta name="twitter:description" content="Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet."><meta name="twitter:image" content="https://instascript.app/assets/logo-512.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/assets/logo-256.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/research-guide.css?v=meaning-20261123"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Can Anonymizing Place Names Erase an Interview Contrast?", "description": "Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet.", "url": "https://instascript.app/qualitative-anonymization-meaning", "inLanguage": "en", "datePublished": "2026-11-23", "author": {"@type": "Organization", "name": "InstaScript"}, "mainEntityOfPage": "https://instascript.app/qualitative-anonymization-meaning"}</script></head>
+<body class="research-guide labels-guide"><a class="research-skip" href="#research-main">Skip to article</a><div class="container"><header class="header"><p class="brand" data-site-brand><a href="/">InstaScript</a></p><h1 class="page-h1">Can Anonymizing Place Names Erase an Interview Contrast?</h1><nav class="page-nav" aria-label="Site navigation" data-site-nav>
+<a href="/">Instagram Transcript</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+</nav></header>
+<main id="research-main" tabindex="-1"><section class="tool-card" aria-label="Quick answer"><p>Yes. In qualitative research transcription, replacing two different places with the same label can hide a comparison that matters to the analysis. Review what relationships the prepared passage still supports, alongside a separate disclosure review. Distinct placeholders can preserve a contrast, but neither distinct labels nor a successful text check establish that a transcript is safe to share.</p><p><a class="btn-primary research-download" download href="/data/qualitative-anonymization-meaning-worksheet.csv">Download meaning worksheet (CSV)</a></p><p class="research-quick-link"><a href="#our-fictional-exercise-three-names-two-settings">Try the fictional comparison</a></p></section><section class="content-card"><h2 id="what-should-the-replacement-preserve">What should the replacement preserve?</h2><p>Start with the purpose of the passage. A researcher comparing experiences across two settings needs to know whether references concern the same setting or different settings. Exact names may be unnecessary. However, replacing every setting with one generic token can remove that distinction. Record the analytical relationship needed before choosing the replacement, rather than deciding that any readable sentence retains enough information.</p><p><a href="https://ukdataservice.ac.uk/learning-hub/data-producer-support/preparing-data-for-sharing-and-reuse/anonymising-data-and-protecting-participants/anonymisationfortextdata/">UK Data Service guidance</a> already addresses consistent substitutions and the loss of interpretive value through excessive removal. It also explains that remaining contextual details can identify someone. Our contribution is the small, inspectable contrast exercise below. It is a teaching example, not a new anonymization standard or an assessment of disclosure risk.</p><h2 id="our-fictional-exercise-three-names-two-settings">Our fictional exercise: three names, two settings</h2><p>Everything in CONTRAST-R24 is invented: the setting names, text, labels and declared relationships. There is no participant, recording or listening session. The source card V1 reads: “At Lumen Room I could ask privately. At Bracken Hall I had to speak in front of everyone. I went back to Lumen Room.” These names were invented for this exercise and do not refer to actual research sites.</p><p>The author declares the occurrence pattern A, B, A: the first and third references concern the same setting; the second concerns another setting. The passage contrasts private and public opportunities to speak. Those declarations provide an answer key for the exercise, not evidence about any real interview.</p><figure class="research-figure"><picture><source media="(max-width:640px)" srcset="/assets/research-anonymization/01-narrow.svg"><img src="/assets/research-anonymization/01-wide.svg" alt="Compare the declared setting relationships" width="1200" height="680" loading="lazy"></picture><figcaption>Invented teaching material. Relationship checks do not approve disclosure.</figcaption></figure><p><strong>Draft A — collapsed:</strong> “At [setting] I could ask privately. At [setting] I had to speak in front of everyone. I went back to [setting].” The words about privacy remain, but a reader cannot recover which setting was revisited from these labels alone. The author marks the required relationship as lost. The draft does not prove that all events occurred in one place; the shared token is ambiguous.</p><p><strong>Draft B — relationship retained:</strong> “At [setting A] I could ask privately. At [setting B] I had to speak in front of everyone. I went back to [setting A].” The labels preserve the declared A, B, A pattern. This earns only a relationship-preserved result in this exercise. Disclosure review stays pending. The distinctive story might still be identifying in a real project.</p><p><strong>Draft C — return mislinked:</strong> “At [setting A] I could ask privately. At [setting B] I had to speak in front of everyone. I went back to [setting B].” Two different labels are present, yet the third reference now points to the wrong setting. Merely counting labels would miss the problem. Compare each occurrence and its relationship with the permitted source, not just the number of tokens.</p><h2 id="our-reproducible-check-relationships-are-narrower-than-meaning">Our reproducible check: relationships are narrower than meaning</h2><p>Download the <a href="/data/qualitative-anonymization-meaning-reproduce.cjs">standalone Node exercise</a> and <a href="/data/qualitative-anonymization-meaning-example.json">fictional records with executed results</a>. Running the script prints the invented text and checks without reading research files or contacting a server. It tests pairs of occurrence labels against the declared A, B, A pattern. Both same-setting and different-setting relationships must match.</p><p>The checker accepts Draft B, rejects A&#x27;s collapsed distinction and rejects C&#x27;s changed return. It also tests a missing occurrence and the all-distinct pattern A, B, C, which loses the repeated reference. These are mechanical assertions against a tiny supplied answer key. They cannot discover places in a transcript, decide which distinctions matter, or assess whether a person could be identified.</p><p>Our fourth counterexample keeps B&#x27;s labels but changes “privately” to “publicly.” Its relationship test still passes. The author explicitly rejects the changed wording for this exercise because it alters the stated experience. Code does not infer that meaning change: a separate exact-text comparison only reports that wording differs. Passing the relationship test therefore cannot approve the passage&#x27;s meaning or release.</p><figure class="research-figure"><picture><source media="(max-width:640px)" srcset="/assets/research-anonymization/02-narrow.svg"><img src="/assets/research-anonymization/02-wide.svg" alt="Keep relationship, wording and disclosure decisions separate" width="1200" height="680" loading="lazy"></picture><figcaption>Invented teaching material. Relationship checks do not approve disclosure.</figcaption></figure><p>This separation is useful when reviewing a prepared copy. One field can record that occurrence relationships match. Another can record a wording discrepancy. A third can hold the contextual review decision. A fourth records disclosure review for the intended use. Combining these fields into one green check would claim more than the exercise establishes.</p><h2 id="our-worksheet-state-the-intended-inference">Our worksheet: state the intended inference</h2><p>Use the blank CSV within your project&#x27;s approved storage. It is a downloadable form, not an upload interface or a secure project store. Record the source reference and version, prepared-copy version, passage reference, intended analytical use, required relationship and occurrence-level replacement plan. Keep any identifying replacement key in the project&#x27;s separately protected records; this public worksheet should not be used to publish that key.</p><p>For this fictional passage, an intended-use entry could say “compare opportunities to ask a question in two settings.” The required relationship could say “first and third references are the same setting; second is different.” Record Draft B as relationship-preserved, wording-unchanged and disclosure-pending. Do not translate that row into “anonymous” or “approved for publication.” No actual human review has occurred in this example.</p><p>If even the distinction between settings would disclose too much, preserving it is not automatically the right choice. Follow the project&#x27;s review process and document that the proposed shared passage cannot support the original comparison. Do not silently restore detail to make the analysis easier. The purpose of this exercise is to expose information loss and unresolved decisions, not prescribe the correct disclosure decision.</p><p>When a replacement changes, revisit linked extracts and the argument they support. Record the new version and the decision, including unresolved outcomes. A later reviewer should be able to see whether the comparison depended on information removed from the working copy. For source-link bookkeeping, use the separate <a href="/qualitative-source-locators">restricted source-locator guide</a>. For unknown text and deliberate quotation cuts, see <a href="/qualitative-quote-omissions">transcript omissions</a>.</p><h2 id="must-every-place-receive-a-different-placeholder">Must every place receive a different placeholder?</h2><p>No. Choose a documented scheme appropriate to the permitted use and the required distinctions. The A/B labels are an answer key for this invented example, not a universal policy. A broad category may be sufficient for another research question. A more detailed label can also reveal information. Review the actual passage and audience rather than adopting this fixture&#x27;s labels automatically.</p><h2 id="does-preserving-the-pattern-prove-anonymity">Does preserving the pattern prove anonymity?</h2><p>No. The checker receives declared labels and tests relationships only. It does not inspect indirect identifiers, metadata, linked records, recipients or consent. A prepared passage can retain its analytical usefulness while remaining unsuitable to share. Keep that unresolved status visible and follow the project&#x27;s disclosure-review arrangements.</p><h2 id="can-instascript-anonymize-or-approve-my-transcript">Can InstaScript anonymize or approve my transcript?</h2><p>No. This is a manual guide with fictional practice material. InstaScript does not detect identifying details, manage replacement keys or approve research releases. Its <a href="/audio-to-text">Audio to Text tool</a> creates English drafts from browser-decodable local files up to 100 MB. Actual decoding depends on the browser; first use downloads model resources, and cached resources may still require initialization. Local files and edits remain in the browser. Instagram fetching uses servers; YouTube tools retrieve existing captions and successful queries may be cached for one hour. See the <a href="/privacy">privacy policy</a>.</p></section></main>
+<footer class="footer" data-site-footer><nav class="footer-nav" aria-label="Footer navigation" data-site-footer-nav>
+<div class="footer-group"><span class="footer-group-title">Transcript tools</span>
+<a href="/">Instagram Transcript</a>
+<a href="/instagram-transcript-generator">Instagram Transcript Generator</a>
+<a href="/instagram-reels-transcript">Instagram Reels Transcript</a>
+<a href="/instagram-video-to-text">Instagram Video to Text</a>
+<a href="/reels-to-text">Reels to Text</a>
+<a href="/instagram-caption-extractor">Instagram Caption Extractor</a>
+<a href="/caption-generator">Caption Generator</a>
+<a href="/subtitle-generator">Subtitle Generator</a>
+<a href="/whatsapp-voice-to-text">WhatsApp Voice to Text</a>
+<a href="/video-to-text">Video to Text</a>
+<a href="/audio-to-text">Audio to Text</a>
+<a href="/mp3-to-text">MP3 to Text</a>
+<a href="/m4a-to-text">M4A to Text</a>
+<a href="/wav-to-text">WAV to Text</a>
+<a href="/voice-memo-to-text">Voice Memo to Text</a>
+<a href="/voice-notes-to-text">Voice Notes to Text</a>
+<a href="/voicemail-transcription">Voicemail Transcription</a>
+<a href="/podcast-transcript">Podcast Transcript</a>
+<a href="/mp4-to-text">MP4 to Text</a>
+<a href="/zoom-transcript">Zoom Transcript</a>
+<a href="/vimeo-transcript">Vimeo Transcript</a>
+<a href="/tiktok-transcript">TikTok Transcript</a>
+<a href="/facebook-video-transcript">Facebook Video Transcript</a>
+<a href="/twitter-video-transcript">Twitter Video Transcript</a>
+<a href="/google-meet-transcript">Google Meet Transcript</a>
+<a href="/ogg-to-text">OGG to Text</a>
+<a href="/recording-format-guide">Recording Format Guide</a>
+<a href="/phone-call-transcription">Phone Call Transcription</a>
+<a href="/interview-transcription">Interview Transcription</a>
+<a href="/verbatim-transcription">Verbatim Transcription</a>
+<a href="/qualitative-coding">Qualitative Coding</a>
+<a href="/focus-group-transcription">Focus Group Transcription</a>
+<a href="/qualitative-research-transcription">Qualitative Research Transcription</a>
+<a href="/focus-group-transcription-services">Focus Group Transcription Services</a>
+<a href="/thematic-coding">Thematic Coding</a>
+<a href="/qualitative-transcript-corrections">Transcript Corrections</a>
+<a href="/qualitative-participant-clarifications">Participant Clarifications</a>
+<a href="/qualitative-cross-cue-quotes">Cross-Cue Research Quotes</a>
+<a href="/qualitative-uncertain-terms">Uncertain Transcript Terms</a>
+<a href="/qualitative-source-locators">Restricted Source Locators</a>
+<a href="/qualitative-quote-omissions">Transcript Gaps &amp; Quote Cuts</a>
+<a href="/qualitative-plain-text-handoff">Plain Text Export Review</a>
+<a href="/qualitative-reviewer-handoff">Reviewer Decision Handoff</a>
+<a href="/qualitative-review-scope">Partial Review Scope</a>
+<a href="/qualitative-review-purposes">Wording and Speaker Review</a>
+<a href="/qualitative-edited-recording-timestamps">Edited Recording Timestamps</a>
+<a href="/qualitative-coding-evidence">Interview Coding Evidence</a>
+<a href="/qualitative-translation-review">Translated Quote Review</a>
+<a href="/qualitative-transcript-pause-measurement">Transcript Pause Measurement</a>
+<a href="/qualitative-nvivo-transcription-route">NVivo Transcription Route</a>
+<a href="/qualitative-transcription-software-test">Transcription Workflow Test</a>
+<a href="/qualitative-transcript-counting-units">Transcript Counting Units</a>
+<a href="/qualitative-transcript-topic-order">Transcript Topic Order</a>
+<a href="/qualitative-nonverbal-events">Nonverbal Transcript Events</a>
+<a href="/qualitative-reported-speech">Reported Speech in Interviews</a>
+<a href="/qualitative-speaker-label-scope">Speaker Labels Across Interviews</a>
+<a href="/qualitative-anonymization-meaning">Anonymization Meaning Review</a></div>
+<div class="footer-group"><span class="footer-group-title">YouTube tools</span>
+<a href="/youtube-transcript">YouTube Transcript</a>
+<a href="/youtube-shorts-transcript">YouTube Shorts Transcript</a>
+<a href="/youtube-transcript-download">YouTube Transcript Download</a>
+<a href="/how-to-get-a-transcript-of-a-youtube-video">How to Get a YouTube Transcript</a></div>
+<div class="footer-group"><span class="footer-group-title">Subtitle tools</span>
+<a href="/txt-to-srt">TXT to SRT Converter</a>
+<a href="/vtt-to-srt">VTT to SRT Converter</a>
+<a href="/subtitle-editor">Subtitle Editor</a>
+<a href="/ass-to-srt">ASS to SRT Converter</a>
+<a href="/srt-to-text">SRT to Text Converter</a>
+<a href="/subtitle-translator">Subtitle Translator</a>
+<a href="/srt-to-vtt">SRT to VTT</a>
+<a href="/subtitle-downloader">Subtitle Downloader</a>
+<a href="/subtitle-converter">Subtitle Converter</a>
+<a href="/translate-srt">Translate SRT Guide</a>
+<a href="/how-to-add-captions-on-tiktok">How to Add Captions on TikTok</a></div>
+<div class="footer-group"><span class="footer-group-title">Site</span>
+<a href="/ai/">AI Agent Information</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a></div>
+</nav></footer></div><script src="/footer.js?v=footer-92fddd8448b9" defer></script></body></html>
