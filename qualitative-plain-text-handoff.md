@@ -6,6 +6,8 @@ When exporting a checked transcript to plain text, retain its source reference, 
 
 [Download the export-review worksheet](/data/qualitative-plain-text-handoff-worksheet.md)
 
+[Review the coding-companion example](https://instascript.app/qualitative-plain-text-handoff#color-coding)
+
 ## What can disappear when the words still look right?
 
 A readable export is only one part of a research handoff. The [ATLAS.ti formatting guide](https://atlasti.com/guides/interview-analysis-guide/transcription-formatting) already discusses speakers, turn divisions, line numbers, timestamps and metadata kept separate from dialogue. [Harvard Library's recording and transcription guidance](https://guides.library.harvard.edu/c.php?g=796889&p=10476360) emphasizes matching transcription choices to the method and revising automated text. Those principles apply before choosing a download format; a successful download does not establish that they were followed.
@@ -53,6 +55,24 @@ Use the [blank export-review worksheet](/data/qualitative-plain-text-handoff-wor
 Next, open the actual downloaded file. Compare the first and last passage, each unresolved marker and any passage selected for analysis against the version you intended to export. Write what was inspected and what remains pending. For this fixture the decision is “bytes match the invented reference; [unclear] remains unresolved; no recording checked.” For a real project, replace that with the work actually performed, including any relevant scope limitation. A label such as “checked” without its scope should not stand in for review evidence.
 
 Finally, record what the recipient needs next. If replay intervals matter, a start-only TXT is insufficient on its own; retain the permitted timed companion and source reference. If speaker labels matter, inspect whether they are actually in the text rather than assuming the exporter identified speakers. After another text edit, export again and update the companion record. This worksheet documents a handoff; it neither approves a quotation nor replaces the separate [transcript correction review](/qualitative-transcript-corrections).
+
+## Can plain text retain color coding?
+
+Keep assignments and their legend separately when a recipient needs coding information. Unchanged words cannot establish which passages were highlighted or what a color meant. [ATLAS.ti's annotation guide](https://atlasti.com/guides/interview-analysis-guide/annotated-interview-transcripts) already discusses coding, notes and export. Our additional counterexample below is a written fixture, not an application-export test.
+
+![Same words, different code assignments](/assets/research-code-handoff/01-wide.svg)
+
+COLOR-R25 is entirely fictional: no participant, interview, recording or listening review exists. Its authored text is “The bus was late. I waited outside.” In history A, the first sentence has code C1, defined as service delay. In history B, that sentence has C2, defined as travel context. A third history has no assignments. These are alternative invented records, not observations of researchers or coder-agreement results.
+
+Our JavaScript projection returns only each record's text. All three outputs are identical, so those bytes cannot identify which coding history supplied them. Their identical text fingerprints also cannot certify that assignments survived: the compared representation never contained the assignments. A real exporter might serialize labels or offer a companion format; that route needs its own inspection. We did not export these records from Word, a QDA package or InstaScript.
+
+Next keep C1 unchanged but change its legend definition. The identifier stays familiar while its declared meaning changes. Retain the legend version as well as the passage-to-code link. This demonstrates missing information, not which interpretation is analytically appropriate.
+
+![Keep source version, passage link and legend definition](/assets/research-code-handoff/02-wide.svg)
+
+Our [standalone fixture](/data/qualitative-code-handoff-reproduce.cjs) and [actual fourteen-check output](/data/qualitative-code-handoff-example.json) also test a stored passage anchor. Insert a prefix into the invented text without updating its offsets: the old span no longer selects the stored quote and is rejected. These offsets use JavaScript UTF-16 code units with an exclusive end, not byte offsets or a universal exchange format. The check does not relocate passages, authenticate sources or approve interpretation.
+
+Use the [blank coding-companion worksheet (CSV)](/data/qualitative-code-handoff-worksheet.csv) to name the source version, passage, coordinate convention, exact quote, assignment, definition and legend version. Keep actual review pending unless supported. For wording review, a text file may meet the recipient's needs. For coding review, inspect the actual destination's assignments and definitions. If only words survived, state that limit; do not reconstruct colors from memory and call them an untouched export. Keep private identifiers and identity keys out of broadly shared companion records. This worksheet adds no automatic coding, project storage or release approval to InstaScript.
 
 ## Does InstaScript save a research project with the export?
 

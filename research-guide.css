@@ -66,3 +66,6 @@
 
 /* Keep every destination visible on the source-locator guide at phone widths. */
 .locators-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}
+
+/* Export review: readable prose and a stronger worksheet action. */
+.export-guide .content-card p,.export-guide .content-card li{font-size:1.125rem;line-height:1.65}.export-guide .tool-card .btn-primary{background:#a53b2c;color:#fff}.export-guide .tool-card .btn-primary:hover{background:#843329}.export-guide .research-quick-link{margin-top:14px}

@@ -404,6 +404,14 @@ async function handleMcp(request, env) {
 // Cloudflare Pages currently answers an unmatched path with the home page and
 // HTTP 200, which is a soft 404. Anything outside this list gets a real 404.
 const KNOWN_FILES = new Set([
+  "/assets/research-code-handoff/01-narrow.svg",
+  "/assets/research-code-handoff/01-wide.svg",
+  "/assets/research-code-handoff/02-narrow.svg",
+  "/assets/research-code-handoff/02-wide.svg",
+  "/data/qualitative-code-handoff-reproduce.cjs",
+  "/data/qualitative-code-handoff-example.json",
+  "/data/qualitative-code-handoff-worksheet.csv",
+
   "/assets/e11-1-narrow.svg",
   "/assets/e11-2-narrow.svg",
 

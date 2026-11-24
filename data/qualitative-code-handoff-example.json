@@ -1,0 +1,58 @@
+{
+  "fixture": "COLOR-R25",
+  "fictional": true,
+  "recordingReviewed": false,
+  "exportScope": "Authored JS projection only; no Word, QDA or InstaScript export executed",
+  "checks": 14,
+  "passed": [
+    "same plain bytes, different code assignments",
+    "same fingerprint does not retain coding",
+    "unmarked third history also has same bytes",
+    "different legends can interpret same code differently",
+    "valid authored anchor",
+    "reject missing version",
+    "reject wrong source",
+    "reject stale offsets after inserted prefix",
+    "reject wrong quote",
+    "reject unsupported coordinate convention",
+    "reject out-of-bounds span",
+    "reject empty span",
+    "reject fractional offsets",
+    "codes are not transcript words"
+  ],
+  "plainText": "The bus was late. I waited outside.",
+  "sha256": "584c1705144ce66f7c1d7ddeaa65b28ea105514fcf6cc2d44e30f5c046723ef8",
+  "assignments": [
+    [
+      {
+        "source": "COLOR-R25",
+        "version": "V1",
+        "start": 0,
+        "end": 17,
+        "unit": "JS UTF-16 code units",
+        "quote": "The bus was late.",
+        "code": "C1"
+      }
+    ],
+    [
+      {
+        "source": "COLOR-R25",
+        "version": "V1",
+        "start": 0,
+        "end": 17,
+        "unit": "JS UTF-16 code units",
+        "quote": "The bus was late.",
+        "code": "C2"
+      }
+    ]
+  ],
+  "legends": [
+    {
+      "C1": "service delay"
+    },
+    {
+      "C2": "travel context"
+    }
+  ],
+  "limitation": "Checks test written fixture consistency, not analytical validity, audio accuracy or disclosure approval."
+}
