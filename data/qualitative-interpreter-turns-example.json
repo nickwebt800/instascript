@@ -1,0 +1,13 @@
+{
+  "exercise": "RELAY-R26",
+  "fictional": true,
+  "checks": 12,
+  "status": "PASS",
+  "spokenTurns": 5,
+  "derivedRecord": "D06",
+  "dependencies": [
+    "P01",
+    "P04"
+  ],
+  "translationVerified": false
+}

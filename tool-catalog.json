@@ -2181,7 +2181,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-11-05",
+        "lastmod": "2026-11-25",
         "changefreq": "monthly",
         "priority": "0.8"
       },
@@ -2457,6 +2457,36 @@
         "manual CSV worksheet",
         "fictional relationship exercise"
       ]
+    },
+    {
+      "title": "Interpreter-Mediated Interview Transcripts: Keep the Relay Visible",
+      "url": "https://instascript.app/qualitative-interpreter-turns",
+      "summary": "Preserve participant source turns, interpreter renderings and derived reading copies with a fictional relay, worksheet and reproducible record checks.",
+      "accepts": [
+        "manual research worksheet",
+        "fictional interpreter-relay exercise"
+      ],
+      "limits": [
+        "not a multilingual transcription tool",
+        "no speaker recognition or translation validation",
+        "fictional records; no participant audio"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "interpreter mediated interview transcript"
+      ],
+      "path": "/qualitative-interpreter-turns",
+      "label": "Interpreter-Mediated Interview Transcripts",
+      "html": "qualitative-interpreter-turns.html",
+      "markdown": "qualitative-interpreter-turns.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-25",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
     }
   ]
 }

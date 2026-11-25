@@ -59,3 +59,11 @@ A comparison can flag changed or missing passages. The fixture below checks thos
 - [Privacy](/privacy)
 - [Download the fictional Node exercise](/data/qualitative-translation-review-reproduce.cjs)
 - [First steps in qualitative data analysis: transcribing](https://academic.oup.com/fampra/article/25/2/127/497632)
+
+## Keep live interpretation separate from later translation
+
+For an interpreter-mediated interview, keep actual speakers and rendering dependencies visible before assessing a later translated quote. Try the [interpreter-relay worksheet](/qualitative-interpreter-turns).
+
+![A participant source turn and an interpreter rendering remain separate](/assets/research-interpreter/01-narrow.svg)
+
+Original fictional RELAY-R26; no recording or verified translation.

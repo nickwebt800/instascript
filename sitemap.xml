@@ -398,7 +398,7 @@
   </url>
   <url>
     <loc>https://instascript.app/qualitative-translation-review</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -455,5 +455,11 @@
     <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://instascript.app/qualitative-interpreter-turns</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
