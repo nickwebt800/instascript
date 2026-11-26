@@ -79,3 +79,11 @@ This applies the cue-boundary distinction already explained above. It is not a s
 - [Download the fictional Node exercise](/data/qualitative-transcript-pause-measurement-reproduce.cjs)
 - [WebVTT cue timing specification](https://www.w3.org/TR/webvtt1/#webvtt-cue-timings)
 - [UK Data Service example transcription instructions](https://dam.ukdataservice.ac.uk/media/622355/UKDA-example-transcription-instructions.pdf)
+
+## A different overlap: multiple recording files
+
+Overlapping subtitle rows and overlapping recording files need different evidence. For two file clocks, try the [recording-boundary worksheet](/qualitative-recording-overlap). The fictional map does not establish an actual synchronization.
+
+![Two file clocks retain separate source locators](/assets/research-recording-overlap/01-narrow.svg)
+
+Original fictional SEAM-R27; no recording or listening review.

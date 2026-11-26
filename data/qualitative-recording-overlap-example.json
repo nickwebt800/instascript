@@ -1,0 +1,89 @@
+{
+  "exercise": "SEAM-R27",
+  "fictional": true,
+  "status": "PASS",
+  "checks": 14,
+  "cards": [
+    {
+      "id": "A1",
+      "file": "A",
+      "version": "V1",
+      "start": 54,
+      "end": 57,
+      "text": "The gate was open."
+    },
+    {
+      "id": "B1",
+      "file": "B",
+      "version": "V1",
+      "start": 4,
+      "end": 7,
+      "text": "The gate was open."
+    },
+    {
+      "id": "B2",
+      "file": "B",
+      "version": "V1",
+      "start": 24,
+      "end": 27,
+      "text": "The gate was open."
+    }
+  ],
+  "mapped": [
+    {
+      "id": "A1",
+      "session": "S27",
+      "start": 54,
+      "end": 57
+    },
+    {
+      "id": "B1",
+      "session": "S27",
+      "start": 54,
+      "end": 57
+    },
+    {
+      "id": "B2",
+      "session": "S27",
+      "start": 74,
+      "end": 77
+    }
+  ],
+  "candidate": {
+    "state": "candidate-same-range",
+    "range": {
+      "session": "S27",
+      "start": 54,
+      "end": 57
+    }
+  },
+  "later": {
+    "state": "different-range"
+  },
+  "decision": {
+    "id": "D1",
+    "basis": "author-declared fictional same event; no listening",
+    "retained": "A1",
+    "alternate": "B1",
+    "sourceLocators": [
+      {
+        "id": "A1",
+        "file": "A",
+        "version": "V1",
+        "start": 54,
+        "end": 57,
+        "text": "The gate was open."
+      },
+      {
+        "id": "B1",
+        "file": "B",
+        "version": "V1",
+        "start": 4,
+        "end": 7,
+        "text": "The gate was open."
+      }
+    ]
+  },
+  "recordingReviewed": false,
+  "synchronizationVerified": false
+}

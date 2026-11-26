@@ -133,6 +133,7 @@ Yes. Paste a public Instagram Reel or video post URL above. The page fetches the
 - [Speaker Labels Across Interviews](https://instascript.app/qualitative-speaker-label-scope) — Keep interview-local speaker labels separate from participant references. Original fictional source cards, a linking worksheet and reproducible checks.
 - [Anonymization Meaning Review](https://instascript.app/qualitative-anonymization-meaning) — Test whether transcript replacements preserve a setting contrast with an original fictional exercise, reproducible checks and a meaning-review worksheet.
 - [Interpreter-Mediated Interview Transcripts](https://instascript.app/qualitative-interpreter-turns) — Preserve participant source turns, interpreter renderings and derived reading copies with a fictional relay, worksheet and reproducible record checks.
+- [Overlapping Interview Recordings](https://instascript.app/qualitative-recording-overlap) — Reconcile overlapping interview recording files without erasing repeated speech. Fictional clock map, boundary worksheet and reproducible checks.
 
 ### YouTube tools
 

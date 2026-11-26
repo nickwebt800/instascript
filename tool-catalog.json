@@ -2210,7 +2210,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-11-18",
+        "lastmod": "2026-11-26",
         "changefreq": "monthly",
         "priority": "0.8"
       },
@@ -2484,6 +2484,36 @@
       "footer": true,
       "sitemap": {
         "lastmod": "2026-11-25",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
+    },
+    {
+      "title": "Overlapping Interview Recordings: Keep Both File Clocks",
+      "url": "https://instascript.app/qualitative-recording-overlap",
+      "summary": "Reconcile overlapping interview recording files without erasing repeated speech. Fictional clock map, boundary worksheet and reproducible checks.",
+      "accepts": [
+        "manual research worksheet",
+        "fictional recording-boundary exercise"
+      ],
+      "limits": [
+        "no automatic recording synchronization",
+        "no duplicate capture detection or audio validation",
+        "fictional records; no participant audio"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "overlapping interview recording files"
+      ],
+      "path": "/qualitative-recording-overlap",
+      "label": "Overlapping Interview Recordings",
+      "html": "qualitative-recording-overlap.html",
+      "markdown": "qualitative-recording-overlap.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-26",
         "changefreq": "monthly",
         "priority": "0.6"
       }

@@ -404,7 +404,7 @@
   </url>
   <url>
     <loc>https://instascript.app/qualitative-transcript-pause-measurement</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -459,6 +459,12 @@
   <url>
     <loc>https://instascript.app/qualitative-interpreter-turns</loc>
     <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://instascript.app/qualitative-recording-overlap</loc>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
