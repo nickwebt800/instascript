@@ -2069,7 +2069,7 @@
       "home": true,
       "footer": true,
       "sitemap": {
-        "lastmod": "2026-11-01",
+        "lastmod": "2026-11-28",
         "changefreq": "monthly",
         "priority": "0.8"
       }
@@ -2514,6 +2514,36 @@
       "footer": true,
       "sitemap": {
         "lastmod": "2026-11-26",
+        "changefreq": "monthly",
+        "priority": "0.6"
+      }
+    },
+    {
+      "title": "No Transcript Search Matches: Check the Search Boundary",
+      "url": "https://instascript.app/qualitative-transcript-search-limits",
+      "summary": "Interpret zero-result transcript searches without claiming a theme is absent. Actual component observations, fictional practice cues and a review worksheet.",
+      "accepts": [
+        "manual search review worksheet",
+        "fictional text-search component exercise"
+      ],
+      "limits": [
+        "literal per-cue text search, no semantic search",
+        "no theme-absence validation",
+        "invented text; no recognition accuracy measurement"
+      ],
+      "keywords": [
+        "qualitative research transcription",
+        "transcript search no matches"
+      ],
+      "path": "/qualitative-transcript-search-limits",
+      "label": "Transcript Search Limits",
+      "html": "qualitative-transcript-search-limits.html",
+      "markdown": "qualitative-transcript-search-limits.md",
+      "group": "transcript",
+      "home": true,
+      "footer": true,
+      "sitemap": {
+        "lastmod": "2026-11-28",
         "changefreq": "monthly",
         "priority": "0.6"
       }

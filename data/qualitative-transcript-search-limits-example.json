@@ -1,0 +1,204 @@
+{
+  "fixture": "FIND-R28",
+  "fictional": true,
+  "audioExists": false,
+  "sourceCommit": "93d98af9d24f8c040e99d897c04b482e1d8ab19c",
+  "searchSourceSha256": "5661ef2afdd78e79059a54da614b071ad37eaaa7136f2c282c5c35a0ab1cbdbb",
+  "checks": 25,
+  "cuesV1": [
+    {
+      "id": "C1",
+      "text": "The bus was"
+    },
+    {
+      "id": "C2",
+      "text": "late again."
+    },
+    {
+      "id": "C3",
+      "text": "I waited forty minutes before it arrived."
+    },
+    {
+      "id": "C4",
+      "text": "I can't use the express line. The shuttle was unrelated."
+    }
+  ],
+  "cuesV2": [
+    {
+      "id": "C1",
+      "text": "The bus was"
+    },
+    {
+      "id": "C2",
+      "text": "delayed again."
+    },
+    {
+      "id": "C3",
+      "text": "I waited forty minutes before it arrived."
+    },
+    {
+      "id": "C4",
+      "text": "I can't use the express line. The shuttle was unrelated."
+    }
+  ],
+  "observations": [
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "bus was late",
+      "count": 0,
+      "matches": [],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "bus",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 0,
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "late",
+      "count": 2,
+      "matches": [
+        {
+          "cueIndex": 1,
+          "start": 0,
+          "end": 4
+        },
+        {
+          "cueIndex": 3,
+          "start": 50,
+          "end": 54
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "joined-derived-text",
+      "query": "bus was late",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 0,
+          "start": 4,
+          "end": 16
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "delay",
+      "count": 0,
+      "matches": [],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "can't",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 3,
+          "start": 2,
+          "end": 7
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "can’t",
+      "count": 0,
+      "matches": [],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "BUS",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 0,
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "late ",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 1,
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": " late",
+      "count": 0,
+      "matches": [],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V2",
+      "surface": "per-cue",
+      "query": "late",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 3,
+          "start": 50,
+          "end": 54
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V2",
+      "surface": "per-cue",
+      "query": "delay",
+      "count": 1,
+      "matches": [
+        {
+          "cueIndex": 1,
+          "start": 0,
+          "end": 5
+        }
+      ],
+      "interpretation": "pending"
+    },
+    {
+      "version": "V1",
+      "surface": "per-cue",
+      "query": "",
+      "count": 0,
+      "matches": [],
+      "interpretation": "pending"
+    }
+  ],
+  "scope": "Actual component search on invented input; no browser, audio, semantic retrieval or theme-absence validation"
+}

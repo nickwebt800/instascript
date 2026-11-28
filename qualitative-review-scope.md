@@ -70,3 +70,11 @@ Use the [reviewer handoff exercise](/qualitative-reviewer-handoff) for an unreso
 Fictional practice; no recording or identity evidence.
 
 To separate wording decisions from speaker-attribution decisions, use the [two-purpose review exercise](/qualitative-review-purposes).
+
+## A search result is another limited observation
+
+A text search does not document listening coverage or establish that a theme is absent. Use the [search boundary exercise](/qualitative-transcript-search-limits) to keep the query, source version and retrieval result distinct from a research interpretation.
+
+![Keep an exact search observation separate from review](/assets/research-search-limits/02-narrow.svg)
+
+Original fictional FIND-R28; no recording or listening.

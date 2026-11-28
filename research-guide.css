@@ -75,3 +75,6 @@
 
 /* Recording boundaries: readable file clocks, complete navigation and strong worksheet action. */
 .seam-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.seam-guide .content-card p{font-size:1.125rem;line-height:1.65;overflow-wrap:anywhere}.seam-guide .research-download{background:#a53b2c;color:#fff;white-space:normal;line-height:1.5}.seam-guide .research-download:hover{background:#843329}.seam-guide .research-quick-link a{display:inline-block;padding:8px 0;color:#843329;text-decoration:underline}.seam-guide .research-figure{max-width:600px}
+
+/* Search boundary guide: readable exact queries and keyboard links. */
+.find-guide .page-nav{flex-wrap:wrap;white-space:normal;overflow:visible}.find-guide .content-card p{font-size:1.125rem;line-height:1.65;overflow-wrap:anywhere}.find-guide .research-download{background:#a53b2c;color:#fff;white-space:normal;line-height:1.5}.find-guide .research-download:hover{background:#843329}.find-guide .research-quick-link a{display:inline-block;padding:8px 0;color:#843329;text-decoration:underline}.find-guide .research-figure{max-width:600px}
